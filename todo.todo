@@ -1,0 +1,31 @@
+- Kafka
+    - add update structure @low
+    - create poll & callback mock. 
+    - process-next order: use partitions for scale
+
+- Validation
+    - Validation rules from GraphDb
+
+- Changes
+    - test set null @high 
+    - test set null in changes @high 
+    - get-db-changes  @high 
+    - deep changes function (with and without db, use lavarel for db-changes.) @high 
+    - add set-original to api-read and db-read @low 
+
+- Polling
+    - when polling-cron getorder, getdomain, get-verification
+    - when callback do poll, getorder, getdomain, get-verification
+    - write to db
+    - submit to kafka
+- Synchronous Orders
+    - create socket servers
+    - socket-server: listing on socket until order completed
+    - send result
+
+    
+
+
+
+    
+    

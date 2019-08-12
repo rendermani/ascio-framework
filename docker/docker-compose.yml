@@ -1,0 +1,147 @@
+version: '3'
+services:
+    web:
+        image: nginx:latest
+        container_name: ascio-framework-web
+        ports:
+            - "8000:80"
+        volumes:
+            - ..:/code
+            - ./site.conf:/etc/nginx/conf.d/default.conf
+        links:
+            - php            
+            - mysql:db   
+        env_file:
+        - ../.env
+        restart: always
+        depends_on:
+        - php         
+    php:
+        build:
+            context: .
+        image: ascio-framework
+        container_name: ascio-framework-php
+        volumes:
+            - ..:/code
+            - d:/ownCloud/Keys/ascio:/config
+        env_file:
+        - ../.env
+        restart: always
+        depends_on: 
+        - mysql
+        - kafka
+    poll:
+        build:
+            context: .
+        image: ascio-framework
+        container_name: ascio-framework-poll
+        volumes:
+            - ..:/code
+            - d:/ownCloud/Keys/ascio:/config
+        env_file:
+        - ../.env
+        restart: always
+        depends_on: 
+        - mysql
+        - kafka
+        entrypoint: /usr/local/bin/php 
+        command: services/poll.php
+    sync:
+        build:
+            context: .
+        image: ascio-framework
+        container_name: ascio-framework-sync
+        volumes:
+            - ..:/code
+            - d:/ownCloud/Keys/ascio:/config
+        env_file:
+        - ../.env
+        restart: always
+        depends_on: 
+        - mysql-connector
+        - kafka
+        - poll
+        entrypoint: /usr/local/bin/php 
+        command: services/sync.php
+    order-queue:
+        build:
+            context: .
+        image: ascio-framework
+        container_name: ascio-framework-order-queue
+        volumes:
+            - ..:/code
+            - d:/ownCloud/Keys/ascio:/config
+        env_file:
+        - ../.env
+        restart: always
+        depends_on: 
+        - mysql-connector
+        - kafka
+        - poll
+        entrypoint: /usr/local/bin/php 
+        command: services/order-queue.php
+    
+    mysql-connector:
+        build:
+            context: .
+        image: ascio-framework
+        container_name: ascio-framework-mysql-connector
+        volumes:
+            - ..:/code
+            - d:/ownCloud/Keys/ascio:/config
+        env_file:
+        - ../.env
+        restart: always
+        depends_on: 
+        - mysql
+        - kafka
+        entrypoint: /usr/local/bin/php 
+        command: services/mysql-connector.php                
+    mysql:
+        image: mysql:5.7
+        container_name: ascio-framework-mysql
+        ports:
+        - 13307:3306
+        env_file:
+        - ../.env
+        restart: always
+        volumes:
+        - ascio-framework-volume:/var/lib/mysql
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: ascio-framework-pma
+        env_file:
+            - ../.env
+        restart: always
+        ports:
+        - 8001:80
+        volumes:
+        - /sessions      
+        links:
+            - mysql:db 
+        depends_on: 
+        - mysql
+    zookeeper:
+        image: wurstmeister/zookeeper
+        container_name: ascio-framework-zookeeper
+        restart: always 
+        ports:
+        - 2181:2181
+
+    kafka:
+        image: wurstmeister/kafka
+        container_name: ascio-framework-kafka
+        restart: always 
+        ports:
+        - 9092:9092
+        environment:
+            KAFKA_ADVERTISED_HOST_NAME: 192.168.0.22
+            KAFKA_CREATE_TOPICS: "ascio.api.framework.object.full:1:1,ascio.api.framework.object.incremental:1:1,ascio.api.framework.callback:1:1,ascio.api.framework.order:1:1,ascio.api.framework.log:1:1"
+            KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+        volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        depends_on:
+        - zookeeper
+
+volumes:
+    ascio-framework-volume:

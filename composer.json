@@ -1,0 +1,90 @@
+{
+    "name": "ascio/ascio-classes",
+    "description": "PHP Classes for the Ascio-API",
+    "authors": [
+        {
+            "name": "Manuel Lautenschlager",
+            "email": "manuel.lautenschlager@ascio.com"
+        }
+    ],
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.0",
+        "ext-soap": "*", 
+        "rendermani/wsdl-client-generator" : "*",
+        "ext-pdo" : "*",
+        "illuminate/database": ">=5.9@dev",
+        "monolog/monolog": "^1.23"
+    },
+    "require-dev": {
+        "php": ">=5.3.0",
+        "ext-soap": "*", 
+        "rendermani/wsdl-client-generator" : "*",
+        "ext-pdo" : "*",
+        "illuminate/database": ">=5.9@dev",
+        "phpunit/phpunit": "^8",
+        "kwn/php-rdkafka-stubs": "^1.0"
+
+    },
+    "autoload": {
+        "psr-4": {            
+            "ascio\\service\\v3\\": "src/service/v3",
+            "ascio\\service\\v2\\": "src/service/v2",
+            "ascio\\service\\dns\\": "src/service/dns",
+            
+            "ascio\\v2\\" : "src/lib/v2",
+            "ascio\\v3\\" : "src/lib/v3",
+            "ascio\\dns\\" : "src/lib/dns",
+            
+            "ascio\\db\\v3\\" : "src/db/v3",
+            "ascio\\db\\v2\\" : "src/db/v2",
+            "ascio\\db\\dns\\" : "src/db/dns",
+            
+            "ascio\\api\\v3\\" : "src/api/v3",
+            "ascio\\api\\v2\\" : "src/api/v2",
+            "ascio\\api\\dns\\" : "src/api/dns",
+            
+            "ascio\\base\\v3\\" : "src/base/v3",
+            "ascio\\base\\v2\\" : "src/base/v2",
+            "ascio\\base\\dns\\" : "src/base/dns",
+            "ascio\\base\\" : "src/base",
+            
+            "ascio\\workflows\\" : "src/lib",           
+            "ascio\\workflows\\custom\\" : "workflows",
+            
+            "ascio\\lib\\"  : ["src/lib","src/base"],
+            "ascio\\lib\\composer\\" : "src/lib"    
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ascio\\service\\v3\\": "src/service/v3",
+            "ascio\\service\\v2\\": "src/service/v2",
+            "ascio\\service\\dns\\": "src/service/dns",
+            
+            "ascio\\v2\\" : "src/lib/v2",
+            "ascio\\v3\\" : "src/lib/v3",
+            "ascio\\dns\\" : "src/lib/dns",
+            
+            "ascio\\db\\v3\\" : "src/db/v3",
+            "ascio\\db\\v2\\" : "src/db/v2",
+            "ascio\\db\\dns\\" : "src/db/dns",
+            
+            "ascio\\api\\v3\\" : "src/api/v3",
+            "ascio\\api\\v2\\" : "src/api/v2",
+            "ascio\\api\\dns\\" : "src/api/dns",
+            
+            "ascio\\base\\v3\\" : "src/base/v3",
+            "ascio\\base\\v2\\" : "src/base/v2",
+            "ascio\\base\\dns\\" : "src/base/dns",
+            "ascio\\base\\" : "src/base",
+            
+            "ascio\\workflows\\" : "src/lib",           
+            "ascio\\workflows\\custom\\" : "workflows",
+            
+            "ascio\\lib\\"  : ["src/lib","src/base"],
+            "ascio\\lib\\composer\\" : "src/lib"         
+        }
+    }
+}

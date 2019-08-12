@@ -1,0 +1,2 @@
+* * * * *  /usr/local/bin/php /code/polling.php >> /tmp/debug-polling.txt
+

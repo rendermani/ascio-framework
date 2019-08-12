@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "D:\\ownCloud\\Keys\\ascio"
+		}
+	],
+	"settings": {
+		"docker-compose.files": [
+			"docker/docker-compose.yml"
+		]
+	}
+}
