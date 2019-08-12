@@ -57,7 +57,6 @@ Consumer::callback(function($payload) use ($log) {
         return;
     }
     try {
-        DomainBlocker::block($payload->DomainName);
         $newOrder->submit();
         echo status($newOrder,"Submitted");  
     } catch (AscioException $e) {
