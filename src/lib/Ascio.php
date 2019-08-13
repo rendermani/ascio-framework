@@ -11,12 +11,20 @@ class LockType {
     const Transfer = "TRANSFER_LOCK";
     const Delete = "DELETE_LOCK";
 }
+class LogLevel {
+    const Debug = "DEBUG";
+    const Info = "INFO";
+    const Warn = "WARN";
+    const Error = "ERROR";
+    const FatalError = "FATAL_ERROR";
+}
 class ApiName {
     const V2 = "v2";
     const V3 = "v3";
     const Dns = "dns";
 }
 class OrderStatus {
+    const NotSet="NotSet";
     const Stored="Stored";
     const Queued="Queued";
     const Submitting="Submitting";
