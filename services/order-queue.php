@@ -35,7 +35,8 @@ Consumer::callback(function($payload) use ($log) {
             $msg = $payload->object;
             $order = new Order();  
             $order->db()->getByOrderId($payload->OrderId);  
-            $order->setStatus($msg->getStatus());
+            $order->setStatus($msg->getOrderStatus());
+            $order->setWorkflowStatus($status);
             echo $order->getStatusSerializer()->console(LogLevel::Info,"Completed");
             DomainBlocker::unblock($payload->DomainName);
             $newOrder = $order->db()->nextDomain($payload->DomainName);
