@@ -23,7 +23,6 @@ services:
         container_name: ascio-framework-php
         volumes:
             - ..:/code
-            - d:/ownCloud/Keys/ascio:/config
         env_file:
         - ../.env
         restart: always
@@ -35,12 +34,11 @@ services:
             context: .
         image: ascio-framework
         container_name: ascio-framework-poll
-        volumes:
-            - ..:/code
-            - d:/ownCloud/Keys/ascio:/config
         env_file:
         - ../.env
         restart: always
+        volumes:
+            - ..:/code
         depends_on: 
         - mysql
         - kafka
@@ -53,7 +51,6 @@ services:
         container_name: ascio-framework-sync
         volumes:
             - ..:/code
-            - d:/ownCloud/Keys/ascio:/config
         env_file:
         - ../.env
         restart: always
@@ -70,7 +67,6 @@ services:
         container_name: ascio-framework-order-queue
         volumes:
             - ..:/code
-            - d:/ownCloud/Keys/ascio:/config
         env_file:
         - ../.env
         restart: always
@@ -86,11 +82,10 @@ services:
             context: .
         image: ascio-framework
         container_name: ascio-framework-mysql-connector
-        volumes:
-            - ..:/code
-            - d:/ownCloud/Keys/ascio:/config
         env_file:
         - ../.env
+        volumes:
+            - ..:/code
         restart: always
         depends_on: 
         - mysql
@@ -134,8 +129,9 @@ services:
         restart: always 
         ports:
         - 9092:9092
+        env_file:
+        - ../.env
         environment:
-            KAFKA_ADVERTISED_HOST_NAME: 192.168.0.22
             KAFKA_CREATE_TOPICS: "ascio.api.framework.object.full:1:1,ascio.api.framework.object.incremental:1:1,ascio.api.framework.callback:1:1,ascio.api.framework.order:1:1,ascio.api.framework.log:1:1"
             KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
         volumes:
