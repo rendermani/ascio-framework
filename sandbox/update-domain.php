@@ -15,7 +15,7 @@ try {
     $domain->getTechContact()->setFirstName("Manuel");
     $domain->getRegistrant()->setAddress1("new adr. 123");
     $domain->getNameServers()->createNameServer3()->setHostName("ns3.ascio.net");
-    $domain->update($order->getSubmitOptions());
+    $domain->update();
 } catch (SoapFault $e) {
     echo "error!";
     echo $e->getMessage();
