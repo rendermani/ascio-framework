@@ -3,13 +3,8 @@
 // XSLT-WSDL-Client. Generated DB-Model class of Domain. Can be copied and overwriten with own functions.
 
 namespace ascio\v2;
-use ascio\db\v2\DomainDb;
-use ascio\api\v2\DomainApi;
 use ascio\lib\LockType;
 use ascio\lib\AscioException;
-use ascio\base\BaseClass;
-use ascio\base\DbModelBase;
-use ascio\base\DbBase;
 use ascio\lib\StatusSerializer;
 use ascio\lib\SubmitOptions;
 
@@ -17,11 +12,13 @@ class Domain extends \ascio\service\v2\Domain {
     public $updates; 
     private $locks; 
     private $autoRenew; 
+    public $orderRequest;
     public function __construct($parent = null)
     {  
         parent::__construct($parent);
         $this->locks = new Locks($this);
         $this->autoRenew = new AutoRenew($this);
+        $this->orderRequest = new DomainOrderRequest($this);
     }
     public function getStatusSerializer() : StatusSerializer {
         parent::getStatusSerializer()->addFields([
@@ -53,7 +50,7 @@ class Domain extends \ascio\service\v2\Domain {
         $results = [];
         foreach($this->updates->getOrderTypes() as $orderType) {
             $function = $orderType->function;
-            $result = $this->$function();
+            $result = $this->getOrderRequest()->$function();
             if($result) {
                 $results[] =$result;       
             }                        
@@ -61,136 +58,29 @@ class Domain extends \ascio\service\v2\Domain {
         return $results;
 
     }
-    public function register(?SubmitOptions $submitOptions = null) : Order {
-        $order = new Order();
-        $order->setType(OrderType::Register_Domain);
-        $order->setDomain($this);
-        return $order->submit($submitOptions);
+    public function register(?SubmitOptions $submitOptions = null) : Order {        
+        return $this->getOrderRequest()->register()->submit($submitOptions);
     }
-    public function transfer(?SubmitOptions $submitOptions = null) : Order{
-        $order = new Order();
-        $order->setType(OrderType::Transfer_Domain);
-        $order->setDomain($this);
-        return $order->submit();
+    public function transer(?SubmitOptions $submitOptions = null) : Order {        
+        return $this->getOrderRequest()->transer()->submit($submitOptions);
     }
-    public function registrantDetailsUpdate() : Order {        
-        $domain = new Domain();
-        $this->copyNameAndHandle($domain);
-        $domain->setRegistrant($this->getRegistrant());
-        $this->resetHandle($domain->getRegistrant());
-        $order = new Order();
-        $order->setType(OrderType::Registrant_Details_Update);
-        $order->setDomain($domain);        
-        return $order; 
+    public function registrantDetailsUpdate(?SubmitOptions $submitOptions = null) : Order {        
+        return $this->getOrderRequest()->registrantDetailsUpdate()->submit($submitOptions);
     }
-    public function ownerChange() : Order {        
-        $domain = new Domain();
-        $this->copyNameAndHandle($domain);
-        $domain->setRegistrant($this->getRegistrant());
-        if($this->getAdminContact()->changes()->hasChanges()) {
-            $domain->setAdminContact($this->getAdminContact());
-            $this->resetHandle($domain->getAdminContact());           
-        }
-        $this->resetHandle($domain->getRegistrant());    
-        $order = new Order();
-        $order->setType(OrderType::Owner_Change);
-        $order->setDomain($domain);        
-        return $order; 
+    public function ownerChange(?SubmitOptions $submitOptions = null) : Order {        
+        return $this->getOrderRequest()->ownerChange()->submit($submitOptions);
     }
-    public function contactUpdate() : Order {        
-        $domain = new Domain();
-        $this->copyNameAndHandle($domain);
-        $domain->setAdminContact($this->getAdminContact());
-        $this->resetHandle($domain->getAdminContact());
-        $domain->setTechContact($this->getTechContact());
-        $this->resetHandle($domain->getTechContact());
-        $domain->setBillingContact($this->getBillingContact());
-        $this->resetHandle($domain->getBillingContact());
-        $domain->setResellerContact($this->getResellerContact());
-        $this->resetHandle($domain->getResellerContact());
-        $order = new Order();
-        $order->setType(OrderType::Contact_Update);     
-        $order->setDomain($domain);         
-        return $order; 
+    public function contactUpdate(?SubmitOptions $submitOptions = null) : Order {        
+        return $this->getOrderRequest()->contactUpdate()->submit($submitOptions);
     }
-    public function nameserverUpdate() : Order {        
-        $domain = new Domain();
-        $this->copyNameAndHandle($domain);
-        $domain->setNameServers($this->getNameServers());
-        $domain->getNameServers()->db()->_id = null;
-        $domain->getNameServers()->db()->exists = false;
-        foreach($domain->getNameServers()->objects() as $key => $ns) {
-            $this->resetHandle($ns);
-        } 
-        if($this->getTechContact()->changes()->hasChanges()) {
-            $domain->setTechContact($this->getTechContact());
-            $this->resetHandle($domain->getTechContact()); 
-        }
-        $order = new Order();
-        $order->setType(OrderType::Nameserver_Update);
-        $order->setDomain($domain);        
-        return $order; 
+    public function nameserverUpdate(?SubmitOptions $submitOptions = null) : Order {        
+        return $this->getOrderRequest()->nameserverUpdate()->submit($submitOptions);
     }
-    public function domainDetailsUpdate() : ?Order {        
-        $domain = new Domain();
-        $this->copyNameAndHandle($domain);
-        $hasChanged = false;
-        // get relevant changes
-        foreach($this->changes()->getChanges() as $key => $value) {            
-            if(is_object($value) || is_array($value) || in_array($key,$this->getLocks()->getLockTypes())) {
-                continue;
-            }
-            $hasChanged = true;
-            $domain->_set($key,$value);
-        }
-        // has no relevant changes
-        if(!$hasChanged) return null; 
+    public function domainDetailsUpdate(?SubmitOptions $submitOptions = null) : Order {        
+        return $this->getOrderRequest()->domainDetailsUpdate()->submit($submitOptions);
+    }
 
-        $order = new Order();
-        $order->setType(OrderType::Domain_Details_Update);
-        $order->setDomain($domain);        
-        return $order; 
-    }
-    public function delete(?SubmitOptions $submitOptions = null) : Order {        
-        $domain = new Domain();
-        $this->copyNameAndHandle($domain);
-        $order = new Order();
-        $order->setType(OrderType::Delete_Domain);
-        $order->setDomain($domain);        
-        return $order->submit($submitOptions);
-    }
-    public function expire(?SubmitOptions $submitOptions = null) : Order {        
-        $domain = new Domain();
-        $this->copyNameAndHandle($domain);
-        $order = new Order();
-        $order->setType(OrderType::Expire_Domain);
-        $order->setDomain($domain);        
-        return $order->submit($submitOptions);
-    }
-    public function unexpire(?SubmitOptions $submitOptions = null) : Order {        
-        $domain = new Domain();
-        $this->copyNameAndHandle($domain);
-        $order = new Order();
-        $order->setType(OrderType::Unexpire_Domain);
-        $order->setDomain($domain);        
-        return $order->submit($submitOptions);
-    }
-    public function changeLocks() : Order {                            
-        $domain = new Domain();        
-        $domain->setDeleteLock($this->getDeleteLock());
-        $domain->setTransferLock($this->getTransferLock());
-        $domain->setUpdateLock($this->getUpdateLock());
-        $domain->getLocks()->setChangedLocks();
-        $this->copyNameAndHandle($domain);
-        $order = new Order();
-        $order->setType(OrderType::Change_Locks);
-        $order->setDomain($domain);        
-        return $order; 
-    }
-    private function copyNameAndHandle(Domain $domain) {
-            $domain->setDomainHandle($this->getDomainHandle());
-            $domain->setDomainName($this->getDomainName());
-    }
+
     /**
      * Get the value of locks
      */ 
@@ -217,22 +107,12 @@ class Domain extends \ascio\service\v2\Domain {
     {
         return $this->autoRenew;
     }
-    private function resetHandle(?DbBase $obj) {
-        if(!$obj) return; 
-        if($obj->changes()->hasChanges()) {
-            $obj->setHandle(null);
-            $obj->db()->_id = null;
-            $obj->db()->exists = false; 
-        } else {
-            $handle = $obj->getHandle();
-            if($handle) {
-                foreach($obj->properties() as $key => $value) {
-                    $obj->_set($key,null);
-                }
-                $obj->setHandle($handle);
-            }
-        }
-
+    /**
+     * Get the DomainOrderRequest. Create Order-Requests for Domain-Updates. Can be used for previews. 
+     * @return DomainOrderRequest
+     */ 
+    public function getOrderRequest() : DomainOrderRequest
+    {
+        return $this->orderRequest;
     }
-
 }
