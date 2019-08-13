@@ -18,13 +18,12 @@ function status (Order $order, $status) {
     
 }
 //todo: clustering - loadbalance partitions per domain
-
 Consumer::callback(function($payload) use ($log) {
     $txt = "";
     /**
      * @var Order $order
      */
-    $status = Order::mapWorflowStatus($payload->OrderStatus);
+    $status = Order::mapWorflowStatus($payload->OrderStatus) ?: $payload->OrderStatus;
     /**
      * @var Order $newOrder
      */
@@ -36,6 +35,7 @@ Consumer::callback(function($payload) use ($log) {
             $msg = $payload->object;
             $order = new Order();  
             $order->db()->getByOrderId($payload->OrderId);  
+            $order->setStatus($msg->getStatus());
             echo $order->getStatusSerializer()->console(LogLevel::Info,"Completed");
             DomainBlocker::unblock($payload->DomainName);
             $newOrder = $order->db()->nextDomain($payload->DomainName);
@@ -52,7 +52,9 @@ Consumer::callback(function($payload) use ($log) {
         }
         $txt = " queued";
     } elseif ($status == OrderStatus::Submitting) {
-        (new StatusSerializer())->console(LogLevel::Info,"Receive block");
+        $serializer = new StatusSerializer();
+        $serializer->setFields(["DomainName"=>$payload->DomainName]);
+        echo $serializer->console(LogLevel::Info,"Received block");
         DomainBlocker::block($payload->DomainName);
         return;
     } else {
