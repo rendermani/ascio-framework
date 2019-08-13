@@ -7,7 +7,7 @@ $sync = new Sync();
 Consumer::callback(function($payload) use ($sync) {        
     if(
         $payload->OrderStatus == OrderStatus::Queued ||
-        $payload->OrderStatus == OrderStatus::Running 
+        $payload->OrderStatus == OrderStatus::Submitting 
     ) {
         return; 
     }
