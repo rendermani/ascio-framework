@@ -20,6 +20,7 @@ function status (Order $order, $status) {
 //todo: clustering - loadbalance partitions per domain
 
 Consumer::callback(function($payload) use ($log) {
+    $txt = "";
     /**
      * @var Order $order
      */
@@ -35,10 +36,10 @@ Consumer::callback(function($payload) use ($log) {
             $msg = $payload->object;
             $order = new Order();  
             $order->db()->getByOrderId($payload->OrderId);  
-            echo status($order,"Completed (".$payload->OrderStatus.")");
+            echo $order->getStatusSerializer()->console(LogLevel::Info,"Completed");
             DomainBlocker::unblock($payload->DomainName);
             $newOrder = $order->db()->nextDomain($payload->DomainName);
-            echo status($newOrder,"Process next Domain");
+            $text = " next";
         } catch (ModelNotFoundException $e) {            
             // do nothing if domain not in the database or no next domain. 
             return; 
@@ -46,21 +47,23 @@ Consumer::callback(function($payload) use ($log) {
     } elseif ($status == OrderStatus::Queued) {
         $newOrder = $payload->object;
         if(DomainBlocker::isBlocked($newOrder->getDomain()->getDomainName()) || $newOrder->db()->isBlocked() || $newOrder->shouldQueue()) {
-            echo status($newOrder,"Domain blocked by other process");
+            echo $newOrder->getStatusSerializer()->console(LogLevel::Warn,"Queue blocked");
             return; 
         }
-        echo status($newOrder,"Process Queued");
+        $txt = " queued";
     } elseif ($status == OrderStatus::Submitting) {
+        (new StatusSerializer())->console(LogLevel::Info,"Receive block");
         DomainBlocker::block($payload->DomainName);
         return;
     } else {
+        $payload->object->getStatusSerializer(LogLevel::Info,"No action for ".$status);
         return;
     }
     try {
+        echo $newOrder->getStatusSerializer()->console(LogLevel::Info,"Submit".$text);
         $newOrder->submit();
-        echo status($newOrder,"Submitted");  
     } catch (AscioException $e) {
-        echo status($newOrder,$e->getMessage());
+        echo $newOrder->getStatusSerializer()->console(LogLevel::Error,$e->getMessage());
         DomainBlocker::unblock($payload->DomainName);
         Producer::log($newOrder,[
             "messageType" => "error",
