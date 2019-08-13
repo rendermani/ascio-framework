@@ -14,4 +14,4 @@ RUN yes | pecl install xdebug rdkafka apcu\
     && echo "xdebug.remote_autostart=on" >> /usr/local/etc/php/conf.d/xdebug.ini\
     && echo "xdebug.remote_host=10.0.75.1" >> /usr/local/etc/php/conf.d/xdebug.ini\
     && echo "xdebug.remote_log=/var/log/xdebug" >> /usr/local/etc/php/conf.d/xdebug.ini
-WORKDIR /code
+RUN composer install
