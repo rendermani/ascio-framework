@@ -12,6 +12,8 @@ use ascio\lib\AscioOrderException;
 use ascio\lib\SubmitOptions;
 use ascio\service\v2\Domain;
 use ascio\lib\DomainBlocker;
+use ascio\lib\LogLevel;
+use ascio\lib\StatusSerializer;
 
 class Order extends \ascio\service\v2\Order {       
     public $lastResult;
@@ -19,6 +21,11 @@ class Order extends \ascio\service\v2\Order {
      * @var SubmitOptions $submitOptions
      */
     private $submitOptions; 
+    public function __construct($parent=null)
+    {
+        parent::__construct($parent);
+        $this->setWorkflowStatus(OrderStatus::NotSet);
+    }
     public function queue(?SubmitOptions $submitOptions=null) : Order{
         $this->submitOptions = $submitOptions ?: $this->getSubmitOptions();
         $this->setWorkflowStatus(OrderStatus::Queued); 
@@ -40,6 +47,8 @@ class Order extends \ascio\service\v2\Order {
         //todo: add DomainBlocker::syncFromDb      
         $this->db()->_blocking = $this->submitOptions->getBlocking();
         if(DomainBlocker::isBlocked($domainName) || $this->shouldQueue()) {
+            echo $this->getStatusSerializer()->console(LogLevel::Warn,"Queue Blocked");
+            $this->getSubmitOptions()->setSubmitAfterQueue(false);
             return $this->queue();
         } else {
             $this->setWorkflowStatus(OrderStatus::Submitting); 
@@ -51,6 +60,7 @@ class Order extends \ascio\service\v2\Order {
             try {
                 DomainBlocker::block($domainName);
                 $result = $this->api()->getClient()->createOrder($this);
+                echo $this->getStatusSerializer()->console(LogLevel::Info,"Submitted");
                 $this->setWorkflowStatus(OrderStatus::Running);
                 $order = $result->getOrder();
                 $this->lastResult = $result->getCreateOrderResult();
@@ -138,20 +148,14 @@ class Order extends \ascio\service\v2\Order {
     public function getMessages() : ?ArrayOfMessage{
         $this->api()->getClient()->getMessages($this->getOrderId()); 
     }
-    protected function processNext() : Order {
-        $order = new Order();
-        $domainName = $this->getDomain()->getDomainName();
-        try {
-            $orderData = $order->db()->next($domainName); 
-            if(!$order->db()->isBlocked()) {
-                $order->set($orderData);
-                $order->submit();
-            } else {
-                return $this; 
-            }            
-        } catch (ModelNotFoundException $e) {
-        
-        }       
-        return $this; 
+    public function getStatusSerializer() : StatusSerializer
+    {      
+        parent::getStatusSerializer()->addFields([
+            "OrderId" => $this->getType(),
+            "OrderType" => $this->getType(),
+            "Status" => $this->getStatus() . " (".$this->getWorkflowStatus().")", 
+            "DomainName" => $this->getDomain()->getDomainName()     
+        ]);
+        return $this->_statusSerializer;
     }
 }

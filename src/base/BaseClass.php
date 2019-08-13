@@ -13,6 +13,7 @@ use ascio\lib\Producer;
 use Illuminate\Database\Eloquent\Model;
 use ReflectionMethod;
 use ascio\base\DbBase;
+use ascio\lib\StatusSerializer;
 
 class BaseClass {
     protected $_properties;
@@ -27,7 +28,10 @@ class BaseClass {
     protected $_db;
     protected $_api;
     protected $_config;
-
+    /**
+     * @var StatusSerializer $_statusSerializer
+     */
+    protected $_statusSerializer; 
     public function __construct($parent=null) {
         $this->_parent = $parent;
         $this->_position = 0;
@@ -36,7 +40,7 @@ class BaseClass {
         if($this->_substitutions) {
             $this->_substitutionsObject = new Substitutions($this,$this->_substitutions,$this->_substituted);
         }
-
+        $this->_statusSerializer = new StatusSerializer($this);
     }
     /**
      * Recursive __construct().
@@ -259,5 +263,11 @@ class BaseClass {
      */
     public function produce ($parameters=[]) {
         Producer::object($this,$parameters);
+    }
+    public function getStatusSerializer() : StatusSerializer
+    {
+        $handle = $this->handle() ? [$this->handle()->key => $this->handle()->value] : [];
+        $this->_statusSerializer->setFields($handle);
+        return $this->_statusSerializer;
     }
 }

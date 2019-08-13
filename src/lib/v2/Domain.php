@@ -10,6 +10,7 @@ use ascio\lib\AscioException;
 use ascio\base\BaseClass;
 use ascio\base\DbModelBase;
 use ascio\base\DbBase;
+use ascio\lib\StatusSerializer;
 use ascio\lib\SubmitOptions;
 
 class Domain extends \ascio\service\v2\Domain {
@@ -21,6 +22,13 @@ class Domain extends \ascio\service\v2\Domain {
         parent::__construct($parent);
         $this->locks = new Locks($this);
         $this->autoRenew = new AutoRenew($this);
+    }
+    public function getStatusSerializer() : StatusSerializer {
+        parent::getStatusSerializer()->addFields([
+            "Domain" => $this->getDomainName(),
+            "Status" => $this->getStatus()
+        ]);
+        return $this->_statusSerializer;
     }
     public function update(?SubmitOptions $submitOptions = null) : array {
         if($this->db()->exists) {
