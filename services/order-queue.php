@@ -11,19 +11,13 @@ use Symfony\Component\Translation\Dumper\YamlFileDumper;
 require(__DIR__."/../vendor/autoload.php");
 Ascio::setConfig();
 
-function status (Order $order, $status) {
-    $domainName = $order->getDomain()->getDomainName();
-    $date = date('m/d/Y h:i:s a', time());
-    return "[order-queue] ".$date." - ".$status . " - ".$order->getType().": ". $domainName."\n";
-    
-}
-//todo: clustering - loadbalance partitions per domain
+//TODO: clustering - loadbalance partitions per domain
 Consumer::callback(function($payload) use ($log) {
     $txt = "";
     /**
      * @var Order $order
      */
-    $status = Order::mapWorflowStatus($payload->OrderStatus) ?: $payload->OrderStatus;
+    $status = Order::mapWorflowStatus($payload->OrderStatus);
     /**
      * @var Order $newOrder
      */
@@ -36,33 +30,35 @@ Consumer::callback(function($payload) use ($log) {
             $order = new Order();  
             $order->db()->getByOrderId($payload->OrderId);  
             $order->setStatus($msg->getOrderStatus());
-            $order->setWorkflowStatus($status);
+            $order->setWorkflowStatus();
             echo $order->getStatusSerializer()->console(LogLevel::Info,"Completed");
             DomainBlocker::unblock($payload->DomainName);
             $newOrder = $order->db()->nextDomain($payload->DomainName);
+            $order->setWorkflowStatus(OrderStatus::Submitting);
             $text = " next";
-        } catch (ModelNotFoundException $e) {            
-            // do nothing if domain not in the database or no next domain. 
+        } catch (ModelNotFoundException $e) {
             return; 
         }        
     } elseif ($status == OrderStatus::Queued) {
         $newOrder = $payload->object;
         if(DomainBlocker::isBlocked($newOrder->getDomain()->getDomainName()) || $newOrder->db()->isBlocked() || $newOrder->shouldQueue()) {
+            $newOrder->setStatus(OrderStatusType::NotSet);
             echo $newOrder->getStatusSerializer()->console(LogLevel::Warn,"Queue blocked");
             return; 
         }
         $txt = " queued";
     } elseif ($status == OrderStatus::Submitting) {
         $serializer = new StatusSerializer();
-        $serializer->setFields(["DomainName"=>$payload->DomainName]);
-        echo $serializer->console(LogLevel::Info,"Received block");
+        $serializer->setFields($payload);
+        echo $serializer->console(LogLevel::Info,"Block");
         DomainBlocker::block($payload->DomainName);
         return;
     } else {
-        $payload->object->getStatusSerializer(LogLevel::Info,"No action for ".$status);
+        echo $payload->object->getStatusSerializer(LogLevel::Info,"No action for ".$status);
         return;
     }
     try {
+    
         echo $newOrder->getStatusSerializer()->console(LogLevel::Info,"Submit".$text);
         $newOrder->submit();
     } catch (AscioException $e) {

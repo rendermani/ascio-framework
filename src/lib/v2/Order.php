@@ -36,7 +36,9 @@ class Order extends \ascio\service\v2\Order {
         if($this->submitOptions->getSubmitAfterQueue()) {
             Producer::callback($this,[
                 "OrderStatus"=> OrderStatus::Queued,
-                "DomainName"=> $this->getDomain()->getDomainName()
+                "DomainName"=> $this->getDomain()->getDomainName(),
+                "OrderType"=> $this->getType(),
+                "OrderId"=> $this->getOrderId()
             ]);
         }        
         return $this;
@@ -46,15 +48,18 @@ class Order extends \ascio\service\v2\Order {
         $domainName = $this->getDomain()->getDomainName();
         //todo: add DomainBlocker::syncFromDb      
         $this->db()->_blocking = $this->submitOptions->getBlocking();
-        if(DomainBlocker::isBlocked($domainName) || $this->shouldQueue()) {
-            echo $this->getStatusSerializer()->console(LogLevel::Warn,"Queue Blocked");
+        if($this->shouldQueue()) {
+            return $this->queue();
+        } elseif(DomainBlocker::isBlocked($domainName)) {
+            echo $this->getStatusSerializer()->console(LogLevel::Warn,"Can't submit, queueing");
             $this->getSubmitOptions()->setSubmitAfterQueue(false);
             return $this->queue();
         } else {
             $this->setWorkflowStatus(OrderStatus::Submitting); 
-            Producer::callback($this,[
+            Producer::callback(null,[
                 "OrderStatus"=> OrderStatus::Submitting,
-                "DomainName"=> $domainName
+                "DomainName"=> $domainName,
+                "OrderType"=> $this->getType()
             ]);            
             $this->produce(["action"=>"create"]);
             try {
@@ -90,7 +95,10 @@ class Order extends \ascio\service\v2\Order {
             case OrderStatusType::Completed :
             case OrderStatusType::Failed    :
             case OrderStatusType::Invalid   : return OrderStatus::Completed;
-            case OrderStatus::Queued    : return OrderStatus::Queued;
+            case OrderStatus::Queued        : return OrderStatus::Queued;
+            case OrderStatus::Submitting    : return OrderStatus::Submitting;
+            case OrderStatus::Stored        : return OrderStatus::Stored;
+            default                         : return OrderStatus::Running;
         }
     }
     public function setWorkflowStatus($status=null) : Order {

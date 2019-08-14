@@ -98,7 +98,8 @@ class Ascio {
 class Config {
     private $id = "default";
     private $apiName;
-    private $config; 
+    private $config;
+    
     public function __construct($configId)
     {
         $this->id = $configId; 

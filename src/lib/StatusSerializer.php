@@ -23,14 +23,21 @@ class StatusSerializer {
     public function console($logLevel, $text, $long = false)
     {
         $keyValues = [];
+        $spacer = $long ? "\n" : ", ";
         foreach ($this->fields as $key => $value) {
+            if(is_object($value)) {
+                $value = get_class($value);
+            }
+            if(is_array($value)) {
+                $value = count($value);
+            }
             if($value) {
                 $keyValues[] = $long ? $key .": ".$value : $value;
             } else {
                 $keyValues[] = "No ".$key;
             }
         }
-        $data = implode(", ",$keyValues);
+        $data = implode($spacer,$keyValues);
         $out = $this->getDate().$this->class." - ".$logLevel." - ".$text." - " .$data."\n";
         return $out;         
     }
