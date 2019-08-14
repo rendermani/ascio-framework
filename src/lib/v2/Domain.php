@@ -28,6 +28,7 @@ class Domain extends \ascio\service\v2\Domain {
         return $this->_statusSerializer;
     }
     public function update(?SubmitOptions $submitOptions = null) : array {
+        $submitOptions = $submitOptions ?: new SubmitOptions();
         if($this->db()->exists) {
             return $this->submitUpdateOrders($submitOptions);
         } else {
@@ -40,8 +41,10 @@ class Domain extends \ascio\service\v2\Domain {
     }
     private function submitUpdateOrders(?SubmitOptions $submitOptions = null) : array {
         $results = []; 
+        $submitOptions->setSubmitAfterQueue(true);
         foreach ($this->getUpdateOrders() as $order) {
             $results[] = $order->submit($submitOptions);
+            $submitOptions->setSubmitAfterQueue(false);
         }
         return $results; 
     }
@@ -56,13 +59,18 @@ class Domain extends \ascio\service\v2\Domain {
             }                        
         }
         return $results;
-
     }
     public function register(?SubmitOptions $submitOptions = null) : Order {        
         return $this->getOrderRequest()->register()->submit($submitOptions);
     }
-    public function transer(?SubmitOptions $submitOptions = null) : Order {        
-        return $this->getOrderRequest()->transer()->submit($submitOptions);
+    public function queue(?SubmitOptions $submitOptions = null) : Order {        
+        return $this->getOrderRequest()->queue()->submit($submitOptions);
+    }
+    public function transfer(?SubmitOptions $submitOptions = null) : Order {        
+        return $this->getOrderRequest()->transfer()->submit($submitOptions);
+    }
+    public function transfer_away(?SubmitOptions $submitOptions = null) : Order {        
+        return $this->getOrderRequest()->transferAway()->submit($submitOptions);
     }
     public function registrantDetailsUpdate(?SubmitOptions $submitOptions = null) : Order {        
         return $this->getOrderRequest()->registrantDetailsUpdate()->submit($submitOptions);
@@ -79,8 +87,27 @@ class Domain extends \ascio\service\v2\Domain {
     public function domainDetailsUpdate(?SubmitOptions $submitOptions = null) : Order {        
         return $this->getOrderRequest()->domainDetailsUpdate()->submit($submitOptions);
     }
-
-
+    public function renew(?SubmitOptions $submitOptions = null) : Order {        
+        return $this->getOrderRequest()->renew()->submit($submitOptions);
+    }
+    public function expire(?SubmitOptions $submitOptions = null) : Order {        
+        return $this->getOrderRequest()->expire()->submit($submitOptions);
+    }
+    public function unexpire(?SubmitOptions $submitOptions = null) : Order {        
+        return $this->getOrderRequest()->unexpire()->submit($submitOptions);
+    }
+    public function delete(?SubmitOptions $submitOptions = null) : Order {        
+        return $this->getOrderRequest()->delete()->submit($submitOptions);
+    }
+    public function restore(?SubmitOptions $submitOptions = null) : Order {        
+        return $this->getOrderRequest()->restore()->submit($submitOptions);
+    }
+    public function changeLocks(?SubmitOptions $submitOptions = null) : Order {        
+        return $this->getOrderRequest()->changeLocks()->submit($submitOptions);
+    }
+    public function updateAuthInfo(?SubmitOptions $submitOptions = null) : Order {        
+        return $this->getOrderRequest()->updateAuthInfo()->submit($submitOptions);
+    }
     /**
      * Get the value of locks
      */ 

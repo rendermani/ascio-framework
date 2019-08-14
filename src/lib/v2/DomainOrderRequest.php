@@ -20,6 +20,12 @@ class DomainOrderRequest {
         $order->setDomain($this->domain);
         return $order;
     }
+    public function queue(?SubmitOptions $submitOptions = null) : Order {
+        $order = new Order();
+        $order->setType(OrderType::Queue_Domain);
+        $order->setDomain($this->domain);
+        return $order;
+    }
     public function transfer(?SubmitOptions $submitOptions = null) : Order{
         $order = new Order();
         $order->setType(OrderType::Transfer_Domain);
@@ -112,6 +118,14 @@ class DomainOrderRequest {
         $order->setDomain($domain);        
         return $order;
     }
+    public function restore(?SubmitOptions $submitOptions = null) : Order {        
+        $domain = new Domain();
+        $this->copyNameAndHandle($domain);
+        $order = new Order();
+        $order->setType(OrderType::Restore_Domain);
+        $order->setDomain($domain);        
+        return $order;
+    }
     public function renew(?SubmitOptions $submitOptions = null) : Order {        
         $domain = new Domain();
         $this->copyNameAndHandle($domain);
@@ -136,6 +150,22 @@ class DomainOrderRequest {
         $order->setDomain($domain);        
         return $order;
     }
+    public function transferAway(?SubmitOptions $submitOptions = null) : Order {        
+        $domain = new Domain();
+        $this->copyNameAndHandle($domain);
+        $order = new Order();
+        $order->setType(OrderType::Transfer_Away);
+        $order->setDomain($domain);        
+        return $order;
+    }  
+    public function updateAuthInfo(?SubmitOptions $submitOptions = null) : Order {        
+        $domain = new Domain();
+        $this->copyNameAndHandle($domain);
+        $order = new Order();
+        $order->setType(OrderType::Update_AuthInfo);
+        $order->setDomain($domain);        
+        return $order;
+    }       
     private function copyNameAndHandle(Domain $domain) {
         $domain->setDomainHandle($this->domain->getDomainHandle());
         $domain->setDomainName($this->domain->getDomainName());
