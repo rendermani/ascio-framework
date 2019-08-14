@@ -5,6 +5,7 @@ use Monolog\Logger;
 use ascio\v2\Order;
 use phpDocumentor\Reflection\Types\Integer;
 use ascio\base\BaseClass;
+use ascio\base\DbBase;
 
 Class Producer {
     public static function object (?BaseClass $object,$parameters=null) {
@@ -57,11 +58,19 @@ class KafkaTopicProducer {
         
     }    
     public function produce(?BaseClass $obj = null,$properties = []) {
-        $payload = [
-            "object" => $obj ? $obj->serialize() : null,
-            "class" => get_class($obj),
-            "id" => $obj->db()->getId(),
-        ];
+        if(is_object($obj)) {
+            $class =  get_class($obj);
+        } else $class = null;
+        if($obj instanceof DbBase) {
+            $id = $obj->db()->getId();
+        } else $id = null;
+        if($obj instanceof BaseClass) {
+            $obj = $obj->serialize();
+        }
+        $payload = [];
+        if($obj) $payload["object"] = $obj;
+        if($class) $payload["class"] = $class;
+        if($id) $payload["id"] = $id;
         $payload = array_merge($payload,(array) $properties);
         $this->topic->produce(0, 0, json_encode((object) $payload,JSON_PRETTY_PRINT));
         //$this->producer->poll(0);

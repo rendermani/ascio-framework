@@ -29,7 +29,7 @@ class TopicConsumer {
             if($className && $payload->object) {
                 $obj = new $className();
                 $payload->changes = $payload->object;
-                $payload->object = $obj->deserialize($payload->object);
+                $payload->object = $obj instanceof BaseClass ? $obj->deserialize($payload->object) : $obj;
             }
             $function($payload);
         });
