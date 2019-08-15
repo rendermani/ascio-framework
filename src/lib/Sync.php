@@ -37,8 +37,9 @@ class Sync {
             $order = $this->getDbData($this->autoPrefix($orderId));            
             $order->api()->get($orderId);   
             $order->setWorkflowStatus();
-            $order->produce(["action" => "update"]);
-            echo  "[sync] Update ".get_class($order).": ".$orderId.": ". $order->db()->_id.": ".$order->getStatus()."\n";
+            $action = ["action" => "update"];
+            $order->produce($action);
+            $this->log($order,$action["action"]);
             $this->getApiObject($order);
             return $order;
         } catch (ModelNotFoundException $e) {
@@ -47,17 +48,19 @@ class Sync {
                 $order->api()->get($orderId); 
                 $order->db()->createDbProperties();
                 $order->setWorkflowStatus();
-                $order->produce(["action" => "create"]);
+                $action = ["action" => "create"];
+                $order->produce($action);
                 $this->getV3Object($order);
-                echo  "[sync] Create ".get_class($order).": ".$orderId.": ". $order->db()->_id."\n";
+                $this->log($order,$action["action"]);
                 return $order;
             } catch(AscioException $e) {
                 $order = new Order();
                 $order->api()->get($orderId);
                 $order->db()->createDbProperties();
                 $order->setWorkflowStatus();
-                $order->produce(["action" => "create"]);
-                echo  "[sync] Create ".get_class($order).": ". $order->db()->_id."\n";
+                $action = ["action" => "create"];
+                $order->produce($action);
+                $this->log($order,$action["action"]);
                 $this->getDomain($order);
                 return $order;
             }
@@ -82,7 +85,7 @@ class Sync {
             return null; 
         }
         $action = $domain->sync($order->getDomain()->getDomainHandle());
-        echo  "[sync] ".Str::ucfirst($action). " Domain ".$domain->getDomainName().": ". $order->db()->_id."\n";
+        $this->log($domain,$action);
         if($action) {
             $domain->produce(["action" => $action]);
         }
@@ -126,6 +129,9 @@ class Sync {
         } else {
             return "TEST".$id;
         }
+    }
+    private function log($obj,$action) {
+        echo $obj->getStatusSerializer()->console(LogLevel::Info,Str::ucfirst($action));
     }
 }
 
