@@ -13,5 +13,5 @@ Consumer::callback(function($payload) use ($sync) {
     }
     //$messageId = $payload->object->MsgId; 
     sleep(1);
-    $order = $sync->getOrder($payload->OrderId);
+    $sync->getOrder($payload->OrderId);
 });
