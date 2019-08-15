@@ -7,13 +7,8 @@ use ascio\service\v2\QualityType;
 require(__DIR__."/../vendor/autoload.php");
 Ascio::setConfig();
 
-var_dump(Ascio::getConfig()->get()->email);
-die();
-
 $domains = new ArrayOfString();
 $domains->addString("test");
-
-
 $tlds = new ArrayOfString();
 $tlds->addString("uk");
 $tlds->addString("com");
