@@ -45,8 +45,7 @@ class Order extends \ascio\service\v2\Order {
     }
     public function submit(?SubmitOptions $submitOptions=null) : Order {        
         $this->submitOptions = $submitOptions ?: $this->getSubmitOptions();
-        $domainName = $this->getDomain()->getDomainName();
-        //todo: add DomainBlocker::syncFromDb      
+        $domainName = $this->getDomain()->getDomainName();   
         $this->db()->_blocking = $this->submitOptions->getBlocking();
         if($this->shouldQueue()) {
             return $this->queue();
@@ -65,11 +64,11 @@ class Order extends \ascio\service\v2\Order {
             try {
                 DomainBlocker::block($domainName);
                 $result = $this->api()->getClient()->createOrder($this);
-                echo $this->getStatusSerializer()->console(LogLevel::Info,"Submitted");
                 $this->setWorkflowStatus(OrderStatus::Running);
                 $order = $result->getOrder();
                 $this->lastResult = $result->getCreateOrderResult();
                 $this->set($order);
+                echo $this->getStatusSerializer()->console(LogLevel::Info,"Submitted");
                 $this->produce(["action"=>"update"]);   
                 // for the next submission
                 $this->getSubmitOptions()->setQueue(true);
