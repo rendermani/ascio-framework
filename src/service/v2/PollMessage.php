@@ -15,14 +15,14 @@ class PollMessage extends RequestRootElement  {
 	protected $sessionId;
 	protected $msgType;
 
-	public function setSessionId (?string $sessionId = null) : \ascio\v2\PollMessage {
+	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;
 	}
 	public function getSessionId () : ?string {
 		return $this->get("sessionId", "string");
 	}
-	public function setMsgType (?string $msgType = null) : \ascio\v2\PollMessage {
+	public function setMsgType (?string $msgType = null) : self {
 		$this->set("msgType", $msgType);
 		return $this;
 	}

@@ -14,7 +14,7 @@ class ArrayOfContact extends ArrayBase implements \Iterator  {
 	protected $_apiObjects=["Contact"];
 	protected $Contact;
 
-	public function setContact (?Iterable $Contact = null) : \ascio\v2\ArrayOfContact {
+	public function setContact (?Iterable $Contact = null) : self {
 		$this->set("Contact", $Contact);
 		return $this;
 	}
@@ -24,7 +24,7 @@ class ArrayOfContact extends ArrayBase implements \Iterator  {
 	public function createContact () : \ascio\v2\Contact {
 		return $this->create ("Contact", "\\ascio\\v2\\Contact");
 	}
-	public function addContact () : ?\ascio\v2\Contact {
+	public function addContact () : \ascio\v2\Contact {
 		return $this->add("Contact","\\ascio\\v2\\Contact",func_get_args());
 	}
 }

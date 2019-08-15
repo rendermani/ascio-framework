@@ -15,7 +15,7 @@ class SearchNameServerResponse extends ResponseRootElement  {
 	protected $SearchNameServerResult;
 	protected $nameServers;
 
-	public function setSearchNameServerResult (?\ascio\v2\Response $SearchNameServerResult = null) : \ascio\v2\SearchNameServerResponse {
+	public function setSearchNameServerResult (?\ascio\v2\Response $SearchNameServerResult = null) : self {
 		$this->set("SearchNameServerResult", $SearchNameServerResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class SearchNameServerResponse extends ResponseRootElement  {
 	public function createSearchNameServerResult () : \ascio\v2\Response {
 		return $this->create ("SearchNameServerResult", "\\ascio\\v2\\Response");
 	}
-	public function setNameServers (?\ascio\v2\ArrayOfNameServer $nameServers = null) : \ascio\v2\SearchNameServerResponse {
+	public function setNameServers (?\ascio\v2\ArrayOfNameServer $nameServers = null) : self {
 		$this->set("nameServers", $nameServers);
 		return $this;
 	}

@@ -14,7 +14,7 @@ class ArrayOfPrices extends ArrayBase implements \Iterator  {
 	protected $_apiObjects=["Price"];
 	protected $Price;
 
-	public function setPrice (?Iterable $Price = null) : \ascio\v2\ArrayOfPrices {
+	public function setPrice (?Iterable $Price = null) : self {
 		$this->set("Price", $Price);
 		return $this;
 	}
@@ -24,7 +24,7 @@ class ArrayOfPrices extends ArrayBase implements \Iterator  {
 	public function createPrice () : \ascio\v2\Price {
 		return $this->create ("Price", "\\ascio\\v2\\Price");
 	}
-	public function addPrice () : ?\ascio\v2\Price {
+	public function addPrice () : \ascio\v2\Price {
 		return $this->add("Price","\\ascio\\v2\\Price",func_get_args());
 	}
 }

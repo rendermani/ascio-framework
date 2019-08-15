@@ -16,21 +16,21 @@ class SearchZoneClause extends Base  {
 	protected $SearchZoneField;
 	protected $Value;
 
-	public function setOperator (?string $Operator = null) : \ascio\dns\SearchZoneClause {
+	public function setOperator (?string $Operator = null) : self {
 		$this->set("Operator", $Operator);
 		return $this;
 	}
 	public function getOperator () : ?string {
 		return $this->get("Operator", "string");
 	}
-	public function setSearchZoneField (?string $SearchZoneField = null) : \ascio\dns\SearchZoneClause {
+	public function setSearchZoneField (?string $SearchZoneField = null) : self {
 		$this->set("SearchZoneField", $SearchZoneField);
 		return $this;
 	}
 	public function getSearchZoneField () : ?string {
 		return $this->get("SearchZoneField", "string");
 	}
-	public function setValue (?string $Value = null) : \ascio\dns\SearchZoneClause {
+	public function setValue (?string $Value = null) : self {
 		$this->set("Value", $Value);
 		return $this;
 	}

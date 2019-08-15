@@ -40,7 +40,7 @@ class GetDefensiveResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setDefensiveInfo (?\ascio\v3\DefensiveInfo $DefensiveInfo = null) : \ascio\v3\GetDefensiveResponse {
+	public function setDefensiveInfo (?\ascio\v3\DefensiveInfo $DefensiveInfo = null) : self {
 		$this->set("DefensiveInfo", $DefensiveInfo);
 		return $this;
 	}

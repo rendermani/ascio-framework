@@ -18,35 +18,35 @@ class Response extends Base  {
 	protected $TrackingReference;
 	protected $Values;
 
-	public function setStatusCode (?int $StatusCode = null) : \ascio\dns\Response {
+	public function setStatusCode (?int $StatusCode = null) : self {
 		$this->set("StatusCode", $StatusCode);
 		return $this;
 	}
 	public function getStatusCode () : ?int {
 		return $this->get("StatusCode", "int");
 	}
-	public function setStatusMessage (?string $StatusMessage = null) : \ascio\dns\Response {
+	public function setStatusMessage (?string $StatusMessage = null) : self {
 		$this->set("StatusMessage", $StatusMessage);
 		return $this;
 	}
 	public function getStatusMessage () : ?string {
 		return $this->get("StatusMessage", "string");
 	}
-	public function setTechnicalGuid (?string $TechnicalGuid = null) : \ascio\dns\Response {
+	public function setTechnicalGuid (?string $TechnicalGuid = null) : self {
 		$this->set("TechnicalGuid", $TechnicalGuid);
 		return $this;
 	}
 	public function getTechnicalGuid () : ?string {
 		return $this->get("TechnicalGuid", "string");
 	}
-	public function setTrackingReference (?string $TrackingReference = null) : \ascio\dns\Response {
+	public function setTrackingReference (?string $TrackingReference = null) : self {
 		$this->set("TrackingReference", $TrackingReference);
 		return $this;
 	}
 	public function getTrackingReference () : ?string {
 		return $this->get("TrackingReference", "string");
 	}
-	public function setValues (?\ascio\dns\ArrayOfstring $Values = null) : \ascio\dns\Response {
+	public function setValues (?\ascio\dns\ArrayOfstring $Values = null) : self {
 		$this->set("Values", $Values);
 		return $this;
 	}

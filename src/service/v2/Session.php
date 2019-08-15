@@ -15,14 +15,14 @@ class Session extends Base  {
 	protected $Account;
 	protected $Password;
 
-	public function setAccount (?string $Account = null) : \ascio\v2\Session {
+	public function setAccount (?string $Account = null) : self {
 		$this->set("Account", $Account);
 		return $this;
 	}
 	public function getAccount () : ?string {
 		return $this->get("Account", "string");
 	}
-	public function setPassword (?string $Password = null) : \ascio\v2\Session {
+	public function setPassword (?string $Password = null) : self {
 		$this->set("Password", $Password);
 		return $this;
 	}

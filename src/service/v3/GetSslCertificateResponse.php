@@ -40,7 +40,7 @@ class GetSslCertificateResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setSslCertificateInfo (?\ascio\v3\SslCertificateInfo $SslCertificateInfo = null) : \ascio\v3\GetSslCertificateResponse {
+	public function setSslCertificateInfo (?\ascio\v3\SslCertificateInfo $SslCertificateInfo = null) : self {
 		$this->set("SslCertificateInfo", $SslCertificateInfo);
 		return $this;
 	}

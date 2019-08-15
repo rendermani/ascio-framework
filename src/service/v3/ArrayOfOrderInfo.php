@@ -35,7 +35,7 @@ class ArrayOfOrderInfo extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setOrderInfo (?Iterable $OrderInfo = null) : \ascio\v3\ArrayOfOrderInfo {
+	public function setOrderInfo (?Iterable $OrderInfo = null) : self {
 		$this->set("OrderInfo", $OrderInfo);
 		return $this;
 	}
@@ -45,7 +45,7 @@ class ArrayOfOrderInfo extends DbArrayBase  {
 	public function createOrderInfo () : \ascio\v3\OrderInfo {
 		return $this->create ("OrderInfo", "\\ascio\\v3\\OrderInfo");
 	}
-	public function addOrderInfo () : ?\ascio\v3\OrderInfo {
+	public function addOrderInfo () : \ascio\v3\OrderInfo {
 		return $this->add("OrderInfo","\\ascio\\v3\\OrderInfo",func_get_args());
 	}
 }

@@ -35,7 +35,7 @@ class GetOrderRequest extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setOrderId (?string $OrderId = null) : \ascio\v3\GetOrderRequest {
+	public function setOrderId (?string $OrderId = null) : self {
 		$this->set("OrderId", $OrderId);
 		return $this;
 	}

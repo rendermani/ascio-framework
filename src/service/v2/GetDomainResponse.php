@@ -15,7 +15,7 @@ class GetDomainResponse extends ResponseRootElement  {
 	protected $GetDomainResult;
 	protected $domain;
 
-	public function setGetDomainResult (?\ascio\v2\Response $GetDomainResult = null) : \ascio\v2\GetDomainResponse {
+	public function setGetDomainResult (?\ascio\v2\Response $GetDomainResult = null) : self {
 		$this->set("GetDomainResult", $GetDomainResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class GetDomainResponse extends ResponseRootElement  {
 	public function createGetDomainResult () : \ascio\v2\Response {
 		return $this->create ("GetDomainResult", "\\ascio\\v2\\Response");
 	}
-	public function setDomain (?\ascio\v2\Domain $domain = null) : \ascio\v2\GetDomainResponse {
+	public function setDomain (?\ascio\v2\Domain $domain = null) : self {
 		$this->set("domain", $domain);
 		return $this;
 	}

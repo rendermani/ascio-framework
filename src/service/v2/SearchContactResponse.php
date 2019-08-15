@@ -15,7 +15,7 @@ class SearchContactResponse extends ResponseRootElement  {
 	protected $SearchContactResult;
 	protected $contacts;
 
-	public function setSearchContactResult (?\ascio\v2\Response $SearchContactResult = null) : \ascio\v2\SearchContactResponse {
+	public function setSearchContactResult (?\ascio\v2\Response $SearchContactResult = null) : self {
 		$this->set("SearchContactResult", $SearchContactResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class SearchContactResponse extends ResponseRootElement  {
 	public function createSearchContactResult () : \ascio\v2\Response {
 		return $this->create ("SearchContactResult", "\\ascio\\v2\\Response");
 	}
-	public function setContacts (?\ascio\v2\ArrayOfContact $contacts = null) : \ascio\v2\SearchContactResponse {
+	public function setContacts (?\ascio\v2\ArrayOfContact $contacts = null) : self {
 		$this->set("contacts", $contacts);
 		return $this;
 	}

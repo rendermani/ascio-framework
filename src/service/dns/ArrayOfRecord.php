@@ -53,7 +53,7 @@ class ArrayOfRecord extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setRecord (?Iterable $Record = null) : \ascio\dns\ArrayOfRecord {
+	public function setRecord (?Iterable $Record = null) : self {
 		$this->set("Record", $Record);
 		return $this;
 	}
@@ -63,7 +63,7 @@ class ArrayOfRecord extends DbArrayBase  {
 	public function createRecord () : \ascio\dns\Record {
 		return $this->create ("Record", "\\ascio\\dns\\Record");
 	}
-	public function addRecord () : ?\ascio\dns\Record {
+	public function addRecord () : \ascio\dns\Record {
 		return $this->add("Record","\\ascio\\dns\\Record",func_get_args());
 	}
 }

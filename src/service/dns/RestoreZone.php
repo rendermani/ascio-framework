@@ -14,7 +14,7 @@ class RestoreZone extends RequestRootElement  {
 	protected $_apiObjects=[];
 	protected $zoneName;
 
-	public function setZoneName (?string $zoneName = null) : \ascio\dns\RestoreZone {
+	public function setZoneName (?string $zoneName = null) : self {
 		$this->set("zoneName", $zoneName);
 		return $this;
 	}

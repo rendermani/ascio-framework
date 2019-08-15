@@ -44,7 +44,7 @@ class MarkOrderRequest extends AbstractOrderRequest  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setMark (?\ascio\v3\AbstractMark $Mark = null) : \ascio\v3\MarkOrderRequest {
+	public function setMark (?\ascio\v3\AbstractMark $Mark = null) : self {
 		$this->set("Mark", $Mark);
 		return $this;
 	}
@@ -54,7 +54,7 @@ class MarkOrderRequest extends AbstractOrderRequest  {
 	public function createMark () : \ascio\v3\AbstractMark {
 		return $this->create ("Mark", "\\ascio\\v3\\AbstractMark");
 	}
-	public function setDocuments (?\ascio\v3\ArrayOfMarkOrderDocument $Documents = null) : \ascio\v3\MarkOrderRequest {
+	public function setDocuments (?\ascio\v3\ArrayOfMarkOrderDocument $Documents = null) : self {
 		$this->set("Documents", $Documents);
 		return $this;
 	}

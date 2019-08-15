@@ -63,21 +63,21 @@ class SRV extends Record  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setPort (?int $Port = null) : \ascio\dns\SRV {
+	public function setPort (?int $Port = null) : self {
 		$this->set("Port", $Port);
 		return $this;
 	}
 	public function getPort () : ?int {
 		return $this->get("Port", "int");
 	}
-	public function setPriority (?int $Priority = null) : \ascio\dns\SRV {
+	public function setPriority (?int $Priority = null) : self {
 		$this->set("Priority", $Priority);
 		return $this;
 	}
 	public function getPriority () : ?int {
 		return $this->get("Priority", "int");
 	}
-	public function setWeight (?int $Weight = null) : \ascio\dns\SRV {
+	public function setWeight (?int $Weight = null) : self {
 		$this->set("Weight", $Weight);
 		return $this;
 	}

@@ -16,21 +16,21 @@ class Response extends Base  {
 	protected $ResultCode;
 	protected $Values;
 
-	public function setMessage (?string $Message = null) : \ascio\v2\Response {
+	public function setMessage (?string $Message = null) : self {
 		$this->set("Message", $Message);
 		return $this;
 	}
 	public function getMessage () : ?string {
 		return $this->get("Message", "string");
 	}
-	public function setResultCode (?int $ResultCode = null) : \ascio\v2\Response {
+	public function setResultCode (?int $ResultCode = null) : self {
 		$this->set("ResultCode", $ResultCode);
 		return $this;
 	}
 	public function getResultCode () : ?int {
 		return $this->get("ResultCode", "int");
 	}
-	public function setValues (?\ascio\v2\ArrayOfstring $Values = null) : \ascio\v2\Response {
+	public function setValues (?\ascio\v2\ArrayOfstring $Values = null) : self {
 		$this->set("Values", $Values);
 		return $this;
 	}

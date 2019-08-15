@@ -15,14 +15,14 @@ class GetMessageQueue extends RequestRootElement  {
 	protected $sessionId;
 	protected $msgId;
 
-	public function setSessionId (?string $sessionId = null) : \ascio\v2\GetMessageQueue {
+	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;
 	}
 	public function getSessionId () : ?string {
 		return $this->get("sessionId", "string");
 	}
-	public function setMsgId (?int $msgId = null) : \ascio\v2\GetMessageQueue {
+	public function setMsgId (?int $msgId = null) : self {
 		$this->set("msgId", $msgId);
 		return $this;
 	}

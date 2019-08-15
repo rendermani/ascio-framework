@@ -15,7 +15,7 @@ class SearchRegistrantResponse extends ResponseRootElement  {
 	protected $SearchRegistrantResult;
 	protected $registrants;
 
-	public function setSearchRegistrantResult (?\ascio\v2\Response $SearchRegistrantResult = null) : \ascio\v2\SearchRegistrantResponse {
+	public function setSearchRegistrantResult (?\ascio\v2\Response $SearchRegistrantResult = null) : self {
 		$this->set("SearchRegistrantResult", $SearchRegistrantResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class SearchRegistrantResponse extends ResponseRootElement  {
 	public function createSearchRegistrantResult () : \ascio\v2\Response {
 		return $this->create ("SearchRegistrantResult", "\\ascio\\v2\\Response");
 	}
-	public function setRegistrants (?\ascio\v2\ArrayOfRegistrant $registrants = null) : \ascio\v2\SearchRegistrantResponse {
+	public function setRegistrants (?\ascio\v2\ArrayOfRegistrant $registrants = null) : self {
 		$this->set("registrants", $registrants);
 		return $this;
 	}

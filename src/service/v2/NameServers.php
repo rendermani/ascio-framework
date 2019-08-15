@@ -65,7 +65,7 @@ class NameServers extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setNameServer1 (?\ascio\v2\NameServer $NameServer1 = null) : \ascio\v2\NameServers {
+	public function setNameServer1 (?\ascio\v2\NameServer $NameServer1 = null) : self {
 		$this->set("NameServer1", $NameServer1);
 		return $this;
 	}
@@ -75,7 +75,7 @@ class NameServers extends DbBase  {
 	public function createNameServer1 () : \ascio\v2\NameServer {
 		return $this->create ("NameServer1", "\\ascio\\v2\\NameServer");
 	}
-	public function setNameServer2 (?\ascio\v2\NameServer $NameServer2 = null) : \ascio\v2\NameServers {
+	public function setNameServer2 (?\ascio\v2\NameServer $NameServer2 = null) : self {
 		$this->set("NameServer2", $NameServer2);
 		return $this;
 	}
@@ -85,7 +85,7 @@ class NameServers extends DbBase  {
 	public function createNameServer2 () : \ascio\v2\NameServer {
 		return $this->create ("NameServer2", "\\ascio\\v2\\NameServer");
 	}
-	public function setNameServer3 (?\ascio\v2\NameServer $NameServer3 = null) : \ascio\v2\NameServers {
+	public function setNameServer3 (?\ascio\v2\NameServer $NameServer3 = null) : self {
 		$this->set("NameServer3", $NameServer3);
 		return $this;
 	}
@@ -95,7 +95,7 @@ class NameServers extends DbBase  {
 	public function createNameServer3 () : \ascio\v2\NameServer {
 		return $this->create ("NameServer3", "\\ascio\\v2\\NameServer");
 	}
-	public function setNameServer4 (?\ascio\v2\NameServer $NameServer4 = null) : \ascio\v2\NameServers {
+	public function setNameServer4 (?\ascio\v2\NameServer $NameServer4 = null) : self {
 		$this->set("NameServer4", $NameServer4);
 		return $this;
 	}
@@ -105,7 +105,7 @@ class NameServers extends DbBase  {
 	public function createNameServer4 () : \ascio\v2\NameServer {
 		return $this->create ("NameServer4", "\\ascio\\v2\\NameServer");
 	}
-	public function setNameServer5 (?\ascio\v2\NameServer $NameServer5 = null) : \ascio\v2\NameServers {
+	public function setNameServer5 (?\ascio\v2\NameServer $NameServer5 = null) : self {
 		$this->set("NameServer5", $NameServer5);
 		return $this;
 	}
@@ -115,7 +115,7 @@ class NameServers extends DbBase  {
 	public function createNameServer5 () : \ascio\v2\NameServer {
 		return $this->create ("NameServer5", "\\ascio\\v2\\NameServer");
 	}
-	public function setNameServer6 (?\ascio\v2\NameServer $NameServer6 = null) : \ascio\v2\NameServers {
+	public function setNameServer6 (?\ascio\v2\NameServer $NameServer6 = null) : self {
 		$this->set("NameServer6", $NameServer6);
 		return $this;
 	}
@@ -125,7 +125,7 @@ class NameServers extends DbBase  {
 	public function createNameServer6 () : \ascio\v2\NameServer {
 		return $this->create ("NameServer6", "\\ascio\\v2\\NameServer");
 	}
-	public function setNameServer7 (?\ascio\v2\NameServer $NameServer7 = null) : \ascio\v2\NameServers {
+	public function setNameServer7 (?\ascio\v2\NameServer $NameServer7 = null) : self {
 		$this->set("NameServer7", $NameServer7);
 		return $this;
 	}
@@ -135,7 +135,7 @@ class NameServers extends DbBase  {
 	public function createNameServer7 () : \ascio\v2\NameServer {
 		return $this->create ("NameServer7", "\\ascio\\v2\\NameServer");
 	}
-	public function setNameServer8 (?\ascio\v2\NameServer $NameServer8 = null) : \ascio\v2\NameServers {
+	public function setNameServer8 (?\ascio\v2\NameServer $NameServer8 = null) : self {
 		$this->set("NameServer8", $NameServer8);
 		return $this;
 	}
@@ -145,7 +145,7 @@ class NameServers extends DbBase  {
 	public function createNameServer8 () : \ascio\v2\NameServer {
 		return $this->create ("NameServer8", "\\ascio\\v2\\NameServer");
 	}
-	public function setNameServer9 (?\ascio\v2\NameServer $NameServer9 = null) : \ascio\v2\NameServers {
+	public function setNameServer9 (?\ascio\v2\NameServer $NameServer9 = null) : self {
 		$this->set("NameServer9", $NameServer9);
 		return $this;
 	}
@@ -155,7 +155,7 @@ class NameServers extends DbBase  {
 	public function createNameServer9 () : \ascio\v2\NameServer {
 		return $this->create ("NameServer9", "\\ascio\\v2\\NameServer");
 	}
-	public function setNameServer10 (?\ascio\v2\NameServer $NameServer10 = null) : \ascio\v2\NameServers {
+	public function setNameServer10 (?\ascio\v2\NameServer $NameServer10 = null) : self {
 		$this->set("NameServer10", $NameServer10);
 		return $this;
 	}
@@ -165,7 +165,7 @@ class NameServers extends DbBase  {
 	public function createNameServer10 () : \ascio\v2\NameServer {
 		return $this->create ("NameServer10", "\\ascio\\v2\\NameServer");
 	}
-	public function setNameServer11 (?\ascio\v2\NameServer $NameServer11 = null) : \ascio\v2\NameServers {
+	public function setNameServer11 (?\ascio\v2\NameServer $NameServer11 = null) : self {
 		$this->set("NameServer11", $NameServer11);
 		return $this;
 	}
@@ -175,7 +175,7 @@ class NameServers extends DbBase  {
 	public function createNameServer11 () : \ascio\v2\NameServer {
 		return $this->create ("NameServer11", "\\ascio\\v2\\NameServer");
 	}
-	public function setNameServer12 (?\ascio\v2\NameServer $NameServer12 = null) : \ascio\v2\NameServers {
+	public function setNameServer12 (?\ascio\v2\NameServer $NameServer12 = null) : self {
 		$this->set("NameServer12", $NameServer12);
 		return $this;
 	}
@@ -185,7 +185,7 @@ class NameServers extends DbBase  {
 	public function createNameServer12 () : \ascio\v2\NameServer {
 		return $this->create ("NameServer12", "\\ascio\\v2\\NameServer");
 	}
-	public function setNameServer13 (?\ascio\v2\NameServer $NameServer13 = null) : \ascio\v2\NameServers {
+	public function setNameServer13 (?\ascio\v2\NameServer $NameServer13 = null) : self {
 		$this->set("NameServer13", $NameServer13);
 		return $this;
 	}

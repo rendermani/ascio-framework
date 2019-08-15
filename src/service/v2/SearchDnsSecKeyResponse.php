@@ -15,7 +15,7 @@ class SearchDnsSecKeyResponse extends ResponseRootElement  {
 	protected $SearchDnsSecKeyResult;
 	protected $dnsSecKeys;
 
-	public function setSearchDnsSecKeyResult (?\ascio\v2\Response $SearchDnsSecKeyResult = null) : \ascio\v2\SearchDnsSecKeyResponse {
+	public function setSearchDnsSecKeyResult (?\ascio\v2\Response $SearchDnsSecKeyResult = null) : self {
 		$this->set("SearchDnsSecKeyResult", $SearchDnsSecKeyResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class SearchDnsSecKeyResponse extends ResponseRootElement  {
 	public function createSearchDnsSecKeyResult () : \ascio\v2\Response {
 		return $this->create ("SearchDnsSecKeyResult", "\\ascio\\v2\\Response");
 	}
-	public function setDnsSecKeys (?\ascio\v2\ArrayOfDnsSecKey $dnsSecKeys = null) : \ascio\v2\SearchDnsSecKeyResponse {
+	public function setDnsSecKeys (?\ascio\v2\ArrayOfDnsSecKey $dnsSecKeys = null) : self {
 		$this->set("dnsSecKeys", $dnsSecKeys);
 		return $this;
 	}

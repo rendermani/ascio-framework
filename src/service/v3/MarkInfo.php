@@ -57,28 +57,28 @@ class MarkInfo extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setStatus (?string $Status = null) : \ascio\v3\MarkInfo {
+	public function setStatus (?string $Status = null) : self {
 		$this->set("Status", $Status);
 		return $this;
 	}
 	public function getStatus () : ?string {
 		return $this->get("Status", "string");
 	}
-	public function setCreated (?\DateTime $Created = null) : \ascio\v3\MarkInfo {
+	public function setCreated (?\DateTime $Created = null) : self {
 		$this->set("Created", $Created);
 		return $this;
 	}
 	public function getCreated () : ?\DateTime {
 		return $this->get("Created", "\\DateTime");
 	}
-	public function setExpires (?\DateTime $Expires = null) : \ascio\v3\MarkInfo {
+	public function setExpires (?\DateTime $Expires = null) : self {
 		$this->set("Expires", $Expires);
 		return $this;
 	}
 	public function getExpires () : ?\DateTime {
 		return $this->get("Expires", "\\DateTime");
 	}
-	public function setMark (?\ascio\v3\AbstractMark $Mark = null) : \ascio\v3\MarkInfo {
+	public function setMark (?\ascio\v3\AbstractMark $Mark = null) : self {
 		$this->set("Mark", $Mark);
 		return $this;
 	}
@@ -88,7 +88,7 @@ class MarkInfo extends DbBase  {
 	public function createMark () : \ascio\v3\AbstractMark {
 		return $this->create ("Mark", "\\ascio\\v3\\AbstractMark");
 	}
-	public function setSmd (?string $Smd = null) : \ascio\v3\MarkInfo {
+	public function setSmd (?string $Smd = null) : self {
 		$this->set("Smd", $Smd);
 		return $this;
 	}

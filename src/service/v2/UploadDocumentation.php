@@ -17,28 +17,28 @@ class UploadDocumentation extends RequestRootElement  {
 	protected $fileName;
 	protected $content;
 
-	public function setSessionId (?string $sessionId = null) : \ascio\v2\UploadDocumentation {
+	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;
 	}
 	public function getSessionId () : ?string {
 		return $this->get("sessionId", "string");
 	}
-	public function setOrderId (?string $orderId = null) : \ascio\v2\UploadDocumentation {
+	public function setOrderId (?string $orderId = null) : self {
 		$this->set("orderId", $orderId);
 		return $this;
 	}
 	public function getOrderId () : ?string {
 		return $this->get("orderId", "string");
 	}
-	public function setFileName (?string $fileName = null) : \ascio\v2\UploadDocumentation {
+	public function setFileName (?string $fileName = null) : self {
 		$this->set("fileName", $fileName);
 		return $this;
 	}
 	public function getFileName () : ?string {
 		return $this->get("fileName", "string");
 	}
-	public function setContent (?\base64Binary $content = null) : \ascio\v2\UploadDocumentation {
+	public function setContent (?\base64Binary $content = null) : self {
 		$this->set("content", $content);
 		return $this;
 	}

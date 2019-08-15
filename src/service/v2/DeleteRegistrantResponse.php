@@ -14,7 +14,7 @@ class DeleteRegistrantResponse extends ResponseRootElement  {
 	protected $_apiObjects=["DeleteRegistrantResult"];
 	protected $DeleteRegistrantResult;
 
-	public function setDeleteRegistrantResult (?\ascio\v2\Response $DeleteRegistrantResult = null) : \ascio\v2\DeleteRegistrantResponse {
+	public function setDeleteRegistrantResult (?\ascio\v2\Response $DeleteRegistrantResult = null) : self {
 		$this->set("DeleteRegistrantResult", $DeleteRegistrantResult);
 		return $this;
 	}

@@ -14,14 +14,14 @@ class ArrayOfOrderType extends ArrayBase implements \Iterator  {
 	protected $_apiObjects=[];
 	protected $OrderType;
 
-	public function setOrderType (?Iterable $OrderType = null) : \ascio\v3\ArrayOfOrderType {
+	public function setOrderType (?Iterable $OrderType = null) : self {
 		$this->set("OrderType", $OrderType);
 		return $this;
 	}
 	public function getOrderType () : ?Iterable {
 		return $this->get("OrderType", "string");
 	}
-	public function addOrderType () : ?string {
+	public function addOrderType () : string {
 		return $this->add("OrderType","string",func_get_args());
 	}
 }

@@ -15,7 +15,7 @@ class RestoreZoneResponse extends ResponseRootElement  {
 	protected $RestoreZoneResult;
 	protected $zone;
 
-	public function setRestoreZoneResult (?\ascio\dns\Response $RestoreZoneResult = null) : \ascio\dns\RestoreZoneResponse {
+	public function setRestoreZoneResult (?\ascio\dns\Response $RestoreZoneResult = null) : self {
 		$this->set("RestoreZoneResult", $RestoreZoneResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class RestoreZoneResponse extends ResponseRootElement  {
 	public function createRestoreZoneResult () : \ascio\dns\Response {
 		return $this->create ("RestoreZoneResult", "\\ascio\\dns\\Response");
 	}
-	public function setZone (?\ascio\dns\Zone $zone = null) : \ascio\dns\RestoreZoneResponse {
+	public function setZone (?\ascio\dns\Zone $zone = null) : self {
 		$this->set("zone", $zone);
 		return $this;
 	}

@@ -14,7 +14,7 @@ class GetRecord extends RequestRootElement  {
 	protected $_apiObjects=[];
 	protected $recordId;
 
-	public function setRecordId (?int $recordId = null) : \ascio\dns\GetRecord {
+	public function setRecordId (?int $recordId = null) : self {
 		$this->set("recordId", $recordId);
 		return $this;
 	}

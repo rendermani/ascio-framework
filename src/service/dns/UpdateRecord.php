@@ -14,7 +14,7 @@ class UpdateRecord extends RequestRootElement  {
 	protected $_apiObjects=["record"];
 	protected $record;
 
-	public function setRecord (?\ascio\dns\Record $record = null) : \ascio\dns\UpdateRecord {
+	public function setRecord (?\ascio\dns\Record $record = null) : self {
 		$this->set("record", $record);
 		return $this;
 	}

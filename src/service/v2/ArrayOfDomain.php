@@ -14,7 +14,7 @@ class ArrayOfDomain extends ArrayBase implements \Iterator  {
 	protected $_apiObjects=["Domain"];
 	protected $Domain;
 
-	public function setDomain (?Iterable $Domain = null) : \ascio\v2\ArrayOfDomain {
+	public function setDomain (?Iterable $Domain = null) : self {
 		$this->set("Domain", $Domain);
 		return $this;
 	}
@@ -24,7 +24,7 @@ class ArrayOfDomain extends ArrayBase implements \Iterator  {
 	public function createDomain () : \ascio\v2\Domain {
 		return $this->create ("Domain", "\\ascio\\v2\\Domain");
 	}
-	public function addDomain () : ?\ascio\v2\Domain {
+	public function addDomain () : \ascio\v2\Domain {
 		return $this->add("Domain","\\ascio\\v2\\Domain",func_get_args());
 	}
 }

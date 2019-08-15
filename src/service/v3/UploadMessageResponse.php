@@ -40,7 +40,7 @@ class UploadMessageResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setMessageId (?int $MessageId = null) : \ascio\v3\UploadMessageResponse {
+	public function setMessageId (?int $MessageId = null) : self {
 		$this->set("MessageId", $MessageId);
 		return $this;
 	}

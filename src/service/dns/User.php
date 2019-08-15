@@ -59,49 +59,49 @@ class User extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setCreatedDate (?\DateTime $CreatedDate = null) : \ascio\dns\User {
+	public function setCreatedDate (?\DateTime $CreatedDate = null) : self {
 		$this->set("CreatedDate", $CreatedDate);
 		return $this;
 	}
 	public function getCreatedDate () : ?\DateTime {
 		return $this->get("CreatedDate", "\\DateTime");
 	}
-	public function setEmail (?string $Email = null) : \ascio\dns\User {
+	public function setEmail (?string $Email = null) : self {
 		$this->set("Email", $Email);
 		return $this;
 	}
 	public function getEmail () : ?string {
 		return $this->get("Email", "string");
 	}
-	public function setName (?string $Name = null) : \ascio\dns\User {
+	public function setName (?string $Name = null) : self {
 		$this->set("Name", $Name);
 		return $this;
 	}
 	public function getName () : ?string {
 		return $this->get("Name", "string");
 	}
-	public function setPassword (?string $Password = null) : \ascio\dns\User {
+	public function setPassword (?string $Password = null) : self {
 		$this->set("Password", $Password);
 		return $this;
 	}
 	public function getPassword () : ?string {
 		return $this->get("Password", "string");
 	}
-	public function setRole (?string $Role = null) : \ascio\dns\User {
+	public function setRole (?string $Role = null) : self {
 		$this->set("Role", $Role);
 		return $this;
 	}
 	public function getRole () : ?string {
 		return $this->get("Role", "string");
 	}
-	public function setUpdatedDate (?\DateTime $UpdatedDate = null) : \ascio\dns\User {
+	public function setUpdatedDate (?\DateTime $UpdatedDate = null) : self {
 		$this->set("UpdatedDate", $UpdatedDate);
 		return $this;
 	}
 	public function getUpdatedDate () : ?\DateTime {
 		return $this->get("UpdatedDate", "\\DateTime");
 	}
-	public function setUserName (?string $UserName = null) : \ascio\dns\User {
+	public function setUserName (?string $UserName = null) : self {
 		$this->set("UserName", $UserName);
 		return $this;
 	}

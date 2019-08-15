@@ -35,7 +35,7 @@ class GetSslCertificateRequest extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setHandle (?string $Handle = null) : \ascio\v3\GetSslCertificateRequest {
+	public function setHandle (?string $Handle = null) : self {
 		$this->set("Handle", $Handle);
 		return $this;
 	}

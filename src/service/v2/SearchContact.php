@@ -15,14 +15,14 @@ class SearchContact extends RequestRootElement  {
 	protected $sessionId;
 	protected $criteria;
 
-	public function setSessionId (?string $sessionId = null) : \ascio\v2\SearchContact {
+	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;
 	}
 	public function getSessionId () : ?string {
 		return $this->get("sessionId", "string");
 	}
-	public function setCriteria (?\ascio\v2\SearchCriteria $criteria = null) : \ascio\v2\SearchContact {
+	public function setCriteria (?\ascio\v2\SearchCriteria $criteria = null) : self {
 		$this->set("criteria", $criteria);
 		return $this;
 	}

@@ -53,7 +53,7 @@ class ArrayOfRoleItem extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setRoleItem (?Iterable $RoleItem = null) : \ascio\dns\ArrayOfRoleItem {
+	public function setRoleItem (?Iterable $RoleItem = null) : self {
 		$this->set("RoleItem", $RoleItem);
 		return $this;
 	}
@@ -63,7 +63,7 @@ class ArrayOfRoleItem extends DbArrayBase  {
 	public function createRoleItem () : \ascio\dns\RoleItem {
 		return $this->create ("RoleItem", "\\ascio\\dns\\RoleItem");
 	}
-	public function addRoleItem () : ?\ascio\dns\RoleItem {
+	public function addRoleItem () : \ascio\dns\RoleItem {
 		return $this->add("RoleItem","\\ascio\\dns\\RoleItem",func_get_args());
 	}
 }

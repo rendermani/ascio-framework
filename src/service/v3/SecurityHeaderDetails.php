@@ -36,14 +36,14 @@ class SecurityHeaderDetails extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setAccount (?string $Account = null) : \ascio\v3\SecurityHeaderDetails {
+	public function setAccount (?string $Account = null) : self {
 		$this->set("Account", $Account);
 		return $this;
 	}
 	public function getAccount () : ?string {
 		return $this->get("Account", "string");
 	}
-	public function setPassword (?string $Password = null) : \ascio\v3\SecurityHeaderDetails {
+	public function setPassword (?string $Password = null) : self {
 		$this->set("Password", $Password);
 		return $this;
 	}

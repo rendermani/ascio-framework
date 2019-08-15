@@ -35,7 +35,7 @@ class ArrayOfMessage extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setMessage (?Iterable $Message = null) : \ascio\v3\ArrayOfMessage {
+	public function setMessage (?Iterable $Message = null) : self {
 		$this->set("Message", $Message);
 		return $this;
 	}
@@ -45,7 +45,7 @@ class ArrayOfMessage extends DbArrayBase  {
 	public function createMessage () : \ascio\v3\Message {
 		return $this->create ("Message", "\\ascio\\v3\\Message");
 	}
-	public function addMessage () : ?\ascio\v3\Message {
+	public function addMessage () : \ascio\v3\Message {
 		return $this->add("Message","\\ascio\\v3\\Message",func_get_args());
 	}
 }

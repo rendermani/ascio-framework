@@ -56,21 +56,21 @@ class Zone extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setCreatedDate (?\DateTime $CreatedDate = null) : \ascio\dns\Zone {
+	public function setCreatedDate (?\DateTime $CreatedDate = null) : self {
 		$this->set("CreatedDate", $CreatedDate);
 		return $this;
 	}
 	public function getCreatedDate () : ?\DateTime {
 		return $this->get("CreatedDate", "\\DateTime");
 	}
-	public function setOwner (?string $Owner = null) : \ascio\dns\Zone {
+	public function setOwner (?string $Owner = null) : self {
 		$this->set("Owner", $Owner);
 		return $this;
 	}
 	public function getOwner () : ?string {
 		return $this->get("Owner", "string");
 	}
-	public function setRecords (?\ascio\dns\ArrayOfRecord $Records = null) : \ascio\dns\Zone {
+	public function setRecords (?\ascio\dns\ArrayOfRecord $Records = null) : self {
 		$this->set("Records", $Records);
 		return $this;
 	}
@@ -80,7 +80,7 @@ class Zone extends DbBase  {
 	public function createRecords () : \ascio\dns\ArrayOfRecord {
 		return $this->create ("Records", "\\ascio\\dns\\ArrayOfRecord");
 	}
-	public function setZoneName (?string $ZoneName = null) : \ascio\dns\Zone {
+	public function setZoneName (?string $ZoneName = null) : self {
 		$this->set("ZoneName", $ZoneName);
 		return $this;
 	}

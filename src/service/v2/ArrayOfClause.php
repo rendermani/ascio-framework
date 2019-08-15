@@ -14,7 +14,7 @@ class ArrayOfClause extends ArrayBase implements \Iterator  {
 	protected $_apiObjects=["Clause"];
 	protected $Clause;
 
-	public function setClause (?Iterable $Clause = null) : \ascio\v2\ArrayOfClause {
+	public function setClause (?Iterable $Clause = null) : self {
 		$this->set("Clause", $Clause);
 		return $this;
 	}
@@ -24,7 +24,7 @@ class ArrayOfClause extends ArrayBase implements \Iterator  {
 	public function createClause () : \ascio\v2\Clause {
 		return $this->create ("Clause", "\\ascio\\v2\\Clause");
 	}
-	public function addClause () : ?\ascio\v2\Clause {
+	public function addClause () : \ascio\v2\Clause {
 		return $this->add("Clause","\\ascio\\v2\\Clause",func_get_args());
 	}
 }

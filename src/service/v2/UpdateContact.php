@@ -15,14 +15,14 @@ class UpdateContact extends RequestRootElement  {
 	protected $sessionId;
 	protected $contact;
 
-	public function setSessionId (?string $sessionId = null) : \ascio\v2\UpdateContact {
+	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;
 	}
 	public function getSessionId () : ?string {
 		return $this->get("sessionId", "string");
 	}
-	public function setContact (?\ascio\v2\Contact $contact = null) : \ascio\v2\UpdateContact {
+	public function setContact (?\ascio\v2\Contact $contact = null) : self {
 		$this->set("contact", $contact);
 		return $this;
 	}

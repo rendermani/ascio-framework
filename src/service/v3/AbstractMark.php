@@ -75,49 +75,49 @@ class AbstractMark extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setHandle (?string $Handle = null) : \ascio\v3\AbstractMark {
+	public function setHandle (?string $Handle = null) : self {
 		$this->set("Handle", $Handle);
 		return $this;
 	}
 	public function getHandle () : ?string {
 		return $this->get("Handle", "string");
 	}
-	public function setMarkName (?string $MarkName = null) : \ascio\v3\AbstractMark {
+	public function setMarkName (?string $MarkName = null) : self {
 		$this->set("MarkName", $MarkName);
 		return $this;
 	}
 	public function getMarkName () : ?string {
 		return $this->get("MarkName", "string");
 	}
-	public function setMarkId (?string $MarkId = null) : \ascio\v3\AbstractMark {
+	public function setMarkId (?string $MarkId = null) : self {
 		$this->set("MarkId", $MarkId);
 		return $this;
 	}
 	public function getMarkId () : ?string {
 		return $this->get("MarkId", "string");
 	}
-	public function setAuthInfo (?string $AuthInfo = null) : \ascio\v3\AbstractMark {
+	public function setAuthInfo (?string $AuthInfo = null) : self {
 		$this->set("AuthInfo", $AuthInfo);
 		return $this;
 	}
 	public function getAuthInfo () : ?string {
 		return $this->get("AuthInfo", "string");
 	}
-	public function setServiceType (?string $ServiceType = null) : \ascio\v3\AbstractMark {
+	public function setServiceType (?string $ServiceType = null) : self {
 		$this->set("ServiceType", $ServiceType);
 		return $this;
 	}
 	public function getServiceType () : ?string {
 		return $this->get("ServiceType", "string");
 	}
-	public function setGoodsAndServicesDescription (?string $GoodsAndServicesDescription = null) : \ascio\v3\AbstractMark {
+	public function setGoodsAndServicesDescription (?string $GoodsAndServicesDescription = null) : self {
 		$this->set("GoodsAndServicesDescription", $GoodsAndServicesDescription);
 		return $this;
 	}
 	public function getGoodsAndServicesDescription () : ?string {
 		return $this->get("GoodsAndServicesDescription", "string");
 	}
-	public function setLabels (?\ascio\v3\ArrayOfstring $Labels = null) : \ascio\v3\AbstractMark {
+	public function setLabels (?\ascio\v3\ArrayOfstring $Labels = null) : self {
 		$this->set("Labels", $Labels);
 		return $this;
 	}
@@ -127,49 +127,49 @@ class AbstractMark extends DbBase  {
 	public function createLabels () : \ascio\v3\ArrayOfstring {
 		return $this->create ("Labels", "\\ascio\\v3\\ArrayOfstring");
 	}
-	public function setClaimEmailNotification1 (?string $ClaimEmailNotification1 = null) : \ascio\v3\AbstractMark {
+	public function setClaimEmailNotification1 (?string $ClaimEmailNotification1 = null) : self {
 		$this->set("ClaimEmailNotification1", $ClaimEmailNotification1);
 		return $this;
 	}
 	public function getClaimEmailNotification1 () : ?string {
 		return $this->get("ClaimEmailNotification1", "string");
 	}
-	public function setClaimEmailNotification2 (?string $ClaimEmailNotification2 = null) : \ascio\v3\AbstractMark {
+	public function setClaimEmailNotification2 (?string $ClaimEmailNotification2 = null) : self {
 		$this->set("ClaimEmailNotification2", $ClaimEmailNotification2);
 		return $this;
 	}
 	public function getClaimEmailNotification2 () : ?string {
 		return $this->get("ClaimEmailNotification2", "string");
 	}
-	public function setClaimEmailNotification3 (?string $ClaimEmailNotification3 = null) : \ascio\v3\AbstractMark {
+	public function setClaimEmailNotification3 (?string $ClaimEmailNotification3 = null) : self {
 		$this->set("ClaimEmailNotification3", $ClaimEmailNotification3);
 		return $this;
 	}
 	public function getClaimEmailNotification3 () : ?string {
 		return $this->get("ClaimEmailNotification3", "string");
 	}
-	public function setClaimEmailNotification4 (?string $ClaimEmailNotification4 = null) : \ascio\v3\AbstractMark {
+	public function setClaimEmailNotification4 (?string $ClaimEmailNotification4 = null) : self {
 		$this->set("ClaimEmailNotification4", $ClaimEmailNotification4);
 		return $this;
 	}
 	public function getClaimEmailNotification4 () : ?string {
 		return $this->get("ClaimEmailNotification4", "string");
 	}
-	public function setClaimEmailNotification5 (?string $ClaimEmailNotification5 = null) : \ascio\v3\AbstractMark {
+	public function setClaimEmailNotification5 (?string $ClaimEmailNotification5 = null) : self {
 		$this->set("ClaimEmailNotification5", $ClaimEmailNotification5);
 		return $this;
 	}
 	public function getClaimEmailNotification5 () : ?string {
 		return $this->get("ClaimEmailNotification5", "string");
 	}
-	public function setNotificationFrequency (?string $NotificationFrequency = null) : \ascio\v3\AbstractMark {
+	public function setNotificationFrequency (?string $NotificationFrequency = null) : self {
 		$this->set("NotificationFrequency", $NotificationFrequency);
 		return $this;
 	}
 	public function getNotificationFrequency () : ?string {
 		return $this->get("NotificationFrequency", "string");
 	}
-	public function setOwner (?\ascio\v3\Registrant $Owner = null) : \ascio\v3\AbstractMark {
+	public function setOwner (?\ascio\v3\Registrant $Owner = null) : self {
 		$this->set("Owner", $Owner);
 		return $this;
 	}
@@ -179,7 +179,7 @@ class AbstractMark extends DbBase  {
 	public function createOwner () : \ascio\v3\Registrant {
 		return $this->create ("Owner", "\\ascio\\v3\\Registrant");
 	}
-	public function setReseller (?\ascio\v3\Contact $Reseller = null) : \ascio\v3\AbstractMark {
+	public function setReseller (?\ascio\v3\Contact $Reseller = null) : self {
 		$this->set("Reseller", $Reseller);
 		return $this;
 	}
@@ -189,7 +189,7 @@ class AbstractMark extends DbBase  {
 	public function createReseller () : \ascio\v3\Contact {
 		return $this->create ("Reseller", "\\ascio\\v3\\Contact");
 	}
-	public function setExtensions (?\ascio\v3\Extensions $Extensions = null) : \ascio\v3\AbstractMark {
+	public function setExtensions (?\ascio\v3\Extensions $Extensions = null) : self {
 		$this->set("Extensions", $Extensions);
 		return $this;
 	}
@@ -199,7 +199,7 @@ class AbstractMark extends DbBase  {
 	public function createExtensions () : \ascio\v3\Extensions {
 		return $this->create ("Extensions", "\\ascio\\v3\\Extensions");
 	}
-	public function setObjectComment (?string $ObjectComment = null) : \ascio\v3\AbstractMark {
+	public function setObjectComment (?string $ObjectComment = null) : self {
 		$this->set("ObjectComment", $ObjectComment);
 		return $this;
 	}

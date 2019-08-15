@@ -14,7 +14,7 @@ class ArrayOfSearchZoneClause extends ArrayBase implements \Iterator  {
 	protected $_apiObjects=["SearchZoneClause"];
 	protected $SearchZoneClause;
 
-	public function setSearchZoneClause (?Iterable $SearchZoneClause = null) : \ascio\dns\ArrayOfSearchZoneClause {
+	public function setSearchZoneClause (?Iterable $SearchZoneClause = null) : self {
 		$this->set("SearchZoneClause", $SearchZoneClause);
 		return $this;
 	}
@@ -24,7 +24,7 @@ class ArrayOfSearchZoneClause extends ArrayBase implements \Iterator  {
 	public function createSearchZoneClause () : \ascio\dns\SearchZoneClause {
 		return $this->create ("SearchZoneClause", "\\ascio\\dns\\SearchZoneClause");
 	}
-	public function addSearchZoneClause () : ?\ascio\dns\SearchZoneClause {
+	public function addSearchZoneClause () : \ascio\dns\SearchZoneClause {
 		return $this->add("SearchZoneClause","\\ascio\\dns\\SearchZoneClause",func_get_args());
 	}
 }

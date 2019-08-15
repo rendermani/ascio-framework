@@ -15,7 +15,7 @@ class GetRolesResponse extends ResponseRootElement  {
 	protected $GetRolesResult;
 	protected $roles;
 
-	public function setGetRolesResult (?\ascio\dns\Response $GetRolesResult = null) : \ascio\dns\GetRolesResponse {
+	public function setGetRolesResult (?\ascio\dns\Response $GetRolesResult = null) : self {
 		$this->set("GetRolesResult", $GetRolesResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class GetRolesResponse extends ResponseRootElement  {
 	public function createGetRolesResult () : \ascio\dns\Response {
 		return $this->create ("GetRolesResult", "\\ascio\\dns\\Response");
 	}
-	public function setRoles (?\ascio\dns\ArrayOfRoleItem $roles = null) : \ascio\dns\GetRolesResponse {
+	public function setRoles (?\ascio\dns\ArrayOfRoleItem $roles = null) : self {
 		$this->set("roles", $roles);
 		return $this;
 	}

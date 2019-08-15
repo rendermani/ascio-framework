@@ -15,7 +15,7 @@ class GetMessageQueueResponse extends ResponseRootElement  {
 	protected $GetMessageQueueResult;
 	protected $item;
 
-	public function setGetMessageQueueResult (?\ascio\v2\Response $GetMessageQueueResult = null) : \ascio\v2\GetMessageQueueResponse {
+	public function setGetMessageQueueResult (?\ascio\v2\Response $GetMessageQueueResult = null) : self {
 		$this->set("GetMessageQueueResult", $GetMessageQueueResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class GetMessageQueueResponse extends ResponseRootElement  {
 	public function createGetMessageQueueResult () : \ascio\v2\Response {
 		return $this->create ("GetMessageQueueResult", "\\ascio\\v2\\Response");
 	}
-	public function setItem (?\ascio\v2\QueueItem $item = null) : \ascio\v2\GetMessageQueueResponse {
+	public function setItem (?\ascio\v2\QueueItem $item = null) : self {
 		$this->set("item", $item);
 		return $this;
 	}

@@ -36,14 +36,14 @@ class PagingInfo extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setPageIndex (?int $PageIndex = null) : \ascio\v3\PagingInfo {
+	public function setPageIndex (?int $PageIndex = null) : self {
 		$this->set("PageIndex", $PageIndex);
 		return $this;
 	}
 	public function getPageIndex () : ?int {
 		return $this->get("PageIndex", "int");
 	}
-	public function setPageSize (?int $PageSize = null) : \ascio\v3\PagingInfo {
+	public function setPageSize (?int $PageSize = null) : self {
 		$this->set("PageSize", $PageSize);
 		return $this;
 	}

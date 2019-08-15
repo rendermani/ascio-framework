@@ -43,7 +43,7 @@ class DefensiveOrderRequest extends AbstractOrderRequest  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setDefensive (?\ascio\v3\Defensive $Defensive = null) : \ascio\v3\DefensiveOrderRequest {
+	public function setDefensive (?\ascio\v3\Defensive $Defensive = null) : self {
 		$this->set("Defensive", $Defensive);
 		return $this;
 	}

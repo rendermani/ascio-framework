@@ -15,7 +15,7 @@ class CreateRecordResponse extends ResponseRootElement  {
 	protected $CreateRecordResult;
 	protected $recordId;
 
-	public function setCreateRecordResult (?\ascio\dns\Response $CreateRecordResult = null) : \ascio\dns\CreateRecordResponse {
+	public function setCreateRecordResult (?\ascio\dns\Response $CreateRecordResult = null) : self {
 		$this->set("CreateRecordResult", $CreateRecordResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class CreateRecordResponse extends ResponseRootElement  {
 	public function createCreateRecordResult () : \ascio\dns\Response {
 		return $this->create ("CreateRecordResult", "\\ascio\\dns\\Response");
 	}
-	public function setRecordId (?int $recordId = null) : \ascio\dns\CreateRecordResponse {
+	public function setRecordId (?int $recordId = null) : self {
 		$this->set("recordId", $recordId);
 		return $this;
 	}

@@ -35,7 +35,7 @@ class ArrayOfZone extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setZone (?Iterable $Zone = null) : \ascio\dns\ArrayOfZone {
+	public function setZone (?Iterable $Zone = null) : self {
 		$this->set("Zone", $Zone);
 		return $this;
 	}
@@ -45,7 +45,7 @@ class ArrayOfZone extends DbArrayBase  {
 	public function createZone () : \ascio\dns\Zone {
 		return $this->create ("Zone", "\\ascio\\dns\\Zone");
 	}
-	public function addZone () : ?\ascio\dns\Zone {
+	public function addZone () : \ascio\dns\Zone {
 		return $this->add("Zone","\\ascio\\dns\\Zone",func_get_args());
 	}
 }

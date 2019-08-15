@@ -14,7 +14,7 @@ class CreateUserResponse extends ResponseRootElement  {
 	protected $_apiObjects=["CreateUserResult"];
 	protected $CreateUserResult;
 
-	public function setCreateUserResult (?\ascio\dns\Response $CreateUserResult = null) : \ascio\dns\CreateUserResponse {
+	public function setCreateUserResult (?\ascio\dns\Response $CreateUserResult = null) : self {
 		$this->set("CreateUserResult", $CreateUserResult);
 		return $this;
 	}

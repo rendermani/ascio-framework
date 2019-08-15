@@ -66,42 +66,42 @@ class AbstractOrderRequest extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setType (?string $Type = null) : \ascio\v3\AbstractOrderRequest {
+	public function setType (?string $Type = null) : self {
 		$this->set("Type", $Type);
 		return $this;
 	}
 	public function getType () : ?string {
 		return $this->get("Type", "string");
 	}
-	public function setPeriod (?int $Period = null) : \ascio\v3\AbstractOrderRequest {
+	public function setPeriod (?int $Period = null) : self {
 		$this->set("Period", $Period);
 		return $this;
 	}
 	public function getPeriod () : ?int {
 		return $this->get("Period", "int");
 	}
-	public function setTransactionComment (?string $TransactionComment = null) : \ascio\v3\AbstractOrderRequest {
+	public function setTransactionComment (?string $TransactionComment = null) : self {
 		$this->set("TransactionComment", $TransactionComment);
 		return $this;
 	}
 	public function getTransactionComment () : ?string {
 		return $this->get("TransactionComment", "string");
 	}
-	public function setComments (?string $Comments = null) : \ascio\v3\AbstractOrderRequest {
+	public function setComments (?string $Comments = null) : self {
 		$this->set("Comments", $Comments);
 		return $this;
 	}
 	public function getComments () : ?string {
 		return $this->get("Comments", "string");
 	}
-	public function setDocumentation (?string $Documentation = null) : \ascio\v3\AbstractOrderRequest {
+	public function setDocumentation (?string $Documentation = null) : self {
 		$this->set("Documentation", $Documentation);
 		return $this;
 	}
 	public function getDocumentation () : ?string {
 		return $this->get("Documentation", "string");
 	}
-	public function setOptions (?string $Options = null) : \ascio\v3\AbstractOrderRequest {
+	public function setOptions (?string $Options = null) : self {
 		$this->set("Options", $Options);
 		return $this;
 	}

@@ -15,7 +15,7 @@ class AvailabilityInfoResponse extends ResponseRootElement  {
 	protected $AvailabilityInfoResult;
 	protected $PriceInfo;
 
-	public function setAvailabilityInfoResult (?\ascio\v2\Response $AvailabilityInfoResult = null) : \ascio\v2\AvailabilityInfoResponse {
+	public function setAvailabilityInfoResult (?\ascio\v2\Response $AvailabilityInfoResult = null) : self {
 		$this->set("AvailabilityInfoResult", $AvailabilityInfoResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class AvailabilityInfoResponse extends ResponseRootElement  {
 	public function createAvailabilityInfoResult () : \ascio\v2\Response {
 		return $this->create ("AvailabilityInfoResult", "\\ascio\\v2\\Response");
 	}
-	public function setPriceInfo (?\ascio\v2\PriceInfo $PriceInfo = null) : \ascio\v2\AvailabilityInfoResponse {
+	public function setPriceInfo (?\ascio\v2\PriceInfo $PriceInfo = null) : self {
 		$this->set("PriceInfo", $PriceInfo);
 		return $this;
 	}

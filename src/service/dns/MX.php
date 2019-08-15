@@ -61,7 +61,7 @@ class MX extends Record  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setPriority (?int $Priority = null) : \ascio\dns\MX {
+	public function setPriority (?int $Priority = null) : self {
 		$this->set("Priority", $Priority);
 		return $this;
 	}

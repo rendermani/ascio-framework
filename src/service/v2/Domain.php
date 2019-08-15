@@ -78,112 +78,112 @@ class Domain extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setDomainName (?string $DomainName = null) : \ascio\v2\Domain {
+	public function setDomainName (?string $DomainName = null) : self {
 		$this->set("DomainName", $DomainName);
 		return $this;
 	}
 	public function getDomainName () : ?string {
 		return $this->get("DomainName", "string");
 	}
-	public function setDomainHandle (?string $DomainHandle = null) : \ascio\v2\Domain {
+	public function setDomainHandle (?string $DomainHandle = null) : self {
 		$this->set("DomainHandle", $DomainHandle);
 		return $this;
 	}
 	public function getDomainHandle () : ?string {
 		return $this->get("DomainHandle", "string");
 	}
-	public function setRegPeriod (?int $RegPeriod = null) : \ascio\v2\Domain {
+	public function setRegPeriod (?int $RegPeriod = null) : self {
 		$this->set("RegPeriod", $RegPeriod);
 		return $this;
 	}
 	public function getRegPeriod () : ?int {
 		return $this->get("RegPeriod", "int");
 	}
-	public function setRenewPeriod (?int $RenewPeriod = null) : \ascio\v2\Domain {
+	public function setRenewPeriod (?int $RenewPeriod = null) : self {
 		$this->set("RenewPeriod", $RenewPeriod);
 		return $this;
 	}
 	public function getRenewPeriod () : ?int {
 		return $this->get("RenewPeriod", "int");
 	}
-	public function setStatus (?string $Status = null) : \ascio\v2\Domain {
+	public function setStatus (?string $Status = null) : self {
 		$this->set("Status", $Status);
 		return $this;
 	}
 	public function getStatus () : ?string {
 		return $this->get("Status", "string");
 	}
-	public function setAuthInfo (?string $AuthInfo = null) : \ascio\v2\Domain {
+	public function setAuthInfo (?string $AuthInfo = null) : self {
 		$this->set("AuthInfo", $AuthInfo);
 		return $this;
 	}
 	public function getAuthInfo () : ?string {
 		return $this->get("AuthInfo", "string");
 	}
-	public function setCreDate (?\DateTime $CreDate = null) : \ascio\v2\Domain {
+	public function setCreDate (?\DateTime $CreDate = null) : self {
 		$this->set("CreDate", $CreDate);
 		return $this;
 	}
 	public function getCreDate () : ?\DateTime {
 		return $this->get("CreDate", "\\DateTime");
 	}
-	public function setExpDate (?\DateTime $ExpDate = null) : \ascio\v2\Domain {
+	public function setExpDate (?\DateTime $ExpDate = null) : self {
 		$this->set("ExpDate", $ExpDate);
 		return $this;
 	}
 	public function getExpDate () : ?\DateTime {
 		return $this->get("ExpDate", "\\DateTime");
 	}
-	public function setEncodingType (?string $EncodingType = null) : \ascio\v2\Domain {
+	public function setEncodingType (?string $EncodingType = null) : self {
 		$this->set("EncodingType", $EncodingType);
 		return $this;
 	}
 	public function getEncodingType () : ?string {
 		return $this->get("EncodingType", "string");
 	}
-	public function setDomainPurpose (?string $DomainPurpose = null) : \ascio\v2\Domain {
+	public function setDomainPurpose (?string $DomainPurpose = null) : self {
 		$this->set("DomainPurpose", $DomainPurpose);
 		return $this;
 	}
 	public function getDomainPurpose () : ?string {
 		return $this->get("DomainPurpose", "string");
 	}
-	public function setComment (?string $Comment = null) : \ascio\v2\Domain {
+	public function setComment (?string $Comment = null) : self {
 		$this->set("Comment", $Comment);
 		return $this;
 	}
 	public function getComment () : ?string {
 		return $this->get("Comment", "string");
 	}
-	public function setTransferLock (?string $TransferLock = null) : \ascio\v2\Domain {
+	public function setTransferLock (?string $TransferLock = null) : self {
 		$this->set("TransferLock", $TransferLock);
 		return $this;
 	}
 	public function getTransferLock () : ?string {
 		return $this->get("TransferLock", "string");
 	}
-	public function setDeleteLock (?string $DeleteLock = null) : \ascio\v2\Domain {
+	public function setDeleteLock (?string $DeleteLock = null) : self {
 		$this->set("DeleteLock", $DeleteLock);
 		return $this;
 	}
 	public function getDeleteLock () : ?string {
 		return $this->get("DeleteLock", "string");
 	}
-	public function setUpdateLock (?string $UpdateLock = null) : \ascio\v2\Domain {
+	public function setUpdateLock (?string $UpdateLock = null) : self {
 		$this->set("UpdateLock", $UpdateLock);
 		return $this;
 	}
 	public function getUpdateLock () : ?string {
 		return $this->get("UpdateLock", "string");
 	}
-	public function setQueueType (?string $QueueType = null) : \ascio\v2\Domain {
+	public function setQueueType (?string $QueueType = null) : self {
 		$this->set("QueueType", $QueueType);
 		return $this;
 	}
 	public function getQueueType () : ?string {
 		return $this->get("QueueType", "string");
 	}
-	public function setRegistrant (?\ascio\v2\Registrant $Registrant = null) : \ascio\v2\Domain {
+	public function setRegistrant (?\ascio\v2\Registrant $Registrant = null) : self {
 		$this->set("Registrant", $Registrant);
 		return $this;
 	}
@@ -193,7 +193,7 @@ class Domain extends DbBase  {
 	public function createRegistrant () : \ascio\v2\Registrant {
 		return $this->create ("Registrant", "\\ascio\\v2\\Registrant");
 	}
-	public function setAdminContact (?\ascio\v2\Contact $AdminContact = null) : \ascio\v2\Domain {
+	public function setAdminContact (?\ascio\v2\Contact $AdminContact = null) : self {
 		$this->set("AdminContact", $AdminContact);
 		return $this;
 	}
@@ -203,7 +203,7 @@ class Domain extends DbBase  {
 	public function createAdminContact () : \ascio\v2\Contact {
 		return $this->create ("AdminContact", "\\ascio\\v2\\Contact");
 	}
-	public function setTechContact (?\ascio\v2\Contact $TechContact = null) : \ascio\v2\Domain {
+	public function setTechContact (?\ascio\v2\Contact $TechContact = null) : self {
 		$this->set("TechContact", $TechContact);
 		return $this;
 	}
@@ -213,7 +213,7 @@ class Domain extends DbBase  {
 	public function createTechContact () : \ascio\v2\Contact {
 		return $this->create ("TechContact", "\\ascio\\v2\\Contact");
 	}
-	public function setBillingContact (?\ascio\v2\Contact $BillingContact = null) : \ascio\v2\Domain {
+	public function setBillingContact (?\ascio\v2\Contact $BillingContact = null) : self {
 		$this->set("BillingContact", $BillingContact);
 		return $this;
 	}
@@ -223,7 +223,7 @@ class Domain extends DbBase  {
 	public function createBillingContact () : \ascio\v2\Contact {
 		return $this->create ("BillingContact", "\\ascio\\v2\\Contact");
 	}
-	public function setResellerContact (?\ascio\v2\Contact $ResellerContact = null) : \ascio\v2\Domain {
+	public function setResellerContact (?\ascio\v2\Contact $ResellerContact = null) : self {
 		$this->set("ResellerContact", $ResellerContact);
 		return $this;
 	}
@@ -233,7 +233,7 @@ class Domain extends DbBase  {
 	public function createResellerContact () : \ascio\v2\Contact {
 		return $this->create ("ResellerContact", "\\ascio\\v2\\Contact");
 	}
-	public function setNameServers (?\ascio\v2\NameServers $NameServers = null) : \ascio\v2\Domain {
+	public function setNameServers (?\ascio\v2\NameServers $NameServers = null) : self {
 		$this->set("NameServers", $NameServers);
 		return $this;
 	}
@@ -243,7 +243,7 @@ class Domain extends DbBase  {
 	public function createNameServers () : \ascio\v2\NameServers {
 		return $this->create ("NameServers", "\\ascio\\v2\\NameServers");
 	}
-	public function setTrademark (?\ascio\v2\TradeMark $Trademark = null) : \ascio\v2\Domain {
+	public function setTrademark (?\ascio\v2\TradeMark $Trademark = null) : self {
 		$this->set("Trademark", $Trademark);
 		return $this;
 	}
@@ -253,7 +253,7 @@ class Domain extends DbBase  {
 	public function createTrademark () : \ascio\v2\TradeMark {
 		return $this->create ("Trademark", "\\ascio\\v2\\TradeMark");
 	}
-	public function setDnsSecKeys (?\ascio\v2\DnsSecKeys $DnsSecKeys = null) : \ascio\v2\Domain {
+	public function setDnsSecKeys (?\ascio\v2\DnsSecKeys $DnsSecKeys = null) : self {
 		$this->set("DnsSecKeys", $DnsSecKeys);
 		return $this;
 	}
@@ -263,7 +263,7 @@ class Domain extends DbBase  {
 	public function createDnsSecKeys () : \ascio\v2\DnsSecKeys {
 		return $this->create ("DnsSecKeys", "\\ascio\\v2\\DnsSecKeys");
 	}
-	public function setPrivacyProxy (?\ascio\v2\PrivacyProxy $PrivacyProxy = null) : \ascio\v2\Domain {
+	public function setPrivacyProxy (?\ascio\v2\PrivacyProxy $PrivacyProxy = null) : self {
 		$this->set("PrivacyProxy", $PrivacyProxy);
 		return $this;
 	}
@@ -273,14 +273,14 @@ class Domain extends DbBase  {
 	public function createPrivacyProxy () : \ascio\v2\PrivacyProxy {
 		return $this->create ("PrivacyProxy", "\\ascio\\v2\\PrivacyProxy");
 	}
-	public function setDomainType (?string $DomainType = null) : \ascio\v2\Domain {
+	public function setDomainType (?string $DomainType = null) : self {
 		$this->set("DomainType", $DomainType);
 		return $this;
 	}
 	public function getDomainType () : ?string {
 		return $this->get("DomainType", "string");
 	}
-	public function setDiscloseSocialData (?string $DiscloseSocialData = null) : \ascio\v2\Domain {
+	public function setDiscloseSocialData (?string $DiscloseSocialData = null) : self {
 		$this->set("DiscloseSocialData", $DiscloseSocialData);
 		return $this;
 	}

@@ -35,14 +35,14 @@ class ArrayOfint extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setInt (?Iterable $int = null) : \ascio\v3\ArrayOfint {
+	public function setInt (?Iterable $int = null) : self {
 		$this->set("int", $int);
 		return $this;
 	}
 	public function getInt () : ?Iterable {
 		return $this->get("int", "int");
 	}
-	public function addInt () : ?int {
+	public function addInt () : int {
 		return $this->add("int","int",func_get_args());
 	}
 }

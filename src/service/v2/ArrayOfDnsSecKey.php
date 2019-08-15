@@ -14,7 +14,7 @@ class ArrayOfDnsSecKey extends ArrayBase implements \Iterator  {
 	protected $_apiObjects=["DnsSecKey"];
 	protected $DnsSecKey;
 
-	public function setDnsSecKey (?Iterable $DnsSecKey = null) : \ascio\v2\ArrayOfDnsSecKey {
+	public function setDnsSecKey (?Iterable $DnsSecKey = null) : self {
 		$this->set("DnsSecKey", $DnsSecKey);
 		return $this;
 	}
@@ -24,7 +24,7 @@ class ArrayOfDnsSecKey extends ArrayBase implements \Iterator  {
 	public function createDnsSecKey () : \ascio\v2\DnsSecKey {
 		return $this->create ("DnsSecKey", "\\ascio\\v2\\DnsSecKey");
 	}
-	public function addDnsSecKey () : ?\ascio\v2\DnsSecKey {
+	public function addDnsSecKey () : \ascio\v2\DnsSecKey {
 		return $this->add("DnsSecKey","\\ascio\\v2\\DnsSecKey",func_get_args());
 	}
 }

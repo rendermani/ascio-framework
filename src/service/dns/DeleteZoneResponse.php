@@ -14,7 +14,7 @@ class DeleteZoneResponse extends ResponseRootElement  {
 	protected $_apiObjects=["DeleteZoneResult"];
 	protected $DeleteZoneResult;
 
-	public function setDeleteZoneResult (?\ascio\dns\Response $DeleteZoneResult = null) : \ascio\dns\DeleteZoneResponse {
+	public function setDeleteZoneResult (?\ascio\dns\Response $DeleteZoneResult = null) : self {
 		$this->set("DeleteZoneResult", $DeleteZoneResult);
 		return $this;
 	}

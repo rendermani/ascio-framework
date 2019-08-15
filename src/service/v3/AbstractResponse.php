@@ -55,21 +55,21 @@ class AbstractResponse extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setResultCode (?int $ResultCode = null) : \ascio\v3\AbstractResponse {
+	public function setResultCode (?int $ResultCode = null) : self {
 		$this->set("ResultCode", $ResultCode);
 		return $this;
 	}
 	public function getResultCode () : ?int {
 		return $this->get("ResultCode", "int");
 	}
-	public function setResultMessage (?string $ResultMessage = null) : \ascio\v3\AbstractResponse {
+	public function setResultMessage (?string $ResultMessage = null) : self {
 		$this->set("ResultMessage", $ResultMessage);
 		return $this;
 	}
 	public function getResultMessage () : ?string {
 		return $this->get("ResultMessage", "string");
 	}
-	public function setErrors (?\ascio\v3\ArrayOfstring $Errors = null) : \ascio\v3\AbstractResponse {
+	public function setErrors (?\ascio\v3\ArrayOfstring $Errors = null) : self {
 		$this->set("Errors", $Errors);
 		return $this;
 	}

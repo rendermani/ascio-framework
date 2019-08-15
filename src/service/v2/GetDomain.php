@@ -15,14 +15,14 @@ class GetDomain extends RequestRootElement  {
 	protected $sessionId;
 	protected $domainHandle;
 
-	public function setSessionId (?string $sessionId = null) : \ascio\v2\GetDomain {
+	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;
 	}
 	public function getSessionId () : ?string {
 		return $this->get("sessionId", "string");
 	}
-	public function setDomainHandle (?string $domainHandle = null) : \ascio\v2\GetDomain {
+	public function setDomainHandle (?string $domainHandle = null) : self {
 		$this->set("domainHandle", $domainHandle);
 		return $this;
 	}

@@ -14,7 +14,7 @@ class ValidateOrderResponse extends ResponseRootElement  {
 	protected $_apiObjects=["ValidateOrderResult"];
 	protected $ValidateOrderResult;
 
-	public function setValidateOrderResult (?\ascio\v2\Response $ValidateOrderResult = null) : \ascio\v2\ValidateOrderResponse {
+	public function setValidateOrderResult (?\ascio\v2\Response $ValidateOrderResult = null) : self {
 		$this->set("ValidateOrderResult", $ValidateOrderResult);
 		return $this;
 	}

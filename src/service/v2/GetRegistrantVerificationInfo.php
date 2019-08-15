@@ -15,14 +15,14 @@ class GetRegistrantVerificationInfo extends RequestRootElement  {
 	protected $sessionId;
 	protected $value;
 
-	public function setSessionId (?string $sessionId = null) : \ascio\v2\GetRegistrantVerificationInfo {
+	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;
 	}
 	public function getSessionId () : ?string {
 		return $this->get("sessionId", "string");
 	}
-	public function setValue (?string $value = null) : \ascio\v2\GetRegistrantVerificationInfo {
+	public function setValue (?string $value = null) : self {
 		$this->set("value", $value);
 		return $this;
 	}

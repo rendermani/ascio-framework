@@ -15,7 +15,7 @@ class GetNameServerResponse extends ResponseRootElement  {
 	protected $GetNameServerResult;
 	protected $nameServer;
 
-	public function setGetNameServerResult (?\ascio\v2\Response $GetNameServerResult = null) : \ascio\v2\GetNameServerResponse {
+	public function setGetNameServerResult (?\ascio\v2\Response $GetNameServerResult = null) : self {
 		$this->set("GetNameServerResult", $GetNameServerResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class GetNameServerResponse extends ResponseRootElement  {
 	public function createGetNameServerResult () : \ascio\v2\Response {
 		return $this->create ("GetNameServerResult", "\\ascio\\v2\\Response");
 	}
-	public function setNameServer (?\ascio\v2\NameServer $nameServer = null) : \ascio\v2\GetNameServerResponse {
+	public function setNameServer (?\ascio\v2\NameServer $nameServer = null) : self {
 		$this->set("nameServer", $nameServer);
 		return $this;
 	}

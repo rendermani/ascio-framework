@@ -59,7 +59,7 @@ class Message extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setAttachments (?\ascio\v2\ArrayOfAttachment $Attachments = null) : \ascio\v2\Message {
+	public function setAttachments (?\ascio\v2\ArrayOfAttachment $Attachments = null) : self {
 		$this->set("Attachments", $Attachments);
 		return $this;
 	}
@@ -69,42 +69,42 @@ class Message extends DbBase  {
 	public function createAttachments () : \ascio\v2\ArrayOfAttachment {
 		return $this->create ("Attachments", "\\ascio\\v2\\ArrayOfAttachment");
 	}
-	public function setBody (?string $Body = null) : \ascio\v2\Message {
+	public function setBody (?string $Body = null) : self {
 		$this->set("Body", $Body);
 		return $this;
 	}
 	public function getBody () : ?string {
 		return $this->get("Body", "string");
 	}
-	public function setCreated (?\DateTime $Created = null) : \ascio\v2\Message {
+	public function setCreated (?\DateTime $Created = null) : self {
 		$this->set("Created", $Created);
 		return $this;
 	}
 	public function getCreated () : ?\DateTime {
 		return $this->get("Created", "\\DateTime");
 	}
-	public function setFromAddress (?string $FromAddress = null) : \ascio\v2\Message {
+	public function setFromAddress (?string $FromAddress = null) : self {
 		$this->set("FromAddress", $FromAddress);
 		return $this;
 	}
 	public function getFromAddress () : ?string {
 		return $this->get("FromAddress", "string");
 	}
-	public function setSubject (?string $Subject = null) : \ascio\v2\Message {
+	public function setSubject (?string $Subject = null) : self {
 		$this->set("Subject", $Subject);
 		return $this;
 	}
 	public function getSubject () : ?string {
 		return $this->get("Subject", "string");
 	}
-	public function setToAddress (?string $ToAddress = null) : \ascio\v2\Message {
+	public function setToAddress (?string $ToAddress = null) : self {
 		$this->set("ToAddress", $ToAddress);
 		return $this;
 	}
 	public function getToAddress () : ?string {
 		return $this->get("ToAddress", "string");
 	}
-	public function setType (?string $Type = null) : \ascio\v2\Message {
+	public function setType (?string $Type = null) : self {
 		$this->set("Type", $Type);
 		return $this;
 	}

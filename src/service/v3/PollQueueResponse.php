@@ -41,14 +41,14 @@ class PollQueueResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setTotalCount (?int $TotalCount = null) : \ascio\v3\PollQueueResponse {
+	public function setTotalCount (?int $TotalCount = null) : self {
 		$this->set("TotalCount", $TotalCount);
 		return $this;
 	}
 	public function getTotalCount () : ?int {
 		return $this->get("TotalCount", "int");
 	}
-	public function setMessage (?\ascio\v3\QueueMessage $Message = null) : \ascio\v3\PollQueueResponse {
+	public function setMessage (?\ascio\v3\QueueMessage $Message = null) : self {
 		$this->set("Message", $Message);
 		return $this;
 	}

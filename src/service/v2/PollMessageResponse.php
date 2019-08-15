@@ -16,7 +16,7 @@ class PollMessageResponse extends ResponseRootElement  {
 	protected $msgCount;
 	protected $item;
 
-	public function setPollMessageResult (?\ascio\v2\Response $PollMessageResult = null) : \ascio\v2\PollMessageResponse {
+	public function setPollMessageResult (?\ascio\v2\Response $PollMessageResult = null) : self {
 		$this->set("PollMessageResult", $PollMessageResult);
 		return $this;
 	}
@@ -26,14 +26,14 @@ class PollMessageResponse extends ResponseRootElement  {
 	public function createPollMessageResult () : \ascio\v2\Response {
 		return $this->create ("PollMessageResult", "\\ascio\\v2\\Response");
 	}
-	public function setMsgCount (?int $msgCount = null) : \ascio\v2\PollMessageResponse {
+	public function setMsgCount (?int $msgCount = null) : self {
 		$this->set("msgCount", $msgCount);
 		return $this;
 	}
 	public function getMsgCount () : ?int {
 		return $this->get("msgCount", "int");
 	}
-	public function setItem (?\ascio\v2\QueueItem $item = null) : \ascio\v2\PollMessageResponse {
+	public function setItem (?\ascio\v2\QueueItem $item = null) : self {
 		$this->set("item", $item);
 		return $this;
 	}

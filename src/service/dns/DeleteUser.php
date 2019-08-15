@@ -14,7 +14,7 @@ class DeleteUser extends RequestRootElement  {
 	protected $_apiObjects=[];
 	protected $userName;
 
-	public function setUserName (?string $userName = null) : \ascio\dns\DeleteUser {
+	public function setUserName (?string $userName = null) : self {
 		$this->set("userName", $userName);
 		return $this;
 	}

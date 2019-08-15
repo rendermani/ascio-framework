@@ -14,7 +14,7 @@ class DeleteContactResponse extends ResponseRootElement  {
 	protected $_apiObjects=["DeleteContactResult"];
 	protected $DeleteContactResult;
 
-	public function setDeleteContactResult (?\ascio\v2\Response $DeleteContactResult = null) : \ascio\v2\DeleteContactResponse {
+	public function setDeleteContactResult (?\ascio\v2\Response $DeleteContactResult = null) : self {
 		$this->set("DeleteContactResult", $DeleteContactResult);
 		return $this;
 	}

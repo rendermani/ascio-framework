@@ -66,42 +66,42 @@ class SOA extends Record  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setExpire (?int $Expire = null) : \ascio\dns\SOA {
+	public function setExpire (?int $Expire = null) : self {
 		$this->set("Expire", $Expire);
 		return $this;
 	}
 	public function getExpire () : ?int {
 		return $this->get("Expire", "int");
 	}
-	public function setHostmasterEmail (?string $HostmasterEmail = null) : \ascio\dns\SOA {
+	public function setHostmasterEmail (?string $HostmasterEmail = null) : self {
 		$this->set("HostmasterEmail", $HostmasterEmail);
 		return $this;
 	}
 	public function getHostmasterEmail () : ?string {
 		return $this->get("HostmasterEmail", "string");
 	}
-	public function setPrimaryNameServer (?string $PrimaryNameServer = null) : \ascio\dns\SOA {
+	public function setPrimaryNameServer (?string $PrimaryNameServer = null) : self {
 		$this->set("PrimaryNameServer", $PrimaryNameServer);
 		return $this;
 	}
 	public function getPrimaryNameServer () : ?string {
 		return $this->get("PrimaryNameServer", "string");
 	}
-	public function setRefresh (?int $Refresh = null) : \ascio\dns\SOA {
+	public function setRefresh (?int $Refresh = null) : self {
 		$this->set("Refresh", $Refresh);
 		return $this;
 	}
 	public function getRefresh () : ?int {
 		return $this->get("Refresh", "int");
 	}
-	public function setRetry (?int $Retry = null) : \ascio\dns\SOA {
+	public function setRetry (?int $Retry = null) : self {
 		$this->set("Retry", $Retry);
 		return $this;
 	}
 	public function getRetry () : ?int {
 		return $this->get("Retry", "int");
 	}
-	public function setSerialUsage (?int $SerialUsage = null) : \ascio\dns\SOA {
+	public function setSerialUsage (?int $SerialUsage = null) : self {
 		$this->set("SerialUsage", $SerialUsage);
 		return $this;
 	}

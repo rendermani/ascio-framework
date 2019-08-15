@@ -36,14 +36,14 @@ class UploadMessageRequest extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setOrderId (?string $OrderId = null) : \ascio\v3\UploadMessageRequest {
+	public function setOrderId (?string $OrderId = null) : self {
 		$this->set("OrderId", $OrderId);
 		return $this;
 	}
 	public function getOrderId () : ?string {
 		return $this->get("OrderId", "string");
 	}
-	public function setMessage (?\ascio\v3\Message $Message = null) : \ascio\v3\UploadMessageRequest {
+	public function setMessage (?\ascio\v3\Message $Message = null) : self {
 		$this->set("Message", $Message);
 		return $this;
 	}

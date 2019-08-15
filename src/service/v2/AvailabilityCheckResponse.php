@@ -15,7 +15,7 @@ class AvailabilityCheckResponse extends ResponseRootElement  {
 	protected $AvailabilityCheckResult;
 	protected $results;
 
-	public function setAvailabilityCheckResult (?\ascio\v2\Response $AvailabilityCheckResult = null) : \ascio\v2\AvailabilityCheckResponse {
+	public function setAvailabilityCheckResult (?\ascio\v2\Response $AvailabilityCheckResult = null) : self {
 		$this->set("AvailabilityCheckResult", $AvailabilityCheckResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class AvailabilityCheckResponse extends ResponseRootElement  {
 	public function createAvailabilityCheckResult () : \ascio\v2\Response {
 		return $this->create ("AvailabilityCheckResult", "\\ascio\\v2\\Response");
 	}
-	public function setResults (?\ascio\v2\ArrayOfAvailabilityCheckResult $results = null) : \ascio\v2\AvailabilityCheckResponse {
+	public function setResults (?\ascio\v2\ArrayOfAvailabilityCheckResult $results = null) : self {
 		$this->set("results", $results);
 		return $this;
 	}

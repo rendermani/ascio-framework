@@ -35,7 +35,7 @@ class ArrayOfCallbackStatus extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setCallbackStatus (?Iterable $CallbackStatus = null) : \ascio\v2\ArrayOfCallbackStatus {
+	public function setCallbackStatus (?Iterable $CallbackStatus = null) : self {
 		$this->set("CallbackStatus", $CallbackStatus);
 		return $this;
 	}
@@ -45,7 +45,7 @@ class ArrayOfCallbackStatus extends DbArrayBase  {
 	public function createCallbackStatus () : \ascio\v2\CallbackStatus {
 		return $this->create ("CallbackStatus", "\\ascio\\v2\\CallbackStatus");
 	}
-	public function addCallbackStatus () : ?\ascio\v2\CallbackStatus {
+	public function addCallbackStatus () : \ascio\v2\CallbackStatus {
 		return $this->add("CallbackStatus","\\ascio\\v2\\CallbackStatus",func_get_args());
 	}
 }

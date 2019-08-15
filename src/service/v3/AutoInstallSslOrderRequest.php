@@ -43,7 +43,7 @@ class AutoInstallSslOrderRequest extends AbstractOrderRequest  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setAutoInstallSsl (?\ascio\v3\AutoInstallSsl $AutoInstallSsl = null) : \ascio\v3\AutoInstallSslOrderRequest {
+	public function setAutoInstallSsl (?\ascio\v3\AutoInstallSsl $AutoInstallSsl = null) : self {
 		$this->set("AutoInstallSsl", $AutoInstallSsl);
 		return $this;
 	}

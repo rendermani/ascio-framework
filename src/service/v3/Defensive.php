@@ -63,42 +63,42 @@ class Defensive extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setHandle (?string $Handle = null) : \ascio\v3\Defensive {
+	public function setHandle (?string $Handle = null) : self {
 		$this->set("Handle", $Handle);
 		return $this;
 	}
 	public function getHandle () : ?string {
 		return $this->get("Handle", "string");
 	}
-	public function setName (?string $Name = null) : \ascio\v3\Defensive {
+	public function setName (?string $Name = null) : self {
 		$this->set("Name", $Name);
 		return $this;
 	}
 	public function getName () : ?string {
 		return $this->get("Name", "string");
 	}
-	public function setMarkHandle (?string $MarkHandle = null) : \ascio\v3\Defensive {
+	public function setMarkHandle (?string $MarkHandle = null) : self {
 		$this->set("MarkHandle", $MarkHandle);
 		return $this;
 	}
 	public function getMarkHandle () : ?string {
 		return $this->get("MarkHandle", "string");
 	}
-	public function setAuthInfo (?string $AuthInfo = null) : \ascio\v3\Defensive {
+	public function setAuthInfo (?string $AuthInfo = null) : self {
 		$this->set("AuthInfo", $AuthInfo);
 		return $this;
 	}
 	public function getAuthInfo () : ?string {
 		return $this->get("AuthInfo", "string");
 	}
-	public function setEncoding (?string $Encoding = null) : \ascio\v3\Defensive {
+	public function setEncoding (?string $Encoding = null) : self {
 		$this->set("Encoding", $Encoding);
 		return $this;
 	}
 	public function getEncoding () : ?string {
 		return $this->get("Encoding", "string");
 	}
-	public function setOwner (?\ascio\v3\Registrant $Owner = null) : \ascio\v3\Defensive {
+	public function setOwner (?\ascio\v3\Registrant $Owner = null) : self {
 		$this->set("Owner", $Owner);
 		return $this;
 	}
@@ -108,7 +108,7 @@ class Defensive extends DbBase  {
 	public function createOwner () : \ascio\v3\Registrant {
 		return $this->create ("Owner", "\\ascio\\v3\\Registrant");
 	}
-	public function setAdmin (?\ascio\v3\Contact $Admin = null) : \ascio\v3\Defensive {
+	public function setAdmin (?\ascio\v3\Contact $Admin = null) : self {
 		$this->set("Admin", $Admin);
 		return $this;
 	}
@@ -118,7 +118,7 @@ class Defensive extends DbBase  {
 	public function createAdmin () : \ascio\v3\Contact {
 		return $this->create ("Admin", "\\ascio\\v3\\Contact");
 	}
-	public function setTech (?\ascio\v3\Contact $Tech = null) : \ascio\v3\Defensive {
+	public function setTech (?\ascio\v3\Contact $Tech = null) : self {
 		$this->set("Tech", $Tech);
 		return $this;
 	}
@@ -128,7 +128,7 @@ class Defensive extends DbBase  {
 	public function createTech () : \ascio\v3\Contact {
 		return $this->create ("Tech", "\\ascio\\v3\\Contact");
 	}
-	public function setBilling (?\ascio\v3\Contact $Billing = null) : \ascio\v3\Defensive {
+	public function setBilling (?\ascio\v3\Contact $Billing = null) : self {
 		$this->set("Billing", $Billing);
 		return $this;
 	}
@@ -138,7 +138,7 @@ class Defensive extends DbBase  {
 	public function createBilling () : \ascio\v3\Contact {
 		return $this->create ("Billing", "\\ascio\\v3\\Contact");
 	}
-	public function setReseller (?\ascio\v3\Contact $Reseller = null) : \ascio\v3\Defensive {
+	public function setReseller (?\ascio\v3\Contact $Reseller = null) : self {
 		$this->set("Reseller", $Reseller);
 		return $this;
 	}
@@ -148,7 +148,7 @@ class Defensive extends DbBase  {
 	public function createReseller () : \ascio\v3\Contact {
 		return $this->create ("Reseller", "\\ascio\\v3\\Contact");
 	}
-	public function setObjectComment (?string $ObjectComment = null) : \ascio\v3\Defensive {
+	public function setObjectComment (?string $ObjectComment = null) : self {
 		$this->set("ObjectComment", $ObjectComment);
 		return $this;
 	}

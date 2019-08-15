@@ -15,14 +15,14 @@ class CreateRegistrant extends RequestRootElement  {
 	protected $sessionId;
 	protected $registrant;
 
-	public function setSessionId (?string $sessionId = null) : \ascio\v2\CreateRegistrant {
+	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;
 	}
 	public function getSessionId () : ?string {
 		return $this->get("sessionId", "string");
 	}
-	public function setRegistrant (?\ascio\v2\Registrant $registrant = null) : \ascio\v2\CreateRegistrant {
+	public function setRegistrant (?\ascio\v2\Registrant $registrant = null) : self {
 		$this->set("registrant", $registrant);
 		return $this;
 	}

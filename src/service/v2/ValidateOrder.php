@@ -15,14 +15,14 @@ class ValidateOrder extends RequestRootElement  {
 	protected $sessionId;
 	protected $order;
 
-	public function setSessionId (?string $sessionId = null) : \ascio\v2\ValidateOrder {
+	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;
 	}
 	public function getSessionId () : ?string {
 		return $this->get("sessionId", "string");
 	}
-	public function setOrder (?\ascio\v2\Order $order = null) : \ascio\v2\ValidateOrder {
+	public function setOrder (?\ascio\v2\Order $order = null) : self {
 		$this->set("order", $order);
 		return $this;
 	}

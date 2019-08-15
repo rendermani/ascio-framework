@@ -14,7 +14,7 @@ class ArrayOfMessage extends ArrayBase implements \Iterator  {
 	protected $_apiObjects=["Message"];
 	protected $Message;
 
-	public function setMessage (?Iterable $Message = null) : \ascio\v2\ArrayOfMessage {
+	public function setMessage (?Iterable $Message = null) : self {
 		$this->set("Message", $Message);
 		return $this;
 	}
@@ -24,7 +24,7 @@ class ArrayOfMessage extends ArrayBase implements \Iterator  {
 	public function createMessage () : \ascio\v2\Message {
 		return $this->create ("Message", "\\ascio\\v2\\Message");
 	}
-	public function addMessage () : ?\ascio\v2\Message {
+	public function addMessage () : \ascio\v2\Message {
 		return $this->add("Message","\\ascio\\v2\\Message",func_get_args());
 	}
 }

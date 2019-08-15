@@ -61,7 +61,7 @@ class WebForward extends Record  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setRedirectionType (?string $RedirectionType = null) : \ascio\dns\WebForward {
+	public function setRedirectionType (?string $RedirectionType = null) : self {
 		$this->set("RedirectionType", $RedirectionType);
 		return $this;
 	}

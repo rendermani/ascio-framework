@@ -15,7 +15,7 @@ class WhoisResponse extends ResponseRootElement  {
 	protected $WhoisResult;
 	protected $whoisData;
 
-	public function setWhoisResult (?\ascio\v2\Response $WhoisResult = null) : \ascio\v2\WhoisResponse {
+	public function setWhoisResult (?\ascio\v2\Response $WhoisResult = null) : self {
 		$this->set("WhoisResult", $WhoisResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class WhoisResponse extends ResponseRootElement  {
 	public function createWhoisResult () : \ascio\v2\Response {
 		return $this->create ("WhoisResult", "\\ascio\\v2\\Response");
 	}
-	public function setWhoisData (?string $whoisData = null) : \ascio\v2\WhoisResponse {
+	public function setWhoisData (?string $whoisData = null) : self {
 		$this->set("whoisData", $whoisData);
 		return $this;
 	}

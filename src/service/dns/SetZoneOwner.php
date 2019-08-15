@@ -15,14 +15,14 @@ class SetZoneOwner extends RequestRootElement  {
 	protected $zoneName;
 	protected $owner;
 
-	public function setZoneName (?string $zoneName = null) : \ascio\dns\SetZoneOwner {
+	public function setZoneName (?string $zoneName = null) : self {
 		$this->set("zoneName", $zoneName);
 		return $this;
 	}
 	public function getZoneName () : ?string {
 		return $this->get("zoneName", "string");
 	}
-	public function setOwner (?string $owner = null) : \ascio\dns\SetZoneOwner {
+	public function setOwner (?string $owner = null) : self {
 		$this->set("owner", $owner);
 		return $this;
 	}

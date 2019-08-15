@@ -35,7 +35,7 @@ class GetDefensive extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setRequest (?\ascio\v3\GetDefensiveRequest $request = null) : \ascio\v3\GetDefensive {
+	public function setRequest (?\ascio\v3\GetDefensiveRequest $request = null) : self {
 		$this->set("request", $request);
 		return $this;
 	}

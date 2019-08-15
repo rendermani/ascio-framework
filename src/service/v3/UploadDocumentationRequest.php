@@ -36,14 +36,14 @@ class UploadDocumentationRequest extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setOrderId (?string $OrderId = null) : \ascio\v3\UploadDocumentationRequest {
+	public function setOrderId (?string $OrderId = null) : self {
 		$this->set("OrderId", $OrderId);
 		return $this;
 	}
 	public function getOrderId () : ?string {
 		return $this->get("OrderId", "string");
 	}
-	public function setDocuments (?\ascio\v3\ArrayOfAttachment $Documents = null) : \ascio\v3\UploadDocumentationRequest {
+	public function setDocuments (?\ascio\v3\ArrayOfAttachment $Documents = null) : self {
 		$this->set("Documents", $Documents);
 		return $this;
 	}

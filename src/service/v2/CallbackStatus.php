@@ -36,14 +36,14 @@ class CallbackStatus extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setMessage (?string $Message = null) : \ascio\v2\CallbackStatus {
+	public function setMessage (?string $Message = null) : self {
 		$this->set("Message", $Message);
 		return $this;
 	}
 	public function getMessage () : ?string {
 		return $this->get("Message", "string");
 	}
-	public function setStatus (?string $Status = null) : \ascio\v2\CallbackStatus {
+	public function setStatus (?string $Status = null) : self {
 		$this->set("Status", $Status);
 		return $this;
 	}

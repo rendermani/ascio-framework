@@ -15,7 +15,7 @@ class LogInResponse extends ResponseRootElement  {
 	protected $LogInResult;
 	protected $sessionId;
 
-	public function setLogInResult (?\ascio\v2\Response $LogInResult = null) : \ascio\v2\LogInResponse {
+	public function setLogInResult (?\ascio\v2\Response $LogInResult = null) : self {
 		$this->set("LogInResult", $LogInResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class LogInResponse extends ResponseRootElement  {
 	public function createLogInResult () : \ascio\v2\Response {
 		return $this->create ("LogInResult", "\\ascio\\v2\\Response");
 	}
-	public function setSessionId (?string $sessionId = null) : \ascio\v2\LogInResponse {
+	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;
 	}

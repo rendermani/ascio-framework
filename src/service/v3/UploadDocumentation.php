@@ -35,7 +35,7 @@ class UploadDocumentation extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setRequest (?\ascio\v3\UploadDocumentationRequest $request = null) : \ascio\v3\UploadDocumentation {
+	public function setRequest (?\ascio\v3\UploadDocumentationRequest $request = null) : self {
 		$this->set("request", $request);
 		return $this;
 	}

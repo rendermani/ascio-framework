@@ -57,7 +57,7 @@ class DnsSecKeys extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setDnsSecKey1 (?\ascio\v2\DnsSecKey $DnsSecKey1 = null) : \ascio\v2\DnsSecKeys {
+	public function setDnsSecKey1 (?\ascio\v2\DnsSecKey $DnsSecKey1 = null) : self {
 		$this->set("DnsSecKey1", $DnsSecKey1);
 		return $this;
 	}
@@ -67,7 +67,7 @@ class DnsSecKeys extends DbBase  {
 	public function createDnsSecKey1 () : \ascio\v2\DnsSecKey {
 		return $this->create ("DnsSecKey1", "\\ascio\\v2\\DnsSecKey");
 	}
-	public function setDnsSecKey2 (?\ascio\v2\DnsSecKey $DnsSecKey2 = null) : \ascio\v2\DnsSecKeys {
+	public function setDnsSecKey2 (?\ascio\v2\DnsSecKey $DnsSecKey2 = null) : self {
 		$this->set("DnsSecKey2", $DnsSecKey2);
 		return $this;
 	}
@@ -77,7 +77,7 @@ class DnsSecKeys extends DbBase  {
 	public function createDnsSecKey2 () : \ascio\v2\DnsSecKey {
 		return $this->create ("DnsSecKey2", "\\ascio\\v2\\DnsSecKey");
 	}
-	public function setDnsSecKey3 (?\ascio\v2\DnsSecKey $DnsSecKey3 = null) : \ascio\v2\DnsSecKeys {
+	public function setDnsSecKey3 (?\ascio\v2\DnsSecKey $DnsSecKey3 = null) : self {
 		$this->set("DnsSecKey3", $DnsSecKey3);
 		return $this;
 	}
@@ -87,7 +87,7 @@ class DnsSecKeys extends DbBase  {
 	public function createDnsSecKey3 () : \ascio\v2\DnsSecKey {
 		return $this->create ("DnsSecKey3", "\\ascio\\v2\\DnsSecKey");
 	}
-	public function setDnsSecKey4 (?\ascio\v2\DnsSecKey $DnsSecKey4 = null) : \ascio\v2\DnsSecKeys {
+	public function setDnsSecKey4 (?\ascio\v2\DnsSecKey $DnsSecKey4 = null) : self {
 		$this->set("DnsSecKey4", $DnsSecKey4);
 		return $this;
 	}
@@ -97,7 +97,7 @@ class DnsSecKeys extends DbBase  {
 	public function createDnsSecKey4 () : \ascio\v2\DnsSecKey {
 		return $this->create ("DnsSecKey4", "\\ascio\\v2\\DnsSecKey");
 	}
-	public function setDnsSecKey5 (?\ascio\v2\DnsSecKey $DnsSecKey5 = null) : \ascio\v2\DnsSecKeys {
+	public function setDnsSecKey5 (?\ascio\v2\DnsSecKey $DnsSecKey5 = null) : self {
 		$this->set("DnsSecKey5", $DnsSecKey5);
 		return $this;
 	}

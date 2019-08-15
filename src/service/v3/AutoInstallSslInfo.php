@@ -43,63 +43,63 @@ class AutoInstallSslInfo extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setHandle (?string $Handle = null) : \ascio\v3\AutoInstallSslInfo {
+	public function setHandle (?string $Handle = null) : self {
 		$this->set("Handle", $Handle);
 		return $this;
 	}
 	public function getHandle () : ?string {
 		return $this->get("Handle", "string");
 	}
-	public function setStatus (?string $Status = null) : \ascio\v3\AutoInstallSslInfo {
+	public function setStatus (?string $Status = null) : self {
 		$this->set("Status", $Status);
 		return $this;
 	}
 	public function getStatus () : ?string {
 		return $this->get("Status", "string");
 	}
-	public function setCreated (?\DateTime $Created = null) : \ascio\v3\AutoInstallSslInfo {
+	public function setCreated (?\DateTime $Created = null) : self {
 		$this->set("Created", $Created);
 		return $this;
 	}
 	public function getCreated () : ?\DateTime {
 		return $this->get("Created", "\\DateTime");
 	}
-	public function setCommonName (?string $CommonName = null) : \ascio\v3\AutoInstallSslInfo {
+	public function setCommonName (?string $CommonName = null) : self {
 		$this->set("CommonName", $CommonName);
 		return $this;
 	}
 	public function getCommonName () : ?string {
 		return $this->get("CommonName", "string");
 	}
-	public function setProductCode (?string $ProductCode = null) : \ascio\v3\AutoInstallSslInfo {
+	public function setProductCode (?string $ProductCode = null) : self {
 		$this->set("ProductCode", $ProductCode);
 		return $this;
 	}
 	public function getProductCode () : ?string {
 		return $this->get("ProductCode", "string");
 	}
-	public function setEmail (?string $Email = null) : \ascio\v3\AutoInstallSslInfo {
+	public function setEmail (?string $Email = null) : self {
 		$this->set("Email", $Email);
 		return $this;
 	}
 	public function getEmail () : ?string {
 		return $this->get("Email", "string");
 	}
-	public function setSanCount (?int $SanCount = null) : \ascio\v3\AutoInstallSslInfo {
+	public function setSanCount (?int $SanCount = null) : self {
 		$this->set("SanCount", $SanCount);
 		return $this;
 	}
 	public function getSanCount () : ?int {
 		return $this->get("SanCount", "int");
 	}
-	public function setToken (?string $Token = null) : \ascio\v3\AutoInstallSslInfo {
+	public function setToken (?string $Token = null) : self {
 		$this->set("Token", $Token);
 		return $this;
 	}
 	public function getToken () : ?string {
 		return $this->get("Token", "string");
 	}
-	public function setObjectComment (?string $ObjectComment = null) : \ascio\v3\AutoInstallSslInfo {
+	public function setObjectComment (?string $ObjectComment = null) : self {
 		$this->set("ObjectComment", $ObjectComment);
 		return $this;
 	}

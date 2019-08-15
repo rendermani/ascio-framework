@@ -72,140 +72,140 @@ class Registrant extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setCreDate (?\DateTime $CreDate = null) : \ascio\v2\Registrant {
+	public function setCreDate (?\DateTime $CreDate = null) : self {
 		$this->set("CreDate", $CreDate);
 		return $this;
 	}
 	public function getCreDate () : ?\DateTime {
 		return $this->get("CreDate", "\\DateTime");
 	}
-	public function setStatus (?string $Status = null) : \ascio\v2\Registrant {
+	public function setStatus (?string $Status = null) : self {
 		$this->set("Status", $Status);
 		return $this;
 	}
 	public function getStatus () : ?string {
 		return $this->get("Status", "string");
 	}
-	public function setHandle (?string $Handle = null) : \ascio\v2\Registrant {
+	public function setHandle (?string $Handle = null) : self {
 		$this->set("Handle", $Handle);
 		return $this;
 	}
 	public function getHandle () : ?string {
 		return $this->get("Handle", "string");
 	}
-	public function setName (?string $Name = null) : \ascio\v2\Registrant {
+	public function setName (?string $Name = null) : self {
 		$this->set("Name", $Name);
 		return $this;
 	}
 	public function getName () : ?string {
 		return $this->get("Name", "string");
 	}
-	public function setOrgName (?string $OrgName = null) : \ascio\v2\Registrant {
+	public function setOrgName (?string $OrgName = null) : self {
 		$this->set("OrgName", $OrgName);
 		return $this;
 	}
 	public function getOrgName () : ?string {
 		return $this->get("OrgName", "string");
 	}
-	public function setAddress1 (?string $Address1 = null) : \ascio\v2\Registrant {
+	public function setAddress1 (?string $Address1 = null) : self {
 		$this->set("Address1", $Address1);
 		return $this;
 	}
 	public function getAddress1 () : ?string {
 		return $this->get("Address1", "string");
 	}
-	public function setAddress2 (?string $Address2 = null) : \ascio\v2\Registrant {
+	public function setAddress2 (?string $Address2 = null) : self {
 		$this->set("Address2", $Address2);
 		return $this;
 	}
 	public function getAddress2 () : ?string {
 		return $this->get("Address2", "string");
 	}
-	public function setCity (?string $City = null) : \ascio\v2\Registrant {
+	public function setCity (?string $City = null) : self {
 		$this->set("City", $City);
 		return $this;
 	}
 	public function getCity () : ?string {
 		return $this->get("City", "string");
 	}
-	public function setState (?string $State = null) : \ascio\v2\Registrant {
+	public function setState (?string $State = null) : self {
 		$this->set("State", $State);
 		return $this;
 	}
 	public function getState () : ?string {
 		return $this->get("State", "string");
 	}
-	public function setPostalCode (?string $PostalCode = null) : \ascio\v2\Registrant {
+	public function setPostalCode (?string $PostalCode = null) : self {
 		$this->set("PostalCode", $PostalCode);
 		return $this;
 	}
 	public function getPostalCode () : ?string {
 		return $this->get("PostalCode", "string");
 	}
-	public function setCountryCode (?string $CountryCode = null) : \ascio\v2\Registrant {
+	public function setCountryCode (?string $CountryCode = null) : self {
 		$this->set("CountryCode", $CountryCode);
 		return $this;
 	}
 	public function getCountryCode () : ?string {
 		return $this->get("CountryCode", "string");
 	}
-	public function setEmail (?string $Email = null) : \ascio\v2\Registrant {
+	public function setEmail (?string $Email = null) : self {
 		$this->set("Email", $Email);
 		return $this;
 	}
 	public function getEmail () : ?string {
 		return $this->get("Email", "string");
 	}
-	public function setPhone (?string $Phone = null) : \ascio\v2\Registrant {
+	public function setPhone (?string $Phone = null) : self {
 		$this->set("Phone", $Phone);
 		return $this;
 	}
 	public function getPhone () : ?string {
 		return $this->get("Phone", "string");
 	}
-	public function setFax (?string $Fax = null) : \ascio\v2\Registrant {
+	public function setFax (?string $Fax = null) : self {
 		$this->set("Fax", $Fax);
 		return $this;
 	}
 	public function getFax () : ?string {
 		return $this->get("Fax", "string");
 	}
-	public function setRegistrantType (?string $RegistrantType = null) : \ascio\v2\Registrant {
+	public function setRegistrantType (?string $RegistrantType = null) : self {
 		$this->set("RegistrantType", $RegistrantType);
 		return $this;
 	}
 	public function getRegistrantType () : ?string {
 		return $this->get("RegistrantType", "string");
 	}
-	public function setVatNumber (?string $VatNumber = null) : \ascio\v2\Registrant {
+	public function setVatNumber (?string $VatNumber = null) : self {
 		$this->set("VatNumber", $VatNumber);
 		return $this;
 	}
 	public function getVatNumber () : ?string {
 		return $this->get("VatNumber", "string");
 	}
-	public function setRegistrantDate (?string $RegistrantDate = null) : \ascio\v2\Registrant {
+	public function setRegistrantDate (?string $RegistrantDate = null) : self {
 		$this->set("RegistrantDate", $RegistrantDate);
 		return $this;
 	}
 	public function getRegistrantDate () : ?string {
 		return $this->get("RegistrantDate", "string");
 	}
-	public function setNexusCategory (?string $NexusCategory = null) : \ascio\v2\Registrant {
+	public function setNexusCategory (?string $NexusCategory = null) : self {
 		$this->set("NexusCategory", $NexusCategory);
 		return $this;
 	}
 	public function getNexusCategory () : ?string {
 		return $this->get("NexusCategory", "string");
 	}
-	public function setRegistrantNumber (?string $RegistrantNumber = null) : \ascio\v2\Registrant {
+	public function setRegistrantNumber (?string $RegistrantNumber = null) : self {
 		$this->set("RegistrantNumber", $RegistrantNumber);
 		return $this;
 	}
 	public function getRegistrantNumber () : ?string {
 		return $this->get("RegistrantNumber", "string");
 	}
-	public function setDetails (?string $Details = null) : \ascio\v2\Registrant {
+	public function setDetails (?string $Details = null) : self {
 		$this->set("Details", $Details);
 		return $this;
 	}

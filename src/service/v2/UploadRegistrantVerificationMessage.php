@@ -16,21 +16,21 @@ class UploadRegistrantVerificationMessage extends RequestRootElement  {
 	protected $value;
 	protected $details;
 
-	public function setSessionId (?string $sessionId = null) : \ascio\v2\UploadRegistrantVerificationMessage {
+	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;
 	}
 	public function getSessionId () : ?string {
 		return $this->get("sessionId", "string");
 	}
-	public function setValue (?string $value = null) : \ascio\v2\UploadRegistrantVerificationMessage {
+	public function setValue (?string $value = null) : self {
 		$this->set("value", $value);
 		return $this;
 	}
 	public function getValue () : ?string {
 		return $this->get("value", "string");
 	}
-	public function setDetails (?\ascio\v2\RegistrantVerificationDetails $details = null) : \ascio\v2\UploadRegistrantVerificationMessage {
+	public function setDetails (?\ascio\v2\RegistrantVerificationDetails $details = null) : self {
 		$this->set("details", $details);
 		return $this;
 	}

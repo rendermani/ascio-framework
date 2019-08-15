@@ -14,7 +14,7 @@ class UploadDocumentationResponse extends ResponseRootElement  {
 	protected $_apiObjects=["UploadDocumentationResult"];
 	protected $UploadDocumentationResult;
 
-	public function setUploadDocumentationResult (?\ascio\v2\Response $UploadDocumentationResult = null) : \ascio\v2\UploadDocumentationResponse {
+	public function setUploadDocumentationResult (?\ascio\v2\Response $UploadDocumentationResult = null) : self {
 		$this->set("UploadDocumentationResult", $UploadDocumentationResult);
 		return $this;
 	}

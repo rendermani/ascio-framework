@@ -15,14 +15,14 @@ class CreateDnsSecKey extends RequestRootElement  {
 	protected $sessionId;
 	protected $dnsSecKey;
 
-	public function setSessionId (?string $sessionId = null) : \ascio\v2\CreateDnsSecKey {
+	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;
 	}
 	public function getSessionId () : ?string {
 		return $this->get("sessionId", "string");
 	}
-	public function setDnsSecKey (?\ascio\v2\DnsSecKey $dnsSecKey = null) : \ascio\v2\CreateDnsSecKey {
+	public function setDnsSecKey (?\ascio\v2\DnsSecKey $dnsSecKey = null) : self {
 		$this->set("dnsSecKey", $dnsSecKey);
 		return $this;
 	}

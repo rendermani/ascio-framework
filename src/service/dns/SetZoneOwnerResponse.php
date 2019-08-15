@@ -14,7 +14,7 @@ class SetZoneOwnerResponse extends ResponseRootElement  {
 	protected $_apiObjects=["SetZoneOwnerResult"];
 	protected $SetZoneOwnerResult;
 
-	public function setSetZoneOwnerResult (?\ascio\dns\Response $SetZoneOwnerResult = null) : \ascio\dns\SetZoneOwnerResponse {
+	public function setSetZoneOwnerResult (?\ascio\dns\Response $SetZoneOwnerResult = null) : self {
 		$this->set("SetZoneOwnerResult", $SetZoneOwnerResult);
 		return $this;
 	}

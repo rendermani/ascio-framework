@@ -41,14 +41,14 @@ class GetOrdersResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setTotalCount (?int $TotalCount = null) : \ascio\v3\GetOrdersResponse {
+	public function setTotalCount (?int $TotalCount = null) : self {
 		$this->set("TotalCount", $TotalCount);
 		return $this;
 	}
 	public function getTotalCount () : ?int {
 		return $this->get("TotalCount", "int");
 	}
-	public function setOrdersInfo (?\ascio\v3\ArrayOfOrderInfo $OrdersInfo = null) : \ascio\v3\GetOrdersResponse {
+	public function setOrdersInfo (?\ascio\v3\ArrayOfOrderInfo $OrdersInfo = null) : self {
 		$this->set("OrdersInfo", $OrdersInfo);
 		return $this;
 	}

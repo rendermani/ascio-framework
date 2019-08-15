@@ -60,42 +60,42 @@ class Trademark extends AbstractMark  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setApplicationId (?string $ApplicationId = null) : \ascio\v3\Trademark {
+	public function setApplicationId (?string $ApplicationId = null) : self {
 		$this->set("ApplicationId", $ApplicationId);
 		return $this;
 	}
 	public function getApplicationId () : ?string {
 		return $this->get("ApplicationId", "string");
 	}
-	public function setRegistrationNumber (?string $RegistrationNumber = null) : \ascio\v3\Trademark {
+	public function setRegistrationNumber (?string $RegistrationNumber = null) : self {
 		$this->set("RegistrationNumber", $RegistrationNumber);
 		return $this;
 	}
 	public function getRegistrationNumber () : ?string {
 		return $this->get("RegistrationNumber", "string");
 	}
-	public function setApplicationDate (?\DateTime $ApplicationDate = null) : \ascio\v3\Trademark {
+	public function setApplicationDate (?\DateTime $ApplicationDate = null) : self {
 		$this->set("ApplicationDate", $ApplicationDate);
 		return $this;
 	}
 	public function getApplicationDate () : ?\DateTime {
 		return $this->get("ApplicationDate", "\\DateTime");
 	}
-	public function setRegistrationDate (?\DateTime $RegistrationDate = null) : \ascio\v3\Trademark {
+	public function setRegistrationDate (?\DateTime $RegistrationDate = null) : self {
 		$this->set("RegistrationDate", $RegistrationDate);
 		return $this;
 	}
 	public function getRegistrationDate () : ?\DateTime {
 		return $this->get("RegistrationDate", "\\DateTime");
 	}
-	public function setExpirationDate (?\DateTime $ExpirationDate = null) : \ascio\v3\Trademark {
+	public function setExpirationDate (?\DateTime $ExpirationDate = null) : self {
 		$this->set("ExpirationDate", $ExpirationDate);
 		return $this;
 	}
 	public function getExpirationDate () : ?\DateTime {
 		return $this->get("ExpirationDate", "\\DateTime");
 	}
-	public function setGoodsAndServicesClasses (?\ascio\v3\ArrayOfint $GoodsAndServicesClasses = null) : \ascio\v3\Trademark {
+	public function setGoodsAndServicesClasses (?\ascio\v3\ArrayOfint $GoodsAndServicesClasses = null) : self {
 		$this->set("GoodsAndServicesClasses", $GoodsAndServicesClasses);
 		return $this;
 	}
@@ -105,7 +105,7 @@ class Trademark extends AbstractMark  {
 	public function createGoodsAndServicesClasses () : \ascio\v3\ArrayOfint {
 		return $this->create ("GoodsAndServicesClasses", "\\ascio\\v3\\ArrayOfint");
 	}
-	public function setJurisdiction (?string $Jurisdiction = null) : \ascio\v3\Trademark {
+	public function setJurisdiction (?string $Jurisdiction = null) : self {
 		$this->set("Jurisdiction", $Jurisdiction);
 		return $this;
 	}

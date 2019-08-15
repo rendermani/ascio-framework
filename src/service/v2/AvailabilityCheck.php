@@ -17,14 +17,14 @@ class AvailabilityCheck extends RequestRootElement  {
 	protected $tlds;
 	protected $quality;
 
-	public function setSessionId (?string $sessionId = null) : \ascio\v2\AvailabilityCheck {
+	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;
 	}
 	public function getSessionId () : ?string {
 		return $this->get("sessionId", "string");
 	}
-	public function setDomains (?\ascio\v2\ArrayOfString $domains = null) : \ascio\v2\AvailabilityCheck {
+	public function setDomains (?\ascio\v2\ArrayOfString $domains = null) : self {
 		$this->set("domains", $domains);
 		return $this;
 	}
@@ -34,7 +34,7 @@ class AvailabilityCheck extends RequestRootElement  {
 	public function createDomains () : \ascio\v2\ArrayOfString {
 		return $this->create ("domains", "\\ascio\\v2\\ArrayOfString");
 	}
-	public function setTlds (?\ascio\v2\ArrayOfString $tlds = null) : \ascio\v2\AvailabilityCheck {
+	public function setTlds (?\ascio\v2\ArrayOfString $tlds = null) : self {
 		$this->set("tlds", $tlds);
 		return $this;
 	}
@@ -44,7 +44,7 @@ class AvailabilityCheck extends RequestRootElement  {
 	public function createTlds () : \ascio\v2\ArrayOfString {
 		return $this->create ("tlds", "\\ascio\\v2\\ArrayOfString");
 	}
-	public function setQuality (?string $quality = null) : \ascio\v2\AvailabilityCheck {
+	public function setQuality (?string $quality = null) : self {
 		$this->set("quality", $quality);
 		return $this;
 	}

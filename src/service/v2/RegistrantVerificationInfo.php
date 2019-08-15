@@ -16,21 +16,21 @@ class RegistrantVerificationInfo extends Base  {
 	protected $VerificationStatus;
 	protected $VerificationDetails;
 
-	public function setEmailAddress (?string $EmailAddress = null) : \ascio\v2\RegistrantVerificationInfo {
+	public function setEmailAddress (?string $EmailAddress = null) : self {
 		$this->set("EmailAddress", $EmailAddress);
 		return $this;
 	}
 	public function getEmailAddress () : ?string {
 		return $this->get("EmailAddress", "string");
 	}
-	public function setVerificationStatus (?string $VerificationStatus = null) : \ascio\v2\RegistrantVerificationInfo {
+	public function setVerificationStatus (?string $VerificationStatus = null) : self {
 		$this->set("VerificationStatus", $VerificationStatus);
 		return $this;
 	}
 	public function getVerificationStatus () : ?string {
 		return $this->get("VerificationStatus", "string");
 	}
-	public function setVerificationDetails (?\ascio\v2\RegistrantVerificationDetails $VerificationDetails = null) : \ascio\v2\RegistrantVerificationInfo {
+	public function setVerificationDetails (?\ascio\v2\RegistrantVerificationDetails $VerificationDetails = null) : self {
 		$this->set("VerificationDetails", $VerificationDetails);
 		return $this;
 	}

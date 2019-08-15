@@ -40,7 +40,7 @@ class GetNameWatchResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setNameWatchInfo (?\ascio\v3\NameWatchInfo $NameWatchInfo = null) : \ascio\v3\GetNameWatchResponse {
+	public function setNameWatchInfo (?\ascio\v3\NameWatchInfo $NameWatchInfo = null) : self {
 		$this->set("NameWatchInfo", $NameWatchInfo);
 		return $this;
 	}

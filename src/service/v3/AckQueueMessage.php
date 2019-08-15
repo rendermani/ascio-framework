@@ -35,7 +35,7 @@ class AckQueueMessage extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setRequest (?\ascio\v3\AckQueueMessageRequest $request = null) : \ascio\v3\AckQueueMessage {
+	public function setRequest (?\ascio\v3\AckQueueMessageRequest $request = null) : self {
 		$this->set("request", $request);
 		return $this;
 	}

@@ -16,21 +16,21 @@ class Clause extends Base  {
 	protected $Operator;
 	protected $Value;
 
-	public function setAttribute (?string $Attribute = null) : \ascio\v2\Clause {
+	public function setAttribute (?string $Attribute = null) : self {
 		$this->set("Attribute", $Attribute);
 		return $this;
 	}
 	public function getAttribute () : ?string {
 		return $this->get("Attribute", "string");
 	}
-	public function setOperator (?string $Operator = null) : \ascio\v2\Clause {
+	public function setOperator (?string $Operator = null) : self {
 		$this->set("Operator", $Operator);
 		return $this;
 	}
 	public function getOperator () : ?string {
 		return $this->get("Operator", "string");
 	}
-	public function setValue (?string $Value = null) : \ascio\v2\Clause {
+	public function setValue (?string $Value = null) : self {
 		$this->set("Value", $Value);
 		return $this;
 	}

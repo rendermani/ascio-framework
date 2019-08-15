@@ -15,14 +15,14 @@ class DeleteContact extends RequestRootElement  {
 	protected $sessionId;
 	protected $contactHandle;
 
-	public function setSessionId (?string $sessionId = null) : \ascio\v2\DeleteContact {
+	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;
 	}
 	public function getSessionId () : ?string {
 		return $this->get("sessionId", "string");
 	}
-	public function setContactHandle (?string $contactHandle = null) : \ascio\v2\DeleteContact {
+	public function setContactHandle (?string $contactHandle = null) : self {
 		$this->set("contactHandle", $contactHandle);
 		return $this;
 	}

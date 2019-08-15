@@ -16,21 +16,21 @@ class RegistrantVerificationDetails extends Base  {
 	protected $VerificationDate;
 	protected $Messages;
 
-	public function setVerifiedBy (?string $VerifiedBy = null) : \ascio\v2\RegistrantVerificationDetails {
+	public function setVerifiedBy (?string $VerifiedBy = null) : self {
 		$this->set("VerifiedBy", $VerifiedBy);
 		return $this;
 	}
 	public function getVerifiedBy () : ?string {
 		return $this->get("VerifiedBy", "string");
 	}
-	public function setVerificationDate (?\DateTime $VerificationDate = null) : \ascio\v2\RegistrantVerificationDetails {
+	public function setVerificationDate (?\DateTime $VerificationDate = null) : self {
 		$this->set("VerificationDate", $VerificationDate);
 		return $this;
 	}
 	public function getVerificationDate () : ?\DateTime {
 		return $this->get("VerificationDate", "\\DateTime");
 	}
-	public function setMessages (?\ascio\v2\ArrayOfMessage $Messages = null) : \ascio\v2\RegistrantVerificationDetails {
+	public function setMessages (?\ascio\v2\ArrayOfMessage $Messages = null) : self {
 		$this->set("Messages", $Messages);
 		return $this;
 	}

@@ -40,7 +40,7 @@ class CreateOrderResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setOrderInfo (?\ascio\v3\OrderInfo $OrderInfo = null) : \ascio\v3\CreateOrderResponse {
+	public function setOrderInfo (?\ascio\v3\OrderInfo $OrderInfo = null) : self {
 		$this->set("OrderInfo", $OrderInfo);
 		return $this;
 	}

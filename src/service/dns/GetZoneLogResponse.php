@@ -15,7 +15,7 @@ class GetZoneLogResponse extends ResponseRootElement  {
 	protected $GetZoneLogResult;
 	protected $zoneLogEntries;
 
-	public function setGetZoneLogResult (?\ascio\dns\Response $GetZoneLogResult = null) : \ascio\dns\GetZoneLogResponse {
+	public function setGetZoneLogResult (?\ascio\dns\Response $GetZoneLogResult = null) : self {
 		$this->set("GetZoneLogResult", $GetZoneLogResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class GetZoneLogResponse extends ResponseRootElement  {
 	public function createGetZoneLogResult () : \ascio\dns\Response {
 		return $this->create ("GetZoneLogResult", "\\ascio\\dns\\Response");
 	}
-	public function setZoneLogEntries (?\ascio\dns\ArrayOfZoneLogEntry $zoneLogEntries = null) : \ascio\dns\GetZoneLogResponse {
+	public function setZoneLogEntries (?\ascio\dns\ArrayOfZoneLogEntry $zoneLogEntries = null) : self {
 		$this->set("zoneLogEntries", $zoneLogEntries);
 		return $this;
 	}

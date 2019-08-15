@@ -40,7 +40,7 @@ class GetAutoInstallSslResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setAutoInstallSslInfo (?\ascio\v3\AutoInstallSslInfo $AutoInstallSslInfo = null) : \ascio\v3\GetAutoInstallSslResponse {
+	public function setAutoInstallSslInfo (?\ascio\v3\AutoInstallSslInfo $AutoInstallSslInfo = null) : self {
 		$this->set("AutoInstallSslInfo", $AutoInstallSslInfo);
 		return $this;
 	}

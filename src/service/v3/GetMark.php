@@ -35,7 +35,7 @@ class GetMark extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setRequest (?\ascio\v3\GetMarkRequest $request = null) : \ascio\v3\GetMark {
+	public function setRequest (?\ascio\v3\GetMarkRequest $request = null) : self {
 		$this->set("request", $request);
 		return $this;
 	}

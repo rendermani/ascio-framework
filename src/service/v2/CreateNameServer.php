@@ -15,14 +15,14 @@ class CreateNameServer extends RequestRootElement  {
 	protected $sessionId;
 	protected $nameServer;
 
-	public function setSessionId (?string $sessionId = null) : \ascio\v2\CreateNameServer {
+	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;
 	}
 	public function getSessionId () : ?string {
 		return $this->get("sessionId", "string");
 	}
-	public function setNameServer (?\ascio\v2\NameServer $nameServer = null) : \ascio\v2\CreateNameServer {
+	public function setNameServer (?\ascio\v2\NameServer $nameServer = null) : self {
 		$this->set("nameServer", $nameServer);
 		return $this;
 	}

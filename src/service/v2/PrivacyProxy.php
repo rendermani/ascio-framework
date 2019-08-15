@@ -57,35 +57,35 @@ class PrivacyProxy extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setType (?string $Type = null) : \ascio\v2\PrivacyProxy {
+	public function setType (?string $Type = null) : self {
 		$this->set("Type", $Type);
 		return $this;
 	}
 	public function getType () : ?string {
 		return $this->get("Type", "string");
 	}
-	public function setPrivacyAdmin (?bool $PrivacyAdmin = null) : \ascio\v2\PrivacyProxy {
+	public function setPrivacyAdmin (?bool $PrivacyAdmin = null) : self {
 		$this->set("PrivacyAdmin", $PrivacyAdmin);
 		return $this;
 	}
 	public function getPrivacyAdmin () : ?bool {
 		return $this->get("PrivacyAdmin", "bool");
 	}
-	public function setPrivacyTech (?bool $PrivacyTech = null) : \ascio\v2\PrivacyProxy {
+	public function setPrivacyTech (?bool $PrivacyTech = null) : self {
 		$this->set("PrivacyTech", $PrivacyTech);
 		return $this;
 	}
 	public function getPrivacyTech () : ?bool {
 		return $this->get("PrivacyTech", "bool");
 	}
-	public function setPrivacyBilling (?bool $PrivacyBilling = null) : \ascio\v2\PrivacyProxy {
+	public function setPrivacyBilling (?bool $PrivacyBilling = null) : self {
 		$this->set("PrivacyBilling", $PrivacyBilling);
 		return $this;
 	}
 	public function getPrivacyBilling () : ?bool {
 		return $this->get("PrivacyBilling", "bool");
 	}
-	public function setExtensions (?\ascio\v2\Extensions $Extensions = null) : \ascio\v2\PrivacyProxy {
+	public function setExtensions (?\ascio\v2\Extensions $Extensions = null) : self {
 		$this->set("Extensions", $Extensions);
 		return $this;
 	}

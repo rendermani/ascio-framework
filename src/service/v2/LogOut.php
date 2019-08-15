@@ -14,7 +14,7 @@ class LogOut extends RequestRootElement  {
 	protected $_apiObjects=[];
 	protected $sessionId;
 
-	public function setSessionId (?string $sessionId = null) : \ascio\v2\LogOut {
+	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;
 	}

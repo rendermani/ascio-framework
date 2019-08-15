@@ -23,7 +23,7 @@ class SearchOrderRequest extends Base  {
 	protected $PageInfo;
 	protected $OrderSort;
 
-	public function setOrderTypes (?\ascio\v2\ArrayOfOrderType $OrderTypes = null) : \ascio\v2\SearchOrderRequest {
+	public function setOrderTypes (?\ascio\v2\ArrayOfOrderType $OrderTypes = null) : self {
 		$this->set("OrderTypes", $OrderTypes);
 		return $this;
 	}
@@ -33,7 +33,7 @@ class SearchOrderRequest extends Base  {
 	public function createOrderTypes () : \ascio\v2\ArrayOfOrderType {
 		return $this->create ("OrderTypes", "\\ascio\\v2\\ArrayOfOrderType");
 	}
-	public function setOrderStatusTypes (?\ascio\v2\ArrayOfOrderStatusType $OrderStatusTypes = null) : \ascio\v2\SearchOrderRequest {
+	public function setOrderStatusTypes (?\ascio\v2\ArrayOfOrderStatusType $OrderStatusTypes = null) : self {
 		$this->set("OrderStatusTypes", $OrderStatusTypes);
 		return $this;
 	}
@@ -43,49 +43,49 @@ class SearchOrderRequest extends Base  {
 	public function createOrderStatusTypes () : \ascio\v2\ArrayOfOrderStatusType {
 		return $this->create ("OrderStatusTypes", "\\ascio\\v2\\ArrayOfOrderStatusType");
 	}
-	public function setFromDate (?\DateTime $FromDate = null) : \ascio\v2\SearchOrderRequest {
+	public function setFromDate (?\DateTime $FromDate = null) : self {
 		$this->set("FromDate", $FromDate);
 		return $this;
 	}
 	public function getFromDate () : ?\DateTime {
 		return $this->get("FromDate", "\\DateTime");
 	}
-	public function setToDate (?\DateTime $ToDate = null) : \ascio\v2\SearchOrderRequest {
+	public function setToDate (?\DateTime $ToDate = null) : self {
 		$this->set("ToDate", $ToDate);
 		return $this;
 	}
 	public function getToDate () : ?\DateTime {
 		return $this->get("ToDate", "\\DateTime");
 	}
-	public function setDomainName (?string $DomainName = null) : \ascio\v2\SearchOrderRequest {
+	public function setDomainName (?string $DomainName = null) : self {
 		$this->set("DomainName", $DomainName);
 		return $this;
 	}
 	public function getDomainName () : ?string {
 		return $this->get("DomainName", "string");
 	}
-	public function setTransactionComment (?string $TransactionComment = null) : \ascio\v2\SearchOrderRequest {
+	public function setTransactionComment (?string $TransactionComment = null) : self {
 		$this->set("TransactionComment", $TransactionComment);
 		return $this;
 	}
 	public function getTransactionComment () : ?string {
 		return $this->get("TransactionComment", "string");
 	}
-	public function setComments (?string $Comments = null) : \ascio\v2\SearchOrderRequest {
+	public function setComments (?string $Comments = null) : self {
 		$this->set("Comments", $Comments);
 		return $this;
 	}
 	public function getComments () : ?string {
 		return $this->get("Comments", "string");
 	}
-	public function setIncludeDomainDetails (?bool $IncludeDomainDetails = null) : \ascio\v2\SearchOrderRequest {
+	public function setIncludeDomainDetails (?bool $IncludeDomainDetails = null) : self {
 		$this->set("IncludeDomainDetails", $IncludeDomainDetails);
 		return $this;
 	}
 	public function getIncludeDomainDetails () : ?bool {
 		return $this->get("IncludeDomainDetails", "bool");
 	}
-	public function setPageInfo (?\ascio\v2\PagingInfo $PageInfo = null) : \ascio\v2\SearchOrderRequest {
+	public function setPageInfo (?\ascio\v2\PagingInfo $PageInfo = null) : self {
 		$this->set("PageInfo", $PageInfo);
 		return $this;
 	}
@@ -95,7 +95,7 @@ class SearchOrderRequest extends Base  {
 	public function createPageInfo () : \ascio\v2\PagingInfo {
 		return $this->create ("PageInfo", "\\ascio\\v2\\PagingInfo");
 	}
-	public function setOrderSort (?string $OrderSort = null) : \ascio\v2\SearchOrderRequest {
+	public function setOrderSort (?string $OrderSort = null) : self {
 		$this->set("OrderSort", $OrderSort);
 		return $this;
 	}

@@ -58,35 +58,35 @@ class ZoneLogEntry extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setAction (?string $Action = null) : \ascio\dns\ZoneLogEntry {
+	public function setAction (?string $Action = null) : self {
 		$this->set("Action", $Action);
 		return $this;
 	}
 	public function getAction () : ?string {
 		return $this->get("Action", "string");
 	}
-	public function setActionBy (?string $ActionBy = null) : \ascio\dns\ZoneLogEntry {
+	public function setActionBy (?string $ActionBy = null) : self {
 		$this->set("ActionBy", $ActionBy);
 		return $this;
 	}
 	public function getActionBy () : ?string {
 		return $this->get("ActionBy", "string");
 	}
-	public function setActionByIpAddress (?string $ActionByIpAddress = null) : \ascio\dns\ZoneLogEntry {
+	public function setActionByIpAddress (?string $ActionByIpAddress = null) : self {
 		$this->set("ActionByIpAddress", $ActionByIpAddress);
 		return $this;
 	}
 	public function getActionByIpAddress () : ?string {
 		return $this->get("ActionByIpAddress", "string");
 	}
-	public function setActionDate (?\DateTime $ActionDate = null) : \ascio\dns\ZoneLogEntry {
+	public function setActionDate (?\DateTime $ActionDate = null) : self {
 		$this->set("ActionDate", $ActionDate);
 		return $this;
 	}
 	public function getActionDate () : ?\DateTime {
 		return $this->get("ActionDate", "\\DateTime");
 	}
-	public function setRecord (?\ascio\dns\Record $Record = null) : \ascio\dns\ZoneLogEntry {
+	public function setRecord (?\ascio\dns\Record $Record = null) : self {
 		$this->set("Record", $Record);
 		return $this;
 	}
@@ -96,7 +96,7 @@ class ZoneLogEntry extends DbBase  {
 	public function createRecord () : \ascio\dns\Record {
 		return $this->create ("Record", "\\ascio\\dns\\Record");
 	}
-	public function setZoneName (?string $ZoneName = null) : \ascio\dns\ZoneLogEntry {
+	public function setZoneName (?string $ZoneName = null) : self {
 		$this->set("ZoneName", $ZoneName);
 		return $this;
 	}

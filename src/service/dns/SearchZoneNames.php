@@ -14,7 +14,7 @@ class SearchZoneNames extends RequestRootElement  {
 	protected $_apiObjects=["searchZoneClauses"];
 	protected $searchZoneClauses;
 
-	public function setSearchZoneClauses (?\ascio\dns\ArrayOfSearchZoneClause $searchZoneClauses = null) : \ascio\dns\SearchZoneNames {
+	public function setSearchZoneClauses (?\ascio\dns\ArrayOfSearchZoneClause $searchZoneClauses = null) : self {
 		$this->set("searchZoneClauses", $searchZoneClauses);
 		return $this;
 	}

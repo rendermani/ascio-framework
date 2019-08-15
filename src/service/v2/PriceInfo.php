@@ -18,28 +18,28 @@ class PriceInfo extends Base  {
 	protected $Prices;
 	protected $RenewalType;
 
-	public function setDomainName (?string $DomainName = null) : \ascio\v2\PriceInfo {
+	public function setDomainName (?string $DomainName = null) : self {
 		$this->set("DomainName", $DomainName);
 		return $this;
 	}
 	public function getDomainName () : ?string {
 		return $this->get("DomainName", "string");
 	}
-	public function setDomainType (?string $DomainType = null) : \ascio\v2\PriceInfo {
+	public function setDomainType (?string $DomainType = null) : self {
 		$this->set("DomainType", $DomainType);
 		return $this;
 	}
 	public function getDomainType () : ?string {
 		return $this->get("DomainType", "string");
 	}
-	public function setCurrency (?string $Currency = null) : \ascio\v2\PriceInfo {
+	public function setCurrency (?string $Currency = null) : self {
 		$this->set("Currency", $Currency);
 		return $this;
 	}
 	public function getCurrency () : ?string {
 		return $this->get("Currency", "string");
 	}
-	public function setPrices (?\ascio\v2\ArrayOfPrices $Prices = null) : \ascio\v2\PriceInfo {
+	public function setPrices (?\ascio\v2\ArrayOfPrices $Prices = null) : self {
 		$this->set("Prices", $Prices);
 		return $this;
 	}
@@ -49,7 +49,7 @@ class PriceInfo extends Base  {
 	public function createPrices () : \ascio\v2\ArrayOfPrices {
 		return $this->create ("Prices", "\\ascio\\v2\\ArrayOfPrices");
 	}
-	public function setRenewalType (?string $RenewalType = null) : \ascio\v2\PriceInfo {
+	public function setRenewalType (?string $RenewalType = null) : self {
 		$this->set("RenewalType", $RenewalType);
 		return $this;
 	}

@@ -15,14 +15,14 @@ class CreateApprovalDocumentation extends RequestRootElement  {
 	protected $sessionId;
 	protected $approvalDocumentation;
 
-	public function setSessionId (?string $sessionId = null) : \ascio\v2\CreateApprovalDocumentation {
+	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;
 	}
 	public function getSessionId () : ?string {
 		return $this->get("sessionId", "string");
 	}
-	public function setApprovalDocumentation (?\ascio\v2\ApprovalDocumentation $approvalDocumentation = null) : \ascio\v2\CreateApprovalDocumentation {
+	public function setApprovalDocumentation (?\ascio\v2\ApprovalDocumentation $approvalDocumentation = null) : self {
 		$this->set("approvalDocumentation", $approvalDocumentation);
 		return $this;
 	}

@@ -14,7 +14,7 @@ class LogIn extends RequestRootElement  {
 	protected $_apiObjects=["session"];
 	protected $session;
 
-	public function setSession (?\ascio\v2\Session $session = null) : \ascio\v2\LogIn {
+	public function setSession (?\ascio\v2\Session $session = null) : self {
 		$this->set("session", $session);
 		return $this;
 	}

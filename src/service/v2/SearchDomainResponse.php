@@ -15,7 +15,7 @@ class SearchDomainResponse extends ResponseRootElement  {
 	protected $SearchDomainResult;
 	protected $domains;
 
-	public function setSearchDomainResult (?\ascio\v2\Response $SearchDomainResult = null) : \ascio\v2\SearchDomainResponse {
+	public function setSearchDomainResult (?\ascio\v2\Response $SearchDomainResult = null) : self {
 		$this->set("SearchDomainResult", $SearchDomainResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class SearchDomainResponse extends ResponseRootElement  {
 	public function createSearchDomainResult () : \ascio\v2\Response {
 		return $this->create ("SearchDomainResult", "\\ascio\\v2\\Response");
 	}
-	public function setDomains (?\ascio\v2\ArrayOfDomain $domains = null) : \ascio\v2\SearchDomainResponse {
+	public function setDomains (?\ascio\v2\ArrayOfDomain $domains = null) : self {
 		$this->set("domains", $domains);
 		return $this;
 	}

@@ -15,7 +15,7 @@ class CreateDocumentationResponse extends ResponseRootElement  {
 	protected $CreateDocumentationResult;
 	protected $documentationId;
 
-	public function setCreateDocumentationResult (?\ascio\v2\Response $CreateDocumentationResult = null) : \ascio\v2\CreateDocumentationResponse {
+	public function setCreateDocumentationResult (?\ascio\v2\Response $CreateDocumentationResult = null) : self {
 		$this->set("CreateDocumentationResult", $CreateDocumentationResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class CreateDocumentationResponse extends ResponseRootElement  {
 	public function createCreateDocumentationResult () : \ascio\v2\Response {
 		return $this->create ("CreateDocumentationResult", "\\ascio\\v2\\Response");
 	}
-	public function setDocumentationId (?int $documentationId = null) : \ascio\v2\CreateDocumentationResponse {
+	public function setDocumentationId (?int $documentationId = null) : self {
 		$this->set("documentationId", $documentationId);
 		return $this;
 	}

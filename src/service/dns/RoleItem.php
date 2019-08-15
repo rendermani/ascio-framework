@@ -54,7 +54,7 @@ class RoleItem extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setRights (?\ascio\dns\ArrayOfstring $Rights = null) : \ascio\dns\RoleItem {
+	public function setRights (?\ascio\dns\ArrayOfstring $Rights = null) : self {
 		$this->set("Rights", $Rights);
 		return $this;
 	}
@@ -64,7 +64,7 @@ class RoleItem extends DbBase  {
 	public function createRights () : \ascio\dns\ArrayOfstring {
 		return $this->create ("Rights", "\\ascio\\dns\\ArrayOfstring");
 	}
-	public function setRole (?string $Role = null) : \ascio\dns\RoleItem {
+	public function setRole (?string $Role = null) : self {
 		$this->set("Role", $Role);
 		return $this;
 	}

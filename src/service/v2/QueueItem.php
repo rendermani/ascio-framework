@@ -61,7 +61,7 @@ class QueueItem extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setAttachments (?\ascio\v2\ArrayOfAttachment $Attachments = null) : \ascio\v2\QueueItem {
+	public function setAttachments (?\ascio\v2\ArrayOfAttachment $Attachments = null) : self {
 		$this->set("Attachments", $Attachments);
 		return $this;
 	}
@@ -71,56 +71,56 @@ class QueueItem extends DbBase  {
 	public function createAttachments () : \ascio\v2\ArrayOfAttachment {
 		return $this->create ("Attachments", "\\ascio\\v2\\ArrayOfAttachment");
 	}
-	public function setDomainHandle (?string $DomainHandle = null) : \ascio\v2\QueueItem {
+	public function setDomainHandle (?string $DomainHandle = null) : self {
 		$this->set("DomainHandle", $DomainHandle);
 		return $this;
 	}
 	public function getDomainHandle () : ?string {
 		return $this->get("DomainHandle", "string");
 	}
-	public function setDomainName (?string $DomainName = null) : \ascio\v2\QueueItem {
+	public function setDomainName (?string $DomainName = null) : self {
 		$this->set("DomainName", $DomainName);
 		return $this;
 	}
 	public function getDomainName () : ?string {
 		return $this->get("DomainName", "string");
 	}
-	public function setMsg (?string $Msg = null) : \ascio\v2\QueueItem {
+	public function setMsg (?string $Msg = null) : self {
 		$this->set("Msg", $Msg);
 		return $this;
 	}
 	public function getMsg () : ?string {
 		return $this->get("Msg", "string");
 	}
-	public function setMsgId (?int $MsgId = null) : \ascio\v2\QueueItem {
+	public function setMsgId (?int $MsgId = null) : self {
 		$this->set("MsgId", $MsgId);
 		return $this;
 	}
 	public function getMsgId () : ?int {
 		return $this->get("MsgId", "int");
 	}
-	public function setMsgType (?string $MsgType = null) : \ascio\v2\QueueItem {
+	public function setMsgType (?string $MsgType = null) : self {
 		$this->set("MsgType", $MsgType);
 		return $this;
 	}
 	public function getMsgType () : ?string {
 		return $this->get("MsgType", "string");
 	}
-	public function setOrderId (?string $OrderId = null) : \ascio\v2\QueueItem {
+	public function setOrderId (?string $OrderId = null) : self {
 		$this->set("OrderId", $OrderId);
 		return $this;
 	}
 	public function getOrderId () : ?string {
 		return $this->get("OrderId", "string");
 	}
-	public function setOrderStatus (?string $OrderStatus = null) : \ascio\v2\QueueItem {
+	public function setOrderStatus (?string $OrderStatus = null) : self {
 		$this->set("OrderStatus", $OrderStatus);
 		return $this;
 	}
 	public function getOrderStatus () : ?string {
 		return $this->get("OrderStatus", "string");
 	}
-	public function setStatusList (?\ascio\v2\ArrayOfCallbackStatus $StatusList = null) : \ascio\v2\QueueItem {
+	public function setStatusList (?\ascio\v2\ArrayOfCallbackStatus $StatusList = null) : self {
 		$this->set("StatusList", $StatusList);
 		return $this;
 	}

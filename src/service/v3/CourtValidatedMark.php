@@ -58,35 +58,35 @@ class CourtValidatedMark extends AbstractMark  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setCourtName (?string $CourtName = null) : \ascio\v3\CourtValidatedMark {
+	public function setCourtName (?string $CourtName = null) : self {
 		$this->set("CourtName", $CourtName);
 		return $this;
 	}
 	public function getCourtName () : ?string {
 		return $this->get("CourtName", "string");
 	}
-	public function setReferenceNumber (?string $ReferenceNumber = null) : \ascio\v3\CourtValidatedMark {
+	public function setReferenceNumber (?string $ReferenceNumber = null) : self {
 		$this->set("ReferenceNumber", $ReferenceNumber);
 		return $this;
 	}
 	public function getReferenceNumber () : ?string {
 		return $this->get("ReferenceNumber", "string");
 	}
-	public function setCountry (?string $Country = null) : \ascio\v3\CourtValidatedMark {
+	public function setCountry (?string $Country = null) : self {
 		$this->set("Country", $Country);
 		return $this;
 	}
 	public function getCountry () : ?string {
 		return $this->get("Country", "string");
 	}
-	public function setRegion (?string $Region = null) : \ascio\v3\CourtValidatedMark {
+	public function setRegion (?string $Region = null) : self {
 		$this->set("Region", $Region);
 		return $this;
 	}
 	public function getRegion () : ?string {
 		return $this->get("Region", "string");
 	}
-	public function setProtectionDate (?\DateTime $ProtectionDate = null) : \ascio\v3\CourtValidatedMark {
+	public function setProtectionDate (?\DateTime $ProtectionDate = null) : self {
 		$this->set("ProtectionDate", $ProtectionDate);
 		return $this;
 	}

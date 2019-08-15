@@ -36,14 +36,14 @@ class KeyValue extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setKey (?string $Key = null) : \ascio\v3\KeyValue {
+	public function setKey (?string $Key = null) : self {
 		$this->set("Key", $Key);
 		return $this;
 	}
 	public function getKey () : ?string {
 		return $this->get("Key", "string");
 	}
-	public function setValue (?string $Value = null) : \ascio\v3\KeyValue {
+	public function setValue (?string $Value = null) : self {
 		$this->set("Value", $Value);
 		return $this;
 	}

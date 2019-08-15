@@ -14,7 +14,7 @@ class UpdateContactResponse extends ResponseRootElement  {
 	protected $_apiObjects=["UpdateContactResult"];
 	protected $UpdateContactResult;
 
-	public function setUpdateContactResult (?\ascio\v2\Response $UpdateContactResult = null) : \ascio\v2\UpdateContactResponse {
+	public function setUpdateContactResult (?\ascio\v2\Response $UpdateContactResult = null) : self {
 		$this->set("UpdateContactResult", $UpdateContactResult);
 		return $this;
 	}

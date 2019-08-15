@@ -14,7 +14,7 @@ class UpdateRecordResponse extends ResponseRootElement  {
 	protected $_apiObjects=["UpdateRecordResult"];
 	protected $UpdateRecordResult;
 
-	public function setUpdateRecordResult (?\ascio\dns\Response $UpdateRecordResult = null) : \ascio\dns\UpdateRecordResponse {
+	public function setUpdateRecordResult (?\ascio\dns\Response $UpdateRecordResult = null) : self {
 		$this->set("UpdateRecordResult", $UpdateRecordResult);
 		return $this;
 	}

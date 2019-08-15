@@ -14,7 +14,7 @@ class ArrayOfSearchUserClause extends ArrayBase implements \Iterator  {
 	protected $_apiObjects=["SearchUserClause"];
 	protected $SearchUserClause;
 
-	public function setSearchUserClause (?Iterable $SearchUserClause = null) : \ascio\dns\ArrayOfSearchUserClause {
+	public function setSearchUserClause (?Iterable $SearchUserClause = null) : self {
 		$this->set("SearchUserClause", $SearchUserClause);
 		return $this;
 	}
@@ -24,7 +24,7 @@ class ArrayOfSearchUserClause extends ArrayBase implements \Iterator  {
 	public function createSearchUserClause () : \ascio\dns\SearchUserClause {
 		return $this->create ("SearchUserClause", "\\ascio\\dns\\SearchUserClause");
 	}
-	public function addSearchUserClause () : ?\ascio\dns\SearchUserClause {
+	public function addSearchUserClause () : \ascio\dns\SearchUserClause {
 		return $this->add("SearchUserClause","\\ascio\\dns\\SearchUserClause",func_get_args());
 	}
 }

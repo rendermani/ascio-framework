@@ -35,14 +35,14 @@ class ArrayOfstring extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setString (?Iterable $string = null) : \ascio\dns\ArrayOfstring {
+	public function setString (?Iterable $string = null) : self {
 		$this->set("string", $string);
 		return $this;
 	}
 	public function getString () : ?Iterable {
 		return $this->get("string", "string");
 	}
-	public function addString () : ?string {
+	public function addString () : string {
 		return $this->add("string","string",func_get_args());
 	}
 }

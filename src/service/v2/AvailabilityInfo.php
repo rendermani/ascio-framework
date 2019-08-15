@@ -16,21 +16,21 @@ class AvailabilityInfo extends RequestRootElement  {
 	protected $domainName;
 	protected $quality;
 
-	public function setSessionId (?string $sessionId = null) : \ascio\v2\AvailabilityInfo {
+	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;
 	}
 	public function getSessionId () : ?string {
 		return $this->get("sessionId", "string");
 	}
-	public function setDomainName (?string $domainName = null) : \ascio\v2\AvailabilityInfo {
+	public function setDomainName (?string $domainName = null) : self {
 		$this->set("domainName", $domainName);
 		return $this;
 	}
 	public function getDomainName () : ?string {
 		return $this->get("domainName", "string");
 	}
-	public function setQuality (?string $quality = null) : \ascio\v2\AvailabilityInfo {
+	public function setQuality (?string $quality = null) : self {
 		$this->set("quality", $quality);
 		return $this;
 	}

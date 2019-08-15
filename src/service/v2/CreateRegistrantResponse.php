@@ -15,7 +15,7 @@ class CreateRegistrantResponse extends ResponseRootElement  {
 	protected $CreateRegistrantResult;
 	protected $registrant;
 
-	public function setCreateRegistrantResult (?\ascio\v2\Response $CreateRegistrantResult = null) : \ascio\v2\CreateRegistrantResponse {
+	public function setCreateRegistrantResult (?\ascio\v2\Response $CreateRegistrantResult = null) : self {
 		$this->set("CreateRegistrantResult", $CreateRegistrantResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class CreateRegistrantResponse extends ResponseRootElement  {
 	public function createCreateRegistrantResult () : \ascio\v2\Response {
 		return $this->create ("CreateRegistrantResult", "\\ascio\\v2\\Response");
 	}
-	public function setRegistrant (?\ascio\v2\Registrant $registrant = null) : \ascio\v2\CreateRegistrantResponse {
+	public function setRegistrant (?\ascio\v2\Registrant $registrant = null) : self {
 		$this->set("registrant", $registrant);
 		return $this;
 	}

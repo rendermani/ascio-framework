@@ -16,21 +16,21 @@ class CreateZone extends RequestRootElement  {
 	protected $owner;
 	protected $records;
 
-	public function setZoneName (?string $zoneName = null) : \ascio\dns\CreateZone {
+	public function setZoneName (?string $zoneName = null) : self {
 		$this->set("zoneName", $zoneName);
 		return $this;
 	}
 	public function getZoneName () : ?string {
 		return $this->get("zoneName", "string");
 	}
-	public function setOwner (?string $owner = null) : \ascio\dns\CreateZone {
+	public function setOwner (?string $owner = null) : self {
 		$this->set("owner", $owner);
 		return $this;
 	}
 	public function getOwner () : ?string {
 		return $this->get("owner", "string");
 	}
-	public function setRecords (?\ascio\dns\ArrayOfRecord $records = null) : \ascio\dns\CreateZone {
+	public function setRecords (?\ascio\dns\ArrayOfRecord $records = null) : self {
 		$this->set("records", $records);
 		return $this;
 	}

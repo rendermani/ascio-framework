@@ -15,7 +15,7 @@ class CreateSupportOrderResponse extends ResponseRootElement  {
 	protected $CreateSupportOrderResult;
 	protected $orderId;
 
-	public function setCreateSupportOrderResult (?\ascio\v2\Response $CreateSupportOrderResult = null) : \ascio\v2\CreateSupportOrderResponse {
+	public function setCreateSupportOrderResult (?\ascio\v2\Response $CreateSupportOrderResult = null) : self {
 		$this->set("CreateSupportOrderResult", $CreateSupportOrderResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class CreateSupportOrderResponse extends ResponseRootElement  {
 	public function createCreateSupportOrderResult () : \ascio\v2\Response {
 		return $this->create ("CreateSupportOrderResult", "\\ascio\\v2\\Response");
 	}
-	public function setOrderId (?string $orderId = null) : \ascio\v2\CreateSupportOrderResponse {
+	public function setOrderId (?string $orderId = null) : self {
 		$this->set("orderId", $orderId);
 		return $this;
 	}

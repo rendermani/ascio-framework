@@ -14,7 +14,7 @@ class UploadMessageResponse extends ResponseRootElement  {
 	protected $_apiObjects=["UploadMessageResult"];
 	protected $UploadMessageResult;
 
-	public function setUploadMessageResult (?\ascio\v2\Response $UploadMessageResult = null) : \ascio\v2\UploadMessageResponse {
+	public function setUploadMessageResult (?\ascio\v2\Response $UploadMessageResult = null) : self {
 		$this->set("UploadMessageResult", $UploadMessageResult);
 		return $this;
 	}

@@ -65,77 +65,77 @@ class Order extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setOrderId (?string $OrderId = null) : \ascio\v2\Order {
+	public function setOrderId (?string $OrderId = null) : self {
 		$this->set("OrderId", $OrderId);
 		return $this;
 	}
 	public function getOrderId () : ?string {
 		return $this->get("OrderId", "string");
 	}
-	public function setType (?string $Type = null) : \ascio\v2\Order {
+	public function setType (?string $Type = null) : self {
 		$this->set("Type", $Type);
 		return $this;
 	}
 	public function getType () : ?string {
 		return $this->get("Type", "string");
 	}
-	public function setAccountReference (?string $AccountReference = null) : \ascio\v2\Order {
+	public function setAccountReference (?string $AccountReference = null) : self {
 		$this->set("AccountReference", $AccountReference);
 		return $this;
 	}
 	public function getAccountReference () : ?string {
 		return $this->get("AccountReference", "string");
 	}
-	public function setStatus (?string $Status = null) : \ascio\v2\Order {
+	public function setStatus (?string $Status = null) : self {
 		$this->set("Status", $Status);
 		return $this;
 	}
 	public function getStatus () : ?string {
 		return $this->get("Status", "string");
 	}
-	public function setTransactionComment (?string $TransactionComment = null) : \ascio\v2\Order {
+	public function setTransactionComment (?string $TransactionComment = null) : self {
 		$this->set("TransactionComment", $TransactionComment);
 		return $this;
 	}
 	public function getTransactionComment () : ?string {
 		return $this->get("TransactionComment", "string");
 	}
-	public function setComments (?string $Comments = null) : \ascio\v2\Order {
+	public function setComments (?string $Comments = null) : self {
 		$this->set("Comments", $Comments);
 		return $this;
 	}
 	public function getComments () : ?string {
 		return $this->get("Comments", "string");
 	}
-	public function setOptions (?string $Options = null) : \ascio\v2\Order {
+	public function setOptions (?string $Options = null) : self {
 		$this->set("Options", $Options);
 		return $this;
 	}
 	public function getOptions () : ?string {
 		return $this->get("Options", "string");
 	}
-	public function setLocalPresence (?string $LocalPresence = null) : \ascio\v2\Order {
+	public function setLocalPresence (?string $LocalPresence = null) : self {
 		$this->set("LocalPresence", $LocalPresence);
 		return $this;
 	}
 	public function getLocalPresence () : ?string {
 		return $this->get("LocalPresence", "string");
 	}
-	public function setBatch (?string $Batch = null) : \ascio\v2\Order {
+	public function setBatch (?string $Batch = null) : self {
 		$this->set("Batch", $Batch);
 		return $this;
 	}
 	public function getBatch () : ?string {
 		return $this->get("Batch", "string");
 	}
-	public function setDocumentation (?string $Documentation = null) : \ascio\v2\Order {
+	public function setDocumentation (?string $Documentation = null) : self {
 		$this->set("Documentation", $Documentation);
 		return $this;
 	}
 	public function getDocumentation () : ?string {
 		return $this->get("Documentation", "string");
 	}
-	public function setDomain (?\ascio\v2\Domain $Domain = null) : \ascio\v2\Order {
+	public function setDomain (?\ascio\v2\Domain $Domain = null) : self {
 		$this->set("Domain", $Domain);
 		return $this;
 	}
@@ -145,14 +145,14 @@ class Order extends DbBase  {
 	public function createDomain () : \ascio\v2\Domain {
 		return $this->create ("Domain", "\\ascio\\v2\\Domain");
 	}
-	public function setCreDate (?\DateTime $CreDate = null) : \ascio\v2\Order {
+	public function setCreDate (?\DateTime $CreDate = null) : self {
 		$this->set("CreDate", $CreDate);
 		return $this;
 	}
 	public function getCreDate () : ?\DateTime {
 		return $this->get("CreDate", "\\DateTime");
 	}
-	public function setAgreedPrice (?int $AgreedPrice = null) : \ascio\v2\Order {
+	public function setAgreedPrice (?int $AgreedPrice = null) : self {
 		$this->set("AgreedPrice", $AgreedPrice);
 		return $this;
 	}

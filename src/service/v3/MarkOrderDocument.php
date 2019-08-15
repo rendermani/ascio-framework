@@ -38,7 +38,7 @@ class MarkOrderDocument extends Attachment  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setDocType (?string $DocType = null) : \ascio\v3\MarkOrderDocument {
+	public function setDocType (?string $DocType = null) : self {
 		$this->set("DocType", $DocType);
 		return $this;
 	}

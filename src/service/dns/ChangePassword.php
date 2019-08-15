@@ -15,14 +15,14 @@ class ChangePassword extends RequestRootElement  {
 	protected $userName;
 	protected $newPassword;
 
-	public function setUserName (?string $userName = null) : \ascio\dns\ChangePassword {
+	public function setUserName (?string $userName = null) : self {
 		$this->set("userName", $userName);
 		return $this;
 	}
 	public function getUserName () : ?string {
 		return $this->get("userName", "string");
 	}
-	public function setNewPassword (?string $newPassword = null) : \ascio\dns\ChangePassword {
+	public function setNewPassword (?string $newPassword = null) : self {
 		$this->set("newPassword", $newPassword);
 		return $this;
 	}

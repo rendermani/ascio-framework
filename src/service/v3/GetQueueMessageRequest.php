@@ -35,7 +35,7 @@ class GetQueueMessageRequest extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setMessageId (?int $MessageId = null) : \ascio\v3\GetQueueMessageRequest {
+	public function setMessageId (?int $MessageId = null) : self {
 		$this->set("MessageId", $MessageId);
 		return $this;
 	}

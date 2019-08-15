@@ -69,77 +69,77 @@ class SslCertificateInfo extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setHandle (?string $Handle = null) : \ascio\v3\SslCertificateInfo {
+	public function setHandle (?string $Handle = null) : self {
 		$this->set("Handle", $Handle);
 		return $this;
 	}
 	public function getHandle () : ?string {
 		return $this->get("Handle", "string");
 	}
-	public function setStatus (?string $Status = null) : \ascio\v3\SslCertificateInfo {
+	public function setStatus (?string $Status = null) : self {
 		$this->set("Status", $Status);
 		return $this;
 	}
 	public function getStatus () : ?string {
 		return $this->get("Status", "string");
 	}
-	public function setCreated (?\DateTime $Created = null) : \ascio\v3\SslCertificateInfo {
+	public function setCreated (?\DateTime $Created = null) : self {
 		$this->set("Created", $Created);
 		return $this;
 	}
 	public function getCreated () : ?\DateTime {
 		return $this->get("Created", "\\DateTime");
 	}
-	public function setExpires (?\DateTime $Expires = null) : \ascio\v3\SslCertificateInfo {
+	public function setExpires (?\DateTime $Expires = null) : self {
 		$this->set("Expires", $Expires);
 		return $this;
 	}
 	public function getExpires () : ?\DateTime {
 		return $this->get("Expires", "\\DateTime");
 	}
-	public function setCommonName (?string $CommonName = null) : \ascio\v3\SslCertificateInfo {
+	public function setCommonName (?string $CommonName = null) : self {
 		$this->set("CommonName", $CommonName);
 		return $this;
 	}
 	public function getCommonName () : ?string {
 		return $this->get("CommonName", "string");
 	}
-	public function setProductCode (?string $ProductCode = null) : \ascio\v3\SslCertificateInfo {
+	public function setProductCode (?string $ProductCode = null) : self {
 		$this->set("ProductCode", $ProductCode);
 		return $this;
 	}
 	public function getProductCode () : ?string {
 		return $this->get("ProductCode", "string");
 	}
-	public function setWebServerType (?string $WebServerType = null) : \ascio\v3\SslCertificateInfo {
+	public function setWebServerType (?string $WebServerType = null) : self {
 		$this->set("WebServerType", $WebServerType);
 		return $this;
 	}
 	public function getWebServerType () : ?string {
 		return $this->get("WebServerType", "string");
 	}
-	public function setApproverEmail (?string $ApproverEmail = null) : \ascio\v3\SslCertificateInfo {
+	public function setApproverEmail (?string $ApproverEmail = null) : self {
 		$this->set("ApproverEmail", $ApproverEmail);
 		return $this;
 	}
 	public function getApproverEmail () : ?string {
 		return $this->get("ApproverEmail", "string");
 	}
-	public function setCSR (?string $CSR = null) : \ascio\v3\SslCertificateInfo {
+	public function setCSR (?string $CSR = null) : self {
 		$this->set("CSR", $CSR);
 		return $this;
 	}
 	public function getCSR () : ?string {
 		return $this->get("CSR", "string");
 	}
-	public function setCertificate (?string $Certificate = null) : \ascio\v3\SslCertificateInfo {
+	public function setCertificate (?string $Certificate = null) : self {
 		$this->set("Certificate", $Certificate);
 		return $this;
 	}
 	public function getCertificate () : ?string {
 		return $this->get("Certificate", "string");
 	}
-	public function setOwner (?\ascio\v3\Registrant $Owner = null) : \ascio\v3\SslCertificateInfo {
+	public function setOwner (?\ascio\v3\Registrant $Owner = null) : self {
 		$this->set("Owner", $Owner);
 		return $this;
 	}
@@ -149,7 +149,7 @@ class SslCertificateInfo extends DbBase  {
 	public function createOwner () : \ascio\v3\Registrant {
 		return $this->create ("Owner", "\\ascio\\v3\\Registrant");
 	}
-	public function setAdmin (?\ascio\v3\Contact $Admin = null) : \ascio\v3\SslCertificateInfo {
+	public function setAdmin (?\ascio\v3\Contact $Admin = null) : self {
 		$this->set("Admin", $Admin);
 		return $this;
 	}
@@ -159,7 +159,7 @@ class SslCertificateInfo extends DbBase  {
 	public function createAdmin () : \ascio\v3\Contact {
 		return $this->create ("Admin", "\\ascio\\v3\\Contact");
 	}
-	public function setTech (?\ascio\v3\Contact $Tech = null) : \ascio\v3\SslCertificateInfo {
+	public function setTech (?\ascio\v3\Contact $Tech = null) : self {
 		$this->set("Tech", $Tech);
 		return $this;
 	}
@@ -169,7 +169,7 @@ class SslCertificateInfo extends DbBase  {
 	public function createTech () : \ascio\v3\Contact {
 		return $this->create ("Tech", "\\ascio\\v3\\Contact");
 	}
-	public function setSanNames (?\ascio\v3\ArrayOfstring $SanNames = null) : \ascio\v3\SslCertificateInfo {
+	public function setSanNames (?\ascio\v3\ArrayOfstring $SanNames = null) : self {
 		$this->set("SanNames", $SanNames);
 		return $this;
 	}
@@ -179,21 +179,21 @@ class SslCertificateInfo extends DbBase  {
 	public function createSanNames () : \ascio\v3\ArrayOfstring {
 		return $this->create ("SanNames", "\\ascio\\v3\\ArrayOfstring");
 	}
-	public function setObjectComment (?string $ObjectComment = null) : \ascio\v3\SslCertificateInfo {
+	public function setObjectComment (?string $ObjectComment = null) : self {
 		$this->set("ObjectComment", $ObjectComment);
 		return $this;
 	}
 	public function getObjectComment () : ?string {
 		return $this->get("ObjectComment", "string");
 	}
-	public function setValidationType (?string $ValidationType = null) : \ascio\v3\SslCertificateInfo {
+	public function setValidationType (?string $ValidationType = null) : self {
 		$this->set("ValidationType", $ValidationType);
 		return $this;
 	}
 	public function getValidationType () : ?string {
 		return $this->get("ValidationType", "string");
 	}
-	public function setSslProductName (?string $SslProductName = null) : \ascio\v3\SslCertificateInfo {
+	public function setSslProductName (?string $SslProductName = null) : self {
 		$this->set("SslProductName", $SslProductName);
 		return $this;
 	}

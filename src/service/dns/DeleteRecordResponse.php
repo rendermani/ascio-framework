@@ -14,7 +14,7 @@ class DeleteRecordResponse extends ResponseRootElement  {
 	protected $_apiObjects=["DeleteRecordResult"];
 	protected $DeleteRecordResult;
 
-	public function setDeleteRecordResult (?\ascio\dns\Response $DeleteRecordResult = null) : \ascio\dns\DeleteRecordResponse {
+	public function setDeleteRecordResult (?\ascio\dns\Response $DeleteRecordResult = null) : self {
 		$this->set("DeleteRecordResult", $DeleteRecordResult);
 		return $this;
 	}

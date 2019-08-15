@@ -15,14 +15,14 @@ class CreateDocumentation extends RequestRootElement  {
 	protected $sessionId;
 	protected $attachments;
 
-	public function setSessionId (?string $sessionId = null) : \ascio\v2\CreateDocumentation {
+	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;
 	}
 	public function getSessionId () : ?string {
 		return $this->get("sessionId", "string");
 	}
-	public function setAttachments (?\ascio\v2\ArrayOfAttachment $attachments = null) : \ascio\v2\CreateDocumentation {
+	public function setAttachments (?\ascio\v2\ArrayOfAttachment $attachments = null) : self {
 		$this->set("attachments", $attachments);
 		return $this;
 	}

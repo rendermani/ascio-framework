@@ -15,7 +15,7 @@ class SearchUserResponse extends ResponseRootElement  {
 	protected $SearchUserResult;
 	protected $userNames;
 
-	public function setSearchUserResult (?\ascio\dns\Response $SearchUserResult = null) : \ascio\dns\SearchUserResponse {
+	public function setSearchUserResult (?\ascio\dns\Response $SearchUserResult = null) : self {
 		$this->set("SearchUserResult", $SearchUserResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class SearchUserResponse extends ResponseRootElement  {
 	public function createSearchUserResult () : \ascio\dns\Response {
 		return $this->create ("SearchUserResult", "\\ascio\\dns\\Response");
 	}
-	public function setUserNames (?\ascio\dns\ArrayOfstring $userNames = null) : \ascio\dns\SearchUserResponse {
+	public function setUserNames (?\ascio\dns\ArrayOfstring $userNames = null) : self {
 		$this->set("userNames", $userNames);
 		return $this;
 	}

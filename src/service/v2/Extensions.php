@@ -53,7 +53,7 @@ class Extensions extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setExtension (?Iterable $Extension = null) : \ascio\v2\Extensions {
+	public function setExtension (?Iterable $Extension = null) : self {
 		$this->set("Extension", $Extension);
 		return $this;
 	}
@@ -63,7 +63,7 @@ class Extensions extends DbArrayBase  {
 	public function createExtension () : \ascio\v2\Extension {
 		return $this->create ("Extension", "\\ascio\\v2\\Extension");
 	}
-	public function addExtension (string $Key, string $Value) : ?\ascio\v2\Extension {
+	public function addExtension (string $Key, string $Value) : \ascio\v2\Extension {
 		return $this->add("Extension","\\ascio\\v2\\Extension",func_get_args());
 	}
 }

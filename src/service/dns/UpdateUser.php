@@ -14,7 +14,7 @@ class UpdateUser extends RequestRootElement  {
 	protected $_apiObjects=["user"];
 	protected $user;
 
-	public function setUser (?\ascio\dns\User $user = null) : \ascio\dns\UpdateUser {
+	public function setUser (?\ascio\dns\User $user = null) : self {
 		$this->set("user", $user);
 		return $this;
 	}

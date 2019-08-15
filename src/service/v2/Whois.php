@@ -15,14 +15,14 @@ class Whois extends RequestRootElement  {
 	protected $sessionId;
 	protected $domainName;
 
-	public function setSessionId (?string $sessionId = null) : \ascio\v2\Whois {
+	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;
 	}
 	public function getSessionId () : ?string {
 		return $this->get("sessionId", "string");
 	}
-	public function setDomainName (?string $domainName = null) : \ascio\v2\Whois {
+	public function setDomainName (?string $domainName = null) : self {
 		$this->set("domainName", $domainName);
 		return $this;
 	}

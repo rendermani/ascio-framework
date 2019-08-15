@@ -36,14 +36,14 @@ class PollQueueRequest extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setMessageType (?string $MessageType = null) : \ascio\v3\PollQueueRequest {
+	public function setMessageType (?string $MessageType = null) : self {
 		$this->set("MessageType", $MessageType);
 		return $this;
 	}
 	public function getMessageType () : ?string {
 		return $this->get("MessageType", "string");
 	}
-	public function setObjectType (?string $ObjectType = null) : \ascio\v3\PollQueueRequest {
+	public function setObjectType (?string $ObjectType = null) : self {
 		$this->set("ObjectType", $ObjectType);
 		return $this;
 	}

@@ -17,28 +17,28 @@ class CreateSupportOrder extends RequestRootElement  {
 	protected $body;
 	protected $attachments;
 
-	public function setSessionId (?string $sessionId = null) : \ascio\v2\CreateSupportOrder {
+	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;
 	}
 	public function getSessionId () : ?string {
 		return $this->get("sessionId", "string");
 	}
-	public function setSubject (?string $subject = null) : \ascio\v2\CreateSupportOrder {
+	public function setSubject (?string $subject = null) : self {
 		$this->set("subject", $subject);
 		return $this;
 	}
 	public function getSubject () : ?string {
 		return $this->get("subject", "string");
 	}
-	public function setBody (?string $body = null) : \ascio\v2\CreateSupportOrder {
+	public function setBody (?string $body = null) : self {
 		$this->set("body", $body);
 		return $this;
 	}
 	public function getBody () : ?string {
 		return $this->get("body", "string");
 	}
-	public function setAttachments (?\ascio\v2\ArrayOfAttachment $attachments = null) : \ascio\v2\CreateSupportOrder {
+	public function setAttachments (?\ascio\v2\ArrayOfAttachment $attachments = null) : self {
 		$this->set("attachments", $attachments);
 		return $this;
 	}

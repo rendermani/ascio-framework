@@ -35,14 +35,14 @@ class ArrayOfObjectType extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setObjectType (?Iterable $ObjectType = null) : \ascio\v3\ArrayOfObjectType {
+	public function setObjectType (?Iterable $ObjectType = null) : self {
 		$this->set("ObjectType", $ObjectType);
 		return $this;
 	}
 	public function getObjectType () : ?Iterable {
 		return $this->get("ObjectType", "string");
 	}
-	public function addObjectType () : ?string {
+	public function addObjectType () : string {
 		return $this->add("ObjectType","string",func_get_args());
 	}
 }

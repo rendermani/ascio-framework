@@ -14,7 +14,7 @@ class ArrayOfNameServer extends ArrayBase implements \Iterator  {
 	protected $_apiObjects=["NameServer"];
 	protected $NameServer;
 
-	public function setNameServer (?Iterable $NameServer = null) : \ascio\v2\ArrayOfNameServer {
+	public function setNameServer (?Iterable $NameServer = null) : self {
 		$this->set("NameServer", $NameServer);
 		return $this;
 	}
@@ -24,7 +24,7 @@ class ArrayOfNameServer extends ArrayBase implements \Iterator  {
 	public function createNameServer () : \ascio\v2\NameServer {
 		return $this->create ("NameServer", "\\ascio\\v2\\NameServer");
 	}
-	public function addNameServer () : ?\ascio\v2\NameServer {
+	public function addNameServer () : \ascio\v2\NameServer {
 		return $this->add("NameServer","\\ascio\\v2\\NameServer",func_get_args());
 	}
 }

@@ -14,14 +14,14 @@ class ArrayOfOrderStatusType extends ArrayBase implements \Iterator  {
 	protected $_apiObjects=[];
 	protected $OrderStatusType;
 
-	public function setOrderStatusType (?Iterable $OrderStatusType = null) : \ascio\v2\ArrayOfOrderStatusType {
+	public function setOrderStatusType (?Iterable $OrderStatusType = null) : self {
 		$this->set("OrderStatusType", $OrderStatusType);
 		return $this;
 	}
 	public function getOrderStatusType () : ?Iterable {
 		return $this->get("OrderStatusType", "string");
 	}
-	public function addOrderStatusType () : ?string {
+	public function addOrderStatusType () : string {
 		return $this->add("OrderStatusType","string",func_get_args());
 	}
 }

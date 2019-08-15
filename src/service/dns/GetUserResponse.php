@@ -15,7 +15,7 @@ class GetUserResponse extends ResponseRootElement  {
 	protected $GetUserResult;
 	protected $user;
 
-	public function setGetUserResult (?\ascio\dns\Response $GetUserResult = null) : \ascio\dns\GetUserResponse {
+	public function setGetUserResult (?\ascio\dns\Response $GetUserResult = null) : self {
 		$this->set("GetUserResult", $GetUserResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class GetUserResponse extends ResponseRootElement  {
 	public function createGetUserResult () : \ascio\dns\Response {
 		return $this->create ("GetUserResult", "\\ascio\\dns\\Response");
 	}
-	public function setUser (?\ascio\dns\User $user = null) : \ascio\dns\GetUserResponse {
+	public function setUser (?\ascio\dns\User $user = null) : self {
 		$this->set("user", $user);
 		return $this;
 	}

@@ -15,7 +15,7 @@ class GetMessagesResponse extends ResponseRootElement  {
 	protected $GetMessagesResult;
 	protected $messages;
 
-	public function setGetMessagesResult (?\ascio\v2\Response $GetMessagesResult = null) : \ascio\v2\GetMessagesResponse {
+	public function setGetMessagesResult (?\ascio\v2\Response $GetMessagesResult = null) : self {
 		$this->set("GetMessagesResult", $GetMessagesResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class GetMessagesResponse extends ResponseRootElement  {
 	public function createGetMessagesResult () : \ascio\v2\Response {
 		return $this->create ("GetMessagesResult", "\\ascio\\v2\\Response");
 	}
-	public function setMessages (?\ascio\v2\ArrayOfMessage $messages = null) : \ascio\v2\GetMessagesResponse {
+	public function setMessages (?\ascio\v2\ArrayOfMessage $messages = null) : self {
 		$this->set("messages", $messages);
 		return $this;
 	}

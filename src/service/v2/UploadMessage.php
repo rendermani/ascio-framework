@@ -16,21 +16,21 @@ class UploadMessage extends RequestRootElement  {
 	protected $orderId;
 	protected $message;
 
-	public function setSessionId (?string $sessionId = null) : \ascio\v2\UploadMessage {
+	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;
 	}
 	public function getSessionId () : ?string {
 		return $this->get("sessionId", "string");
 	}
-	public function setOrderId (?string $orderId = null) : \ascio\v2\UploadMessage {
+	public function setOrderId (?string $orderId = null) : self {
 		$this->set("orderId", $orderId);
 		return $this;
 	}
 	public function getOrderId () : ?string {
 		return $this->get("orderId", "string");
 	}
-	public function setMessage (?\ascio\v2\Message $message = null) : \ascio\v2\UploadMessage {
+	public function setMessage (?\ascio\v2\Message $message = null) : self {
 		$this->set("message", $message);
 		return $this;
 	}

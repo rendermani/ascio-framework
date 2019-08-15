@@ -15,7 +15,7 @@ class GetRegistrantVerificationStatusResponse extends ResponseRootElement  {
 	protected $GetRegistrantVerificationStatusResult;
 	protected $verificationStatus;
 
-	public function setGetRegistrantVerificationStatusResult (?\ascio\v2\Response $GetRegistrantVerificationStatusResult = null) : \ascio\v2\GetRegistrantVerificationStatusResponse {
+	public function setGetRegistrantVerificationStatusResult (?\ascio\v2\Response $GetRegistrantVerificationStatusResult = null) : self {
 		$this->set("GetRegistrantVerificationStatusResult", $GetRegistrantVerificationStatusResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class GetRegistrantVerificationStatusResponse extends ResponseRootElement  {
 	public function createGetRegistrantVerificationStatusResult () : \ascio\v2\Response {
 		return $this->create ("GetRegistrantVerificationStatusResult", "\\ascio\\v2\\Response");
 	}
-	public function setVerificationStatus (?string $verificationStatus = null) : \ascio\v2\GetRegistrantVerificationStatusResponse {
+	public function setVerificationStatus (?string $verificationStatus = null) : self {
 		$this->set("verificationStatus", $verificationStatus);
 		return $this;
 	}

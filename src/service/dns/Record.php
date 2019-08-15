@@ -72,42 +72,42 @@ class Record extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setId (?int $Id = null) : \ascio\dns\Record {
+	public function setId (?int $Id = null) : self {
 		$this->set("Id", $Id);
 		return $this;
 	}
 	public function getId () : ?int {
 		return $this->get("Id", "int");
 	}
-	public function setSerial (?\long $Serial = null) : \ascio\dns\Record {
+	public function setSerial (?\long $Serial = null) : self {
 		$this->set("Serial", $Serial);
 		return $this;
 	}
 	public function getSerial () : ?\long {
 		return $this->get("Serial", "\\long");
 	}
-	public function setSource (?string $Source = null) : \ascio\dns\Record {
+	public function setSource (?string $Source = null) : self {
 		$this->set("Source", $Source);
 		return $this;
 	}
 	public function getSource () : ?string {
 		return $this->get("Source", "string");
 	}
-	public function setTTL (?\long $TTL = null) : \ascio\dns\Record {
+	public function setTTL (?\long $TTL = null) : self {
 		$this->set("TTL", $TTL);
 		return $this;
 	}
 	public function getTTL () : ?\long {
 		return $this->get("TTL", "\\long");
 	}
-	public function setTarget (?string $Target = null) : \ascio\dns\Record {
+	public function setTarget (?string $Target = null) : self {
 		$this->set("Target", $Target);
 		return $this;
 	}
 	public function getTarget () : ?string {
 		return $this->get("Target", "string");
 	}
-	public function setUpdatedDate (?\DateTime $UpdatedDate = null) : \ascio\dns\Record {
+	public function setUpdatedDate (?\DateTime $UpdatedDate = null) : self {
 		$this->set("UpdatedDate", $UpdatedDate);
 		return $this;
 	}

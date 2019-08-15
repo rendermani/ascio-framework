@@ -15,14 +15,14 @@ class CreateRecord extends RequestRootElement  {
 	protected $zoneName;
 	protected $record;
 
-	public function setZoneName (?string $zoneName = null) : \ascio\dns\CreateRecord {
+	public function setZoneName (?string $zoneName = null) : self {
 		$this->set("zoneName", $zoneName);
 		return $this;
 	}
 	public function getZoneName () : ?string {
 		return $this->get("zoneName", "string");
 	}
-	public function setRecord (?\ascio\dns\Record $record = null) : \ascio\dns\CreateRecord {
+	public function setRecord (?\ascio\dns\Record $record = null) : self {
 		$this->set("record", $record);
 		return $this;
 	}

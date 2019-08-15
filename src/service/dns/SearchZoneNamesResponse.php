@@ -15,7 +15,7 @@ class SearchZoneNamesResponse extends ResponseRootElement  {
 	protected $SearchZoneNamesResult;
 	protected $zoneNames;
 
-	public function setSearchZoneNamesResult (?\ascio\dns\Response $SearchZoneNamesResult = null) : \ascio\dns\SearchZoneNamesResponse {
+	public function setSearchZoneNamesResult (?\ascio\dns\Response $SearchZoneNamesResult = null) : self {
 		$this->set("SearchZoneNamesResult", $SearchZoneNamesResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class SearchZoneNamesResponse extends ResponseRootElement  {
 	public function createSearchZoneNamesResult () : \ascio\dns\Response {
 		return $this->create ("SearchZoneNamesResult", "\\ascio\\dns\\Response");
 	}
-	public function setZoneNames (?\ascio\dns\ArrayOfstring $zoneNames = null) : \ascio\dns\SearchZoneNamesResponse {
+	public function setZoneNames (?\ascio\dns\ArrayOfstring $zoneNames = null) : self {
 		$this->set("zoneNames", $zoneNames);
 		return $this;
 	}

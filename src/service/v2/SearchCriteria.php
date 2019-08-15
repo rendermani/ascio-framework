@@ -17,7 +17,7 @@ class SearchCriteria extends Base  {
 	protected $Withoutstates;
 	protected $Withstates;
 
-	public function setClauses (?\ascio\v2\ArrayOfClause $Clauses = null) : \ascio\v2\SearchCriteria {
+	public function setClauses (?\ascio\v2\ArrayOfClause $Clauses = null) : self {
 		$this->set("Clauses", $Clauses);
 		return $this;
 	}
@@ -27,14 +27,14 @@ class SearchCriteria extends Base  {
 	public function createClauses () : \ascio\v2\ArrayOfClause {
 		return $this->create ("Clauses", "\\ascio\\v2\\ArrayOfClause");
 	}
-	public function setMode (?string $Mode = null) : \ascio\v2\SearchCriteria {
+	public function setMode (?string $Mode = null) : self {
 		$this->set("Mode", $Mode);
 		return $this;
 	}
 	public function getMode () : ?string {
 		return $this->get("Mode", "string");
 	}
-	public function setWithoutstates (?\ascio\v2\ArrayOfstring $Withoutstates = null) : \ascio\v2\SearchCriteria {
+	public function setWithoutstates (?\ascio\v2\ArrayOfstring $Withoutstates = null) : self {
 		$this->set("Withoutstates", $Withoutstates);
 		return $this;
 	}
@@ -44,7 +44,7 @@ class SearchCriteria extends Base  {
 	public function createWithoutstates () : \ascio\v2\ArrayOfstring {
 		return $this->create ("Withoutstates", "\\ascio\\v2\\ArrayOfstring");
 	}
-	public function setWithstates (?\ascio\v2\ArrayOfstring $Withstates = null) : \ascio\v2\SearchCriteria {
+	public function setWithstates (?\ascio\v2\ArrayOfstring $Withstates = null) : self {
 		$this->set("Withstates", $Withstates);
 		return $this;
 	}

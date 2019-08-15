@@ -14,7 +14,7 @@ class CreateUser extends RequestRootElement  {
 	protected $_apiObjects=["user"];
 	protected $user;
 
-	public function setUser (?\ascio\dns\User $user = null) : \ascio\dns\CreateUser {
+	public function setUser (?\ascio\dns\User $user = null) : self {
 		$this->set("user", $user);
 		return $this;
 	}

@@ -16,21 +16,21 @@ class SearchUserClause extends Base  {
 	protected $SearchUserField;
 	protected $Value;
 
-	public function setOperator (?string $Operator = null) : \ascio\dns\SearchUserClause {
+	public function setOperator (?string $Operator = null) : self {
 		$this->set("Operator", $Operator);
 		return $this;
 	}
 	public function getOperator () : ?string {
 		return $this->get("Operator", "string");
 	}
-	public function setSearchUserField (?string $SearchUserField = null) : \ascio\dns\SearchUserClause {
+	public function setSearchUserField (?string $SearchUserField = null) : self {
 		$this->set("SearchUserField", $SearchUserField);
 		return $this;
 	}
 	public function getSearchUserField () : ?string {
 		return $this->get("SearchUserField", "string");
 	}
-	public function setValue (?string $Value = null) : \ascio\dns\SearchUserClause {
+	public function setValue (?string $Value = null) : self {
 		$this->set("Value", $Value);
 		return $this;
 	}

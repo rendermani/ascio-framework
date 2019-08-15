@@ -14,7 +14,7 @@ class UploadRegistrantVerificationMessageResponse extends ResponseRootElement  {
 	protected $_apiObjects=["UploadRegistrantVerificationMessageResult"];
 	protected $UploadRegistrantVerificationMessageResult;
 
-	public function setUploadRegistrantVerificationMessageResult (?\ascio\v2\Response $UploadRegistrantVerificationMessageResult = null) : \ascio\v2\UploadRegistrantVerificationMessageResponse {
+	public function setUploadRegistrantVerificationMessageResult (?\ascio\v2\Response $UploadRegistrantVerificationMessageResult = null) : self {
 		$this->set("UploadRegistrantVerificationMessageResult", $UploadRegistrantVerificationMessageResult);
 		return $this;
 	}

@@ -15,7 +15,7 @@ class GetOrderResponse extends ResponseRootElement  {
 	protected $GetOrderResult;
 	protected $order;
 
-	public function setGetOrderResult (?\ascio\v2\Response $GetOrderResult = null) : \ascio\v2\GetOrderResponse {
+	public function setGetOrderResult (?\ascio\v2\Response $GetOrderResult = null) : self {
 		$this->set("GetOrderResult", $GetOrderResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class GetOrderResponse extends ResponseRootElement  {
 	public function createGetOrderResult () : \ascio\v2\Response {
 		return $this->create ("GetOrderResult", "\\ascio\\v2\\Response");
 	}
-	public function setOrder (?\ascio\v2\Order $order = null) : \ascio\v2\GetOrderResponse {
+	public function setOrder (?\ascio\v2\Order $order = null) : self {
 		$this->set("order", $order);
 		return $this;
 	}

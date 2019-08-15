@@ -56,28 +56,28 @@ class OrderInfo extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setOrderId (?string $OrderId = null) : \ascio\v3\OrderInfo {
+	public function setOrderId (?string $OrderId = null) : self {
 		$this->set("OrderId", $OrderId);
 		return $this;
 	}
 	public function getOrderId () : ?string {
 		return $this->get("OrderId", "string");
 	}
-	public function setStatus (?string $Status = null) : \ascio\v3\OrderInfo {
+	public function setStatus (?string $Status = null) : self {
 		$this->set("Status", $Status);
 		return $this;
 	}
 	public function getStatus () : ?string {
 		return $this->get("Status", "string");
 	}
-	public function setCreated (?\DateTime $Created = null) : \ascio\v3\OrderInfo {
+	public function setCreated (?\DateTime $Created = null) : self {
 		$this->set("Created", $Created);
 		return $this;
 	}
 	public function getCreated () : ?\DateTime {
 		return $this->get("Created", "\\DateTime");
 	}
-	public function setOrderRequest (?\ascio\v3\AbstractOrderRequest $OrderRequest = null) : \ascio\v3\OrderInfo {
+	public function setOrderRequest (?\ascio\v3\AbstractOrderRequest $OrderRequest = null) : self {
 		$this->set("OrderRequest", $OrderRequest);
 		return $this;
 	}

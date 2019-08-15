@@ -14,7 +14,7 @@ class LogOutResponse extends ResponseRootElement  {
 	protected $_apiObjects=["LogOutResult"];
 	protected $LogOutResult;
 
-	public function setLogOutResult (?\ascio\v2\Response $LogOutResult = null) : \ascio\v2\LogOutResponse {
+	public function setLogOutResult (?\ascio\v2\Response $LogOutResult = null) : self {
 		$this->set("LogOutResult", $LogOutResult);
 		return $this;
 	}

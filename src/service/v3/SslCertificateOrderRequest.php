@@ -43,7 +43,7 @@ class SslCertificateOrderRequest extends AbstractOrderRequest  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setSslCertificate (?\ascio\v3\SslCertificate $SslCertificate = null) : \ascio\v3\SslCertificateOrderRequest {
+	public function setSslCertificate (?\ascio\v3\SslCertificate $SslCertificate = null) : self {
 		$this->set("SslCertificate", $SslCertificate);
 		return $this;
 	}

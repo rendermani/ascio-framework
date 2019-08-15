@@ -35,7 +35,7 @@ class ArrayOfErrorCode extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setErrorCode (?Iterable $ErrorCode = null) : \ascio\v3\ArrayOfErrorCode {
+	public function setErrorCode (?Iterable $ErrorCode = null) : self {
 		$this->set("ErrorCode", $ErrorCode);
 		return $this;
 	}
@@ -45,7 +45,7 @@ class ArrayOfErrorCode extends DbArrayBase  {
 	public function createErrorCode () : \ascio\v3\ErrorCode {
 		return $this->create ("ErrorCode", "\\ascio\\v3\\ErrorCode");
 	}
-	public function addErrorCode () : ?\ascio\v3\ErrorCode {
+	public function addErrorCode () : \ascio\v3\ErrorCode {
 		return $this->add("ErrorCode","\\ascio\\v3\\ErrorCode",func_get_args());
 	}
 }

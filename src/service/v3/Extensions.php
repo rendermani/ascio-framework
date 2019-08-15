@@ -53,7 +53,7 @@ class Extensions extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setKeyValue (?Iterable $KeyValue = null) : \ascio\v3\Extensions {
+	public function setKeyValue (?Iterable $KeyValue = null) : self {
 		$this->set("KeyValue", $KeyValue);
 		return $this;
 	}
@@ -63,7 +63,7 @@ class Extensions extends DbArrayBase  {
 	public function createKeyValue () : \ascio\v3\KeyValue {
 		return $this->create ("KeyValue", "\\ascio\\v3\\KeyValue");
 	}
-	public function addKeyValue (string $Key, string $Value) : ?\ascio\v3\KeyValue {
+	public function addKeyValue (string $Key, string $Value) : \ascio\v3\KeyValue {
 		return $this->add("KeyValue","\\ascio\\v3\\KeyValue",func_get_args());
 	}
 }

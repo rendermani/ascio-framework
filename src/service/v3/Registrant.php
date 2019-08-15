@@ -72,14 +72,14 @@ class Registrant extends Contact  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setVatNumber (?string $VatNumber = null) : \ascio\v3\Registrant {
+	public function setVatNumber (?string $VatNumber = null) : self {
 		$this->set("VatNumber", $VatNumber);
 		return $this;
 	}
 	public function getVatNumber () : ?string {
 		return $this->get("VatNumber", "string");
 	}
-	public function setNexusCategory (?string $NexusCategory = null) : \ascio\v3\Registrant {
+	public function setNexusCategory (?string $NexusCategory = null) : self {
 		$this->set("NexusCategory", $NexusCategory);
 		return $this;
 	}

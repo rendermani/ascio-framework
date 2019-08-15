@@ -15,14 +15,14 @@ class GetOrder extends RequestRootElement  {
 	protected $sessionId;
 	protected $orderId;
 
-	public function setSessionId (?string $sessionId = null) : \ascio\v2\GetOrder {
+	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;
 	}
 	public function getSessionId () : ?string {
 		return $this->get("sessionId", "string");
 	}
-	public function setOrderId (?string $orderId = null) : \ascio\v2\GetOrder {
+	public function setOrderId (?string $orderId = null) : self {
 		$this->set("orderId", $orderId);
 		return $this;
 	}

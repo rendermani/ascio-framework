@@ -53,7 +53,7 @@ class ArrayOfZoneLogEntry extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setZoneLogEntry (?Iterable $ZoneLogEntry = null) : \ascio\dns\ArrayOfZoneLogEntry {
+	public function setZoneLogEntry (?Iterable $ZoneLogEntry = null) : self {
 		$this->set("ZoneLogEntry", $ZoneLogEntry);
 		return $this;
 	}
@@ -63,7 +63,7 @@ class ArrayOfZoneLogEntry extends DbArrayBase  {
 	public function createZoneLogEntry () : \ascio\dns\ZoneLogEntry {
 		return $this->create ("ZoneLogEntry", "\\ascio\\dns\\ZoneLogEntry");
 	}
-	public function addZoneLogEntry () : ?\ascio\dns\ZoneLogEntry {
+	public function addZoneLogEntry () : \ascio\dns\ZoneLogEntry {
 		return $this->add("ZoneLogEntry","\\ascio\\dns\\ZoneLogEntry",func_get_args());
 	}
 }

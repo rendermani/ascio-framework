@@ -14,7 +14,7 @@ class ArrayOfRegistrant extends ArrayBase implements \Iterator  {
 	protected $_apiObjects=["Registrant"];
 	protected $Registrant;
 
-	public function setRegistrant (?Iterable $Registrant = null) : \ascio\v2\ArrayOfRegistrant {
+	public function setRegistrant (?Iterable $Registrant = null) : self {
 		$this->set("Registrant", $Registrant);
 		return $this;
 	}
@@ -24,7 +24,7 @@ class ArrayOfRegistrant extends ArrayBase implements \Iterator  {
 	public function createRegistrant () : \ascio\v2\Registrant {
 		return $this->create ("Registrant", "\\ascio\\v2\\Registrant");
 	}
-	public function addRegistrant () : ?\ascio\v2\Registrant {
+	public function addRegistrant () : \ascio\v2\Registrant {
 		return $this->add("Registrant","\\ascio\\v2\\Registrant",func_get_args());
 	}
 }

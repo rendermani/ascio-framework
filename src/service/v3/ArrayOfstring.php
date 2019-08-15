@@ -14,14 +14,14 @@ class ArrayOfstring extends ArrayBase implements \Iterator  {
 	protected $_apiObjects=[];
 	protected $string;
 
-	public function setString (?Iterable $string = null) : \ascio\v3\ArrayOfstring {
+	public function setString (?Iterable $string = null) : self {
 		$this->set("string", $string);
 		return $this;
 	}
 	public function getString () : ?Iterable {
 		return $this->get("string", "string");
 	}
-	public function addString () : ?string {
+	public function addString () : string {
 		return $this->add("string","string",func_get_args());
 	}
 }

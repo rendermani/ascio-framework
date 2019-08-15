@@ -35,7 +35,7 @@ class ArrayOfAttachment extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setAttachment (?Iterable $Attachment = null) : \ascio\v3\ArrayOfAttachment {
+	public function setAttachment (?Iterable $Attachment = null) : self {
 		$this->set("Attachment", $Attachment);
 		return $this;
 	}
@@ -45,7 +45,7 @@ class ArrayOfAttachment extends DbArrayBase  {
 	public function createAttachment () : \ascio\v3\Attachment {
 		return $this->create ("Attachment", "\\ascio\\v3\\Attachment");
 	}
-	public function addAttachment () : ?\ascio\v3\Attachment {
+	public function addAttachment () : \ascio\v3\Attachment {
 		return $this->add("Attachment","\\ascio\\v3\\Attachment",func_get_args());
 	}
 }

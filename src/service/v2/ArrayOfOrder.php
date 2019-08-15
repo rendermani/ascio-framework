@@ -14,7 +14,7 @@ class ArrayOfOrder extends ArrayBase implements \Iterator  {
 	protected $_apiObjects=["Order"];
 	protected $Order;
 
-	public function setOrder (?Iterable $Order = null) : \ascio\v2\ArrayOfOrder {
+	public function setOrder (?Iterable $Order = null) : self {
 		$this->set("Order", $Order);
 		return $this;
 	}
@@ -24,7 +24,7 @@ class ArrayOfOrder extends ArrayBase implements \Iterator  {
 	public function createOrder () : \ascio\v2\Order {
 		return $this->create ("Order", "\\ascio\\v2\\Order");
 	}
-	public function addOrder () : ?\ascio\v2\Order {
+	public function addOrder () : \ascio\v2\Order {
 		return $this->add("Order","\\ascio\\v2\\Order",func_get_args());
 	}
 }

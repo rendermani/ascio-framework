@@ -18,14 +18,14 @@ class ApprovalDocumentation extends Base  {
 	protected $Attachments;
 	protected $Extensions;
 
-	public function setType (?string $Type = null) : \ascio\v2\ApprovalDocumentation {
+	public function setType (?string $Type = null) : self {
 		$this->set("Type", $Type);
 		return $this;
 	}
 	public function getType () : ?string {
 		return $this->get("Type", "string");
 	}
-	public function setObjectNames (?\ascio\v2\ArrayOfstring $ObjectNames = null) : \ascio\v2\ApprovalDocumentation {
+	public function setObjectNames (?\ascio\v2\ArrayOfstring $ObjectNames = null) : self {
 		$this->set("ObjectNames", $ObjectNames);
 		return $this;
 	}
@@ -35,14 +35,14 @@ class ApprovalDocumentation extends Base  {
 	public function createObjectNames () : \ascio\v2\ArrayOfstring {
 		return $this->create ("ObjectNames", "\\ascio\\v2\\ArrayOfstring");
 	}
-	public function setOrderId (?string $OrderId = null) : \ascio\v2\ApprovalDocumentation {
+	public function setOrderId (?string $OrderId = null) : self {
 		$this->set("OrderId", $OrderId);
 		return $this;
 	}
 	public function getOrderId () : ?string {
 		return $this->get("OrderId", "string");
 	}
-	public function setAttachments (?\ascio\v2\ArrayOfAttachment $Attachments = null) : \ascio\v2\ApprovalDocumentation {
+	public function setAttachments (?\ascio\v2\ArrayOfAttachment $Attachments = null) : self {
 		$this->set("Attachments", $Attachments);
 		return $this;
 	}
@@ -52,7 +52,7 @@ class ApprovalDocumentation extends Base  {
 	public function createAttachments () : \ascio\v2\ArrayOfAttachment {
 		return $this->create ("Attachments", "\\ascio\\v2\\ArrayOfAttachment");
 	}
-	public function setExtensions (?\ascio\v2\Extensions $Extensions = null) : \ascio\v2\ApprovalDocumentation {
+	public function setExtensions (?\ascio\v2\Extensions $Extensions = null) : self {
 		$this->set("Extensions", $Extensions);
 		return $this;
 	}

@@ -35,7 +35,7 @@ class ValidateOrder extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setRequest (?\ascio\v3\AbstractOrderRequest $request = null) : \ascio\v3\ValidateOrder {
+	public function setRequest (?\ascio\v3\AbstractOrderRequest $request = null) : self {
 		$this->set("request", $request);
 		return $this;
 	}

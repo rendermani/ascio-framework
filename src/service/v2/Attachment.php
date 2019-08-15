@@ -36,14 +36,14 @@ class Attachment extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setData (?\base64Binary $Data = null) : \ascio\v2\Attachment {
+	public function setData (?\base64Binary $Data = null) : self {
 		$this->set("Data", $Data);
 		return $this;
 	}
 	public function getData () : ?\base64Binary {
 		return $this->get("Data", "\\base64Binary");
 	}
-	public function setFileName (?string $FileName = null) : \ascio\v2\Attachment {
+	public function setFileName (?string $FileName = null) : self {
 		$this->set("FileName", $FileName);
 		return $this;
 	}

@@ -36,14 +36,14 @@ class ErrorCode extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setCode (?string $Code = null) : \ascio\v3\ErrorCode {
+	public function setCode (?string $Code = null) : self {
 		$this->set("Code", $Code);
 		return $this;
 	}
 	public function getCode () : ?string {
 		return $this->get("Code", "string");
 	}
-	public function setMessage (?string $Message = null) : \ascio\v3\ErrorCode {
+	public function setMessage (?string $Message = null) : self {
 		$this->set("Message", $Message);
 		return $this;
 	}

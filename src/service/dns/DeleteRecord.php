@@ -14,7 +14,7 @@ class DeleteRecord extends RequestRootElement  {
 	protected $_apiObjects=[];
 	protected $recordId;
 
-	public function setRecordId (?int $recordId = null) : \ascio\dns\DeleteRecord {
+	public function setRecordId (?int $recordId = null) : self {
 		$this->set("recordId", $recordId);
 		return $this;
 	}

@@ -44,42 +44,42 @@ class GetOrdersRequest extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setTransactionComment (?string $TransactionComment = null) : \ascio\v3\GetOrdersRequest {
+	public function setTransactionComment (?string $TransactionComment = null) : self {
 		$this->set("TransactionComment", $TransactionComment);
 		return $this;
 	}
 	public function getTransactionComment () : ?string {
 		return $this->get("TransactionComment", "string");
 	}
-	public function setComments (?string $Comments = null) : \ascio\v3\GetOrdersRequest {
+	public function setComments (?string $Comments = null) : self {
 		$this->set("Comments", $Comments);
 		return $this;
 	}
 	public function getComments () : ?string {
 		return $this->get("Comments", "string");
 	}
-	public function setObjectName (?string $ObjectName = null) : \ascio\v3\GetOrdersRequest {
+	public function setObjectName (?string $ObjectName = null) : self {
 		$this->set("ObjectName", $ObjectName);
 		return $this;
 	}
 	public function getObjectName () : ?string {
 		return $this->get("ObjectName", "string");
 	}
-	public function setFromDate (?\DateTime $FromDate = null) : \ascio\v3\GetOrdersRequest {
+	public function setFromDate (?\DateTime $FromDate = null) : self {
 		$this->set("FromDate", $FromDate);
 		return $this;
 	}
 	public function getFromDate () : ?\DateTime {
 		return $this->get("FromDate", "\\DateTime");
 	}
-	public function setToDate (?\DateTime $ToDate = null) : \ascio\v3\GetOrdersRequest {
+	public function setToDate (?\DateTime $ToDate = null) : self {
 		$this->set("ToDate", $ToDate);
 		return $this;
 	}
 	public function getToDate () : ?\DateTime {
 		return $this->get("ToDate", "\\DateTime");
 	}
-	public function setOrderStatusTypes (?\ascio\v3\ArrayOfOrderStatusType $OrderStatusTypes = null) : \ascio\v3\GetOrdersRequest {
+	public function setOrderStatusTypes (?\ascio\v3\ArrayOfOrderStatusType $OrderStatusTypes = null) : self {
 		$this->set("OrderStatusTypes", $OrderStatusTypes);
 		return $this;
 	}
@@ -89,7 +89,7 @@ class GetOrdersRequest extends DbBase  {
 	public function createOrderStatusTypes () : \ascio\v3\ArrayOfOrderStatusType {
 		return $this->create ("OrderStatusTypes", "\\ascio\\v3\\ArrayOfOrderStatusType");
 	}
-	public function setOrderTypes (?\ascio\v3\ArrayOfOrderType $OrderTypes = null) : \ascio\v3\GetOrdersRequest {
+	public function setOrderTypes (?\ascio\v3\ArrayOfOrderType $OrderTypes = null) : self {
 		$this->set("OrderTypes", $OrderTypes);
 		return $this;
 	}
@@ -99,7 +99,7 @@ class GetOrdersRequest extends DbBase  {
 	public function createOrderTypes () : \ascio\v3\ArrayOfOrderType {
 		return $this->create ("OrderTypes", "\\ascio\\v3\\ArrayOfOrderType");
 	}
-	public function setObjectTypes (?\ascio\v3\ArrayOfObjectType $ObjectTypes = null) : \ascio\v3\GetOrdersRequest {
+	public function setObjectTypes (?\ascio\v3\ArrayOfObjectType $ObjectTypes = null) : self {
 		$this->set("ObjectTypes", $ObjectTypes);
 		return $this;
 	}
@@ -109,14 +109,14 @@ class GetOrdersRequest extends DbBase  {
 	public function createObjectTypes () : \ascio\v3\ArrayOfObjectType {
 		return $this->create ("ObjectTypes", "\\ascio\\v3\\ArrayOfObjectType");
 	}
-	public function setOrderSort (?string $OrderSort = null) : \ascio\v3\GetOrdersRequest {
+	public function setOrderSort (?string $OrderSort = null) : self {
 		$this->set("OrderSort", $OrderSort);
 		return $this;
 	}
 	public function getOrderSort () : ?string {
 		return $this->get("OrderSort", "string");
 	}
-	public function setPageInfo (?\ascio\v3\PagingInfo $PageInfo = null) : \ascio\v3\GetOrdersRequest {
+	public function setPageInfo (?\ascio\v3\PagingInfo $PageInfo = null) : self {
 		$this->set("PageInfo", $PageInfo);
 		return $this;
 	}

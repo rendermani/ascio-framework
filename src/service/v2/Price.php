@@ -16,21 +16,21 @@ class Price extends Base  {
 	protected $Period;
 	protected $Price;
 
-	public function setOrderType (?string $OrderType = null) : \ascio\v2\Price {
+	public function setOrderType (?string $OrderType = null) : self {
 		$this->set("OrderType", $OrderType);
 		return $this;
 	}
 	public function getOrderType () : ?string {
 		return $this->get("OrderType", "string");
 	}
-	public function setPeriod (?int $Period = null) : \ascio\v2\Price {
+	public function setPeriod (?int $Period = null) : self {
 		$this->set("Period", $Period);
 		return $this;
 	}
 	public function getPeriod () : ?int {
 		return $this->get("Period", "int");
 	}
-	public function setPrice (?\decimal $Price = null) : \ascio\v2\Price {
+	public function setPrice (?\decimal $Price = null) : self {
 		$this->set("Price", $Price);
 		return $this;
 	}

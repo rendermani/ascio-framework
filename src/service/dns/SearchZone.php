@@ -15,7 +15,7 @@ class SearchZone extends RequestRootElement  {
 	protected $searchZoneClauses;
 	protected $zoneInfoLevel;
 
-	public function setSearchZoneClauses (?\ascio\dns\ArrayOfSearchZoneClause $searchZoneClauses = null) : \ascio\dns\SearchZone {
+	public function setSearchZoneClauses (?\ascio\dns\ArrayOfSearchZoneClause $searchZoneClauses = null) : self {
 		$this->set("searchZoneClauses", $searchZoneClauses);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class SearchZone extends RequestRootElement  {
 	public function createSearchZoneClauses () : \ascio\dns\ArrayOfSearchZoneClause {
 		return $this->create ("searchZoneClauses", "\\ascio\\dns\\ArrayOfSearchZoneClause");
 	}
-	public function setZoneInfoLevel (?string $zoneInfoLevel = null) : \ascio\dns\SearchZone {
+	public function setZoneInfoLevel (?string $zoneInfoLevel = null) : self {
 		$this->set("zoneInfoLevel", $zoneInfoLevel);
 		return $this;
 	}

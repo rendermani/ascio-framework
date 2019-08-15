@@ -59,42 +59,42 @@ class TreatyOrStatuteMark extends AbstractMark  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setTitle (?string $Title = null) : \ascio\v3\TreatyOrStatuteMark {
+	public function setTitle (?string $Title = null) : self {
 		$this->set("Title", $Title);
 		return $this;
 	}
 	public function getTitle () : ?string {
 		return $this->get("Title", "string");
 	}
-	public function setReferenceNumber (?string $ReferenceNumber = null) : \ascio\v3\TreatyOrStatuteMark {
+	public function setReferenceNumber (?string $ReferenceNumber = null) : self {
 		$this->set("ReferenceNumber", $ReferenceNumber);
 		return $this;
 	}
 	public function getReferenceNumber () : ?string {
 		return $this->get("ReferenceNumber", "string");
 	}
-	public function setCountry (?string $Country = null) : \ascio\v3\TreatyOrStatuteMark {
+	public function setCountry (?string $Country = null) : self {
 		$this->set("Country", $Country);
 		return $this;
 	}
 	public function getCountry () : ?string {
 		return $this->get("Country", "string");
 	}
-	public function setRegion (?string $Region = null) : \ascio\v3\TreatyOrStatuteMark {
+	public function setRegion (?string $Region = null) : self {
 		$this->set("Region", $Region);
 		return $this;
 	}
 	public function getRegion () : ?string {
 		return $this->get("Region", "string");
 	}
-	public function setProtectionDate (?\DateTime $ProtectionDate = null) : \ascio\v3\TreatyOrStatuteMark {
+	public function setProtectionDate (?\DateTime $ProtectionDate = null) : self {
 		$this->set("ProtectionDate", $ProtectionDate);
 		return $this;
 	}
 	public function getProtectionDate () : ?\DateTime {
 		return $this->get("ProtectionDate", "\\DateTime");
 	}
-	public function setExecutionDate (?\DateTime $ExecutionDate = null) : \ascio\v3\TreatyOrStatuteMark {
+	public function setExecutionDate (?\DateTime $ExecutionDate = null) : self {
 		$this->set("ExecutionDate", $ExecutionDate);
 		return $this;
 	}

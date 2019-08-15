@@ -35,7 +35,7 @@ class PollQueue extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setRequest (?\ascio\v3\PollQueueRequest $request = null) : \ascio\v3\PollQueue {
+	public function setRequest (?\ascio\v3\PollQueueRequest $request = null) : self {
 		$this->set("request", $request);
 		return $this;
 	}

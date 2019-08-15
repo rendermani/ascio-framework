@@ -35,7 +35,7 @@ class ArrayOfMarkOrderDocument extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setMarkOrderDocument (?Iterable $MarkOrderDocument = null) : \ascio\v3\ArrayOfMarkOrderDocument {
+	public function setMarkOrderDocument (?Iterable $MarkOrderDocument = null) : self {
 		$this->set("MarkOrderDocument", $MarkOrderDocument);
 		return $this;
 	}
@@ -45,7 +45,7 @@ class ArrayOfMarkOrderDocument extends DbArrayBase  {
 	public function createMarkOrderDocument () : \ascio\v3\MarkOrderDocument {
 		return $this->create ("MarkOrderDocument", "\\ascio\\v3\\MarkOrderDocument");
 	}
-	public function addMarkOrderDocument () : ?\ascio\v3\MarkOrderDocument {
+	public function addMarkOrderDocument () : \ascio\v3\MarkOrderDocument {
 		return $this->add("MarkOrderDocument","\\ascio\\v3\\MarkOrderDocument",func_get_args());
 	}
 }

@@ -14,7 +14,7 @@ class ChangePasswordResponse extends ResponseRootElement  {
 	protected $_apiObjects=["ChangePasswordResult"];
 	protected $ChangePasswordResult;
 
-	public function setChangePasswordResult (?\ascio\dns\Response $ChangePasswordResult = null) : \ascio\dns\ChangePasswordResponse {
+	public function setChangePasswordResult (?\ascio\dns\Response $ChangePasswordResult = null) : self {
 		$this->set("ChangePasswordResult", $ChangePasswordResult);
 		return $this;
 	}

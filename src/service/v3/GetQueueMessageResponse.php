@@ -40,7 +40,7 @@ class GetQueueMessageResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setMessage (?\ascio\v3\QueueMessage $Message = null) : \ascio\v3\GetQueueMessageResponse {
+	public function setMessage (?\ascio\v3\QueueMessage $Message = null) : self {
 		$this->set("Message", $Message);
 		return $this;
 	}

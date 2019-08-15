@@ -15,14 +15,14 @@ class DeleteNameServer extends RequestRootElement  {
 	protected $sessionId;
 	protected $nameServerHandle;
 
-	public function setSessionId (?string $sessionId = null) : \ascio\v2\DeleteNameServer {
+	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;
 	}
 	public function getSessionId () : ?string {
 		return $this->get("sessionId", "string");
 	}
-	public function setNameServerHandle (?string $nameServerHandle = null) : \ascio\v2\DeleteNameServer {
+	public function setNameServerHandle (?string $nameServerHandle = null) : self {
 		$this->set("nameServerHandle", $nameServerHandle);
 		return $this;
 	}

@@ -15,7 +15,7 @@ class GetContactResponse extends ResponseRootElement  {
 	protected $GetContactResult;
 	protected $contact;
 
-	public function setGetContactResult (?\ascio\v2\Response $GetContactResult = null) : \ascio\v2\GetContactResponse {
+	public function setGetContactResult (?\ascio\v2\Response $GetContactResult = null) : self {
 		$this->set("GetContactResult", $GetContactResult);
 		return $this;
 	}
@@ -25,7 +25,7 @@ class GetContactResponse extends ResponseRootElement  {
 	public function createGetContactResult () : \ascio\v2\Response {
 		return $this->create ("GetContactResult", "\\ascio\\v2\\Response");
 	}
-	public function setContact (?\ascio\v2\Contact $contact = null) : \ascio\v2\GetContactResponse {
+	public function setContact (?\ascio\v2\Contact $contact = null) : self {
 		$this->set("contact", $contact);
 		return $this;
 	}

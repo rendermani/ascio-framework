@@ -16,7 +16,7 @@ class SearchOrderResponse extends ResponseRootElement  {
 	protected $totalOrders;
 	protected $orders;
 
-	public function setSearchOrderResult (?\ascio\v2\Response $SearchOrderResult = null) : \ascio\v2\SearchOrderResponse {
+	public function setSearchOrderResult (?\ascio\v2\Response $SearchOrderResult = null) : self {
 		$this->set("SearchOrderResult", $SearchOrderResult);
 		return $this;
 	}
@@ -26,14 +26,14 @@ class SearchOrderResponse extends ResponseRootElement  {
 	public function createSearchOrderResult () : \ascio\v2\Response {
 		return $this->create ("SearchOrderResult", "\\ascio\\v2\\Response");
 	}
-	public function setTotalOrders (?int $totalOrders = null) : \ascio\v2\SearchOrderResponse {
+	public function setTotalOrders (?int $totalOrders = null) : self {
 		$this->set("totalOrders", $totalOrders);
 		return $this;
 	}
 	public function getTotalOrders () : ?int {
 		return $this->get("totalOrders", "int");
 	}
-	public function setOrders (?\ascio\v2\ArrayOfOrder $orders = null) : \ascio\v2\SearchOrderResponse {
+	public function setOrders (?\ascio\v2\ArrayOfOrder $orders = null) : self {
 		$this->set("orders", $orders);
 		return $this;
 	}

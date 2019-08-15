@@ -45,7 +45,7 @@ class QueueMessage extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	public function setAttachments (?\ascio\v3\ArrayOfAttachment $Attachments = null) : \ascio\v3\QueueMessage {
+	public function setAttachments (?\ascio\v3\ArrayOfAttachment $Attachments = null) : self {
 		$this->set("Attachments", $Attachments);
 		return $this;
 	}
@@ -55,7 +55,7 @@ class QueueMessage extends DbBase  {
 	public function createAttachments () : \ascio\v3\ArrayOfAttachment {
 		return $this->create ("Attachments", "\\ascio\\v3\\ArrayOfAttachment");
 	}
-	public function setErrorCodes (?\ascio\v3\ArrayOfErrorCode $ErrorCodes = null) : \ascio\v3\QueueMessage {
+	public function setErrorCodes (?\ascio\v3\ArrayOfErrorCode $ErrorCodes = null) : self {
 		$this->set("ErrorCodes", $ErrorCodes);
 		return $this;
 	}
@@ -65,63 +65,63 @@ class QueueMessage extends DbBase  {
 	public function createErrorCodes () : \ascio\v3\ArrayOfErrorCode {
 		return $this->create ("ErrorCodes", "\\ascio\\v3\\ArrayOfErrorCode");
 	}
-	public function setId (?int $Id = null) : \ascio\v3\QueueMessage {
+	public function setId (?int $Id = null) : self {
 		$this->set("Id", $Id);
 		return $this;
 	}
 	public function getId () : ?int {
 		return $this->get("Id", "int");
 	}
-	public function setMessage (?string $Message = null) : \ascio\v3\QueueMessage {
+	public function setMessage (?string $Message = null) : self {
 		$this->set("Message", $Message);
 		return $this;
 	}
 	public function getMessage () : ?string {
 		return $this->get("Message", "string");
 	}
-	public function setMessageType (?string $MessageType = null) : \ascio\v3\QueueMessage {
+	public function setMessageType (?string $MessageType = null) : self {
 		$this->set("MessageType", $MessageType);
 		return $this;
 	}
 	public function getMessageType () : ?string {
 		return $this->get("MessageType", "string");
 	}
-	public function setObjectHandle (?string $ObjectHandle = null) : \ascio\v3\QueueMessage {
+	public function setObjectHandle (?string $ObjectHandle = null) : self {
 		$this->set("ObjectHandle", $ObjectHandle);
 		return $this;
 	}
 	public function getObjectHandle () : ?string {
 		return $this->get("ObjectHandle", "string");
 	}
-	public function setObjectName (?string $ObjectName = null) : \ascio\v3\QueueMessage {
+	public function setObjectName (?string $ObjectName = null) : self {
 		$this->set("ObjectName", $ObjectName);
 		return $this;
 	}
 	public function getObjectName () : ?string {
 		return $this->get("ObjectName", "string");
 	}
-	public function setObjectType (?string $ObjectType = null) : \ascio\v3\QueueMessage {
+	public function setObjectType (?string $ObjectType = null) : self {
 		$this->set("ObjectType", $ObjectType);
 		return $this;
 	}
 	public function getObjectType () : ?string {
 		return $this->get("ObjectType", "string");
 	}
-	public function setOrderId (?string $OrderId = null) : \ascio\v3\QueueMessage {
+	public function setOrderId (?string $OrderId = null) : self {
 		$this->set("OrderId", $OrderId);
 		return $this;
 	}
 	public function getOrderId () : ?string {
 		return $this->get("OrderId", "string");
 	}
-	public function setOrderStatus (?string $OrderStatus = null) : \ascio\v3\QueueMessage {
+	public function setOrderStatus (?string $OrderStatus = null) : self {
 		$this->set("OrderStatus", $OrderStatus);
 		return $this;
 	}
 	public function getOrderStatus () : ?string {
 		return $this->get("OrderStatus", "string");
 	}
-	public function setOrderType (?string $OrderType = null) : \ascio\v3\QueueMessage {
+	public function setOrderType (?string $OrderType = null) : self {
 		$this->set("OrderType", $OrderType);
 		return $this;
 	}
