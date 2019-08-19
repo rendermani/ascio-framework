@@ -186,8 +186,9 @@ class DomainOrderRequest {
             }
         }
     }
-    public function changeLocks() : Order {                            
-        $domain = new Domain();        
+    public function changeLocks() : Order {                                   
+        $domain = new Domain();
+        $domain->setStatus($this->domain->getStatus());
         $domain->setDeleteLock($this->domain->getDeleteLock());
         $domain->setTransferLock($this->domain->getTransferLock());
         $domain->setUpdateLock($this->domain->getUpdateLock());

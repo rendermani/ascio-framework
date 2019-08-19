@@ -193,7 +193,7 @@ final class TestDomain extends TestCase {
     public function testChangeLocks(Domain $domain) {
         $domain = new Domain();
         $domain->getByHandle("ADARALOV36431");
-        $domain->getLocks()->getDeleteLock()->set(true);
+        $domain->getLocks()->deleteLock()->set(true);
         $orders = $domain->getUpdateOrders();
         /**
          * @var Order $order
@@ -201,7 +201,7 @@ final class TestDomain extends TestCase {
         $order = $orders[0];
         $this->assertCount(1,$orders,"There should be only 1 order");
         $this->assertEquals(OrderType::Change_Locks,$order->getType(), "The OrderType should be ".OrderType::Change_Locks);
-        $this->assertEquals("ADARALOV36431",$order->getDomain()->getDomainHandle(), "The Domain-Name should be ADARALOV36431");
+        $this->assertEquals("ADARALOV36431",$order->getDomain()->getDomainHandle(), "The Domain-Handle should be ADARALOV36431");
         $this->assertEquals("Lock",$order->getDomain()->getDeleteLock(),"The Delete-Lock should be 'Lock'");
         $this->assertEquals(null,$order->getDomain()->getTransferLock(),"The Transfer-Lock should be null");
         $this->assertEquals(null,$order->getDomain()->getUpdateLock(),"The Update-Lock should be null");

@@ -47,7 +47,12 @@ class Order extends \ascio\service\v2\Order {
         $this->submitOptions = $submitOptions ?: $this->getSubmitOptions();
         $domainName = $this->getDomain()->getDomainName();   
         $this->db()->_blocking = $this->submitOptions->getBlocking();
-        if($this->shouldQueue()) {
+        if(
+            $this->getSubmitOptions()->getAutoUnlock() &&
+            $this->getDomain()->getLocks()->autoUnlock($this->getType())
+        ) {
+            $this->queue();
+        } elseif($this->shouldQueue()) {
             return $this->queue();
         } elseif(DomainBlocker::isBlocked($domainName)) {
             echo $this->getStatusSerializer()->console(LogLevel::Warn,"Can't submit, queueing");
@@ -59,10 +64,17 @@ class Order extends \ascio\service\v2\Order {
                 "OrderStatus"=> OrderStatus::Submitting,
                 "DomainName"=> $domainName,
                 "OrderType"=> $this->getType()
-            ]);            
-            $this->produce(["action"=>"create"]);
+            ]);    
+            $action = $this->db()->_id ? "update" : "create";        
+            $this->produce(["action"=> $action]);
             try {
                 DomainBlocker::block($domainName);
+                if(
+                    $this->getSubmitOptions()->getAutoUnlock() ||
+                    $this->getDomain()->getLocks()->autoUnlock()
+                ) {
+
+                }
                 $result = $this->api()->getClient()->createOrder($this);
                 $this->setWorkflowStatus(OrderStatus::Running);
                 $order = $result->getOrder();
