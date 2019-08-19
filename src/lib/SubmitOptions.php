@@ -24,7 +24,7 @@ class SubmitOptions {
     public function setBlocking(bool $blocking) : SubmitOptions
     {
         $this->blocking = $blocking;
-
+        $this->workflow = uniqid("wf");
         return $this;
     }
 
