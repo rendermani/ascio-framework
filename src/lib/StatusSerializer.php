@@ -14,11 +14,13 @@ class StatusSerializer {
         $this->script = basename($_SERVER["SCRIPT_FILENAME"], '.php');
         $this->obj = $obj;
     }
-    public function setFields($fields) {
+    public function setFields($fields) : self {
         $this->fields = $fields;
+        return $this;
     }
-    public function addFields($fields) {
+    public function addFields($fields) : self {
         $this->fields = array_merge($fields,$this->fields);
+        return $this;
     }
     public function console($logLevel, $text, $long = false)
     {
