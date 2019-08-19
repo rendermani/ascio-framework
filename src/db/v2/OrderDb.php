@@ -54,7 +54,7 @@ class OrderDb extends DbModel {
 		$domain->db()
 		->join('v2_Order', 'v2_Order.Domain', '=', 'v2_Domain._id')
 		->where('v2_Domain.DomainName',$domain->getDomainName())
-		->where('v2_Domain._status', $this->blockingTypes)
+		->where('v2_Order._status', $this->blockingTypes)
 		->exists();
 	}      
 	public function nextDomain($domainName=null) : Order {        
