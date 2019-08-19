@@ -3,9 +3,12 @@
 // XSLT-WSDL-Client. Generated DB-Model class of Domain. Can be copied and overwriten with own functions.
 
 namespace ascio\db\v2;
+
+use ascio\base\DbMigration;
 use ascio\base\v2\DbModel;
 use ascio\base\DbModelBase;
 use ascio\v2\Order;
+use Illuminate\Database\Schema\Blueprint;
 
 class DomainDb extends DbModel {
 	protected $table="v2_Domain";
@@ -37,5 +40,13 @@ class DomainDb extends DbModel {
 	public function getPrivacyProxy(){
 		return $this->getRelationObject("v2","PrivacyProxy","PrivacyProxy");
 	}
-
+	public function createTables(?\Closure $blueprintFunction=null) {
+		parent::createTables(function(Blueprint $table) use ($blueprintFunction){
+			$table->boolean("_verified")->default(false)->index();
+			$table->boolean("_parked")->default(false)->index();
+			$table->boolean("_on_hold")->default(false)->index();
+			$table->json("_server_lock")->nullable();
+			if($blueprintFunction) $blueprintFunction($table);
+		}); 
+	}
 }

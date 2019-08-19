@@ -8,6 +8,7 @@ use ascio\lib\OrderStatus;
 use ascio\v2\Order;
 use ascio\lib\AscioException;
 use ascio\v3\OrderType;
+use Illuminate\Database\Schema\Blueprint;
 
 class OrderDb extends DbModel {
 	protected $table="v2_Order";
@@ -85,5 +86,12 @@ class OrderDb extends DbModel {
 				)
                 ->orderBy("CreDate","asc")
                 ->firstOrFail();        
-    }
+	}
+	public function createTables(?\Closure $blueprintFunction=null) {
+		parent::createTables(function(Blueprint $table) use ($blueprintFunction){
+			$table->string('_status')->index()->nullable();	
+			$table->string('_blocking')->index()->nullable();
+			if($blueprintFunction) $blueprintFunction($table);
+		}); 
+	}
 }
