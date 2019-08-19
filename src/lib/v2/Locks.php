@@ -64,24 +64,22 @@ class Locks {
             $orders->addOrder($order);
             $types[] = $lock->getType();
         }
-        $this->domain->db()->_oldLocks = json_encode($types);
         return $orders; 
     }
     public function autoLock() : ?ArrayOfOrder {
         return null;
-        $oldLocks = json_decode($this->domain->db()->_oldLocks); 
         $orders = new ArrayOfOrder();
-        foreach($oldLocks as $lock) {
-            $domain = new Domain();
-            $domain->setDomainName($this->domain->getDomainName());
-            $domain->setDomainHandle($this->domain->getDomainHandle());
-            $this->domain->set($lock->getType(),null);
-            $domain->set($lock->getType(),"Lock");
-            $order = $domain->getDomainOrderRequest()->changeLocks();
-            $order->getSubmitOptions()->setQueue(true)->setSubmitAfterQueue(false);
-            $orders->addOrder($order);
-        }
-        return $orders;       
+        // foreach($oldLocks as $lock) {
+        //     $domain = new Domain();
+        //     $domain->setDomainName($this->domain->getDomainName());
+        //     $domain->setDomainHandle($this->domain->getDomainHandle());
+        //     $this->domain->set($lock->getType(),null);
+        //     $domain->set($lock->getType(),"Lock");
+        //     $order = $domain->getDomainOrderRequest()->changeLocks();
+        //     $order->getSubmitOptions()->setQueue(true)->setSubmitAfterQueue(false);
+        //     $orders->addOrder($order);
+        // }
+        // return $orders;       
     }
 }
 class Lock {
