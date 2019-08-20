@@ -35,8 +35,31 @@ class OrderStatus {
     const Processing="Processing";
     const Completed="Completed";
 }
-
-
+class Actions {
+    const Update="Update";
+    const Create="Create";
+    const Delete="Delete";
+    const Sync="Sync";
+    const Retry="Retry";
+    const Block="Block";
+    const Submit="Submit";
+    const Query="Query";
+    const Queue="Queue";
+}
+class Modules {
+    const Sync="Sync";
+    const Poll="Poll";
+    const Order="Order";
+    const MysqlConnector="MysqlConnector";
+    const Callbacks="Callbacks";
+    const None="None";
+}
+class TopicNames {
+    const Sync="sync";
+    const Order="order";
+    const Objects="objects";
+    const Callbacks="callbacks";
+}
 class Ascio {
     public static function setConfig($id="default") {
         global $_AscioLastConfigId, $_AscioConfigsSet;              
