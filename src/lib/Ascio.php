@@ -47,12 +47,12 @@ class Actions {
     const Queue="Queue";
 }
 class Modules {
-    const Sync="Sync";
-    const Poll="Poll";
-    const Order="Order";
-    const MysqlConnector="MysqlConnector";
-    const Callbacks="Callbacks";
-    const None="None";
+    const Sync="sync";
+    const Poll="poll";
+    const Order="order";
+    const MysqlConnector="mysql-connector";
+    const Callbacks="callbacks";
+    const None=null;
 }
 class TopicNames {
     const Sync="sync";
