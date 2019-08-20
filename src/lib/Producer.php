@@ -8,14 +8,14 @@ use ascio\base\BaseClass;
 use ascio\base\DbBase;
 
 Class Producer {
-    public static function object (?BaseClass $object,$parameters=null) {
+    public static function object ($object,$parameters=null) {
         TopicProducer::produce("object.full",$object,$parameters);
         TopicProducer::produceIncremental("object.incremental",$object,$parameters);
     }
-    public static function callback (?BaseClass $object,$parameters=null) {
+    public static function callback ($object,$parameters=null) {
         TopicProducer::produce("callback",$object,$parameters);
     }
-    public static function log (?BaseClass $object,$parameters=null) {
+    public static function log ($object,$parameters=null) {
         TopicProducer::produce("log",$object,$parameters);
     }
 }
