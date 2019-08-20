@@ -111,6 +111,15 @@ class DbModelBase extends Model {
 			} 
 		}
 	}
+	public function createDbProperties() {
+		$this->setDefaultAttributes();		
+		foreach($this->parent()->objects() as $obj) {
+			if($obj instanceof DbBase) {				
+				$this->setParentDefaultAttributes($this,$obj);		
+				$obj->db()->createDbProperties();
+			}				
+		}
+	}
 	protected function setDefaultAttributes() {
 		parent::setAttribute("_environment", $this->config()->environment);
 		parent::setAttribute("_account", $this->config()->v2->account);
