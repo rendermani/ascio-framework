@@ -8,7 +8,7 @@ use ascio\db\v3\AckQueueMessageRequestDb;
 use ascio\api\v3\AckQueueMessageRequestApi;
 
 
-class AckQueueMessageRequest extends DbBase  {
+abstract class AckQueueMessageRequest extends DbBase  {
 
 	protected $_apiProperties=["MessageId"];
 	protected $_apiObjects=[];

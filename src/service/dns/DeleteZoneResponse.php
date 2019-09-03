@@ -8,7 +8,7 @@ use ascio\db\dns\DeleteZoneResponseDb;
 use ascio\api\dns\DeleteZoneResponseApi;
 
 
-class DeleteZoneResponse extends ResponseRootElement  {
+abstract class DeleteZoneResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["DeleteZoneResult"];
 	protected $_apiObjects=["DeleteZoneResult"];

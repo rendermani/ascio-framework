@@ -8,7 +8,7 @@ use ascio\db\v2\GetDnsSecKeyResponseDb;
 use ascio\api\v2\GetDnsSecKeyResponseApi;
 
 
-class GetDnsSecKeyResponse extends ResponseRootElement  {
+abstract class GetDnsSecKeyResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["GetDnsSecKeyResult", "dnsSecKey"];
 	protected $_apiObjects=["GetDnsSecKeyResult", "dnsSecKey"];

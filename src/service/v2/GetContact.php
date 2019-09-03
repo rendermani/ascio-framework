@@ -8,7 +8,7 @@ use ascio\db\v2\GetContactDb;
 use ascio\api\v2\GetContactApi;
 
 
-class GetContact extends RequestRootElement  {
+abstract class GetContact extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "contactHandle"];
 	protected $_apiObjects=[];

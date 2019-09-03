@@ -8,7 +8,7 @@ use ascio\db\v2\ArrayOfAttachmentDb;
 use ascio\api\v2\ArrayOfAttachmentApi;
 
 
-class ArrayOfAttachment extends DbArrayBase  {
+abstract class ArrayOfAttachment extends DbArrayBase  {
 
 	protected $_apiProperties=["Attachment"];
 	protected $_apiObjects=["Attachment"];

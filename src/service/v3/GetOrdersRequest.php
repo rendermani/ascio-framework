@@ -8,7 +8,7 @@ use ascio\db\v3\GetOrdersRequestDb;
 use ascio\api\v3\GetOrdersRequestApi;
 
 
-class GetOrdersRequest extends DbBase  {
+abstract class GetOrdersRequest extends DbBase  {
 
 	protected $_apiProperties=["TransactionComment", "Comments", "ObjectName", "FromDate", "ToDate", "OrderStatusTypes", "OrderTypes", "ObjectTypes", "OrderSort", "PageInfo"];
 	protected $_apiObjects=["OrderStatusTypes", "OrderTypes", "ObjectTypes", "PageInfo"];

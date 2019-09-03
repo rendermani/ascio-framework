@@ -8,7 +8,7 @@ use ascio\db\v2\UploadDocumentationResponseDb;
 use ascio\api\v2\UploadDocumentationResponseApi;
 
 
-class UploadDocumentationResponse extends ResponseRootElement  {
+abstract class UploadDocumentationResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["UploadDocumentationResult"];
 	protected $_apiObjects=["UploadDocumentationResult"];

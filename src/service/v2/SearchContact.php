@@ -8,7 +8,7 @@ use ascio\db\v2\SearchContactDb;
 use ascio\api\v2\SearchContactApi;
 
 
-class SearchContact extends RequestRootElement  {
+abstract class SearchContact extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "criteria"];
 	protected $_apiObjects=["criteria"];

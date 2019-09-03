@@ -8,7 +8,7 @@ use ascio\db\dns\GetZoneLogResponseDb;
 use ascio\api\dns\GetZoneLogResponseApi;
 
 
-class GetZoneLogResponse extends ResponseRootElement  {
+abstract class GetZoneLogResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["GetZoneLogResult", "zoneLogEntries"];
 	protected $_apiObjects=["GetZoneLogResult", "zoneLogEntries"];

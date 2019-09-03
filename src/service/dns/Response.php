@@ -8,7 +8,7 @@ use ascio\db\dns\ResponseDb;
 use ascio\api\dns\ResponseApi;
 
 
-class Response extends Base  {
+abstract class Response extends Base  {
 
 	protected $_apiProperties=["StatusCode", "StatusMessage", "TechnicalGuid", "TrackingReference", "Values"];
 	protected $_apiObjects=["Values"];

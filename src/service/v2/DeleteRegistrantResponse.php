@@ -8,7 +8,7 @@ use ascio\db\v2\DeleteRegistrantResponseDb;
 use ascio\api\v2\DeleteRegistrantResponseApi;
 
 
-class DeleteRegistrantResponse extends ResponseRootElement  {
+abstract class DeleteRegistrantResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["DeleteRegistrantResult"];
 	protected $_apiObjects=["DeleteRegistrantResult"];

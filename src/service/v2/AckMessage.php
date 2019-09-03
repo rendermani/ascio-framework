@@ -8,7 +8,7 @@ use ascio\db\v2\AckMessageDb;
 use ascio\api\v2\AckMessageApi;
 
 
-class AckMessage extends RequestRootElement  {
+abstract class AckMessage extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "msgId"];
 	protected $_apiObjects=[];

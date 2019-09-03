@@ -8,7 +8,7 @@ use ascio\db\v2\SearchOrderRequestDb;
 use ascio\api\v2\SearchOrderRequestApi;
 
 
-class SearchOrderRequest extends Base  {
+abstract class SearchOrderRequest extends Base  {
 
 	protected $_apiProperties=["OrderTypes", "OrderStatusTypes", "FromDate", "ToDate", "DomainName", "TransactionComment", "Comments", "IncludeDomainDetails", "PageInfo", "OrderSort"];
 	protected $_apiObjects=["OrderTypes", "OrderStatusTypes", "PageInfo"];

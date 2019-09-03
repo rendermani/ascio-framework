@@ -8,7 +8,7 @@ use ascio\db\v2\ArrayOfDomainDb;
 use ascio\api\v2\ArrayOfDomainApi;
 
 
-class ArrayOfDomain extends ArrayBase implements \Iterator  {
+abstract class ArrayOfDomain extends ArrayBase implements \Iterator  {
 
 	protected $_apiProperties=["Domain"];
 	protected $_apiObjects=["Domain"];

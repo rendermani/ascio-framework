@@ -8,7 +8,7 @@ use ascio\db\dns\RestoreZoneResponseDb;
 use ascio\api\dns\RestoreZoneResponseApi;
 
 
-class RestoreZoneResponse extends ResponseRootElement  {
+abstract class RestoreZoneResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["RestoreZoneResult", "zone"];
 	protected $_apiObjects=["RestoreZoneResult", "zone"];

@@ -5,7 +5,7 @@
 namespace ascio\service\v3;
 
 
-class SslDomainValidationType {
+abstract class SslDomainValidationType {
 
 
 	const Dns = "Dns";

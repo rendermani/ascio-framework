@@ -8,7 +8,7 @@ use ascio\db\v2\LogInDb;
 use ascio\api\v2\LogInApi;
 
 
-class LogIn extends RequestRootElement  {
+abstract class LogIn extends RequestRootElement  {
 
 	protected $_apiProperties=["session"];
 	protected $_apiObjects=["session"];

@@ -8,7 +8,7 @@ use ascio\db\dns\GetRolesResponseDb;
 use ascio\api\dns\GetRolesResponseApi;
 
 
-class GetRolesResponse extends ResponseRootElement  {
+abstract class GetRolesResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["GetRolesResult", "roles"];
 	protected $_apiObjects=["GetRolesResult", "roles"];

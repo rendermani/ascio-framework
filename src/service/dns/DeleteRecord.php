@@ -8,7 +8,7 @@ use ascio\db\dns\DeleteRecordDb;
 use ascio\api\dns\DeleteRecordApi;
 
 
-class DeleteRecord extends RequestRootElement  {
+abstract class DeleteRecord extends RequestRootElement  {
 
 	protected $_apiProperties=["recordId"];
 	protected $_apiObjects=[];

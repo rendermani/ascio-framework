@@ -8,7 +8,7 @@ use ascio\db\dns\GetRecordResponseDb;
 use ascio\api\dns\GetRecordResponseApi;
 
 
-class GetRecordResponse extends ResponseRootElement  {
+abstract class GetRecordResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["GetRecordResult", "record"];
 	protected $_apiObjects=["GetRecordResult", "record"];

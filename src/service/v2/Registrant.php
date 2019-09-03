@@ -8,7 +8,7 @@ use ascio\db\v2\RegistrantDb;
 use ascio\api\v2\RegistrantApi;
 
 
-class Registrant extends DbBase  {
+abstract class Registrant extends DbBase  {
 
 	protected $_apiProperties=["CreDate", "Status", "Handle", "Name", "OrgName", "Address1", "Address2", "City", "State", "PostalCode", "CountryCode", "Email", "Phone", "Fax", "RegistrantType", "VatNumber", "RegistrantDate", "NexusCategory", "RegistrantNumber", "Details"];
 	protected $_apiObjects=[];

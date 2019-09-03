@@ -8,7 +8,7 @@ use ascio\db\v2\ApprovalDocumentationDb;
 use ascio\api\v2\ApprovalDocumentationApi;
 
 
-class ApprovalDocumentation extends Base  {
+abstract class ApprovalDocumentation extends Base  {
 
 	protected $_apiProperties=["Type", "ObjectNames", "OrderId", "Attachments", "Extensions"];
 	protected $_apiObjects=["ObjectNames", "Attachments", "Extensions"];

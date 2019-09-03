@@ -8,7 +8,7 @@ use ascio\db\v2\TradeMarkDb;
 use ascio\api\v2\TradeMarkApi;
 
 
-class TradeMark extends DbBase  {
+abstract class TradeMark extends DbBase  {
 
 	protected $_apiProperties=["Name", "Country", "Date", "Number", "Type", "Contact", "ContactLanguage", "DocumentationLanguage", "SecondContact", "ThirdContact", "RegDate"];
 	protected $_apiObjects=[];

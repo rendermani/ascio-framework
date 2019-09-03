@@ -8,7 +8,7 @@ use ascio\db\v2\ResponseDb;
 use ascio\api\v2\ResponseApi;
 
 
-class Response extends Base  {
+abstract class Response extends Base  {
 
 	protected $_apiProperties=["Message", "ResultCode", "Values"];
 	protected $_apiObjects=["Values"];

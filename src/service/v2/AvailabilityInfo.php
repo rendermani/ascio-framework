@@ -8,7 +8,7 @@ use ascio\db\v2\AvailabilityInfoDb;
 use ascio\api\v2\AvailabilityInfoApi;
 
 
-class AvailabilityInfo extends RequestRootElement  {
+abstract class AvailabilityInfo extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "domainName", "quality"];
 	protected $_apiObjects=[];

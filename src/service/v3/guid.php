@@ -8,7 +8,7 @@ use ascio\db\v3\guidDb;
 use ascio\api\v3\guidApi;
 
 
-class guid {
+abstract class guid {
 
 
 }

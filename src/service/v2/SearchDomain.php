@@ -8,7 +8,7 @@ use ascio\db\v2\SearchDomainDb;
 use ascio\api\v2\SearchDomainApi;
 
 
-class SearchDomain extends RequestRootElement  {
+abstract class SearchDomain extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "criteria"];
 	protected $_apiObjects=["criteria"];

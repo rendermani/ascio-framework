@@ -8,7 +8,7 @@ use ascio\db\v2\ValidateOrderDb;
 use ascio\api\v2\ValidateOrderApi;
 
 
-class ValidateOrder extends RequestRootElement  {
+abstract class ValidateOrder extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "order"];
 	protected $_apiObjects=["order"];

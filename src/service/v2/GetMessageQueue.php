@@ -8,7 +8,7 @@ use ascio\db\v2\GetMessageQueueDb;
 use ascio\api\v2\GetMessageQueueApi;
 
 
-class GetMessageQueue extends RequestRootElement  {
+abstract class GetMessageQueue extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "msgId"];
 	protected $_apiObjects=[];

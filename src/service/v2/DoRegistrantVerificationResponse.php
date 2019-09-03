@@ -8,7 +8,7 @@ use ascio\db\v2\DoRegistrantVerificationResponseDb;
 use ascio\api\v2\DoRegistrantVerificationResponseApi;
 
 
-class DoRegistrantVerificationResponse extends ResponseRootElement  {
+abstract class DoRegistrantVerificationResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["DoRegistrantVerificationResult"];
 	protected $_apiObjects=["DoRegistrantVerificationResult"];

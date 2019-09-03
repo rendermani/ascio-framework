@@ -8,7 +8,7 @@ use ascio\db\v2\DeleteContactDb;
 use ascio\api\v2\DeleteContactApi;
 
 
-class DeleteContact extends RequestRootElement  {
+abstract class DeleteContact extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "contactHandle"];
 	protected $_apiObjects=[];

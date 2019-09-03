@@ -8,7 +8,7 @@ use ascio\db\v2\GetOrderDb;
 use ascio\api\v2\GetOrderApi;
 
 
-class GetOrder extends RequestRootElement  {
+abstract class GetOrder extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "orderId"];
 	protected $_apiObjects=[];

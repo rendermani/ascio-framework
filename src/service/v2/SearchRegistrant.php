@@ -8,7 +8,7 @@ use ascio\db\v2\SearchRegistrantDb;
 use ascio\api\v2\SearchRegistrantApi;
 
 
-class SearchRegistrant extends RequestRootElement  {
+abstract class SearchRegistrant extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "criteria"];
 	protected $_apiObjects=["criteria"];

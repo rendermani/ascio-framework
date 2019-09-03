@@ -8,7 +8,7 @@ use ascio\db\dns\ArrayOfZoneDb;
 use ascio\api\dns\ArrayOfZoneApi;
 
 
-class ArrayOfZone extends DbArrayBase  {
+abstract class ArrayOfZone extends DbArrayBase  {
 
 	protected $_apiProperties=["Zone"];
 	protected $_apiObjects=["Zone"];

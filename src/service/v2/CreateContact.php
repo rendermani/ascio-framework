@@ -8,7 +8,7 @@ use ascio\db\v2\CreateContactDb;
 use ascio\api\v2\CreateContactApi;
 
 
-class CreateContact extends RequestRootElement  {
+abstract class CreateContact extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "contact"];
 	protected $_apiObjects=["contact"];

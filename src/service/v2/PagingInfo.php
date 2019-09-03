@@ -8,7 +8,7 @@ use ascio\db\v2\PagingInfoDb;
 use ascio\api\v2\PagingInfoApi;
 
 
-class PagingInfo extends Base  {
+abstract class PagingInfo extends Base  {
 
 	protected $_apiProperties=["PageIndex", "PageSize"];
 	protected $_apiObjects=[];

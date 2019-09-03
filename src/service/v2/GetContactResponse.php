@@ -8,7 +8,7 @@ use ascio\db\v2\GetContactResponseDb;
 use ascio\api\v2\GetContactResponseApi;
 
 
-class GetContactResponse extends ResponseRootElement  {
+abstract class GetContactResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["GetContactResult", "contact"];
 	protected $_apiObjects=["GetContactResult", "contact"];

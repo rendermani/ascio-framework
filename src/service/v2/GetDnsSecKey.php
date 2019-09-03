@@ -8,7 +8,7 @@ use ascio\db\v2\GetDnsSecKeyDb;
 use ascio\api\v2\GetDnsSecKeyApi;
 
 
-class GetDnsSecKey extends RequestRootElement  {
+abstract class GetDnsSecKey extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "dnsSecKeyHandle"];
 	protected $_apiObjects=[];

@@ -8,7 +8,7 @@ use ascio\db\v3\NameWatchInfoDb;
 use ascio\api\v3\NameWatchInfoApi;
 
 
-class NameWatchInfo extends DbBase  {
+abstract class NameWatchInfo extends DbBase  {
 
 	protected $_apiProperties=["Handle", "Status", "Created", "Expires", "Name", "NotificationFrequency", "Tier", "EmailNotification1", "EmailNotification2", "EmailNotification3", "EmailNotification4", "EmailNotification5", "Owner", "Reseller", "ObjectComment"];
 	protected $_apiObjects=["Owner", "Reseller"];

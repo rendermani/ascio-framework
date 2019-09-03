@@ -9,7 +9,7 @@ use ascio\api\v3\RegistrantApi;
 use ascio\api\v3\ContactApi;
 
 
-class Registrant extends Contact  {
+abstract class Registrant extends Contact  {
 
 	protected $_apiProperties=["Handle", "FirstName", "LastName", "OrgName", "Address1", "Address2", "City", "State", "PostalCode", "CountryCode", "Phone", "Fax", "Email", "Type", "Details", "OrganisationNumber", "Extensions", "VatNumber", "NexusCategory"];
 	protected $_apiObjects=["Extensions"];

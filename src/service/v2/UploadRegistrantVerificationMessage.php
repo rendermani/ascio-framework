@@ -8,7 +8,7 @@ use ascio\db\v2\UploadRegistrantVerificationMessageDb;
 use ascio\api\v2\UploadRegistrantVerificationMessageApi;
 
 
-class UploadRegistrantVerificationMessage extends RequestRootElement  {
+abstract class UploadRegistrantVerificationMessage extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "value", "details"];
 	protected $_apiObjects=["details"];

@@ -8,7 +8,7 @@ use ascio\db\v3\ArrayOfMarkOrderDocumentDb;
 use ascio\api\v3\ArrayOfMarkOrderDocumentApi;
 
 
-class ArrayOfMarkOrderDocument extends DbArrayBase  {
+abstract class ArrayOfMarkOrderDocument extends DbArrayBase  {
 
 	protected $_apiProperties=["MarkOrderDocument"];
 	protected $_apiObjects=["MarkOrderDocument"];

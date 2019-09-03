@@ -8,7 +8,7 @@ use ascio\db\v2\CreateRegistrantResponseDb;
 use ascio\api\v2\CreateRegistrantResponseApi;
 
 
-class CreateRegistrantResponse extends ResponseRootElement  {
+abstract class CreateRegistrantResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["CreateRegistrantResult", "registrant"];
 	protected $_apiObjects=["CreateRegistrantResult", "registrant"];

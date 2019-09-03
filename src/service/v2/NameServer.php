@@ -8,7 +8,7 @@ use ascio\db\v2\NameServerDb;
 use ascio\api\v2\NameServerApi;
 
 
-class NameServer extends DbBase  {
+abstract class NameServer extends DbBase  {
 
 	protected $_apiProperties=["CreDate", "Handle", "HostName", "IpAddress", "Status", "IpV6Address", "Details"];
 	protected $_apiObjects=[];

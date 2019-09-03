@@ -5,7 +5,7 @@
 namespace ascio\service\v3;
 
 
-class MarkServiceType {
+abstract class MarkServiceType {
 
 
 	const Standard = "Standard";

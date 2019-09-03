@@ -8,7 +8,7 @@ use ascio\db\v2\SearchContactResponseDb;
 use ascio\api\v2\SearchContactResponseApi;
 
 
-class SearchContactResponse extends ResponseRootElement  {
+abstract class SearchContactResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["SearchContactResult", "contacts"];
 	protected $_apiObjects=["SearchContactResult", "contacts"];

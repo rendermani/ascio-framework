@@ -8,7 +8,7 @@ use ascio\db\v2\DeleteNameServerResponseDb;
 use ascio\api\v2\DeleteNameServerResponseApi;
 
 
-class DeleteNameServerResponse extends ResponseRootElement  {
+abstract class DeleteNameServerResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["DeleteNameServerResult"];
 	protected $_apiObjects=["DeleteNameServerResult"];

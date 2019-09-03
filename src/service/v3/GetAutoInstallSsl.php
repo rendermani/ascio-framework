@@ -8,7 +8,7 @@ use ascio\db\v3\GetAutoInstallSslDb;
 use ascio\api\v3\GetAutoInstallSslApi;
 
 
-class GetAutoInstallSsl extends DbBase  {
+abstract class GetAutoInstallSsl extends DbBase  {
 
 	protected $_apiProperties=["request"];
 	protected $_apiObjects=["request"];

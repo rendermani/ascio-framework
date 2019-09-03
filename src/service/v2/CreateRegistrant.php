@@ -8,7 +8,7 @@ use ascio\db\v2\CreateRegistrantDb;
 use ascio\api\v2\CreateRegistrantApi;
 
 
-class CreateRegistrant extends RequestRootElement  {
+abstract class CreateRegistrant extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "registrant"];
 	protected $_apiObjects=["registrant"];

@@ -8,7 +8,7 @@ use ascio\db\v3\AbstractResponseDb;
 use ascio\api\v3\AbstractResponseApi;
 
 
-class AbstractResponse extends DbBase  {
+abstract class AbstractResponse extends DbBase  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors"];
 	protected $_apiObjects=["Errors"];

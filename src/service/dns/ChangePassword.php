@@ -8,7 +8,7 @@ use ascio\db\dns\ChangePasswordDb;
 use ascio\api\dns\ChangePasswordApi;
 
 
-class ChangePassword extends RequestRootElement  {
+abstract class ChangePassword extends RequestRootElement  {
 
 	protected $_apiProperties=["userName", "newPassword"];
 	protected $_apiObjects=[];

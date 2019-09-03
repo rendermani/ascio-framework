@@ -8,7 +8,7 @@ use ascio\db\v3\AutoInstallSslDb;
 use ascio\api\v3\AutoInstallSslApi;
 
 
-class AutoInstallSsl extends DbBase  {
+abstract class AutoInstallSsl extends DbBase  {
 
 	protected $_apiProperties=["Handle", "CommonName", "ProductCode", "Email", "SanCount", "ObjectComment"];
 	protected $_apiObjects=[];

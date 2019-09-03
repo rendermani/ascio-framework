@@ -8,7 +8,7 @@ use ascio\db\v2\SearchNameServerResponseDb;
 use ascio\api\v2\SearchNameServerResponseApi;
 
 
-class SearchNameServerResponse extends ResponseRootElement  {
+abstract class SearchNameServerResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["SearchNameServerResult", "nameServers"];
 	protected $_apiObjects=["SearchNameServerResult", "nameServers"];

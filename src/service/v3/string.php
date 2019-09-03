@@ -2,13 +2,11 @@
 
 // XSLT-WSDL-Client. Generated PHP class of string
 
-namespace ascio\service\v3;
+namespace ascio\v3\service;
 use ascio\v3\Base;
-use ascio\db\v3\stringDb;
-use ascio\api\v3\stringApi;
 
 
-class string extends Base  {
+abstract class string extends Base  {
 
 	protected $_apiProperties=[];
 	protected $_apiObjects=[];

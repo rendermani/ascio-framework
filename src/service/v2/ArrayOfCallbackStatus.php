@@ -8,7 +8,7 @@ use ascio\db\v2\ArrayOfCallbackStatusDb;
 use ascio\api\v2\ArrayOfCallbackStatusApi;
 
 
-class ArrayOfCallbackStatus extends DbArrayBase  {
+abstract class ArrayOfCallbackStatus extends DbArrayBase  {
 
 	protected $_apiProperties=["CallbackStatus"];
 	protected $_apiObjects=["CallbackStatus"];

@@ -5,7 +5,7 @@
 namespace ascio\service\v3;
 
 
-class MarkOrderDocType {
+abstract class MarkOrderDocType {
 
 
 	const TrademarkAssigneeDeclaration = "TrademarkAssigneeDeclaration";

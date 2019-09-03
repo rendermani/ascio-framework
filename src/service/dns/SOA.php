@@ -9,7 +9,7 @@ use ascio\api\dns\SOAApi;
 use ascio\api\dns\RecordApi;
 
 
-class SOA extends Record  {
+abstract class SOA extends Record  {
 
 	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "UpdatedDate", "Expire", "HostmasterEmail", "PrimaryNameServer", "Refresh", "Retry", "SerialUsage"];
 	protected $_apiObjects=[];

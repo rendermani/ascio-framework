@@ -8,7 +8,7 @@ use ascio\db\v2\PriceDb;
 use ascio\api\v2\PriceApi;
 
 
-class Price extends Base  {
+abstract class Price extends Base  {
 
 	protected $_apiProperties=["OrderType", "Period", "Price"];
 	protected $_apiObjects=[];

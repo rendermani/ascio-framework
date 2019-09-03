@@ -8,7 +8,7 @@ use ascio\db\v2\ArrayOfRegistrantDb;
 use ascio\api\v2\ArrayOfRegistrantApi;
 
 
-class ArrayOfRegistrant extends ArrayBase implements \Iterator  {
+abstract class ArrayOfRegistrant extends ArrayBase implements \Iterator  {
 
 	protected $_apiProperties=["Registrant"];
 	protected $_apiObjects=["Registrant"];

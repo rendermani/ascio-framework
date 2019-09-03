@@ -8,7 +8,7 @@ use ascio\db\dns\GetUserDb;
 use ascio\api\dns\GetUserApi;
 
 
-class GetUser extends RequestRootElement  {
+abstract class GetUser extends RequestRootElement  {
 
 	protected $_apiProperties=["userName"];
 	protected $_apiObjects=[];

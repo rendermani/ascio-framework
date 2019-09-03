@@ -5,7 +5,7 @@
 namespace ascio\service\v2;
 
 
-class MessageType {
+abstract class MessageType {
 
 
 	const Message_to_Partner = "Message_to_Partner";

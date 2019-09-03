@@ -8,7 +8,7 @@ use ascio\db\v2\PollMessageDb;
 use ascio\api\v2\PollMessageApi;
 
 
-class PollMessage extends RequestRootElement  {
+abstract class PollMessage extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "msgType"];
 	protected $_apiObjects=[];

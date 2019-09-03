@@ -8,7 +8,7 @@ use ascio\db\v2\LogOutDb;
 use ascio\api\v2\LogOutApi;
 
 
-class LogOut extends RequestRootElement  {
+abstract class LogOut extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId"];
 	protected $_apiObjects=[];

@@ -8,7 +8,7 @@ use ascio\db\v3\GetQueueMessageRequestDb;
 use ascio\api\v3\GetQueueMessageRequestApi;
 
 
-class GetQueueMessageRequest extends DbBase  {
+abstract class GetQueueMessageRequest extends DbBase  {
 
 	protected $_apiProperties=["MessageId"];
 	protected $_apiObjects=[];

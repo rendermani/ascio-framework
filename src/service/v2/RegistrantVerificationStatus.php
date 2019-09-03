@@ -5,7 +5,7 @@
 namespace ascio\service\v2;
 
 
-class RegistrantVerificationStatus {
+abstract class RegistrantVerificationStatus {
 
 
 	const Unverified = "Unverified";

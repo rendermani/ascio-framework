@@ -8,7 +8,7 @@ use ascio\db\v2\ArrayOfNameServerDb;
 use ascio\api\v2\ArrayOfNameServerApi;
 
 
-class ArrayOfNameServer extends ArrayBase implements \Iterator  {
+abstract class ArrayOfNameServer extends ArrayBase implements \Iterator  {
 
 	protected $_apiProperties=["NameServer"];
 	protected $_apiObjects=["NameServer"];

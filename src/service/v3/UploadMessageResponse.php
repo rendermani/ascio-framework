@@ -9,7 +9,7 @@ use ascio\api\v3\UploadMessageResponseApi;
 use ascio\api\v3\AbstractResponseApi;
 
 
-class UploadMessageResponse extends AbstractResponse  {
+abstract class UploadMessageResponse extends AbstractResponse  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "MessageId"];
 	protected $_apiObjects=["Errors"];

@@ -8,7 +8,7 @@ use ascio\db\v3\CreateOrderDb;
 use ascio\api\v3\CreateOrderApi;
 
 
-class CreateOrder extends DbBase  {
+abstract class CreateOrder extends DbBase  {
 
 	protected $_apiProperties=["request"];
 	protected $_apiObjects=["request"];

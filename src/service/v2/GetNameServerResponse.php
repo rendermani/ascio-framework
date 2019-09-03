@@ -8,7 +8,7 @@ use ascio\db\v2\GetNameServerResponseDb;
 use ascio\api\v2\GetNameServerResponseApi;
 
 
-class GetNameServerResponse extends ResponseRootElement  {
+abstract class GetNameServerResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["GetNameServerResult", "nameServer"];
 	protected $_apiObjects=["GetNameServerResult", "nameServer"];

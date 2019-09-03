@@ -5,7 +5,7 @@
 namespace ascio\service\v2;
 
 
-class SearchModeType {
+abstract class SearchModeType {
 
 
 	const Strict = "Strict";

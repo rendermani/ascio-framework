@@ -8,7 +8,7 @@ use ascio\db\v3\DefensiveDb;
 use ascio\api\v3\DefensiveApi;
 
 
-class Defensive extends DbBase  {
+abstract class Defensive extends DbBase  {
 
 	protected $_apiProperties=["Handle", "Name", "MarkHandle", "AuthInfo", "Encoding", "Owner", "Admin", "Tech", "Billing", "Reseller", "ObjectComment"];
 	protected $_apiObjects=["Owner", "Admin", "Tech", "Billing", "Reseller"];

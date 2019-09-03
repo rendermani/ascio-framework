@@ -8,7 +8,7 @@ use ascio\db\dns\SearchUserResponseDb;
 use ascio\api\dns\SearchUserResponseApi;
 
 
-class SearchUserResponse extends ResponseRootElement  {
+abstract class SearchUserResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["SearchUserResult", "userNames"];
 	protected $_apiObjects=["SearchUserResult", "userNames"];

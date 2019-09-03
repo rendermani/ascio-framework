@@ -8,7 +8,7 @@ use ascio\db\v3\UploadMessageRequestDb;
 use ascio\api\v3\UploadMessageRequestApi;
 
 
-class UploadMessageRequest extends DbBase  {
+abstract class UploadMessageRequest extends DbBase  {
 
 	protected $_apiProperties=["OrderId", "Message"];
 	protected $_apiObjects=["Message"];

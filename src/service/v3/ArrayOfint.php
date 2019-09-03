@@ -8,7 +8,7 @@ use ascio\db\v3\ArrayOfintDb;
 use ascio\api\v3\ArrayOfintApi;
 
 
-class ArrayOfint extends DbArrayBase  {
+abstract class ArrayOfint extends DbArrayBase  {
 
 	protected $_apiProperties=["int"];
 	protected $_apiObjects=[];

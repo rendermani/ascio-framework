@@ -9,7 +9,7 @@ use ascio\api\v3\TreatyOrStatuteMarkApi;
 use ascio\api\v3\AbstractMarkApi;
 
 
-class TreatyOrStatuteMark extends AbstractMark  {
+abstract class TreatyOrStatuteMark extends AbstractMark  {
 
 	protected $_apiProperties=["Handle", "MarkName", "MarkId", "AuthInfo", "ServiceType", "GoodsAndServicesDescription", "Labels", "ClaimEmailNotification1", "ClaimEmailNotification2", "ClaimEmailNotification3", "ClaimEmailNotification4", "ClaimEmailNotification5", "NotificationFrequency", "Owner", "Reseller", "Extensions", "ObjectComment", "Title", "ReferenceNumber", "Country", "Region", "ProtectionDate", "ExecutionDate"];
 	protected $_apiObjects=["Labels", "Owner", "Reseller", "Extensions"];

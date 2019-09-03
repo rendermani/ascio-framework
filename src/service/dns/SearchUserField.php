@@ -5,7 +5,7 @@
 namespace ascio\service\dns;
 
 
-class SearchUserField {
+abstract class SearchUserField {
 
 
 	const UserName = "UserName";

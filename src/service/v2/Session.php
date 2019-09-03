@@ -8,7 +8,7 @@ use ascio\db\v2\SessionDb;
 use ascio\api\v2\SessionApi;
 
 
-class Session extends Base  {
+abstract class Session extends Base  {
 
 	protected $_apiProperties=["Account", "Password"];
 	protected $_apiObjects=[];

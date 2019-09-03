@@ -8,7 +8,7 @@ use ascio\db\dns\ArrayOfRecordDb;
 use ascio\api\dns\ArrayOfRecordApi;
 
 
-class ArrayOfRecord extends DbArrayBase  {
+abstract class ArrayOfRecord extends DbArrayBase  {
 
 	protected $_apiProperties=["Record"];
 	protected $_apiObjects=["Record"];

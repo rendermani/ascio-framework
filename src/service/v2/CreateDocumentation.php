@@ -8,7 +8,7 @@ use ascio\db\v2\CreateDocumentationDb;
 use ascio\api\v2\CreateDocumentationApi;
 
 
-class CreateDocumentation extends RequestRootElement  {
+abstract class CreateDocumentation extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "attachments"];
 	protected $_apiObjects=["attachments"];

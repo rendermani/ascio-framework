@@ -9,7 +9,7 @@ use ascio\api\dns\PTRApi;
 use ascio\api\dns\RecordApi;
 
 
-class PTR extends Record  {
+abstract class PTR extends Record  {
 
 	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "UpdatedDate"];
 	protected $_apiObjects=[];

@@ -8,7 +8,7 @@ use ascio\db\v2\CreateNameServerDb;
 use ascio\api\v2\CreateNameServerApi;
 
 
-class CreateNameServer extends RequestRootElement  {
+abstract class CreateNameServer extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "nameServer"];
 	protected $_apiObjects=["nameServer"];

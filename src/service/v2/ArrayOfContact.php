@@ -8,7 +8,7 @@ use ascio\db\v2\ArrayOfContactDb;
 use ascio\api\v2\ArrayOfContactApi;
 
 
-class ArrayOfContact extends ArrayBase implements \Iterator  {
+abstract class ArrayOfContact extends ArrayBase implements \Iterator  {
 
 	protected $_apiProperties=["Contact"];
 	protected $_apiObjects=["Contact"];

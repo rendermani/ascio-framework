@@ -8,7 +8,7 @@ use ascio\db\dns\ZoneDb;
 use ascio\api\dns\ZoneApi;
 
 
-class Zone extends DbBase  {
+abstract class Zone extends DbBase  {
 
 	protected $_apiProperties=["CreatedDate", "Owner", "Records", "ZoneName"];
 	protected $_apiObjects=["Records"];

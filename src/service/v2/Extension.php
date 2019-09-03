@@ -8,7 +8,7 @@ use ascio\db\v2\ExtensionDb;
 use ascio\api\v2\ExtensionApi;
 
 
-class Extension extends DbBase  {
+abstract class Extension extends DbBase  {
 
 	protected $_apiProperties=["Key", "Value"];
 	protected $_apiObjects=[];

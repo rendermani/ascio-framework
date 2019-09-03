@@ -9,7 +9,7 @@ use ascio\api\dns\AApi;
 use ascio\api\dns\RecordApi;
 
 
-class A extends Record  {
+abstract class A extends Record  {
 
 	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "UpdatedDate"];
 	protected $_apiObjects=[];

@@ -8,7 +8,7 @@ use ascio\db\v3\MessageDb;
 use ascio\api\v3\MessageApi;
 
 
-class Message extends DbBase  {
+abstract class Message extends DbBase  {
 
 	protected $_apiProperties=["Attachments", "Body", "Created", "FromAddress", "Subject", "ToAddress", "Type"];
 	protected $_apiObjects=["Attachments"];

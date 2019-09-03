@@ -9,7 +9,7 @@ use ascio\api\dns\WebForwardApi;
 use ascio\api\dns\RecordApi;
 
 
-class WebForward extends Record  {
+abstract class WebForward extends Record  {
 
 	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "UpdatedDate", "RedirectionType"];
 	protected $_apiObjects=[];

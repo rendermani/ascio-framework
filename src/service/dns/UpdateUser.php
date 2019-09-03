@@ -8,7 +8,7 @@ use ascio\db\dns\UpdateUserDb;
 use ascio\api\dns\UpdateUserApi;
 
 
-class UpdateUser extends RequestRootElement  {
+abstract class UpdateUser extends RequestRootElement  {
 
 	protected $_apiProperties=["user"];
 	protected $_apiObjects=["user"];

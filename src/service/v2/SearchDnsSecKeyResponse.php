@@ -8,7 +8,7 @@ use ascio\db\v2\SearchDnsSecKeyResponseDb;
 use ascio\api\v2\SearchDnsSecKeyResponseApi;
 
 
-class SearchDnsSecKeyResponse extends ResponseRootElement  {
+abstract class SearchDnsSecKeyResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["SearchDnsSecKeyResult", "dnsSecKeys"];
 	protected $_apiObjects=["SearchDnsSecKeyResult", "dnsSecKeys"];

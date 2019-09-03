@@ -5,7 +5,7 @@
 namespace ascio\service\v3;
 
 
-class WebServerType {
+abstract class WebServerType {
 
 
 	const ApacheSsl = "ApacheSsl";

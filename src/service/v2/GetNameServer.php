@@ -8,7 +8,7 @@ use ascio\db\v2\GetNameServerDb;
 use ascio\api\v2\GetNameServerApi;
 
 
-class GetNameServer extends RequestRootElement  {
+abstract class GetNameServer extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "nameServerHandle"];
 	protected $_apiObjects=[];

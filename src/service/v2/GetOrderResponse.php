@@ -8,7 +8,7 @@ use ascio\db\v2\GetOrderResponseDb;
 use ascio\api\v2\GetOrderResponseApi;
 
 
-class GetOrderResponse extends ResponseRootElement  {
+abstract class GetOrderResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["GetOrderResult", "order"];
 	protected $_apiObjects=["GetOrderResult", "order"];

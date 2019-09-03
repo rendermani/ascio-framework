@@ -8,7 +8,7 @@ use ascio\db\v2\DoRegistrantVerificationDb;
 use ascio\api\v2\DoRegistrantVerificationApi;
 
 
-class DoRegistrantVerification extends RequestRootElement  {
+abstract class DoRegistrantVerification extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "value"];
 	protected $_apiObjects=[];

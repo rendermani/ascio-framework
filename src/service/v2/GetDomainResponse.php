@@ -8,7 +8,7 @@ use ascio\db\v2\GetDomainResponseDb;
 use ascio\api\v2\GetDomainResponseApi;
 
 
-class GetDomainResponse extends ResponseRootElement  {
+abstract class GetDomainResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["GetDomainResult", "domain"];
 	protected $_apiObjects=["GetDomainResult", "domain"];

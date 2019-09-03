@@ -9,7 +9,7 @@ use ascio\api\v3\MarkOrderDocumentApi;
 use ascio\api\v3\AttachmentApi;
 
 
-class MarkOrderDocument extends Attachment  {
+abstract class MarkOrderDocument extends Attachment  {
 
 	protected $_apiProperties=["FileName", "Content", "DocType"];
 	protected $_apiObjects=[];

@@ -5,7 +5,7 @@
 namespace ascio\service\dns;
 
 
-class SearchZoneField {
+abstract class SearchZoneField {
 
 
 	const ZoneName = "ZoneName";

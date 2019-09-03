@@ -8,7 +8,7 @@ use ascio\db\v2\RegistrantVerificationDetailsDb;
 use ascio\api\v2\RegistrantVerificationDetailsApi;
 
 
-class RegistrantVerificationDetails extends Base  {
+abstract class RegistrantVerificationDetails extends Base  {
 
 	protected $_apiProperties=["VerifiedBy", "VerificationDate", "Messages"];
 	protected $_apiObjects=["Messages"];

@@ -9,7 +9,7 @@ use ascio\api\v3\GetMarkResponseApi;
 use ascio\api\v3\AbstractResponseApi;
 
 
-class GetMarkResponse extends AbstractResponse  {
+abstract class GetMarkResponse extends AbstractResponse  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "MarkInfo"];
 	protected $_apiObjects=["Errors", "MarkInfo"];

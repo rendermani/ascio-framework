@@ -8,7 +8,7 @@ use ascio\db\v3\durationDb;
 use ascio\api\v3\durationApi;
 
 
-class duration {
+abstract class duration {
 
 
 }

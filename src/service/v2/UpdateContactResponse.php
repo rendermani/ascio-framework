@@ -8,7 +8,7 @@ use ascio\db\v2\UpdateContactResponseDb;
 use ascio\api\v2\UpdateContactResponseApi;
 
 
-class UpdateContactResponse extends ResponseRootElement  {
+abstract class UpdateContactResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["UpdateContactResult"];
 	protected $_apiObjects=["UpdateContactResult"];

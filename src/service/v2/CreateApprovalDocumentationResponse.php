@@ -8,7 +8,7 @@ use ascio\db\v2\CreateApprovalDocumentationResponseDb;
 use ascio\api\v2\CreateApprovalDocumentationResponseApi;
 
 
-class CreateApprovalDocumentationResponse extends ResponseRootElement  {
+abstract class CreateApprovalDocumentationResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["CreateApprovalDocumentationResult", "documentationId"];
 	protected $_apiObjects=["CreateApprovalDocumentationResult"];

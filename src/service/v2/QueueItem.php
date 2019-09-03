@@ -8,7 +8,7 @@ use ascio\db\v2\QueueItemDb;
 use ascio\api\v2\QueueItemApi;
 
 
-class QueueItem extends DbBase  {
+abstract class QueueItem extends DbBase  {
 
 	protected $_apiProperties=["Attachments", "DomainHandle", "DomainName", "Msg", "MsgId", "MsgType", "OrderId", "OrderStatus", "StatusList"];
 	protected $_apiObjects=["Attachments", "StatusList"];

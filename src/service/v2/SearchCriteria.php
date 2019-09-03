@@ -8,7 +8,7 @@ use ascio\db\v2\SearchCriteriaDb;
 use ascio\api\v2\SearchCriteriaApi;
 
 
-class SearchCriteria extends Base  {
+abstract class SearchCriteria extends Base  {
 
 	protected $_apiProperties=["Clauses", "Mode", "Withoutstates", "Withstates"];
 	protected $_apiObjects=["Clauses", "Withoutstates", "Withstates"];

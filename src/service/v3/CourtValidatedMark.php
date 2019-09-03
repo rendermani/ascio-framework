@@ -9,7 +9,7 @@ use ascio\api\v3\CourtValidatedMarkApi;
 use ascio\api\v3\AbstractMarkApi;
 
 
-class CourtValidatedMark extends AbstractMark  {
+abstract class CourtValidatedMark extends AbstractMark  {
 
 	protected $_apiProperties=["Handle", "MarkName", "MarkId", "AuthInfo", "ServiceType", "GoodsAndServicesDescription", "Labels", "ClaimEmailNotification1", "ClaimEmailNotification2", "ClaimEmailNotification3", "ClaimEmailNotification4", "ClaimEmailNotification5", "NotificationFrequency", "Owner", "Reseller", "Extensions", "ObjectComment", "CourtName", "ReferenceNumber", "Country", "Region", "ProtectionDate"];
 	protected $_apiObjects=["Labels", "Owner", "Reseller", "Extensions"];

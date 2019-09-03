@@ -8,7 +8,7 @@ use ascio\db\dns\ArrayOfZoneLogEntryDb;
 use ascio\api\dns\ArrayOfZoneLogEntryApi;
 
 
-class ArrayOfZoneLogEntry extends DbArrayBase  {
+abstract class ArrayOfZoneLogEntry extends DbArrayBase  {
 
 	protected $_apiProperties=["ZoneLogEntry"];
 	protected $_apiObjects=["ZoneLogEntry"];

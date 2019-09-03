@@ -8,7 +8,7 @@ use ascio\db\v2\UploadDocumentationDb;
 use ascio\api\v2\UploadDocumentationApi;
 
 
-class UploadDocumentation extends RequestRootElement  {
+abstract class UploadDocumentation extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "orderId", "fileName", "content"];
 	protected $_apiObjects=[];

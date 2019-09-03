@@ -8,7 +8,7 @@ use ascio\db\v3\UploadDocumentationRequestDb;
 use ascio\api\v3\UploadDocumentationRequestApi;
 
 
-class UploadDocumentationRequest extends DbBase  {
+abstract class UploadDocumentationRequest extends DbBase  {
 
 	protected $_apiProperties=["OrderId", "Documents"];
 	protected $_apiObjects=["Documents"];

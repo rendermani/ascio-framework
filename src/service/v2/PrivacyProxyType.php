@@ -5,7 +5,7 @@
 namespace ascio\service\v2;
 
 
-class PrivacyProxyType {
+abstract class PrivacyProxyType {
 
 
 	const None = "None";

@@ -8,7 +8,7 @@ use ascio\db\dns\CreateUserDb;
 use ascio\api\dns\CreateUserApi;
 
 
-class CreateUser extends RequestRootElement  {
+abstract class CreateUser extends RequestRootElement  {
 
 	protected $_apiProperties=["user"];
 	protected $_apiObjects=["user"];

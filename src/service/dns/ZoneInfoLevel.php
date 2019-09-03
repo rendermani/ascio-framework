@@ -5,7 +5,7 @@
 namespace ascio\service\dns;
 
 
-class ZoneInfoLevel {
+abstract class ZoneInfoLevel {
 
 
 	const Basic = "Basic";

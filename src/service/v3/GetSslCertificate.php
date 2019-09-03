@@ -8,7 +8,7 @@ use ascio\db\v3\GetSslCertificateDb;
 use ascio\api\v3\GetSslCertificateApi;
 
 
-class GetSslCertificate extends DbBase  {
+abstract class GetSslCertificate extends DbBase  {
 
 	protected $_apiProperties=["request"];
 	protected $_apiObjects=["request"];

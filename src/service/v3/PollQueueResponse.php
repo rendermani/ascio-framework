@@ -9,7 +9,7 @@ use ascio\api\v3\PollQueueResponseApi;
 use ascio\api\v3\AbstractResponseApi;
 
 
-class PollQueueResponse extends AbstractResponse  {
+abstract class PollQueueResponse extends AbstractResponse  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "TotalCount", "Message"];
 	protected $_apiObjects=["Errors", "Message"];

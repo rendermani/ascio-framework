@@ -8,7 +8,7 @@ use ascio\db\v2\DeleteContactResponseDb;
 use ascio\api\v2\DeleteContactResponseApi;
 
 
-class DeleteContactResponse extends ResponseRootElement  {
+abstract class DeleteContactResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["DeleteContactResult"];
 	protected $_apiObjects=["DeleteContactResult"];

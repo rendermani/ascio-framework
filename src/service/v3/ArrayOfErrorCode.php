@@ -8,7 +8,7 @@ use ascio\db\v3\ArrayOfErrorCodeDb;
 use ascio\api\v3\ArrayOfErrorCodeApi;
 
 
-class ArrayOfErrorCode extends DbArrayBase  {
+abstract class ArrayOfErrorCode extends DbArrayBase  {
 
 	protected $_apiProperties=["ErrorCode"];
 	protected $_apiObjects=["ErrorCode"];

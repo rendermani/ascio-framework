@@ -8,7 +8,7 @@ use ascio\db\v3\KeyValueDb;
 use ascio\api\v3\KeyValueApi;
 
 
-class KeyValue extends DbBase  {
+abstract class KeyValue extends DbBase  {
 
 	protected $_apiProperties=["Key", "Value"];
 	protected $_apiObjects=[];

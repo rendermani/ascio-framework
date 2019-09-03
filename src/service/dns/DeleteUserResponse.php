@@ -8,7 +8,7 @@ use ascio\db\dns\DeleteUserResponseDb;
 use ascio\api\dns\DeleteUserResponseApi;
 
 
-class DeleteUserResponse extends ResponseRootElement  {
+abstract class DeleteUserResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["DeleteUserResult"];
 	protected $_apiObjects=["DeleteUserResult"];

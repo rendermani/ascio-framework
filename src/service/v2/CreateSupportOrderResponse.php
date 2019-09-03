@@ -8,7 +8,7 @@ use ascio\db\v2\CreateSupportOrderResponseDb;
 use ascio\api\v2\CreateSupportOrderResponseApi;
 
 
-class CreateSupportOrderResponse extends ResponseRootElement  {
+abstract class CreateSupportOrderResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["CreateSupportOrderResult", "orderId"];
 	protected $_apiObjects=["CreateSupportOrderResult"];

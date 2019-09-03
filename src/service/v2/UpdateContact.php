@@ -8,7 +8,7 @@ use ascio\db\v2\UpdateContactDb;
 use ascio\api\v2\UpdateContactApi;
 
 
-class UpdateContact extends RequestRootElement  {
+abstract class UpdateContact extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "contact"];
 	protected $_apiObjects=["contact"];

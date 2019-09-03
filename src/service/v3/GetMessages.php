@@ -8,7 +8,7 @@ use ascio\db\v3\GetMessagesDb;
 use ascio\api\v3\GetMessagesApi;
 
 
-class GetMessages extends DbBase  {
+abstract class GetMessages extends DbBase  {
 
 	protected $_apiProperties=["request"];
 	protected $_apiObjects=["request"];

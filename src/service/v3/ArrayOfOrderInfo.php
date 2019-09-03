@@ -8,7 +8,7 @@ use ascio\db\v3\ArrayOfOrderInfoDb;
 use ascio\api\v3\ArrayOfOrderInfoApi;
 
 
-class ArrayOfOrderInfo extends DbArrayBase  {
+abstract class ArrayOfOrderInfo extends DbArrayBase  {
 
 	protected $_apiProperties=["OrderInfo"];
 	protected $_apiObjects=["OrderInfo"];

@@ -8,7 +8,7 @@ use ascio\db\v3\GetMarkDb;
 use ascio\api\v3\GetMarkApi;
 
 
-class GetMark extends DbBase  {
+abstract class GetMark extends DbBase  {
 
 	protected $_apiProperties=["request"];
 	protected $_apiObjects=["request"];

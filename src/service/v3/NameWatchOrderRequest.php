@@ -9,7 +9,7 @@ use ascio\api\v3\NameWatchOrderRequestApi;
 use ascio\api\v3\AbstractOrderRequestApi;
 
 
-class NameWatchOrderRequest extends AbstractOrderRequest  {
+abstract class NameWatchOrderRequest extends AbstractOrderRequest  {
 
 	protected $_apiProperties=["Type", "Period", "TransactionComment", "Comments", "Documentation", "Options", "NameWatch"];
 	protected $_apiObjects=["NameWatch"];

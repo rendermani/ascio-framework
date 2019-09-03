@@ -8,7 +8,7 @@ use ascio\db\dns\ArrayOfRoleItemDb;
 use ascio\api\dns\ArrayOfRoleItemApi;
 
 
-class ArrayOfRoleItem extends DbArrayBase  {
+abstract class ArrayOfRoleItem extends DbArrayBase  {
 
 	protected $_apiProperties=["RoleItem"];
 	protected $_apiObjects=["RoleItem"];

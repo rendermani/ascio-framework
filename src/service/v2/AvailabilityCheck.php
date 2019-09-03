@@ -8,7 +8,7 @@ use ascio\db\v2\AvailabilityCheckDb;
 use ascio\api\v2\AvailabilityCheckApi;
 
 
-class AvailabilityCheck extends RequestRootElement  {
+abstract class AvailabilityCheck extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "domains", "tlds", "quality"];
 	protected $_apiObjects=["domains", "tlds"];

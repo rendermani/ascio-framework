@@ -8,7 +8,7 @@ use ascio\db\v2\CreateDocumentationResponseDb;
 use ascio\api\v2\CreateDocumentationResponseApi;
 
 
-class CreateDocumentationResponse extends ResponseRootElement  {
+abstract class CreateDocumentationResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["CreateDocumentationResult", "documentationId"];
 	protected $_apiObjects=["CreateDocumentationResult"];

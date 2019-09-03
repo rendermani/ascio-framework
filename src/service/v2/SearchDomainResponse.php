@@ -8,7 +8,7 @@ use ascio\db\v2\SearchDomainResponseDb;
 use ascio\api\v2\SearchDomainResponseApi;
 
 
-class SearchDomainResponse extends ResponseRootElement  {
+abstract class SearchDomainResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["SearchDomainResult", "domains"];
 	protected $_apiObjects=["SearchDomainResult", "domains"];

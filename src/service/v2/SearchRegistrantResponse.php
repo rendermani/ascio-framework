@@ -8,7 +8,7 @@ use ascio\db\v2\SearchRegistrantResponseDb;
 use ascio\api\v2\SearchRegistrantResponseApi;
 
 
-class SearchRegistrantResponse extends ResponseRootElement  {
+abstract class SearchRegistrantResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["SearchRegistrantResult", "registrants"];
 	protected $_apiObjects=["SearchRegistrantResult", "registrants"];

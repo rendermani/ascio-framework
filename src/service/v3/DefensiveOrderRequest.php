@@ -9,7 +9,7 @@ use ascio\api\v3\DefensiveOrderRequestApi;
 use ascio\api\v3\AbstractOrderRequestApi;
 
 
-class DefensiveOrderRequest extends AbstractOrderRequest  {
+abstract class DefensiveOrderRequest extends AbstractOrderRequest  {
 
 	protected $_apiProperties=["Type", "Period", "TransactionComment", "Comments", "Documentation", "Options", "Defensive"];
 	protected $_apiObjects=["Defensive"];

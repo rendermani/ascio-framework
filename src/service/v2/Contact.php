@@ -8,7 +8,7 @@ use ascio\db\v2\ContactDb;
 use ascio\api\v2\ContactApi;
 
 
-class Contact extends DbBase  {
+abstract class Contact extends DbBase  {
 
 	protected $_apiProperties=["CreDate", "Status", "Handle", "FirstName", "LastName", "OrgName", "Address1", "Address2", "PostalCode", "City", "State", "CountryCode", "Email", "Phone", "Fax", "Type", "Details", "OrganisationNumber"];
 	protected $_apiObjects=[];

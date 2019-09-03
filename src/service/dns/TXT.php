@@ -9,7 +9,7 @@ use ascio\api\dns\TXTApi;
 use ascio\api\dns\RecordApi;
 
 
-class TXT extends Record  {
+abstract class TXT extends Record  {
 
 	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "UpdatedDate"];
 	protected $_apiObjects=[];

@@ -8,7 +8,7 @@ use ascio\db\v3\charDb;
 use ascio\api\v3\charApi;
 
 
-class char {
+abstract class char {
 
 
 }

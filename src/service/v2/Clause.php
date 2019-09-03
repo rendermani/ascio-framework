@@ -8,7 +8,7 @@ use ascio\db\v2\ClauseDb;
 use ascio\api\v2\ClauseApi;
 
 
-class Clause extends Base  {
+abstract class Clause extends Base  {
 
 	protected $_apiProperties=["Attribute", "Operator", "Value"];
 	protected $_apiObjects=[];

@@ -8,7 +8,7 @@ use ascio\db\v2\UploadMessageResponseDb;
 use ascio\api\v2\UploadMessageResponseApi;
 
 
-class UploadMessageResponse extends ResponseRootElement  {
+abstract class UploadMessageResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["UploadMessageResult"];
 	protected $_apiObjects=["UploadMessageResult"];

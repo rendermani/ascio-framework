@@ -8,7 +8,7 @@ use ascio\db\v2\SearchOrderResponseDb;
 use ascio\api\v2\SearchOrderResponseApi;
 
 
-class SearchOrderResponse extends ResponseRootElement  {
+abstract class SearchOrderResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["SearchOrderResult", "totalOrders", "orders"];
 	protected $_apiObjects=["SearchOrderResult", "orders"];

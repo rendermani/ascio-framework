@@ -8,7 +8,7 @@ use ascio\db\dns\UpdateRecordResponseDb;
 use ascio\api\dns\UpdateRecordResponseApi;
 
 
-class UpdateRecordResponse extends ResponseRootElement  {
+abstract class UpdateRecordResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["UpdateRecordResult"];
 	protected $_apiObjects=["UpdateRecordResult"];

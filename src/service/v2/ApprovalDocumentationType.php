@@ -5,7 +5,7 @@
 namespace ascio\service\v2;
 
 
-class ApprovalDocumentationType {
+abstract class ApprovalDocumentationType {
 
 
 	const Foa = "Foa";

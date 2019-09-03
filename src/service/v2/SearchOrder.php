@@ -8,7 +8,7 @@ use ascio\db\v2\SearchOrderDb;
 use ascio\api\v2\SearchOrderApi;
 
 
-class SearchOrder extends RequestRootElement  {
+abstract class SearchOrder extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "orderRequest"];
 	protected $_apiObjects=["orderRequest"];

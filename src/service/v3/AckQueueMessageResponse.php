@@ -9,7 +9,7 @@ use ascio\api\v3\AckQueueMessageResponseApi;
 use ascio\api\v3\AbstractResponseApi;
 
 
-class AckQueueMessageResponse extends AbstractResponse  {
+abstract class AckQueueMessageResponse extends AbstractResponse  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors"];
 	protected $_apiObjects=["Errors"];

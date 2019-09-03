@@ -8,7 +8,7 @@ use ascio\db\v3\SslCertificateDb;
 use ascio\api\v3\SslCertificateApi;
 
 
-class SslCertificate extends DbBase  {
+abstract class SslCertificate extends DbBase  {
 
 	protected $_apiProperties=["Handle", "CommonName", "ProductCode", "WebServerType", "ApproverEmail", "CSR", "Owner", "Admin", "Tech", "SanNames", "ObjectComment", "ValidationType"];
 	protected $_apiObjects=["Owner", "Admin", "Tech", "SanNames"];

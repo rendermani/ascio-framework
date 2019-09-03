@@ -8,7 +8,7 @@ use ascio\db\v2\ArrayOfPricesDb;
 use ascio\api\v2\ArrayOfPricesApi;
 
 
-class ArrayOfPrices extends ArrayBase implements \Iterator  {
+abstract class ArrayOfPrices extends ArrayBase implements \Iterator  {
 
 	protected $_apiProperties=["Price"];
 	protected $_apiObjects=["Price"];

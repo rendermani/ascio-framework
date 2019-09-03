@@ -8,7 +8,7 @@ use ascio\db\v3\ArrayOfObjectTypeDb;
 use ascio\api\v3\ArrayOfObjectTypeApi;
 
 
-class ArrayOfObjectType extends DbArrayBase  {
+abstract class ArrayOfObjectType extends DbArrayBase  {
 
 	protected $_apiProperties=["ObjectType"];
 	protected $_apiObjects=[];

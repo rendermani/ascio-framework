@@ -8,7 +8,7 @@ use ascio\db\dns\SearchZoneNamesDb;
 use ascio\api\dns\SearchZoneNamesApi;
 
 
-class SearchZoneNames extends RequestRootElement  {
+abstract class SearchZoneNames extends RequestRootElement  {
 
 	protected $_apiProperties=["searchZoneClauses"];
 	protected $_apiObjects=["searchZoneClauses"];

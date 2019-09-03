@@ -8,7 +8,7 @@ use ascio\db\dns\UserDb;
 use ascio\api\dns\UserApi;
 
 
-class User extends DbBase  {
+abstract class User extends DbBase  {
 
 	protected $_apiProperties=["CreatedDate", "Email", "Name", "Password", "Role", "UpdatedDate", "UserName"];
 	protected $_apiObjects=[];

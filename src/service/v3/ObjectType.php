@@ -5,7 +5,7 @@
 namespace ascio\service\v3;
 
 
-class ObjectType {
+abstract class ObjectType {
 
 
 	const DomainType = "DomainType";

@@ -9,7 +9,7 @@ use ascio\api\v3\CreateOrderResponseApi;
 use ascio\api\v3\AbstractResponseApi;
 
 
-class CreateOrderResponse extends AbstractResponse  {
+abstract class CreateOrderResponse extends AbstractResponse  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "OrderInfo"];
 	protected $_apiObjects=["Errors", "OrderInfo"];

@@ -8,7 +8,7 @@ use ascio\db\v3\GetOrderRequestDb;
 use ascio\api\v3\GetOrderRequestApi;
 
 
-class GetOrderRequest extends DbBase  {
+abstract class GetOrderRequest extends DbBase  {
 
 	protected $_apiProperties=["OrderId"];
 	protected $_apiObjects=[];

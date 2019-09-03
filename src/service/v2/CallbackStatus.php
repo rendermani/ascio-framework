@@ -8,7 +8,7 @@ use ascio\db\v2\CallbackStatusDb;
 use ascio\api\v2\CallbackStatusApi;
 
 
-class CallbackStatus extends DbBase  {
+abstract class CallbackStatus extends DbBase  {
 
 	protected $_apiProperties=["Message", "Status"];
 	protected $_apiObjects=[];

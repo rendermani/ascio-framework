@@ -8,7 +8,7 @@ use ascio\db\v2\ValidateOrderResponseDb;
 use ascio\api\v2\ValidateOrderResponseApi;
 
 
-class ValidateOrderResponse extends ResponseRootElement  {
+abstract class ValidateOrderResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["ValidateOrderResult"];
 	protected $_apiObjects=["ValidateOrderResult"];

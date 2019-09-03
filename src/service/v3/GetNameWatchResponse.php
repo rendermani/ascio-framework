@@ -9,7 +9,7 @@ use ascio\api\v3\GetNameWatchResponseApi;
 use ascio\api\v3\AbstractResponseApi;
 
 
-class GetNameWatchResponse extends AbstractResponse  {
+abstract class GetNameWatchResponse extends AbstractResponse  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "NameWatchInfo"];
 	protected $_apiObjects=["Errors", "NameWatchInfo"];

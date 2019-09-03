@@ -8,7 +8,7 @@ use ascio\db\v2\UploadRegistrantVerificationMessageResponseDb;
 use ascio\api\v2\UploadRegistrantVerificationMessageResponseApi;
 
 
-class UploadRegistrantVerificationMessageResponse extends ResponseRootElement  {
+abstract class UploadRegistrantVerificationMessageResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["UploadRegistrantVerificationMessageResult"];
 	protected $_apiObjects=["UploadRegistrantVerificationMessageResult"];

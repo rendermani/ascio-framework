@@ -8,7 +8,7 @@ use ascio\db\v3\UploadMessageDb;
 use ascio\api\v3\UploadMessageApi;
 
 
-class UploadMessage extends DbBase  {
+abstract class UploadMessage extends DbBase  {
 
 	protected $_apiProperties=["request"];
 	protected $_apiObjects=["request"];

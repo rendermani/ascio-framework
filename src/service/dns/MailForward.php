@@ -9,7 +9,7 @@ use ascio\api\dns\MailForwardApi;
 use ascio\api\dns\RecordApi;
 
 
-class MailForward extends Record  {
+abstract class MailForward extends Record  {
 
 	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "UpdatedDate"];
 	protected $_apiObjects=[];

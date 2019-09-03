@@ -8,7 +8,7 @@ use ascio\db\v2\DnsSecKeysDb;
 use ascio\api\v2\DnsSecKeysApi;
 
 
-class DnsSecKeys extends DbBase  {
+abstract class DnsSecKeys extends DbBase  {
 
 	protected $_apiProperties=["DnsSecKey1", "DnsSecKey2", "DnsSecKey3", "DnsSecKey4", "DnsSecKey5"];
 	protected $_apiObjects=["DnsSecKey1", "DnsSecKey2", "DnsSecKey3", "DnsSecKey4", "DnsSecKey5"];

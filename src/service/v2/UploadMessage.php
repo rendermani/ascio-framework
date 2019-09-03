@@ -8,7 +8,7 @@ use ascio\db\v2\UploadMessageDb;
 use ascio\api\v2\UploadMessageApi;
 
 
-class UploadMessage extends RequestRootElement  {
+abstract class UploadMessage extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "orderId", "message"];
 	protected $_apiObjects=["message"];

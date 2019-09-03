@@ -9,7 +9,7 @@ use ascio\api\dns\CNAMEApi;
 use ascio\api\dns\RecordApi;
 
 
-class CNAME extends Record  {
+abstract class CNAME extends Record  {
 
 	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "UpdatedDate"];
 	protected $_apiObjects=[];

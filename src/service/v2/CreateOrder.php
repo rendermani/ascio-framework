@@ -8,7 +8,7 @@ use ascio\db\v2\CreateOrderDb;
 use ascio\api\v2\CreateOrderApi;
 
 
-class CreateOrder extends RequestRootElement  {
+abstract class CreateOrder extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "order"];
 	protected $_apiObjects=["order"];

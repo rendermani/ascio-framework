@@ -5,7 +5,7 @@
 namespace ascio\service\v2;
 
 
-class OrderType {
+abstract class OrderType {
 
 
 	const NotSet = "NotSet";

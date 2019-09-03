@@ -5,7 +5,7 @@
 namespace ascio\service\v3;
 
 
-class SearchOrderSortType {
+abstract class SearchOrderSortType {
 
 
 	const CreatedAsc = "CreatedAsc";

@@ -8,7 +8,7 @@ use ascio\db\v2\WhoisDb;
 use ascio\api\v2\WhoisApi;
 
 
-class Whois extends RequestRootElement  {
+abstract class Whois extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "domainName"];
 	protected $_apiObjects=[];

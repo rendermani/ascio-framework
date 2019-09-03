@@ -9,7 +9,7 @@ use ascio\api\dns\SRVApi;
 use ascio\api\dns\RecordApi;
 
 
-class SRV extends Record  {
+abstract class SRV extends Record  {
 
 	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "UpdatedDate", "Port", "Priority", "Weight"];
 	protected $_apiObjects=[];

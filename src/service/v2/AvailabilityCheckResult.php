@@ -8,7 +8,7 @@ use ascio\db\v2\AvailabilityCheckResultDb;
 use ascio\api\v2\AvailabilityCheckResultApi;
 
 
-class AvailabilityCheckResult extends Base  {
+abstract class AvailabilityCheckResult extends Base  {
 
 	protected $_apiProperties=["DomainName", "Quality", "StatusCode", "StatusMessage"];
 	protected $_apiObjects=[];

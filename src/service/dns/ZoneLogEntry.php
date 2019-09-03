@@ -8,7 +8,7 @@ use ascio\db\dns\ZoneLogEntryDb;
 use ascio\api\dns\ZoneLogEntryApi;
 
 
-class ZoneLogEntry extends DbBase  {
+abstract class ZoneLogEntry extends DbBase  {
 
 	protected $_apiProperties=["Action", "ActionBy", "ActionByIpAddress", "ActionDate", "Record", "ZoneName"];
 	protected $_apiObjects=["Record"];

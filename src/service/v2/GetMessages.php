@@ -8,7 +8,7 @@ use ascio\db\v2\GetMessagesDb;
 use ascio\api\v2\GetMessagesApi;
 
 
-class GetMessages extends RequestRootElement  {
+abstract class GetMessages extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "orderId"];
 	protected $_apiObjects=[];

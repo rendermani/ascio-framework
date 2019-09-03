@@ -9,7 +9,7 @@ use ascio\api\v3\SslCertificateOrderRequestApi;
 use ascio\api\v3\AbstractOrderRequestApi;
 
 
-class SslCertificateOrderRequest extends AbstractOrderRequest  {
+abstract class SslCertificateOrderRequest extends AbstractOrderRequest  {
 
 	protected $_apiProperties=["Type", "Period", "TransactionComment", "Comments", "Documentation", "Options", "SslCertificate"];
 	protected $_apiObjects=["SslCertificate"];

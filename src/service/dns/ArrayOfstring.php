@@ -8,7 +8,7 @@ use ascio\db\dns\ArrayOfstringDb;
 use ascio\api\dns\ArrayOfstringApi;
 
 
-class ArrayOfstring extends DbArrayBase  {
+abstract class ArrayOfstring extends DbArrayBase  {
 
 	protected $_apiProperties=["string"];
 	protected $_apiObjects=[];

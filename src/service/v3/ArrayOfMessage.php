@@ -8,7 +8,7 @@ use ascio\db\v3\ArrayOfMessageDb;
 use ascio\api\v3\ArrayOfMessageApi;
 
 
-class ArrayOfMessage extends DbArrayBase  {
+abstract class ArrayOfMessage extends DbArrayBase  {
 
 	protected $_apiProperties=["Message"];
 	protected $_apiObjects=["Message"];

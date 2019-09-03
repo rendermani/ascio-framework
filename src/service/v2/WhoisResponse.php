@@ -8,7 +8,7 @@ use ascio\db\v2\WhoisResponseDb;
 use ascio\api\v2\WhoisResponseApi;
 
 
-class WhoisResponse extends ResponseRootElement  {
+abstract class WhoisResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["WhoisResult", "whoisData"];
 	protected $_apiObjects=["WhoisResult"];

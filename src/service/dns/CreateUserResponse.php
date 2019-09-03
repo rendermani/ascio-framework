@@ -8,7 +8,7 @@ use ascio\db\dns\CreateUserResponseDb;
 use ascio\api\dns\CreateUserResponseApi;
 
 
-class CreateUserResponse extends ResponseRootElement  {
+abstract class CreateUserResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["CreateUserResult"];
 	protected $_apiObjects=["CreateUserResult"];

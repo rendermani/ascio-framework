@@ -8,7 +8,7 @@ use ascio\db\v2\LogOutResponseDb;
 use ascio\api\v2\LogOutResponseApi;
 
 
-class LogOutResponse extends ResponseRootElement  {
+abstract class LogOutResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["LogOutResult"];
 	protected $_apiObjects=["LogOutResult"];

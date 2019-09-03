@@ -8,7 +8,7 @@ use ascio\db\v2\ArrayOfOrderStatusTypeDb;
 use ascio\api\v2\ArrayOfOrderStatusTypeApi;
 
 
-class ArrayOfOrderStatusType extends ArrayBase implements \Iterator  {
+abstract class ArrayOfOrderStatusType extends ArrayBase implements \Iterator  {
 
 	protected $_apiProperties=["OrderStatusType"];
 	protected $_apiObjects=[];

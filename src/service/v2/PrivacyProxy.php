@@ -8,7 +8,7 @@ use ascio\db\v2\PrivacyProxyDb;
 use ascio\api\v2\PrivacyProxyApi;
 
 
-class PrivacyProxy extends DbBase  {
+abstract class PrivacyProxy extends DbBase  {
 
 	protected $_apiProperties=["Type", "PrivacyAdmin", "PrivacyTech", "PrivacyBilling", "Extensions"];
 	protected $_apiObjects=["Extensions"];

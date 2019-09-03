@@ -5,7 +5,7 @@
 namespace ascio\service\v2;
 
 
-class SearchOperatorType {
+abstract class SearchOperatorType {
 
 
 	const Is = "Is";

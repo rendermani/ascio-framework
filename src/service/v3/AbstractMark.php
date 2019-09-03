@@ -8,7 +8,7 @@ use ascio\db\v3\AbstractMarkDb;
 use ascio\api\v3\AbstractMarkApi;
 
 
-class AbstractMark extends DbBase  {
+abstract class AbstractMark extends DbBase  {
 
 	protected $_apiProperties=["Handle", "MarkName", "MarkId", "AuthInfo", "ServiceType", "GoodsAndServicesDescription", "Labels", "ClaimEmailNotification1", "ClaimEmailNotification2", "ClaimEmailNotification3", "ClaimEmailNotification4", "ClaimEmailNotification5", "NotificationFrequency", "Owner", "Reseller", "Extensions", "ObjectComment"];
 	protected $_apiObjects=["Labels", "Owner", "Reseller", "Extensions"];

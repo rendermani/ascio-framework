@@ -8,7 +8,7 @@ use ascio\db\v2\ServiceDb;
 use ascio\api\v2\ServiceApi;
 
 
-class Service extends ServiceBase  {
+abstract class Service extends ServiceBase  {
 	protected $classmap = [
 		"Session" => "ascio\\v2\\Session",
 		"Response" => "ascio\\v2\\Response",

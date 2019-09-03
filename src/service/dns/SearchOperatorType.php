@@ -5,7 +5,7 @@
 namespace ascio\service\dns;
 
 
-class SearchOperatorType {
+abstract class SearchOperatorType {
 
 
 	const Is = "Is";

@@ -9,7 +9,7 @@ use ascio\api\v3\GetSslCertificateResponseApi;
 use ascio\api\v3\AbstractResponseApi;
 
 
-class GetSslCertificateResponse extends AbstractResponse  {
+abstract class GetSslCertificateResponse extends AbstractResponse  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "SslCertificateInfo"];
 	protected $_apiObjects=["Errors", "SslCertificateInfo"];

@@ -8,7 +8,7 @@ use ascio\db\dns\SearchZoneClauseDb;
 use ascio\api\dns\SearchZoneClauseApi;
 
 
-class SearchZoneClause extends Base  {
+abstract class SearchZoneClause extends Base  {
 
 	protected $_apiProperties=["Operator", "SearchZoneField", "Value"];
 	protected $_apiObjects=[];

@@ -8,7 +8,7 @@ use ascio\db\v3\ValidateOrderDb;
 use ascio\api\v3\ValidateOrderApi;
 
 
-class ValidateOrder extends DbBase  {
+abstract class ValidateOrder extends DbBase  {
 
 	protected $_apiProperties=["request"];
 	protected $_apiObjects=["request"];

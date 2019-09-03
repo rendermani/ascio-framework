@@ -5,7 +5,7 @@
 namespace ascio\service\v3;
 
 
-class NotificationFrequencyType {
+abstract class NotificationFrequencyType {
 
 
 	const Daily = "Daily";

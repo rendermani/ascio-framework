@@ -8,7 +8,7 @@ use ascio\db\v3\AttachmentDb;
 use ascio\api\v3\AttachmentApi;
 
 
-class Attachment extends DbBase  {
+abstract class Attachment extends DbBase  {
 
 	protected $_apiProperties=["FileName", "Content"];
 	protected $_apiObjects=[];

@@ -8,7 +8,7 @@ use ascio\db\v2\DnsSecKeyDb;
 use ascio\api\v2\DnsSecKeyApi;
 
 
-class DnsSecKey extends DbBase  {
+abstract class DnsSecKey extends DbBase  {
 
 	protected $_apiProperties=["Handle", "Status", "DigestAlgorithm", "DigestType", "Digest", "Protocol", "KeyType", "KeyAlgorithm", "KeyTag", "PublicKey", "CreDate"];
 	protected $_apiObjects=[];

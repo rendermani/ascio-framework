@@ -8,7 +8,7 @@ use ascio\db\v2\GetDomainDb;
 use ascio\api\v2\GetDomainApi;
 
 
-class GetDomain extends RequestRootElement  {
+abstract class GetDomain extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "domainHandle"];
 	protected $_apiObjects=[];

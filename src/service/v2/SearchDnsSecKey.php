@@ -8,7 +8,7 @@ use ascio\db\v2\SearchDnsSecKeyDb;
 use ascio\api\v2\SearchDnsSecKeyApi;
 
 
-class SearchDnsSecKey extends RequestRootElement  {
+abstract class SearchDnsSecKey extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "criteria"];
 	protected $_apiObjects=["criteria"];

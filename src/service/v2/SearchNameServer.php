@@ -8,7 +8,7 @@ use ascio\db\v2\SearchNameServerDb;
 use ascio\api\v2\SearchNameServerApi;
 
 
-class SearchNameServer extends RequestRootElement  {
+abstract class SearchNameServer extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "criteria"];
 	protected $_apiObjects=["criteria"];

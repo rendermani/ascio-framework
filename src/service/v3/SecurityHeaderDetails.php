@@ -8,7 +8,7 @@ use ascio\db\v3\SecurityHeaderDetailsDb;
 use ascio\api\v3\SecurityHeaderDetailsApi;
 
 
-class SecurityHeaderDetails extends DbBase  {
+abstract class SecurityHeaderDetails extends DbBase  {
 
 	protected $_apiProperties=["Account", "Password"];
 	protected $_apiObjects=[];

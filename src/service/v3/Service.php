@@ -8,7 +8,7 @@ use ascio\db\v3\ServiceDb;
 use ascio\api\v3\ServiceApi;
 
 
-class Service extends ServiceBase  {
+abstract class Service extends ServiceBase  {
 	protected $classmap = [
 		"AbstractOrderRequest" => "ascio\\v3\\AbstractOrderRequest",
 		"MarkOrderRequest" => "ascio\\v3\\MarkOrderRequest",

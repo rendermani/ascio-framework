@@ -8,7 +8,7 @@ use ascio\db\v2\AvailabilityCheckResponseDb;
 use ascio\api\v2\AvailabilityCheckResponseApi;
 
 
-class AvailabilityCheckResponse extends ResponseRootElement  {
+abstract class AvailabilityCheckResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["AvailabilityCheckResult", "results"];
 	protected $_apiObjects=["AvailabilityCheckResult", "results"];

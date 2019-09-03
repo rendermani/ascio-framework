@@ -9,7 +9,7 @@ use ascio\api\v3\TrademarkApi;
 use ascio\api\v3\AbstractMarkApi;
 
 
-class Trademark extends AbstractMark  {
+abstract class Trademark extends AbstractMark  {
 
 	protected $_apiProperties=["Handle", "MarkName", "MarkId", "AuthInfo", "ServiceType", "GoodsAndServicesDescription", "Labels", "ClaimEmailNotification1", "ClaimEmailNotification2", "ClaimEmailNotification3", "ClaimEmailNotification4", "ClaimEmailNotification5", "NotificationFrequency", "Owner", "Reseller", "Extensions", "ObjectComment", "ApplicationId", "RegistrationNumber", "ApplicationDate", "RegistrationDate", "ExpirationDate", "GoodsAndServicesClasses", "Jurisdiction"];
 	protected $_apiObjects=["Labels", "Owner", "Reseller", "Extensions", "GoodsAndServicesClasses"];

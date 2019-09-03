@@ -8,7 +8,7 @@ use ascio\db\v2\DomainDb;
 use ascio\api\v2\DomainApi;
 
 
-class Domain extends DbBase  {
+abstract class Domain extends DbBase  {
 
 	protected $_apiProperties=["DomainName", "DomainHandle", "RegPeriod", "RenewPeriod", "Status", "AuthInfo", "CreDate", "ExpDate", "EncodingType", "DomainPurpose", "Comment", "TransferLock", "DeleteLock", "UpdateLock", "QueueType", "Registrant", "AdminContact", "TechContact", "BillingContact", "ResellerContact", "NameServers", "Trademark", "DnsSecKeys", "PrivacyProxy", "DomainType", "DiscloseSocialData"];
 	protected $_apiObjects=["Registrant", "AdminContact", "TechContact", "BillingContact", "ResellerContact", "NameServers", "Trademark", "DnsSecKeys", "PrivacyProxy"];

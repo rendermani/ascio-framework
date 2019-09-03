@@ -8,7 +8,7 @@ use ascio\db\dns\RecordDb;
 use ascio\api\dns\RecordApi;
 
 
-class Record extends DbBase  {
+abstract class Record extends DbBase  {
 
 	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "UpdatedDate"];
 	protected $_apiObjects=[];

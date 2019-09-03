@@ -9,7 +9,7 @@ use ascio\api\v3\MarkOrderRequestApi;
 use ascio\api\v3\AbstractOrderRequestApi;
 
 
-class MarkOrderRequest extends AbstractOrderRequest  {
+abstract class MarkOrderRequest extends AbstractOrderRequest  {
 
 	protected $_apiProperties=["Type", "Period", "TransactionComment", "Comments", "Documentation", "Options", "Mark", "Documents"];
 	protected $_apiObjects=["Mark", "Documents"];

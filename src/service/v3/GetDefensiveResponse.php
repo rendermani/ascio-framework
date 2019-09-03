@@ -9,7 +9,7 @@ use ascio\api\v3\GetDefensiveResponseApi;
 use ascio\api\v3\AbstractResponseApi;
 
 
-class GetDefensiveResponse extends AbstractResponse  {
+abstract class GetDefensiveResponse extends AbstractResponse  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "DefensiveInfo"];
 	protected $_apiObjects=["Errors", "DefensiveInfo"];

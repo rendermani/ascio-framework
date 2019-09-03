@@ -8,7 +8,7 @@ use ascio\db\v2\GetRegistrantVerificationStatusDb;
 use ascio\api\v2\GetRegistrantVerificationStatusApi;
 
 
-class GetRegistrantVerificationStatus extends RequestRootElement  {
+abstract class GetRegistrantVerificationStatus extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "value"];
 	protected $_apiObjects=[];

@@ -8,7 +8,7 @@ use ascio\db\v2\AckMessageResponseDb;
 use ascio\api\v2\AckMessageResponseApi;
 
 
-class AckMessageResponse extends ResponseRootElement  {
+abstract class AckMessageResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["AckMessageResult"];
 	protected $_apiObjects=["AckMessageResult"];

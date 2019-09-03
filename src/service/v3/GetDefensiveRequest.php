@@ -8,7 +8,7 @@ use ascio\db\v3\GetDefensiveRequestDb;
 use ascio\api\v3\GetDefensiveRequestApi;
 
 
-class GetDefensiveRequest extends DbBase  {
+abstract class GetDefensiveRequest extends DbBase  {
 
 	protected $_apiProperties=["Handle"];
 	protected $_apiObjects=[];

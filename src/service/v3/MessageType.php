@@ -5,7 +5,7 @@
 namespace ascio\service\v3;
 
 
-class MessageType {
+abstract class MessageType {
 
 
 	const OrderMail = "OrderMail";

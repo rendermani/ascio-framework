@@ -8,7 +8,7 @@ use ascio\db\v3\PollQueueDb;
 use ascio\api\v3\PollQueueApi;
 
 
-class PollQueue extends DbBase  {
+abstract class PollQueue extends DbBase  {
 
 	protected $_apiProperties=["request"];
 	protected $_apiObjects=["request"];

@@ -8,7 +8,7 @@ use ascio\db\v2\PriceInfoDb;
 use ascio\api\v2\PriceInfoApi;
 
 
-class PriceInfo extends Base  {
+abstract class PriceInfo extends Base  {
 
 	protected $_apiProperties=["DomainName", "DomainType", "Currency", "Prices", "RenewalType"];
 	protected $_apiObjects=["Prices"];

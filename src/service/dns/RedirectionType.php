@@ -5,7 +5,7 @@
 namespace ascio\service\dns;
 
 
-class RedirectionType {
+abstract class RedirectionType {
 
 
 	const Temporary = "Temporary";

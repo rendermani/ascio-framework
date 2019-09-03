@@ -8,7 +8,7 @@ use ascio\db\v2\GetMessageQueueResponseDb;
 use ascio\api\v2\GetMessageQueueResponseApi;
 
 
-class GetMessageQueueResponse extends ResponseRootElement  {
+abstract class GetMessageQueueResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["GetMessageQueueResult", "item"];
 	protected $_apiObjects=["GetMessageQueueResult", "item"];

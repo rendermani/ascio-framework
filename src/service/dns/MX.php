@@ -9,7 +9,7 @@ use ascio\api\dns\MXApi;
 use ascio\api\dns\RecordApi;
 
 
-class MX extends Record  {
+abstract class MX extends Record  {
 
 	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "UpdatedDate", "Priority"];
 	protected $_apiObjects=[];

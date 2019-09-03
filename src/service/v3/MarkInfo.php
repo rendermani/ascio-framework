@@ -8,7 +8,7 @@ use ascio\db\v3\MarkInfoDb;
 use ascio\api\v3\MarkInfoApi;
 
 
-class MarkInfo extends DbBase  {
+abstract class MarkInfo extends DbBase  {
 
 	protected $_apiProperties=["Status", "Created", "Expires", "Mark", "Smd"];
 	protected $_apiObjects=["Mark"];

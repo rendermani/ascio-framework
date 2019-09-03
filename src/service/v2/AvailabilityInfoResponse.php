@@ -8,7 +8,7 @@ use ascio\db\v2\AvailabilityInfoResponseDb;
 use ascio\api\v2\AvailabilityInfoResponseApi;
 
 
-class AvailabilityInfoResponse extends ResponseRootElement  {
+abstract class AvailabilityInfoResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["AvailabilityInfoResult", "PriceInfo"];
 	protected $_apiObjects=["AvailabilityInfoResult", "PriceInfo"];

@@ -9,7 +9,7 @@ use ascio\api\v3\GetMessagesResponseApi;
 use ascio\api\v3\AbstractResponseApi;
 
 
-class GetMessagesResponse extends AbstractResponse  {
+abstract class GetMessagesResponse extends AbstractResponse  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "Messages"];
 	protected $_apiObjects=["Errors", "Messages"];

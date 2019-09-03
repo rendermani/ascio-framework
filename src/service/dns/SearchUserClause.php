@@ -8,7 +8,7 @@ use ascio\db\dns\SearchUserClauseDb;
 use ascio\api\dns\SearchUserClauseApi;
 
 
-class SearchUserClause extends Base  {
+abstract class SearchUserClause extends Base  {
 
 	protected $_apiProperties=["Operator", "SearchUserField", "Value"];
 	protected $_apiObjects=[];

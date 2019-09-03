@@ -8,7 +8,7 @@ use ascio\db\v3\AbstractOrderRequestDb;
 use ascio\api\v3\AbstractOrderRequestApi;
 
 
-class AbstractOrderRequest extends DbBase  {
+abstract class AbstractOrderRequest extends DbBase  {
 
 	protected $_apiProperties=["Type", "Period", "TransactionComment", "Comments", "Documentation", "Options"];
 	protected $_apiObjects=[];

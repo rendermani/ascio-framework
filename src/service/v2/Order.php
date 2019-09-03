@@ -8,7 +8,7 @@ use ascio\db\v2\OrderDb;
 use ascio\api\v2\OrderApi;
 
 
-class Order extends DbBase  {
+abstract class Order extends DbBase  {
 
 	protected $_apiProperties=["OrderId", "Type", "AccountReference", "Status", "TransactionComment", "Comments", "Options", "LocalPresence", "Batch", "Documentation", "Domain", "CreDate", "AgreedPrice"];
 	protected $_apiObjects=["Domain"];

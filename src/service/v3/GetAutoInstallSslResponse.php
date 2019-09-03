@@ -9,7 +9,7 @@ use ascio\api\v3\GetAutoInstallSslResponseApi;
 use ascio\api\v3\AbstractResponseApi;
 
 
-class GetAutoInstallSslResponse extends AbstractResponse  {
+abstract class GetAutoInstallSslResponse extends AbstractResponse  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "AutoInstallSslInfo"];
 	protected $_apiObjects=["Errors", "AutoInstallSslInfo"];

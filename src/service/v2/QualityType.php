@@ -5,7 +5,7 @@
 namespace ascio\service\v2;
 
 
-class QualityType {
+abstract class QualityType {
 
 
 	const Fast = "Fast";
