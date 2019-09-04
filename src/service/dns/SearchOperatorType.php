@@ -8,6 +8,9 @@ namespace ascio\service\dns;
 abstract class SearchOperatorType {
 
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	const Is = "Is";
 	const IsNot = "IsNot";
 	const Like = "Like";

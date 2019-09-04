@@ -15,6 +15,9 @@ abstract class GetDnsSecKeyResponse extends ResponseRootElement  {
 	protected $GetDnsSecKeyResult;
 	protected $dnsSecKey;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setGetDnsSecKeyResult (?\ascio\v2\Response $GetDnsSecKeyResult = null) : self {
 		$this->set("GetDnsSecKeyResult", $GetDnsSecKeyResult);
 		return $this;

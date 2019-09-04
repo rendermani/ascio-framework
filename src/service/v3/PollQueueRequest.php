@@ -36,6 +36,9 @@ abstract class PollQueueRequest extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setMessageType (?string $MessageType = null) : self {
 		$this->set("MessageType", $MessageType);
 		return $this;

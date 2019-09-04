@@ -17,6 +17,9 @@ abstract class AvailabilityCheckResult extends Base  {
 	protected $StatusCode;
 	protected $StatusMessage;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setDomainName (?string $DomainName = null) : self {
 		$this->set("DomainName", $DomainName);
 		return $this;

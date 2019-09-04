@@ -15,6 +15,9 @@ abstract class Session extends Base  {
 	protected $Account;
 	protected $Password;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setAccount (?string $Account = null) : self {
 		$this->set("Account", $Account);
 		return $this;

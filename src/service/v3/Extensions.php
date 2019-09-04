@@ -53,6 +53,24 @@ abstract class Extensions extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Array-Specific methods
+	*/
+	public function current() : \ascio\v3\KeyValue {
+		return parent::current();
+	}
+	public function first() : \ascio\v3\KeyValue {
+		return parent::first();
+	}
+	public function last() : \ascio\v3\KeyValue {
+		return parent::last();
+	}
+	public function index($nr) : \ascio\v3\KeyValue {
+		return parent::index($nr);
+	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setKeyValue (?Iterable $KeyValue = null) : self {
 		$this->set("KeyValue", $KeyValue);
 		return $this;

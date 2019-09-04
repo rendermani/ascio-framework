@@ -14,6 +14,9 @@ abstract class ChangePasswordResponse extends ResponseRootElement  {
 	protected $_apiObjects=["ChangePasswordResult"];
 	protected $ChangePasswordResult;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setChangePasswordResult (?\ascio\dns\Response $ChangePasswordResult = null) : self {
 		$this->set("ChangePasswordResult", $ChangePasswordResult);
 		return $this;

@@ -35,6 +35,9 @@ abstract class GetAutoInstallSslRequest extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setHandle (?string $Handle = null) : self {
 		$this->set("Handle", $Handle);
 		return $this;

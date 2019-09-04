@@ -14,6 +14,9 @@ abstract class LogIn extends RequestRootElement  {
 	protected $_apiObjects=["session"];
 	protected $session;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setSession (?\ascio\v2\Session $session = null) : self {
 		$this->set("session", $session);
 		return $this;

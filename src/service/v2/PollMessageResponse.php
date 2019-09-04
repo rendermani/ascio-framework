@@ -16,6 +16,9 @@ abstract class PollMessageResponse extends ResponseRootElement  {
 	protected $msgCount;
 	protected $item;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setPollMessageResult (?\ascio\v2\Response $PollMessageResult = null) : self {
 		$this->set("PollMessageResult", $PollMessageResult);
 		return $this;

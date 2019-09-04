@@ -40,6 +40,9 @@ abstract class GetQueueMessageResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setMessage (?\ascio\v3\QueueMessage $Message = null) : self {
 		$this->set("Message", $Message);
 		return $this;

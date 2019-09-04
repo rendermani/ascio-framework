@@ -14,6 +14,9 @@ abstract class ValidateOrderResponse extends ResponseRootElement  {
 	protected $_apiObjects=["ValidateOrderResult"];
 	protected $ValidateOrderResult;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setValidateOrderResult (?\ascio\v2\Response $ValidateOrderResult = null) : self {
 		$this->set("ValidateOrderResult", $ValidateOrderResult);
 		return $this;

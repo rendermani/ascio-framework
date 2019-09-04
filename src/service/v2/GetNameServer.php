@@ -15,6 +15,9 @@ abstract class GetNameServer extends RequestRootElement  {
 	protected $sessionId;
 	protected $nameServerHandle;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

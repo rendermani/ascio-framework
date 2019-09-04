@@ -8,6 +8,9 @@ namespace ascio\service\v2;
 abstract class OrderStatusType {
 
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	const NotSet = "NotSet";
 	const Received = "Received";
 	const Validated = "Validated";

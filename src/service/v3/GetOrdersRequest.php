@@ -44,6 +44,9 @@ abstract class GetOrdersRequest extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setTransactionComment (?string $TransactionComment = null) : self {
 		$this->set("TransactionComment", $TransactionComment);
 		return $this;

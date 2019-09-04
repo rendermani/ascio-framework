@@ -14,6 +14,9 @@ abstract class UploadRegistrantVerificationMessageResponse extends ResponseRootE
 	protected $_apiObjects=["UploadRegistrantVerificationMessageResult"];
 	protected $UploadRegistrantVerificationMessageResult;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setUploadRegistrantVerificationMessageResult (?\ascio\v2\Response $UploadRegistrantVerificationMessageResult = null) : self {
 		$this->set("UploadRegistrantVerificationMessageResult", $UploadRegistrantVerificationMessageResult);
 		return $this;

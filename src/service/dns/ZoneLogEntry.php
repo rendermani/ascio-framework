@@ -58,6 +58,9 @@ abstract class ZoneLogEntry extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setAction (?string $Action = null) : self {
 		$this->set("Action", $Action);
 		return $this;

@@ -54,6 +54,9 @@ abstract class RoleItem extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setRights (?\ascio\dns\ArrayOfstring $Rights = null) : self {
 		$this->set("Rights", $Rights);
 		return $this;

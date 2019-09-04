@@ -14,6 +14,9 @@ abstract class UpdateUserResponse extends ResponseRootElement  {
 	protected $_apiObjects=["UpdateUserResult"];
 	protected $UpdateUserResult;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setUpdateUserResult (?\ascio\dns\Response $UpdateUserResult = null) : self {
 		$this->set("UpdateUserResult", $UpdateUserResult);
 		return $this;

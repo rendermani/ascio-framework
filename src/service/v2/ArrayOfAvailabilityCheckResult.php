@@ -14,6 +14,24 @@ abstract class ArrayOfAvailabilityCheckResult extends ArrayBase implements \Iter
 	protected $_apiObjects=["AvailabilityCheckResult"];
 	protected $AvailabilityCheckResult;
 
+	/**
+	* Array-Specific methods
+	*/
+	public function current() : \ascio\v2\AvailabilityCheckResult {
+		return parent::current();
+	}
+	public function first() : \ascio\v2\AvailabilityCheckResult {
+		return parent::first();
+	}
+	public function last() : \ascio\v2\AvailabilityCheckResult {
+		return parent::last();
+	}
+	public function index($nr) : \ascio\v2\AvailabilityCheckResult {
+		return parent::index($nr);
+	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setAvailabilityCheckResult (?Iterable $AvailabilityCheckResult = null) : self {
 		$this->set("AvailabilityCheckResult", $AvailabilityCheckResult);
 		return $this;

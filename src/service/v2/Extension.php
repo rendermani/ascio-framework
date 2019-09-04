@@ -54,6 +54,9 @@ abstract class Extension extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setKey (?string $Key = null) : self {
 		$this->set("Key", $Key);
 		return $this;

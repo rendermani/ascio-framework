@@ -16,6 +16,9 @@ abstract class RegistrantVerificationDetails extends Base  {
 	protected $VerificationDate;
 	protected $Messages;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setVerifiedBy (?string $VerifiedBy = null) : self {
 		$this->set("VerifiedBy", $VerifiedBy);
 		return $this;

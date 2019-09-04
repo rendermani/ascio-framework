@@ -61,6 +61,9 @@ abstract class WebForward extends Record  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setRedirectionType (?string $RedirectionType = null) : self {
 		$this->set("RedirectionType", $RedirectionType);
 		return $this;

@@ -58,6 +58,9 @@ abstract class CourtValidatedMark extends AbstractMark  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setCourtName (?string $CourtName = null) : self {
 		$this->set("CourtName", $CourtName);
 		return $this;

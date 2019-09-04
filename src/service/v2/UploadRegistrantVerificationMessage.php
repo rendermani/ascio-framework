@@ -16,6 +16,9 @@ abstract class UploadRegistrantVerificationMessage extends RequestRootElement  {
 	protected $value;
 	protected $details;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

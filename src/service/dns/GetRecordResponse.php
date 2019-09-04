@@ -15,6 +15,9 @@ abstract class GetRecordResponse extends ResponseRootElement  {
 	protected $GetRecordResult;
 	protected $record;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setGetRecordResult (?\ascio\dns\Response $GetRecordResult = null) : self {
 		$this->set("GetRecordResult", $GetRecordResult);
 		return $this;

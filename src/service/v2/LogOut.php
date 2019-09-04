@@ -14,6 +14,9 @@ abstract class LogOut extends RequestRootElement  {
 	protected $_apiObjects=[];
 	protected $sessionId;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

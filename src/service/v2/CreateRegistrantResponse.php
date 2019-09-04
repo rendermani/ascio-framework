@@ -15,6 +15,9 @@ abstract class CreateRegistrantResponse extends ResponseRootElement  {
 	protected $CreateRegistrantResult;
 	protected $registrant;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setCreateRegistrantResult (?\ascio\v2\Response $CreateRegistrantResult = null) : self {
 		$this->set("CreateRegistrantResult", $CreateRegistrantResult);
 		return $this;

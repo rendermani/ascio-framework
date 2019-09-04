@@ -145,6 +145,9 @@ abstract class Service extends ServiceBase  {
 	];
 
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function createOrder(AbstractOrderRequest $request) : CreateOrderResponse {
 		return $this->call("CreateOrder", ["request" => $request]);
 	}

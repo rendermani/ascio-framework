@@ -78,6 +78,9 @@ abstract class Domain extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setDomainName (?string $DomainName = null) : self {
 		$this->set("DomainName", $DomainName);
 		return $this;

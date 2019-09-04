@@ -16,6 +16,9 @@ abstract class SearchUserClause extends Base  {
 	protected $SearchUserField;
 	protected $Value;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setOperator (?string $Operator = null) : self {
 		$this->set("Operator", $Operator);
 		return $this;

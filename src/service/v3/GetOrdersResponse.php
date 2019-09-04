@@ -41,6 +41,9 @@ abstract class GetOrdersResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setTotalCount (?int $TotalCount = null) : self {
 		$this->set("TotalCount", $TotalCount);
 		return $this;

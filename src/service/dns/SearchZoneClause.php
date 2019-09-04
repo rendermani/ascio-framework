@@ -16,6 +16,9 @@ abstract class SearchZoneClause extends Base  {
 	protected $SearchZoneField;
 	protected $Value;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setOperator (?string $Operator = null) : self {
 		$this->set("Operator", $Operator);
 		return $this;

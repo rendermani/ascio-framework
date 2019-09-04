@@ -227,6 +227,9 @@ abstract class Service extends ServiceBase  {
 	];
 
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function logIn(Session $session) : LogInResponse {
 		return $this->call("LogIn", ["session" => $session]);
 	}

@@ -15,6 +15,9 @@ abstract class CreateOrderResponse extends ResponseRootElement  {
 	protected $CreateOrderResult;
 	protected $order;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setCreateOrderResult (?\ascio\v2\Response $CreateOrderResult = null) : self {
 		$this->set("CreateOrderResult", $CreateOrderResult);
 		return $this;

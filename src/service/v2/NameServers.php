@@ -65,6 +65,9 @@ abstract class NameServers extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setNameServer1 (?\ascio\v2\NameServer $NameServer1 = null) : self {
 		$this->set("NameServer1", $NameServer1);
 		return $this;

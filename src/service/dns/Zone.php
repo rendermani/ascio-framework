@@ -56,6 +56,9 @@ abstract class Zone extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setCreatedDate (?\DateTime $CreatedDate = null) : self {
 		$this->set("CreatedDate", $CreatedDate);
 		return $this;

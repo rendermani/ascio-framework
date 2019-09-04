@@ -14,6 +14,24 @@ abstract class ArrayOfPrices extends ArrayBase implements \Iterator  {
 	protected $_apiObjects=["Price"];
 	protected $Price;
 
+	/**
+	* Array-Specific methods
+	*/
+	public function current() : \ascio\v2\Price {
+		return parent::current();
+	}
+	public function first() : \ascio\v2\Price {
+		return parent::first();
+	}
+	public function last() : \ascio\v2\Price {
+		return parent::last();
+	}
+	public function index($nr) : \ascio\v2\Price {
+		return parent::index($nr);
+	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setPrice (?Iterable $Price = null) : self {
 		$this->set("Price", $Price);
 		return $this;

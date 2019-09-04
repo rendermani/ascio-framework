@@ -15,6 +15,9 @@ abstract class WhoisResponse extends ResponseRootElement  {
 	protected $WhoisResult;
 	protected $whoisData;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setWhoisResult (?\ascio\v2\Response $WhoisResult = null) : self {
 		$this->set("WhoisResult", $WhoisResult);
 		return $this;

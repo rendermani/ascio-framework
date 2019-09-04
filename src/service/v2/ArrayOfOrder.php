@@ -14,6 +14,24 @@ abstract class ArrayOfOrder extends ArrayBase implements \Iterator  {
 	protected $_apiObjects=["Order"];
 	protected $Order;
 
+	/**
+	* Array-Specific methods
+	*/
+	public function current() : \ascio\v2\Order {
+		return parent::current();
+	}
+	public function first() : \ascio\v2\Order {
+		return parent::first();
+	}
+	public function last() : \ascio\v2\Order {
+		return parent::last();
+	}
+	public function index($nr) : \ascio\v2\Order {
+		return parent::index($nr);
+	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setOrder (?Iterable $Order = null) : self {
 		$this->set("Order", $Order);
 		return $this;

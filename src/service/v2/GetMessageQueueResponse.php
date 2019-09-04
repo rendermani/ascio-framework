@@ -15,6 +15,9 @@ abstract class GetMessageQueueResponse extends ResponseRootElement  {
 	protected $GetMessageQueueResult;
 	protected $item;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setGetMessageQueueResult (?\ascio\v2\Response $GetMessageQueueResult = null) : self {
 		$this->set("GetMessageQueueResult", $GetMessageQueueResult);
 		return $this;

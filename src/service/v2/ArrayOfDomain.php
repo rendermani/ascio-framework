@@ -14,6 +14,24 @@ abstract class ArrayOfDomain extends ArrayBase implements \Iterator  {
 	protected $_apiObjects=["Domain"];
 	protected $Domain;
 
+	/**
+	* Array-Specific methods
+	*/
+	public function current() : \ascio\v2\Domain {
+		return parent::current();
+	}
+	public function first() : \ascio\v2\Domain {
+		return parent::first();
+	}
+	public function last() : \ascio\v2\Domain {
+		return parent::last();
+	}
+	public function index($nr) : \ascio\v2\Domain {
+		return parent::index($nr);
+	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setDomain (?Iterable $Domain = null) : self {
 		$this->set("Domain", $Domain);
 		return $this;

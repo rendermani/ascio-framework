@@ -72,6 +72,9 @@ abstract class Record extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setId (?int $Id = null) : self {
 		$this->set("Id", $Id);
 		return $this;

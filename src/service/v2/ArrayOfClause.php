@@ -14,6 +14,24 @@ abstract class ArrayOfClause extends ArrayBase implements \Iterator  {
 	protected $_apiObjects=["Clause"];
 	protected $Clause;
 
+	/**
+	* Array-Specific methods
+	*/
+	public function current() : \ascio\v2\Clause {
+		return parent::current();
+	}
+	public function first() : \ascio\v2\Clause {
+		return parent::first();
+	}
+	public function last() : \ascio\v2\Clause {
+		return parent::last();
+	}
+	public function index($nr) : \ascio\v2\Clause {
+		return parent::index($nr);
+	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setClause (?Iterable $Clause = null) : self {
 		$this->set("Clause", $Clause);
 		return $this;

@@ -15,6 +15,9 @@ abstract class CreateApprovalDocumentationResponse extends ResponseRootElement  
 	protected $CreateApprovalDocumentationResult;
 	protected $documentationId;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setCreateApprovalDocumentationResult (?\ascio\v2\Response $CreateApprovalDocumentationResult = null) : self {
 		$this->set("CreateApprovalDocumentationResult", $CreateApprovalDocumentationResult);
 		return $this;

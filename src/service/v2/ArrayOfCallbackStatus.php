@@ -35,6 +35,24 @@ abstract class ArrayOfCallbackStatus extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Array-Specific methods
+	*/
+	public function current() : \ascio\v2\CallbackStatus {
+		return parent::current();
+	}
+	public function first() : \ascio\v2\CallbackStatus {
+		return parent::first();
+	}
+	public function last() : \ascio\v2\CallbackStatus {
+		return parent::last();
+	}
+	public function index($nr) : \ascio\v2\CallbackStatus {
+		return parent::index($nr);
+	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setCallbackStatus (?Iterable $CallbackStatus = null) : self {
 		$this->set("CallbackStatus", $CallbackStatus);
 		return $this;

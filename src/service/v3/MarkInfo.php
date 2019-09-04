@@ -57,6 +57,9 @@ abstract class MarkInfo extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setStatus (?string $Status = null) : self {
 		$this->set("Status", $Status);
 		return $this;

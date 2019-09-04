@@ -15,6 +15,9 @@ abstract class CreateRecordResponse extends ResponseRootElement  {
 	protected $CreateRecordResult;
 	protected $recordId;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setCreateRecordResult (?\ascio\dns\Response $CreateRecordResult = null) : self {
 		$this->set("CreateRecordResult", $CreateRecordResult);
 		return $this;

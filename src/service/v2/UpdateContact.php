@@ -15,6 +15,9 @@ abstract class UpdateContact extends RequestRootElement  {
 	protected $sessionId;
 	protected $contact;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

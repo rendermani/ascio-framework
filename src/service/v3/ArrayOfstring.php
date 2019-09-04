@@ -14,6 +14,9 @@ abstract class ArrayOfstring extends ArrayBase implements \Iterator  {
 	protected $_apiObjects=[];
 	protected $string;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setString (?Iterable $string = null) : self {
 		$this->set("string", $string);
 		return $this;

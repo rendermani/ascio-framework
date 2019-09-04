@@ -66,6 +66,9 @@ abstract class SOA extends Record  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setExpire (?int $Expire = null) : self {
 		$this->set("Expire", $Expire);
 		return $this;

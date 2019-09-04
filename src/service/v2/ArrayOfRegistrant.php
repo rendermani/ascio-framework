@@ -14,6 +14,24 @@ abstract class ArrayOfRegistrant extends ArrayBase implements \Iterator  {
 	protected $_apiObjects=["Registrant"];
 	protected $Registrant;
 
+	/**
+	* Array-Specific methods
+	*/
+	public function current() : \ascio\v2\Registrant {
+		return parent::current();
+	}
+	public function first() : \ascio\v2\Registrant {
+		return parent::first();
+	}
+	public function last() : \ascio\v2\Registrant {
+		return parent::last();
+	}
+	public function index($nr) : \ascio\v2\Registrant {
+		return parent::index($nr);
+	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setRegistrant (?Iterable $Registrant = null) : self {
 		$this->set("Registrant", $Registrant);
 		return $this;

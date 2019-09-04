@@ -16,6 +16,9 @@ abstract class Price extends Base  {
 	protected $Period;
 	protected $Price;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setOrderType (?string $OrderType = null) : self {
 		$this->set("OrderType", $OrderType);
 		return $this;

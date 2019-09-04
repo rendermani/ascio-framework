@@ -35,6 +35,24 @@ abstract class ArrayOfOrderInfo extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Array-Specific methods
+	*/
+	public function current() : \ascio\v3\OrderInfo {
+		return parent::current();
+	}
+	public function first() : \ascio\v3\OrderInfo {
+		return parent::first();
+	}
+	public function last() : \ascio\v3\OrderInfo {
+		return parent::last();
+	}
+	public function index($nr) : \ascio\v3\OrderInfo {
+		return parent::index($nr);
+	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setOrderInfo (?Iterable $OrderInfo = null) : self {
 		$this->set("OrderInfo", $OrderInfo);
 		return $this;

@@ -15,6 +15,9 @@ abstract class GetRegistrantVerificationStatusResponse extends ResponseRootEleme
 	protected $GetRegistrantVerificationStatusResult;
 	protected $verificationStatus;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setGetRegistrantVerificationStatusResult (?\ascio\v2\Response $GetRegistrantVerificationStatusResult = null) : self {
 		$this->set("GetRegistrantVerificationStatusResult", $GetRegistrantVerificationStatusResult);
 		return $this;

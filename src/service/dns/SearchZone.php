@@ -15,6 +15,9 @@ abstract class SearchZone extends RequestRootElement  {
 	protected $searchZoneClauses;
 	protected $zoneInfoLevel;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setSearchZoneClauses (?\ascio\dns\ArrayOfSearchZoneClause $searchZoneClauses = null) : self {
 		$this->set("searchZoneClauses", $searchZoneClauses);
 		return $this;

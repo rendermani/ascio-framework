@@ -60,6 +60,9 @@ abstract class Trademark extends AbstractMark  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setApplicationId (?string $ApplicationId = null) : self {
 		$this->set("ApplicationId", $ApplicationId);
 		return $this;

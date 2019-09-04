@@ -38,6 +38,9 @@ abstract class MarkOrderDocument extends Attachment  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setDocType (?string $DocType = null) : self {
 		$this->set("DocType", $DocType);
 		return $this;

@@ -59,6 +59,9 @@ abstract class TreatyOrStatuteMark extends AbstractMark  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setTitle (?string $Title = null) : self {
 		$this->set("Title", $Title);
 		return $this;

@@ -15,6 +15,9 @@ abstract class SearchRegistrantResponse extends ResponseRootElement  {
 	protected $SearchRegistrantResult;
 	protected $registrants;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setSearchRegistrantResult (?\ascio\v2\Response $SearchRegistrantResult = null) : self {
 		$this->set("SearchRegistrantResult", $SearchRegistrantResult);
 		return $this;

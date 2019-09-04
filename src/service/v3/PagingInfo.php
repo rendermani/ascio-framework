@@ -36,6 +36,9 @@ abstract class PagingInfo extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setPageIndex (?int $PageIndex = null) : self {
 		$this->set("PageIndex", $PageIndex);
 		return $this;

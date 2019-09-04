@@ -44,6 +44,9 @@ abstract class MarkOrderRequest extends AbstractOrderRequest  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setMark (?\ascio\v3\AbstractMark $Mark = null) : self {
 		$this->set("Mark", $Mark);
 		return $this;

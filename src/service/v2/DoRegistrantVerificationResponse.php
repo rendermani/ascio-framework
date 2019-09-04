@@ -14,6 +14,9 @@ abstract class DoRegistrantVerificationResponse extends ResponseRootElement  {
 	protected $_apiObjects=["DoRegistrantVerificationResult"];
 	protected $DoRegistrantVerificationResult;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setDoRegistrantVerificationResult (?\ascio\v2\Response $DoRegistrantVerificationResult = null) : self {
 		$this->set("DoRegistrantVerificationResult", $DoRegistrantVerificationResult);
 		return $this;

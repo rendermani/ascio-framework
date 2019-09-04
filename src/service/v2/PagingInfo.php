@@ -15,6 +15,9 @@ abstract class PagingInfo extends Base  {
 	protected $PageIndex;
 	protected $PageSize;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setPageIndex (?int $PageIndex = null) : self {
 		$this->set("PageIndex", $PageIndex);
 		return $this;

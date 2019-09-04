@@ -15,6 +15,9 @@ abstract class AvailabilityCheckResponse extends ResponseRootElement  {
 	protected $AvailabilityCheckResult;
 	protected $results;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setAvailabilityCheckResult (?\ascio\v2\Response $AvailabilityCheckResult = null) : self {
 		$this->set("AvailabilityCheckResult", $AvailabilityCheckResult);
 		return $this;

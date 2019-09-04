@@ -13,4 +13,7 @@ abstract class GetRoles extends RequestRootElement  {
 	protected $_apiProperties=[];
 	protected $_apiObjects=[];
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 }

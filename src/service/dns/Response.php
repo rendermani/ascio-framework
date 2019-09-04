@@ -18,6 +18,9 @@ abstract class Response extends Base  {
 	protected $TrackingReference;
 	protected $Values;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setStatusCode (?int $StatusCode = null) : self {
 		$this->set("StatusCode", $StatusCode);
 		return $this;

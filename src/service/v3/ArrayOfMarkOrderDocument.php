@@ -35,6 +35,24 @@ abstract class ArrayOfMarkOrderDocument extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Array-Specific methods
+	*/
+	public function current() : \ascio\v3\MarkOrderDocument {
+		return parent::current();
+	}
+	public function first() : \ascio\v3\MarkOrderDocument {
+		return parent::first();
+	}
+	public function last() : \ascio\v3\MarkOrderDocument {
+		return parent::last();
+	}
+	public function index($nr) : \ascio\v3\MarkOrderDocument {
+		return parent::index($nr);
+	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setMarkOrderDocument (?Iterable $MarkOrderDocument = null) : self {
 		$this->set("MarkOrderDocument", $MarkOrderDocument);
 		return $this;

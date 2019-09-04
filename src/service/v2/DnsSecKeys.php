@@ -57,6 +57,9 @@ abstract class DnsSecKeys extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setDnsSecKey1 (?\ascio\v2\DnsSecKey $DnsSecKey1 = null) : self {
 		$this->set("DnsSecKey1", $DnsSecKey1);
 		return $this;

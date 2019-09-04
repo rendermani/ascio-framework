@@ -16,6 +16,9 @@ abstract class RegistrantVerificationInfo extends Base  {
 	protected $VerificationStatus;
 	protected $VerificationDetails;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setEmailAddress (?string $EmailAddress = null) : self {
 		$this->set("EmailAddress", $EmailAddress);
 		return $this;

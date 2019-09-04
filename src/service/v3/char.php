@@ -11,4 +11,7 @@ use ascio\api\v3\charApi;
 abstract class char {
 
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 }

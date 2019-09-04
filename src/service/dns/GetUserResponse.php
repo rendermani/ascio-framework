@@ -15,6 +15,9 @@ abstract class GetUserResponse extends ResponseRootElement  {
 	protected $GetUserResult;
 	protected $user;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setGetUserResult (?\ascio\dns\Response $GetUserResult = null) : self {
 		$this->set("GetUserResult", $GetUserResult);
 		return $this;

@@ -66,6 +66,9 @@ abstract class AbstractOrderRequest extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setType (?string $Type = null) : self {
 		$this->set("Type", $Type);
 		return $this;

@@ -39,4 +39,7 @@ abstract class AckQueueMessageResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 }

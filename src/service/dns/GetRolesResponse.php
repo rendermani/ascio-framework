@@ -15,6 +15,9 @@ abstract class GetRolesResponse extends ResponseRootElement  {
 	protected $GetRolesResult;
 	protected $roles;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setGetRolesResult (?\ascio\dns\Response $GetRolesResult = null) : self {
 		$this->set("GetRolesResult", $GetRolesResult);
 		return $this;

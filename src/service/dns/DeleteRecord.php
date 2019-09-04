@@ -14,6 +14,9 @@ abstract class DeleteRecord extends RequestRootElement  {
 	protected $_apiObjects=[];
 	protected $recordId;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setRecordId (?int $recordId = null) : self {
 		$this->set("recordId", $recordId);
 		return $this;

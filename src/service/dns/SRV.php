@@ -63,6 +63,9 @@ abstract class SRV extends Record  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setPort (?int $Port = null) : self {
 		$this->set("Port", $Port);
 		return $this;

@@ -14,6 +14,9 @@ abstract class DeleteUserResponse extends ResponseRootElement  {
 	protected $_apiObjects=["DeleteUserResult"];
 	protected $DeleteUserResult;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setDeleteUserResult (?\ascio\dns\Response $DeleteUserResult = null) : self {
 		$this->set("DeleteUserResult", $DeleteUserResult);
 		return $this;

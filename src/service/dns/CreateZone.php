@@ -16,6 +16,9 @@ abstract class CreateZone extends RequestRootElement  {
 	protected $owner;
 	protected $records;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setZoneName (?string $zoneName = null) : self {
 		$this->set("zoneName", $zoneName);
 		return $this;

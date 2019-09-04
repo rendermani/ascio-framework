@@ -14,6 +14,9 @@ abstract class ArrayOfOrderStatusType extends ArrayBase implements \Iterator  {
 	protected $_apiObjects=[];
 	protected $OrderStatusType;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setOrderStatusType (?Iterable $OrderStatusType = null) : self {
 		$this->set("OrderStatusType", $OrderStatusType);
 		return $this;

@@ -43,6 +43,9 @@ abstract class SslCertificateOrderRequest extends AbstractOrderRequest  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setSslCertificate (?\ascio\v3\SslCertificate $SslCertificate = null) : self {
 		$this->set("SslCertificate", $SslCertificate);
 		return $this;

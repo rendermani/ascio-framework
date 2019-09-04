@@ -15,6 +15,9 @@ abstract class GetZoneLogResponse extends ResponseRootElement  {
 	protected $GetZoneLogResult;
 	protected $zoneLogEntries;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setGetZoneLogResult (?\ascio\dns\Response $GetZoneLogResult = null) : self {
 		$this->set("GetZoneLogResult", $GetZoneLogResult);
 		return $this;

@@ -14,6 +14,9 @@ abstract class UpdateRecord extends RequestRootElement  {
 	protected $_apiObjects=["record"];
 	protected $record;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setRecord (?\ascio\dns\Record $record = null) : self {
 		$this->set("record", $record);
 		return $this;

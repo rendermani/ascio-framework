@@ -23,6 +23,9 @@ abstract class SearchOrderRequest extends Base  {
 	protected $PageInfo;
 	protected $OrderSort;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setOrderTypes (?\ascio\v2\ArrayOfOrderType $OrderTypes = null) : self {
 		$this->set("OrderTypes", $OrderTypes);
 		return $this;

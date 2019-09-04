@@ -14,6 +14,9 @@ abstract class SearchUser extends RequestRootElement  {
 	protected $_apiObjects=["searchUserClauses"];
 	protected $searchUserClauses;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setSearchUserClauses (?\ascio\dns\ArrayOfSearchUserClause $searchUserClauses = null) : self {
 		$this->set("searchUserClauses", $searchUserClauses);
 		return $this;

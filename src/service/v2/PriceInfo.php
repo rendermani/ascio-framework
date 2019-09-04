@@ -18,6 +18,9 @@ abstract class PriceInfo extends Base  {
 	protected $Prices;
 	protected $RenewalType;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setDomainName (?string $DomainName = null) : self {
 		$this->set("DomainName", $DomainName);
 		return $this;

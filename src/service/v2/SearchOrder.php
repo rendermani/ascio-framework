@@ -15,6 +15,9 @@ abstract class SearchOrder extends RequestRootElement  {
 	protected $sessionId;
 	protected $orderRequest;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

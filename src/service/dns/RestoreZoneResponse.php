@@ -15,6 +15,9 @@ abstract class RestoreZoneResponse extends ResponseRootElement  {
 	protected $RestoreZoneResult;
 	protected $zone;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setRestoreZoneResult (?\ascio\dns\Response $RestoreZoneResult = null) : self {
 		$this->set("RestoreZoneResult", $RestoreZoneResult);
 		return $this;

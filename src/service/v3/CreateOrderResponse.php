@@ -40,6 +40,9 @@ abstract class CreateOrderResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setOrderInfo (?\ascio\v3\OrderInfo $OrderInfo = null) : self {
 		$this->set("OrderInfo", $OrderInfo);
 		return $this;

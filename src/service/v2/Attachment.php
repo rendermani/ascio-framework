@@ -36,6 +36,9 @@ abstract class Attachment extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setData (?\base64Binary $Data = null) : self {
 		$this->set("Data", $Data);
 		return $this;

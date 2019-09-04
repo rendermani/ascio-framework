@@ -40,6 +40,9 @@ abstract class GetMessagesResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setMessages (?\ascio\v3\ArrayOfMessage $Messages = null) : self {
 		$this->set("Messages", $Messages);
 		return $this;

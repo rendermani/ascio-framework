@@ -53,6 +53,24 @@ abstract class Extensions extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Array-Specific methods
+	*/
+	public function current() : \ascio\v2\Extension {
+		return parent::current();
+	}
+	public function first() : \ascio\v2\Extension {
+		return parent::first();
+	}
+	public function last() : \ascio\v2\Extension {
+		return parent::last();
+	}
+	public function index($nr) : \ascio\v2\Extension {
+		return parent::index($nr);
+	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setExtension (?Iterable $Extension = null) : self {
 		$this->set("Extension", $Extension);
 		return $this;

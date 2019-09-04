@@ -35,6 +35,24 @@ abstract class ArrayOfMessage extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Array-Specific methods
+	*/
+	public function current() : \ascio\v3\Message {
+		return parent::current();
+	}
+	public function first() : \ascio\v3\Message {
+		return parent::first();
+	}
+	public function last() : \ascio\v3\Message {
+		return parent::last();
+	}
+	public function index($nr) : \ascio\v3\Message {
+		return parent::index($nr);
+	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setMessage (?Iterable $Message = null) : self {
 		$this->set("Message", $Message);
 		return $this;

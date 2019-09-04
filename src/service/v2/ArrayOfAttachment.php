@@ -35,6 +35,24 @@ abstract class ArrayOfAttachment extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Array-Specific methods
+	*/
+	public function current() : \ascio\v2\Attachment {
+		return parent::current();
+	}
+	public function first() : \ascio\v2\Attachment {
+		return parent::first();
+	}
+	public function last() : \ascio\v2\Attachment {
+		return parent::last();
+	}
+	public function index($nr) : \ascio\v2\Attachment {
+		return parent::index($nr);
+	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setAttachment (?Iterable $Attachment = null) : self {
 		$this->set("Attachment", $Attachment);
 		return $this;

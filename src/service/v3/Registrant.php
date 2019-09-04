@@ -72,6 +72,9 @@ abstract class Registrant extends Contact  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setVatNumber (?string $VatNumber = null) : self {
 		$this->set("VatNumber", $VatNumber);
 		return $this;

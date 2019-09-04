@@ -18,6 +18,9 @@ abstract class ApprovalDocumentation extends Base  {
 	protected $Attachments;
 	protected $Extensions;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setType (?string $Type = null) : self {
 		$this->set("Type", $Type);
 		return $this;

@@ -40,6 +40,9 @@ abstract class GetNameWatchResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setNameWatchInfo (?\ascio\v3\NameWatchInfo $NameWatchInfo = null) : self {
 		$this->set("NameWatchInfo", $NameWatchInfo);
 		return $this;

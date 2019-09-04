@@ -11,4 +11,7 @@ use ascio\api\v3\durationApi;
 abstract class duration {
 
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 }

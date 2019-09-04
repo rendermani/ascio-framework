@@ -61,6 +61,9 @@ abstract class MX extends Record  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setPriority (?int $Priority = null) : self {
 		$this->set("Priority", $Priority);
 		return $this;

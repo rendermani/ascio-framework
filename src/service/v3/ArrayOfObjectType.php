@@ -35,6 +35,9 @@ abstract class ArrayOfObjectType extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setObjectType (?Iterable $ObjectType = null) : self {
 		$this->set("ObjectType", $ObjectType);
 		return $this;

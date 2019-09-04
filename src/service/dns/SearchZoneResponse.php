@@ -15,6 +15,9 @@ abstract class SearchZoneResponse extends ResponseRootElement  {
 	protected $SearchZoneResult;
 	protected $zones;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setSearchZoneResult (?\ascio\dns\Response $SearchZoneResult = null) : self {
 		$this->set("SearchZoneResult", $SearchZoneResult);
 		return $this;

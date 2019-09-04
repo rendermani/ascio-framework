@@ -15,6 +15,9 @@ abstract class SearchDomainResponse extends ResponseRootElement  {
 	protected $SearchDomainResult;
 	protected $domains;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setSearchDomainResult (?\ascio\v2\Response $SearchDomainResult = null) : self {
 		$this->set("SearchDomainResult", $SearchDomainResult);
 		return $this;

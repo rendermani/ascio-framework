@@ -15,6 +15,9 @@ abstract class GetNameServerResponse extends ResponseRootElement  {
 	protected $GetNameServerResult;
 	protected $nameServer;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setGetNameServerResult (?\ascio\v2\Response $GetNameServerResult = null) : self {
 		$this->set("GetNameServerResult", $GetNameServerResult);
 		return $this;

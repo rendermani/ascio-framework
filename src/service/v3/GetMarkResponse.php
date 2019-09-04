@@ -40,6 +40,9 @@ abstract class GetMarkResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setMarkInfo (?\ascio\v3\MarkInfo $MarkInfo = null) : self {
 		$this->set("MarkInfo", $MarkInfo);
 		return $this;

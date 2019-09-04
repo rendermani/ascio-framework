@@ -35,6 +35,9 @@ abstract class GetQueueMessage extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setRequest (?\ascio\v3\GetQueueMessageRequest $request = null) : self {
 		$this->set("request", $request);
 		return $this;

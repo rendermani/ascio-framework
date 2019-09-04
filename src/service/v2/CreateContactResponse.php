@@ -15,6 +15,9 @@ abstract class CreateContactResponse extends ResponseRootElement  {
 	protected $CreateContactResult;
 	protected $contact;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setCreateContactResult (?\ascio\v2\Response $CreateContactResult = null) : self {
 		$this->set("CreateContactResult", $CreateContactResult);
 		return $this;

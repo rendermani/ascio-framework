@@ -55,6 +55,9 @@ abstract class AbstractResponse extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setResultCode (?int $ResultCode = null) : self {
 		$this->set("ResultCode", $ResultCode);
 		return $this;

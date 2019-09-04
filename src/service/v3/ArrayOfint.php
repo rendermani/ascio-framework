@@ -35,6 +35,9 @@ abstract class ArrayOfint extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setInt (?Iterable $int = null) : self {
 		$this->set("int", $int);
 		return $this;

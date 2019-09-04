@@ -15,6 +15,9 @@ abstract class SearchContactResponse extends ResponseRootElement  {
 	protected $SearchContactResult;
 	protected $contacts;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setSearchContactResult (?\ascio\v2\Response $SearchContactResult = null) : self {
 		$this->set("SearchContactResult", $SearchContactResult);
 		return $this;

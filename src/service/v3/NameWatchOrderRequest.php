@@ -43,6 +43,9 @@ abstract class NameWatchOrderRequest extends AbstractOrderRequest  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setNameWatch (?\ascio\v3\NameWatch $NameWatch = null) : self {
 		$this->set("NameWatch", $NameWatch);
 		return $this;

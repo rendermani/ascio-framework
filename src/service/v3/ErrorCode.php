@@ -36,6 +36,9 @@ abstract class ErrorCode extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setCode (?string $Code = null) : self {
 		$this->set("Code", $Code);
 		return $this;

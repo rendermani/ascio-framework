@@ -8,6 +8,9 @@ namespace ascio\service\v3;
 abstract class WebServerType {
 
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	const ApacheSsl = "ApacheSsl";
 	const ApacheRaven = "ApacheRaven";
 	const ApacheSsleay = "ApacheSsleay";

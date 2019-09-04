@@ -63,6 +63,9 @@ abstract class TradeMark extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setName (?string $Name = null) : self {
 		$this->set("Name", $Name);
 		return $this;

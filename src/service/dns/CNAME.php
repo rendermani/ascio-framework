@@ -60,4 +60,7 @@ abstract class CNAME extends Record  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 }

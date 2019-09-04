@@ -16,6 +16,9 @@ abstract class SearchOrderResponse extends ResponseRootElement  {
 	protected $totalOrders;
 	protected $orders;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setSearchOrderResult (?\ascio\v2\Response $SearchOrderResult = null) : self {
 		$this->set("SearchOrderResult", $SearchOrderResult);
 		return $this;

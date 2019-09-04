@@ -36,6 +36,9 @@ abstract class CallbackStatus extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setMessage (?string $Message = null) : self {
 		$this->set("Message", $Message);
 		return $this;

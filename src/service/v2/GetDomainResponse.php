@@ -15,6 +15,9 @@ abstract class GetDomainResponse extends ResponseRootElement  {
 	protected $GetDomainResult;
 	protected $domain;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setGetDomainResult (?\ascio\v2\Response $GetDomainResult = null) : self {
 		$this->set("GetDomainResult", $GetDomainResult);
 		return $this;

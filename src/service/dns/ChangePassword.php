@@ -15,6 +15,9 @@ abstract class ChangePassword extends RequestRootElement  {
 	protected $userName;
 	protected $newPassword;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setUserName (?string $userName = null) : self {
 		$this->set("userName", $userName);
 		return $this;

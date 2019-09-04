@@ -15,6 +15,9 @@ abstract class GetMessagesResponse extends ResponseRootElement  {
 	protected $GetMessagesResult;
 	protected $messages;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setGetMessagesResult (?\ascio\v2\Response $GetMessagesResult = null) : self {
 		$this->set("GetMessagesResult", $GetMessagesResult);
 		return $this;

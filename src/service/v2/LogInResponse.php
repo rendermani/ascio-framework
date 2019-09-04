@@ -15,6 +15,9 @@ abstract class LogInResponse extends ResponseRootElement  {
 	protected $LogInResult;
 	protected $sessionId;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setLogInResult (?\ascio\v2\Response $LogInResult = null) : self {
 		$this->set("LogInResult", $LogInResult);
 		return $this;

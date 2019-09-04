@@ -121,6 +121,9 @@ abstract class Service extends ServiceBase  {
 	];
 
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function getRoles() : GetRolesResponse {
 		return $this->call("GetRoles"[]);
 	}

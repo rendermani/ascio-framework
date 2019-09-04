@@ -72,6 +72,9 @@ abstract class Registrant extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setCreDate (?\DateTime $CreDate = null) : self {
 		$this->set("CreDate", $CreDate);
 		return $this;

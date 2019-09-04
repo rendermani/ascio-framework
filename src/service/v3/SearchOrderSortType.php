@@ -8,6 +8,9 @@ namespace ascio\service\v3;
 abstract class SearchOrderSortType {
 
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	const CreatedAsc = "CreatedAsc";
 	const CreatedDesc = "CreatedDesc";
 	const OrderIdAsc = "OrderIdAsc";

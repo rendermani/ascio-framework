@@ -14,6 +14,9 @@ abstract class CreateZoneResponse extends ResponseRootElement  {
 	protected $_apiObjects=["CreateZoneResult"];
 	protected $CreateZoneResult;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setCreateZoneResult (?\ascio\dns\Response $CreateZoneResult = null) : self {
 		$this->set("CreateZoneResult", $CreateZoneResult);
 		return $this;

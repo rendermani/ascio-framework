@@ -15,6 +15,9 @@ abstract class CreateDocumentationResponse extends ResponseRootElement  {
 	protected $CreateDocumentationResult;
 	protected $documentationId;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setCreateDocumentationResult (?\ascio\v2\Response $CreateDocumentationResult = null) : self {
 		$this->set("CreateDocumentationResult", $CreateDocumentationResult);
 		return $this;

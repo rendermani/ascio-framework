@@ -11,4 +11,7 @@ use ascio\api\v3\guidApi;
 abstract class guid {
 
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 }

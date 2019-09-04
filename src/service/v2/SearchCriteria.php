@@ -17,6 +17,9 @@ abstract class SearchCriteria extends Base  {
 	protected $Withoutstates;
 	protected $Withstates;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setClauses (?\ascio\v2\ArrayOfClause $Clauses = null) : self {
 		$this->set("Clauses", $Clauses);
 		return $this;

@@ -16,6 +16,9 @@ abstract class AvailabilityInfo extends RequestRootElement  {
 	protected $domainName;
 	protected $quality;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

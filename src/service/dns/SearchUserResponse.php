@@ -15,6 +15,9 @@ abstract class SearchUserResponse extends ResponseRootElement  {
 	protected $SearchUserResult;
 	protected $userNames;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setSearchUserResult (?\ascio\dns\Response $SearchUserResult = null) : self {
 		$this->set("SearchUserResult", $SearchUserResult);
 		return $this;

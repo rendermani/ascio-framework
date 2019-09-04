@@ -15,6 +15,9 @@ abstract class CreateOrder extends RequestRootElement  {
 	protected $sessionId;
 	protected $order;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

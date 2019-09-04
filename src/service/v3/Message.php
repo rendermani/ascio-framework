@@ -41,6 +41,9 @@ abstract class Message extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setAttachments (?\ascio\v3\ArrayOfAttachment $Attachments = null) : self {
 		$this->set("Attachments", $Attachments);
 		return $this;

@@ -16,6 +16,9 @@ abstract class Response extends Base  {
 	protected $ResultCode;
 	protected $Values;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setMessage (?string $Message = null) : self {
 		$this->set("Message", $Message);
 		return $this;

@@ -8,6 +8,9 @@ namespace ascio\service\v2;
 abstract class MessageType {
 
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	const Message_to_Partner = "Message_to_Partner";
 	const Documentation_Request = "Documentation_Request";
 	const Order_mail = "Order_mail";

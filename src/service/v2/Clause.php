@@ -16,6 +16,9 @@ abstract class Clause extends Base  {
 	protected $Operator;
 	protected $Value;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setAttribute (?string $Attribute = null) : self {
 		$this->set("Attribute", $Attribute);
 		return $this;

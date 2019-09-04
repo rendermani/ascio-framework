@@ -15,6 +15,9 @@ abstract class CreateApprovalDocumentation extends RequestRootElement  {
 	protected $sessionId;
 	protected $approvalDocumentation;
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

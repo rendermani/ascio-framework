@@ -8,6 +8,9 @@ namespace ascio\service\v3;
 abstract class MarkOrderDocType {
 
 
+	/**
+	* Getters and setters for API-Properties
+	*/
 	const TrademarkAssigneeDeclaration = "TrademarkAssigneeDeclaration";
 	const TrademarkLicenseDeclaration = "TrademarkLicenseDeclaration";
 	const TrademarkOther = "TrademarkOther";
