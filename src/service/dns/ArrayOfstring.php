@@ -35,6 +35,9 @@ abstract class ArrayOfstring extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setString (?Iterable $string = null) : self {
 		$this->set("string", $string);
 		return $this;

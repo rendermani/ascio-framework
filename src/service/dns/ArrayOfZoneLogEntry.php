@@ -53,6 +53,24 @@ abstract class ArrayOfZoneLogEntry extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Array-Specific methods
+	*/
+	public function current() : \ascio\dns\ZoneLogEntry {
+		return parent::current();
+	}
+	public function first() : \ascio\dns\ZoneLogEntry {
+		return parent::first();
+	}
+	public function last() : \ascio\dns\ZoneLogEntry {
+		return parent::last();
+	}
+	public function index($nr) : \ascio\dns\ZoneLogEntry {
+		return parent::index($nr);
+	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setZoneLogEntry (?Iterable $ZoneLogEntry = null) : self {
 		$this->set("ZoneLogEntry", $ZoneLogEntry);
 		return $this;

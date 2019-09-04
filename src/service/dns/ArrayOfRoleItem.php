@@ -53,6 +53,24 @@ abstract class ArrayOfRoleItem extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Array-Specific methods
+	*/
+	public function current() : \ascio\dns\RoleItem {
+		return parent::current();
+	}
+	public function first() : \ascio\dns\RoleItem {
+		return parent::first();
+	}
+	public function last() : \ascio\dns\RoleItem {
+		return parent::last();
+	}
+	public function index($nr) : \ascio\dns\RoleItem {
+		return parent::index($nr);
+	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setRoleItem (?Iterable $RoleItem = null) : self {
 		$this->set("RoleItem", $RoleItem);
 		return $this;

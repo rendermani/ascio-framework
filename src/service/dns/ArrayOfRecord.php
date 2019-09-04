@@ -53,6 +53,24 @@ abstract class ArrayOfRecord extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Array-Specific methods
+	*/
+	public function current() : \ascio\dns\Record {
+		return parent::current();
+	}
+	public function first() : \ascio\dns\Record {
+		return parent::first();
+	}
+	public function last() : \ascio\dns\Record {
+		return parent::last();
+	}
+	public function index($nr) : \ascio\dns\Record {
+		return parent::index($nr);
+	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setRecord (?Iterable $Record = null) : self {
 		$this->set("Record", $Record);
 		return $this;

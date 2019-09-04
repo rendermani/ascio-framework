@@ -14,6 +14,24 @@ abstract class ArrayOfSearchZoneClause extends ArrayBase implements \Iterator  {
 	protected $_apiObjects=["SearchZoneClause"];
 	protected $SearchZoneClause;
 
+	/**
+	* Array-Specific methods
+	*/
+	public function current() : \ascio\dns\SearchZoneClause {
+		return parent::current();
+	}
+	public function first() : \ascio\dns\SearchZoneClause {
+		return parent::first();
+	}
+	public function last() : \ascio\dns\SearchZoneClause {
+		return parent::last();
+	}
+	public function index($nr) : \ascio\dns\SearchZoneClause {
+		return parent::index($nr);
+	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setSearchZoneClause (?Iterable $SearchZoneClause = null) : self {
 		$this->set("SearchZoneClause", $SearchZoneClause);
 		return $this;

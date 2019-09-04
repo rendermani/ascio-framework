@@ -35,6 +35,24 @@ abstract class ArrayOfZone extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
+	/**
+	* Array-Specific methods
+	*/
+	public function current() : \ascio\dns\Zone {
+		return parent::current();
+	}
+	public function first() : \ascio\dns\Zone {
+		return parent::first();
+	}
+	public function last() : \ascio\dns\Zone {
+		return parent::last();
+	}
+	public function index($nr) : \ascio\dns\Zone {
+		return parent::index($nr);
+	}
+	/**
+	* Getters and setters for API-Properties
+	*/
 	public function setZone (?Iterable $Zone = null) : self {
 		$this->set("Zone", $Zone);
 		return $this;
