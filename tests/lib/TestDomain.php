@@ -314,7 +314,6 @@ final class TestDomain extends TestCase {
         $domain = new Domain();
         $domain->getByHandle("ADARALOV36431");
         $domain->createDnsSecKeys()->createDnsSecKey1()->setDigest("123");
-        //todo: old does not exist. 
         $orders = $domain->getUpdateOrders();
         $order = $orders[0];
         $this->assertCount(1,$orders,"There should be 1 order");
