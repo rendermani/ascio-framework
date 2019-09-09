@@ -8,7 +8,7 @@ use ascio\db\dns\ArrayOfSearchUserClauseDb;
 use ascio\api\dns\ArrayOfSearchUserClauseApi;
 
 
-abstract class ArrayOfSearchUserClause extends ArrayBase implements \Iterator  {
+abstract class ArrayOfSearchUserClause extends ArrayBase implements \Iterator, \ArrayAccess  {
 
 	protected $_apiProperties=["SearchUserClause"];
 	protected $_apiObjects=["SearchUserClause"];

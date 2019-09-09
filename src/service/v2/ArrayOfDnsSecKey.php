@@ -8,7 +8,7 @@ use ascio\db\v2\ArrayOfDnsSecKeyDb;
 use ascio\api\v2\ArrayOfDnsSecKeyApi;
 
 
-abstract class ArrayOfDnsSecKey extends ArrayBase implements \Iterator  {
+abstract class ArrayOfDnsSecKey extends ArrayBase implements \Iterator, \ArrayAccess  {
 
 	protected $_apiProperties=["DnsSecKey"];
 	protected $_apiObjects=["DnsSecKey"];

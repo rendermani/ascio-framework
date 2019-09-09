@@ -8,7 +8,7 @@ use ascio\db\v3\ArrayOfstringDb;
 use ascio\api\v3\ArrayOfstringApi;
 
 
-abstract class ArrayOfstring extends ArrayBase implements \Iterator  {
+abstract class ArrayOfstring extends ArrayBase implements \Iterator, \ArrayAccess  {
 
 	protected $_apiProperties=["string"];
 	protected $_apiObjects=[];

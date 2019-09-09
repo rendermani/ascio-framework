@@ -8,7 +8,7 @@ use ascio\db\v3\ArrayOfOrderTypeDb;
 use ascio\api\v3\ArrayOfOrderTypeApi;
 
 
-abstract class ArrayOfOrderType extends ArrayBase implements \Iterator  {
+abstract class ArrayOfOrderType extends ArrayBase implements \Iterator, \ArrayAccess  {
 
 	protected $_apiProperties=["OrderType"];
 	protected $_apiObjects=[];

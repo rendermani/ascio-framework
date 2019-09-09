@@ -8,7 +8,7 @@ use ascio\db\v2\ArrayOfAvailabilityCheckResultDb;
 use ascio\api\v2\ArrayOfAvailabilityCheckResultApi;
 
 
-abstract class ArrayOfAvailabilityCheckResult extends ArrayBase implements \Iterator  {
+abstract class ArrayOfAvailabilityCheckResult extends ArrayBase implements \Iterator, \ArrayAccess  {
 
 	protected $_apiProperties=["AvailabilityCheckResult"];
 	protected $_apiObjects=["AvailabilityCheckResult"];

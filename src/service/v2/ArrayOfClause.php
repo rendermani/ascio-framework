@@ -8,7 +8,7 @@ use ascio\db\v2\ArrayOfClauseDb;
 use ascio\api\v2\ArrayOfClauseApi;
 
 
-abstract class ArrayOfClause extends ArrayBase implements \Iterator  {
+abstract class ArrayOfClause extends ArrayBase implements \Iterator, \ArrayAccess  {
 
 	protected $_apiProperties=["Clause"];
 	protected $_apiObjects=["Clause"];

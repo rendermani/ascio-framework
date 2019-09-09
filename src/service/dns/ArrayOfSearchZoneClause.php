@@ -8,7 +8,7 @@ use ascio\db\dns\ArrayOfSearchZoneClauseDb;
 use ascio\api\dns\ArrayOfSearchZoneClauseApi;
 
 
-abstract class ArrayOfSearchZoneClause extends ArrayBase implements \Iterator  {
+abstract class ArrayOfSearchZoneClause extends ArrayBase implements \Iterator, \ArrayAccess  {
 
 	protected $_apiProperties=["SearchZoneClause"];
 	protected $_apiObjects=["SearchZoneClause"];

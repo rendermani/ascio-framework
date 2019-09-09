@@ -8,7 +8,7 @@ use ascio\db\v2\ArrayOfMessageDb;
 use ascio\api\v2\ArrayOfMessageApi;
 
 
-abstract class ArrayOfMessage extends ArrayBase implements \Iterator  {
+abstract class ArrayOfMessage extends ArrayBase implements \Iterator, \ArrayAccess  {
 
 	protected $_apiProperties=["Message"];
 	protected $_apiObjects=["Message"];
