@@ -114,13 +114,15 @@ class DbBase extends BaseClass {
                 $action = "create";
             }
             try {
-                $this->api()->get();                
+                $this->api()->get();  
+                $this->produce(["action" => $action]);          
             } catch(AscioException $e) {
                 echo $e->getMessage()."\n";
             }
         }
         return $action;        
     }
+    
     public function setExisting() {
         $usedClasses = [
             "ascio\\v2\\Contact",
