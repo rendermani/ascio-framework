@@ -63,7 +63,7 @@ trait ArrayTrait   {
         $this->getObject()->_set($this->getArrayKey(),$array);
     }
     public function toJson() {
-        return json_encode($this);
+        return json_encode($this->toArray());
     }
     public function fromJson($json) {
         return $this->fromArray(json_decode($json));
