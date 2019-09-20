@@ -86,7 +86,10 @@
             
             "ascio\\lib\\"  : ["src/lib","src/base"],
             "ascio\\lib\\composer\\" : "src/lib",
-            "ascio\\logic\\" : "src/logic"          
+            "ascio\\logic\\" : "src/logic",         
+            "ascio\\logic\\v2\\" : "src/logic/v2",          
+            "ascio\\logic\\v3\\" : "src/logic/v3",          
+            "ascio\\logic\\dns\\" : "src/logic/dns"          
         }
     }
 }
