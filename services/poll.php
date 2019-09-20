@@ -33,7 +33,7 @@ function poll() {
 Ascio::setConfig();
 function prefix () {
     if(Ascio::getConfig()->getEnvironment()=="live") {
-        return "A";
+        return "";
     } else {
         return "TEST";
     }
