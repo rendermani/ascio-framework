@@ -6,6 +6,7 @@ namespace ascio\service\v3;
 use ascio\base\v3\DbArrayBase;
 use ascio\db\v3\ArrayOfMessageDb;
 use ascio\api\v3\ArrayOfMessageApi;
+use ascio\base\ArrayInterface;
 
 
 abstract class ArrayOfMessage extends DbArrayBase  {
@@ -64,6 +65,9 @@ abstract class ArrayOfMessage extends DbArrayBase  {
 		return $this->create ("Message", "\\ascio\\v3\\Message");
 	}
 	public function addMessage () : \ascio\v3\Message {
-		return $this->add("Message","\\ascio\\v3\\Message",func_get_args());
+		return $this->addItem(func_get_args(),"\\ascio\\v3\\Message");
+	}
+	public function addMessages ($array) : self {
+		return $this->add(func_get_args());
 	}
 }

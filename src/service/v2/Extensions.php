@@ -6,6 +6,7 @@ namespace ascio\service\v2;
 use ascio\base\v2\DbArrayBase;
 use ascio\db\v2\ExtensionsDb;
 use ascio\api\v2\ExtensionsApi;
+use ascio\base\ArrayInterface;
 
 
 abstract class Extensions extends DbArrayBase  {
@@ -81,7 +82,10 @@ abstract class Extensions extends DbArrayBase  {
 	public function createExtension () : \ascio\v2\Extension {
 		return $this->create ("Extension", "\\ascio\\v2\\Extension");
 	}
-	public function addExtension (string $Key, string $Value) : \ascio\v2\Extension {
-		return $this->add("Extension","\\ascio\\v2\\Extension",func_get_args());
+	 public function addExtension (string $Key, string $Value) : \ascio\v2\Extension {
+		return $this->addItem(func_get_args(),"\\ascio\\v2\\Extension");
+	}
+	public function addExtensions ($array) : self {
+		return $this->add(func_get_args());
 	}
 }

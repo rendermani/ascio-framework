@@ -6,6 +6,7 @@ namespace ascio\service\v3;
 use ascio\base\v3\DbArrayBase;
 use ascio\db\v3\ArrayOfErrorCodeDb;
 use ascio\api\v3\ArrayOfErrorCodeApi;
+use ascio\base\ArrayInterface;
 
 
 abstract class ArrayOfErrorCode extends DbArrayBase  {
@@ -64,6 +65,9 @@ abstract class ArrayOfErrorCode extends DbArrayBase  {
 		return $this->create ("ErrorCode", "\\ascio\\v3\\ErrorCode");
 	}
 	public function addErrorCode () : \ascio\v3\ErrorCode {
-		return $this->add("ErrorCode","\\ascio\\v3\\ErrorCode",func_get_args());
+		return $this->addItem(func_get_args(),"\\ascio\\v3\\ErrorCode");
+	}
+	public function addErrorCodes ($array) : self {
+		return $this->add(func_get_args());
 	}
 }

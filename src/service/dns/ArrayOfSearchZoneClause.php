@@ -6,9 +6,10 @@ namespace ascio\service\dns;
 use ascio\base\dns\ArrayBase;
 use ascio\db\dns\ArrayOfSearchZoneClauseDb;
 use ascio\api\dns\ArrayOfSearchZoneClauseApi;
+use ascio\base\ArrayInterface;
 
 
-abstract class ArrayOfSearchZoneClause extends ArrayBase implements \Iterator, \ArrayAccess  {
+abstract class ArrayOfSearchZoneClause extends ArrayBase implements ArrayInterface,\Iterator,\countable,\ArrayAccess  {
 
 	protected $_apiProperties=["SearchZoneClause"];
 	protected $_apiObjects=["SearchZoneClause"];
@@ -43,6 +44,9 @@ abstract class ArrayOfSearchZoneClause extends ArrayBase implements \Iterator, \
 		return $this->create ("SearchZoneClause", "\\ascio\\dns\\SearchZoneClause");
 	}
 	public function addSearchZoneClause () : \ascio\dns\SearchZoneClause {
-		return $this->add("SearchZoneClause","\\ascio\\dns\\SearchZoneClause",func_get_args());
+		return $this->addItem(func_get_args(),"\\ascio\\dns\\SearchZoneClause");
+	}
+	public function addSearchZoneClauses ($array) : self {
+		return $this->add(func_get_args());
 	}
 }

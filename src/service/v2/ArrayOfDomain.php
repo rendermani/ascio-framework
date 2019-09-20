@@ -6,9 +6,10 @@ namespace ascio\service\v2;
 use ascio\base\v2\ArrayBase;
 use ascio\db\v2\ArrayOfDomainDb;
 use ascio\api\v2\ArrayOfDomainApi;
+use ascio\base\ArrayInterface;
 
 
-abstract class ArrayOfDomain extends ArrayBase implements \Iterator, \ArrayAccess  {
+abstract class ArrayOfDomain extends ArrayBase implements ArrayInterface,\Iterator,\countable,\ArrayAccess  {
 
 	protected $_apiProperties=["Domain"];
 	protected $_apiObjects=["Domain"];
@@ -43,6 +44,9 @@ abstract class ArrayOfDomain extends ArrayBase implements \Iterator, \ArrayAcces
 		return $this->create ("Domain", "\\ascio\\v2\\Domain");
 	}
 	public function addDomain () : \ascio\v2\Domain {
-		return $this->add("Domain","\\ascio\\v2\\Domain",func_get_args());
+		return $this->addItem(func_get_args(),"\\ascio\\v2\\Domain");
+	}
+	public function addDomains ($array) : self {
+		return $this->add(func_get_args());
 	}
 }

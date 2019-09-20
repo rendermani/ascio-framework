@@ -6,9 +6,10 @@ namespace ascio\service\v2;
 use ascio\base\v2\ArrayBase;
 use ascio\db\v2\ArrayOfContactDb;
 use ascio\api\v2\ArrayOfContactApi;
+use ascio\base\ArrayInterface;
 
 
-abstract class ArrayOfContact extends ArrayBase implements \Iterator, \ArrayAccess  {
+abstract class ArrayOfContact extends ArrayBase implements ArrayInterface,\Iterator,\countable,\ArrayAccess  {
 
 	protected $_apiProperties=["Contact"];
 	protected $_apiObjects=["Contact"];
@@ -43,6 +44,9 @@ abstract class ArrayOfContact extends ArrayBase implements \Iterator, \ArrayAcce
 		return $this->create ("Contact", "\\ascio\\v2\\Contact");
 	}
 	public function addContact () : \ascio\v2\Contact {
-		return $this->add("Contact","\\ascio\\v2\\Contact",func_get_args());
+		return $this->addItem(func_get_args(),"\\ascio\\v2\\Contact");
+	}
+	public function addContacts ($array) : self {
+		return $this->add(func_get_args());
 	}
 }

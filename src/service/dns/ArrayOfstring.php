@@ -6,6 +6,7 @@ namespace ascio\service\dns;
 use ascio\base\dns\DbArrayBase;
 use ascio\db\dns\ArrayOfstringDb;
 use ascio\api\dns\ArrayOfstringApi;
+use ascio\base\ArrayInterface;
 
 
 abstract class ArrayOfstring extends DbArrayBase  {
@@ -46,6 +47,9 @@ abstract class ArrayOfstring extends DbArrayBase  {
 		return $this->get("string", "string");
 	}
 	public function addString () : string {
-		return $this->add("string","string",func_get_args());
+		return $this->addItem(func_get_args(),"string");
+	}
+	public function addStrings ($array) : self {
+		return $this->add(func_get_args());
 	}
 }

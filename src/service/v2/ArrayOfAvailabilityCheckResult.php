@@ -6,9 +6,10 @@ namespace ascio\service\v2;
 use ascio\base\v2\ArrayBase;
 use ascio\db\v2\ArrayOfAvailabilityCheckResultDb;
 use ascio\api\v2\ArrayOfAvailabilityCheckResultApi;
+use ascio\base\ArrayInterface;
 
 
-abstract class ArrayOfAvailabilityCheckResult extends ArrayBase implements \Iterator, \ArrayAccess  {
+abstract class ArrayOfAvailabilityCheckResult extends ArrayBase implements ArrayInterface,\Iterator,\countable,\ArrayAccess  {
 
 	protected $_apiProperties=["AvailabilityCheckResult"];
 	protected $_apiObjects=["AvailabilityCheckResult"];
@@ -43,6 +44,9 @@ abstract class ArrayOfAvailabilityCheckResult extends ArrayBase implements \Iter
 		return $this->create ("AvailabilityCheckResult", "\\ascio\\v2\\AvailabilityCheckResult");
 	}
 	public function addAvailabilityCheckResult () : \ascio\v2\AvailabilityCheckResult {
-		return $this->add("AvailabilityCheckResult","\\ascio\\v2\\AvailabilityCheckResult",func_get_args());
+		return $this->addItem(func_get_args(),"\\ascio\\v2\\AvailabilityCheckResult");
+	}
+	public function addAvailabilityCheckResults ($array) : self {
+		return $this->add(func_get_args());
 	}
 }

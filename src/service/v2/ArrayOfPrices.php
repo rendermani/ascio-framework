@@ -6,9 +6,10 @@ namespace ascio\service\v2;
 use ascio\base\v2\ArrayBase;
 use ascio\db\v2\ArrayOfPricesDb;
 use ascio\api\v2\ArrayOfPricesApi;
+use ascio\base\ArrayInterface;
 
 
-abstract class ArrayOfPrices extends ArrayBase implements \Iterator, \ArrayAccess  {
+abstract class ArrayOfPrices extends ArrayBase implements ArrayInterface,\Iterator,\countable,\ArrayAccess  {
 
 	protected $_apiProperties=["Price"];
 	protected $_apiObjects=["Price"];
@@ -43,6 +44,9 @@ abstract class ArrayOfPrices extends ArrayBase implements \Iterator, \ArrayAcces
 		return $this->create ("Price", "\\ascio\\v2\\Price");
 	}
 	public function addPrice () : \ascio\v2\Price {
-		return $this->add("Price","\\ascio\\v2\\Price",func_get_args());
+		return $this->addItem(func_get_args(),"\\ascio\\v2\\Price");
+	}
+	public function addPrices ($array) : self {
+		return $this->add(func_get_args());
 	}
 }

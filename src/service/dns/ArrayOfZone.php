@@ -6,6 +6,7 @@ namespace ascio\service\dns;
 use ascio\base\dns\DbArrayBase;
 use ascio\db\dns\ArrayOfZoneDb;
 use ascio\api\dns\ArrayOfZoneApi;
+use ascio\base\ArrayInterface;
 
 
 abstract class ArrayOfZone extends DbArrayBase  {
@@ -64,6 +65,9 @@ abstract class ArrayOfZone extends DbArrayBase  {
 		return $this->create ("Zone", "\\ascio\\dns\\Zone");
 	}
 	public function addZone () : \ascio\dns\Zone {
-		return $this->add("Zone","\\ascio\\dns\\Zone",func_get_args());
+		return $this->addItem(func_get_args(),"\\ascio\\dns\\Zone");
+	}
+	public function addZones ($array) : self {
+		return $this->add(func_get_args());
 	}
 }

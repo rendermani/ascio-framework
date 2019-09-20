@@ -6,6 +6,7 @@ namespace ascio\service\v3;
 use ascio\base\v3\DbArrayBase;
 use ascio\db\v3\ArrayOfMarkOrderDocumentDb;
 use ascio\api\v3\ArrayOfMarkOrderDocumentApi;
+use ascio\base\ArrayInterface;
 
 
 abstract class ArrayOfMarkOrderDocument extends DbArrayBase  {
@@ -64,6 +65,9 @@ abstract class ArrayOfMarkOrderDocument extends DbArrayBase  {
 		return $this->create ("MarkOrderDocument", "\\ascio\\v3\\MarkOrderDocument");
 	}
 	public function addMarkOrderDocument () : \ascio\v3\MarkOrderDocument {
-		return $this->add("MarkOrderDocument","\\ascio\\v3\\MarkOrderDocument",func_get_args());
+		return $this->addItem(func_get_args(),"\\ascio\\v3\\MarkOrderDocument");
+	}
+	public function addMarkOrderDocuments ($array) : self {
+		return $this->add(func_get_args());
 	}
 }

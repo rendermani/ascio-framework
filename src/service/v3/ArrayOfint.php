@@ -6,6 +6,7 @@ namespace ascio\service\v3;
 use ascio\base\v3\DbArrayBase;
 use ascio\db\v3\ArrayOfintDb;
 use ascio\api\v3\ArrayOfintApi;
+use ascio\base\ArrayInterface;
 
 
 abstract class ArrayOfint extends DbArrayBase  {
@@ -46,6 +47,9 @@ abstract class ArrayOfint extends DbArrayBase  {
 		return $this->get("int", "int");
 	}
 	public function addInt () : int {
-		return $this->add("int","int",func_get_args());
+		return $this->addItem(func_get_args(),"int");
+	}
+	public function addInts ($array) : self {
+		return $this->add(func_get_args());
 	}
 }

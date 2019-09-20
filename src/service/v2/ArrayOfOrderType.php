@@ -6,9 +6,10 @@ namespace ascio\service\v2;
 use ascio\base\v2\ArrayBase;
 use ascio\db\v2\ArrayOfOrderTypeDb;
 use ascio\api\v2\ArrayOfOrderTypeApi;
+use ascio\base\ArrayInterface;
 
 
-abstract class ArrayOfOrderType extends ArrayBase implements \Iterator, \ArrayAccess  {
+abstract class ArrayOfOrderType extends ArrayBase implements ArrayInterface,\Iterator,\countable,\ArrayAccess  {
 
 	protected $_apiProperties=["OrderType"];
 	protected $_apiObjects=[];
@@ -25,6 +26,9 @@ abstract class ArrayOfOrderType extends ArrayBase implements \Iterator, \ArrayAc
 		return $this->get("OrderType", "string");
 	}
 	public function addOrderType () : string {
-		return $this->add("OrderType","string",func_get_args());
+		return $this->addItem(func_get_args(),"string");
+	}
+	public function addOrderTypes ($array) : self {
+		return $this->add(func_get_args());
 	}
 }

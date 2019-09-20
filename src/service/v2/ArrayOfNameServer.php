@@ -6,9 +6,10 @@ namespace ascio\service\v2;
 use ascio\base\v2\ArrayBase;
 use ascio\db\v2\ArrayOfNameServerDb;
 use ascio\api\v2\ArrayOfNameServerApi;
+use ascio\base\ArrayInterface;
 
 
-abstract class ArrayOfNameServer extends ArrayBase implements \Iterator, \ArrayAccess  {
+abstract class ArrayOfNameServer extends ArrayBase implements ArrayInterface,\Iterator,\countable,\ArrayAccess  {
 
 	protected $_apiProperties=["NameServer"];
 	protected $_apiObjects=["NameServer"];
@@ -43,6 +44,9 @@ abstract class ArrayOfNameServer extends ArrayBase implements \Iterator, \ArrayA
 		return $this->create ("NameServer", "\\ascio\\v2\\NameServer");
 	}
 	public function addNameServer () : \ascio\v2\NameServer {
-		return $this->add("NameServer","\\ascio\\v2\\NameServer",func_get_args());
+		return $this->addItem(func_get_args(),"\\ascio\\v2\\NameServer");
+	}
+	public function addNameServers ($array) : self {
+		return $this->add(func_get_args());
 	}
 }

@@ -6,6 +6,7 @@ namespace ascio\service\dns;
 use ascio\base\dns\DbArrayBase;
 use ascio\db\dns\ArrayOfZoneLogEntryDb;
 use ascio\api\dns\ArrayOfZoneLogEntryApi;
+use ascio\base\ArrayInterface;
 
 
 abstract class ArrayOfZoneLogEntry extends DbArrayBase  {
@@ -82,6 +83,9 @@ abstract class ArrayOfZoneLogEntry extends DbArrayBase  {
 		return $this->create ("ZoneLogEntry", "\\ascio\\dns\\ZoneLogEntry");
 	}
 	public function addZoneLogEntry () : \ascio\dns\ZoneLogEntry {
-		return $this->add("ZoneLogEntry","\\ascio\\dns\\ZoneLogEntry",func_get_args());
+		return $this->addItem(func_get_args(),"\\ascio\\dns\\ZoneLogEntry");
+	}
+	public function addZoneLogEntrys ($array) : self {
+		return $this->add(func_get_args());
 	}
 }

@@ -6,6 +6,7 @@ namespace ascio\service\v3;
 use ascio\base\v3\DbArrayBase;
 use ascio\db\v3\ArrayOfObjectTypeDb;
 use ascio\api\v3\ArrayOfObjectTypeApi;
+use ascio\base\ArrayInterface;
 
 
 abstract class ArrayOfObjectType extends DbArrayBase  {
@@ -46,6 +47,9 @@ abstract class ArrayOfObjectType extends DbArrayBase  {
 		return $this->get("ObjectType", "string");
 	}
 	public function addObjectType () : string {
-		return $this->add("ObjectType","string",func_get_args());
+		return $this->addItem(func_get_args(),"string");
+	}
+	public function addObjectTypes ($array) : self {
+		return $this->add(func_get_args());
 	}
 }

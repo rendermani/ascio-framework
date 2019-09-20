@@ -6,6 +6,7 @@ namespace ascio\service\v2;
 use ascio\base\v2\DbArrayBase;
 use ascio\db\v2\ArrayOfAttachmentDb;
 use ascio\api\v2\ArrayOfAttachmentApi;
+use ascio\base\ArrayInterface;
 
 
 abstract class ArrayOfAttachment extends DbArrayBase  {
@@ -64,6 +65,9 @@ abstract class ArrayOfAttachment extends DbArrayBase  {
 		return $this->create ("Attachment", "\\ascio\\v2\\Attachment");
 	}
 	public function addAttachment () : \ascio\v2\Attachment {
-		return $this->add("Attachment","\\ascio\\v2\\Attachment",func_get_args());
+		return $this->addItem(func_get_args(),"\\ascio\\v2\\Attachment");
+	}
+	public function addAttachments ($array) : self {
+		return $this->add(func_get_args());
 	}
 }

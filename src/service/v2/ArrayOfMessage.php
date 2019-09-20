@@ -6,9 +6,10 @@ namespace ascio\service\v2;
 use ascio\base\v2\ArrayBase;
 use ascio\db\v2\ArrayOfMessageDb;
 use ascio\api\v2\ArrayOfMessageApi;
+use ascio\base\ArrayInterface;
 
 
-abstract class ArrayOfMessage extends ArrayBase implements \Iterator, \ArrayAccess  {
+abstract class ArrayOfMessage extends ArrayBase implements ArrayInterface,\Iterator,\countable,\ArrayAccess  {
 
 	protected $_apiProperties=["Message"];
 	protected $_apiObjects=["Message"];
@@ -43,6 +44,9 @@ abstract class ArrayOfMessage extends ArrayBase implements \Iterator, \ArrayAcce
 		return $this->create ("Message", "\\ascio\\v2\\Message");
 	}
 	public function addMessage () : \ascio\v2\Message {
-		return $this->add("Message","\\ascio\\v2\\Message",func_get_args());
+		return $this->addItem(func_get_args(),"\\ascio\\v2\\Message");
+	}
+	public function addMessages ($array) : self {
+		return $this->add(func_get_args());
 	}
 }

@@ -6,6 +6,7 @@ namespace ascio\service\dns;
 use ascio\base\dns\DbArrayBase;
 use ascio\db\dns\ArrayOfRecordDb;
 use ascio\api\dns\ArrayOfRecordApi;
+use ascio\base\ArrayInterface;
 
 
 abstract class ArrayOfRecord extends DbArrayBase  {
@@ -82,6 +83,9 @@ abstract class ArrayOfRecord extends DbArrayBase  {
 		return $this->create ("Record", "\\ascio\\dns\\Record");
 	}
 	public function addRecord () : \ascio\dns\Record {
-		return $this->add("Record","\\ascio\\dns\\Record",func_get_args());
+		return $this->addItem(func_get_args(),"\\ascio\\dns\\Record");
+	}
+	public function addRecords ($array) : self {
+		return $this->add(func_get_args());
 	}
 }

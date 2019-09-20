@@ -6,6 +6,7 @@ namespace ascio\service\v2;
 use ascio\base\v2\DbArrayBase;
 use ascio\db\v2\ArrayOfCallbackStatusDb;
 use ascio\api\v2\ArrayOfCallbackStatusApi;
+use ascio\base\ArrayInterface;
 
 
 abstract class ArrayOfCallbackStatus extends DbArrayBase  {
@@ -64,6 +65,9 @@ abstract class ArrayOfCallbackStatus extends DbArrayBase  {
 		return $this->create ("CallbackStatus", "\\ascio\\v2\\CallbackStatus");
 	}
 	public function addCallbackStatus () : \ascio\v2\CallbackStatus {
-		return $this->add("CallbackStatus","\\ascio\\v2\\CallbackStatus",func_get_args());
+		return $this->addItem(func_get_args(),"\\ascio\\v2\\CallbackStatus");
+	}
+	public function addCallbackStatuss ($array) : self {
+		return $this->add(func_get_args());
 	}
 }

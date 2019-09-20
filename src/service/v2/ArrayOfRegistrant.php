@@ -6,9 +6,10 @@ namespace ascio\service\v2;
 use ascio\base\v2\ArrayBase;
 use ascio\db\v2\ArrayOfRegistrantDb;
 use ascio\api\v2\ArrayOfRegistrantApi;
+use ascio\base\ArrayInterface;
 
 
-abstract class ArrayOfRegistrant extends ArrayBase implements \Iterator, \ArrayAccess  {
+abstract class ArrayOfRegistrant extends ArrayBase implements ArrayInterface,\Iterator,\countable,\ArrayAccess  {
 
 	protected $_apiProperties=["Registrant"];
 	protected $_apiObjects=["Registrant"];
@@ -43,6 +44,9 @@ abstract class ArrayOfRegistrant extends ArrayBase implements \Iterator, \ArrayA
 		return $this->create ("Registrant", "\\ascio\\v2\\Registrant");
 	}
 	public function addRegistrant () : \ascio\v2\Registrant {
-		return $this->add("Registrant","\\ascio\\v2\\Registrant",func_get_args());
+		return $this->addItem(func_get_args(),"\\ascio\\v2\\Registrant");
+	}
+	public function addRegistrants ($array) : self {
+		return $this->add(func_get_args());
 	}
 }

@@ -6,9 +6,10 @@ namespace ascio\service\v2;
 use ascio\base\v2\ArrayBase;
 use ascio\db\v2\ArrayOfOrderDb;
 use ascio\api\v2\ArrayOfOrderApi;
+use ascio\base\ArrayInterface;
 
 
-abstract class ArrayOfOrder extends ArrayBase implements \Iterator, \ArrayAccess  {
+abstract class ArrayOfOrder extends ArrayBase implements \Iterator,\countable,\ArrayAccess  {
 
 	protected $_apiProperties=["Order"];
 	protected $_apiObjects=["Order"];
@@ -43,6 +44,9 @@ abstract class ArrayOfOrder extends ArrayBase implements \Iterator, \ArrayAccess
 		return $this->create ("Order", "\\ascio\\v2\\Order");
 	}
 	public function addOrder () : \ascio\v2\Order {
-		return $this->add("Order","\\ascio\\v2\\Order",func_get_args());
+		return $this->addItem(func_get_args(),"\\ascio\\v2\\Order");
+	}
+	public function addOrders ($array) : self {
+		return $this->add(func_get_args());
 	}
 }

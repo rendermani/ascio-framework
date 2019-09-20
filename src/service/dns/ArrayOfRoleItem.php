@@ -6,6 +6,7 @@ namespace ascio\service\dns;
 use ascio\base\dns\DbArrayBase;
 use ascio\db\dns\ArrayOfRoleItemDb;
 use ascio\api\dns\ArrayOfRoleItemApi;
+use ascio\base\ArrayInterface;
 
 
 abstract class ArrayOfRoleItem extends DbArrayBase  {
@@ -82,6 +83,9 @@ abstract class ArrayOfRoleItem extends DbArrayBase  {
 		return $this->create ("RoleItem", "\\ascio\\dns\\RoleItem");
 	}
 	public function addRoleItem () : \ascio\dns\RoleItem {
-		return $this->add("RoleItem","\\ascio\\dns\\RoleItem",func_get_args());
+		return $this->addItem(func_get_args(),"\\ascio\\dns\\RoleItem");
+	}
+	public function addRoleItems ($array) : self {
+		return $this->add(func_get_args());
 	}
 }
