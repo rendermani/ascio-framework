@@ -3,4 +3,5 @@ data/logs/*
 *.cache
 *.pptx
 *.env
-
+config/accounts/*
+config/*
