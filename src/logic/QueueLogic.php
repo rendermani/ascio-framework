@@ -8,7 +8,7 @@ use ascio\lib\Actions;
 Class QueueLogic {
     protected $payload;
     protected $next;
-    public function __construct($payload)
+    public function __construct(OrderPayload $payload)
     {
         $this->payload = $payload;
     }

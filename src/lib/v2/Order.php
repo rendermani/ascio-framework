@@ -4,6 +4,8 @@
 
 namespace ascio\v2;
 
+use ascio\base\OrderInterface;
+use ascio\base\TaskInterface;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use ascio\lib\OrderStatus;
 use ascio\lib\Producer;
@@ -14,8 +16,11 @@ use ascio\service\v2\Domain;
 use ascio\lib\DomainBlocker;
 use ascio\lib\LogLevel;
 use ascio\lib\StatusSerializer;
+use ascio\lib\TaskTrait;
+use Exception;
 
-class Order extends \ascio\service\v2\Order {       
+class Order extends \ascio\service\v2\Order implements OrderInterface, TaskInterface {       
+    use TaskTrait;
     public $lastResult;
     /**
      * @var SubmitOptions $submitOptions
@@ -26,7 +31,7 @@ class Order extends \ascio\service\v2\Order {
         parent::__construct($parent);
         $this->setWorkflowStatus(OrderStatus::NotSet);
     }
-    public function queue(?SubmitOptions $submitOptions=null) : Order{
+    public function queue(?SubmitOptions $submitOptions=null) : OrderInterface {
         $this->submitOptions = $submitOptions ?: $this->getSubmitOptions();
         $this->setWorkflowStatus(OrderStatus::Queued); 
         $this->produce(["action"=>"create"]);
@@ -43,16 +48,11 @@ class Order extends \ascio\service\v2\Order {
         }        
         return $this;
     }
-    public function submit(?SubmitOptions $submitOptions=null) : Order {        
+    public function submit(?SubmitOptions $submitOptions=null) : OrderInterface {        
         $this->submitOptions = $submitOptions ?: $this->getSubmitOptions();
         $domainName = $this->getDomain()->getDomainName();   
         $this->db()->_blocking = $this->submitOptions->getBlocking();
-        if(
-            $this->getSubmitOptions()->getAutoUnlock() &&
-            $this->getDomain()->getLocks()->autoUnlock($this->getType())
-        ) {
-            $this->queue();
-        } elseif($this->shouldQueue()) {
+        if($this->shouldQueue()) {
             return $this->queue();
         } elseif(DomainBlocker::isBlocked($domainName)) {
             echo $this->getStatusSerializer()->console(LogLevel::Warn,"Can't submit, queueing");
@@ -69,12 +69,6 @@ class Order extends \ascio\service\v2\Order {
             $this->produce(["action"=> $action]);
             try {
                 DomainBlocker::block($domainName);
-                if(
-                    $this->getSubmitOptions()->getAutoUnlock() ||
-                    $this->getDomain()->getLocks()->autoUnlock()
-                ) {
-
-                }
                 $result = $this->api()->getClient()->createOrder($this);
                 $this->setWorkflowStatus(OrderStatus::Running);
                 $order = $result->getOrder();
@@ -97,9 +91,6 @@ class Order extends \ascio\service\v2\Order {
             }                                 
         }
         return $this;
-    }
-    public function shouldQueue() : bool {
-        return $this->getSubmitOptions()->getQueue() || $this->db()->shouldQueue();           
     }
     public static function mapWorflowStatus($status) {
         switch($status) {
@@ -124,20 +115,14 @@ class Order extends \ascio\service\v2\Order {
         }
         return $this; 
     }
-    public function getWorkflowStatus() : string {
-        return $this->db()->_status;        
-    }
-    public function getSubmitOptions() : SubmitOptions {
-        return $this->submitOptions ?: new SubmitOptions();
-    }
-    public function setSubmitOptions(SubmitOptions $submitOptions) : Order  {
-        $this->submitOptions = $submitOptions;
-        return $this; 
-    }
+
     public function getResult() {
         return $this->lastResult;
     }
-    public function validate() : Response {
+    /**
+     * @return Response
+     */
+    public function validate()  {
         $result = $this->api()->getClient()->validateOrder($this);
         return $result->getValidateOrderResult();
     }
@@ -153,7 +138,10 @@ class Order extends \ascio\service\v2\Order {
         } 
         return $this;       
     }
-    public function syncApi() : Order {        
+    /**
+     * @return Order
+     */
+    public function syncApi() : OrderInterface {        
         $this->api()->get();
         $this->getDomain()->syncApi(); 
         if( $this->getStatus() == OrderStatusType::Failed ||
@@ -164,7 +152,10 @@ class Order extends \ascio\service\v2\Order {
         }
         return $this;
     }
-    public function getMessages() : ?ArrayOfMessage{
+    /**
+     * @return ArrayOrMessage 
+     */
+    public function getMessages() {
         $this->api()->getClient()->getMessages($this->getOrderId()); 
     }
     public function getStatusSerializer() : StatusSerializer

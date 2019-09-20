@@ -24,7 +24,7 @@ class DomainUpdates {
             "Reseller" => $this->domain->getResellerContact() ? $this->domain->getResellerContact()->changes()->hasChanges()  : false,               
             "Nameservers" => $this->domain->getNameservers() ? $this->domain->getNameservers()->changes()->hasDeepChanges() : false,
             "DnsSec" => $this->domain->getDnsSecKeys() ? $this->domain->getDnsSecKeys()->changes()->hasDeepChanges() : false,
-            "Domain" => $this->domain->changes()->hasChanges() || $this->domain->getLocks()->hasChanges(),
+            "Domain" => $this->domain->changes()->hasChanges(),
             "Proxy" => $this->domain->getPrivacyProxy() ? $this->domain->getPrivacyProxy()->changes()->hasDeepChanges() : false,
         ];
         if($this->domain->getRegistrant()) {
@@ -41,26 +41,32 @@ class DomainUpdates {
         $orderTypes = [];
         $changed = $this->getChanges();
         if($this->domain->getLocks()->hasChanges()) {
-            //TODO: Create Object and store LockType
-            $orderTypes[] =(object)  [ "type" => "Change_Locks", "function" => "changeLocks"];             
+            $orderTypes[] =(object)  [ OrderType::Change_Locks, "function" => "changeLocks"];             
+        }
+        if($this->domain->getAutoRenew()->hasChanges()) {
+            if($this->domain->getAutoRenew()->get()) {
+                $orderTypes[] =(object)  ["type" => OrderType::Unexpire_Domain, "function" => "unexpire"];             
+            } else {
+                $orderTypes[] =(object)  ["type" => OrderType::Expire_Domain, "function" => "expire"];             
+            }
         }
         if($changed->Domain ||$changed->Proxy) {
-            $orderTypes[] = (object) [ "type" => "Domain_Details_Update", "function" => "domainDetailsUpdate"];             
+            $orderTypes[] = (object) ["type" => OrderType::Domain_Details_Update, "function" => "domainDetailsUpdate"];             
         }
         if($changed->RegistrantSocial) {
-            $orderTypes[] = (object) [ "type" => "Owner_Change", "function" => "ownerChange"] ;
+            $orderTypes[] = (object) ["type" => OrderType::Owner_Change, "function" => "ownerChange"] ;
             unset($changed->Registrant);
             unset($changed->Admin);
         } 
         if($changed->Registrant) {
-            $orderTypes[] =(object)  [ "type" => "Registrant_Details_Update", "function" => "registrantDetailsUpdate"] ;
+            $orderTypes[] =(object)  [  "type" => OrderType::Registrant_Details_Update, "function" => "registrantDetailsUpdate"] ;
         } 
         if($changed->Nameservers || $changed->DnsSec) {
-            $orderTypes[] =(object)  [ "type" => "Nameserver_Update", "function" => "nameserverUpdate"] ;
+            $orderTypes[] =(object)  [  "type" => OrderType::Nameserver_Update, "function" => "nameserverUpdate"] ;
             unset($changed->Tech);
         }
         if($changed->Admin ||$changed->Tech ||$changed->Billing ||$changed->Reseller) {
-            $orderTypes[] =(object)  [ "type" => "Contact_Update", "function" => "contactUpdate"] ;
+            $orderTypes[] =(object)  [  "type" => OrderType::Contact_Update, "function" => "contactUpdate"] ;
         }
         return $orderTypes; 
     }

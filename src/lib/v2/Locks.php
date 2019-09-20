@@ -1,9 +1,22 @@
 <?
-namespace ascio\v2; 
+namespace ascio\v2;
+
+use ascio\lib\LockAction;
+use ascio\lib\LockType;
 
 class Locks {
     protected $domain;
-    protected $locks = [];  
+    protected $locks = []; 
+    /**
+     * @var ArrayOfOrder $unlockOrders
+     */ 
+    protected $unlockOrders;  
+    /**
+     * @var ArrayOfOrder $LockOrders
+     */ 
+    protected $lockOrders ;  
+    protected $status;
+
     public function __construct(Domain $domain) 
     {
         $this->domain = $domain; 
@@ -21,14 +34,17 @@ class Locks {
         return $this->locks["UpdateLock"];
     }
     public function setChangedLocks() : Locks {
-        foreach ($this->locks as $lock) {
-           $lock->setChangedLock();
+        foreach ($this->locks as $unlock) {
+           $unlock->setChangedLock();
         }
         return $this;
     }
+    public function get($lockType) : Lock {
+        return $this->locks[$lockType];
+    }
     public function hasChanges() : bool  {
-        foreach ($this->locks as $lock) {
-           if($lock->lockChanged()) {
+        foreach ($this->locks as $unlock) {
+           if($unlock->lockChanged()) {
                return true;
            }
         }
@@ -41,45 +57,165 @@ class Locks {
     public function getLockTypes() : array {
         return ["TransferLock","UpdateLock","DeleteLock"];
     }
-    public function autoUnlock(?string $orderType=null) : ?ArrayOfOrder {
+    /**
+     * @return bool return true if lock-actions are generated
+     */
+    public function setOrderType(?string $orderType=null) : bool {
         $locks = [];
-        switch ($orderType) {
-            case OrderType::Change_Locks: //TODO: set new locks in db, for next unlock 
-            case OrderType::Transfer_Domain : $locks = [$this->updateLock(),$this->transferLock()] ; break;
-            case OrderType::Expire_Domain :
-            case OrderType::Delete_Domain : $locks = [$this->updateLock(),$this->deleteLock()]; break;
-            case OrderType::Register_Domain : return null;
-            default : $locks = [$this->updateLock()]; break; 
-        }
-        $orders = new ArrayOfOrder();
-        $types = [];
-        foreach($locks as $lock) {
+        $this->unlockOrders = new ArrayOfOrder();
+        $this->lockOrders = new ArrayOfOrder();
+        if(
+            // get the status of the domain if update and no status
+            !in_array($orderType,[OrderType::Register_Domain, OrderType::Transfer_Domain, OrderType::Queue_Domain]) &&
+            !$this->domain->getStatus()
+        ) {
             $domain = new Domain();
-            $domain->setDomainName($this->domain->getDomainName());
             $domain->setDomainHandle($this->domain->getDomainHandle());
-            $this->domain->set($lock->getType(),null);
-            $domain->set($lock->getType(),"Unlock");
-            $order = $domain->getOrderRequest()->changeLocks();
-            $order->getSubmitOptions()->setQueue(true)->setSubmitAfterQueue(true);
-            $orders->addOrder($order);
-            $types[] = $lock->getType();
+            $domain->setDomainName($this->domain->getDomainName());
+            $domain->db()->syncFromDb();
+            $this->domain->setStatus($domain->getStatus());
         }
+        switch ($orderType) {
+            case OrderType::Transfer_Domain : $locks = ["UpdateLock","TransferLock"]; break;
+            case OrderType::Expire_Domain :
+            case OrderType::Transfer_Away :
+            case OrderType::Delete_Domain : $locks = ["UpdateLock","DeleteLock"]; break;
+            case OrderType::Register_Domain :
+            case OrderType::Queue_Domain :
+            case OrderType::DeQueue : return null;
+            default : $locks = ["UpdateLock"]; break; 
+        }
+        $this->unlockOrders = $this->createUnLockOrders($locks,LockAction::Unlock);
+        // DeleteLock and TransferLock should not be restored
+        $this->lockOrders = $this->createLockOrders(["UpdateLock"],LockAction::Lock);
+        return count($this->unlockOrders) > 0;
+    }
+    private function createUnlockOrders(array $locks,$action) : ArrayOfOrder {
+        $orders = new ArrayOfOrder();
+        foreach($locks as $lock) {
+            $this->domain->set($lock,LockAction::Unlock);
+            //TODO: wrong changed locks
+            $order = $this->domain->getOrderRequest()->changeLocks();
+            $this->domain->set($lock,null);
+            if($order->getDomain()->get($lock)) {
+                $order->getSubmitOptions()->setQueue(true)->setSubmitAfterQueue($action==LockAction::Unlock);
+                $orders->addOrders($order);
+                $lock = $this->get($lock);
+                $lock->autoUnlocked = true; 
+                $this->domain->setStatus(str_replace($lock->getStatusType(),"",$this->domain->getStatus()));
+            }
+        }        
         return $orders; 
     }
-    public function autoLock() : ?ArrayOfOrder {
-        return null;
+    private function createLockOrders(array $locks,$action) : ArrayOfOrder {
         $orders = new ArrayOfOrder();
-        // foreach($oldLocks as $lock) {
-        //     $domain = new Domain();
-        //     $domain->setDomainName($this->domain->getDomainName());
-        //     $domain->setDomainHandle($this->domain->getDomainHandle());
-        //     $this->domain->set($lock->getType(),null);
-        //     $domain->set($lock->getType(),"Lock");
-        //     $order = $domain->getDomainOrderRequest()->changeLocks();
-        //     $order->getSubmitOptions()->setQueue(true)->setSubmitAfterQueue(false);
-        //     $orders->addOrder($order);
-        // }
-        // return $orders;       
+        foreach($locks as $lock) {
+            $doLock = $this->get($lock)->autoUnlocked;
+            if($doLock) {
+                $this->domain->set($lock,LockAction::Lock);
+            } else {
+                $this->domain->set($lock,null);
+            }
+            $order = $this->domain->getOrderRequest()->changeLocks();
+            if($order->getDomain()->get($lock) && $doLock) {
+                $order->getSubmitOptions()->setQueue(true)->setSubmitAfterQueue($action==LockAction::Unlock);
+                $orders->addOrders($order);
+                if($action == LockAction::Unlock) {
+                    //remove the unlocked lockType from the status. Otherwise the re-lock will assume, it's already locked
+                    $lock->autoUnlocked = true; 
+                    $this->domain->setStatus(str_replace($lock->getStatusType(),"",$this->domain->getStatus()));
+                }
+            }
+        }        
+        return $orders; 
+    }
+    public function hasUnlocks() : bool {
+        return count($this->unlockOrders) > 0;
+    }
+    public static function getMergedOrders(ArrayOfOrder $orderArray,$type="Unlock") {
+        $updateLock = false;
+        $transferLock = false; 
+        $deleteLock = false; 
+        foreach ($orderArray as $order) {
+            if($order->getDomain()->getUpdateLock()) {
+                $updateLock = $order->getDomain()->getUpdateLock() ? true : false;
+            }
+            if($order->getDomain()->getDeleteLock()) {
+                $deleteLock = $order->getDomain()->getDeleteLock() ? true : false;
+            }
+            if($order->getDomain()->getTransferLock()) {
+                $transferLock = $order->getDomain()->getTransferLock() ? true : false;
+            }
+        }
+        if($updateLock) {
+            $updateOrder = new Order();
+            $updateOrder->setType(OrderType::Change_Locks);
+            $updateOrder->createDomain()
+                ->setDomainHandle($order->getDomain()->getDomainHandle())
+                ->setDomainName($order->getDomain()->getDomainName())
+                ->setUpdateLock($type)
+                ->setDeleteLock(null)
+                ->setTransferLock(null);
+        }
+        if($transferLock || $deleteLock) {
+            $transferDeleteOrder = new Order();
+            $transferDeleteOrder->setType(OrderType::Change_Locks);
+            $transferDeleteOrder->createDomain()
+                ->setDomainHandle($order->getDomain()->getDomainHandle())
+                ->setDomainName($order->getDomain()->getDomainName())
+                ->setUpdateLock(null)
+                ->setDeleteLock($deleteLock ? $type : null)
+                ->setTransferLock($transferLock ? $type : null);
+        }
+        $orderArray = [];
+        if($updateLock) $orderArray[] = $updateOrder;
+        if($transferDeleteOrder) $orderArray[] = $transferDeleteOrder;
+        
+        if($type == "Lock") {
+            $orderArray = array_reverse($orderArray);
+        } 
+        $orders = new ArrayOfOrder();
+        $orders->fromArray($orderArray); 
+        return $orders;
+    }
+        /**
+     * Get the value of unlockOrders
+     */ 
+    public function getUnlockOrders() : ArrayOfOrder
+    {
+        return $this->unlockOrders;
+    }
+
+    /**
+     * Set the value of unlockOrders
+     *
+     * @return  self
+     */ 
+    public function setUnlockOrders($unlockOrders)
+    {
+        $this->unlockOrders = $unlockOrders;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of lockOrders
+     */ 
+    public function getLockOrders() : ArrayOfOrder
+    {
+        return $this->lockOrders;
+    }
+
+    /**
+     * Set the value of lockOrders
+     *
+     * @return  self
+     */ 
+    public function setLockOrders($lockOrders)
+    {
+        $this->lockOrders = $lockOrders;
+
+        return $this;
     }
 }
 class Lock {
@@ -90,6 +226,7 @@ class Lock {
     private $domain; 
     private $statusType; 
     private $type;
+    public $autoUnlocked = false; 
     public function __construct(Domain $domain,string $type, string $statusType)
     {
         $this->domain =  $domain; 
@@ -120,7 +257,7 @@ class Lock {
         return $this;
     }
     public function lockChanged() {
-        if($this->hasNew() == $this->hasOld()) {
+        if(!$this->getNewLock() || $this->hasNew() == $this->hasOld()) {
             return false;
         } else {
             return true;
@@ -133,5 +270,13 @@ class Lock {
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Get the value of statusType
+     */ 
+    public function getStatusType()
+    {
+        return $this->statusType;
     }
 }

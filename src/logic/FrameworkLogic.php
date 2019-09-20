@@ -2,39 +2,52 @@
 
 namespace ascio\logic;
 
+use ascio\lib\Producer;
+use ascio\v2\Order;
+use OrderInterface;
+
 Class FameworkLogic {
-    protected function receiveCallback() {
-        //topic callback
-        $this->requestSync();
-    }
-    protected function receivePollMessage() {
-        //topic callback
-        $this->requestSync();
-    }
-    protected function receiveSync() {
-        //topic callback
-        $this->updateDb();
-    }
-    protected function requestSync() {
-        //topic callback
-        //produce topic sync
-    }
-    protected function receiveOrder() {
-        //topic order-request
-        $this->sendOrder();
-    }
-    protected function sendOrder() {
-        // produce topic order-queue
-    }
-    protected function updateDb() {
-        // produce topic object
-    }
     protected function process($payload) {
         switch($payload->module) {
-            case "sync" : $this->receiveSync(); break;
-            case "order" : $this->receiveOrder(); break;
-            case "poll" : $this->receivePoll(); break;
-            case "callback" : $this->receiveCallback(); break;
+            case "sync" : $this->sync(new SyncPayload($payload)); break;
+            case "order" : $this->order(new OrderPayload($payload)); break;
+            case "callback" : $this->callback(new CallbackPayload($payload));break;
+            case "status" : //todo ;break;
+            case "log" : //todo ;break;
+        }
+    }
+    protected function callback(CallbackPayload $payload) {
+       //topic callback
+        switch ($payload->getModule()) {
+            case "poll" : 
+            case "callback" : $this->orderCallback(new SyncPayload($payload)); break;
+            case "sync" : $this->syncCallback(new SyncPayload($payload)); break;
+            case "order" : $this->updateDb(new OrderPayload($payload)); break;
+            case "db" : break;
+            case "status" : break;
+        }
+    }
+    protected function orderCallback(SyncPayload $payload) {
+        Producer::sync($payload);
+        $this->updateDb($payload);
+    }
+    protected function syncCallback(SyncPayload $payload) {
+        if($payload->getOrder()) {
+            $queueLogic = new QueueLogic(new OrderPayload($payload));
+            if($queueLogic->hasNext()) {
+                $queueLogic->processNext();
+            }
+        }
+        $this->updateDb($payload); 
+    }
+    protected function order(OrderPayload $payload) {
+        $queueLogic = new QueueLogic($payload);
+        $queueLogic->submit();
+        $this->updateDb($payload);
+    }
+    protected function updateDb(Payload $payload) {
+        if($payload->getObject()) {
+            $payload->getObject()->produce();
         }
     }
     protected function consume($function) {

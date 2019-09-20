@@ -1,5 +1,5 @@
 <?php
-
+namespace ascio\logic;
 use ascio\base\BaseClass;
 use ascio\base\DbModelBase;
 use ascio\lib\AscioException;
@@ -26,7 +26,11 @@ class Payload {
     public $incremental; 
     public $changes; 
     public $module;
-    //OPTIMIZE: remove changes
+    //OPTIMIZE: Remove changes
+    public function __construct($payloadObj)
+    {
+        //todo: merge; 
+    }
     public function serialize($payload) {
         $serialized = [];
         foreach($payload as $key => $value) {
@@ -91,27 +95,6 @@ class Payload {
 
         return $this;
     }
-
-    /**
-     * Get the value of orderId
-     */ 
-    public function getOrderId()
-    {
-        return $this->orderId;
-    }
-
-    /**
-     * Set the value of orderId
-     *
-     * @return  self
-     */ 
-    public function setOrderId(string $orderId)
-    {
-        $this->orderId = $orderId;
-
-        return $this;
-    }
-
     /**
      * Get the value of id
      */ 
@@ -131,27 +114,6 @@ class Payload {
 
         return $this;
     }
-
-    /**
-     * Get the value of domainName
-     */ 
-    public function getDomainName()
-    {
-        return $this->domainName;
-    }
-
-    /**
-     * Set the value of domainName
-     *
-     * @return  self
-     */ 
-    public function setDomainName($domainName)
-    {
-        $this->domainName = $domainName;
-
-        return $this;
-    }
-
     /**
      * Get the value of workflowStatus
      */ 
@@ -171,27 +133,6 @@ class Payload {
 
         return $this;
     }
-
-    /**
-     * Get the value of orderStatus
-     */ 
-    public function getOrderStatus()
-    {
-        return $this->orderStatus;
-    }
-
-    /**
-     * Set the value of orderStatus
-     *
-     * @return  self
-     */ 
-    public function setOrderStatus($orderStatus)
-    {
-        $this->orderStatus = $orderStatus;
-
-        return $this;
-    }
-
     /**
      * Get the value of class
      */ 
@@ -231,88 +172,6 @@ class Payload {
 
         return $this;
     }
-
-    /**
-     * Get the value of domain
-     */ 
-    public function getDomain() : Domain
-    {
-        return $this->domain;
-    }
-
-    /**
-     * Set the value of domain
-     *
-     * @return  self
-     */ 
-    public function setDomain(?Domain $domain)
-    {
-        $this->domain = $domain;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of queueItem
-     */ 
-    public function getQueueItem() : ?QueueItem
-    {
-        return $this->queueItem;
-    }
-
-    /**
-     * Set the value of queueItem
-     *
-     * @return  self
-     */ 
-    public function setQueueItem(QueueItem $queueItem)
-    {
-        $this->queueItem = $queueItem;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of object
-     */ 
-    public function getObject() : ?BaseClass
-    {
-        return $this->object;
-    }
-
-    /**
-     * Set the value of object
-     *
-     * @return  self
-     */ 
-    public function setObject(BaseClass $object)
-    {
-        $this->object = $object;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of order
-     * @return Order|ascio\v3\OrderInfo|null
-     */ 
-    public function getOrder() 
-    {
-        return $this->order;
-    }
-
-    /**
-     * Set the value of order
-     * @var $order Order|ascio\v3\OrderInfo
-     * @return  self
-     */ 
-    public function setOrder($order)
-    {
-        $this->order = $order;
-
-        return $this;
-    }
-
     /**
      * Get the value of error
      */ 
@@ -332,47 +191,6 @@ class Payload {
 
         return $this;
     }
-
-    /**
-     * Get the value of incremental
-     */ 
-    public function getIncremental()
-    {
-        return $this->incremental;
-    }
-
-    /**
-     * Set the value of incremental
-     *
-     * @return  self
-     */ 
-    public function setIncremental($incremental)
-    {
-        $this->incremental = $incremental;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of changes
-     */ 
-    public function getChanges()
-    {
-        return $this->changes;
-    }
-
-    /**
-     * Set the value of changes
-     *
-     * @return  self
-     */ 
-    public function setChanges($changes)
-    {
-        $this->changes = $changes;
-
-        return $this;
-    }
-
     /**
      * Get the value of module
      */ 
@@ -391,5 +209,8 @@ class Payload {
         $this->module = $module;
 
         return $this;
+    }
+    public function getObject() : ?BaseClass {
+        return null;
     }
 }

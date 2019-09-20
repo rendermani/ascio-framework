@@ -10,12 +10,13 @@ class AutoRenew {
     public function __construct(Domain $domain) 
     {
         $this->domain = $domain; 
-        if(strpos($this->domain->getStatus(),"EXPIRING")==false) {
-            $this->status = true; 
-        }
+        
     }
     public function getStatus() {
-        return $this->status; 
+        return strpos($this->domain->getStatus(),"EXPIRING")==false;
+    }
+    public function get() {
+        return $this->new;
     }
     public function set(bool $autoRenew) : AutoRenew {
         $this->new = $autoRenew; 
@@ -27,8 +28,8 @@ class AutoRenew {
     public function setAutoExpire() : AutoRenew {
         return $this->set(false);
     }
-    public function hasChanged() : bool {
-        if($this->new !== $this->status) {
+    public function hasChanges() : bool {
+        if($this->new !== null &&  $this->new !== $this->getStatus()) {
             return true;
         }
         return false; 

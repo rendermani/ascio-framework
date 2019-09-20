@@ -11,15 +11,14 @@ use ascio\v2\Extensions;
 
 class TestLib {
     public static function getDomain($name = null) : Domain {
-        Ascio::setConfig();
         $email = Ascio::getConfig()->get()->email;
         $domain =  new Domain();        
         $registrant =  $domain->createRegistrant();
         $registrant->setName("Jane Doe");
         $registrant->setAddress1("Address1Test");
         $registrant->setCity("CityTest");
-        $registrant->setPostalCode("888349");
-        $registrant->setCountryCode("DK");
+        $registrant->setPostalCode("OX4 6LB");
+        $registrant->setCountryCode("GB");
         $registrant->setEmail($email);
         $registrant->setPhone("+45.123456789");
         $contact =  new Contact();
@@ -39,27 +38,33 @@ class TestLib {
         $nameServers =  new NameServers();
         $nameServers->setNameServer1($nameServer1);
         $nameServers->setNameServer2($nameServer2);
-        $dnsSecKeys = new DnsSecKeys();
-        $key = $dnsSecKeys->createDnsSecKey1();
-        $key->setDigest("000");
+        $domain =  new Domain();
+        $time = str_replace(".","",microtime(true));
+        $domain->setDomainName($name ?: "test-ascio-framework-".uniqid().".com");
+        //$domain->setPrivacyProxy($proxy);
+        $domain->setRegistrant($registrant);
+        $domain->setAdminContact($contact->clone());
+        $domain->setTechContact($contact->clone());
+        $domain->setBillingContact($contact->clone());
+        $domain->setNameServers($nameServers);
+        $domain->changes()->setOriginal();
+        return $domain;
+    }
+    public function getDomainFull($name = null) : Domain {
+        $domain = TestLib::getDomain($name);
         $proxy = new PrivacyProxy();
         $extensions = new Extensions();
         $extensions->addExtension("key1","value1");
         $extensions->addExtension("key2","value2");
         $extensions->addExtension("key3","value3");
         $proxy->setExtensions($extensions);
-        $domain =  new Domain();
-        $time = str_replace(".","",microtime(true));
-        $domain->setDomainName($name ?: "test-ascio-framework-".uniqid().".com");
         $domain->setPrivacyProxy($proxy);
-        $domain->setRegistrant($registrant);
-        $domain->setAdminContact($contact->clone());
-        $domain->setTechContact($contact->clone());
-        $domain->setBillingContact($contact->clone());
-        $domain->setNameServers($nameServers);
+        $dnsSecKeys = new DnsSecKeys();
+        $key = $dnsSecKeys->createDnsSecKey1();
+        $key->setDigest("000");
         $domain->setDnsSecKeys($dnsSecKeys);
         $domain->setDiscloseSocialData("true");
         $domain->changes()->setOriginal();
-        return $domain;
+        return $domain; 
     }
 }

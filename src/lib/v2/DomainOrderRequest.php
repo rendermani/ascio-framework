@@ -14,19 +14,19 @@ class DomainOrderRequest {
     {
         $this->domain = $domain;
     }
-    public function register(?SubmitOptions $submitOptions = null) : Order {
+    public function register() : Order {
         $order = new Order();
         $order->setType(OrderType::Register_Domain);
         $order->setDomain($this->domain);
         return $order;
     }
-    public function queue(?SubmitOptions $submitOptions = null) : Order {
+    public function queue() : Order {
         $order = new Order();
         $order->setType(OrderType::Queue_Domain);
         $order->setDomain($this->domain);
         return $order;
     }
-    public function transfer(?SubmitOptions $submitOptions = null) : Order{
+    public function transfer() : Order{
         $order = new Order();
         $order->setType(OrderType::Transfer_Domain);
         $order->setDomain($this->domain);
@@ -110,7 +110,7 @@ class DomainOrderRequest {
         $order->setDomain($domain);        
         return $order; 
     }
-    public function delete(?SubmitOptions $submitOptions = null) : Order {        
+    public function delete() : Order {        
         $domain = new Domain();
         $this->copyNameAndHandle($domain);
         $order = new Order();
@@ -118,7 +118,7 @@ class DomainOrderRequest {
         $order->setDomain($domain);        
         return $order;
     }
-    public function restore(?SubmitOptions $submitOptions = null) : Order {        
+    public function restore() : Order {        
         $domain = new Domain();
         $this->copyNameAndHandle($domain);
         $order = new Order();
@@ -126,7 +126,7 @@ class DomainOrderRequest {
         $order->setDomain($domain);        
         return $order;
     }
-    public function renew(?SubmitOptions $submitOptions = null) : Order {        
+    public function renew() : Order {        
         $domain = new Domain();
         $this->copyNameAndHandle($domain);
         $order = new Order();
@@ -134,7 +134,7 @@ class DomainOrderRequest {
         $order->setDomain($domain);        
         return $order;
     }
-    public function expire(?SubmitOptions $submitOptions = null) : Order {        
+    public function expire() : Order {        
         $domain = new Domain();
         $this->copyNameAndHandle($domain);
         $order = new Order();
@@ -142,7 +142,7 @@ class DomainOrderRequest {
         $order->setDomain($domain);        
         return $order;
     }
-    public function unexpire(?SubmitOptions $submitOptions = null) : Order {        
+    public function unexpire() : Order {        
         $domain = new Domain();
         $this->copyNameAndHandle($domain);
         $order = new Order();
@@ -150,7 +150,7 @@ class DomainOrderRequest {
         $order->setDomain($domain);        
         return $order;
     }
-    public function transferAway(?SubmitOptions $submitOptions = null) : Order {        
+    public function transferAway() : Order {        
         $domain = new Domain();
         $this->copyNameAndHandle($domain);
         $order = new Order();
@@ -158,7 +158,7 @@ class DomainOrderRequest {
         $order->setDomain($domain);        
         return $order;
     }  
-    public function updateAuthInfo(?SubmitOptions $submitOptions = null) : Order {        
+    public function updateAuthInfo() : Order {        
         $domain = new Domain();
         $this->copyNameAndHandle($domain);
         $order = new Order();
@@ -186,7 +186,8 @@ class DomainOrderRequest {
             }
         }
     }
-    public function changeLocks() : Order {                                   
+    public function changeLocks() : Order {                                  
+        
         $domain = new Domain();
         $domain->setStatus($this->domain->getStatus());
         $domain->setDeleteLock($this->domain->getDeleteLock());
