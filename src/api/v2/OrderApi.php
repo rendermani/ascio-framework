@@ -24,8 +24,8 @@ class OrderApi extends ApiModel {
 	}
 	function get($orderId=null) {
 		$orderId = $orderId ? $orderId : $this->parent()->getOrderId(); 
-		$order = Ascio::getClientV2()->getOrder($orderId);
-		$this->parent()->set($order->getOrder());
-		return $order->getOrder();
+		$result = Ascio::getClientV2()->getOrder($orderId);
+		$this->parent()->set($result->getOrder());
+		return $result->getGetOrderResult();
 	}
 }
