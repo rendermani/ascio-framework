@@ -56,7 +56,7 @@ class BaseClass {
             } elseif(($childObject instanceOf ArrayBase)) {
                 $childObject->__construct($this);
                 foreach($childObject as $item)  {
-                    $item->init($childObject);
+                    if(is_object($item)) $item->init($childObject);
                 }
             } 
             if($childObject instanceOf BaseClass) {
@@ -173,8 +173,8 @@ class BaseClass {
     {
         $class = get_class($this);
         $newObject = new $class($this->parent());
-        if(($this instanceof ArrayBase) || ($this instanceof DbArrayBase)) {
-            foreach ($this as $key => $value) {                
+        if($this instanceof ArrayInterface) {
+            foreach ($this as $key => $value) {          
                 if($value instanceof BaseClass) {
                     $newObject->push($value->clone());
                     $value->parent($newObject);
