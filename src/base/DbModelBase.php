@@ -122,7 +122,7 @@ class DbModelBase extends Model {
 	}
 	protected function setDefaultAttributes() {
 		parent::setAttribute("_environment", $this->config()->environment);
-		parent::setAttribute("_account", $this->config()->v2->account);
+		parent::setAttribute("_account", $this->config()->v2->partner ?: $this->config()->v2->account);
 		parent::setAttribute("_type",get_class($this->parent()));
 		parent::setAttribute("_config",$this->config()->id);
 		if(!$this->_id) {			
@@ -180,7 +180,7 @@ class DbModelBase extends Model {
 	 * @return DbModelBase|null
 	 */
 	public function getByHandle($handle=null) {
-		$partOfOrder = ($this->parent()->parent() instanceof Order) || ($this->parent() instanceof Order) ;
+		$partOfOrder = ($this->parent()->parent() instanceof Order) || ($this->parent() instanceof Order) ? 1 : 0 ;
 		$this->parent()->handle($handle ?: null);
 		$handle = $this->parent()->handle();
 
