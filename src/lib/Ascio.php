@@ -11,6 +11,10 @@ class LockType {
     const Transfer = "TRANSFER_LOCK";
     const Delete = "DELETE_LOCK";
 }
+class LockAction {
+    const Lock = "Lock";
+    const Unlock = "Unlock";
+}
 class LogLevel {
     const Debug = "DEBUG";
     const Info = "INFO";
@@ -102,9 +106,9 @@ class Ascio {
     }
     static private function getApiClient($apiName, Config $config) {
         switch($apiName) {
-            case "v2" : $client = new \ascio\v2\Service([],$config->get($apiName)->wsdl); break;
-            case "v3" : $client = new \ascio\v3\Service([],$config->get($apiName)->wsdl); break;
-            case "dns" : $client = new \ascio\dns\Service([],$config->get($apiName)->wsdl); break;
+            case "v2" : $client = new \ascio\v2\Service(["trace"=>1],$config->getWsdl($apiName)); break;
+            case "v3" : $client = new \ascio\v3\Service([],$config->getWsdl($apiName)); break;
+            case "dns" : $client = new \ascio\dns\Service([],$config->getWsdl($apiName)); break;
         }
         $client->setConfig($config);
         return $client;
@@ -126,10 +130,20 @@ class Config {
     public function __construct($configId)
     {
         $this->id = $configId; 
+        $this->fromFile();
     }
     public function get($apiName = null)  {
-        $this->fromFile();
         return $apiName ? $this->config->{$apiName} : $this->config;
+    }
+    public function getWsdl($apiName)  {
+        $wsdl = $this->get($apiName)->wsdl;
+        preg_match('/^http.?:\/\//', $wsdl, $matches);
+        if($matches[0]) {
+            return $wsdl;
+        } else {
+            $path = __DIR__."/../../config/".$wsdl;
+            return realpath($path);
+        } 
     }
     public function getEnvironment(){
         return $this->config->environment;
@@ -147,7 +161,7 @@ class Config {
     }
     private function fromJson($string) {
         $this->fromObject(json_decode($string));
-    }
+     }
     public function fromObject($object) {
         $this->config = $object;    
         $this->config->id = $this->getId();    
