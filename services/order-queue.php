@@ -14,7 +14,6 @@ Ascio::setConfig();
 
 //TODO: clustering - loadbalance partitions per domain
 Consumer::callback(function($payload) use ($log) {
-    $txt = "";
     /**
      * @var Order $order
      */
@@ -22,12 +21,15 @@ Consumer::callback(function($payload) use ($log) {
     /**
      * @var Order $newOrder
      */
-    if($status == OrderStatus::Completed) {
+    if(
+            $status == OrderStatus::Completed && 
+            $payload->OrderStatus !== OrderStatusType::Invalid
+    ) {
         $order = new Order();  
         try {
             $order->db()->getByOrderId($payload->OrderId);
         } catch (ModelNotFoundException $e) {
-            throw new ModelNotFoundException($e->getMessage().". OrderId: ".$payload->OrderId,$e->getCode());
+            echo "OrderId: ".$payload->OrderId,$e->getMessage()."\n";
         }
         try {
             /**
@@ -37,30 +39,28 @@ Consumer::callback(function($payload) use ($log) {
             $order->setStatus($msg->getOrderStatus());
             $order->setWorkflowStatus();
             echo $order->getStatusSerializer()->console(LogLevel::Info,"Completed");
-            //TODO: copy locks to the next order
-            
             DomainBlocker::unblock($payload->DomainName);
             $newOrder = $order->db()->nextDomain($payload->DomainName);
             $text = " next";
         } catch (ModelNotFoundException $e) {
-            $order->getDomain()->getLocks()->autoLock();
             return; 
         }        
     } elseif ($status == OrderStatus::Queued) {
         $newOrder = $payload->object;
         if(DomainBlocker::isBlocked($newOrder->getDomain()->getDomainName()) || $newOrder->db()->isBlocked() || $newOrder->shouldQueue()) {
+            // if another process running don't submit. Leave queued. Will pickup the
+            // next order from the DB
             $newOrder->setStatus(OrderStatusType::NotSet);
             echo $newOrder->getStatusSerializer()->console(LogLevel::Warn,"Queue blocked");
             return; 
         }
-        $txt = " queued";
     } elseif ($status == OrderStatus::Submitting) {
         $serializer = new StatusSerializer();
         echo $serializer->setFields($payload)->console(LogLevel::Info,"Block");
         DomainBlocker::block($payload->DomainName);
         return;
     } else {
-        echo $payload->object->getStatusSerializer(LogLevel::Info,"No action for ".$status);
+        echo $payload->object->getStatusSerializer()->console(LogLevel::Info,"No action for ".$payload->object->getOrderStatus());
         return;
     }
     try {
