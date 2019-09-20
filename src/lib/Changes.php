@@ -6,7 +6,6 @@ use ascio\base\BaseClass;
 use ascio\base\ArrayBase;
 use ascio\base\ArrayInterface;
 
-// TODO: Changes no only for API. move to base object. ->apiChanges. 
 
 class Changes  {
     /**
@@ -88,7 +87,6 @@ class Changes  {
         } elseif(($newProperty instanceof BaseClass) && $newProperty->hasApi()) {
             return $newProperty->api()->changes()->hasDeepChanges();
         } else {
-            //todo: compare DateTime
             if(!($newProperty == $this->original->_get($name))) {
                 $this->changedProperties[$name] = ["old" => $this->original->_get($name), "new" => $newProperty];
                 return true;
@@ -103,6 +101,9 @@ class Changes  {
             return $this->getArrayChanges();
         } else {
             foreach($this->new->properties() as $key => $value) {
+                if($key == "CreDate" || $key == "ExpDate" || $key == "TransferLock" || $key=="DeleteLock" || $key=="UpdateLock" ) {
+                    continue;
+                }
                 if($this->propertyChanged($key)) {
                     $changes[$key] = $value;
                 }
