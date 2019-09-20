@@ -10,6 +10,7 @@ use ascio\lib\AscioException;
 use ascio\v2\Domain;
 use Illuminate\Support\Str;
 use ascio\v2\OrderStatusType;
+use ascio\v3\OrderStatusType as v3OrderStatusType;
 
 class Sync {
     private function getDbData($orderId) {
@@ -67,6 +68,7 @@ class Sync {
         }
     }
     private function getV3Object(\ascio\v3\OrderInfo  $order) {
+        if($order->getStatus()!== v3OrderStatusType::Completed) return null;
         $name = $order->getOrderRequest()->objects()->index(0);
         $method = "get".$name;
         $class = "\\ascio\\v3\\Get".$name."Request";
@@ -76,19 +78,18 @@ class Sync {
         $object = Ascio::getClientV3()->$method($request)->init();
         $info = $object->{"Get".$name."Info"}();
         $action = "create";
+        $this->log($object,$action);
         $info->produce(["action" => $action]);
         return $info;
     }    
     private function getDomain(Order $order) : ?Domain  {
+        if($order->getStatus() !== OrderStatusType::Completed) return null;
         $domain = new Domain();
         if(!($order->getDomain() && $order->getDomain()->getDomainHandle())) {
             return null; 
         }
         $action = $domain->sync($order->getDomain()->getDomainHandle());
         $this->log($domain,$action);
-        if($action) {
-            $domain->produce(["action" => $action]);
-        }
         return $domain;         
     }
     public function getMessage($messageId) {
@@ -120,8 +121,11 @@ class Sync {
             $result = Ascio::getClientV2()->searchOrder($searchOrderRequest);
         } 
     }
+    /**
+     * Fix for OrderIDs without prefix
+     */
     function autoPrefix ($id) {
-        if((int) $id ==0) {
+        if((int) $id == 0) {
             return $id;
         }
         if(Ascio::getConfig()->getEnvironment()=="live") {
