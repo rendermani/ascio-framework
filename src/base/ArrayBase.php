@@ -2,7 +2,11 @@
 
 namespace ascio\base;
 
-class ArrayBase extends BaseClass implements ArrayInterface,\Iterator,\countable {
+use ArrayAccess;
+use Countable;
+use Iterator;
+
+class ArrayBase extends BaseClass implements ArrayAccess,ArrayInterface,Iterator,Countable {
     use ArrayTrait;
     public function __construct($parent=null) {
         parent::__construct($parent);
