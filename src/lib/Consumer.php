@@ -5,6 +5,7 @@ use Monolog\Logger;
 use ascio\v2\Order;
 use phpDocumentor\Reflection\Types\Integer;
 use ascio\base\BaseClass;
+use Exception;
 
 class  Consumer {
     public static function object (\closure $function) {
@@ -81,11 +82,9 @@ class KafkaTopicConsumer {
                 case RD_KAFKA_RESP_ERR_NO_ERROR:
                     if($message->payload) {
                         $function(json_decode($message->payload,false,512));                        
-                    }               
-                    if($message) {
                         $this->topic->offsetStore($message->partition, $message->offset);
                         $this->logger->info($message->payload);
-                    }
+                    }               
                     break;
                 case RD_KAFKA_RESP_ERR__PARTITION_EOF:
                     $this->logger->debug('No more messages; will wait for more');
