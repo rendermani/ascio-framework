@@ -75,7 +75,7 @@ class OrderDb extends DbModel {
 		return $newOrder;         
 	}
 	public function scopeNext($query) {        
-		// todo test this
+		// todo test scope next?
 		return $query
 				->where('_status', OrderStatus::Queued)
 				->whereExists(function($query) {
@@ -91,6 +91,7 @@ class OrderDb extends DbModel {
 		parent::createTables(function(Blueprint $table) use ($blueprintFunction){
 			$table->string('_status')->index()->nullable();	
 			$table->string('_blocking')->index()->nullable();
+			$table->string('_topic')->index()->nullable();
 			if($blueprintFunction) $blueprintFunction($table);
 		}); 
 	}
