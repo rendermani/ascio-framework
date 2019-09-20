@@ -26,9 +26,6 @@ class DomainBlocker {
     }
     public static function syncFromDb(string $domainName)  {
         global $_AscioBlockedDomains; 
-        //Todo: Sync DB
-        //for all domains
-        //get running jobs of domain
-        //if none remove 
+        //Todo: Sync Redis DB
     }
 }
