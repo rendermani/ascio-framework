@@ -19,7 +19,7 @@ use ascio\v2\TestLib;
 final class TestApiProperties extends TestCase {
     public function testCleanObject() {
         Ascio::setConfig();
-        $domain = TestLib::getDomain();
+        $domain = TestLib::getDomainFull();
         $domain->getRegistrant()->db()->setAttribute("_testme","abc");
         $clean = $domain->properties()->cleanObject();
         $this->assertEquals("abc", $clean->Registrant->DbAttributes->_testme,"A DB Attribute should be added");

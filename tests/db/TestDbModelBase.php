@@ -41,7 +41,7 @@ final class TestDomainDb extends TestCase {
     public function testCreateDbPropertiesDomain()
     {
         Ascio::setConfig();
-        $domain = TestLib::getDomain();
+        $domain = TestLib::getDomainFull();
         $domain->db()->createDbProperties();       
         $this->checkProperties($domain);
         $this->checkProperties($domain->getRegistrant());
@@ -61,7 +61,7 @@ final class TestDomainDb extends TestCase {
     {
         Ascio::setConfig();
         $order = new Order();
-        $domain = TestLib::getDomain();
+        $domain = TestLib::getDomainFull();
         $order->setDomain($domain);
         $order->db()->createDbProperties();               
         $this->checkProperties($domain);
@@ -84,7 +84,7 @@ final class TestDomainDb extends TestCase {
     {
         Ascio::setConfig();
         $order = new Order();
-        $domain = TestLib::getDomain();
+        $domain = TestLib::getDomainFull();
         $order->setDomain($domain);
         $order->db()->createDbProperties();               
         $id = $order->db()->_id;

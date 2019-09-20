@@ -42,9 +42,7 @@ final class TestSslDb extends TestCase {
         $certificate->setOwner($owner);
         $certificate->setAdmin($contact);
         $certificate->setCommonName("abc.com");
-        $arrayOfStrings = new ArrayOfString();
-        $arrayOfStrings->fromArray(["abc.de","cde.com"]);
-        $certificate->setSanNames($arrayOfStrings);
+        $certificate->createSanNames()->add(["abc.de","cde.com"]);
         $this->assertEquals("Register",$order->getType(),"The OrderType should be Register");
         return $order;
     }

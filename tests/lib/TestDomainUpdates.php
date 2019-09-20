@@ -17,7 +17,8 @@ use ascio\v2\TestLib;
 final class TestDomainUpdates extends TestCase {
 
     public function testOwnerChange() {
-        $domain = TestLib::getDomain();
+        Ascio::setConfig();
+        $domain = TestLib::getDomainFull();
         $domain->getRegistrant()->setName("My new name");
         $updates = new DomainUpdates($domain);
         $orderTypes = $updates->getOrderTypes();
@@ -26,7 +27,7 @@ final class TestDomainUpdates extends TestCase {
     }
     
     public function testOwnerChangeNoAdmin() {
-        $domain = TestLib::getDomain();
+        $domain = TestLib::getDomainFull();
         $domain->getRegistrant()->setName("My new name");
         $domain->getAdminContact()->setLastName("My new name");
         $updates = new DomainUpdates($domain);
@@ -36,7 +37,7 @@ final class TestDomainUpdates extends TestCase {
     }
 
     public function testOwnerContactUpdate() {
-        $domain = TestLib::getDomain();
+        $domain = TestLib::getDomainFull();
         $domain->getRegistrant()->setName("My new name");
         $domain->getTechContact()->setLastName("My new name");
         $updates = new DomainUpdates($domain);
@@ -46,7 +47,7 @@ final class TestDomainUpdates extends TestCase {
     }    
 
     public function testRegistrantDetailsUpdate() {
-        $domain = TestLib::getDomain();
+        $domain = TestLib::getDomainFull();
         $domain->getRegistrant()->setAddress2("My new adr");
         $updates = new DomainUpdates($domain);
         $orderTypes = $updates->getOrderTypes();
@@ -55,7 +56,7 @@ final class TestDomainUpdates extends TestCase {
     }
 
     public function testContactUpdateTech() {
-        $domain = TestLib::getDomain();
+        $domain = TestLib::getDomainFull();
         $domain->getTechContact()->setAddress2("My new adr");
         $updates = new DomainUpdates($domain);
         $orderTypes = $updates->getOrderTypes();
@@ -64,7 +65,7 @@ final class TestDomainUpdates extends TestCase {
     }
 
     public function testNameserverUpdate() {
-        $domain = TestLib::getDomain();
+        $domain = TestLib::getDomainFull();
         $domain->changes()->setOriginal();
         $domain->getNameServers()->getNameServer1()->setHostName("ns.new.com");
         $updates = new DomainUpdates($domain);
@@ -74,7 +75,7 @@ final class TestDomainUpdates extends TestCase {
     }
 
     public function testNameserverUpdateDnssec() {
-        $domain = TestLib::getDomain();
+        $domain = TestLib::getDomainFull();
         $domain->changes()->setOriginal();
         $domain->getDnsSecKeys()->getDnsSecKey1()->setDigest("123");
         $updates = new DomainUpdates($domain);
@@ -84,7 +85,7 @@ final class TestDomainUpdates extends TestCase {
     }
     
     public function testNameserverUpdateNoTech() {
-        $domain = TestLib::getDomain();
+        $domain = TestLib::getDomainFull();
         $domain->getNameServers()->getNameServer1()->setHostName("ns.new.com");
         $domain->getTechContact()->setAddress2("My new adr");
         $updates = new DomainUpdates($domain);
@@ -93,7 +94,7 @@ final class TestDomainUpdates extends TestCase {
         return $domain; 
     }
     public function testDomainDetailsUpdate() {
-        $domain = TestLib::getDomain();
+        $domain = TestLib::getDomainFull();
         $domain->setRenewPeriod(2);
         $updates = new DomainUpdates($domain);
         $orderTypes = $updates->getOrderTypes();
@@ -101,7 +102,7 @@ final class TestDomainUpdates extends TestCase {
         return $domain; 
     }
     public function testDomainDetailsPrivacy() {
-        $domain = TestLib::getDomain();
+        $domain = TestLib::getDomainFull();
         $domain->getPrivacyProxy()->getExtensions()->index(1)->setValue("1111");
         $updates = new DomainUpdates($domain);
         $orderTypes = $updates->getOrderTypes();
@@ -109,7 +110,7 @@ final class TestDomainUpdates extends TestCase {
         return $domain; 
     }
     public function testAllUpdates() {
-        $domain = TestLib::getDomain();
+        $domain = TestLib::getDomainFull();
         $domain->setRenewPeriod(2);
         $domain->getNameServers()->getNameServer1()->setHostName("ns.new.com");
         $domain->getRegistrant()->setName("My new name");
@@ -121,7 +122,7 @@ final class TestDomainUpdates extends TestCase {
         return $domain; 
     }
     public function testNoUpdates() {
-        $domain = TestLib::getDomain();
+        $domain = TestLib::getDomainFull();
         $updates = new DomainUpdates($domain);
         $orderTypes = $updates->getOrderTypes();
         $this->assertEquals([],$this->reduceOrderTypes($orderTypes),"The OrderType should be Domain Details Update") ;

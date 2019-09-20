@@ -37,7 +37,8 @@ final class TestDbBaseClass extends TestCase {
         $this->assertEquals($domainAttributes->_parent_id, $domain->DbAttributes->_id, "The registrant should be linked to the parent."); 
     }
     public function testSerializeAndDeserialize() {
-        $domain = Testlib::getDomain();
+        Ascio::setConfig();
+        $domain = TestLib::getDomainFull();
         $serialized = $domain->serialize();
         $domain2 = new Domain();
         $domain2->deserialize($serialized);
@@ -48,7 +49,7 @@ final class TestDbBaseClass extends TestCase {
         $this->assertCount(3, $domain2->getPrivacyProxy()->getExtensions(), $domain2->db()->_id, "The arrays should be set"); 
     }
     public function testIncrementalSerialize() : object {
-        $domain = Testlib::getDomain();
+        $domain = TestLib::getDomainFull();
         $domain->setComment("C123");
         $domain->db()->syncToDb();
         $domain->getRegistrant()->setName("Daisy Duck");        
