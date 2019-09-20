@@ -11,7 +11,7 @@ Ascio::setConfig();
 $domain = TestLib::getDomain("testme-".uniqid().".com");
 try {
     $submitOptions = new SubmitOptions();
-    $submitOptions->setQueue(true);
+    $submitOptions->setQueue(false);
     $order = $domain->register($submitOptions);
     echo "Register: ". $domain->getDomainName()." Order: ".$order->getOrderId()." ".$order->db()->_id."\n";
     $order = $domain->expire($submitOptions);

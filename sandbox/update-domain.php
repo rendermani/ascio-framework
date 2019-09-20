@@ -11,8 +11,7 @@ $domain = TestLib::getDomain("testme-".uniqid().".com");
 try {
     $order = $domain->register();
     echo "Register: ". $domain->getDomainName()." Order: ".$order->getOrderId()." ".$order->db()->_id."\n";
-    $domain->getAdminContact()->setFirstName("Jasmin");
-    $domain->getTechContact()->setFirstName("Manuel");
+    $domain->getAdminContact()->setFirstName("Manuel");
     $domain->getRegistrant()->setAddress1("new adr. 123");
     $domain->getNameServers()->createNameServer3()->setHostName("ns3.ascio.net");
     $domain->update();

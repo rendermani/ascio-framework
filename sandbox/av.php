@@ -8,7 +8,7 @@ require(__DIR__."/../vendor/autoload.php");
 Ascio::setConfig();
 
 $domains = new ArrayOfString();
-$domains->addString("test");
+
 $tlds = new ArrayOfString();
 $tlds->addString("uk");
 $tlds->addString("com");
@@ -16,7 +16,7 @@ $tlds->addString("net");
 $tlds->addString("co.uk");
 
 try {
-    $results = Ascio::getClientV2()->availabilityCheck($domains,$tlds,QualityType::Live);
+    $results = Ascio::getClientV2()->availabilityCheck(["name"],["net"],QualityType::Live);
 } catch (AscioException $e) {
     echo "Error: ".$e->getMessage();
 }
