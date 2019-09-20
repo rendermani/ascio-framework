@@ -6,6 +6,10 @@ use ascio\v2\Order;
 use phpDocumentor\Reflection\Types\Integer;
 use ascio\base\BaseClass;
 use ascio\base\DbBase;
+use ascio\logic\OrderPayload;
+use ascio\logic\Payload;
+use ascio\logic\SyncPayload;
+use OrderInterface;
 
 Class Producer {
     public static function object ($object,$parameters=null) {
@@ -18,8 +22,19 @@ Class Producer {
     public static function log ($object,$parameters=null) {
         TopicProducer::produce("log",$object,$parameters);
     }
+    public static function order (OrderPayload $orderPayload,$partition=0) {
+        TopicProducer::send("order",$orderPayload,$partition);
+    }
+    public static function sync (SyncPayload $syncPayload,$partition=0) {
+        TopicProducer::send("sync",$syncPayload,$partition);
+    }
 }
 class TopicProducer {
+    public static function send($topic, Payload $payload,$partition=0) {
+        global $_GlobalProducer;
+        if(!$_GlobalProducer[$topic]) $_GlobalProducer[$topic] = new KafkaTopicProducer($topic);
+        $_GlobalProducer[$topic]->send($payload,$partition);
+    }
     public static function produce($topic,$obj,$parameters=null) {
         global $_GlobalProducer;
         if(!$_GlobalProducer[$topic]) $_GlobalProducer[$topic] = new KafkaTopicProducer($topic);
@@ -56,7 +71,14 @@ class KafkaTopicProducer {
         $this->producer->addBrokers('kafka');
         $this->topic = $this->producer->newTopic($topic);
         
-    }    
+    }
+    public function send(Payload $payload,$partition=0) {
+        $this->topic->produce($partition, 0, json_encode($payload,JSON_PRETTY_PRINT));
+        //$this->producer->poll(0);
+        while($this->producer->getOutQLen() > 0) {
+            //$this->producer->poll(0);
+        }
+    }  
     public function produce(?BaseClass $obj = null,$properties = []) {
         if(is_object($obj)) {
             $class =  get_class($obj);
