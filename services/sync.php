@@ -13,5 +13,10 @@ Consumer::callback(function($payload) use ($sync) {
     }
     //$messageId = $payload->object->MsgId; 
     sleep(1);
-    $sync->getOrder($payload->OrderId);
+    try {
+        $sync->getOrder($payload->OrderId);
+    } catch (AscioException $e) {
+        echo $e->debug();
+        throw $e;
+    }
 });
