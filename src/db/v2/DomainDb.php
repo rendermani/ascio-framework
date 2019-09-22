@@ -47,6 +47,18 @@ class DomainDb extends DbModel {
 			$table->boolean("_on_hold")->default(false)->index();
 			$table->json("_server_lock")->nullable();
 			if($blueprintFunction) $blueprintFunction($table);
+		
 		}); 
 	}
+	public function getByName($domainName=null) {
+		$domainName = $domainName ?: $this->parent()->getDomainName();
+		$result = $this
+			->where("DomainName",$domainName)
+			->where("_part_of_order",0)
+			->where("Status","!=","DELETED")
+			->firstOrFail();
+		$this->parent()->set($result);
+		$this->parent()->changes()->setOriginal();
+		return $this->parent(); 
+	} 
 }
