@@ -25,15 +25,17 @@ services:
             - ..:/code
         env_file:
         - ../.env
+        environment: 
+        - config=cvkd148
         restart: always
         depends_on: 
         - mysql
         - kafka
-    poll:
+    poll-cvkd148:
         build:
             context: .
         image: ascio-framework
-        container_name: ascio-framework-poll
+        container_name: ascio-framework-poll-cvkd148
         env_file:
         - ../.env
         restart: always
@@ -42,6 +44,59 @@ services:
         depends_on: 
         - mysql
         - kafka
+        environment: 
+        - config=cvkd148
+        entrypoint: /usr/local/bin/php 
+        command: services/poll.php
+    poll-webrender2:
+        build:
+            context: .
+        image: ascio-framework
+        container_name: ascio-framework-poll-webrender2
+        env_file:
+        - ../.env
+        restart: always
+        volumes:
+            - ..:/code
+        depends_on: 
+        - mysql
+        - kafka
+        environment: 
+        - config=webrender2
+        entrypoint: /usr/local/bin/php 
+        command: services/poll.php
+    poll-ml:
+        build:
+            context: .
+        image: ascio-framework
+        container_name: ascio-framework-poll-ml
+        env_file:
+        - ../.env
+        restart: always
+        volumes:
+            - ..:/code
+        depends_on: 
+        - mysql
+        - kafka
+        environment: 
+        - config=mlautenschlager
+        entrypoint: /usr/local/bin/php 
+        command: services/poll.php
+    poll-webrender:
+        build:
+            context: .
+        image: ascio-framework
+        container_name: ascio-framework-poll-webrender
+        env_file:
+        - ../.env
+        restart: always
+        volumes:
+            - ..:/code
+        depends_on: 
+        - mysql
+        - kafka
+        environment: 
+        - config=webrender
         entrypoint: /usr/local/bin/php 
         command: services/poll.php
     sync:
@@ -57,7 +112,6 @@ services:
         depends_on: 
         - mysql-connector
         - kafka
-        - poll
         entrypoint: /usr/local/bin/php 
         command: services/sync.php
     order-queue:
@@ -73,7 +127,6 @@ services:
         depends_on: 
         - mysql-connector
         - kafka
-        - poll
         entrypoint: /usr/local/bin/php 
         command: services/order-queue.php
     
