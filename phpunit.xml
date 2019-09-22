@@ -4,17 +4,19 @@
          bootstrap="vendor/autoload.php"
          colors="true"
          convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
+         convertNoticesToExceptions="false"
+         convertWarningsToExceptions="false"
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Unit">
-            <directory suffix="Test.php">./tests/Unit</directory>
-        </testsuite>
 
-        <testsuite name="Feature">
-            <directory suffix="Test.php">./tests/Feature</directory>
+
+
+        <testsuite name="Db">
+            <directory>./tests/db</directory>
+        </testsuite>
+        <testsuite name="Lib">
+            <directory>./tests/lib</directory>
         </testsuite>
     </testsuites>
     <filter>
