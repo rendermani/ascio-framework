@@ -10,13 +10,15 @@ Ascio::setConfig("cvkd148");
 $domains = file_get_contents(__DIR__."/../data/import/test-domains.txt");
 
 foreach(explode("\n",$domains) as $domainName) {
+    $domainName = trim($domainName);
+    if($domainName=="") continue;
     $domain = new Domain();
     $domain->setDomainName($domainName);
     try {
         $domain->db()->getByName();
     } catch (ModelNotFoundException $e) {
         $domain->api()->getByName();
-        $domain->produce();
+        $domain->produce(["action"=>"create"]);
     }
     $domain->getAutoRenew()->set(false);
     $wf = new Workflow($domain);
