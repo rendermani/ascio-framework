@@ -89,7 +89,9 @@ class KafkaTopicProducer {
         if($obj instanceof BaseClass) {
             $obj = $obj->serialize();
         }
-        $payload = [];
+        $payload = [
+            "Config" => Ascio::getConfig()->getId()
+        ];
         if($obj) $payload["object"] = $obj;
         if($class) $payload["class"] = $class;
         if($id) $payload["id"] = $id;
@@ -107,7 +109,8 @@ class KafkaTopicProducer {
             "object" => $obj ? $serialized : null,
             "class" => get_class($obj),
             "id" => $obj->db()->getId(),
-            "incremental" => $incremental                 
+            "incremental" => $incremental,
+            "Config" => Ascio::getConfig()->getId()                 
         ];
         $payload = array_merge($payload,(array) $properties);
         $this->topic->produce(0, 0, json_encode((object) $payload,JSON_PRETTY_PRINT));
