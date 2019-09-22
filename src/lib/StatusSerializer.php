@@ -5,11 +5,15 @@ use ascio\base\BaseClass;
 use DateTime;
 
 class StatusSerializer {
-    protected $fields;
+    protected $fields=[];
+    protected $class;
+    protected $container;
+    protected $script;
+    protected $obj;
     public function __construct(?BaseClass $obj=null)
     {
         global $_SERVER; 
-        $this->class = $obj ? " [".get_class($obj)."]" : null;
+        $this->setClass($obj);
         $this->container = gethostname();
         $this->script = basename($_SERVER["SCRIPT_FILENAME"], '.php');
         $this->obj = $obj;
@@ -40,11 +44,96 @@ class StatusSerializer {
             }
         }
         $data = implode($spacer,$keyValues);
-        $out = $this->getDate().$this->class." - ".$logLevel." - ".$text." - " .$data."\n";
+        $data = $data ?  " - ".$data : "";
+        $out = $this->getDate().$this->class." - ".$logLevel." - ".$text.$data."\n";
         return $out;         
     }
     public function getDate()
     {
         return (new DateTime())->format('Y-m-d H:i:s.u');
+    }
+
+    /**
+     * Get the value of class
+     */ 
+    public function getClass()
+    {
+        return $this->class;
+    }
+
+    /**
+     * Set the value of class
+     *
+     * @return  self
+     */ 
+    public function setClass($class=null)
+    {
+        if(is_object($class)) {
+            $class = " [".get_class($class)."]";
+        } elseif (is_string($class)) {
+            $class = " [".$class."]";
+        } 
+        $this->class = $class;
+        return $this;
+    }
+
+    /**
+     * Get the value of container
+     */ 
+    public function getContainer()
+    {
+        return $this->container;
+    }
+
+    /**
+     * Set the value of container
+     *
+     * @return  self
+     */ 
+    public function setContainer($container)
+    {
+        $this->container = $container;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of script
+     */ 
+    public function getScript()
+    {
+        return $this->script;
+    }
+
+    /**
+     * Set the value of script
+     *
+     * @return  self
+     */ 
+    public function setScript($script)
+    {
+        $this->script = $script;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of obj
+     */ 
+    public function getObj()
+    {
+        return $this->obj;
+    }
+
+    /**
+     * Set the value of obj
+     *
+     * @return  self
+     */ 
+    public function setObj($obj)
+    {
+        $this->obj = $obj;
+
+        return $this;
     }
 }
