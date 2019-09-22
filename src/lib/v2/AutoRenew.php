@@ -13,7 +13,7 @@ class AutoRenew {
         
     }
     public function getStatus() {
-        return strpos($this->domain->getStatus(),"EXPIRING")==false;
+        return strpos($this->domain->getStatus(),"EXPIRING")===false;
     }
     public function get() {
         return $this->new;
