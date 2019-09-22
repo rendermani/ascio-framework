@@ -6,6 +6,7 @@ namespace ascio\v2;
 
 use ascio\base\OrderInterface;
 use ascio\base\TaskInterface;
+use ascio\lib\Ascio;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use ascio\lib\OrderStatus;
 use ascio\lib\Producer;
@@ -43,7 +44,8 @@ class Order extends \ascio\service\v2\Order implements OrderInterface, TaskInter
                 "OrderStatus"=> OrderStatus::Queued,
                 "DomainName"=> $this->getDomain()->getDomainName(),
                 "OrderType"=> $this->getType(),
-                "OrderId"=> $this->getOrderId()
+                "OrderId"=> $this->getOrderId(),
+                "Module" => "order"
             ]);
         }        
         return $this;
@@ -63,7 +65,8 @@ class Order extends \ascio\service\v2\Order implements OrderInterface, TaskInter
             Producer::callback(null,[
                 "OrderStatus"=> OrderStatus::Submitting,
                 "DomainName"=> $domainName,
-                "OrderType"=> $this->getType()
+                "OrderType"=> $this->getType(),
+                "Module" => "order"
             ]);    
             $action = $this->db()->_id ? "update" : "create";        
             $this->produce(["action"=> $action]);

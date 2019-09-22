@@ -2,12 +2,6 @@
 namespace ascio\test;
 use PHPUnit\Framework\TestCase;
 use ascio\lib\Ascio;
-use ascio\v2\Contact;
-use ascio\v2\Domain;
-use ascio\v2\NameServer;
-use ascio\v2\NameServers;
-use ascio\v2\PrivacyProxy;
-use ascio\v2\Extensions;
 use ascio\v2\DomainUpdates;
 use ascio\v2\TestLib;
 
