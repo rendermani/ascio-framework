@@ -134,7 +134,10 @@ class DomainOrderRequest {
         $order->setDomain($domain);        
         return $order;
     }
-    public function expire() : Order {        
+    public function expire() : Order {  
+        if($this->domain->getAutoRenew()->getStatus()==false) {
+            return null; 
+        }  
         $domain = new Domain();
         $this->copyNameAndHandle($domain);
         $order = new Order();
@@ -142,7 +145,10 @@ class DomainOrderRequest {
         $order->setDomain($domain);        
         return $order;
     }
-    public function unexpire() : Order {        
+    public function unexpire() : Order { 
+        if($this->domain->getAutoRenew()->getStatus()==true) {
+            return null; 
+        }        
         $domain = new Domain();
         $this->copyNameAndHandle($domain);
         $order = new Order();
