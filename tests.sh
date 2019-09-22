@@ -8,3 +8,4 @@
 ./vendor/bin/phpunit --colors=auto  --bootstrap vendor/autoload.php  --testdox tests/lib/TestApiProperties.php
 ./vendor/bin/phpunit --colors=auto  --bootstrap vendor/autoload.php  --testdox tests/db/TestDbModelBase.php
 ./vendor/bin/phpunit --colors=auto  --bootstrap vendor/autoload.php  --testdox tests/lib/TestDbBase.php
+./vendor/bin/phpunit --colors=auto  --bootstrap vendor/autoload.php  --testdox tests/lib/TestLocks.php
