@@ -50,22 +50,22 @@ class DomainUpdates {
                 $orderTypes[] =(object)  ["type" => OrderType::Expire_Domain, "function" => "expire"];             
             }
         }
-        if($changed->Domain ||$changed->Proxy) {
+        if(property_exists($changed,"Domain") && $changed->Domain ||property_exists($changed,"Proxy") && $changed->Proxy) {
             $orderTypes[] = (object) ["type" => OrderType::Domain_Details_Update, "function" => "domainDetailsUpdate"];             
         }
-        if($changed->RegistrantSocial) {
+        if(property_exists($changed,"RegistrantSocial") && $changed->RegistrantSocial) {
             $orderTypes[] = (object) ["type" => OrderType::Owner_Change, "function" => "ownerChange"] ;
             unset($changed->Registrant);
             unset($changed->Admin);
         } 
-        if($changed->Registrant) {
+        if(property_exists($changed,"Registrant") && $changed->Registrant) {
             $orderTypes[] =(object)  [  "type" => OrderType::Registrant_Details_Update, "function" => "registrantDetailsUpdate"] ;
         } 
-        if($changed->Nameservers || $changed->DnsSec) {
+        if(property_exists($changed,"Nameservers") && $changed->Nameservers || property_exists($changed,"DnsSec") && $changed->DnsSec) {
             $orderTypes[] =(object)  [  "type" => OrderType::Nameserver_Update, "function" => "nameserverUpdate"] ;
             unset($changed->Tech);
         }
-        if($changed->Admin ||$changed->Tech ||$changed->Billing ||$changed->Reseller) {
+        if(property_exists($changed,"Admin") && $changed->Admin ||property_exists($changed,"Tech") && $changed->Tech ||property_exists($changed,"Billing") && $changed->Billing ||property_exists($changed,"Reseller") && $changed->Reseller) {
             $orderTypes[] =(object)  [  "type" => OrderType::Contact_Update, "function" => "contactUpdate"] ;
         }
         return $orderTypes; 
