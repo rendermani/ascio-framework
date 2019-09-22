@@ -1,44 +1,28 @@
 <?php
 namespace ascio\lib;
-require(__DIR__."/../vendor/autoload.php");
 
-use ascio\v2\ArrayOfOrderStatusType;
-use ascio\v2\ArrayOfOrderType;
 use ascio\v2\Domain;
-use ascio\v2\OrderStatusType;
-use ascio\v2\OrderType;
-use ascio\v2\PagingInfo;
-use ascio\v2\SearchOrderRequest;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-Ascio::setConfig("mlautenschlager");
+require(__DIR__."/../vendor/autoload.php");
+Ascio::setConfig("cvkd148");
 
+$domains = file_get_contents(__DIR__."/../data/import/test-domains.txt");
 
-$header = new \SoapHeader('http://www.ascio.com/2007/01','ImpersonationDetails', array('TransactionAccount'=>'webrender'), false);
-$client = Ascio::getClientV2();
-$client->__setSoapHeaders($header);
-
-//@todo: refactor setOrderTypes. take arrays and convert. #regenerate-classes 
-$orderRequest = new SearchOrderRequest();
-$orderTypes = new ArrayOfOrderType();
-$orderTypes->addOrderType(OrderType::Register_Domain);
-$orderRequest->setOrderTypes($orderTypes);
-
-$orderStatusTypes = new ArrayOfOrderStatusType();
-$orderStatusTypes->addOrderStatusType(OrderStatusType::Completed);
-$orderRequest->setOrderStatusTypes($orderStatusTypes);
-
-$pageInfo = new PagingInfo();
-$pageInfo->setPageIndex(1)->setPageSize(1);
-$orderRequest->setPageInfo($pageInfo);
-try {
-    $result = $client->searchOrder($orderRequest);
-    $handle = $result->getOrders()->index(0)->getDomain()->getDomainHandle();
+foreach(explode("\n",$domains) as $domainName) {
     $domain = new Domain();
-    $domain->setDomainHandle($handle);
-    $domain->api()->get();
-    $domain->db()->syncToDb();
-    echo $domain->getDomainName(). "\n";
-} catch (AscioException $e) {
-    echo $e->getMessage()."\n";
-    echo $e->debugSoap();
-}
+    $domain->setDomainName($domainName);
+    try {
+        $domain->db()->getByName();
+    } catch (ModelNotFoundException $e) {
+        $domain->api()->getByName();
+        $domain->produce();
+    }
+    $domain->getAutoRenew()->set(false);
+    $wf = new Workflow($domain);
+    $wf->getSubmitOptions()->setAutoUnlock(true);
+    $wf->getSubmitOptions()->setQueue(true);
+    $wf->addTasks($domain->getUpdateOrders());
+    $wf->submit();
+}  
+

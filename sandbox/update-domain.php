@@ -5,7 +5,7 @@ use ascio\v2\TestLib;
 use SoapFault;
 
 require(__DIR__."/../vendor/autoload.php");
-Ascio::setConfig();
+Ascio::setConfig("webrender2");
 
 $domain = TestLib::getDomain("testme-".uniqid().".com");
 try {
