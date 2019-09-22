@@ -3,18 +3,25 @@ namespace ascio\lib;
 
 class Logger {
     protected $serializer;
-    public function __construct()
+    public function __construct($id, $serializer = null)
     {
-        $this->serializer = new StatusSerializer();
+        $this->id = $id; 
+        $this->serializer = $serializer ?: new StatusSerializer();
     }
-    public function console() {
-        
+    public function console($logLevel,$text,$long=false) {
+        echo $this->getSerializer()->console($logLevel,$text,$long);
+        return $this;
     }
     public function db() {
 
     }
-    public function file() {
-
+    public function file($logLevel,$text,$long=false) {
+        echo "FILE";
+        $dir = realpath(__DIR__."/../../data/logs/");
+        echo $dir."\n";
+        echo __DIR__."/../../data/logs/\n";
+        file_put_contents($dir."/".$this->id.".log", $this->getSerializer()->console($logLevel,$text,$long),FILE_APPEND);
+        return $this;
     }
     public function kafka() {
 
