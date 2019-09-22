@@ -5,7 +5,10 @@
 namespace ascio\api\v2;
 use ascio\base\v2\ApiModel;
 use ascio\lib\AscioException;
+use ascio\v2\Clause;
 use ascio\v2\Domain;
+use ascio\v2\SearchCriteria;
+use ascio\v2\SearchOperatorType;
 
 class DomainApi extends ApiModel {
 
@@ -35,4 +38,22 @@ class DomainApi extends ApiModel {
 		$this->parent()->set($result->getDomain());
 		return $this->parent(); 
 	}
+	function getByName ($domainName = null) {
+		$criteria = new SearchCriteria();
+		$clause = new Clause();
+		$clause 
+			->setAttribute("DomainName")
+			->setOperator(SearchOperatorType::Is)
+			->setValue($domainName ?: $this->parent()->getDomainName());
+		$criteria->createClauses()->addClause($clause)
+			->setAttribute("DomainName")
+			->setOperator(SearchOperatorType::Is)
+			->setValue($domainName ?: $this->parent()->getDomainName());
+		$criteria->createWithoutstates()[] = "deleted";
+		$result = $this->getClient()->searchDomain($criteria);
+		$domain = $result->getDomains()->index(0);
+		$this->parent()->set($domain);
+		$this->parent()->changes()->setOriginal();
+		return $result; 
+	} 
 }
