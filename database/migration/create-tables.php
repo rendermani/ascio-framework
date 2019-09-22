@@ -9,7 +9,7 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 use ascio\dns\Zone;
 use ascio\dns\User;
 use ascio\dns\ZoneLogEntry;
-use ascio\service\dns\RoleItem;
+use ascio\dns\RoleItem;
 use ascio\v2\Message;
 use ascio\v2\QueueItem;
 use ascio\v3\SslCertificateInfo;

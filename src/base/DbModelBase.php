@@ -122,16 +122,18 @@ class DbModelBase extends Model {
 	}
 	protected function setDefaultAttributes() {
 		parent::setAttribute("_environment", $this->config()->environment);
-		parent::setAttribute("_account", $this->config()->v2->partner ?: $this->config()->v2->account);
+		parent::setAttribute("_account", 
+			property_exists($this->config()->v2,"partner") 
+			? $this->config()->v2->partner
+			: $this->config()->v2->account
+		);
 		parent::setAttribute("_type",get_class($this->parent()));
 		parent::setAttribute("_config",$this->config()->id);
 		if(!$this->_id) {			
 			parent::setAttribute("_id",uniqid("ascio.object.",true));
 			$this->exists = false; 
 		}
-		if((new \ReflectionClass($this->parent()))->getShortName() == "Order") {
-			parent::setAttribute("_part_of_order",true);
-		}			
+		parent::setAttribute("_part_of_order",(new \ReflectionClass($this->parent()))->getShortName() == "Order");		
 	}
 	protected function setParentKeys() {
 		foreach ($this->parent()->objects() as $object) {													

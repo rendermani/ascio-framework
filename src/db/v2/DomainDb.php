@@ -54,7 +54,7 @@ class DomainDb extends DbModel {
 		$domainName = $domainName ?: $this->parent()->getDomainName();
 		$result = $this
 			->where("DomainName",$domainName)
-			->where("_part_of_order",0)
+			->where("_part_of_order",false)
 			->where("Status","!=","DELETED")
 			->firstOrFail();
 		$this->parent()->set($result);

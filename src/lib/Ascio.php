@@ -121,7 +121,10 @@ class Ascio {
         return $client;
     }
     static private function setHeader($api, \SoapClient $client) {
-        $header = self::getConfig()->get($api)->header;
+        $header = 
+            property_exists(self::getConfig()->get($api),"header") 
+            ? self::getConfig()->get($api)->header
+            : false;      
         if($header) {
             $soapHeader = new \SoapHeader($header->ns,$header->name, (array) $header->data);
             $client->__setSoapHeaders($soapHeader);

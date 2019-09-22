@@ -51,9 +51,11 @@ class DomainApi extends ApiModel {
 			->setValue($domainName ?: $this->parent()->getDomainName());
 		$criteria->createWithoutstates()[] = "deleted";
 		$result = $this->getClient()->searchDomain($criteria);
-		$domain = $result->getDomains()->index(0);
-		$this->parent()->set($domain);
-		$this->parent()->changes()->setOriginal();
-		return $result; 
+		if($result->getDomains()->count() > 0) {
+			$domain = $result->getDomains()->index(0);
+			$this->parent()->set($domain);
+			$this->parent()->changes()->setOriginal();
+			return $result; 
+		}
 	} 
 }

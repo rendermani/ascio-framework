@@ -50,7 +50,7 @@ class TestLib {
         $domain->changes()->setOriginal();
         return $domain;
     }
-    public function getDomainFull($name = null) : Domain {
+    public static function getDomainFull($name = null) : Domain {
         $domain = TestLib::getDomain($name);
         $proxy = new PrivacyProxy();
         $extensions = new Extensions();
