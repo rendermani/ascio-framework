@@ -107,13 +107,18 @@ trait ArrayTrait   {
              $this->push($args[0]);
              return $args[0];
          }
-        $newObject = new $class;
-        $newObject->parent($this);
-        foreach($args as $nr => $arg) {
-            $key = $newObject->properties()->index($nr);
-            $newObject->set($key,$arg);
-        }              
-        $this->push($newObject);
+        if(in_array($class,["string","int","double","float"])) {
+            $this->push($args[0]);
+            $newObject = $args[0];
+        } else {
+            $newObject = new $class;
+            $newObject->parent($this);
+            foreach($args as $nr => $arg) {
+                $key = $newObject->properties()->index($nr);
+                $newObject->set($key,$arg);
+            }              
+            $this->push($newObject);            
+        }  
         return $newObject;             
     } 
     public function offsetSet($offset, $value) {
