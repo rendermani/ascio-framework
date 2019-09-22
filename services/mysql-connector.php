@@ -2,12 +2,13 @@
 namespace ascio\lib;
 
 require(__DIR__."/../vendor/autoload.php");
-Ascio::setConfig();
 
-use ascio\base\DbBase;
+Ascio::getConfig();
+
 use Illuminate\Support\Str;
 
 Consumer::objectIncremental(function($payload) {
+    Ascio::setConfig($payload->Config);
     $obj = $payload->object;    
     if($payload->incremental) {       
         if($payload->action=="update") {

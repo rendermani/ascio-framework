@@ -21,8 +21,9 @@ function poll() {
             "OrderStatus" => $item->getOrderStatus(),
             "DomainName" => $item->getDomainName(),
             "Environment" =>  Ascio::getConfig()->getEnvironment(),
-            "Config" =>  Ascio::getConfig()->getId(),
-            "Account" => Ascio::getConfig()->get("v2")->account]
+            "Account" => Ascio::getConfig()->get("v2")->account,
+            "Module" => "poll"
+            ]
         );
         Ascio::getClientV2()->ackMessage($item->getMsgId());
         $result = Ascio::getClientV2()->pollMessage(AscioMessageType::Message_to_Partner);
@@ -30,7 +31,6 @@ function poll() {
     }
    
 }
-Ascio::setConfig();
 function prefix () {
     if(Ascio::getConfig()->getEnvironment()=="live") {
         return "";
@@ -49,7 +49,7 @@ while(true) {
         echo "[poll] Error: ".$e->getCode() ." - " . $e->getMessage() . "\n";
         sleep(50);
     }     
-    sleep(10);
+    sleep(10+rand(0,3));
 }
 
 

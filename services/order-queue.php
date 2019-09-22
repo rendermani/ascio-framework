@@ -10,10 +10,10 @@ use Symfony\Component\Translation\Dumper\YamlFileDumper;
 use test\Domain;
 
 require(__DIR__."/../vendor/autoload.php");
-Ascio::setConfig();
 
 //TODO: clustering - loadbalance partitions per domain
 Consumer::callback(function($payload) use ($log) {
+    Ascio::setConfig($payload->Config); 
     /**
      * @var Order $order
      */
@@ -47,6 +47,7 @@ Consumer::callback(function($payload) use ($log) {
         }        
     } elseif ($status == OrderStatus::Queued) {
         $newOrder = $payload->object;
+        Ascio::setConfig($newOrder->db()->_config);
         if(DomainBlocker::isBlocked($newOrder->getDomain()->getDomainName()) || $newOrder->db()->isBlocked() || $newOrder->shouldQueue()) {
             // if another process running don't submit. Leave queued. Will pickup the
             // next order from the DB
@@ -63,8 +64,7 @@ Consumer::callback(function($payload) use ($log) {
         echo $payload->object->getStatusSerializer()->console(LogLevel::Info,"No action for ".$payload->object->getOrderStatus());
         return;
     }
-    try {
-    
+    try {  
         echo $newOrder->getStatusSerializer()->console(LogLevel::Info,"Submit".$text);
         $newOrder->submit();
     } catch (AscioException $e) {

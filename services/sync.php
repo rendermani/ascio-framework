@@ -1,10 +1,10 @@
 <?php
 namespace ascio\lib;
 require(__DIR__."/../vendor/autoload.php");
-Ascio::setConfig();
 
 $sync = new Sync();
-Consumer::callback(function($payload) use ($sync) {        
+Consumer::callback(function($payload) use ($sync) {       
+    Ascio::setConfig($payload->Config); 
     if(
         $payload->OrderStatus == OrderStatus::Queued ||
         $payload->OrderStatus == OrderStatus::Submitting 
