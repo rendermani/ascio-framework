@@ -5,3 +5,4 @@ data/logs/*
 *.env
 config/accounts/*
 config/*
+data/import/*
