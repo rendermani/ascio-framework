@@ -1,9 +1,7 @@
 <?php
 namespace ascio\lib;
-
-use ascio\v3\PollQueueRequest;
-use ascio\v3\MessageType;
 use ascio\v2\MessageType as AscioMessageType;
+use SoapFault;
 
 require(__DIR__."/../vendor/autoload.php");
 
@@ -40,14 +38,22 @@ function prefix () {
 }
 
 echo "[poll] Start service\n";
-
+$logger = new Logger("poll");
+$statusSerializer = $logger->getSerializer();
+$statusSerializer->setClass("poll.php");
 while(true) {
     try {
         poll($prefix);
     }
     catch (AscioException $e) {
-        echo "[poll] Error: ".$e->getCode() ." - " . $e->getMessage() . "\n";
-        sleep(50);
+        $logger->console(LogLevel::Error,$e->getCode() ." - " .$e->getMessage());;
+        $logger->file(LogLevel::Error,$e->getCode() ." - " .$e->getMessage());;
+        sleep(10);
+    }    
+    catch (SoapFault $e) {
+        $logger->console(LogLevel::Error,$e->getCode() ." - " .$e->getMessage());;
+        $logger->file(LogLevel::Error,$e->getCode() ." - " .$e->getMessage());;
+        sleep(10);
     }     
     sleep(10+rand(0,3));
 }
