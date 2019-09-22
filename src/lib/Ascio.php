@@ -65,10 +65,13 @@ class TopicNames {
     const Callbacks="callbacks";
 }
 class Ascio {
-    public static function setConfig($id="default") {
+    public static function setConfig($id=null) {
         global $_AscioLastConfigId, $_AscioConfigsSet;              
         if(isset($_AscioConfigsSet[$id])) {
             return $_AscioConfigsSet[$id];
+        }
+        if(!$id) {
+            $id = getenv("config") ?: "default";
         }
         $config = new Config($id);
         self::setDb($config);
@@ -101,19 +104,29 @@ class Ascio {
         return self::getClient("dns",$configId);
     }
     public static function getConfig() : Config {
-        global $_AscioLastConfigId, $_AscioConfigsSet;   
+        global $_AscioLastConfigId, $_AscioConfigsSet; 
+        if(!$_AscioLastConfigId) return Ascio::setConfig(); 
         return $_AscioConfigsSet[$_AscioLastConfigId];
     }
     static private function getApiClient($apiName, Config $config) {
         switch($apiName) {
-            case "v2" : $client = new \ascio\v2\Service(["trace"=>1],$config->getWsdl($apiName)); break;
+            case "v2" : 
+                $client = new \ascio\v2\Service(["trace"=>1],$config->getWsdl($apiName)); 
+                self::setHeader("v2",$client);
+                break;
             case "v3" : $client = new \ascio\v3\Service([],$config->getWsdl($apiName)); break;
             case "dns" : $client = new \ascio\dns\Service([],$config->getWsdl($apiName)); break;
         }
         $client->setConfig($config);
         return $client;
     }
-    
+    static private function setHeader($api, \SoapClient $client) {
+        $header = self::getConfig()->get($api)->header;
+        if($header) {
+            $soapHeader = new \SoapHeader($header->ns,$header->name, (array) $header->data);
+            $client->__setSoapHeaders($soapHeader);
+        }
+    }
     static private function setDb($config) {       
         $capsule = new Capsule;     
         $capsule->addConnection((array) $config->get("db"));            
