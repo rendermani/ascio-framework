@@ -33,7 +33,6 @@ abstract class MX extends Record  {
 		//set the api model
 		$api = new MXApi($this);
 		$api->parent($this);
-		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**

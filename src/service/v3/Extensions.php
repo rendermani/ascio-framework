@@ -26,7 +26,6 @@ abstract class Extensions extends DbArrayBase  {
 		//set the api model
 		$api = new ExtensionsApi($this);
 		$api->parent($this);
-		$api->config($this->config()->v3);
 		$this->api($api);
 	}
 	/**

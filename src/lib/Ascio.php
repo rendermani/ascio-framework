@@ -1,5 +1,7 @@
 <?php
 namespace ascio\lib;
+
+use Exception;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 class AscioEnvironment {
@@ -65,14 +67,20 @@ class TopicNames {
     const Callbacks="callbacks";
 }
 class Ascio {
+    public static function init($config = null) {
+        if($config) {
+            $this->setConfig($config);
+        }
+    }
     public static function setConfig($id=null) {
         global $_AscioLastConfigId, $_AscioConfigsSet;              
         if(isset($_AscioConfigsSet[$id])) {
             return $_AscioConfigsSet[$id];
         }
         if(!$id) {
-            $id = getenv("config") ?: "default";
+            $id = getenv("config") ?: null;
         }
+        if(!$id) throw new Exception();
         $config = new Config($id);
         self::setDb($config);
         $_AscioLastConfigId = $id;
@@ -117,7 +125,6 @@ class Ascio {
             case "v3" : $client = new \ascio\v3\Service([],$config->getWsdl($apiName)); break;
             case "dns" : $client = new \ascio\dns\Service([],$config->getWsdl($apiName)); break;
         }
-        $client->setConfig($config);
         return $client;
     }
     static private function setHeader($api, \SoapClient $client) {
@@ -150,6 +157,9 @@ class Config {
     }
     public function get($apiName = null)  {
         return $apiName ? $this->config->{$apiName} : $this->config;
+    }
+    public function getPartner($api) {
+        return $this->get($api)->partner ?: $this->get($api)->account;
     }
     public function getWsdl($apiName)  {
         $wsdl = $this->get($apiName)->wsdl;

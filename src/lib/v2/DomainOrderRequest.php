@@ -32,7 +32,7 @@ class DomainOrderRequest {
         $order->setDomain($this->domain);
         return $order;
     }
-    public function registrantDetailsUpdate() : Order {        
+    public function registrantDetailsUpdate() : ?Order {        
         $domain = new Domain();
         $this->copyNameAndHandle($domain);
         $domain->setRegistrant($this->domain->getRegistrant());
@@ -42,7 +42,7 @@ class DomainOrderRequest {
         $order->setDomain($domain);        
         return $order; 
     }
-    public function ownerChange() : Order {        
+    public function ownerChange() : ?Order {        
         $domain = new Domain();
         $this->copyNameAndHandle($domain);
         $domain->setRegistrant($this->domain->getRegistrant());
@@ -56,7 +56,7 @@ class DomainOrderRequest {
         $order->setDomain($domain);        
         return $order; 
     }
-    public function contactUpdate() : Order {        
+    public function contactUpdate() : ?Order {        
         $domain = new Domain();
         $this->copyNameAndHandle($domain);
         $domain->setAdminContact($this->domain->getAdminContact());
@@ -72,7 +72,7 @@ class DomainOrderRequest {
         $order->setDomain($domain);         
         return $order; 
     }
-    public function nameserverUpdate() : Order {        
+    public function nameserverUpdate() : ?Order {        
         $domain = new Domain();
         $this->copyNameAndHandle($domain);
         $domain->setNameServers($this->domain->getNameServers());
@@ -126,7 +126,7 @@ class DomainOrderRequest {
         $order->setDomain($domain);        
         return $order;
     }
-    public function renew() : Order {        
+    public function renew() : ?Order {        
         $domain = new Domain();
         $this->copyNameAndHandle($domain);
         $order = new Order();
@@ -134,7 +134,7 @@ class DomainOrderRequest {
         $order->setDomain($domain);        
         return $order;
     }
-    public function expire() : Order {  
+    public function expire() : ?Order {  
         if($this->domain->getAutoRenew()->getStatus()==false) {
             return null; 
         }  
@@ -142,10 +142,10 @@ class DomainOrderRequest {
         $this->copyNameAndHandle($domain);
         $order = new Order();
         $order->setType(OrderType::Expire_Domain);
-        $order->setDomain($domain);        
+        $order->setDomain($domain);      
         return $order;
     }
-    public function unexpire() : Order { 
+    public function unexpire() : ?Order { 
         if($this->domain->getAutoRenew()->getStatus()==true) {
             return null; 
         }        
@@ -164,7 +164,7 @@ class DomainOrderRequest {
         $order->setDomain($domain);        
         return $order;
     }  
-    public function updateAuthInfo() : Order {        
+    public function updateAuthInfo() : ?Order {        
         $domain = new Domain();
         $this->copyNameAndHandle($domain);
         $order = new Order();
@@ -192,7 +192,7 @@ class DomainOrderRequest {
             }
         }
     }
-    public function changeLocks() : Order {                                  
+    public function changeLocks() : ?Order {                                  
         
         $domain = new Domain();
         $domain->setStatus($this->domain->getStatus());

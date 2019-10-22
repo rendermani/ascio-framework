@@ -1,6 +1,6 @@
 <?php
 
-namespace ascio\base;
+namespace ascio\v2\base;
 
 interface Rest {
     function get();

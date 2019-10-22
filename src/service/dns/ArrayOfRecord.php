@@ -26,7 +26,6 @@ abstract class ArrayOfRecord extends DbArrayBase  {
 		//set the api model
 		$api = new ArrayOfRecordApi($this);
 		$api->parent($this);
-		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**

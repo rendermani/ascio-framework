@@ -39,7 +39,6 @@ abstract class NameWatchInfo extends DbBase  {
 		//set the api model
 		$api = new NameWatchInfoApi($this);
 		$api->parent($this);
-		$api->config($this->config()->v3);
 		$this->api($api);
 	}
 	/**

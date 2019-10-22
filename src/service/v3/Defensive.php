@@ -35,7 +35,6 @@ abstract class Defensive extends DbBase  {
 		//set the api model
 		$api = new DefensiveApi($this);
 		$api->parent($this);
-		$api->config($this->config()->v3);
 		$this->api($api);
 	}
 	/**

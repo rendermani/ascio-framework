@@ -32,7 +32,6 @@ abstract class AAAA extends Record  {
 		//set the api model
 		$api = new AAAAApi($this);
 		$api->parent($this);
-		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**

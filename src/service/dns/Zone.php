@@ -28,7 +28,6 @@ abstract class Zone extends DbBase  {
 		//set the api model
 		$api = new ZoneApi($this);
 		$api->parent($this);
-		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**

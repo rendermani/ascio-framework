@@ -45,7 +45,6 @@ abstract class Contact extends DbBase  {
 		//set the api model
 		$api = new ContactApi($this);
 		$api->parent($this);
-		$api->config($this->config()->v3);
 		$this->api($api);
 	}
 	/**

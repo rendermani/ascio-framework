@@ -50,7 +50,6 @@ abstract class Domain extends DbBase  {
 		//set the api model
 		$api = new DomainApi($this);
 		$api->parent($this);
-		$api->config($this->config()->v2);
 		$this->api($api);
 	}
 	/**

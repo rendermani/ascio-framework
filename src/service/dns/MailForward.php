@@ -32,7 +32,6 @@ abstract class MailForward extends Record  {
 		//set the api model
 		$api = new MailForwardApi($this);
 		$api->parent($this);
-		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**

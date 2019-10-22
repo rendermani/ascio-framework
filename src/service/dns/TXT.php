@@ -32,7 +32,6 @@ abstract class TXT extends Record  {
 		//set the api model
 		$api = new TXTApi($this);
 		$api->parent($this);
-		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**

@@ -37,7 +37,6 @@ abstract class NameServers extends DbBase  {
 		//set the api model
 		$api = new NameServersApi($this);
 		$api->parent($this);
-		$api->config($this->config()->v2);
 		$this->api($api);
 	}
 	/**

@@ -29,7 +29,6 @@ abstract class DnsSecKeys extends DbBase  {
 		//set the api model
 		$api = new DnsSecKeysApi($this);
 		$api->parent($this);
-		$api->config($this->config()->v2);
 		$this->api($api);
 	}
 	/**

@@ -31,7 +31,6 @@ abstract class User extends DbBase  {
 		//set the api model
 		$api = new UserApi($this);
 		$api->parent($this);
-		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**

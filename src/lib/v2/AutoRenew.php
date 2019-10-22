@@ -4,6 +4,9 @@ namespace ascio\v2;
 use DateTime;
 
 class AutoRenew {
+    /**
+     * @var Domain $domain
+     */
     protected $domain;
     protected $status = false;
     protected $new;
@@ -13,8 +16,11 @@ class AutoRenew {
         
     }
     public function getStatus() {
-        return strpos($this->domain->getStatus(),"EXPIRING")===false;
+        $expiring = strpos($this->domain->getStatus(),"EXPIRING")===false;;
+        //echo "Get Status expiring ".$this->domain->getDomainName()." - ".$this->domain->getStatus().": ". $expiring. "\n";
+        return $expiring;
     }
+
     public function get() {
         return $this->new;
     }

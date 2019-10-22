@@ -35,7 +35,6 @@ abstract class SRV extends Record  {
 		//set the api model
 		$api = new SRVApi($this);
 		$api->parent($this);
-		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**

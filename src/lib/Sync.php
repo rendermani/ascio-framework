@@ -1,5 +1,7 @@
 <?php
 namespace ascio\lib;
+
+use ascio\base\OrderInterface;
 use ascio\v2\SearchOrderRequest;
 use ascio\v2\SearchOrderSortType;
 use ascio\v2\PagingInfo;
@@ -33,7 +35,7 @@ class Sync {
             default: $this->getV3Object($order);break;
         }
     }
-    public function getOrder(string $orderId) {
+    public function getOrder(string $orderId) : ?OrderInterface {
         try {
             $order = $this->getDbData($this->autoPrefix($orderId));            
             $order->api()->get($orderId);   

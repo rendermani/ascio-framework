@@ -37,12 +37,14 @@ class TopicProducer {
     }
     public static function produce($topic,$obj,$parameters=null) {
         global $_GlobalProducer;
-        if(!$_GlobalProducer[$topic]) $_GlobalProducer[$topic] = new KafkaTopicProducer($topic);
+        if(!$_GlobalProducer) $_GlobalProducer = [];
+        if(!array_key_exists($topic,$_GlobalProducer)) $_GlobalProducer[$topic] = new KafkaTopicProducer($topic);
         $_GlobalProducer[$topic]->produce($obj,$parameters);
     }
     public static function produceIncremental($topic,$obj,$parameters=null) {
-        global $_GlobalProducer;
-        if(!$_GlobalProducer[$topic]) $_GlobalProducer[$topic] = new KafkaTopicProducer($topic);
+        global $_GlobalProducer;        
+        if(!$_GlobalProducer) $_GlobalProducer = [];
+        if(!array_key_exists($topic,$_GlobalProducer)) $_GlobalProducer[$topic] = new KafkaTopicProducer($topic);       
         $_GlobalProducer[$topic]->produceIncremental($obj,$parameters);
     }
 }
@@ -67,7 +69,6 @@ class KafkaTopicProducer {
         $this->logger->debug('Running producer...');
         
         $this->producer = new \RdKafka\Producer();
-        $this->producer->setLogLevel(LOG_DEBUG);
         $this->producer->addBrokers('kafka');
         $this->topic = $this->producer->newTopic($topic);
         

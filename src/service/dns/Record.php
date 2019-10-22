@@ -44,7 +44,6 @@ abstract class Record extends DbBase  {
 		//set the api model
 		$api = new RecordApi($this);
 		$api->parent($this);
-		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**

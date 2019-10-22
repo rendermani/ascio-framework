@@ -26,7 +26,6 @@ abstract class Extension extends DbBase  {
 		//set the api model
 		$api = new ExtensionApi($this);
 		$api->parent($this);
-		$api->config($this->config()->v2);
 		$this->api($api);
 	}
 	/**

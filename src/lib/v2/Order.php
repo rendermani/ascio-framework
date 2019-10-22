@@ -57,7 +57,7 @@ class Order extends \ascio\service\v2\Order implements OrderInterface, TaskInter
         if($this->shouldQueue()) {
             return $this->queue();
         } elseif(DomainBlocker::isBlocked($domainName)) {
-            echo $this->getStatusSerializer()->console(LogLevel::Warn,"Can't submit, queueing");
+            //echo $this->getStatusSerializer()->console(LogLevel::Warn,"Can't submit, queueing");
             $this->getSubmitOptions()->setSubmitAfterQueue(false);
             return $this->queue();
         } else {
@@ -77,7 +77,7 @@ class Order extends \ascio\service\v2\Order implements OrderInterface, TaskInter
                 $order = $result->getOrder();
                 $this->lastResult = $result->getCreateOrderResult();
                 $this->set($order);
-                echo $this->getStatusSerializer()->console(LogLevel::Info,"Submitted");
+                //echo $this->getStatusSerializer()->console(LogLevel::Info,"Submitted");
                 $this->produce(["action"=>"update"]);   
                 // for the next submission
                 $this->getSubmitOptions()->setQueue(true);

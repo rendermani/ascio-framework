@@ -33,7 +33,6 @@ abstract class WebForward extends Record  {
 		//set the api model
 		$api = new WebForwardApi($this);
 		$api->parent($this);
-		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**

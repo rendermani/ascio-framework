@@ -37,7 +37,6 @@ abstract class Order extends DbBase  {
 		//set the api model
 		$api = new OrderApi($this);
 		$api->parent($this);
-		$api->config($this->config()->v2);
 		$this->api($api);
 	}
 	/**

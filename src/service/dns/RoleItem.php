@@ -26,7 +26,6 @@ abstract class RoleItem extends DbBase  {
 		//set the api model
 		$api = new RoleItemApi($this);
 		$api->parent($this);
-		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**

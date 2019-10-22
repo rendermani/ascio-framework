@@ -32,7 +32,6 @@ abstract class PTR extends Record  {
 		//set the api model
 		$api = new PTRApi($this);
 		$api->parent($this);
-		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**

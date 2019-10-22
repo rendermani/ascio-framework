@@ -203,6 +203,7 @@ class DbModelBase extends Model {
 	public function getById(string $id) {
 		$this->_id = $id;
 		$this->syncFromDb();
+		$this->parent()->changes()->setOriginal();
 	}	
 	public function setExists() : DbModelBase{
 		$this->exists =  $this->where([ "_id" => $this->_id])->exists();

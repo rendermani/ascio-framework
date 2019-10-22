@@ -29,7 +29,6 @@ abstract class PrivacyProxy extends DbBase  {
 		//set the api model
 		$api = new PrivacyProxyApi($this);
 		$api->parent($this);
-		$api->config($this->config()->v2);
 		$this->api($api);
 	}
 	/**

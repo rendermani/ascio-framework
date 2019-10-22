@@ -30,7 +30,6 @@ abstract class ZoneLogEntry extends DbBase  {
 		//set the api model
 		$api = new ZoneLogEntryApi($this);
 		$api->parent($this);
-		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**

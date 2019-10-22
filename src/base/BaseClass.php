@@ -230,10 +230,7 @@ class BaseClass {
         return $parent; 
     }
     public function config()  {
-        if(!$this->_config) {
-            $this->_config = Ascio::getConfig()->get();
-        }
-        return $this->_config;
+        return Ascio::getConfig()->get();
     }
     public function handle($value=null) : ?object {
         if(!method_exists($this,"api")) {

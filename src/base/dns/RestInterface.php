@@ -1,6 +1,6 @@
 <?php
 
-namespace ascio\base;
+namespace ascio\dns\base;
 
 interface Rest {
     function get();

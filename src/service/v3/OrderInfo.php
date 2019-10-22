@@ -28,7 +28,6 @@ abstract class OrderInfo extends DbBase  {
 		//set the api model
 		$api = new OrderInfoApi($this);
 		$api->parent($this);
-		$api->config($this->config()->v3);
 		$this->api($api);
 	}
 	/**

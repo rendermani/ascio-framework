@@ -26,7 +26,6 @@ abstract class ArrayOfRoleItem extends DbArrayBase  {
 		//set the api model
 		$api = new ArrayOfRoleItemApi($this);
 		$api->parent($this);
-		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**

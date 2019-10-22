@@ -35,7 +35,6 @@ abstract class TradeMark extends DbBase  {
 		//set the api model
 		$api = new TradeMarkApi($this);
 		$api->parent($this);
-		$api->config($this->config()->v2);
 		$this->api($api);
 	}
 	/**

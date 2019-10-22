@@ -11,7 +11,6 @@ use ascio\lib\Producer;
 class ServiceBase extends \SoapClient {
     private $sessionId;
     protected $classmap;
-    private $cfg;
      /**
       * @param array $options A array of config values
       * @param string $wsdl The wsdl file to use
@@ -19,7 +18,6 @@ class ServiceBase extends \SoapClient {
     public function __construct(array $options = array(), $wsdl = null) {                    
         $options["exceptions"] = true;
         $options["features"] = 1;
-        $this->cfg = Ascio::getConfig()->get("v2");
         foreach ($this->classmap as $key => $value) {
             if (!isset($options['classmap'][$key])) {
             $options['classmap'][$key] = $value;
@@ -66,8 +64,8 @@ class ServiceBase extends \SoapClient {
     }
     private function requestSessionId() {
         $session= array(
-            "Account" => $this->cfg->account,
-            "Password" => $this->cfg->password
+            "Account" => $this->getConfig()->account,
+            "Password" => $this->getConfig()->password
         ); 
         $result = parent::__soapCall("LogIn",["LogIn" => ["session" => $session]]);
         $status = $result->getLoginResult();
@@ -84,11 +82,8 @@ class ServiceBase extends \SoapClient {
         $exception->setSoap($this->__getLastRequest(),$this->__getLastResponse());
         throw $exception;
     }
-    public function setConfig(Config  $config) {
-        $this->cfg = $config->get("v2");
-    }
     public function getConfig()  {
-        return $this->cfg;
+        return Ascio::getConfig()->get("v2");
     }
 
     public function getSessionId() {

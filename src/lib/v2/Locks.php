@@ -169,7 +169,7 @@ class Locks {
         }
         $orderArray = [];
         if($updateLock) $orderArray[] = $updateOrder;
-        if($transferDeleteOrder) $orderArray[] = $transferDeleteOrder;
+        if(isset($transferDeleteOrder)) $orderArray[] = $transferDeleteOrder;
         
         if($type == "Lock") {
             $orderArray = array_reverse($orderArray);

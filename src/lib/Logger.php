@@ -18,8 +18,6 @@ class Logger {
     public function file($logLevel,$text,$long=false) {
         echo "FILE";
         $dir = realpath(__DIR__."/../../data/logs/");
-        echo $dir."\n";
-        echo __DIR__."/../../data/logs/\n";
         file_put_contents($dir."/".$this->id.".log", $this->getSerializer()->console($logLevel,$text,$long),FILE_APPEND);
         return $this;
     }

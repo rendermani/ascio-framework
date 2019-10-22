@@ -44,7 +44,6 @@ abstract class Registrant extends Contact  {
 		//set the api model
 		$api = new RegistrantApi($this);
 		$api->parent($this);
-		$api->config($this->config()->v3);
 		$this->api($api);
 	}
 	/**

@@ -26,7 +26,6 @@ abstract class Extensions extends DbArrayBase  {
 		//set the api model
 		$api = new ExtensionsApi($this);
 		$api->parent($this);
-		$api->config($this->config()->v2);
 		$this->api($api);
 	}
 	/**
@@ -82,7 +81,7 @@ abstract class Extensions extends DbArrayBase  {
 	public function createExtension () : \ascio\v2\Extension {
 		return $this->create ("Extension", "\\ascio\\v2\\Extension");
 	}
-	 public function addExtension (string $Key, string $Value) : \ascio\v2\Extension {
+	public function addExtension (string $Key, string $Value) : \ascio\v2\Extension {
 		return $this->addItem(func_get_args(),"\\ascio\\v2\\Extension");
 	}
 	public function addExtensions ($array) : self {

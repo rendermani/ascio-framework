@@ -34,8 +34,10 @@ class Workflow {
         $this->lockOrders = new ArrayOfOrder();
         $this->unlockOrders = new ArrayOfOrder();
     }
-    public function addTask(TaskInterface $task) {
-        $this->tasks[] = $task;
+    public function addTask(?TaskInterface $task) {
+        if($task) {
+            $this->tasks[] = $task;
+        }   
     }
     public function addTasks(array $tasks) {
         $this->tasks = array_merge($this->tasks,$tasks);
@@ -44,6 +46,9 @@ class Workflow {
         $this->getSubmitOptions()->setAutoUnlock($autoUnlock);
     }
     public function getOrderRequests() : array {
+        if(count($this->tasks) == 0){
+            return [];
+        } 
         $this->setLocks();
         $tasks = array_merge(
             $this->unlockOrders->toArray(), 
@@ -53,15 +58,12 @@ class Workflow {
         return $tasks; 
     } 
     public function submit() {     
-        foreach($this->tasks as $task) {
+        $out = [];
+        foreach($this->getOrderRequests() as $task) {
             $task->submit($this->submitOptions);
+            $out[$task->db()->_id] = $task->getType(); 
         } 
-        // $this->setLocks();
-        // $this->unlockOrders->submit($this->getSubmitOptions());
-        // foreach($this->tasks as $task) {
-        //     $task->submit($this->submitOptions);
-        // } 
-        // $this->lockOrders->queue();
+        return $out; 
     }
     private function setLocks() {
         if(!$this->getSubmitOptions()->getAutoUnlock()) return false;
@@ -78,9 +80,12 @@ class Workflow {
                 $unlockOrders->add($locks->getUnLockOrders());
             }
         }
-        $this->unlockOrders = Locks::getMergedOrders($unlockOrders,LockAction::Unlock);
-        $this->lockOrders = Locks::getMergedOrders($lockOrders,LockAction::Lock);
-        return count($this->unlockOrders) > 0;
+        if($unlockOrders){
+            $this->unlockOrders = Locks::getMergedOrders($unlockOrders,LockAction::Unlock);
+            $this->lockOrders = Locks::getMergedOrders($lockOrders,LockAction::Lock);
+            return count($this->unlockOrders) > 0;
+        } 
+        return false;     
     }
     public function getSubmitOptions() : SubmitOptions {
         $this->submitOptions =  $this->submitOptions ?: new SubmitOptions();

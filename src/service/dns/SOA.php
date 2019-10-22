@@ -38,7 +38,6 @@ abstract class SOA extends Record  {
 		//set the api model
 		$api = new SOAApi($this);
 		$api->parent($this);
-		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**

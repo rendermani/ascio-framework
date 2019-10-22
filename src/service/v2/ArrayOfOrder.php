@@ -9,7 +9,7 @@ use ascio\api\v2\ArrayOfOrderApi;
 use ascio\base\ArrayInterface;
 
 
-abstract class ArrayOfOrder extends ArrayBase implements \Iterator,\countable,\ArrayAccess  {
+abstract class ArrayOfOrder extends ArrayBase implements ArrayInterface,\Iterator,\countable,\ArrayAccess  {
 
 	protected $_apiProperties=["Order"];
 	protected $_apiObjects=["Order"];

@@ -26,7 +26,6 @@ abstract class ArrayOfZoneLogEntry extends DbArrayBase  {
 		//set the api model
 		$api = new ArrayOfZoneLogEntryApi($this);
 		$api->parent($this);
-		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**
