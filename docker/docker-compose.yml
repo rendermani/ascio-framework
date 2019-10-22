@@ -65,23 +65,6 @@ services:
         - config=webrender2
         entrypoint: /usr/local/bin/php 
         command: services/poll.php
-    poll-ml:
-        build:
-            context: .
-        image: ascio-framework
-        container_name: ascio-framework-poll-ml
-        env_file:
-        - ../.env
-        restart: always
-        volumes:
-            - ..:/code
-        depends_on: 
-        - mysql
-        - kafka
-        environment: 
-        - config=mlautenschlager
-        entrypoint: /usr/local/bin/php 
-        command: services/poll.php
     poll-webrender:
         build:
             context: .
@@ -129,7 +112,46 @@ services:
         - kafka
         entrypoint: /usr/local/bin/php 
         command: services/order-queue.php
-    
+    couch-connector: 
+        build:
+            context: . 
+        image: ascio-framework
+        container_name: ascio-framework-couch-connector
+        env_file: 
+        - ../.env
+        volumes:
+        - ..:/code
+        restart: always
+        depends_on: 
+        - kafka
+        - couchdb
+        entrypoint: /usr/local/bin/php 
+        command: services/couch-connector.php  
+    redis-connector: 
+        build:
+            context: . 
+        image: ascio-framework
+        container_name: ascio-framework-redis-connector
+        env_file: 
+        - ../.env
+        volumes:
+        - ..:/code
+        restart: always
+        depends_on: 
+        - kafka
+        - redis
+        entrypoint: /usr/local/bin/php 
+        command: services/redis-connector.php  
+    couchdb: 
+        image: couchdb:latest
+        container_name: ascio-framework-couchdb
+        env_file:
+        - ../.env
+        restart: always
+        ports:
+        - 5984:5984
+        volumes: 
+        - ascio-framework-couch:/opt/couchdb/data
     mysql-connector:
         build:
             context: .
@@ -191,6 +213,18 @@ services:
         - /var/run/docker.sock:/var/run/docker.sock
         depends_on:
         - zookeeper
-
+    redis:
+        image: 'bitnami/redis:5.0'
+        environment:
+        # ALLOW_EMPTY_PASSWORD is recommended only for development.
+        - ALLOW_EMPTY_PASSWORD=yes
+        - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+        ports:
+        - '6379:6379'
+        volumes:
+        - 'redis_data:/bitnami/redis/data'
 volumes:
     ascio-framework-volume:
+    ascio-framework-couch:
+    redis_data:
+        driver: local
