@@ -10,13 +10,15 @@
     "license": "MIT",
     "require": {
         "php": ">=7.2.0",
-        "ext-soap": "*", 
-        "rendermani/wsdl-client-generator" : "*",
-        "ext-pdo" : "*",
-        "monolog/monolog": "^1.23",
+        "ext-pdo": "*",
+        "ext-soap": "*",
+        "doctrine/couchdb": "@dev",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.0",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "monolog/monolog": "^1.23",
+        "predis/predis": "^1.1",
+        "rendermani/wsdl-client-generator": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^8",
