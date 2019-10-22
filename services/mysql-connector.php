@@ -3,7 +3,7 @@ namespace ascio\lib;
 
 require(__DIR__."/../vendor/autoload.php");
 
-Ascio::getConfig();
+Ascio::init();
 
 use Illuminate\Support\Str;
 
