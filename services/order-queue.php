@@ -34,9 +34,8 @@ Consumer::callback(function($payload) use ($log) {
         try {
             /**
              * @var QueueItem $msg
-             */
-            $msg = $payload->object;       
-            $order->setStatus($msg->getOrderStatus());
+             */     
+            $order->setStatus($payload->OrderStatus);
             $order->setWorkflowStatus();
             echo $order->getStatusSerializer()->console(LogLevel::Info,"Completed");
             DomainBlocker::unblock($payload->DomainName);
