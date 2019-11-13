@@ -1,0 +1,30 @@
+{
+    "debug" : true,
+    "environment" : "testing",
+    "email" : "test@null.com",
+    "db"    : {
+        "host"      : "mysql",
+        "database"    : "ascio",
+        "driver"    : "mysql",
+        "username"      : "root",
+        "password"  : "xxx",
+        "charset"   : "utf8",
+        "collation" : "utf8_unicode_ci",
+        "prefix"    : ""
+    },
+    "v2" : {
+        "account" : "cvkd148",
+        "password" : "xxx",
+        "wsdl" : "https://aws.demo.ascio.com/2012/01/01/AscioService.wsdl"
+    },
+    "v3" : {
+        "account" : "CVKD148",
+        "password" : "xxx",
+        "wsdl" : "https://aws.demo.ascio.com/v3/aws.wsdl"
+    },
+    "dns" : {
+        "account" : "cvkd148",
+        "password" : "xxx",
+        "wsdl" : "https://dnsservice.demo.ascio.com/2010/10/30/DnsService.wsdl"
+    }
+}
