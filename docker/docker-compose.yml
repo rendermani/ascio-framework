@@ -31,11 +31,11 @@ services:
         depends_on: 
         - mysql
         - kafka
-    poll-cvkd148:
+    poll-default:
         build:
             context: .
         image: ascio-framework
-        container_name: ascio-framework-poll-cvkd148
+        container_name: ascio-framework-poll-default
         env_file:
         - ../.env
         restart: always
@@ -45,41 +45,7 @@ services:
         - mysql
         - kafka
         environment: 
-        - config=cvkd148
-        entrypoint: /usr/local/bin/php 
-        command: services/poll.php
-    poll-webrender2:
-        build:
-            context: .
-        image: ascio-framework
-        container_name: ascio-framework-poll-webrender2
-        env_file:
-        - ../.env
-        restart: always
-        volumes:
-            - ..:/code
-        depends_on: 
-        - mysql
-        - kafka
-        environment: 
-        - config=webrender2
-        entrypoint: /usr/local/bin/php 
-        command: services/poll.php
-    poll-webrender:
-        build:
-            context: .
-        image: ascio-framework
-        container_name: ascio-framework-poll-webrender
-        env_file:
-        - ../.env
-        restart: always
-        volumes:
-            - ..:/code
-        depends_on: 
-        - mysql
-        - kafka
-        environment: 
-        - config=webrender
+        - config=default
         entrypoint: /usr/local/bin/php 
         command: services/poll.php
     sync:
@@ -223,6 +189,11 @@ services:
         - '6379:6379'
         volumes:
         - 'redis_data:/bitnami/redis/data'
+    grafana:
+        image: grafana/grafana:5.1.0
+        ports:
+        - 3000:3000
+        user: "104"
 volumes:
     ascio-framework-volume:
     ascio-framework-couch:
