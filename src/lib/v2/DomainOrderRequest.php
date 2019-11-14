@@ -178,7 +178,13 @@ class DomainOrderRequest {
     }
     private function dataOrHandle(?DbBase $obj) {
         if(!$obj) return; 
-        if($obj->changes()->hasChanges()) {
+        if($obj->changes()->propertyChanged("Handle")) {
+            foreach($obj->properties() as $key => $value) {
+                if($key !== "Handle") {
+                    $obj->_set($key,null);
+                }
+            }
+        } elseif($obj->changes()->hasChanges()) {
             $obj->setHandle(null);
             $obj->db()->_id = null;
             $obj->db()->exists = false; 
@@ -193,7 +199,6 @@ class DomainOrderRequest {
         }
     }
     public function changeLocks() : ?Order {                                  
-        
         $domain = new Domain();
         $domain->setStatus($this->domain->getStatus());
         $domain->setDeleteLock($this->domain->getDeleteLock());
