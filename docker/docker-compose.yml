@@ -26,7 +26,7 @@ services:
         env_file:
         - ../.env
         environment: 
-        - config=cvkd148
+        - config=default
         restart: always
         depends_on: 
         - mysql
