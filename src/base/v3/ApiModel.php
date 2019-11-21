@@ -1,4 +1,4 @@
-<?
+<?php
 namespace ascio\base\v3;
 use ascio\base\Rest;
 use ascio\base\ApiModelBase;
