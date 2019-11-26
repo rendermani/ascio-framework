@@ -11,10 +11,11 @@ It makes make domain-management-processes easear like:
 * REST-API:  https://app.swaggerhub.com/apis/rendermani/Ascio-Framework/1.0.0$
 
 ## Installation
-1. Clone repository: https://github.com/rendermani/ascio-framework.git
-2. Run `bin/init.sh`
-3. Set new passwords in the .env
-4. Enter the ascio-credentials in default.json
+1. Clone repository: `git clone https://github.com/rendermani/ascio-framework.git ascio-framework`
+2. `cd ascio-framework`
+3. Run `bin/init.sh`
+4. Set new passwords in the **.env**
+5. Enter the ascio-credentials in **config/accounts/default.json**
 ## Sync database
 * make sure the installation is complete, and default.json contains valid creditials and environment
 * run `bin/sync-orders.sh`
