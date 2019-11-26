@@ -1,8 +1,8 @@
 vendor/*
 data/logs/*
+data/import/*
 *.cache
 *.pptx
 *.env
 config/accounts/*
-config/*
-data/import/*
+config/AscioService*
