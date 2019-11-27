@@ -21,8 +21,11 @@ At the beginning the database is empty. As Ascio-messages are sent, when somethi
 * make sure the installation is complete, and **default.json** contains valid creditials and environment
 * run `bin/sync-orders.sh`
 ## Commands
+* Init framework, create tables, build: `bin/init.sh`
+* Initials sync orders: `bin/sync-orders.sh`
 * Start: `bin/up.sh`
 * Stop: `bin/down.sh`
+* Restart framework: `bin/restart-framework.sh`
 * View logs: `bin/logs.sh`
 * Docker shell: `docker exec -it ascio-framework-php bash`
 * Execute php: `docker exec ascio-framework-php php sandbox/my-example.php`
