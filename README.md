@@ -16,8 +16,8 @@ It makes make domain-management-processes easear like:
 3. Run `bin/init.sh`
 4. Set new passwords in the **.env**
 5. Enter the ascio-credentials in **config/accounts/default.json**
-## Sync database: ascio > local
-Syncs all orders and data that belongs to the orders, like Domains or SSL-Certificates. 
+## Initial database sync: ascio > local
+At the beginning the database is empty. As Ascio-messages are sent, when something changes, an initial sync must be done at the beginning. The  sync-orders script syncs all orders and data that belongs to the orders, like Domains or SSL-Certificates. 
 * make sure the installation is complete, and **default.json** contains valid creditials and environment
 * run `bin/sync-orders.sh`
 ## Commands
