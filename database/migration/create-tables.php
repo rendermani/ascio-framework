@@ -24,7 +24,7 @@ require(__DIR__."/../../vendor/autoload.php");
 
 
 Ascio::setConfig();
-Capsule::schema()->dropAllTables();
+//Capsule::schema()->dropAllTables();
 
 echo "Create v2\n";
 $order = new v2\Order();
