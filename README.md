@@ -10,6 +10,8 @@ It makes make domain-management-processes easear like:
 * Auto unlock-relock
 * REST-API:  https://app.swaggerhub.com/apis/rendermani/Ascio-Framework/1.0.0$
 
+## Requirements
+The only requirement is docker. It can be downloaded here: https://www.docker.com/
 ## Installation
 1. Clone repository: `git clone https://github.com/rendermani/ascio-framework.git ascio-framework`
 2. `cd ascio-framework`
