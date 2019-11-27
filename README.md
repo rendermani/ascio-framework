@@ -102,7 +102,7 @@ try {
 ```
 ## Store data into databases
 
-All data is auto-stored in the database. If data should be stored manually, please use ``$object->produce()`` to store data into all databases. This funciton should be use carefully, because data could get out of sync. 
+All data is auto-stored in the database. If data should be stored manually, please use ``$object->produce()`` to store data into all databases. This function should be use carefully, because data could get out of sync. 
 
 ## Read data from the database
 
