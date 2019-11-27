@@ -2,7 +2,7 @@
 A php framework with docker to sync and connect to the ascio-api. Scalable, based on docker and kafka.
 
 It makes make domain-management-processes easear like:
-
+* Sync all data from ascio to the local databases in realtime. 
 * Auto-Queue blocking orders
 * Scalable architecture
 * Consume the poll-queue with multiple orders
@@ -16,13 +16,16 @@ It makes make domain-management-processes easear like:
 3. Run `bin/init.sh`
 4. Set new passwords in the **.env**
 5. Enter the ascio-credentials in **config/accounts/default.json**
-## Sync database
-* make sure the installation is complete, and default.json contains valid creditials and environment
+## Sync database: ascio > local
+Syncs all orders and data that belongs to the orders, like Domains or SSL-Certificates. 
+* make sure the installation is complete, and **default.json** contains valid creditials and environment
 * run `bin/sync-orders.sh`
 ## Commands
 * Start: `bin/up.sh`
 * Stop: `bin/down.sh`
 * View logs: `bin/logs.sh`
+* Docker shell: `docker exec -it ascio-framework-php bash`
+* Execute php: `docker exec ascio-framework-php php sandbox/my-example.php`
 # Example Code
 Examples are in the sandbox directory. Here some examples: 
 ## Autoqueue the next order when blocked
@@ -131,7 +134,8 @@ Database connectors listen on the Kafka-service and write data into the database
 The process of creating connectors is: 
 * create the connector in the ``docker/docker-compose.yml``. Duplicate the redis-connector, and change the script-name to your file
 * create the connector file
-* ``docker-compose restart``
+* ``bin/down.sh``
+* ``bin/up.sh``
 
 This is an example Redis connector which is in the services directory. 
 
