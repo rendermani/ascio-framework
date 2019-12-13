@@ -1,6 +1,6 @@
 {
-    "name": "ascio/ascio-classes",
-    "description": "PHP Classes for the Ascio-API",
+    "name": "ascio/ascio-framework",
+    "description": "PHP Framework for the Ascio-API. Sync, AutoQueue, Update, REST-API",
     "authors": [
         {
             "name": "Manuel Lautenschlager",
