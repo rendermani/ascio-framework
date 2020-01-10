@@ -8,7 +8,7 @@ It makes make domain-management-processes easear like:
 * Consume the poll-queue with multiple orders
 * Provide one $domain->update functions. Change data, update, and all orders will be queued
 * Auto unlock-relock
-* REST-API:  https://app.swaggerhub.com/apis/rendermani/Ascio-Framework/1.0.0$
+* REST-API:  https://app.swaggerhub.com/apis/rendermani/Ascio-Framework/1.0.0
 
 ## Requirements
 The only requirement is docker. It can be downloaded here: https://www.docker.com/
