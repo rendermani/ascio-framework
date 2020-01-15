@@ -83,11 +83,11 @@ class Order extends \ascio\service\v2\Order implements OrderInterface, TaskInter
                 $this->getSubmitOptions()->setQueue(true);
             } catch (AscioOrderException $e) {
                 $this->setWorkflowStatus(OrderStatus::Completed); 
-                $order = $result->getOrder();
-                $this->lastResult = $result->getCreateOrderResult();
+                $order = $e->getOrder();
+                $this->lastResult = $e->result->getCreateOrderResult();
                 $this->set($order);
                 $this->produce(["action"=>"update"]);                
-                $e =  new AscioOrderException($result->getCreateOrderResult()->getMessage(),406);
+                $e =  new AscioOrderException($e->result->getCreateOrderResult()->getMessage(),406);
                 $e->setOrder($order);
                 $e->setResult($e->method,$e->request,$e->status,$e->result);
                 throw $e; 
