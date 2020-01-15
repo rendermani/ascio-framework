@@ -6,3 +6,4 @@ data/import/*
 *.env
 config/accounts/*
 config/AscioService*
+composer.lock
