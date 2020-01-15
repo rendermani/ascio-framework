@@ -9,4 +9,3 @@ jobs:
     - uses: actions/checkout@v1
     - name: Init
       run: bin/init.sh
-´
