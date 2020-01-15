@@ -18,9 +18,9 @@ else
     cp -R config/accounts.dist config/accounts 
 fi
 # set the .env files default passwords. don't overwrite existing passwords. only replace xxxxx
-$pwd = $(openssl rand -base64 29 | tr -d "=+/" | cut -c1-25)
-sed 's/xxxxx/'$pwd'/g' .env > .env
-sed 's/xxxxx/'$pwd'/g' config/accounts/default.json > config/accounts/default.json
+asciopwd = $(openssl rand -base64 29 | tr -d "=+/" | cut -c1-25)
+sed 's/xxxxx/'$asciopwd'/g' .env > .env
+sed 's/xxxxx/'$asciopwd'/g' config/accounts/default.json > config/accounts/default.json
 # start all docker containers
 docker-compose -f docker/docker-compose.yml up -d --remove-orphans 
 # install all php dependancies
