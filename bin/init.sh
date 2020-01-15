@@ -9,7 +9,7 @@ else
     echo "$FILE does not exist. Creating $file"
     cp .env.dist .env
 fi
-
+chmod u+x $root/bin/* 
 FILE=config/accounts
 if [ -f "$FILE" ]; then
     echo "$FILE exist"
