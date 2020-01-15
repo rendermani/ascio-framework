@@ -15,7 +15,7 @@ if [ -f "$FILE" ]; then
     echo "$FILE exist"
 else 
     echo "$FILE does not exist. Creating $file"
-    cp config/accounts.dist config/accounts -R 
+    cp -R config/accounts.dist config/accounts 
 fi
 docker-compose -f docker/docker-compose.yml up -d --remove-orphans 
 docker exec ascio-framework-php composer global update
