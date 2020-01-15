@@ -178,7 +178,8 @@ class Config {
         if($this->config) {
             return $this->config;
         }
-        $file = getenv("AscioConfigPath")."/".$this->id.".json";
+        $cfgPath = getenv("AscioConfigPath") ?: "/code/config/accounts";
+        $file = $cfgPath."/".$this->id.".json";
         if(!file_exists($file)) {
             throw new \Exception("File ".$file." not found");
         }
