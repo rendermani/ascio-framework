@@ -3,11 +3,13 @@
 root="`dirname "$0"`/../"
 cd $root
 FILE=.env
+AscioPW=$(openssl rand -base64 29 | tr -d "=+/" | cut -c1-25)
+
 if [ -f "$FILE" ]; then
     echo "$FILE exists"
 else 
     echo "Creating $file"
-    cp .env.dist .env
+    sed 's/xxxxx/'$AscioPW'/g' .env.dist > .env
 fi
 chmod u+x $root/bin/* 
 FILE=config/accounts
@@ -15,12 +17,9 @@ if [ -f "$FILE" ]; then
     echo "$FILE exists"
 else 
     echo "Creating $file"
-    cp -R config/accounts.dist config/accounts 
+    cp -R config/accounts.dist config/accounts
+    sed 's/xxxxx/'$AscioPW'/g' config/accounts.dist/default.json > config/accounts/default.json 
 fi
-# set the .env files default passwords. don't overwrite existing passwords. only replace xxxxx
-asciopwd = $(openssl rand -base64 29 | tr -d "=+/" | cut -c1-25)
-sed 's/xxxxx/'$asciopwd'/g' .env > .env
-sed 's/xxxxx/'$asciopwd'/g' config/accounts/default.json > config/accounts/default.json
 # start all docker containers
 docker-compose -f docker/docker-compose.yml up -d --remove-orphans 
 # install all php dependancies
