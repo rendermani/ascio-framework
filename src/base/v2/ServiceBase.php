@@ -5,6 +5,7 @@ use ascio\lib\Config;
 use ascio\lib\AscioException;
 use ascio\lib\Ascio;
 use ascio\base\v2\RequestRootElement;
+use ascio\lib\AscioOrderExceptionV2;
 use ascio\v2\Response;
 use ascio\lib\Producer;
 
@@ -77,7 +78,11 @@ class ServiceBase extends \SoapClient {
         }
     }
     public function setError($function, $request, $result,$status) {
-        $exception = new AscioException($status->getMessage(),$status->getResultCode());
+        if($function == "ValidateOrder" || $function == "CreateOrder") {
+            $exception = new AscioOrderExceptionV2($status->getMessage(),$status->getResultCode());
+        } else {
+            $exception = new AscioException($status->getMessage(),$status->getResultCode()); 
+        }
         $exception->setResult($function,$request,$status,$result);
         $exception->setSoap($this->__getLastRequest(),$this->__getLastResponse());
         throw $exception;
