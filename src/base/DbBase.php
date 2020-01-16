@@ -2,9 +2,11 @@
 
 namespace ascio\base;
 
+use ascio\lib\AscioException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use stdClass;
 use ascio\v2\Order;
+use Exception;
 
 class DbBase extends BaseClass {
     /**
@@ -69,8 +71,11 @@ class DbBase extends BaseClass {
         foreach((array )$obj as $key => $value) {
             if(is_object($value)) {
                if($this->objects()->exists($key)) {
-                   $newObj = $this->_get($key) ?: $this->createProperty($key);
-                   $newObj->deserialize($value);
+                    /**
+                     * @var DbClass $newObj
+                     */
+                    $newObj = $this->_get($key) ?: $this->createProperty($key);
+                    $newObj->deserialize($value);
                } elseif($key =="DbAttributes") {
                     foreach($value as $k => $v) {
                         $this->db()->setAttribute($k,$v);
@@ -154,6 +159,12 @@ class DbBase extends BaseClass {
             $this->set($result); 
             $this->db($result);
         }
+    }
+    public function api($api = null) {
+        throw new Exception("api() not supported on ".get_class($this));
+    }
+    public function createItem($data = null) {
+        throw new Exception("createItem() not supported on ".get_class($this));
     }
     
 }
