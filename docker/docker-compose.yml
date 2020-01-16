@@ -28,9 +28,6 @@ services:
         environment: 
         - config=default
         restart: always
-        depends_on: 
-        - mysql
-        - kafka
     poll-default:
         build:
             context: .
@@ -41,9 +38,6 @@ services:
         restart: always
         volumes:
             - ..:/code
-        depends_on: 
-        - mysql
-        - kafka
         environment: 
         - config=default
         entrypoint: /usr/local/bin/php 
@@ -58,9 +52,6 @@ services:
         env_file:
         - ../.env
         restart: always
-        depends_on: 
-        - mysql-connector
-        - kafka
         entrypoint: /usr/local/bin/php 
         command: services/sync.php
     order-queue:
@@ -73,9 +64,6 @@ services:
         env_file:
         - ../.env
         restart: always
-        depends_on: 
-        - mysql-connector
-        - kafka
         entrypoint: /usr/local/bin/php 
         command: services/order-queue.php
     couch-connector: 
@@ -89,7 +77,6 @@ services:
         - ..:/code
         restart: always
         depends_on: 
-        - kafka
         - couchdb
         entrypoint: /usr/local/bin/php 
         command: services/couch-connector.php  
@@ -104,7 +91,6 @@ services:
         - ..:/code
         restart: always
         depends_on: 
-        - kafka
         - redis
         entrypoint: /usr/local/bin/php 
         command: services/redis-connector.php  
@@ -130,7 +116,6 @@ services:
         restart: always
         depends_on: 
         - mysql
-        - kafka
         entrypoint: /usr/local/bin/php 
         command: services/mysql-connector.php                
     mysql:
@@ -155,8 +140,6 @@ services:
         - /sessions      
         links:
             - mysql:db 
-        depends_on: 
-        - mysql
     zookeeper:
         image: wurstmeister/zookeeper
         container_name: ascio-framework-zookeeper

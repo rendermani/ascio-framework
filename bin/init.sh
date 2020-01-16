@@ -20,8 +20,15 @@ else
     cp -R config/accounts.dist config/accounts
     sed 's/xxxxx/'$AscioPW'/g' config/accounts.dist/default.json > config/accounts/default.json 
 fi
+FILE=bin/up-custom.sh
+if [ -f "$FILE" ]; then
+    echo "$FILE exists"
+else 
+    echo "Creating $file"
+    cp bin/up.sh bin/up-custom.sh
+fi
 # start all docker containers
-docker-compose -f docker/docker-compose.yml up -d --remove-orphans 
+bin/up.sh
 # install all php dependancies
 docker exec ascio-framework-php composer install
 # create new tables
