@@ -6,7 +6,7 @@
         "host"      : "mysql",
         "database"    : "ascio",
         "driver"    : "mysql",
-        "username"      : "root",
+        "username"      : "ascio",
         "password"  : "xxxxx",
         "charset"   : "utf8",
         "collation" : "utf8_unicode_ci",
