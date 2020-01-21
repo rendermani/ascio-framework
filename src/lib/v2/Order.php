@@ -146,7 +146,7 @@ class Order extends \ascio\service\v2\Order implements OrderInterface, TaskInter
      */
     public function syncApi() : OrderInterface {        
         $this->api()->get();
-        $this->getDomain()->syncApi(); 
+        //$this->getDomain()->syncApi(); 
         if( $this->getStatus() == OrderStatusType::Failed ||
             $this->getStatus() == OrderStatusType::Invalid        
         ) {
