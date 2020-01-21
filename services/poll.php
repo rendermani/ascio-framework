@@ -23,6 +23,7 @@ function poll() {
             "Module" => "poll"
             ]
         );
+        $item->produce();
         Ascio::getClientV2()->ackMessage($item->getMsgId());
         $result = Ascio::getClientV2()->pollMessage(AscioMessageType::Message_to_Partner);
         $item = $result->getItem();    

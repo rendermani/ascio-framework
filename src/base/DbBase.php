@@ -82,9 +82,13 @@ class DbBase extends BaseClass {
                     } 
                }
             } elseif(is_array($value)) {
+                /**
+                 * @var DbArrayBase $arr
+                 */
+                $arr = $this;
                 if($this->objects()->exists($key)) {
                     foreach($value as $v) {                        
-                        $this->createItem($v);
+                        $arr->createItem($v);
                     }                    
                 } 
             } else {
@@ -159,12 +163,5 @@ class DbBase extends BaseClass {
             $this->set($result); 
             $this->db($result);
         }
-    }
-    public function api($api = null) {
-        throw new Exception("api() not supported on ".get_class($this));
-    }
-    public function createItem($data = null) {
-        throw new Exception("createItem() not supported on ".get_class($this));
-    }
-    
+    }    
 }

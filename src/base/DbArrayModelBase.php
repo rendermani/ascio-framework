@@ -1,9 +1,11 @@
 <?php
 namespace ascio\base;
 
+use Exception;
+
 class DbArrayModelBase extends DbModelBase  {
     public function syncToDb() {
-        if(is_object($this->parent()->index(0))) {
+        if($this->parent()->count() > 0 && is_object($this->parent()->index(0))) {
             foreach($this->parent() as $childObject) {
                 $parent = $this->parent()->parent();
                 $parentKey = $parent->db()->getKey() ? $parent->db()->getKey() : $childObject->db()->_parent_id;
