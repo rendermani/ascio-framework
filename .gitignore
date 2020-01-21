@@ -7,3 +7,4 @@ data/import/*
 config/accounts/*
 config/AscioService*
 composer.lock
+partners/*
