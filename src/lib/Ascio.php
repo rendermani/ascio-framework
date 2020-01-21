@@ -78,9 +78,8 @@ class Ascio {
             return $_AscioConfigsSet[$id];
         }
         if(!$id) {
-            $id = getenv("config") ?: null;
+            $id = getenv("config") ?: "default";
         }
-        if(!$id) throw new Exception();
         $config = new Config($id);
         self::setDb($config);
         $_AscioLastConfigId = $id;
