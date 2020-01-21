@@ -8,7 +8,7 @@ use ascio\v2\OrderStatusType;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 require(__DIR__."/../vendor/autoload.php");
-Ascio::setConfig("cvkd148");
+Ascio::setConfig();
 
 $domains = file_get_contents(__DIR__."/../data/import/test-domains.txt");
 
