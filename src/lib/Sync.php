@@ -118,7 +118,6 @@ class Sync {
             var_dump($result->getSearchOrderResult()->properties()->toArray());
             sleep(5);            
             $this->syncOrders();
-
         }
         while($result->getOrders()->valid()) {    
             foreach ($result->getOrders() as $order) {
