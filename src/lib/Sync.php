@@ -114,7 +114,7 @@ class Sync {
         $result = Ascio::getClientV2()->searchOrder($searchOrderRequest);
         $nr = 0; 
         if($result->getSearchOrderResult()->getResultCode()==554) {
-            echo "Error syncing. Retrying after 5 seconds/n";
+            echo "Error syncing. Retrying after 5 seconds\n";
             var_dump($result->getSearchOrderResult()->properties()->toArray());
             sleep(5);            
             $this->syncOrders();
