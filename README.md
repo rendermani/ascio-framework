@@ -8,7 +8,7 @@ It makes make domain-management-processes easear like:
 * Consume the poll-queue with multiple orders
 * Provide one $domain->update functions. Change data, update, and all orders will be queued
 * Auto unlock-relock
-* REST-API:  https://app.swaggerhub.com/apis/rendermani/Ascio-Framework/1.0.0
+* REST-API:  https://app.swaggerhub.com/apis/rendermani/Ascio-Framework/1.0.0-oas3
 
 ## Requirements
 The only requirement is docker. It can be downloaded here: https://www.docker.com/
@@ -19,11 +19,22 @@ The only requirement is docker. It can be downloaded here: https://www.docker.co
 4. Run `bin/init.sh`
 5. Set missing passwords in the **.env**
 6. Enter the ascio-credentials in **config/accounts/default.json**
-7. Run `bin/restart-framework.sh`
+7. Run `bin/up.sh`
 ## Initial database sync: ascio > local
 At the beginning the database is empty. As Ascio-messages are sent, when something changes, an initial sync must be done at the beginning. The  sync-orders script syncs all orders and data that belongs to the orders, like Domains or SSL-Certificates. 
 * make sure the installation is complete, and **default.json** contains valid creditials and environment
 * run `bin/sync-orders.sh`
+## Testing the installation
+At the beginning there will be a Kafka exception in the logs. This will be gone as soon as Kafka has fully loaded. There is no dependancy on Kafka, because the Kafka could run somewhere else. 
+* run `bin/logs.sh`. Look for 401 Authentification failed
+* run `bin/php sandbox/create-order.php`
+* observe the logs for poll complete. 
+* check the database: http://localhost:8001/
+
+## Locations
+* phpmyadmin: http://localhost:8001/
+* REST-API: http://localhost:8000/  
+
 ## Commands
 * Init framework, create tables, build: `bin/init.sh`
 * Initials sync orders: `bin/sync-orders.sh`
