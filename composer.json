@@ -22,7 +22,7 @@
         "rendermani/wsdl-client-generator": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8",
+        "phpunit/phpunit": "*",
         "kwn/php-rdkafka-stubs": "^1.0",
         "facade/ignition": "^1.4",
         "fzaninotto/faker": "^1.4",
@@ -88,7 +88,7 @@
             "@php artisan package:discover --ansi"
         ],
         "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+            "@php -r \"file_exists('.env') || copy('.env.dist', '.env');\""
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
