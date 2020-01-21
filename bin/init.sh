@@ -35,3 +35,6 @@ docker exec ascio-framework-php composer install
 docker exec ascio-framework-php php database/migration/create-tables.php
 # set lavarel APP_KEY
 docker exec ascio-framework-php php artisan key:generate
+bin/down.sh
+echo "Please edit $(pwd)/config/accounts/default.json and add your Ascio credentials. " 
+echo "When done run bin/up.sh."
