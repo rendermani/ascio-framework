@@ -142,7 +142,7 @@ class Order extends \ascio\service\v2\Order implements OrderInterface, TaskInter
         return $this;       
     }
     /**
-     * @return Order
+     * @return Order 
      */
     public function syncApi() : OrderInterface {        
         $this->api()->get();
@@ -167,7 +167,7 @@ class Order extends \ascio\service\v2\Order implements OrderInterface, TaskInter
             "OrderId" => $this->getType(),
             "OrderType" => $this->getType(),
             "Status" => $this->getStatus() . " (".$this->getWorkflowStatus().")", 
-            "DomainName" => $this->getDomain()->getDomainName()     
+            "DomainName" => $this->getDomain() ? $this->getDomain()->getDomainName() : "Missing domain name" 
         ]);
         return $this->_statusSerializer;
     }
