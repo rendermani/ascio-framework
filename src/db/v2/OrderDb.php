@@ -9,6 +9,7 @@ use ascio\v2\Order;
 use ascio\lib\AscioException;
 use ascio\v3\OrderType;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 
 class OrderDb extends DbModel {
 	protected $table="v2_Order";
