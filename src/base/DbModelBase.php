@@ -27,6 +27,9 @@ class DbModelBase extends Model {
 	protected function _construct(array $data) {
 		parent::_construct($data);
 	}
+	public function setCustomColumnTypes($types) {
+		$this->_customColumnTypes = $types; 
+	}
 	public function getRelationObject($api,$class,$property) {
 		$className = "\\ascio\\".$api."\\".$class; 
 		$dbClass = "\\ascio\\db\\".$api."\\".$class."Db"; 
@@ -230,6 +233,7 @@ class DbModelBase extends Model {
 	}
 	public function createTables(?\Closure $blueprintFunction=null) {
 		$migration = new DbMigration();
+		$migration->setCustomColumnTypes($this->_customColumnTypes);
 		$migration->setTable($this->getTable());
 		$migration->parent($this->parent());
 		$migration->createTables($blueprintFunction);

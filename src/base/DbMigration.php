@@ -78,7 +78,7 @@ class DbMigration extends DbModelBase {
 	private function createObjectProperty($object,Blueprint $table,$key) {
 		if ($this->_customColumnTypes[$key]) {
 			$col = $this->_customColumnTypes[$key];
-			$table->addColumn($col["type"],$key,$col["parameters"]);
+			$table->addColumn($col["type"],$key,$col["parameters"] ?: []);
 		} else if($object->objects()->exists($key)) {
 			$property = $object->createProperty($key);
 			if($property instanceOf ArrayBase) {
