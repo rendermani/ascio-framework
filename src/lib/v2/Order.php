@@ -164,7 +164,7 @@ class Order extends \ascio\service\v2\Order implements OrderInterface, TaskInter
     public function getStatusSerializer() : StatusSerializer
     {      
         parent::getStatusSerializer()->addFields([
-            "OrderId" => $this->getType(),
+            "OrderId" => $this->getOrderId(),
             "OrderType" => $this->getType(),
             "Status" => $this->getStatus() . " (".$this->getWorkflowStatus().")", 
             "DomainName" => $this->getDomain() ? $this->getDomain()->getDomainName() : "Missing domain name" 
