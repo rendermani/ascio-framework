@@ -7,9 +7,7 @@ use ascio\base\v2\DbModel;
 
 class QueueItemDb extends DbModel {
 	protected $table="v2_QueueItem";
-	protected $_customColumnTypes = [
-		"Msg" => ["type" => "text"]
-	];
+	protected $_customColumnTypes = ["Msg" => ["type" => "text"], "parameters" => ["nullable" => true]];
 	public function getAttachments(){
 		return $this->getRelationObject("v2","ArrayOfAttachment","Attachments");
 	}
