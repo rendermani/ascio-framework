@@ -13,6 +13,7 @@ use ascio\v2\Domain;
 use Illuminate\Support\Str;
 use ascio\v2\OrderStatusType;
 use ascio\v3\OrderStatusType as v3OrderStatusType;
+use SoapFault;
 
 class Sync {
     private function getDbData($orderId) {
@@ -44,6 +45,7 @@ class Sync {
             $order->produce($action);
             $this->log($order,$action["action"]);
             $this->getApiObject($order);
+            $this->syncMessages($order->getOrderId());
             return $order;
         } catch (ModelNotFoundException $e) {
             try {     
@@ -65,6 +67,7 @@ class Sync {
                 $order->produce($action);
                 $this->log($order,$action["action"]);
                 $this->getDomain($order);
+                $this->syncMessages($order->getOrderId());
                 return $order;
             }
         }
@@ -128,6 +131,18 @@ class Sync {
             $page->setPageIndex($index);
             $result = Ascio::getClientV2()->searchOrder($searchOrderRequest);
         } 
+    }
+    public function syncMessages(string $orderId) {
+        try {
+            $messages  = Ascio::getClientV2()->getMessages($orderId);
+            foreach($messages->getMessages() as $message) {
+                $message->db()->_orderId = $orderId; 
+                $message->produce();
+            }
+        } catch (SoapFault $e){
+            echo "Error in $orderId\n";
+            echo Ascio::getClientV2()->__getLastResponse();
+        }
     }
     /**
      * Fix for OrderIDs without prefix
