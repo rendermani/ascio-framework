@@ -7,6 +7,7 @@ use ascio\base\v2\DbModel;
 use ascio\lib\OrderStatus;
 use ascio\v2\Order;
 use ascio\lib\AscioException;
+use ascio\v2\OrderStatusType;
 use ascio\v3\OrderType;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
@@ -88,11 +89,42 @@ class OrderDb extends DbModel {
                 ->orderBy("CreDate","asc")
                 ->firstOrFail();        
 	}
+	public function scopeFailed($query) {
+		return $query
+			->where('Status',OrderStatusType::Invalid)
+			->orWhere('Status',OrderStatusType::Failed);
+	}
+	public function scopePending($query) {
+		return $query
+			->where('Status',OrderStatusType::Pending_Internal_Processing)
+			->orWhere('Status',OrderStatusType::Pending_NIC_Document_Approval)
+			->orWhere('Status',OrderStatusType::Pending_NIC_Processing)
+			->orWhere('Status',OrderStatusType::Documentation_Received)
+			->orWhere('Status',OrderStatusType::Pending_Post_Processing)
+			->orWhere('Status',OrderStatusType::Validated)
+			->orWhere('Status',OrderStatusType::Received)
+			->orWhere('Status',OrderStatusType::Pending)
+			->orWhere('Status',OrderStatusType::NotSet)
+			->orWhere('Status',OrderStatusType::Processing);
+	}
+	public function scopeWaiting($query) {
+		return $query
+			->where('Status',OrderStatusType::Pending_End_User_Action)
+			->orWhere('Status',OrderStatusType::Pending_Documentation);
+	}
+	public function scopeCompleted($query) {
+		return $query
+			->where('Status',OrderStatusType::Completed);
+	}
 	public function createTables(?\Closure $blueprintFunction=null) {
 		parent::createTables(function(Blueprint $table) use ($blueprintFunction){
+			$table->string('_message')->nullable();
+			$table->integer('_code')->nullable()->index();
+			$table->json('_values')->nullable();	
 			$table->string('_status')->index()->nullable();	
 			$table->string('_blocking')->index()->nullable();
 			$table->string('_topic')->index()->nullable();
+			$table->boolean('_acked')->index()->nullable();
 			if($blueprintFunction) $blueprintFunction($table);
 		}); 
 	}
