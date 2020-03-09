@@ -4,6 +4,7 @@
 
 namespace ascio\v2;
 
+use ascio\db\v2\OrderDb;
 use ascio\lib\SubmitOptions;
 
 class ArrayOfOrder extends \ascio\service\v2\ArrayOfOrder {
@@ -19,5 +20,13 @@ class ArrayOfOrder extends \ascio\service\v2\ArrayOfOrder {
     }
     public function validate() {
         
+    }
+    public function getFailed() {
+        $orderDb = new OrderDb();
+        foreach ($orderDb->failed()->limit(100)->get() as $failed) {
+            $order = new Order();
+            $order->set($failed);
+            $this->add($order);
+        }
     }
 }
