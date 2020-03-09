@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 use ReflectionMethod;
 use ascio\base\DbBase;
 use ascio\lib\StatusSerializer;
+use DateTime;
 
 class BaseClass {
     protected $_properties;
@@ -77,12 +78,17 @@ class BaseClass {
             return $out;
         } elseif($this->_get($name)) {
             $returnType = (new ReflectionMethod($this,"get".$name))->getReturnType(); 
+            if(!$returnType) {
+                return $this->_get($name);
+            }
             switch ($returnType->getName()) {
                 case "DateTime" : 
-                if(strpos($this->_get($name),".")===false) {
-                    $this->_set($name,$this->_get($name).".0000"); 
-                }
-                $this->_set($name,\DateTime::createFromFormat('Y-m-d?H:i:s.u', $this->_get($name)));break;
+                    if(! ($this->_get($name) instanceof DateTime)) {
+                        if(strpos($this->_get($name),".")===false) {
+                            $this->_set($name,$this->_get($name).".0000"); 
+                        }
+                        $this->_set($name,\DateTime::createFromFormat('Y-m-d?H:i:s.u', $this->_get($name)));break;
+                    }
             }
             return $this->_get($name);
         }        
