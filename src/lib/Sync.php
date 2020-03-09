@@ -104,10 +104,10 @@ class Sync {
         $item->db()->createDbProperties();
         Producer::object($item);
     }
-    public function syncOrders() {
-        $pagesize = 5;
-        $searchOrderRequest = new SearchOrderRequest();
-        $searchOrderRequest->setOrderSort(SearchOrderSortType::CreDateAsc);
+    public function syncOrders(SearchOrderRequest $searchOrderRequest = null) {
+        $pagesize = 100;
+        $searchOrderRequest = $searchOrderRequest ?: new SearchOrderRequest();
+        $searchOrderRequest->setOrderSort(SearchOrderSortType::CreDateDesc);
         $searchOrderRequest->setIncludeDomainDetails(false);
         $page = new PagingInfo();
         $page->setPageSize($pagesize);
@@ -124,10 +124,10 @@ class Sync {
         }
         while($result->getOrders()->valid()) {    
             foreach ($result->getOrders() as $order) {
-                echo $nr++.": ".$order->getOrderId()."\n";
+                echo $nr++." | ".$index." : ".$order->getOrderId()."\n";
                 $this->getOrder($order->getOrderId());
             }
-            $index = $index + $pagesize; 
+            $index = $index + 1; 
             $page->setPageIndex($index);
             $result = Ascio::getClientV2()->searchOrder($searchOrderRequest);
         } 
@@ -135,7 +135,7 @@ class Sync {
     public function syncMessages(string $orderId) {
         try {
             $messages  = Ascio::getClientV2()->getMessages($orderId);
-            foreach($messages->getMessages() as $message) {
+            if($messages->getMessages()) foreach($messages->getMessages() as $message) {
                 $message->db()->_orderId = $orderId; 
                 $message->produce();
             }
@@ -143,6 +143,33 @@ class Sync {
             echo "Error in $orderId\n";
             echo Ascio::getClientV2()->__getLastResponse();
         }
+    }
+    function syncRunningOrders() {
+        $order = new Order();
+        $orders = $order->db()
+            ->where("_status","Running")
+            ->where("_account",Ascio::getConfig()->getPartner("v2"))
+            ->get();
+        
+        foreach($orders as $orderResult) {
+            $sync = new Sync();
+            echo "getOrder: ".$orderResult->OrderId."\n";
+            $order = $sync->getOrder($orderResult->OrderId);
+            if($order->db()->_status == OrderStatusType::Completed || $order->getStatus() == OrderStatusType::Pending_End_User_Action) {
+                $params = [
+                    "OrderId" => $orderResult->OrderId,
+                    "OrderStatus" => $order->getStatus(),
+                    "Environment" =>  Ascio::getConfig()->getEnvironment(),
+                    "Account" => Ascio::getConfig()->get("v2")->account,
+                    "Module" => "update"
+                ];
+                if($order instanceof Order) {
+                    $params["DomainName"] = $order->getDomain()->getDomainName();
+                }
+                Producer::callback($order,$params);
+            }
+        } 
+        return count($orders) > 0;
     }
     /**
      * Fix for OrderIDs without prefix
