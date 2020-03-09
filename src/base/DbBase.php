@@ -6,6 +6,8 @@ use ascio\lib\AscioException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use stdClass;
 use ascio\v2\Order;
+use DateTime;
+use DateTimeZone;
 use Exception;
 
 class DbBase extends BaseClass {
@@ -69,12 +71,20 @@ class DbBase extends BaseClass {
     }
     public function deserialize($obj) : DbBase {
         foreach((array )$obj as $key => $value) {
-            if(is_object($value)) {
+            if(is_object($value) && property_exists($value,"timezone_type")) {
+                $format = 'Y-m-d H:i:s.u';
+                $date = DateTime::createFromFormat($format, $value->date);
+                $date->setTimezone(new DateTimeZone($value->timezone));
+                $this->set($key,$date);
+            } elseif(is_object($value)) {
                if($this->objects()->exists($key)) {
                     /**
                      * @var DbClass $newObj
                      */
-                    $newObj = $this->_get($key) ?: $this->createProperty($key);
+                    $newObj = $this->get($key) ?: $this->createProperty($key);
+                    if(is_string($newObj)) {
+                        throw new Exception($key ." should be an object. String found: ".$newObj);
+                    }
                     $newObj->deserialize($value);
                } elseif($key =="DbAttributes") {
                     foreach($value as $k => $v) {

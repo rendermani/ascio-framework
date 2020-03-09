@@ -8,6 +8,7 @@ use ascio\base\v2\RequestRootElement;
 use ascio\lib\AscioOrderExceptionV2;
 use ascio\v2\Response;
 use ascio\lib\Producer;
+use DateTime;
 
 class ServiceBase extends \SoapClient {
     private $sessionId;
@@ -41,6 +42,7 @@ class ServiceBase extends \SoapClient {
         }  
         $requestObject->set((array) $args);
         $argsNew = [$function => $requestObject->properties()->toArray()];
+        $argsNew =  $this->serializeDate($argsNew);
         $result = $this->__soapCall($function, $argsNew, $options, $input_headers, $output_headers);        
         /**
          * @var Response $status
@@ -63,6 +65,16 @@ class ServiceBase extends \SoapClient {
         $result->init();
         return $result;
     }
+    private function serializeDate($object) {
+        foreach($object as $key => $value) {
+            if($value instanceof DateTime) {
+                $object[$key] = $value->format('Y-m-d\TH:i:s.u');
+            } elseif (is_array($value)) {
+                $object[$key] = $this->serializeDate($value);
+            }
+        }
+        return $object;
+    } 
     private function requestSessionId() {
         $session= array(
             "Account" => $this->getConfig()->account,
