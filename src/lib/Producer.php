@@ -104,8 +104,8 @@ class KafkaTopicProducer {
         }
     }
     public function produceIncremental(?BaseClass $obj = null,$properties = null) {
-        $serialized = $properties["action"] == "update" ? $obj->serializeIncremental() : $obj->serialize();
-        $incremental = $properties["action"] == "update" ? true : false;
+        $incremental = $properties["action"] == "update";
+        $serialized = $incremental  ? $obj->serializeIncremental() : $obj->serialize();
         $payload = [
             "object" => $obj ? $serialized : null,
             "class" => get_class($obj),
