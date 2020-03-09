@@ -20,5 +20,8 @@ class MessageDb extends DbModel {
 			if($blueprintFunction) $blueprintFunction($table);
 		}); 
 	}
+	public function scopeOrderId($query,$orderId) {
+		return $query->where('_orderId',$orderId);
+	}
 
 }
