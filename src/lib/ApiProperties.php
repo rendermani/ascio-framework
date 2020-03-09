@@ -87,7 +87,10 @@ class ApiProperties implements \Iterator {
             if($object instanceof ArrayInterface) {
                 $out->$key = new stdClass();
                 foreach($object as $item) {
-                    $out->$key->{$object->getArrayKey()}[] = $item->properties()->cleanObject($incremental); 
+                    $out->$key->{$object->getArrayKey()}[] = 
+                        $item instanceof BaseClass ?
+                        $item->properties()->cleanObject($incremental) :
+                        $item;
                 }
             } elseif($object instanceOf BaseClass) {
                 $out->$key= $object->properties()->cleanObject($incremental);                                
