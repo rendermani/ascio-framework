@@ -1,6 +1,4 @@
 #!/bin/bash
-cd docker
-docker-compose run  php composer install
-docker-compose run  php php database/migration/create-tables.php
-docker-compose down
-cd ..
+docker-compose -f docker/docker-compose.yml run  php composer install
+docker-compose  -f docker/docker-compose.yml  run  php php database/migration/create-tables.php
+docker-compose  -f docker/docker-compose.yml  down
