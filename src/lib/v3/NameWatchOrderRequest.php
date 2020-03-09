@@ -5,4 +5,14 @@
 namespace ascio\v3;
 
 class NameWatchOrderRequest extends \ascio\service\v3\NameWatchOrderRequest {
+    protected $orderId; 
+    protected $status; 
+    protected $objectPropertyName = "NameWatch";
+
+    public function getObjectName() : ?string {
+        return $this->getNameWatch()->getName();
+    }
+    public function getObjectKey() : ?string {
+        return "Name";
+    } 
 }

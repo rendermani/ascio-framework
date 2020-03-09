@@ -5,4 +5,14 @@
 namespace ascio\v3;
 
 class MarkOrderRequest extends \ascio\service\v3\MarkOrderRequest {
+    protected $orderId; 
+    protected $status; 
+    protected $objectPropertyName = "Mark";
+
+    public function getObjectName() : ?string {
+        return $this->getMark()->getMarkName();
+    }
+    public function getObjectKey() : ?string {
+        return "MarkName";
+    } 
 }
