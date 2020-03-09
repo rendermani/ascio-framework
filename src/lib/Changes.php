@@ -101,7 +101,7 @@ class Changes  {
             return $this->getArrayChanges();
         } else {
             foreach($this->new->properties() as $key => $value) {
-                if($key == "CreDate" || $key == "ExpDate" || $key == "TransferLock" || $key=="DeleteLock" || $key=="UpdateLock" ) {
+                if($key == "TransferLock" || $key=="DeleteLock" || $key=="UpdateLock" ) {
                     continue;
                 }
                 if($this->propertyChanged($key)) {
