@@ -10,7 +10,7 @@ interface OrderInterface {
     public function submit(?SubmitOptions $submitOptions=null) : self;
     public function queue(?SubmitOptions $submitOptions=null) : self;
     public function getOrderId();
-    public function getStatus();
+    public function getStatus() : ?string;
     public function getType();
     public function shouldQueue() : bool;
     public static function mapWorflowStatus($status);
@@ -24,4 +24,5 @@ interface OrderInterface {
     public function syncApi() : self;
     public function getMessages();
     public function getStatusSerializer() : StatusSerializer;
+    public function db($db=null);
 }
