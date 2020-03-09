@@ -33,7 +33,6 @@ class ServiceBase extends \SoapClient {
         /**
          * @var $result AbstractResponse
          */
-        $args["request"] = $args["request"]->properties()->toArray();
         $result = $this->__soapCall($function, [$function => $args], $options, $input_headers, $output_headers);    
         $resultObject = $result->{$function."Result"};      
         $resultObject->init();
