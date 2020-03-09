@@ -6,22 +6,22 @@ namespace ascio\v2;
 
 use ascio\base\OrderInterface;
 use ascio\base\TaskInterface;
-use ascio\lib\Ascio;
+use ascio\db\v2\MessageDb;
+use ascio\db\v2\QueueItemDb;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use ascio\lib\OrderStatus;
 use ascio\lib\Producer;
 use ReflectionClass;
 use ascio\lib\AscioOrderException;
 use ascio\lib\SubmitOptions;
-use ascio\service\v2\Domain;
 use ascio\lib\DomainBlocker;
-use ascio\lib\LogLevel;
 use ascio\lib\StatusSerializer;
 use ascio\lib\TaskTrait;
-use Exception;
 
 class Order extends \ascio\service\v2\Order implements OrderInterface, TaskInterface {       
     use TaskTrait;
+    public $Messages = [];
+    public $QueueItems = [];
     public $lastResult;
     /**
      * @var SubmitOptions $submitOptions
@@ -86,6 +86,9 @@ class Order extends \ascio\service\v2\Order implements OrderInterface, TaskInter
                 $order = $e->getOrder();
                 $this->lastResult = $e->result->getCreateOrderResult();
                 $this->set($order);
+                $this->db()->_message = $this->lastResult->getMessage();
+                $this->db()->_code = $this->lastResult->getResultCode();
+                $this->db()->_values = $this->lastResult->getValues();
                 $this->produce(["action"=>"update"]);                
                 $e =  new AscioOrderException($e->result->getCreateOrderResult()->getMessage(),406);
                 $e->setOrder($order);
@@ -156,10 +159,16 @@ class Order extends \ascio\service\v2\Order implements OrderInterface, TaskInter
         return $this;
     }
     /**
-     * @return ArrayOrMessage 
+     * @return Array 
      */
-    public function getMessages() {
-        $this->api()->getClient()->getMessages($this->getOrderId()); 
+    private function getDbQueueItems() {
+        $db = new QueueItemDb();
+        foreach($db->byOrderId($this->getOrderId())->get() as $item) {
+            $queueItem = new QueueItem();
+            $queueItem->set($item);
+            $this->QueueItems[] = $queueItem;
+        } 
+        return $this->QueueItems;
     }
     public function getStatusSerializer() : StatusSerializer
     {      
@@ -167,8 +176,57 @@ class Order extends \ascio\service\v2\Order implements OrderInterface, TaskInter
             "OrderId" => $this->getOrderId(),
             "OrderType" => $this->getType(),
             "Status" => $this->getStatus() . " (".$this->getWorkflowStatus().")", 
-            "DomainName" => $this->getDomain() ? $this->getDomain()->getDomainName() : "Missing domain name" 
+            "ObjectName" => $this->getDomain() ? $this->getDomain()->getDomainName() : "Missing object name"
         ]);
         return $this->_statusSerializer;
+    }
+    /**
+     * Get the array of Messages
+     */ 
+    public function getMessages()
+    {
+        if(count($this->Messages) > 0) return $this->Messages;
+        $messageDb = new MessageDb();
+        $messages =  $messageDb->orderId($this->getOrderId());       
+        $this->Messages = new ArrayOfMessage();
+        foreach($messages as $message) {
+            $this->Messages->add($message);
+        }
+        return $this->Messages;
+    }
+    /**
+     * Get last Message
+     */ 
+    public function getLastMessage() : ?Message
+    {
+        if(count($this->Messages) > 0) return last($this->Messages);
+        $messageDb = new MessageDb();
+        $item =  $messageDb->orderId($this->getOrderId())->get()->last();     
+        if(!$item) return null; 
+        $message = new Message();
+        $message->set($item);
+        return $message; 
+    }
+        /**
+     * Get the text of Messages
+     */ 
+
+    /**
+     * Get the array of Messages
+     */ 
+    public function getQueueItems()
+    {
+        if(count($this->QueueItems) > 0) return $this->QueueItems;
+        return $this->getDbQueueItems();
+    }
+        /**
+     * Get the text of Messages
+     */ 
+    public function getLastQueueItem()
+    {
+        if(count($this->getQueueItems()) == 0) return null;
+
+    
+        return last($this->getQueueItems())->getMsg();
     }
 }
