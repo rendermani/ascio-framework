@@ -37,8 +37,10 @@ abstract class Response extends Base  {
 		$this->set("Values", $Values);
 		return $this;
 	}
-	public function getValues () : ?\ascio\v2\ArrayOfstring {
-		return $this->get("Values", "\\ascio\\v2\\ArrayOfstring");
+	public function getValues () {
+		//todo: return array of string. Now it's an array 
+		return $this->Values->string;
+		//return $this->get("Values", "\\ascio\\v2\\ArrayOfstring");
 	}
 	public function createValues () : \ascio\v2\ArrayOfstring {
 		return $this->create ("Values", "\\ascio\\v2\\ArrayOfstring");
