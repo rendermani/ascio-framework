@@ -16,7 +16,7 @@ The only requirement is docker. It can be downloaded here: https://www.docker.co
 1. Clone repository: `git clone https://github.com/rendermani/ascio-framework.git ascio-framework`
 2. `cd ascio-framework`
 3. `chmod u+x bin/init.sh`
-4. Run `bin/init.sh`
+4. Run `bin/init.sh <<github token>>`. The github-token can be used to extend quotas (Could not authenticate against github.com). It can be obtained here: https://github.com/settings/tokens
 5. Set missing passwords in the **.env**
 6. Enter the ascio-credentials in **config/accounts/default.json**
 7. Run `bin/up.sh`
