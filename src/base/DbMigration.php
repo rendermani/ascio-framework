@@ -7,19 +7,24 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use ascio\lib\Ascio;
 use ascio\base\DbArrayBase;
+use ascio\lib\LogLevel;
+use ascio\lib\StatusSerializer;
 use ascio\v2\Order;
 
 class DbMigration extends DbModelBase {
+	protected $serializer;
 	public function createTables(?\Closure $blueprintCallback=null) {
 		// don't create a table for every substituted type. One table		
+		$this->serializer = new StatusSerializer($this->parent());
 		if($this->parent()->substitutions() && $this->parent()->substitutions()->isSubstituted()) {
 			return;
 		}
-		if($this->createSubstituedTables()) {			
+		if($this->createSubstituedTables()) {				
 			return; 
 		}
 		if(!$this->parent() instanceOf DbArrayBase) {	
-			if(!Capsule::Schema()->hasTable($this->table)) {
+			if(!Capsule::Schema()->hasTable($this->table)) {				
+				   
 				$self = $this;
 				Capsule::Schema()->create($this->table,function(Blueprint $table) use ($self, $blueprintCallback)  {	
 					$table->string('_id')->primary();					
@@ -51,6 +56,7 @@ class DbMigration extends DbModelBase {
 			return false; 
 		}
 		if(!Capsule::Schema()->hasTable($this->table)) {
+			echo $this->serializer->console(LogLevel::Info,"Creating table ".$this->table);
 			$properties = [];
 			foreach($this->parent()->substitutions() as $name => $class) {
 				$newObject = new $class; 					
@@ -134,4 +140,5 @@ class DbMigration extends DbModelBase {
 			default : return "string";
 		};
 	}
+
 }
