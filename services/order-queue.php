@@ -25,7 +25,11 @@ Consumer::callback(function($payload) use ($log) {
             $status == OrderStatus::Completed && 
             $payload->OrderStatus !== OrderStatusType::Invalid
     ) {
-        $order = new Order();  
+        /**
+         * @var OrderInfoInterface $order 
+         */
+        $name = "ascio\\v3\\".str_replace($payload->ObjectType,"Type","");
+        $order = $payload->ObjectType=="DomainType" ? new Order() : new $name();  
         try {
             $order->db()->getByOrderId($payload->OrderId);
         } catch (ModelNotFoundException $e) {
@@ -38,8 +42,8 @@ Consumer::callback(function($payload) use ($log) {
             $order->setStatus($payload->OrderStatus);
             $order->setWorkflowStatus();
             echo $order->getStatusSerializer()->console(LogLevel::Info,"Completed");
-            DomainBlocker::unblock($payload->DomainName);
-            $newOrder = $order->db()->nextDomain($payload->DomainName);
+            DomainBlocker::unblock($payload->ObjectName);
+            $newOrder = $order->db()->nextDomain($payload->ObjectName);
             $text = " next";
         } catch (ModelNotFoundException $e) {
             return; 
@@ -57,7 +61,7 @@ Consumer::callback(function($payload) use ($log) {
     } elseif ($status == OrderStatus::Submitting) {
         $serializer = new StatusSerializer();
         echo $serializer->setFields($payload)->console(LogLevel::Info,"Block");
-        DomainBlocker::block($payload->DomainName);
+        DomainBlocker::block($payload->ObjectName);
         return;
     } else {
         echo $payload->object->getStatusSerializer()->console(LogLevel::Info,"No action for ".$payload->object->getOrderStatus());
@@ -68,7 +72,7 @@ Consumer::callback(function($payload) use ($log) {
         $newOrder->submit();
     } catch (AscioException $e) {
         echo $newOrder->getStatusSerializer()->console(LogLevel::Error,$e->getMessage());
-        DomainBlocker::unblock($payload->DomainName);
+        DomainBlocker::unblock($payload->ObjectName);
         Producer::log($newOrder,[
             "messageType" => "error",
             "orderId" => $newOrder->getOrderId(),
