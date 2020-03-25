@@ -20,6 +20,8 @@ use ascio\v3\KeyValue;
 use ascio\v3\NameWatchInfo;
 use ascio\v2\Extension;
 use ascio\v2\CallbackStatus;
+use ascio\v3\ArrayOfErrorCode;
+use ascio\v3\ErrorCode;
 use ascio\v3\Message as V3Message;
 
 require(__DIR__."/../../vendor/autoload.php");
@@ -60,11 +62,11 @@ $callbackStatus = new CallbackStatus();
 $callbackStatus->db()->createTables();
 
 echo "\nCreate v3\n\n";
-echo "Create Extension\n";
+echo "Create OrderInfo\n";
 $order = new v3\OrderInfo();
 $order->db()->createTables();
 
-echo "Create Extension\n";
+echo "Create AbstractOrderRequest\n";
 $order = new v3\AbstractOrderRequest();
 $order->db()->createTables();
 
@@ -73,6 +75,13 @@ echo "Create Message\n";
 $message = new V3Message();
 $message->db()->createTables();
 
+echo "Create QueueMessage\n";
+$message = new v3\QueueMessage();
+$message->db()->createTables();
+
+echo "Create Error\n";
+$error = new ErrorCode();
+$error->db()->createTables();
 
 echo "Create AbstractResponse\n";
 $response = new v3\AbstractResponse();
