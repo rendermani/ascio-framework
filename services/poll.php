@@ -1,50 +1,54 @@
 <?php
 namespace ascio\lib;
 use ascio\v2\MessageType as AscioMessageType;
+use ascio\v3\AckQueueMessageRequest;
+use ascio\v3\MessageType;
+use ascio\v3\PollQueueRequest;
 use SoapFault;
 
 require(__DIR__."/../vendor/autoload.php");
 
+
 function poll() {
     //echo "[poll] Lookup new messages for ".Ascio::getConfig()->get("v2")->account."\n";
-    $result = Ascio::getClientV2()->pollMessage(AscioMessageType::Message_to_Partner);
-    $item = $result->getItem();    
+    $queueRequest = new PollQueueRequest();
+    $queueRequest->setMessageType(MessageType::MessageToPartner);
+    $item = Ascio::getClientV3()->pollQueue($queueRequest)->getMessage();
+    if($item) {
+        echo "\n";
+    }
     while($item) {
-        $orderId = prefix().$item->getOrderId();
+        $orderId = $item->getOrderId();
         $item->setOrderId($orderId);
-        echo $item->getStatusSerializer()->console(LogLevel::Info,"Got poll item");
-        Producer::callback($item,[
+        $params = [
             "OrderId" => $orderId,
-            "MessageId" => $item->getMsgId(),
+            "MessageId" => $item->getId(),
             "OrderStatus" => $item->getOrderStatus(),
-            "DomainName" => $item->getDomainName(),
+            "ObjectName" => $item->getObjectName(),
+            "ObjectHandle" => $item->getObjectHandle(),
+            "ObjectType" => $item->getObjectType(),
             "Environment" =>  Ascio::getConfig()->getEnvironment(),
-            "Account" => Ascio::getConfig()->get("v2")->account,
+            "Account" => Ascio::getConfig()->get("v3")->account,
             "Module" => "poll"
-            ]
-        );
+        ];
+        echo $item->getStatusSerializer()->addFields($params)->console(LogLevel::Info,"Got poll item");
+        Producer::callback($item, $params);
         $item->produce();
-        Ascio::getClientV2()->ackMessage($item->getMsgId());
-        $result = Ascio::getClientV2()->pollMessage(AscioMessageType::Message_to_Partner);
-        $item = $result->getItem();    
+        $request = new AckQueueMessageRequest();
+        $request->setMessageId($item->getId());
+        Ascio::getClientV3()->ackQueueMessage($request);
+        $item = Ascio::getClientV3()->pollQueue($queueRequest)->getMessage();
+
     }
    
 }
-function prefix () {
-    if(Ascio::getConfig()->getEnvironment()=="live") {
-        return "";
-    } else {
-        return "TEST";
-    }
-}
-
 echo "[poll] Start service\n";
 $logger = new Logger("poll");
 $statusSerializer = $logger->getSerializer();
 $statusSerializer->setClass("poll.php");
 while(true) {
     try {
-        poll($prefix);
+        poll();
     }
     catch (AscioException $e) {
         $logger->console(LogLevel::Error,$e->getCode() ." - " .$e->getMessage());;
