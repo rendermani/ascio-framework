@@ -154,7 +154,7 @@ class BaseClass {
     }
     private function merge(BaseClass $source) : BaseClass {
         if(get_class($this) !== get_class($source)) {
-            throw new \Exception('$this and $source must have the same class');
+            throw new \Exception('$this ('.get_class($this).') and $source ('.get_class($source).') must have the same class');
         }
         foreach ($source->properties() as $key => $value) {                                                
             if(($value instanceof ArrayBase) || ($value instanceof DbArrayBase)) {
