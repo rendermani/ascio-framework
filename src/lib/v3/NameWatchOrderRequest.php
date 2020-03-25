@@ -12,7 +12,7 @@ class NameWatchOrderRequest extends \ascio\service\v3\NameWatchOrderRequest {
     public function getObjectName() : ?string {
         return $this->getNameWatch()->getName();
     }
-    public function getObjectKey() : ?string {
+    public function getObjectKey() : string {
         return "Name";
     } 
 }

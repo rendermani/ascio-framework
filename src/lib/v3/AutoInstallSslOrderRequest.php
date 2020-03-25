@@ -12,7 +12,7 @@ class AutoInstallSslOrderRequest extends \ascio\service\v3\AutoInstallSslOrderRe
     public function getObjectName() : ?string {
         return $this->getAutoInstallSsl()->getCommonName();
     }
-    public function getObjectKey() : ?string {
+    public function getObjectKey() : string {
         return "CommonName";
     } 
 }

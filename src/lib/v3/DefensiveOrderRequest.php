@@ -12,7 +12,7 @@ class DefensiveOrderRequest extends \ascio\service\v3\DefensiveOrderRequest {
     public function getObjectName() : ?string {
         return $this->getDefensive()->getName();
     }
-    public function getObjectKey() : ?string {
+    public function getObjectKey() : string {
         return "Name";
     } 
 }

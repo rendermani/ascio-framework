@@ -12,7 +12,7 @@ class MarkOrderRequest extends \ascio\service\v3\MarkOrderRequest {
     public function getObjectName() : ?string {
         return $this->getMark()->getMarkName();
     }
-    public function getObjectKey() : ?string {
+    public function getObjectKey() : string {
         return "MarkName";
     } 
 }
