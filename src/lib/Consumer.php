@@ -9,22 +9,22 @@ use Exception;
 
 class  Consumer {
     public static function object (\closure $function) {
-        TopicConsumer::consume("object.full",$function);
+        TopicConsumer::consume("object.full","object",$function);
     }
     public static function objectIncremental (\closure $function) {
-        TopicConsumer::consume("object.incremental",$function);
+        TopicConsumer::consume("object.incremental","object",$function);
     }
     public static function callback (\closure $function) {
-        TopicConsumer::consume("callback",$function);
+        TopicConsumer::consume("callback","callback",$function);
     }
     public static function log (\closure $function) {
-        TopicConsumer::consume("log",$function);
+        TopicConsumer::consume("log","log", $function);
     }   
 }
 class TopicConsumer {
-    public static function consume ($topic,\closure $function) {
+    public static function consume ($topic,$group, \closure $function) {
         global $_ObjectConsumer;
-        if(!$_ObjectConsumer[$topic]) $_ObjectConsumer[$topic] = new KafkaTopicConsumer($topic);
+        if(!$_ObjectConsumer[$topic]) $_ObjectConsumer[$topic] = new KafkaTopicConsumer($topic,0,$group);
         $_ObjectConsumer[$topic]->consume(function($payload) use ($function) {
             $className = $payload->class; 
             if($className && $payload->object) {
@@ -47,7 +47,7 @@ class KafkaTopicConsumer {
      * @var RdKafka\KafkaConsumer $consumer 
      */ 
     public $consumer; 
-    public function __construct(string $topic, ?int $partition = 0)
+    public function __construct(string $topic, ?int $partition = 0, $group)
     {
         $topic = "ascio.api.framework.".$topic;
         echo "Running consumer...topic: ".$topic."\n";
@@ -63,8 +63,8 @@ class KafkaTopicConsumer {
         //$topicConf->set('offset.store.sync.interval.ms', 1000);
         $topicConf->set('enable.auto.commit', 'false');
         // Set the offset store method to 'file'
-        $topicConf->set('offset.store.method', 'file');
-        $topicConf->set('offset.store.path', sys_get_temp_dir());
+        $topicConf->set('offset.store.method', 'broker');
+        //$topicConf->set('offset.store.path', sys_get_temp_dir());
         // Alternatively, set the offset store method to 'broker'
         // $topicConf->set('offset.store.method', 'broker');
         // Set where to start consuming messages when there is no initial offset in
@@ -75,7 +75,7 @@ class KafkaTopicConsumer {
 
     }    
     public function consume( \closure $function) {             
-        $this->topic->consumeStart($this->partition, RD_KAFKA_OFFSET_STORED);
+        $this->topic->consumeStart( $this->partition, RD_KAFKA_OFFSET_STORED);
         while (true) {
             $message = $this->topic->consume($this->partition, 1000);
             switch ($message->err) {
