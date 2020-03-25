@@ -15,7 +15,7 @@ class QueueItem extends \ascio\service\v2\QueueItem {
             "OrderId" => $this->getOrderId(),
             "OrderStatus" => $this->getOrderStatus(), 
             "DomainName" => $this->getDomainName(),     
-            "DomainHande" => $this->getDomainHandle(),     
+            "DomainHandle" => $this->getDomainHandle(),     
             "Msg" => $this->getMsg()  
         ]);
         return $this->_statusSerializer;
