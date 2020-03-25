@@ -26,7 +26,7 @@ class StatusSerializer {
         $this->fields = array_merge($fields,$this->fields);
         return $this;
     }
-    public function console($logLevel, $text, $long = false)
+    public function console($logLevel, $text, $long = false) : string
     {
         $keyValues = [];
         $spacer = $long ? "\n" : ", ";
