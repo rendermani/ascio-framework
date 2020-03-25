@@ -28,7 +28,7 @@ class StatusSerializer {
     }
     public function console($logLevel, $text, $long = false) : string
     {
-        $keyValues = [];
+        $keyValues = ["partner" => Ascio::getConfig()->getPartner("v2")];
         $spacer = $long ? "\n" : ", ";
         foreach ($this->fields as $key => $value) {
             if(is_object($value)) {
@@ -45,7 +45,9 @@ class StatusSerializer {
         }
         $data = implode($spacer,$keyValues);
         $data = $data ?  " - ".$data : "";
-        $out = $this->getDate().$this->class." - ".$logLevel." - ".$text.$data."\n";
+        $text = $text ?  " - ".$text : "";
+
+        $out = $this->getDate().$this->class." - ".$logLevel.$text.$data."\n";
         return $out;         
     }
     public function getDate()
