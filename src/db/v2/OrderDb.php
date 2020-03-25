@@ -52,7 +52,7 @@ class OrderDb extends DbModel {
 	 *  when processing the queue the order should not be blocked
 	 */
 	public function isBlocked() {
-		$domain = $this->parent()->getDomain();
+		$domain = $this->parent()->getObjectName();
 		$domain->db()
 		->join('v2_Order', 'v2_Order.Domain', '=', 'v2_Domain._id')
 		->where('v2_Domain.DomainName',$domain->getDomainName())
@@ -60,7 +60,7 @@ class OrderDb extends DbModel {
 		->exists();
 	}      
 	public function nextDomain($domainName=null) : Order {        
-		$domainName = $domainName ?: $this->parent()->getDomain()->getDomainName();
+		$domainName = $domainName ?: $this->parent()->getObjectName();
 		if($this->isBlocked()) {
 			throw new AscioException("A blocking order is preventing getting the next order", 405);
 		}
