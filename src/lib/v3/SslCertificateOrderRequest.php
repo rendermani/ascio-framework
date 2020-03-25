@@ -24,7 +24,7 @@ class SslCertificateOrderRequest extends \ascio\service\v3\SslCertificateOrderRe
     public function getObjectName() : ?string {
         return $this->getSslCertificate()->getCommonName();
     }
-    public function getObjectKey() : ?string {
+    public function getObjectKey() : string {
         return "CommonName";
     }      
 }
