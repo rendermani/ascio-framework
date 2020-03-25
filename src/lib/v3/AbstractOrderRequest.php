@@ -4,6 +4,7 @@
 
 namespace ascio\v3;
 
+use ascio\base\OrderInfoInterface;
 use ascio\base\OrderInterface;
 use ascio\db\v2\QueueItemDb;
 use ascio\db\v3\MessageDb;
@@ -19,6 +20,7 @@ use ascio\v2\QueueItem;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use ReflectionClass;
+
 
 class AbstractOrderRequest extends \ascio\service\v3\AbstractOrderRequest implements OrderInterface{
     use TaskTrait;
@@ -40,7 +42,7 @@ class AbstractOrderRequest extends \ascio\service\v3\AbstractOrderRequest implem
         }        
         return $this;
     }
-    public  function getObjectKey() {
+    public  function getObjectKey() : string {
         throw new Exception("Please implement this");
         return null;
     }
@@ -48,7 +50,7 @@ class AbstractOrderRequest extends \ascio\service\v3\AbstractOrderRequest implem
         throw new Exception("Please implement this");
         return null;
     }
-    public function submit(?SubmitOptions $submitOptions=null) : OrderInterface {        
+    public function submit(?SubmitOptions $submitOptions=null) : OrderInfoInterface {        
         $this->submitOptions = $submitOptions ?: $this->getSubmitOptions(); 
         $this->db()->_blocking = $this->submitOptions->getBlocking();
         if($this->shouldQueue()) {
@@ -71,25 +73,26 @@ class AbstractOrderRequest extends \ascio\service\v3\AbstractOrderRequest implem
                 DomainBlocker::block($this->getObjectName());
                 $result = $this->api()->getClient()->createOrder($this);
                 $this->setWorkflowStatus(OrderStatus::Running);
-                $order = $result->getOrder();
-                $this->lastResult = $result->getCreateOrderResult();
-                $this->set($order);
+                $orderInfo = $result->getOrderInfo();
+                $this->lastResult = $result;
+                $this->setOrderId($orderInfo->getOrderId());
                 //echo $this->getStatusSerializer()->console(LogLevel::Info,"Submitted");
+                $orderInfo->setOrderRequest($this);
                 $this->produce(["action"=>"update"]);   
+                $orderInfo->produce(["action"=>"create"]);
                 // for the next submission
                 $this->getSubmitOptions()->setQueue(true);
-            } catch (AscioOrderException $e) {
+                return $orderInfo; 
+            } catch (AscioOrderExceptionV3 $e) {
                 $this->setWorkflowStatus(OrderStatus::Completed); 
-                $order = $e->getOrder();
-                $this->lastResult = $e->result->getCreateOrderResult();
-                $this->set($order);
+                $orderInfo = $e->getOrder();
+                $this->lastResult = $e->getResult();
+                $this->setStatus($orderInfo->getStatus());
+                $this->setOrderId($orderInfo->getOrderId());
                 $this->db()->_message = $this->lastResult->getResultMessage();
                 $this->db()->_code = $this->lastResult->getResultCode();
-                $this->db()->_values = $this->lastResult->getErrors();
+                $this->db()->_values = json_encode($this->lastResult->getErrors());
                 $this->produce(["action"=>"update"]);                
-                $e =  new AscioOrderExceptionV3 ($e->result->getResultMessage()->getMessage(),406);
-                $e->setOrder($order);
-                $e->setResult($e->method,$e->request,$e->status,$e->result);
                 throw $e; 
             }                                 
         }
@@ -119,7 +122,7 @@ class AbstractOrderRequest extends \ascio\service\v3\AbstractOrderRequest implem
         return $this; 
     }
 
-    public function getResult() {
+    public function getResult() : CreateOrderResponse {
         return $this->lastResult;
     }
     /**
@@ -128,32 +131,6 @@ class AbstractOrderRequest extends \ascio\service\v3\AbstractOrderRequest implem
     public function validate()  {
         $result = $this->api()->getClient()->validateOrder($this);
         return $result->getValidateOrderResult();
-    }
-    /**
-     * @return Order
-     */
-    public function syncOld($orderId) {
-        $this->setOrderId($orderId);
-        try {
-            $this->db()->getByOrderId($orderId);
-    } catch(ModelNotFoundException $e) {
-            $this->syncApi();
-        } 
-        return $this;       
-    }
-    /**
-     * @return Order 
-     */
-    public function syncApi() : OrderInterface {        
-        $this->api()->get();
-        //$this->getDomain()->syncApi(); 
-        if( $this->getStatus() == OrderStatusType::Failed ||
-            $this->getStatus() == OrderStatusType::Invalid        
-        ) {
-            $this->db()->_blocked = true;
-            $this->db()->save();
-        }
-        return $this;
     }
     /**
      * @return Array 
@@ -233,7 +210,7 @@ class AbstractOrderRequest extends \ascio\service\v3\AbstractOrderRequest implem
      */ 
     public function getOrderId(): ?string
     {
-        return $this->orderId;
+        return $this->db()->OrderId;
     }
 
     /**
@@ -243,8 +220,7 @@ class AbstractOrderRequest extends \ascio\service\v3\AbstractOrderRequest implem
      */ 
     public function setOrderId($orderId)
     {
-        $this->orderId = $orderId;
-
+        $this->db()->OrderId = $orderId;
         return $this;
     }
 
