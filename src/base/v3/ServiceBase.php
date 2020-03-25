@@ -5,6 +5,7 @@ use ascio\lib\Config;
 use ascio\v3\AbstractResponse;
 use ascio\lib\Ascio;
 use ascio\lib\AscioException;
+use ascio\lib\AscioOrderExceptionV3;
 
 class ServiceBase extends \SoapClient {
     protected $cfg;
@@ -49,7 +50,12 @@ class ServiceBase extends \SoapClient {
         return $this->config;
     }
     public function setError($function, $request, $result,$status) {
-        $exception = new AscioException($status->getResultMessage(),$status->getResultCode());
+        if($function == "ValidateOrder" || $function == "CreateOrder") { 
+            $exception = new AscioOrderExceptionV3($status->getResultMessage,$status->getResultCode);
+            $exception->setOrder($result->getOrderInfo());
+        } else {
+            $exception = new AscioException($status->getResultMessage(),$status->getResultCode());
+        }
         $exception->setResult($function,$request,$status,$result);
         $exception->setSoap($this->__getLastRequest(),$this->__getLastResponse());
         throw $exception;
