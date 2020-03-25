@@ -26,7 +26,6 @@ Consumer::objectIncremental(function($payload) {
         } 
         echo $obj->getStatusSerializer()->console(LogLevel::Info,Str::ucfirst($payload->action));  
     } catch (Exception $e) {
-        var_dump($payload->changes);
         $message = strpos($e->getMessage(),'Duplicate entry') === false ? $e->getMessage() : "Duplicate entry." ;
         echo $obj->getStatusSerializer()->console(LogLevel::Error,Str::ucfirst($payload->action).": ".$message);   
     }
