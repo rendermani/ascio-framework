@@ -52,7 +52,7 @@ class OrderDb extends DbModel {
 	 *  when processing the queue the order should not be blocked
 	 */
 	public function isBlocked() {
-		$domain = $this->parent()->getObjectName();
+		$domain = $this->parent()->getDomain();
 		$domain->db()
 		->join('v2_Order', 'v2_Order.Domain', '=', 'v2_Domain._id')
 		->where('v2_Domain.DomainName',$domain->getDomainName())
