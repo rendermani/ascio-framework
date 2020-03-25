@@ -9,9 +9,12 @@ Ascio::setConfig();
 $domain = TestLib::getDomain("testme-".uniqid().".com");
 
 try {  
+    //$domain->getRegistrant()->setPhone("1234");
+    //$domain->getAdminContact()->setPhone("1234");
+    //$domain->getTechContact()->setPhone("1234");
     $order = $domain->register();
     echo "Register: ". $domain->getDomainName()." Order: ".$order->getOrderId()." ".$order->db()->_id."\n";
-} catch (SoapFault $®e) {
+} catch (SoapFault $e) {
     echo $e->getMessage()."\n\n";
     echo ascio::getClientV2()->__getLastRequest();
 }
