@@ -1,6 +1,7 @@
 <?php
 namespace ascio\lib;
 
+use ascio\base\OrderInfoInterface;
 use ascio\base\OrderInterface;
 use ascio\v2\SearchOrderRequest;
 use ascio\v2\SearchOrderSortType;
@@ -16,7 +17,7 @@ use ascio\v3\OrderStatusType as v3OrderStatusType;
 use SoapFault;
 
 class Sync {
-    private function getDbData($orderId) {
+    public function getDbData($orderId) {
         try {
             $orderV2 = new Order();
             $orderV2->db()->getByHandle($orderId); 
@@ -36,7 +37,7 @@ class Sync {
             default: $this->getV3Object($order);break;
         }
     }
-    public function getOrder(string $orderId) : ?OrderInterface {
+    public function getOrder(string $orderId) : ?OrderInfoInterface {
         try {
             $order = $this->getDbData($this->autoPrefix($orderId));            
             $order->api()->get($orderId);   
@@ -104,24 +105,33 @@ class Sync {
         $item->db()->createDbProperties();
         Producer::object($item);
     }
-    public function syncOrders(SearchOrderRequest $searchOrderRequest = null) {
+    public function syncOrders(SearchOrderRequest $searchOrderRequest = null,$index = 1) {
         $pagesize = 100;
         $searchOrderRequest = $searchOrderRequest ?: new SearchOrderRequest();
         $searchOrderRequest->setOrderSort(SearchOrderSortType::CreDateDesc);
         $searchOrderRequest->setIncludeDomainDetails(false);
         $page = new PagingInfo();
         $page->setPageSize($pagesize);
-        $index = 1;
         $page->setPageIndex($index);
         $searchOrderRequest->setPageInfo($page);
-        $result = Ascio::getClientV2()->searchOrder($searchOrderRequest);
+        try {
+            $result = Ascio::getClientV2()->searchOrder($searchOrderRequest);
+        } catch (SoapFault $e) {
+            $this->error("SoapFault",["message" => $e->getMessage(), "code" =>$e->getCode(),"index" => $index]);
+            echo Ascio::getClientV2()->__getLastRequest();
+            sleep(5);
+            return $this->syncOrders($searchOrderRequest,$index); 
+        }
         $nr = 0; 
         if($result->getSearchOrderResult()->getResultCode()==554) {
-            echo "Error syncing. Retrying after 5 seconds\n";
-            var_dump($result->getSearchOrderResult()->properties()->toArray());
+            $this->error("SoapFault",["message" => $result->getSearchOrderResult()->getMessage(), "code" =>$result->getSearchOrderResult()->getResultCode(),"index" => $index]);
             sleep(5);            
-            $this->syncOrders();
+            return $this->syncOrders($searchOrderRequest,$index);
         }
+        if($result->getOrders() == null) {
+            var_dump($result->toJson());
+        }
+        //var_dump($result->getOrders()->properties()->toArray());
         while($result->getOrders()->valid()) {    
             foreach ($result->getOrders() as $order) {
                 echo $nr++." | ".$index." : ".$order->getOrderId()."\n";
@@ -129,8 +139,21 @@ class Sync {
             }
             $index = $index + 1; 
             $page->setPageIndex($index);
-            $result = Ascio::getClientV2()->searchOrder($searchOrderRequest);
+            try {
+                $result = Ascio::getClientV2()->searchOrder($searchOrderRequest);
+            } catch (SoapFault $e) {
+                $this->error("SoapFault",["message" => $e->getMessage(), "code" =>$e->getCode(),"index" => $index]);
+                echo Ascio::getClientV2()->__getLastRequest();
+                sleep(5);
+                return $this->syncOrders($searchOrderRequest,$index);
+            }
         } 
+    }
+    public function error($text, $fields) {
+        $s = new StatusSerializer();
+        $s->addFields($fields);
+        echo $s->console(LogLevel::Error,"Sync failed: ".$text,true);
+
     }
     public function syncMessages(string $orderId) {
         try {
@@ -164,7 +187,7 @@ class Sync {
                     "Module" => "update"
                 ];
                 if($order instanceof Order) {
-                    $params["DomainName"] = $order->getDomain()->getDomainName();
+                    $params["ObjectName"] = $order->getDomain()->getDomainName();
                 }
                 Producer::callback($order,$params);
             }
@@ -184,8 +207,8 @@ class Sync {
             return "TEST".$id;
         }
     }
-    private function log($obj,$action) {
-        echo $obj->getStatusSerializer()->console(LogLevel::Info,Str::ucfirst($action));
+    private function log($obj,$action,$fields = []) {
+        echo $obj->getStatusSerializer()->addFields($fields)->console(LogLevel::Info,Str::ucfirst($action));
     }
 }
 
