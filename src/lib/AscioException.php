@@ -2,7 +2,7 @@
 namespace ascio\lib;
 
 use ascio\v2\Response;
- 
+use ascio\v3\CreateOrderResponse;
 
 class AscioException extends \Exception {
     public $values;
@@ -87,10 +87,10 @@ class AscioOrderException extends AscioException {
 class AscioOrderExceptionV3 extends AscioOrderException{
     public function getErrors() {
         /**
-         * @var Response $status 
+         * @var CreateOrderResponse $status 
          */
         $status = $this->status;
-        $values = $status->getValues()->getString();
+        $values = $status->getErrors()->getString();
         $values = is_array($values) ? $values : [$values];
         return $values;         
     }
@@ -112,6 +112,10 @@ class AscioOrderExceptionV3 extends AscioOrderException{
             echo "<h4>Errors</h4>";
         }   
         echo $this->formatErrors();       
+    }
+    function getResult() : CreateOrderResponse
+    {
+        return $this->result;
     }
 }
 class AscioOrderExceptionV2 extends AscioOrderException{
