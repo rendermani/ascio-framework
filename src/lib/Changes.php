@@ -80,7 +80,7 @@ class Changes  {
         $newProperty = $this->new->_get($name);        
         if($newProperty instanceof ArrayInterface) {
             foreach ($newProperty as $key => $obj) {
-                if($obj->api()->changes()->hasChanges()) {
+                if($obj->hasApi() && $obj->api()->changes()->hasChanges()) {
                     return true;
                 }
             }
