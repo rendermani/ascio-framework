@@ -4,6 +4,7 @@
 
 namespace ascio\v2;
 
+use ascio\base\OrderInfoInterface;
 use ascio\base\OrderInterface;
 use ascio\base\TaskInterface;
 use ascio\db\v2\MessageDb;
@@ -18,7 +19,7 @@ use ascio\lib\DomainBlocker;
 use ascio\lib\StatusSerializer;
 use ascio\lib\TaskTrait;
 
-class Order extends \ascio\service\v2\Order implements OrderInterface, TaskInterface {       
+class Order extends \ascio\service\v2\Order implements OrderInterface, OrderInfoInterface, TaskInterface {       
     use TaskTrait;
     public $Messages = [];
     public $QueueItems = [];
@@ -42,7 +43,7 @@ class Order extends \ascio\service\v2\Order implements OrderInterface, TaskInter
         if($this->submitOptions->getSubmitAfterQueue()) {
             Producer::callback($this,[
                 "OrderStatus"=> OrderStatus::Queued,
-                "DomainName"=> $this->getDomain()->getDomainName(),
+                "ObjectName"=> $this->getDomain()->getDomainName(),
                 "OrderType"=> $this->getType(),
                 "OrderId"=> $this->getOrderId(),
                 "Module" => "order"
@@ -50,7 +51,7 @@ class Order extends \ascio\service\v2\Order implements OrderInterface, TaskInter
         }        
         return $this;
     }
-    public function submit(?SubmitOptions $submitOptions=null) : OrderInterface {        
+    public function submit(?SubmitOptions $submitOptions=null) : OrderInfoInterface {        
         $this->submitOptions = $submitOptions ?: $this->getSubmitOptions();
         $domainName = $this->getDomain()->getDomainName();   
         $this->db()->_blocking = $this->submitOptions->getBlocking();
@@ -64,7 +65,7 @@ class Order extends \ascio\service\v2\Order implements OrderInterface, TaskInter
             $this->setWorkflowStatus(OrderStatus::Submitting); 
             Producer::callback(null,[
                 "OrderStatus"=> OrderStatus::Submitting,
-                "DomainName"=> $domainName,
+                "ObjectName"=> $domainName,
                 "OrderType"=> $this->getType(),
                 "Module" => "order"
             ]);    
@@ -96,7 +97,7 @@ class Order extends \ascio\service\v2\Order implements OrderInterface, TaskInter
                 throw $e; 
             }                                 
         }
-        return $this;
+        return $order;
     }
     public static function mapWorflowStatus($status) {
         switch($status) {
@@ -147,7 +148,7 @@ class Order extends \ascio\service\v2\Order implements OrderInterface, TaskInter
     /**
      * @return Order 
      */
-    public function syncApi() : OrderInterface {        
+    public function syncApi() : OrderInfoInterface {        
         $this->api()->get();
         //$this->getDomain()->syncApi(); 
         if( $this->getStatus() == OrderStatusType::Failed ||
@@ -229,4 +230,10 @@ class Order extends \ascio\service\v2\Order implements OrderInterface, TaskInter
     
         return last($this->getQueueItems())->getMsg();
     }
+    public function getObjectName() : ?string {
+        return $this->getDomain()->getDomainName();
+    }
+    public function getObjectKey() : string {
+        return "DomainName";
+    } 
 }
