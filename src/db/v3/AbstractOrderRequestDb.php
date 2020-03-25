@@ -16,6 +16,63 @@ use Illuminate\Support\Facades\DB;
 class AbstractOrderRequestDb extends DbModel {
 	protected $table="v3_AbstractOrderRequest";
 	protected $objectPropertyName; 
+	// todo: Make abstract db possible with overwriting createTable()
+	protected $_customColumnTypes = [
+		"OrderId" => [
+			"type" => "string",
+			"parameters" => [
+				"nullable" => true,
+				"length" => 10					
+			]
+		],
+		"Response" => [
+			"type" => "string",
+			"parameters" => [
+				"nullable" => true,
+				"length" => 255					
+			]
+		],
+		"_blocking" => [
+			"type" => "string",
+			"parameters" => [
+				"nullable" => true,
+				"length" => 255			
+			]
+		],
+		"_topic" => [
+			"type" => "string",
+			"parameters" => [
+				"nullable" => true,
+				"length" => 255					
+			]
+		],
+		"_status" => [
+			"type" => "string",
+			"parameters" => [
+				"nullable" => true,
+				"length" => 255					
+			]
+		],
+		"_code" => [
+			"type" => "string",
+			"parameters" => [
+				"nullable" => true,
+				"length" => 255					
+			]
+		],
+		"_values" => [
+			"type" => "text",
+			"parameters" => [
+				"nullable" => true			
+			]
+		],
+		"_message" => [
+			"type" => "text",
+			"parameters" => [
+				"nullable" => true,			
+			]
+		]
+	];
 	public function syncToDb() {
 		parent::setAttribute("_part_of_order", true);
 		parent::setAttribute("_order", true);
@@ -105,12 +162,5 @@ class AbstractOrderRequestDb extends DbModel {
 	public function scopeCompleted($query) {
 		return $query
 			->where('Status',OrderStatusType::Completed);
-	}
-	public function createTables(?\Closure $blueprintFunction=null) {
-		parent::createTables(function(Blueprint $table) use ($blueprintFunction){
-			$table->string('_topic')->index()->nullable();
-			$table->string('Response')->index()->nullable();
-			if($blueprintFunction) $blueprintFunction($table);
-		}); 
 	}
 }
