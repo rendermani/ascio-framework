@@ -30,6 +30,9 @@ fi
 # start all docker containers
 bin/up.sh
 # install all php dependancies
+if [[ -n $1 ]]; then
+    docker exec ascio-framework-php composer config -g github-oauth.github.com $1
+fi
 docker exec ascio-framework-php composer install
 # create new tables
 docker exec ascio-framework-php php database/migration/create-tables.php
