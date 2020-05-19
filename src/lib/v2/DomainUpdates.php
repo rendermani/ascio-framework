@@ -4,6 +4,8 @@
 
 namespace ascio\v2;
 
+use ascio\base\BaseClass;
+use ascio\base\DbBase;
 use ascio\lib\LockType;
 
 class DomainUpdates {
@@ -24,7 +26,7 @@ class DomainUpdates {
             "Reseller" => $this->domain->getResellerContact() ? $this->domain->getResellerContact()->changes()->hasChanges()  : false,               
             "Nameservers" => $this->domain->getNameservers() ? $this->domain->getNameservers()->changes()->hasDeepChanges() : false,
             "DnsSec" => $this->domain->getDnsSecKeys() ? $this->domain->getDnsSecKeys()->changes()->hasDeepChanges() : false,
-            "Domain" => $this->domain->changes()->hasChanges(),
+            "Domain" => $this->domain->changes()->hasChanges(["TransferLock","DeleteLock","UpdateLock","Status"]),
             "Proxy" => $this->domain->getPrivacyProxy() ? $this->domain->getPrivacyProxy()->changes()->hasDeepChanges() : false,
         ];
         if($this->domain->getRegistrant()) {
@@ -70,10 +72,10 @@ class DomainUpdates {
         }
         return $orderTypes; 
     }
-    private function getObjectChanges(?BaseClass $obj=null) {
+    private function getObjectChanges(?DbBase $obj=null) {
         return $obj ? $obj->changes() : false;
     }
-    private function hasObjectChanges(?BaseClass $obj=null) {
+    private function hasObjectChanges(?DbBase $obj=null) {
         return $obj ? $obj->changes()->hasChanges() : false;
     }
 
