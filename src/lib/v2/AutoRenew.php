@@ -1,4 +1,4 @@
-<?
+<?php
 namespace ascio\v2;
 
 use DateTime;
