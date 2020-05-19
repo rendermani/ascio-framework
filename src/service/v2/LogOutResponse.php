@@ -8,15 +8,12 @@ use ascio\db\v2\LogOutResponseDb;
 use ascio\api\v2\LogOutResponseApi;
 
 
-abstract class LogOutResponse extends ResponseRootElement  {
+class LogOutResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["LogOutResult"];
 	protected $_apiObjects=["LogOutResult"];
 	protected $LogOutResult;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setLogOutResult (?\ascio\v2\Response $LogOutResult = null) : self {
 		$this->set("LogOutResult", $LogOutResult);
 		return $this;

@@ -8,7 +8,7 @@ use ascio\db\v2\ExtensionDb;
 use ascio\api\v2\ExtensionApi;
 
 
-abstract class Extension extends DbBase  {
+class Extension extends DbBase  {
 
 	protected $_apiProperties=["Key", "Value"];
 	protected $_apiObjects=[];
@@ -26,6 +26,7 @@ abstract class Extension extends DbBase  {
 		//set the api model
 		$api = new ExtensionApi($this);
 		$api->parent($this);
+		$api->config($this->config()->v2);
 		$this->api($api);
 	}
 	/**
@@ -53,9 +54,6 @@ abstract class Extension extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setKey (?string $Key = null) : self {
 		$this->set("Key", $Key);
 		return $this;

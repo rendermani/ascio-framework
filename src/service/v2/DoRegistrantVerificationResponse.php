@@ -8,15 +8,12 @@ use ascio\db\v2\DoRegistrantVerificationResponseDb;
 use ascio\api\v2\DoRegistrantVerificationResponseApi;
 
 
-abstract class DoRegistrantVerificationResponse extends ResponseRootElement  {
+class DoRegistrantVerificationResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["DoRegistrantVerificationResult"];
 	protected $_apiObjects=["DoRegistrantVerificationResult"];
 	protected $DoRegistrantVerificationResult;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setDoRegistrantVerificationResult (?\ascio\v2\Response $DoRegistrantVerificationResult = null) : self {
 		$this->set("DoRegistrantVerificationResult", $DoRegistrantVerificationResult);
 		return $this;

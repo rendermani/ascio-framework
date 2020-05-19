@@ -8,16 +8,13 @@ use ascio\db\v2\LogInResponseDb;
 use ascio\api\v2\LogInResponseApi;
 
 
-abstract class LogInResponse extends ResponseRootElement  {
+class LogInResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["LogInResult", "sessionId"];
 	protected $_apiObjects=["LogInResult"];
 	protected $LogInResult;
 	protected $sessionId;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setLogInResult (?\ascio\v2\Response $LogInResult = null) : self {
 		$this->set("LogInResult", $LogInResult);
 		return $this;

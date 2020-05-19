@@ -8,7 +8,7 @@ use ascio\db\v2\OrderDb;
 use ascio\api\v2\OrderApi;
 
 
-abstract class Order extends DbBase  {
+class Order extends DbBase  {
 
 	protected $_apiProperties=["OrderId", "Type", "AccountReference", "Status", "TransactionComment", "Comments", "Options", "LocalPresence", "Batch", "Documentation", "Domain", "CreDate", "AgreedPrice"];
 	protected $_apiObjects=["Domain"];
@@ -37,6 +37,7 @@ abstract class Order extends DbBase  {
 		//set the api model
 		$api = new OrderApi($this);
 		$api->parent($this);
+		$api->config($this->config()->v2);
 		$this->api($api);
 	}
 	/**
@@ -64,9 +65,6 @@ abstract class Order extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setOrderId (?string $OrderId = null) : self {
 		$this->set("OrderId", $OrderId);
 		return $this;

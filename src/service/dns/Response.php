@@ -8,7 +8,7 @@ use ascio\db\dns\ResponseDb;
 use ascio\api\dns\ResponseApi;
 
 
-abstract class Response extends Base  {
+class Response extends Base  {
 
 	protected $_apiProperties=["StatusCode", "StatusMessage", "TechnicalGuid", "TrackingReference", "Values"];
 	protected $_apiObjects=["Values"];
@@ -18,9 +18,6 @@ abstract class Response extends Base  {
 	protected $TrackingReference;
 	protected $Values;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setStatusCode (?int $StatusCode = null) : self {
 		$this->set("StatusCode", $StatusCode);
 		return $this;

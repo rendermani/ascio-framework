@@ -8,16 +8,13 @@ use ascio\db\v2\CreateContactResponseDb;
 use ascio\api\v2\CreateContactResponseApi;
 
 
-abstract class CreateContactResponse extends ResponseRootElement  {
+class CreateContactResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["CreateContactResult", "contact"];
 	protected $_apiObjects=["CreateContactResult", "contact"];
 	protected $CreateContactResult;
 	protected $contact;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setCreateContactResult (?\ascio\v2\Response $CreateContactResult = null) : self {
 		$this->set("CreateContactResult", $CreateContactResult);
 		return $this;

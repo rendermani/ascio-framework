@@ -9,7 +9,7 @@ use ascio\api\v3\SslCertificateOrderRequestApi;
 use ascio\api\v3\AbstractOrderRequestApi;
 
 
-abstract class SslCertificateOrderRequest extends AbstractOrderRequest  {
+class SslCertificateOrderRequest extends AbstractOrderRequest  {
 
 	protected $_apiProperties=["Type", "Period", "TransactionComment", "Comments", "Documentation", "Options", "SslCertificate"];
 	protected $_apiObjects=["SslCertificate"];
@@ -43,9 +43,6 @@ abstract class SslCertificateOrderRequest extends AbstractOrderRequest  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSslCertificate (?\ascio\v3\SslCertificate $SslCertificate = null) : self {
 		$this->set("SslCertificate", $SslCertificate);
 		return $this;

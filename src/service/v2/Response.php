@@ -8,7 +8,7 @@ use ascio\db\v2\ResponseDb;
 use ascio\api\v2\ResponseApi;
 
 
-abstract class Response extends Base  {
+class Response extends Base  {
 
 	protected $_apiProperties=["Message", "ResultCode", "Values"];
 	protected $_apiObjects=["Values"];
@@ -16,9 +16,6 @@ abstract class Response extends Base  {
 	protected $ResultCode;
 	protected $Values;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setMessage (?string $Message = null) : self {
 		$this->set("Message", $Message);
 		return $this;
@@ -37,10 +34,8 @@ abstract class Response extends Base  {
 		$this->set("Values", $Values);
 		return $this;
 	}
-	public function getValues () {
-		//todo: return array of string. Now it's an array 
-		return $this->Values->string;
-		//return $this->get("Values", "\\ascio\\v2\\ArrayOfstring");
+	public function getValues () : ?\ascio\v2\ArrayOfstring {
+		return $this->get("Values", "\\ascio\\v2\\ArrayOfstring");
 	}
 	public function createValues () : \ascio\v2\ArrayOfstring {
 		return $this->create ("Values", "\\ascio\\v2\\ArrayOfstring");

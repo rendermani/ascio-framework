@@ -8,7 +8,7 @@ use ascio\db\v2\UploadDocumentationDb;
 use ascio\api\v2\UploadDocumentationApi;
 
 
-abstract class UploadDocumentation extends RequestRootElement  {
+class UploadDocumentation extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "orderId", "fileName", "content"];
 	protected $_apiObjects=[];
@@ -17,9 +17,6 @@ abstract class UploadDocumentation extends RequestRootElement  {
 	protected $fileName;
 	protected $content;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

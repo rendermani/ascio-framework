@@ -8,16 +8,13 @@ use ascio\db\v2\GetDomainDb;
 use ascio\api\v2\GetDomainApi;
 
 
-abstract class GetDomain extends RequestRootElement  {
+class GetDomain extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "domainHandle"];
 	protected $_apiObjects=[];
 	protected $sessionId;
 	protected $domainHandle;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

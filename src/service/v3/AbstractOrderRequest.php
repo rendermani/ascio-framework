@@ -8,7 +8,7 @@ use ascio\db\v3\AbstractOrderRequestDb;
 use ascio\api\v3\AbstractOrderRequestApi;
 
 
-abstract class AbstractOrderRequest extends DbBase  {
+class AbstractOrderRequest extends DbBase  {
 
 	protected $_apiProperties=["Type", "Period", "TransactionComment", "Comments", "Documentation", "Options"];
 	protected $_apiObjects=[];
@@ -17,7 +17,8 @@ abstract class AbstractOrderRequest extends DbBase  {
 		["name" => "AutoInstallSslOrderRequest","type" => "\\ascio\\v3\\AutoInstallSslOrderRequest"], 
 		["name" => "SslCertificateOrderRequest","type" => "\\ascio\\v3\\SslCertificateOrderRequest"], 
 		["name" => "NameWatchOrderRequest","type" => "\\ascio\\v3\\NameWatchOrderRequest"], 
-		["name" => "DefensiveOrderRequest","type" => "\\ascio\\v3\\DefensiveOrderRequest"] 
+		["name" => "DefensiveOrderRequest","type" => "\\ascio\\v3\\DefensiveOrderRequest"], 
+		["name" => "DomainOrderRequest","type" => "\\ascio\\v3\\DomainOrderRequest"] 
 	];
 
 	protected $Type;
@@ -38,6 +39,7 @@ abstract class AbstractOrderRequest extends DbBase  {
 		//set the api model
 		$api = new AbstractOrderRequestApi($this);
 		$api->parent($this);
+		$api->config($this->config()->v3);
 		$this->api($api);
 	}
 	/**
@@ -65,9 +67,6 @@ abstract class AbstractOrderRequest extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setType (?string $Type = null) : self {
 		$this->set("Type", $Type);
 		return $this;

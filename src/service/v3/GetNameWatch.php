@@ -8,7 +8,7 @@ use ascio\db\v3\GetNameWatchDb;
 use ascio\api\v3\GetNameWatchApi;
 
 
-abstract class GetNameWatch extends DbBase  {
+class GetNameWatch extends DbBase  {
 
 	protected $_apiProperties=["request"];
 	protected $_apiObjects=["request"];
@@ -35,9 +35,6 @@ abstract class GetNameWatch extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setRequest (?\ascio\v3\GetNameWatchRequest $request = null) : self {
 		$this->set("request", $request);
 		return $this;

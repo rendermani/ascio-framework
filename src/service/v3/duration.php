@@ -8,10 +8,7 @@ use ascio\db\v3\durationDb;
 use ascio\api\v3\durationApi;
 
 
-abstract class duration {
+class duration {
 
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 }

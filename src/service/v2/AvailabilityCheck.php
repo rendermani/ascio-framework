@@ -8,7 +8,7 @@ use ascio\db\v2\AvailabilityCheckDb;
 use ascio\api\v2\AvailabilityCheckApi;
 
 
-abstract class AvailabilityCheck extends RequestRootElement  {
+class AvailabilityCheck extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "domains", "tlds", "quality"];
 	protected $_apiObjects=["domains", "tlds"];
@@ -17,9 +17,6 @@ abstract class AvailabilityCheck extends RequestRootElement  {
 	protected $tlds;
 	protected $quality;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

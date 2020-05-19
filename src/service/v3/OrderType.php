@@ -5,12 +5,9 @@
 namespace ascio\service\v3;
 
 
-abstract class OrderType {
+class OrderType {
 
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	const NotSet = "NotSet";
 	const ContactUpdate = "ContactUpdate";
 	const ChangeLocks = "ChangeLocks";
@@ -33,4 +30,6 @@ abstract class OrderType {
 	const PartnerChange = "PartnerChange";
 	const DeQueue = "DeQueue";
 	const UpdateAuthInfo = "UpdateAuthInfo";
+	const Support = "Support";
+	const WhoisDataReminder = "WhoisDataReminder";
 }

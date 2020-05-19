@@ -9,7 +9,7 @@ use ascio\api\v3\GetOrdersResponseApi;
 use ascio\api\v3\AbstractResponseApi;
 
 
-abstract class GetOrdersResponse extends AbstractResponse  {
+class GetOrdersResponse extends AbstractResponse  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "TotalCount", "OrdersInfo"];
 	protected $_apiObjects=["Errors", "OrdersInfo"];
@@ -41,9 +41,6 @@ abstract class GetOrdersResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setTotalCount (?int $TotalCount = null) : self {
 		$this->set("TotalCount", $TotalCount);
 		return $this;

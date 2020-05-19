@@ -8,15 +8,12 @@ use ascio\db\v2\UploadDocumentationResponseDb;
 use ascio\api\v2\UploadDocumentationResponseApi;
 
 
-abstract class UploadDocumentationResponse extends ResponseRootElement  {
+class UploadDocumentationResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["UploadDocumentationResult"];
 	protected $_apiObjects=["UploadDocumentationResult"];
 	protected $UploadDocumentationResult;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setUploadDocumentationResult (?\ascio\v2\Response $UploadDocumentationResult = null) : self {
 		$this->set("UploadDocumentationResult", $UploadDocumentationResult);
 		return $this;

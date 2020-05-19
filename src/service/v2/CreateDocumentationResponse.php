@@ -8,16 +8,13 @@ use ascio\db\v2\CreateDocumentationResponseDb;
 use ascio\api\v2\CreateDocumentationResponseApi;
 
 
-abstract class CreateDocumentationResponse extends ResponseRootElement  {
+class CreateDocumentationResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["CreateDocumentationResult", "documentationId"];
 	protected $_apiObjects=["CreateDocumentationResult"];
 	protected $CreateDocumentationResult;
 	protected $documentationId;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setCreateDocumentationResult (?\ascio\v2\Response $CreateDocumentationResult = null) : self {
 		$this->set("CreateDocumentationResult", $CreateDocumentationResult);
 		return $this;

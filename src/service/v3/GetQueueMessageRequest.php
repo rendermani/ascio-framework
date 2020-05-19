@@ -8,7 +8,7 @@ use ascio\db\v3\GetQueueMessageRequestDb;
 use ascio\api\v3\GetQueueMessageRequestApi;
 
 
-abstract class GetQueueMessageRequest extends DbBase  {
+class GetQueueMessageRequest extends DbBase  {
 
 	protected $_apiProperties=["MessageId"];
 	protected $_apiObjects=[];
@@ -35,9 +35,6 @@ abstract class GetQueueMessageRequest extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setMessageId (?int $MessageId = null) : self {
 		$this->set("MessageId", $MessageId);
 		return $this;

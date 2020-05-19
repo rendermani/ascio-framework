@@ -8,7 +8,7 @@ use ascio\db\v3\UploadMessageDb;
 use ascio\api\v3\UploadMessageApi;
 
 
-abstract class UploadMessage extends DbBase  {
+class UploadMessage extends DbBase  {
 
 	protected $_apiProperties=["request"];
 	protected $_apiObjects=["request"];
@@ -35,9 +35,6 @@ abstract class UploadMessage extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setRequest (?\ascio\v3\UploadMessageRequest $request = null) : self {
 		$this->set("request", $request);
 		return $this;

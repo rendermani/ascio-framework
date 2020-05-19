@@ -8,12 +8,13 @@ use ascio\db\v3\ContactDb;
 use ascio\api\v3\ContactApi;
 
 
-abstract class Contact extends DbBase  {
+class Contact extends DbBase  {
 
 	protected $_apiProperties=["Handle", "FirstName", "LastName", "OrgName", "Address1", "Address2", "City", "State", "PostalCode", "CountryCode", "Phone", "Fax", "Email", "Type", "Details", "OrganisationNumber", "Extensions"];
 	protected $_apiObjects=["Extensions"];
 	protected $_substitutions = [
-		["name" => "Registrant","type" => "\\ascio\\v3\\Registrant"] 
+		["name" => "Registrant","type" => "\\ascio\\v3\\Registrant"], 
+		["name" => "ContactInfo","type" => "\\ascio\\v3\\ContactInfo"] 
 	];
 
 	protected $Handle;
@@ -45,6 +46,7 @@ abstract class Contact extends DbBase  {
 		//set the api model
 		$api = new ContactApi($this);
 		$api->parent($this);
+		$api->config($this->config()->v3);
 		$this->api($api);
 	}
 	/**
@@ -72,9 +74,6 @@ abstract class Contact extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setHandle (?string $Handle = null) : self {
 		$this->set("Handle", $Handle);
 		return $this;

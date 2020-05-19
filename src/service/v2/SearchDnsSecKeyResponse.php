@@ -8,16 +8,13 @@ use ascio\db\v2\SearchDnsSecKeyResponseDb;
 use ascio\api\v2\SearchDnsSecKeyResponseApi;
 
 
-abstract class SearchDnsSecKeyResponse extends ResponseRootElement  {
+class SearchDnsSecKeyResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["SearchDnsSecKeyResult", "dnsSecKeys"];
 	protected $_apiObjects=["SearchDnsSecKeyResult", "dnsSecKeys"];
 	protected $SearchDnsSecKeyResult;
 	protected $dnsSecKeys;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSearchDnsSecKeyResult (?\ascio\v2\Response $SearchDnsSecKeyResult = null) : self {
 		$this->set("SearchDnsSecKeyResult", $SearchDnsSecKeyResult);
 		return $this;

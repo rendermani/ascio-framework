@@ -8,7 +8,7 @@ use ascio\db\dns\ServiceDb;
 use ascio\api\dns\ServiceApi;
 
 
-abstract class Service extends ServiceBase  {
+class Service extends ServiceBase  {
 	protected $classmap = [
 		"Response" => "ascio\\dns\\Response",
 		"ArrayOfRoleItem" => "ascio\\dns\\ArrayOfRoleItem",
@@ -121,9 +121,6 @@ abstract class Service extends ServiceBase  {
 	];
 
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function getRoles() : GetRolesResponse {
 		return $this->call("GetRoles"[]);
 	}

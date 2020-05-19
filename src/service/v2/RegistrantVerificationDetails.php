@@ -8,7 +8,7 @@ use ascio\db\v2\RegistrantVerificationDetailsDb;
 use ascio\api\v2\RegistrantVerificationDetailsApi;
 
 
-abstract class RegistrantVerificationDetails extends Base  {
+class RegistrantVerificationDetails extends Base  {
 
 	protected $_apiProperties=["VerifiedBy", "VerificationDate", "Messages"];
 	protected $_apiObjects=["Messages"];
@@ -16,9 +16,6 @@ abstract class RegistrantVerificationDetails extends Base  {
 	protected $VerificationDate;
 	protected $Messages;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setVerifiedBy (?string $VerifiedBy = null) : self {
 		$this->set("VerifiedBy", $VerifiedBy);
 		return $this;

@@ -8,15 +8,12 @@ use ascio\db\dns\CreateUserResponseDb;
 use ascio\api\dns\CreateUserResponseApi;
 
 
-abstract class CreateUserResponse extends ResponseRootElement  {
+class CreateUserResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["CreateUserResult"];
 	protected $_apiObjects=["CreateUserResult"];
 	protected $CreateUserResult;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setCreateUserResult (?\ascio\dns\Response $CreateUserResult = null) : self {
 		$this->set("CreateUserResult", $CreateUserResult);
 		return $this;

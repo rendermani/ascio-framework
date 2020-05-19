@@ -8,7 +8,7 @@ use ascio\db\v2\ServiceDb;
 use ascio\api\v2\ServiceApi;
 
 
-abstract class Service extends ServiceBase  {
+class Service extends ServiceBase  {
 	protected $classmap = [
 		"Session" => "ascio\\v2\\Session",
 		"Response" => "ascio\\v2\\Response",
@@ -227,9 +227,6 @@ abstract class Service extends ServiceBase  {
 	];
 
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function logIn(Session $session) : LogInResponse {
 		return $this->call("LogIn", ["session" => $session]);
 	}

@@ -8,15 +8,12 @@ use ascio\db\dns\GetUserDb;
 use ascio\api\dns\GetUserApi;
 
 
-abstract class GetUser extends RequestRootElement  {
+class GetUser extends RequestRootElement  {
 
 	protected $_apiProperties=["userName"];
 	protected $_apiObjects=[];
 	protected $userName;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setUserName (?string $userName = null) : self {
 		$this->set("userName", $userName);
 		return $this;

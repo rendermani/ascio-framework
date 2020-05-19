@@ -8,7 +8,7 @@ use ascio\db\v3\SecurityHeaderDetailsDb;
 use ascio\api\v3\SecurityHeaderDetailsApi;
 
 
-abstract class SecurityHeaderDetails extends DbBase  {
+class SecurityHeaderDetails extends DbBase  {
 
 	protected $_apiProperties=["Account", "Password"];
 	protected $_apiObjects=[];
@@ -36,9 +36,6 @@ abstract class SecurityHeaderDetails extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setAccount (?string $Account = null) : self {
 		$this->set("Account", $Account);
 		return $this;

@@ -8,16 +8,13 @@ use ascio\db\dns\ChangePasswordDb;
 use ascio\api\dns\ChangePasswordApi;
 
 
-abstract class ChangePassword extends RequestRootElement  {
+class ChangePassword extends RequestRootElement  {
 
 	protected $_apiProperties=["userName", "newPassword"];
 	protected $_apiObjects=[];
 	protected $userName;
 	protected $newPassword;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setUserName (?string $userName = null) : self {
 		$this->set("userName", $userName);
 		return $this;

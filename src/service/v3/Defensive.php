@@ -8,7 +8,7 @@ use ascio\db\v3\DefensiveDb;
 use ascio\api\v3\DefensiveApi;
 
 
-abstract class Defensive extends DbBase  {
+class Defensive extends DbBase  {
 
 	protected $_apiProperties=["Handle", "Name", "MarkHandle", "AuthInfo", "Encoding", "Owner", "Admin", "Tech", "Billing", "Reseller", "ObjectComment"];
 	protected $_apiObjects=["Owner", "Admin", "Tech", "Billing", "Reseller"];
@@ -35,6 +35,7 @@ abstract class Defensive extends DbBase  {
 		//set the api model
 		$api = new DefensiveApi($this);
 		$api->parent($this);
+		$api->config($this->config()->v3);
 		$this->api($api);
 	}
 	/**
@@ -62,9 +63,6 @@ abstract class Defensive extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setHandle (?string $Handle = null) : self {
 		$this->set("Handle", $Handle);
 		return $this;

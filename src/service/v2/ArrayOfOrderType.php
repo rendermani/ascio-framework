@@ -6,18 +6,14 @@ namespace ascio\service\v2;
 use ascio\base\v2\ArrayBase;
 use ascio\db\v2\ArrayOfOrderTypeDb;
 use ascio\api\v2\ArrayOfOrderTypeApi;
-use ascio\base\ArrayInterface;
 
 
-abstract class ArrayOfOrderType extends ArrayBase implements ArrayInterface,\Iterator,\countable,\ArrayAccess  {
+class ArrayOfOrderType extends ArrayBase implements \Iterator  {
 
 	protected $_apiProperties=["OrderType"];
 	protected $_apiObjects=[];
 	protected $OrderType;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setOrderType (?Iterable $OrderType = null) : self {
 		$this->set("OrderType", $OrderType);
 		return $this;
@@ -26,9 +22,6 @@ abstract class ArrayOfOrderType extends ArrayBase implements ArrayInterface,\Ite
 		return $this->get("OrderType", "string");
 	}
 	public function addOrderType () : string {
-		return $this->addItem(func_get_args(),"string");
-	}
-	public function addOrderTypes ($array) : self {
-		return $this->add(func_get_args());
+		return $this->add("OrderType","string",func_get_args());
 	}
 }

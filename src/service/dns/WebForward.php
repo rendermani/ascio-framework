@@ -9,7 +9,7 @@ use ascio\api\dns\WebForwardApi;
 use ascio\api\dns\RecordApi;
 
 
-abstract class WebForward extends Record  {
+class WebForward extends Record  {
 
 	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "UpdatedDate", "RedirectionType"];
 	protected $_apiObjects=[];
@@ -33,6 +33,7 @@ abstract class WebForward extends Record  {
 		//set the api model
 		$api = new WebForwardApi($this);
 		$api->parent($this);
+		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**
@@ -60,9 +61,6 @@ abstract class WebForward extends Record  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setRedirectionType (?string $RedirectionType = null) : self {
 		$this->set("RedirectionType", $RedirectionType);
 		return $this;

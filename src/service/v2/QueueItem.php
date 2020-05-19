@@ -8,7 +8,7 @@ use ascio\db\v2\QueueItemDb;
 use ascio\api\v2\QueueItemApi;
 
 
-abstract class QueueItem extends DbBase  {
+class QueueItem extends DbBase  {
 
 	protected $_apiProperties=["Attachments", "DomainHandle", "DomainName", "Msg", "MsgId", "MsgType", "OrderId", "OrderStatus", "StatusList"];
 	protected $_apiObjects=["Attachments", "StatusList"];
@@ -33,6 +33,7 @@ abstract class QueueItem extends DbBase  {
 		//set the api model
 		$api = new QueueItemApi($this);
 		$api->parent($this);
+		$api->config($this->config()->v2);
 		$this->api($api);
 	}
 	/**
@@ -60,9 +61,6 @@ abstract class QueueItem extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setAttachments (?\ascio\v2\ArrayOfAttachment $Attachments = null) : self {
 		$this->set("Attachments", $Attachments);
 		return $this;

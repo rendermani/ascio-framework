@@ -8,16 +8,13 @@ use ascio\db\v2\GetMessageQueueDb;
 use ascio\api\v2\GetMessageQueueApi;
 
 
-abstract class GetMessageQueue extends RequestRootElement  {
+class GetMessageQueue extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "msgId"];
 	protected $_apiObjects=[];
 	protected $sessionId;
 	protected $msgId;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

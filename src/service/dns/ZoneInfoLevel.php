@@ -5,12 +5,9 @@
 namespace ascio\service\dns;
 
 
-abstract class ZoneInfoLevel {
+class ZoneInfoLevel {
 
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	const Basic = "Basic";
 	const Full = "Full";
 	const Partial = "Partial";

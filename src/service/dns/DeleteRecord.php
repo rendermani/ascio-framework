@@ -8,15 +8,12 @@ use ascio\db\dns\DeleteRecordDb;
 use ascio\api\dns\DeleteRecordApi;
 
 
-abstract class DeleteRecord extends RequestRootElement  {
+class DeleteRecord extends RequestRootElement  {
 
 	protected $_apiProperties=["recordId"];
 	protected $_apiObjects=[];
 	protected $recordId;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setRecordId (?int $recordId = null) : self {
 		$this->set("recordId", $recordId);
 		return $this;

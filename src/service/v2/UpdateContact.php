@@ -8,16 +8,13 @@ use ascio\db\v2\UpdateContactDb;
 use ascio\api\v2\UpdateContactApi;
 
 
-abstract class UpdateContact extends RequestRootElement  {
+class UpdateContact extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "contact"];
 	protected $_apiObjects=["contact"];
 	protected $sessionId;
 	protected $contact;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

@@ -9,7 +9,7 @@ use ascio\api\dns\SRVApi;
 use ascio\api\dns\RecordApi;
 
 
-abstract class SRV extends Record  {
+class SRV extends Record  {
 
 	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "UpdatedDate", "Port", "Priority", "Weight"];
 	protected $_apiObjects=[];
@@ -35,6 +35,7 @@ abstract class SRV extends Record  {
 		//set the api model
 		$api = new SRVApi($this);
 		$api->parent($this);
+		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**
@@ -62,9 +63,6 @@ abstract class SRV extends Record  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setPort (?int $Port = null) : self {
 		$this->set("Port", $Port);
 		return $this;

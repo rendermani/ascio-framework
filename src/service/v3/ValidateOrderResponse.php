@@ -9,7 +9,7 @@ use ascio\api\v3\ValidateOrderResponseApi;
 use ascio\api\v3\AbstractResponseApi;
 
 
-abstract class ValidateOrderResponse extends AbstractResponse  {
+class ValidateOrderResponse extends AbstractResponse  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors"];
 	protected $_apiObjects=["Errors"];
@@ -39,7 +39,4 @@ abstract class ValidateOrderResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 }

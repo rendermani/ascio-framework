@@ -6,10 +6,9 @@ namespace ascio\service\v3;
 use ascio\base\v3\DbArrayBase;
 use ascio\db\v3\ArrayOfObjectTypeDb;
 use ascio\api\v3\ArrayOfObjectTypeApi;
-use ascio\base\ArrayInterface;
 
 
-abstract class ArrayOfObjectType extends DbArrayBase  {
+class ArrayOfObjectType extends DbArrayBase  {
 
 	protected $_apiProperties=["ObjectType"];
 	protected $_apiObjects=[];
@@ -36,9 +35,6 @@ abstract class ArrayOfObjectType extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setObjectType (?Iterable $ObjectType = null) : self {
 		$this->set("ObjectType", $ObjectType);
 		return $this;
@@ -47,9 +43,6 @@ abstract class ArrayOfObjectType extends DbArrayBase  {
 		return $this->get("ObjectType", "string");
 	}
 	public function addObjectType () : string {
-		return $this->addItem(func_get_args(),"string");
-	}
-	public function addObjectTypes ($array) : self {
-		return $this->add(func_get_args());
+		return $this->add("ObjectType","string",func_get_args());
 	}
 }

@@ -5,12 +5,9 @@
 namespace ascio\service\v2;
 
 
-abstract class RegistrantVerificationStatus {
+class RegistrantVerificationStatus {
 
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	const Unverified = "Unverified";
 	const Pending = "Pending";
 	const Verified = "Verified";

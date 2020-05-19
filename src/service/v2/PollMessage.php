@@ -8,16 +8,13 @@ use ascio\db\v2\PollMessageDb;
 use ascio\api\v2\PollMessageApi;
 
 
-abstract class PollMessage extends RequestRootElement  {
+class PollMessage extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "msgType"];
 	protected $_apiObjects=[];
 	protected $sessionId;
 	protected $msgType;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

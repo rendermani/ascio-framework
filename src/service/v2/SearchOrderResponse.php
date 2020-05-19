@@ -8,7 +8,7 @@ use ascio\db\v2\SearchOrderResponseDb;
 use ascio\api\v2\SearchOrderResponseApi;
 
 
-abstract class SearchOrderResponse extends ResponseRootElement  {
+class SearchOrderResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["SearchOrderResult", "totalOrders", "orders"];
 	protected $_apiObjects=["SearchOrderResult", "orders"];
@@ -16,9 +16,6 @@ abstract class SearchOrderResponse extends ResponseRootElement  {
 	protected $totalOrders;
 	protected $orders;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSearchOrderResult (?\ascio\v2\Response $SearchOrderResult = null) : self {
 		$this->set("SearchOrderResult", $SearchOrderResult);
 		return $this;

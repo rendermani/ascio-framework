@@ -8,7 +8,7 @@ use ascio\db\dns\SearchUserClauseDb;
 use ascio\api\dns\SearchUserClauseApi;
 
 
-abstract class SearchUserClause extends Base  {
+class SearchUserClause extends Base  {
 
 	protected $_apiProperties=["Operator", "SearchUserField", "Value"];
 	protected $_apiObjects=[];
@@ -16,9 +16,6 @@ abstract class SearchUserClause extends Base  {
 	protected $SearchUserField;
 	protected $Value;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setOperator (?string $Operator = null) : self {
 		$this->set("Operator", $Operator);
 		return $this;

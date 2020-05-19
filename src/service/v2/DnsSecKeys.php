@@ -8,7 +8,7 @@ use ascio\db\v2\DnsSecKeysDb;
 use ascio\api\v2\DnsSecKeysApi;
 
 
-abstract class DnsSecKeys extends DbBase  {
+class DnsSecKeys extends DbBase  {
 
 	protected $_apiProperties=["DnsSecKey1", "DnsSecKey2", "DnsSecKey3", "DnsSecKey4", "DnsSecKey5"];
 	protected $_apiObjects=["DnsSecKey1", "DnsSecKey2", "DnsSecKey3", "DnsSecKey4", "DnsSecKey5"];
@@ -29,6 +29,7 @@ abstract class DnsSecKeys extends DbBase  {
 		//set the api model
 		$api = new DnsSecKeysApi($this);
 		$api->parent($this);
+		$api->config($this->config()->v2);
 		$this->api($api);
 	}
 	/**
@@ -56,9 +57,6 @@ abstract class DnsSecKeys extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setDnsSecKey1 (?\ascio\v2\DnsSecKey $DnsSecKey1 = null) : self {
 		$this->set("DnsSecKey1", $DnsSecKey1);
 		return $this;

@@ -6,10 +6,9 @@ namespace ascio\service\dns;
 use ascio\base\dns\DbArrayBase;
 use ascio\db\dns\ArrayOfRoleItemDb;
 use ascio\api\dns\ArrayOfRoleItemApi;
-use ascio\base\ArrayInterface;
 
 
-abstract class ArrayOfRoleItem extends DbArrayBase  {
+class ArrayOfRoleItem extends DbArrayBase  {
 
 	protected $_apiProperties=["RoleItem"];
 	protected $_apiObjects=["RoleItem"];
@@ -26,6 +25,7 @@ abstract class ArrayOfRoleItem extends DbArrayBase  {
 		//set the api model
 		$api = new ArrayOfRoleItemApi($this);
 		$api->parent($this);
+		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**
@@ -53,24 +53,6 @@ abstract class ArrayOfRoleItem extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Array-Specific methods
-	*/
-	public function current() : \ascio\dns\RoleItem {
-		return parent::current();
-	}
-	public function first() : \ascio\dns\RoleItem {
-		return parent::first();
-	}
-	public function last() : \ascio\dns\RoleItem {
-		return parent::last();
-	}
-	public function index($nr) : \ascio\dns\RoleItem {
-		return parent::index($nr);
-	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setRoleItem (?Iterable $RoleItem = null) : self {
 		$this->set("RoleItem", $RoleItem);
 		return $this;
@@ -82,9 +64,6 @@ abstract class ArrayOfRoleItem extends DbArrayBase  {
 		return $this->create ("RoleItem", "\\ascio\\dns\\RoleItem");
 	}
 	public function addRoleItem () : \ascio\dns\RoleItem {
-		return $this->addItem(func_get_args(),"\\ascio\\dns\\RoleItem");
-	}
-	public function addRoleItems ($array) : self {
-		return $this->add(func_get_args());
+		return $this->add("RoleItem","\\ascio\\dns\\RoleItem",func_get_args());
 	}
 }

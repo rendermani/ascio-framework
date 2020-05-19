@@ -8,7 +8,7 @@ use ascio\db\v2\UploadRegistrantVerificationMessageDb;
 use ascio\api\v2\UploadRegistrantVerificationMessageApi;
 
 
-abstract class UploadRegistrantVerificationMessage extends RequestRootElement  {
+class UploadRegistrantVerificationMessage extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "value", "details"];
 	protected $_apiObjects=["details"];
@@ -16,9 +16,6 @@ abstract class UploadRegistrantVerificationMessage extends RequestRootElement  {
 	protected $value;
 	protected $details;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

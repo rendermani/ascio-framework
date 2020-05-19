@@ -6,10 +6,9 @@ namespace ascio\service\v3;
 use ascio\base\v3\DbArrayBase;
 use ascio\db\v3\ArrayOfAttachmentDb;
 use ascio\api\v3\ArrayOfAttachmentApi;
-use ascio\base\ArrayInterface;
 
 
-abstract class ArrayOfAttachment extends DbArrayBase  {
+class ArrayOfAttachment extends DbArrayBase  {
 
 	protected $_apiProperties=["Attachment"];
 	protected $_apiObjects=["Attachment"];
@@ -36,24 +35,6 @@ abstract class ArrayOfAttachment extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Array-Specific methods
-	*/
-	public function current() : \ascio\v3\Attachment {
-		return parent::current();
-	}
-	public function first() : \ascio\v3\Attachment {
-		return parent::first();
-	}
-	public function last() : \ascio\v3\Attachment {
-		return parent::last();
-	}
-	public function index($nr) : \ascio\v3\Attachment {
-		return parent::index($nr);
-	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setAttachment (?Iterable $Attachment = null) : self {
 		$this->set("Attachment", $Attachment);
 		return $this;
@@ -65,9 +46,6 @@ abstract class ArrayOfAttachment extends DbArrayBase  {
 		return $this->create ("Attachment", "\\ascio\\v3\\Attachment");
 	}
 	public function addAttachment () : \ascio\v3\Attachment {
-		return $this->addItem(func_get_args(),"\\ascio\\v3\\Attachment");
-	}
-	public function addAttachments ($array) : self {
-		return $this->add(func_get_args());
+		return $this->add("Attachment","\\ascio\\v3\\Attachment",func_get_args());
 	}
 }

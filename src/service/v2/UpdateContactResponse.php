@@ -8,15 +8,12 @@ use ascio\db\v2\UpdateContactResponseDb;
 use ascio\api\v2\UpdateContactResponseApi;
 
 
-abstract class UpdateContactResponse extends ResponseRootElement  {
+class UpdateContactResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["UpdateContactResult"];
 	protected $_apiObjects=["UpdateContactResult"];
 	protected $UpdateContactResult;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setUpdateContactResult (?\ascio\v2\Response $UpdateContactResult = null) : self {
 		$this->set("UpdateContactResult", $UpdateContactResult);
 		return $this;

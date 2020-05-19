@@ -8,7 +8,7 @@ use ascio\db\v2\CreateSupportOrderDb;
 use ascio\api\v2\CreateSupportOrderApi;
 
 
-abstract class CreateSupportOrder extends RequestRootElement  {
+class CreateSupportOrder extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "subject", "body", "attachments"];
 	protected $_apiObjects=["attachments"];
@@ -17,9 +17,6 @@ abstract class CreateSupportOrder extends RequestRootElement  {
 	protected $body;
 	protected $attachments;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

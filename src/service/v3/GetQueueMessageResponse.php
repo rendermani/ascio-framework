@@ -9,7 +9,7 @@ use ascio\api\v3\GetQueueMessageResponseApi;
 use ascio\api\v3\AbstractResponseApi;
 
 
-abstract class GetQueueMessageResponse extends AbstractResponse  {
+class GetQueueMessageResponse extends AbstractResponse  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "Message"];
 	protected $_apiObjects=["Errors", "Message"];
@@ -40,9 +40,6 @@ abstract class GetQueueMessageResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setMessage (?\ascio\v3\QueueMessage $Message = null) : self {
 		$this->set("Message", $Message);
 		return $this;

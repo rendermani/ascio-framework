@@ -8,16 +8,13 @@ use ascio\db\v2\SearchContactResponseDb;
 use ascio\api\v2\SearchContactResponseApi;
 
 
-abstract class SearchContactResponse extends ResponseRootElement  {
+class SearchContactResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["SearchContactResult", "contacts"];
 	protected $_apiObjects=["SearchContactResult", "contacts"];
 	protected $SearchContactResult;
 	protected $contacts;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSearchContactResult (?\ascio\v2\Response $SearchContactResult = null) : self {
 		$this->set("SearchContactResult", $SearchContactResult);
 		return $this;

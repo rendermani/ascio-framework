@@ -6,10 +6,9 @@ namespace ascio\service\v2;
 use ascio\base\v2\DbArrayBase;
 use ascio\db\v2\ExtensionsDb;
 use ascio\api\v2\ExtensionsApi;
-use ascio\base\ArrayInterface;
 
 
-abstract class Extensions extends DbArrayBase  {
+class Extensions extends DbArrayBase  {
 
 	protected $_apiProperties=["Extension"];
 	protected $_apiObjects=["Extension"];
@@ -26,6 +25,7 @@ abstract class Extensions extends DbArrayBase  {
 		//set the api model
 		$api = new ExtensionsApi($this);
 		$api->parent($this);
+		$api->config($this->config()->v2);
 		$this->api($api);
 	}
 	/**
@@ -53,24 +53,6 @@ abstract class Extensions extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Array-Specific methods
-	*/
-	public function current() : \ascio\v2\Extension {
-		return parent::current();
-	}
-	public function first() : \ascio\v2\Extension {
-		return parent::first();
-	}
-	public function last() : \ascio\v2\Extension {
-		return parent::last();
-	}
-	public function index($nr) : \ascio\v2\Extension {
-		return parent::index($nr);
-	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setExtension (?Iterable $Extension = null) : self {
 		$this->set("Extension", $Extension);
 		return $this;
@@ -82,9 +64,6 @@ abstract class Extensions extends DbArrayBase  {
 		return $this->create ("Extension", "\\ascio\\v2\\Extension");
 	}
 	public function addExtension (string $Key, string $Value) : \ascio\v2\Extension {
-		return $this->addItem(func_get_args(),"\\ascio\\v2\\Extension");
-	}
-	public function addExtensions ($array) : self {
-		return $this->add(func_get_args());
+		return $this->add("Extension","\\ascio\\v2\\Extension",func_get_args());
 	}
 }

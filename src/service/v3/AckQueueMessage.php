@@ -8,7 +8,7 @@ use ascio\db\v3\AckQueueMessageDb;
 use ascio\api\v3\AckQueueMessageApi;
 
 
-abstract class AckQueueMessage extends DbBase  {
+class AckQueueMessage extends DbBase  {
 
 	protected $_apiProperties=["request"];
 	protected $_apiObjects=["request"];
@@ -35,9 +35,6 @@ abstract class AckQueueMessage extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setRequest (?\ascio\v3\AckQueueMessageRequest $request = null) : self {
 		$this->set("request", $request);
 		return $this;

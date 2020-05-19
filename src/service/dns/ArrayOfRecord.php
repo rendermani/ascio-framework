@@ -6,10 +6,9 @@ namespace ascio\service\dns;
 use ascio\base\dns\DbArrayBase;
 use ascio\db\dns\ArrayOfRecordDb;
 use ascio\api\dns\ArrayOfRecordApi;
-use ascio\base\ArrayInterface;
 
 
-abstract class ArrayOfRecord extends DbArrayBase  {
+class ArrayOfRecord extends DbArrayBase  {
 
 	protected $_apiProperties=["Record"];
 	protected $_apiObjects=["Record"];
@@ -26,6 +25,7 @@ abstract class ArrayOfRecord extends DbArrayBase  {
 		//set the api model
 		$api = new ArrayOfRecordApi($this);
 		$api->parent($this);
+		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**
@@ -53,24 +53,6 @@ abstract class ArrayOfRecord extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Array-Specific methods
-	*/
-	public function current() : \ascio\dns\Record {
-		return parent::current();
-	}
-	public function first() : \ascio\dns\Record {
-		return parent::first();
-	}
-	public function last() : \ascio\dns\Record {
-		return parent::last();
-	}
-	public function index($nr) : \ascio\dns\Record {
-		return parent::index($nr);
-	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setRecord (?Iterable $Record = null) : self {
 		$this->set("Record", $Record);
 		return $this;
@@ -82,9 +64,6 @@ abstract class ArrayOfRecord extends DbArrayBase  {
 		return $this->create ("Record", "\\ascio\\dns\\Record");
 	}
 	public function addRecord () : \ascio\dns\Record {
-		return $this->addItem(func_get_args(),"\\ascio\\dns\\Record");
-	}
-	public function addRecords ($array) : self {
-		return $this->add(func_get_args());
+		return $this->add("Record","\\ascio\\dns\\Record",func_get_args());
 	}
 }

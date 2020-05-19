@@ -9,7 +9,7 @@ use ascio\api\v3\MarkOrderDocumentApi;
 use ascio\api\v3\AttachmentApi;
 
 
-abstract class MarkOrderDocument extends Attachment  {
+class MarkOrderDocument extends Attachment  {
 
 	protected $_apiProperties=["FileName", "Content", "DocType"];
 	protected $_apiObjects=[];
@@ -38,9 +38,6 @@ abstract class MarkOrderDocument extends Attachment  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setDocType (?string $DocType = null) : self {
 		$this->set("DocType", $DocType);
 		return $this;

@@ -8,16 +8,13 @@ use ascio\db\v2\CreateDnsSecKeyDb;
 use ascio\api\v2\CreateDnsSecKeyApi;
 
 
-abstract class CreateDnsSecKey extends RequestRootElement  {
+class CreateDnsSecKey extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "dnsSecKey"];
 	protected $_apiObjects=["dnsSecKey"];
 	protected $sessionId;
 	protected $dnsSecKey;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

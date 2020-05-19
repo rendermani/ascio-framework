@@ -8,7 +8,7 @@ use ascio\db\v3\MarkInfoDb;
 use ascio\api\v3\MarkInfoApi;
 
 
-abstract class MarkInfo extends DbBase  {
+class MarkInfo extends DbBase  {
 
 	protected $_apiProperties=["Status", "Created", "Expires", "Mark", "Smd"];
 	protected $_apiObjects=["Mark"];
@@ -29,6 +29,7 @@ abstract class MarkInfo extends DbBase  {
 		//set the api model
 		$api = new MarkInfoApi($this);
 		$api->parent($this);
+		$api->config($this->config()->v3);
 		$this->api($api);
 	}
 	/**
@@ -56,9 +57,6 @@ abstract class MarkInfo extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setStatus (?string $Status = null) : self {
 		$this->set("Status", $Status);
 		return $this;

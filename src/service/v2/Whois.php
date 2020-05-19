@@ -8,16 +8,13 @@ use ascio\db\v2\WhoisDb;
 use ascio\api\v2\WhoisApi;
 
 
-abstract class Whois extends RequestRootElement  {
+class Whois extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "domainName"];
 	protected $_apiObjects=[];
 	protected $sessionId;
 	protected $domainName;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

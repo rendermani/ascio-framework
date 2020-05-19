@@ -8,16 +8,13 @@ use ascio\db\dns\SearchZoneDb;
 use ascio\api\dns\SearchZoneApi;
 
 
-abstract class SearchZone extends RequestRootElement  {
+class SearchZone extends RequestRootElement  {
 
 	protected $_apiProperties=["searchZoneClauses", "zoneInfoLevel"];
 	protected $_apiObjects=["searchZoneClauses"];
 	protected $searchZoneClauses;
 	protected $zoneInfoLevel;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSearchZoneClauses (?\ascio\dns\ArrayOfSearchZoneClause $searchZoneClauses = null) : self {
 		$this->set("searchZoneClauses", $searchZoneClauses);
 		return $this;

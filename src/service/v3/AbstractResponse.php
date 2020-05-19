@@ -8,7 +8,7 @@ use ascio\db\v3\AbstractResponseDb;
 use ascio\api\v3\AbstractResponseApi;
 
 
-abstract class AbstractResponse extends DbBase  {
+class AbstractResponse extends DbBase  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors"];
 	protected $_apiObjects=["Errors"];
@@ -17,12 +17,34 @@ abstract class AbstractResponse extends DbBase  {
 		["name" => "ValidateOrderResponse","type" => "\\ascio\\v3\\ValidateOrderResponse"], 
 		["name" => "GetOrderResponse","type" => "\\ascio\\v3\\GetOrderResponse"], 
 		["name" => "GetOrdersResponse","type" => "\\ascio\\v3\\GetOrdersResponse"], 
+		["name" => "GetDomainsResponse","type" => "\\ascio\\v3\\GetDomainsResponse"], 
+		["name" => "GetDomainResponse","type" => "\\ascio\\v3\\GetDomainResponse"], 
+		["name" => "GetAccountTransactionsResponse","type" => "\\ascio\\v3\\GetAccountTransactionsResponse"], 
+		["name" => "GetSalesLinesResponse","type" => "\\ascio\\v3\\GetSalesLinesResponse"], 
+		["name" => "GetSubUsersResponse","type" => "\\ascio\\v3\\GetSubUsersResponse"], 
+		["name" => "GetSubUserResponse","type" => "\\ascio\\v3\\GetSubUserResponse"], 
+		["name" => "DeleteSubUserResponse","type" => "\\ascio\\v3\\DeleteSubUserResponse"], 
+		["name" => "CreateSubUserResponse","type" => "\\ascio\\v3\\CreateSubUserResponse"], 
+		["name" => "UpdateSubUserResponse","type" => "\\ascio\\v3\\UpdateSubUserResponse"], 
+		["name" => "GetInvoiceResponse","type" => "\\ascio\\v3\\GetInvoiceResponse"], 
+		["name" => "GetCreditNoteResponse","type" => "\\ascio\\v3\\GetCreditNoteResponse"], 
+		["name" => "CreateContactResponse","type" => "\\ascio\\v3\\CreateContactResponse"], 
+		["name" => "CreateRegistrantResponse","type" => "\\ascio\\v3\\CreateRegistrantResponse"], 
+		["name" => "CreateNameServerResponse","type" => "\\ascio\\v3\\CreateNameServerResponse"], 
+		["name" => "CreateDnsSecKeyResponse","type" => "\\ascio\\v3\\CreateDnsSecKeyResponse"], 
+		["name" => "GetRegistrantsResponse","type" => "\\ascio\\v3\\GetRegistrantsResponse"], 
+		["name" => "GetContactsResponse","type" => "\\ascio\\v3\\GetContactsResponse"], 
+		["name" => "GetNameServersResponse","type" => "\\ascio\\v3\\GetNameServersResponse"], 
+		["name" => "GetDnsSecKeysResponse","type" => "\\ascio\\v3\\GetDnsSecKeysResponse"], 
+		["name" => "GetMarksResponse","type" => "\\ascio\\v3\\GetMarksResponse"], 
 		["name" => "GetMarkResponse","type" => "\\ascio\\v3\\GetMarkResponse"], 
 		["name" => "GetDefensiveResponse","type" => "\\ascio\\v3\\GetDefensiveResponse"], 
 		["name" => "GetNameWatchResponse","type" => "\\ascio\\v3\\GetNameWatchResponse"], 
 		["name" => "GetSslCertificateResponse","type" => "\\ascio\\v3\\GetSslCertificateResponse"], 
+		["name" => "GetSslApproversResponse","type" => "\\ascio\\v3\\GetSslApproversResponse"], 
 		["name" => "GetAutoInstallSslResponse","type" => "\\ascio\\v3\\GetAutoInstallSslResponse"], 
 		["name" => "GetMessagesResponse","type" => "\\ascio\\v3\\GetMessagesResponse"], 
+		["name" => "GetAttachmentResponse","type" => "\\ascio\\v3\\GetAttachmentResponse"], 
 		["name" => "PollQueueResponse","type" => "\\ascio\\v3\\PollQueueResponse"], 
 		["name" => "AckQueueMessageResponse","type" => "\\ascio\\v3\\AckQueueMessageResponse"], 
 		["name" => "GetQueueMessageResponse","type" => "\\ascio\\v3\\GetQueueMessageResponse"], 
@@ -55,9 +77,6 @@ abstract class AbstractResponse extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setResultCode (?int $ResultCode = null) : self {
 		$this->set("ResultCode", $ResultCode);
 		return $this;

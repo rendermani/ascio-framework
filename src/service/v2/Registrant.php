@@ -8,7 +8,7 @@ use ascio\db\v2\RegistrantDb;
 use ascio\api\v2\RegistrantApi;
 
 
-abstract class Registrant extends DbBase  {
+class Registrant extends DbBase  {
 
 	protected $_apiProperties=["CreDate", "Status", "Handle", "Name", "OrgName", "Address1", "Address2", "City", "State", "PostalCode", "CountryCode", "Email", "Phone", "Fax", "RegistrantType", "VatNumber", "RegistrantDate", "NexusCategory", "RegistrantNumber", "Details"];
 	protected $_apiObjects=[];
@@ -44,6 +44,7 @@ abstract class Registrant extends DbBase  {
 		//set the api model
 		$api = new RegistrantApi($this);
 		$api->parent($this);
+		$api->config($this->config()->v2);
 		$this->api($api);
 	}
 	/**
@@ -71,9 +72,6 @@ abstract class Registrant extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setCreDate (?\DateTime $CreDate = null) : self {
 		$this->set("CreDate", $CreDate);
 		return $this;

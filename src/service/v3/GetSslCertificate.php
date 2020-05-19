@@ -8,7 +8,7 @@ use ascio\db\v3\GetSslCertificateDb;
 use ascio\api\v3\GetSslCertificateApi;
 
 
-abstract class GetSslCertificate extends DbBase  {
+class GetSslCertificate extends DbBase  {
 
 	protected $_apiProperties=["request"];
 	protected $_apiObjects=["request"];
@@ -35,9 +35,6 @@ abstract class GetSslCertificate extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setRequest (?\ascio\v3\GetSslCertificateRequest $request = null) : self {
 		$this->set("request", $request);
 		return $this;

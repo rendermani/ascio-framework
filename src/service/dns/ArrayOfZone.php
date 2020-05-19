@@ -6,10 +6,9 @@ namespace ascio\service\dns;
 use ascio\base\dns\DbArrayBase;
 use ascio\db\dns\ArrayOfZoneDb;
 use ascio\api\dns\ArrayOfZoneApi;
-use ascio\base\ArrayInterface;
 
 
-abstract class ArrayOfZone extends DbArrayBase  {
+class ArrayOfZone extends DbArrayBase  {
 
 	protected $_apiProperties=["Zone"];
 	protected $_apiObjects=["Zone"];
@@ -36,24 +35,6 @@ abstract class ArrayOfZone extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Array-Specific methods
-	*/
-	public function current() : \ascio\dns\Zone {
-		return parent::current();
-	}
-	public function first() : \ascio\dns\Zone {
-		return parent::first();
-	}
-	public function last() : \ascio\dns\Zone {
-		return parent::last();
-	}
-	public function index($nr) : \ascio\dns\Zone {
-		return parent::index($nr);
-	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setZone (?Iterable $Zone = null) : self {
 		$this->set("Zone", $Zone);
 		return $this;
@@ -65,9 +46,6 @@ abstract class ArrayOfZone extends DbArrayBase  {
 		return $this->create ("Zone", "\\ascio\\dns\\Zone");
 	}
 	public function addZone () : \ascio\dns\Zone {
-		return $this->addItem(func_get_args(),"\\ascio\\dns\\Zone");
-	}
-	public function addZones ($array) : self {
-		return $this->add(func_get_args());
+		return $this->add("Zone","\\ascio\\dns\\Zone",func_get_args());
 	}
 }

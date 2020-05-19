@@ -9,7 +9,7 @@ use ascio\api\v3\GetDefensiveResponseApi;
 use ascio\api\v3\AbstractResponseApi;
 
 
-abstract class GetDefensiveResponse extends AbstractResponse  {
+class GetDefensiveResponse extends AbstractResponse  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "DefensiveInfo"];
 	protected $_apiObjects=["Errors", "DefensiveInfo"];
@@ -40,9 +40,6 @@ abstract class GetDefensiveResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setDefensiveInfo (?\ascio\v3\DefensiveInfo $DefensiveInfo = null) : self {
 		$this->set("DefensiveInfo", $DefensiveInfo);
 		return $this;

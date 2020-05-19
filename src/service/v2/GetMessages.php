@@ -8,16 +8,13 @@ use ascio\db\v2\GetMessagesDb;
 use ascio\api\v2\GetMessagesApi;
 
 
-abstract class GetMessages extends RequestRootElement  {
+class GetMessages extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "orderId"];
 	protected $_apiObjects=[];
 	protected $sessionId;
 	protected $orderId;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

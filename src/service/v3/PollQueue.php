@@ -8,7 +8,7 @@ use ascio\db\v3\PollQueueDb;
 use ascio\api\v3\PollQueueApi;
 
 
-abstract class PollQueue extends DbBase  {
+class PollQueue extends DbBase  {
 
 	protected $_apiProperties=["request"];
 	protected $_apiObjects=["request"];
@@ -35,9 +35,6 @@ abstract class PollQueue extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setRequest (?\ascio\v3\PollQueueRequest $request = null) : self {
 		$this->set("request", $request);
 		return $this;

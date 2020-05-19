@@ -6,33 +6,14 @@ namespace ascio\service\v2;
 use ascio\base\v2\ArrayBase;
 use ascio\db\v2\ArrayOfDnsSecKeyDb;
 use ascio\api\v2\ArrayOfDnsSecKeyApi;
-use ascio\base\ArrayInterface;
 
 
-abstract class ArrayOfDnsSecKey extends ArrayBase implements ArrayInterface,\Iterator,\countable,\ArrayAccess  {
+class ArrayOfDnsSecKey extends ArrayBase implements \Iterator  {
 
 	protected $_apiProperties=["DnsSecKey"];
 	protected $_apiObjects=["DnsSecKey"];
 	protected $DnsSecKey;
 
-	/**
-	* Array-Specific methods
-	*/
-	public function current() : \ascio\v2\DnsSecKey {
-		return parent::current();
-	}
-	public function first() : \ascio\v2\DnsSecKey {
-		return parent::first();
-	}
-	public function last() : \ascio\v2\DnsSecKey {
-		return parent::last();
-	}
-	public function index($nr) : \ascio\v2\DnsSecKey {
-		return parent::index($nr);
-	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setDnsSecKey (?Iterable $DnsSecKey = null) : self {
 		$this->set("DnsSecKey", $DnsSecKey);
 		return $this;
@@ -44,9 +25,6 @@ abstract class ArrayOfDnsSecKey extends ArrayBase implements ArrayInterface,\Ite
 		return $this->create ("DnsSecKey", "\\ascio\\v2\\DnsSecKey");
 	}
 	public function addDnsSecKey () : \ascio\v2\DnsSecKey {
-		return $this->addItem(func_get_args(),"\\ascio\\v2\\DnsSecKey");
-	}
-	public function addDnsSecKeys ($array) : self {
-		return $this->add(func_get_args());
+		return $this->add("DnsSecKey","\\ascio\\v2\\DnsSecKey",func_get_args());
 	}
 }

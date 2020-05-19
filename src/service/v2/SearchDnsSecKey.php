@@ -8,16 +8,13 @@ use ascio\db\v2\SearchDnsSecKeyDb;
 use ascio\api\v2\SearchDnsSecKeyApi;
 
 
-abstract class SearchDnsSecKey extends RequestRootElement  {
+class SearchDnsSecKey extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "criteria"];
 	protected $_apiObjects=["criteria"];
 	protected $sessionId;
 	protected $criteria;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

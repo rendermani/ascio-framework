@@ -8,16 +8,13 @@ use ascio\db\v2\GetRegistrantVerificationStatusResponseDb;
 use ascio\api\v2\GetRegistrantVerificationStatusResponseApi;
 
 
-abstract class GetRegistrantVerificationStatusResponse extends ResponseRootElement  {
+class GetRegistrantVerificationStatusResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["GetRegistrantVerificationStatusResult", "verificationStatus"];
 	protected $_apiObjects=["GetRegistrantVerificationStatusResult"];
 	protected $GetRegistrantVerificationStatusResult;
 	protected $verificationStatus;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setGetRegistrantVerificationStatusResult (?\ascio\v2\Response $GetRegistrantVerificationStatusResult = null) : self {
 		$this->set("GetRegistrantVerificationStatusResult", $GetRegistrantVerificationStatusResult);
 		return $this;

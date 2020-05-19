@@ -9,7 +9,7 @@ use ascio\api\v3\GetSslCertificateResponseApi;
 use ascio\api\v3\AbstractResponseApi;
 
 
-abstract class GetSslCertificateResponse extends AbstractResponse  {
+class GetSslCertificateResponse extends AbstractResponse  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "SslCertificateInfo"];
 	protected $_apiObjects=["Errors", "SslCertificateInfo"];
@@ -40,9 +40,6 @@ abstract class GetSslCertificateResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSslCertificateInfo (?\ascio\v3\SslCertificateInfo $SslCertificateInfo = null) : self {
 		$this->set("SslCertificateInfo", $SslCertificateInfo);
 		return $this;

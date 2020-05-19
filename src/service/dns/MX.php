@@ -9,7 +9,7 @@ use ascio\api\dns\MXApi;
 use ascio\api\dns\RecordApi;
 
 
-abstract class MX extends Record  {
+class MX extends Record  {
 
 	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "UpdatedDate", "Priority"];
 	protected $_apiObjects=[];
@@ -33,6 +33,7 @@ abstract class MX extends Record  {
 		//set the api model
 		$api = new MXApi($this);
 		$api->parent($this);
+		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**
@@ -60,9 +61,6 @@ abstract class MX extends Record  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setPriority (?int $Priority = null) : self {
 		$this->set("Priority", $Priority);
 		return $this;

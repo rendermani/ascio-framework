@@ -8,16 +8,13 @@ use ascio\db\v2\CreateNameServerResponseDb;
 use ascio\api\v2\CreateNameServerResponseApi;
 
 
-abstract class CreateNameServerResponse extends ResponseRootElement  {
+class CreateNameServerResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["CreateNameServerResult", "nameServer"];
 	protected $_apiObjects=["CreateNameServerResult", "nameServer"];
 	protected $CreateNameServerResult;
 	protected $nameServer;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setCreateNameServerResult (?\ascio\v2\Response $CreateNameServerResult = null) : self {
 		$this->set("CreateNameServerResult", $CreateNameServerResult);
 		return $this;

@@ -8,15 +8,12 @@ use ascio\db\dns\UpdateUserResponseDb;
 use ascio\api\dns\UpdateUserResponseApi;
 
 
-abstract class UpdateUserResponse extends ResponseRootElement  {
+class UpdateUserResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["UpdateUserResult"];
 	protected $_apiObjects=["UpdateUserResult"];
 	protected $UpdateUserResult;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setUpdateUserResult (?\ascio\dns\Response $UpdateUserResult = null) : self {
 		$this->set("UpdateUserResult", $UpdateUserResult);
 		return $this;

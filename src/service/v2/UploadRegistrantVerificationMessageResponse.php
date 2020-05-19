@@ -8,15 +8,12 @@ use ascio\db\v2\UploadRegistrantVerificationMessageResponseDb;
 use ascio\api\v2\UploadRegistrantVerificationMessageResponseApi;
 
 
-abstract class UploadRegistrantVerificationMessageResponse extends ResponseRootElement  {
+class UploadRegistrantVerificationMessageResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["UploadRegistrantVerificationMessageResult"];
 	protected $_apiObjects=["UploadRegistrantVerificationMessageResult"];
 	protected $UploadRegistrantVerificationMessageResult;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setUploadRegistrantVerificationMessageResult (?\ascio\v2\Response $UploadRegistrantVerificationMessageResult = null) : self {
 		$this->set("UploadRegistrantVerificationMessageResult", $UploadRegistrantVerificationMessageResult);
 		return $this;

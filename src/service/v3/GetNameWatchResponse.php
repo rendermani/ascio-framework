@@ -9,7 +9,7 @@ use ascio\api\v3\GetNameWatchResponseApi;
 use ascio\api\v3\AbstractResponseApi;
 
 
-abstract class GetNameWatchResponse extends AbstractResponse  {
+class GetNameWatchResponse extends AbstractResponse  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "NameWatchInfo"];
 	protected $_apiObjects=["Errors", "NameWatchInfo"];
@@ -40,9 +40,6 @@ abstract class GetNameWatchResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setNameWatchInfo (?\ascio\v3\NameWatchInfo $NameWatchInfo = null) : self {
 		$this->set("NameWatchInfo", $NameWatchInfo);
 		return $this;

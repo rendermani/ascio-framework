@@ -8,16 +8,13 @@ use ascio\db\v2\GetOrderResponseDb;
 use ascio\api\v2\GetOrderResponseApi;
 
 
-abstract class GetOrderResponse extends ResponseRootElement  {
+class GetOrderResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["GetOrderResult", "order"];
 	protected $_apiObjects=["GetOrderResult", "order"];
 	protected $GetOrderResult;
 	protected $order;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setGetOrderResult (?\ascio\v2\Response $GetOrderResult = null) : self {
 		$this->set("GetOrderResult", $GetOrderResult);
 		return $this;

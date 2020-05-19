@@ -8,15 +8,12 @@ use ascio\db\dns\GetZoneLogDb;
 use ascio\api\dns\GetZoneLogApi;
 
 
-abstract class GetZoneLog extends RequestRootElement  {
+class GetZoneLog extends RequestRootElement  {
 
 	protected $_apiProperties=["zoneName"];
 	protected $_apiObjects=[];
 	protected $zoneName;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setZoneName (?string $zoneName = null) : self {
 		$this->set("zoneName", $zoneName);
 		return $this;

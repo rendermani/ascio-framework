@@ -8,7 +8,7 @@ use ascio\db\dns\RecordDb;
 use ascio\api\dns\RecordApi;
 
 
-abstract class Record extends DbBase  {
+class Record extends DbBase  {
 
 	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "UpdatedDate"];
 	protected $_apiObjects=[];
@@ -44,6 +44,7 @@ abstract class Record extends DbBase  {
 		//set the api model
 		$api = new RecordApi($this);
 		$api->parent($this);
+		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**
@@ -71,9 +72,6 @@ abstract class Record extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setId (?int $Id = null) : self {
 		$this->set("Id", $Id);
 		return $this;

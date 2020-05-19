@@ -8,15 +8,12 @@ use ascio\db\dns\UpdateUserDb;
 use ascio\api\dns\UpdateUserApi;
 
 
-abstract class UpdateUser extends RequestRootElement  {
+class UpdateUser extends RequestRootElement  {
 
 	protected $_apiProperties=["user"];
 	protected $_apiObjects=["user"];
 	protected $user;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setUser (?\ascio\dns\User $user = null) : self {
 		$this->set("user", $user);
 		return $this;

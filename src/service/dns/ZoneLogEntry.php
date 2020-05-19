@@ -8,7 +8,7 @@ use ascio\db\dns\ZoneLogEntryDb;
 use ascio\api\dns\ZoneLogEntryApi;
 
 
-abstract class ZoneLogEntry extends DbBase  {
+class ZoneLogEntry extends DbBase  {
 
 	protected $_apiProperties=["Action", "ActionBy", "ActionByIpAddress", "ActionDate", "Record", "ZoneName"];
 	protected $_apiObjects=["Record"];
@@ -30,6 +30,7 @@ abstract class ZoneLogEntry extends DbBase  {
 		//set the api model
 		$api = new ZoneLogEntryApi($this);
 		$api->parent($this);
+		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**
@@ -57,9 +58,6 @@ abstract class ZoneLogEntry extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setAction (?string $Action = null) : self {
 		$this->set("Action", $Action);
 		return $this;

@@ -8,7 +8,7 @@ use ascio\db\v3\GetOrderRequestDb;
 use ascio\api\v3\GetOrderRequestApi;
 
 
-abstract class GetOrderRequest extends DbBase  {
+class GetOrderRequest extends DbBase  {
 
 	protected $_apiProperties=["OrderId"];
 	protected $_apiObjects=[];
@@ -35,9 +35,6 @@ abstract class GetOrderRequest extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setOrderId (?string $OrderId = null) : self {
 		$this->set("OrderId", $OrderId);
 		return $this;

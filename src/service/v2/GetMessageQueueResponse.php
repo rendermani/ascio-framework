@@ -8,16 +8,13 @@ use ascio\db\v2\GetMessageQueueResponseDb;
 use ascio\api\v2\GetMessageQueueResponseApi;
 
 
-abstract class GetMessageQueueResponse extends ResponseRootElement  {
+class GetMessageQueueResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["GetMessageQueueResult", "item"];
 	protected $_apiObjects=["GetMessageQueueResult", "item"];
 	protected $GetMessageQueueResult;
 	protected $item;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setGetMessageQueueResult (?\ascio\v2\Response $GetMessageQueueResult = null) : self {
 		$this->set("GetMessageQueueResult", $GetMessageQueueResult);
 		return $this;

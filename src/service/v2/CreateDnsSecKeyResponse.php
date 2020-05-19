@@ -8,16 +8,13 @@ use ascio\db\v2\CreateDnsSecKeyResponseDb;
 use ascio\api\v2\CreateDnsSecKeyResponseApi;
 
 
-abstract class CreateDnsSecKeyResponse extends ResponseRootElement  {
+class CreateDnsSecKeyResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["CreateDnsSecKeyResult", "dnsSecKey"];
 	protected $_apiObjects=["CreateDnsSecKeyResult", "dnsSecKey"];
 	protected $CreateDnsSecKeyResult;
 	protected $dnsSecKey;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setCreateDnsSecKeyResult (?\ascio\v2\Response $CreateDnsSecKeyResult = null) : self {
 		$this->set("CreateDnsSecKeyResult", $CreateDnsSecKeyResult);
 		return $this;

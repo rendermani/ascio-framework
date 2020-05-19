@@ -9,7 +9,7 @@ use ascio\api\dns\MailForwardApi;
 use ascio\api\dns\RecordApi;
 
 
-abstract class MailForward extends Record  {
+class MailForward extends Record  {
 
 	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "UpdatedDate"];
 	protected $_apiObjects=[];
@@ -32,6 +32,7 @@ abstract class MailForward extends Record  {
 		//set the api model
 		$api = new MailForwardApi($this);
 		$api->parent($this);
+		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**
@@ -59,7 +60,4 @@ abstract class MailForward extends Record  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 }

@@ -5,15 +5,16 @@
 namespace ascio\service\v3;
 
 
-abstract class ObjectType {
+class ObjectType {
 
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	const DomainType = "DomainType";
 	const DefensiveType = "DefensiveType";
 	const MarkType = "MarkType";
 	const NameWatchType = "NameWatchType";
 	const SslCertificateType = "SslCertificateType";
+	const LocalPresence = "LocalPresence";
+	const PrivacyProxy = "PrivacyProxy";
+	const MarkExtendedService = "MarkExtendedService";
+	const SanSsl = "SanSsl";
 }

@@ -5,12 +5,9 @@
 namespace ascio\service\v2;
 
 
-abstract class SearchOrderSortType {
+class SearchOrderSortType {
 
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	const CreDateAsc = "CreDateAsc";
 	const CreDateDesc = "CreDateDesc";
 	const OrderIdAsc = "OrderIdAsc";

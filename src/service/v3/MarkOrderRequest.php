@@ -9,7 +9,7 @@ use ascio\api\v3\MarkOrderRequestApi;
 use ascio\api\v3\AbstractOrderRequestApi;
 
 
-abstract class MarkOrderRequest extends AbstractOrderRequest  {
+class MarkOrderRequest extends AbstractOrderRequest  {
 
 	protected $_apiProperties=["Type", "Period", "TransactionComment", "Comments", "Documentation", "Options", "Mark", "Documents"];
 	protected $_apiObjects=["Mark", "Documents"];
@@ -44,9 +44,6 @@ abstract class MarkOrderRequest extends AbstractOrderRequest  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setMark (?\ascio\v3\AbstractMark $Mark = null) : self {
 		$this->set("Mark", $Mark);
 		return $this;

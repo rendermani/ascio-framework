@@ -8,12 +8,9 @@ use ascio\db\dns\GetRolesDb;
 use ascio\api\dns\GetRolesApi;
 
 
-abstract class GetRoles extends RequestRootElement  {
+class GetRoles extends RequestRootElement  {
 
 	protected $_apiProperties=[];
 	protected $_apiObjects=[];
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 }

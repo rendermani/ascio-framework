@@ -8,7 +8,7 @@ use ascio\db\v3\KeyValueDb;
 use ascio\api\v3\KeyValueApi;
 
 
-abstract class KeyValue extends DbBase  {
+class KeyValue extends DbBase  {
 
 	protected $_apiProperties=["Key", "Value"];
 	protected $_apiObjects=[];
@@ -36,9 +36,6 @@ abstract class KeyValue extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setKey (?string $Key = null) : self {
 		$this->set("Key", $Key);
 		return $this;

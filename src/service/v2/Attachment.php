@@ -8,7 +8,7 @@ use ascio\db\v2\AttachmentDb;
 use ascio\api\v2\AttachmentApi;
 
 
-abstract class Attachment extends DbBase  {
+class Attachment extends DbBase  {
 
 	protected $_apiProperties=["Data", "FileName"];
 	protected $_apiObjects=[];
@@ -36,9 +36,6 @@ abstract class Attachment extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setData (?\base64Binary $Data = null) : self {
 		$this->set("Data", $Data);
 		return $this;

@@ -8,16 +8,13 @@ use ascio\db\v2\CreateDocumentationDb;
 use ascio\api\v2\CreateDocumentationApi;
 
 
-abstract class CreateDocumentation extends RequestRootElement  {
+class CreateDocumentation extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "attachments"];
 	protected $_apiObjects=["attachments"];
 	protected $sessionId;
 	protected $attachments;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

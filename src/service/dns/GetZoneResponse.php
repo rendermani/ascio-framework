@@ -8,16 +8,13 @@ use ascio\db\dns\GetZoneResponseDb;
 use ascio\api\dns\GetZoneResponseApi;
 
 
-abstract class GetZoneResponse extends ResponseRootElement  {
+class GetZoneResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["GetZoneResult", "zone"];
 	protected $_apiObjects=["GetZoneResult", "zone"];
 	protected $GetZoneResult;
 	protected $zone;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setGetZoneResult (?\ascio\dns\Response $GetZoneResult = null) : self {
 		$this->set("GetZoneResult", $GetZoneResult);
 		return $this;

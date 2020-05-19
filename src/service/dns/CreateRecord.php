@@ -8,16 +8,13 @@ use ascio\db\dns\CreateRecordDb;
 use ascio\api\dns\CreateRecordApi;
 
 
-abstract class CreateRecord extends RequestRootElement  {
+class CreateRecord extends RequestRootElement  {
 
 	protected $_apiProperties=["zoneName", "record"];
 	protected $_apiObjects=["record"];
 	protected $zoneName;
 	protected $record;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setZoneName (?string $zoneName = null) : self {
 		$this->set("zoneName", $zoneName);
 		return $this;

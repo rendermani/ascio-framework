@@ -8,7 +8,7 @@ use ascio\db\v2\PrivacyProxyDb;
 use ascio\api\v2\PrivacyProxyApi;
 
 
-abstract class PrivacyProxy extends DbBase  {
+class PrivacyProxy extends DbBase  {
 
 	protected $_apiProperties=["Type", "PrivacyAdmin", "PrivacyTech", "PrivacyBilling", "Extensions"];
 	protected $_apiObjects=["Extensions"];
@@ -29,6 +29,7 @@ abstract class PrivacyProxy extends DbBase  {
 		//set the api model
 		$api = new PrivacyProxyApi($this);
 		$api->parent($this);
+		$api->config($this->config()->v2);
 		$this->api($api);
 	}
 	/**
@@ -56,9 +57,6 @@ abstract class PrivacyProxy extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setType (?string $Type = null) : self {
 		$this->set("Type", $Type);
 		return $this;

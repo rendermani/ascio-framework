@@ -8,15 +8,12 @@ use ascio\db\v2\UploadMessageResponseDb;
 use ascio\api\v2\UploadMessageResponseApi;
 
 
-abstract class UploadMessageResponse extends ResponseRootElement  {
+class UploadMessageResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["UploadMessageResult"];
 	protected $_apiObjects=["UploadMessageResult"];
 	protected $UploadMessageResult;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setUploadMessageResult (?\ascio\v2\Response $UploadMessageResult = null) : self {
 		$this->set("UploadMessageResult", $UploadMessageResult);
 		return $this;

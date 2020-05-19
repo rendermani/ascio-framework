@@ -8,16 +8,13 @@ use ascio\db\v2\CreateNameServerDb;
 use ascio\api\v2\CreateNameServerApi;
 
 
-abstract class CreateNameServer extends RequestRootElement  {
+class CreateNameServer extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "nameServer"];
 	protected $_apiObjects=["nameServer"];
 	protected $sessionId;
 	protected $nameServer;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

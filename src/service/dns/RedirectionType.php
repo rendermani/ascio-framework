@@ -5,12 +5,9 @@
 namespace ascio\service\dns;
 
 
-abstract class RedirectionType {
+class RedirectionType {
 
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	const Temporary = "Temporary";
 	const Permanent = "Permanent";
 	const Frame = "Frame";

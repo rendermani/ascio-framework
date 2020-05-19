@@ -5,12 +5,9 @@
 namespace ascio\service\dns;
 
 
-abstract class SearchZoneField {
+class SearchZoneField {
 
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	const ZoneName = "ZoneName";
 	const Owner = "Owner";
 	const Source = "Source";

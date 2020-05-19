@@ -8,7 +8,7 @@ use ascio\db\dns\RoleItemDb;
 use ascio\api\dns\RoleItemApi;
 
 
-abstract class RoleItem extends DbBase  {
+class RoleItem extends DbBase  {
 
 	protected $_apiProperties=["Rights", "Role"];
 	protected $_apiObjects=["Rights"];
@@ -26,6 +26,7 @@ abstract class RoleItem extends DbBase  {
 		//set the api model
 		$api = new RoleItemApi($this);
 		$api->parent($this);
+		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**
@@ -53,9 +54,6 @@ abstract class RoleItem extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setRights (?\ascio\dns\ArrayOfstring $Rights = null) : self {
 		$this->set("Rights", $Rights);
 		return $this;

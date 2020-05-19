@@ -8,16 +8,13 @@ use ascio\db\v2\SearchNameServerResponseDb;
 use ascio\api\v2\SearchNameServerResponseApi;
 
 
-abstract class SearchNameServerResponse extends ResponseRootElement  {
+class SearchNameServerResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["SearchNameServerResult", "nameServers"];
 	protected $_apiObjects=["SearchNameServerResult", "nameServers"];
 	protected $SearchNameServerResult;
 	protected $nameServers;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSearchNameServerResult (?\ascio\v2\Response $SearchNameServerResult = null) : self {
 		$this->set("SearchNameServerResult", $SearchNameServerResult);
 		return $this;

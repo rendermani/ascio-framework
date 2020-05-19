@@ -8,16 +8,13 @@ use ascio\db\v2\GetContactResponseDb;
 use ascio\api\v2\GetContactResponseApi;
 
 
-abstract class GetContactResponse extends ResponseRootElement  {
+class GetContactResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["GetContactResult", "contact"];
 	protected $_apiObjects=["GetContactResult", "contact"];
 	protected $GetContactResult;
 	protected $contact;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setGetContactResult (?\ascio\v2\Response $GetContactResult = null) : self {
 		$this->set("GetContactResult", $GetContactResult);
 		return $this;

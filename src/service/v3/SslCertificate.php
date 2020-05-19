@@ -8,7 +8,7 @@ use ascio\db\v3\SslCertificateDb;
 use ascio\api\v3\SslCertificateApi;
 
 
-abstract class SslCertificate extends DbBase  {
+class SslCertificate extends DbBase  {
 
 	protected $_apiProperties=["Handle", "CommonName", "ProductCode", "WebServerType", "ApproverEmail", "CSR", "Owner", "Admin", "Tech", "SanNames", "ObjectComment", "ValidationType"];
 	protected $_apiObjects=["Owner", "Admin", "Tech", "SanNames"];
@@ -36,6 +36,7 @@ abstract class SslCertificate extends DbBase  {
 		//set the api model
 		$api = new SslCertificateApi($this);
 		$api->parent($this);
+		$api->config($this->config()->v3);
 		$this->api($api);
 	}
 	/**
@@ -63,9 +64,6 @@ abstract class SslCertificate extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setHandle (?string $Handle = null) : self {
 		$this->set("Handle", $Handle);
 		return $this;

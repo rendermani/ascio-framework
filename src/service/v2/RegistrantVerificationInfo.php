@@ -8,7 +8,7 @@ use ascio\db\v2\RegistrantVerificationInfoDb;
 use ascio\api\v2\RegistrantVerificationInfoApi;
 
 
-abstract class RegistrantVerificationInfo extends Base  {
+class RegistrantVerificationInfo extends Base  {
 
 	protected $_apiProperties=["EmailAddress", "VerificationStatus", "VerificationDetails"];
 	protected $_apiObjects=["VerificationDetails"];
@@ -16,9 +16,6 @@ abstract class RegistrantVerificationInfo extends Base  {
 	protected $VerificationStatus;
 	protected $VerificationDetails;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setEmailAddress (?string $EmailAddress = null) : self {
 		$this->set("EmailAddress", $EmailAddress);
 		return $this;

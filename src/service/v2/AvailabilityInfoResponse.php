@@ -8,16 +8,13 @@ use ascio\db\v2\AvailabilityInfoResponseDb;
 use ascio\api\v2\AvailabilityInfoResponseApi;
 
 
-abstract class AvailabilityInfoResponse extends ResponseRootElement  {
+class AvailabilityInfoResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["AvailabilityInfoResult", "PriceInfo"];
 	protected $_apiObjects=["AvailabilityInfoResult", "PriceInfo"];
 	protected $AvailabilityInfoResult;
 	protected $PriceInfo;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setAvailabilityInfoResult (?\ascio\v2\Response $AvailabilityInfoResult = null) : self {
 		$this->set("AvailabilityInfoResult", $AvailabilityInfoResult);
 		return $this;

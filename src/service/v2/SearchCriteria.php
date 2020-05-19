@@ -8,7 +8,7 @@ use ascio\db\v2\SearchCriteriaDb;
 use ascio\api\v2\SearchCriteriaApi;
 
 
-abstract class SearchCriteria extends Base  {
+class SearchCriteria extends Base  {
 
 	protected $_apiProperties=["Clauses", "Mode", "Withoutstates", "Withstates"];
 	protected $_apiObjects=["Clauses", "Withoutstates", "Withstates"];
@@ -17,9 +17,6 @@ abstract class SearchCriteria extends Base  {
 	protected $Withoutstates;
 	protected $Withstates;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setClauses (?\ascio\v2\ArrayOfClause $Clauses = null) : self {
 		$this->set("Clauses", $Clauses);
 		return $this;

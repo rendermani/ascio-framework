@@ -8,11 +8,12 @@ use ascio\db\v3\GetMessagesRequestDb;
 use ascio\api\v3\GetMessagesRequestApi;
 
 
-abstract class GetMessagesRequest extends DbBase  {
+class GetMessagesRequest extends DbBase  {
 
-	protected $_apiProperties=["OrderId"];
+	protected $_apiProperties=["OrderId", "IncludeAttachmentContent"];
 	protected $_apiObjects=[];
 	protected $OrderId;
+	protected $IncludeAttachmentContent;
 
 	public function __construct($parent = null) {
 		parent::__construct($parent);
@@ -35,14 +36,18 @@ abstract class GetMessagesRequest extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setOrderId (?string $OrderId = null) : self {
 		$this->set("OrderId", $OrderId);
 		return $this;
 	}
 	public function getOrderId () : ?string {
 		return $this->get("OrderId", "string");
+	}
+	public function setIncludeAttachmentContent (?bool $IncludeAttachmentContent = null) : self {
+		$this->set("IncludeAttachmentContent", $IncludeAttachmentContent);
+		return $this;
+	}
+	public function getIncludeAttachmentContent () : ?bool {
+		return $this->get("IncludeAttachmentContent", "bool");
 	}
 }

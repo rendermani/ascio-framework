@@ -9,7 +9,7 @@ use ascio\api\v3\CourtValidatedMarkApi;
 use ascio\api\v3\AbstractMarkApi;
 
 
-abstract class CourtValidatedMark extends AbstractMark  {
+class CourtValidatedMark extends AbstractMark  {
 
 	protected $_apiProperties=["Handle", "MarkName", "MarkId", "AuthInfo", "ServiceType", "GoodsAndServicesDescription", "Labels", "ClaimEmailNotification1", "ClaimEmailNotification2", "ClaimEmailNotification3", "ClaimEmailNotification4", "ClaimEmailNotification5", "NotificationFrequency", "Owner", "Reseller", "Extensions", "ObjectComment", "CourtName", "ReferenceNumber", "Country", "Region", "ProtectionDate"];
 	protected $_apiObjects=["Labels", "Owner", "Reseller", "Extensions"];
@@ -58,9 +58,6 @@ abstract class CourtValidatedMark extends AbstractMark  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setCourtName (?string $CourtName = null) : self {
 		$this->set("CourtName", $CourtName);
 		return $this;

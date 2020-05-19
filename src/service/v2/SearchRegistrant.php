@@ -8,16 +8,13 @@ use ascio\db\v2\SearchRegistrantDb;
 use ascio\api\v2\SearchRegistrantApi;
 
 
-abstract class SearchRegistrant extends RequestRootElement  {
+class SearchRegistrant extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "criteria"];
 	protected $_apiObjects=["criteria"];
 	protected $sessionId;
 	protected $criteria;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

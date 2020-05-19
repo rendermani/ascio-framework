@@ -8,7 +8,7 @@ use ascio\db\v3\AbstractMarkDb;
 use ascio\api\v3\AbstractMarkApi;
 
 
-abstract class AbstractMark extends DbBase  {
+class AbstractMark extends DbBase  {
 
 	protected $_apiProperties=["Handle", "MarkName", "MarkId", "AuthInfo", "ServiceType", "GoodsAndServicesDescription", "Labels", "ClaimEmailNotification1", "ClaimEmailNotification2", "ClaimEmailNotification3", "ClaimEmailNotification4", "ClaimEmailNotification5", "NotificationFrequency", "Owner", "Reseller", "Extensions", "ObjectComment"];
 	protected $_apiObjects=["Labels", "Owner", "Reseller", "Extensions"];
@@ -47,6 +47,7 @@ abstract class AbstractMark extends DbBase  {
 		//set the api model
 		$api = new AbstractMarkApi($this);
 		$api->parent($this);
+		$api->config($this->config()->v3);
 		$this->api($api);
 	}
 	/**
@@ -74,9 +75,6 @@ abstract class AbstractMark extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setHandle (?string $Handle = null) : self {
 		$this->set("Handle", $Handle);
 		return $this;

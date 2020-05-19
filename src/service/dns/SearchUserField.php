@@ -5,12 +5,9 @@
 namespace ascio\service\dns;
 
 
-abstract class SearchUserField {
+class SearchUserField {
 
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	const UserName = "UserName";
 	const RoleType = "RoleType";
 	const Email = "Email";

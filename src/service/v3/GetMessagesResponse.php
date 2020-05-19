@@ -9,7 +9,7 @@ use ascio\api\v3\GetMessagesResponseApi;
 use ascio\api\v3\AbstractResponseApi;
 
 
-abstract class GetMessagesResponse extends AbstractResponse  {
+class GetMessagesResponse extends AbstractResponse  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "Messages"];
 	protected $_apiObjects=["Errors", "Messages"];
@@ -40,9 +40,6 @@ abstract class GetMessagesResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setMessages (?\ascio\v3\ArrayOfMessage $Messages = null) : self {
 		$this->set("Messages", $Messages);
 		return $this;

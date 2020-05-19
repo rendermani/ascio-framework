@@ -8,16 +8,13 @@ use ascio\db\v2\CreateApprovalDocumentationDb;
 use ascio\api\v2\CreateApprovalDocumentationApi;
 
 
-abstract class CreateApprovalDocumentation extends RequestRootElement  {
+class CreateApprovalDocumentation extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "approvalDocumentation"];
 	protected $_apiObjects=["approvalDocumentation"];
 	protected $sessionId;
 	protected $approvalDocumentation;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

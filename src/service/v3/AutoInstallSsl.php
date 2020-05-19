@@ -8,7 +8,7 @@ use ascio\db\v3\AutoInstallSslDb;
 use ascio\api\v3\AutoInstallSslApi;
 
 
-abstract class AutoInstallSsl extends DbBase  {
+class AutoInstallSsl extends DbBase  {
 
 	protected $_apiProperties=["Handle", "CommonName", "ProductCode", "Email", "SanCount", "ObjectComment"];
 	protected $_apiObjects=[];
@@ -30,6 +30,7 @@ abstract class AutoInstallSsl extends DbBase  {
 		//set the api model
 		$api = new AutoInstallSslApi($this);
 		$api->parent($this);
+		$api->config($this->config()->v3);
 		$this->api($api);
 	}
 	/**
@@ -57,9 +58,6 @@ abstract class AutoInstallSsl extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setHandle (?string $Handle = null) : self {
 		$this->set("Handle", $Handle);
 		return $this;

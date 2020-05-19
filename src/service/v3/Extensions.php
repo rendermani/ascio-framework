@@ -6,10 +6,9 @@ namespace ascio\service\v3;
 use ascio\base\v3\DbArrayBase;
 use ascio\db\v3\ExtensionsDb;
 use ascio\api\v3\ExtensionsApi;
-use ascio\base\ArrayInterface;
 
 
-abstract class Extensions extends DbArrayBase  {
+class Extensions extends DbArrayBase  {
 
 	protected $_apiProperties=["KeyValue"];
 	protected $_apiObjects=["KeyValue"];
@@ -26,6 +25,7 @@ abstract class Extensions extends DbArrayBase  {
 		//set the api model
 		$api = new ExtensionsApi($this);
 		$api->parent($this);
+		$api->config($this->config()->v3);
 		$this->api($api);
 	}
 	/**
@@ -53,24 +53,6 @@ abstract class Extensions extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Array-Specific methods
-	*/
-	public function current() : \ascio\v3\KeyValue {
-		return parent::current();
-	}
-	public function first() : \ascio\v3\KeyValue {
-		return parent::first();
-	}
-	public function last() : \ascio\v3\KeyValue {
-		return parent::last();
-	}
-	public function index($nr) : \ascio\v3\KeyValue {
-		return parent::index($nr);
-	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setKeyValue (?Iterable $KeyValue = null) : self {
 		$this->set("KeyValue", $KeyValue);
 		return $this;
@@ -82,9 +64,6 @@ abstract class Extensions extends DbArrayBase  {
 		return $this->create ("KeyValue", "\\ascio\\v3\\KeyValue");
 	}
 	public function addKeyValue (string $Key, string $Value) : \ascio\v3\KeyValue {
-		return $this->addItem(func_get_args(),"\\ascio\\v3\\KeyValue");
-	}
-	public function addKeyValues ($array) : self {
-		return $this->add(func_get_args());
+		return $this->add("KeyValue","\\ascio\\v3\\KeyValue",func_get_args());
 	}
 }

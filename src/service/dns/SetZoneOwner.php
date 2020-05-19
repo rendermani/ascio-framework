@@ -8,16 +8,13 @@ use ascio\db\dns\SetZoneOwnerDb;
 use ascio\api\dns\SetZoneOwnerApi;
 
 
-abstract class SetZoneOwner extends RequestRootElement  {
+class SetZoneOwner extends RequestRootElement  {
 
 	protected $_apiProperties=["zoneName", "owner"];
 	protected $_apiObjects=[];
 	protected $zoneName;
 	protected $owner;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setZoneName (?string $zoneName = null) : self {
 		$this->set("zoneName", $zoneName);
 		return $this;

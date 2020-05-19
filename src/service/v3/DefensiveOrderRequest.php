@@ -9,7 +9,7 @@ use ascio\api\v3\DefensiveOrderRequestApi;
 use ascio\api\v3\AbstractOrderRequestApi;
 
 
-abstract class DefensiveOrderRequest extends AbstractOrderRequest  {
+class DefensiveOrderRequest extends AbstractOrderRequest  {
 
 	protected $_apiProperties=["Type", "Period", "TransactionComment", "Comments", "Documentation", "Options", "Defensive"];
 	protected $_apiObjects=["Defensive"];
@@ -43,9 +43,6 @@ abstract class DefensiveOrderRequest extends AbstractOrderRequest  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setDefensive (?\ascio\v3\Defensive $Defensive = null) : self {
 		$this->set("Defensive", $Defensive);
 		return $this;

@@ -5,12 +5,9 @@
 namespace ascio\service\v2;
 
 
-abstract class OrderType {
+class OrderType {
 
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	const NotSet = "NotSet";
 	const Contact_Update = "Contact_Update";
 	const Change_Locks = "Change_Locks";

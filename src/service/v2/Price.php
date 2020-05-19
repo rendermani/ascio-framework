@@ -8,7 +8,7 @@ use ascio\db\v2\PriceDb;
 use ascio\api\v2\PriceApi;
 
 
-abstract class Price extends Base  {
+class Price extends Base  {
 
 	protected $_apiProperties=["OrderType", "Period", "Price"];
 	protected $_apiObjects=[];
@@ -16,9 +16,6 @@ abstract class Price extends Base  {
 	protected $Period;
 	protected $Price;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setOrderType (?string $OrderType = null) : self {
 		$this->set("OrderType", $OrderType);
 		return $this;

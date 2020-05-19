@@ -8,14 +8,17 @@ use ascio\db\v3\OrderInfoDb;
 use ascio\api\v3\OrderInfoApi;
 
 
-abstract class OrderInfo extends DbBase  {
+class OrderInfo extends DbBase  {
 
-	protected $_apiProperties=["OrderId", "Status", "Created", "OrderRequest"];
-	protected $_apiObjects=["OrderRequest"];
+	protected $_apiProperties=["OrderId", "Status", "Created", "OrderRequest", "LastUpdated", "CreatedBy", "OrderStatusHistory"];
+	protected $_apiObjects=["OrderRequest", "OrderStatusHistory"];
 	protected $OrderId;
 	protected $Status;
 	protected $Created;
 	protected $OrderRequest;
+	protected $LastUpdated;
+	protected $CreatedBy;
+	protected $OrderStatusHistory;
 
 	public function __construct($parent = null) {
 		parent::__construct($parent);
@@ -28,6 +31,7 @@ abstract class OrderInfo extends DbBase  {
 		//set the api model
 		$api = new OrderInfoApi($this);
 		$api->parent($this);
+		$api->config($this->config()->v3);
 		$this->api($api);
 	}
 	/**
@@ -55,9 +59,6 @@ abstract class OrderInfo extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setOrderId (?string $OrderId = null) : self {
 		$this->set("OrderId", $OrderId);
 		return $this;
@@ -88,5 +89,29 @@ abstract class OrderInfo extends DbBase  {
 	}
 	public function createOrderRequest () : \ascio\v3\AbstractOrderRequest {
 		return $this->create ("OrderRequest", "\\ascio\\v3\\AbstractOrderRequest");
+	}
+	public function setLastUpdated (?\DateTime $LastUpdated = null) : self {
+		$this->set("LastUpdated", $LastUpdated);
+		return $this;
+	}
+	public function getLastUpdated () : ?\DateTime {
+		return $this->get("LastUpdated", "\\DateTime");
+	}
+	public function setCreatedBy (?string $CreatedBy = null) : self {
+		$this->set("CreatedBy", $CreatedBy);
+		return $this;
+	}
+	public function getCreatedBy () : ?string {
+		return $this->get("CreatedBy", "string");
+	}
+	public function setOrderStatusHistory (?\ascio\v3\ArrayOfOrderHistory $OrderStatusHistory = null) : self {
+		$this->set("OrderStatusHistory", $OrderStatusHistory);
+		return $this;
+	}
+	public function getOrderStatusHistory () : ?\ascio\v3\ArrayOfOrderHistory {
+		return $this->get("OrderStatusHistory", "\\ascio\\v3\\ArrayOfOrderHistory");
+	}
+	public function createOrderStatusHistory () : \ascio\v3\ArrayOfOrderHistory {
+		return $this->create ("OrderStatusHistory", "\\ascio\\v3\\ArrayOfOrderHistory");
 	}
 }

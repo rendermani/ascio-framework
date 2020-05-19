@@ -9,7 +9,7 @@ use ascio\api\v3\GetMarkResponseApi;
 use ascio\api\v3\AbstractResponseApi;
 
 
-abstract class GetMarkResponse extends AbstractResponse  {
+class GetMarkResponse extends AbstractResponse  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "MarkInfo"];
 	protected $_apiObjects=["Errors", "MarkInfo"];
@@ -40,9 +40,6 @@ abstract class GetMarkResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setMarkInfo (?\ascio\v3\MarkInfo $MarkInfo = null) : self {
 		$this->set("MarkInfo", $MarkInfo);
 		return $this;

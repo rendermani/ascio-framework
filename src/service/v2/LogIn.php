@@ -8,15 +8,12 @@ use ascio\db\v2\LogInDb;
 use ascio\api\v2\LogInApi;
 
 
-abstract class LogIn extends RequestRootElement  {
+class LogIn extends RequestRootElement  {
 
 	protected $_apiProperties=["session"];
 	protected $_apiObjects=["session"];
 	protected $session;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSession (?\ascio\v2\Session $session = null) : self {
 		$this->set("session", $session);
 		return $this;

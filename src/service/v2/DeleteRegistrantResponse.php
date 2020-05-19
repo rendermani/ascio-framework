@@ -8,15 +8,12 @@ use ascio\db\v2\DeleteRegistrantResponseDb;
 use ascio\api\v2\DeleteRegistrantResponseApi;
 
 
-abstract class DeleteRegistrantResponse extends ResponseRootElement  {
+class DeleteRegistrantResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["DeleteRegistrantResult"];
 	protected $_apiObjects=["DeleteRegistrantResult"];
 	protected $DeleteRegistrantResult;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setDeleteRegistrantResult (?\ascio\v2\Response $DeleteRegistrantResult = null) : self {
 		$this->set("DeleteRegistrantResult", $DeleteRegistrantResult);
 		return $this;

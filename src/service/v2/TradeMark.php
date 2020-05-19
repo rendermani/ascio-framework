@@ -8,7 +8,7 @@ use ascio\db\v2\TradeMarkDb;
 use ascio\api\v2\TradeMarkApi;
 
 
-abstract class TradeMark extends DbBase  {
+class TradeMark extends DbBase  {
 
 	protected $_apiProperties=["Name", "Country", "Date", "Number", "Type", "Contact", "ContactLanguage", "DocumentationLanguage", "SecondContact", "ThirdContact", "RegDate"];
 	protected $_apiObjects=[];
@@ -35,6 +35,7 @@ abstract class TradeMark extends DbBase  {
 		//set the api model
 		$api = new TradeMarkApi($this);
 		$api->parent($this);
+		$api->config($this->config()->v2);
 		$this->api($api);
 	}
 	/**
@@ -62,9 +63,6 @@ abstract class TradeMark extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setName (?string $Name = null) : self {
 		$this->set("Name", $Name);
 		return $this;

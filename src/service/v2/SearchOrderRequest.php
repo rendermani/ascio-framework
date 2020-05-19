@@ -8,7 +8,7 @@ use ascio\db\v2\SearchOrderRequestDb;
 use ascio\api\v2\SearchOrderRequestApi;
 
 
-abstract class SearchOrderRequest extends Base  {
+class SearchOrderRequest extends Base  {
 
 	protected $_apiProperties=["OrderTypes", "OrderStatusTypes", "FromDate", "ToDate", "DomainName", "TransactionComment", "Comments", "IncludeDomainDetails", "PageInfo", "OrderSort"];
 	protected $_apiObjects=["OrderTypes", "OrderStatusTypes", "PageInfo"];
@@ -23,9 +23,6 @@ abstract class SearchOrderRequest extends Base  {
 	protected $PageInfo;
 	protected $OrderSort;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setOrderTypes (?\ascio\v2\ArrayOfOrderType $OrderTypes = null) : self {
 		$this->set("OrderTypes", $OrderTypes);
 		return $this;

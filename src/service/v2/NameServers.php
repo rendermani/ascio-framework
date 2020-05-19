@@ -8,7 +8,7 @@ use ascio\db\v2\NameServersDb;
 use ascio\api\v2\NameServersApi;
 
 
-abstract class NameServers extends DbBase  {
+class NameServers extends DbBase  {
 
 	protected $_apiProperties=["NameServer1", "NameServer2", "NameServer3", "NameServer4", "NameServer5", "NameServer6", "NameServer7", "NameServer8", "NameServer9", "NameServer10", "NameServer11", "NameServer12", "NameServer13"];
 	protected $_apiObjects=["NameServer1", "NameServer2", "NameServer3", "NameServer4", "NameServer5", "NameServer6", "NameServer7", "NameServer8", "NameServer9", "NameServer10", "NameServer11", "NameServer12", "NameServer13"];
@@ -37,6 +37,7 @@ abstract class NameServers extends DbBase  {
 		//set the api model
 		$api = new NameServersApi($this);
 		$api->parent($this);
+		$api->config($this->config()->v2);
 		$this->api($api);
 	}
 	/**
@@ -64,9 +65,6 @@ abstract class NameServers extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setNameServer1 (?\ascio\v2\NameServer $NameServer1 = null) : self {
 		$this->set("NameServer1", $NameServer1);
 		return $this;

@@ -8,15 +8,12 @@ use ascio\db\v2\ValidateOrderResponseDb;
 use ascio\api\v2\ValidateOrderResponseApi;
 
 
-abstract class ValidateOrderResponse extends ResponseRootElement  {
+class ValidateOrderResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["ValidateOrderResult"];
 	protected $_apiObjects=["ValidateOrderResult"];
 	protected $ValidateOrderResult;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setValidateOrderResult (?\ascio\v2\Response $ValidateOrderResult = null) : self {
 		$this->set("ValidateOrderResult", $ValidateOrderResult);
 		return $this;

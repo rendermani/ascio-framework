@@ -8,7 +8,7 @@ use ascio\db\dns\ZoneDb;
 use ascio\api\dns\ZoneApi;
 
 
-abstract class Zone extends DbBase  {
+class Zone extends DbBase  {
 
 	protected $_apiProperties=["CreatedDate", "Owner", "Records", "ZoneName"];
 	protected $_apiObjects=["Records"];
@@ -28,6 +28,7 @@ abstract class Zone extends DbBase  {
 		//set the api model
 		$api = new ZoneApi($this);
 		$api->parent($this);
+		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**
@@ -55,9 +56,6 @@ abstract class Zone extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setCreatedDate (?\DateTime $CreatedDate = null) : self {
 		$this->set("CreatedDate", $CreatedDate);
 		return $this;

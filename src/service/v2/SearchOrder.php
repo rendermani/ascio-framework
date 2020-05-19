@@ -8,16 +8,13 @@ use ascio\db\v2\SearchOrderDb;
 use ascio\api\v2\SearchOrderApi;
 
 
-abstract class SearchOrder extends RequestRootElement  {
+class SearchOrder extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "orderRequest"];
 	protected $_apiObjects=["orderRequest"];
 	protected $sessionId;
 	protected $orderRequest;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

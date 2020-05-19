@@ -6,10 +6,9 @@ namespace ascio\service\v3;
 use ascio\base\v3\DbArrayBase;
 use ascio\db\v3\ArrayOfErrorCodeDb;
 use ascio\api\v3\ArrayOfErrorCodeApi;
-use ascio\base\ArrayInterface;
 
 
-abstract class ArrayOfErrorCode extends DbArrayBase  {
+class ArrayOfErrorCode extends DbArrayBase  {
 
 	protected $_apiProperties=["ErrorCode"];
 	protected $_apiObjects=["ErrorCode"];
@@ -36,24 +35,6 @@ abstract class ArrayOfErrorCode extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Array-Specific methods
-	*/
-	public function current() : \ascio\v3\ErrorCode {
-		return parent::current();
-	}
-	public function first() : \ascio\v3\ErrorCode {
-		return parent::first();
-	}
-	public function last() : \ascio\v3\ErrorCode {
-		return parent::last();
-	}
-	public function index($nr) : \ascio\v3\ErrorCode {
-		return parent::index($nr);
-	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setErrorCode (?Iterable $ErrorCode = null) : self {
 		$this->set("ErrorCode", $ErrorCode);
 		return $this;
@@ -65,9 +46,6 @@ abstract class ArrayOfErrorCode extends DbArrayBase  {
 		return $this->create ("ErrorCode", "\\ascio\\v3\\ErrorCode");
 	}
 	public function addErrorCode () : \ascio\v3\ErrorCode {
-		return $this->addItem(func_get_args(),"\\ascio\\v3\\ErrorCode");
-	}
-	public function addErrorCodes ($array) : self {
-		return $this->add(func_get_args());
+		return $this->add("ErrorCode","\\ascio\\v3\\ErrorCode",func_get_args());
 	}
 }

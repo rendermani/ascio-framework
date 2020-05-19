@@ -8,7 +8,7 @@ use ascio\db\v2\MessageDb;
 use ascio\api\v2\MessageApi;
 
 
-abstract class Message extends DbBase  {
+class Message extends DbBase  {
 
 	protected $_apiProperties=["Attachments", "Body", "Created", "FromAddress", "Subject", "ToAddress", "Type"];
 	protected $_apiObjects=["Attachments"];
@@ -31,6 +31,7 @@ abstract class Message extends DbBase  {
 		//set the api model
 		$api = new MessageApi($this);
 		$api->parent($this);
+		$api->config($this->config()->v2);
 		$this->api($api);
 	}
 	/**
@@ -58,9 +59,6 @@ abstract class Message extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setAttachments (?\ascio\v2\ArrayOfAttachment $Attachments = null) : self {
 		$this->set("Attachments", $Attachments);
 		return $this;

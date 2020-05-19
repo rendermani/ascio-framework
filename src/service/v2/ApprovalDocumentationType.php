@@ -5,12 +5,9 @@
 namespace ascio\service\v2;
 
 
-abstract class ApprovalDocumentationType {
+class ApprovalDocumentationType {
 
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	const Foa = "Foa";
 	const IRTPApproval = "IRTPApproval";
 }

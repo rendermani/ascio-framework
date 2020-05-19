@@ -6,10 +6,9 @@ namespace ascio\service\v3;
 use ascio\base\v3\DbArrayBase;
 use ascio\db\v3\ArrayOfMarkOrderDocumentDb;
 use ascio\api\v3\ArrayOfMarkOrderDocumentApi;
-use ascio\base\ArrayInterface;
 
 
-abstract class ArrayOfMarkOrderDocument extends DbArrayBase  {
+class ArrayOfMarkOrderDocument extends DbArrayBase  {
 
 	protected $_apiProperties=["MarkOrderDocument"];
 	protected $_apiObjects=["MarkOrderDocument"];
@@ -36,24 +35,6 @@ abstract class ArrayOfMarkOrderDocument extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Array-Specific methods
-	*/
-	public function current() : \ascio\v3\MarkOrderDocument {
-		return parent::current();
-	}
-	public function first() : \ascio\v3\MarkOrderDocument {
-		return parent::first();
-	}
-	public function last() : \ascio\v3\MarkOrderDocument {
-		return parent::last();
-	}
-	public function index($nr) : \ascio\v3\MarkOrderDocument {
-		return parent::index($nr);
-	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setMarkOrderDocument (?Iterable $MarkOrderDocument = null) : self {
 		$this->set("MarkOrderDocument", $MarkOrderDocument);
 		return $this;
@@ -65,9 +46,6 @@ abstract class ArrayOfMarkOrderDocument extends DbArrayBase  {
 		return $this->create ("MarkOrderDocument", "\\ascio\\v3\\MarkOrderDocument");
 	}
 	public function addMarkOrderDocument () : \ascio\v3\MarkOrderDocument {
-		return $this->addItem(func_get_args(),"\\ascio\\v3\\MarkOrderDocument");
-	}
-	public function addMarkOrderDocuments ($array) : self {
-		return $this->add(func_get_args());
+		return $this->add("MarkOrderDocument","\\ascio\\v3\\MarkOrderDocument",func_get_args());
 	}
 }

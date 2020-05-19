@@ -8,16 +8,13 @@ use ascio\db\v2\DeleteNameServerDb;
 use ascio\api\v2\DeleteNameServerApi;
 
 
-abstract class DeleteNameServer extends RequestRootElement  {
+class DeleteNameServer extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "nameServerHandle"];
 	protected $_apiObjects=[];
 	protected $sessionId;
 	protected $nameServerHandle;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

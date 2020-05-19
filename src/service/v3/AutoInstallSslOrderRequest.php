@@ -9,7 +9,7 @@ use ascio\api\v3\AutoInstallSslOrderRequestApi;
 use ascio\api\v3\AbstractOrderRequestApi;
 
 
-abstract class AutoInstallSslOrderRequest extends AbstractOrderRequest  {
+class AutoInstallSslOrderRequest extends AbstractOrderRequest  {
 
 	protected $_apiProperties=["Type", "Period", "TransactionComment", "Comments", "Documentation", "Options", "AutoInstallSsl"];
 	protected $_apiObjects=["AutoInstallSsl"];
@@ -43,9 +43,6 @@ abstract class AutoInstallSslOrderRequest extends AbstractOrderRequest  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setAutoInstallSsl (?\ascio\v3\AutoInstallSsl $AutoInstallSsl = null) : self {
 		$this->set("AutoInstallSsl", $AutoInstallSsl);
 		return $this;

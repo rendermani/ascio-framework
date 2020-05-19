@@ -8,16 +8,13 @@ use ascio\db\v2\GetMessagesResponseDb;
 use ascio\api\v2\GetMessagesResponseApi;
 
 
-abstract class GetMessagesResponse extends ResponseRootElement  {
+class GetMessagesResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["GetMessagesResult", "messages"];
 	protected $_apiObjects=["GetMessagesResult", "messages"];
 	protected $GetMessagesResult;
 	protected $messages;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setGetMessagesResult (?\ascio\v2\Response $GetMessagesResult = null) : self {
 		$this->set("GetMessagesResult", $GetMessagesResult);
 		return $this;

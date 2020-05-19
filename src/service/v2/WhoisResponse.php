@@ -8,16 +8,13 @@ use ascio\db\v2\WhoisResponseDb;
 use ascio\api\v2\WhoisResponseApi;
 
 
-abstract class WhoisResponse extends ResponseRootElement  {
+class WhoisResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["WhoisResult", "whoisData"];
 	protected $_apiObjects=["WhoisResult"];
 	protected $WhoisResult;
 	protected $whoisData;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setWhoisResult (?\ascio\v2\Response $WhoisResult = null) : self {
 		$this->set("WhoisResult", $WhoisResult);
 		return $this;

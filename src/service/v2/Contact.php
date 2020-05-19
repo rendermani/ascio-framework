@@ -8,7 +8,7 @@ use ascio\db\v2\ContactDb;
 use ascio\api\v2\ContactApi;
 
 
-abstract class Contact extends DbBase  {
+class Contact extends DbBase  {
 
 	protected $_apiProperties=["CreDate", "Status", "Handle", "FirstName", "LastName", "OrgName", "Address1", "Address2", "PostalCode", "City", "State", "CountryCode", "Email", "Phone", "Fax", "Type", "Details", "OrganisationNumber"];
 	protected $_apiObjects=[];
@@ -42,6 +42,7 @@ abstract class Contact extends DbBase  {
 		//set the api model
 		$api = new ContactApi($this);
 		$api->parent($this);
+		$api->config($this->config()->v2);
 		$this->api($api);
 	}
 	/**
@@ -69,9 +70,6 @@ abstract class Contact extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setCreDate (?\DateTime $CreDate = null) : self {
 		$this->set("CreDate", $CreDate);
 		return $this;

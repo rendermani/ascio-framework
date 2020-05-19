@@ -8,13 +8,12 @@ use ascio\db\v3\GetOrdersRequestDb;
 use ascio\api\v3\GetOrdersRequestApi;
 
 
-abstract class GetOrdersRequest extends DbBase  {
+class GetOrdersRequest extends DbBase  {
 
-	protected $_apiProperties=["TransactionComment", "Comments", "ObjectName", "FromDate", "ToDate", "OrderStatusTypes", "OrderTypes", "ObjectTypes", "OrderSort", "PageInfo"];
-	protected $_apiObjects=["OrderStatusTypes", "OrderTypes", "ObjectTypes", "PageInfo"];
+	protected $_apiProperties=["TransactionComment", "Comments", "FromDate", "ToDate", "OrderStatusTypes", "OrderTypes", "ObjectTypes", "OrderSort", "PageInfo", "ObjectNames", "ObjectHandles", "OrderIds"];
+	protected $_apiObjects=["OrderStatusTypes", "OrderTypes", "ObjectTypes", "PageInfo", "ObjectNames", "ObjectHandles", "OrderIds"];
 	protected $TransactionComment;
 	protected $Comments;
-	protected $ObjectName;
 	protected $FromDate;
 	protected $ToDate;
 	protected $OrderStatusTypes;
@@ -22,6 +21,9 @@ abstract class GetOrdersRequest extends DbBase  {
 	protected $ObjectTypes;
 	protected $OrderSort;
 	protected $PageInfo;
+	protected $ObjectNames;
+	protected $ObjectHandles;
+	protected $OrderIds;
 
 	public function __construct($parent = null) {
 		parent::__construct($parent);
@@ -44,9 +46,6 @@ abstract class GetOrdersRequest extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setTransactionComment (?string $TransactionComment = null) : self {
 		$this->set("TransactionComment", $TransactionComment);
 		return $this;
@@ -60,13 +59,6 @@ abstract class GetOrdersRequest extends DbBase  {
 	}
 	public function getComments () : ?string {
 		return $this->get("Comments", "string");
-	}
-	public function setObjectName (?string $ObjectName = null) : self {
-		$this->set("ObjectName", $ObjectName);
-		return $this;
-	}
-	public function getObjectName () : ?string {
-		return $this->get("ObjectName", "string");
 	}
 	public function setFromDate (?\DateTime $FromDate = null) : self {
 		$this->set("FromDate", $FromDate);
@@ -128,5 +120,35 @@ abstract class GetOrdersRequest extends DbBase  {
 	}
 	public function createPageInfo () : \ascio\v3\PagingInfo {
 		return $this->create ("PageInfo", "\\ascio\\v3\\PagingInfo");
+	}
+	public function setObjectNames (?\ascio\v3\ArrayOfstring $ObjectNames = null) : self {
+		$this->set("ObjectNames", $ObjectNames);
+		return $this;
+	}
+	public function getObjectNames () : ?\ascio\v3\ArrayOfstring {
+		return $this->get("ObjectNames", "\\ascio\\v3\\ArrayOfstring");
+	}
+	public function createObjectNames () : \ascio\v3\ArrayOfstring {
+		return $this->create ("ObjectNames", "\\ascio\\v3\\ArrayOfstring");
+	}
+	public function setObjectHandles (?\ascio\v3\ArrayOfstring $ObjectHandles = null) : self {
+		$this->set("ObjectHandles", $ObjectHandles);
+		return $this;
+	}
+	public function getObjectHandles () : ?\ascio\v3\ArrayOfstring {
+		return $this->get("ObjectHandles", "\\ascio\\v3\\ArrayOfstring");
+	}
+	public function createObjectHandles () : \ascio\v3\ArrayOfstring {
+		return $this->create ("ObjectHandles", "\\ascio\\v3\\ArrayOfstring");
+	}
+	public function setOrderIds (?\ascio\v3\ArrayOfstring $OrderIds = null) : self {
+		$this->set("OrderIds", $OrderIds);
+		return $this;
+	}
+	public function getOrderIds () : ?\ascio\v3\ArrayOfstring {
+		return $this->get("OrderIds", "\\ascio\\v3\\ArrayOfstring");
+	}
+	public function createOrderIds () : \ascio\v3\ArrayOfstring {
+		return $this->create ("OrderIds", "\\ascio\\v3\\ArrayOfstring");
 	}
 }

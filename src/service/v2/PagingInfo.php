@@ -8,16 +8,13 @@ use ascio\db\v2\PagingInfoDb;
 use ascio\api\v2\PagingInfoApi;
 
 
-abstract class PagingInfo extends Base  {
+class PagingInfo extends Base  {
 
 	protected $_apiProperties=["PageIndex", "PageSize"];
 	protected $_apiObjects=[];
 	protected $PageIndex;
 	protected $PageSize;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setPageIndex (?int $PageIndex = null) : self {
 		$this->set("PageIndex", $PageIndex);
 		return $this;

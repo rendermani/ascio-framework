@@ -8,16 +8,13 @@ use ascio\db\v2\DeleteRegistrantDb;
 use ascio\api\v2\DeleteRegistrantApi;
 
 
-abstract class DeleteRegistrant extends RequestRootElement  {
+class DeleteRegistrant extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "registrantHandle"];
 	protected $_apiObjects=[];
 	protected $sessionId;
 	protected $registrantHandle;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

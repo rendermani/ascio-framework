@@ -8,7 +8,7 @@ use ascio\db\v2\UploadMessageDb;
 use ascio\api\v2\UploadMessageApi;
 
 
-abstract class UploadMessage extends RequestRootElement  {
+class UploadMessage extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "orderId", "message"];
 	protected $_apiObjects=["message"];
@@ -16,9 +16,6 @@ abstract class UploadMessage extends RequestRootElement  {
 	protected $orderId;
 	protected $message;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

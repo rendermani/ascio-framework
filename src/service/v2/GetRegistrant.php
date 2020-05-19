@@ -8,16 +8,13 @@ use ascio\db\v2\GetRegistrantDb;
 use ascio\api\v2\GetRegistrantApi;
 
 
-abstract class GetRegistrant extends RequestRootElement  {
+class GetRegistrant extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "registrantHandle"];
 	protected $_apiObjects=[];
 	protected $sessionId;
 	protected $registrantHandle;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

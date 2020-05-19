@@ -9,7 +9,7 @@ use ascio\api\v3\GetOrderResponseApi;
 use ascio\api\v3\AbstractResponseApi;
 
 
-abstract class GetOrderResponse extends AbstractResponse  {
+class GetOrderResponse extends AbstractResponse  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "OrderInfo"];
 	protected $_apiObjects=["Errors", "OrderInfo"];
@@ -40,9 +40,6 @@ abstract class GetOrderResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setOrderInfo (?\ascio\v3\OrderInfo $OrderInfo = null) : self {
 		$this->set("OrderInfo", $OrderInfo);
 		return $this;

@@ -8,15 +8,12 @@ use ascio\db\dns\ChangePasswordResponseDb;
 use ascio\api\dns\ChangePasswordResponseApi;
 
 
-abstract class ChangePasswordResponse extends ResponseRootElement  {
+class ChangePasswordResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["ChangePasswordResult"];
 	protected $_apiObjects=["ChangePasswordResult"];
 	protected $ChangePasswordResult;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setChangePasswordResult (?\ascio\dns\Response $ChangePasswordResult = null) : self {
 		$this->set("ChangePasswordResult", $ChangePasswordResult);
 		return $this;

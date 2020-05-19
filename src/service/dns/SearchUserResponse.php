@@ -8,16 +8,13 @@ use ascio\db\dns\SearchUserResponseDb;
 use ascio\api\dns\SearchUserResponseApi;
 
 
-abstract class SearchUserResponse extends ResponseRootElement  {
+class SearchUserResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["SearchUserResult", "userNames"];
 	protected $_apiObjects=["SearchUserResult", "userNames"];
 	protected $SearchUserResult;
 	protected $userNames;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSearchUserResult (?\ascio\dns\Response $SearchUserResult = null) : self {
 		$this->set("SearchUserResult", $SearchUserResult);
 		return $this;

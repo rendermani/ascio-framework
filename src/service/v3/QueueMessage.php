@@ -8,7 +8,7 @@ use ascio\db\v3\QueueMessageDb;
 use ascio\api\v3\QueueMessageApi;
 
 
-abstract class QueueMessage extends DbBase  {
+class QueueMessage extends DbBase  {
 
 	protected $_apiProperties=["Attachments", "ErrorCodes", "Id", "Message", "MessageType", "ObjectHandle", "ObjectName", "ObjectType", "OrderId", "OrderStatus", "OrderType"];
 	protected $_apiObjects=["Attachments", "ErrorCodes"];
@@ -45,9 +45,6 @@ abstract class QueueMessage extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setAttachments (?\ascio\v3\ArrayOfAttachment $Attachments = null) : self {
 		$this->set("Attachments", $Attachments);
 		return $this;

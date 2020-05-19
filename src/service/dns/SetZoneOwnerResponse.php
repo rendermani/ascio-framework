@@ -8,15 +8,12 @@ use ascio\db\dns\SetZoneOwnerResponseDb;
 use ascio\api\dns\SetZoneOwnerResponseApi;
 
 
-abstract class SetZoneOwnerResponse extends ResponseRootElement  {
+class SetZoneOwnerResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["SetZoneOwnerResult"];
 	protected $_apiObjects=["SetZoneOwnerResult"];
 	protected $SetZoneOwnerResult;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSetZoneOwnerResult (?\ascio\dns\Response $SetZoneOwnerResult = null) : self {
 		$this->set("SetZoneOwnerResult", $SetZoneOwnerResult);
 		return $this;

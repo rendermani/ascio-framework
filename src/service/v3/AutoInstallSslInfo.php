@@ -8,7 +8,7 @@ use ascio\db\v3\AutoInstallSslInfoDb;
 use ascio\api\v3\AutoInstallSslInfoApi;
 
 
-abstract class AutoInstallSslInfo extends DbBase  {
+class AutoInstallSslInfo extends DbBase  {
 
 	protected $_apiProperties=["Handle", "Status", "Created", "CommonName", "ProductCode", "Email", "SanCount", "Token", "ObjectComment"];
 	protected $_apiObjects=[];
@@ -43,9 +43,6 @@ abstract class AutoInstallSslInfo extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setHandle (?string $Handle = null) : self {
 		$this->set("Handle", $Handle);
 		return $this;

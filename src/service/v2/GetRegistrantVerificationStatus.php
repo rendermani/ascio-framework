@@ -8,16 +8,13 @@ use ascio\db\v2\GetRegistrantVerificationStatusDb;
 use ascio\api\v2\GetRegistrantVerificationStatusApi;
 
 
-abstract class GetRegistrantVerificationStatus extends RequestRootElement  {
+class GetRegistrantVerificationStatus extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "value"];
 	protected $_apiObjects=[];
 	protected $sessionId;
 	protected $value;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

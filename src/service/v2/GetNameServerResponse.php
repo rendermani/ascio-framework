@@ -8,16 +8,13 @@ use ascio\db\v2\GetNameServerResponseDb;
 use ascio\api\v2\GetNameServerResponseApi;
 
 
-abstract class GetNameServerResponse extends ResponseRootElement  {
+class GetNameServerResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["GetNameServerResult", "nameServer"];
 	protected $_apiObjects=["GetNameServerResult", "nameServer"];
 	protected $GetNameServerResult;
 	protected $nameServer;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setGetNameServerResult (?\ascio\v2\Response $GetNameServerResult = null) : self {
 		$this->set("GetNameServerResult", $GetNameServerResult);
 		return $this;

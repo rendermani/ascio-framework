@@ -8,7 +8,7 @@ use ascio\db\v3\UploadDocumentationRequestDb;
 use ascio\api\v3\UploadDocumentationRequestApi;
 
 
-abstract class UploadDocumentationRequest extends DbBase  {
+class UploadDocumentationRequest extends DbBase  {
 
 	protected $_apiProperties=["OrderId", "Documents"];
 	protected $_apiObjects=["Documents"];
@@ -36,9 +36,6 @@ abstract class UploadDocumentationRequest extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setOrderId (?string $OrderId = null) : self {
 		$this->set("OrderId", $OrderId);
 		return $this;

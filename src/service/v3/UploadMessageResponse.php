@@ -9,7 +9,7 @@ use ascio\api\v3\UploadMessageResponseApi;
 use ascio\api\v3\AbstractResponseApi;
 
 
-abstract class UploadMessageResponse extends AbstractResponse  {
+class UploadMessageResponse extends AbstractResponse  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "MessageId"];
 	protected $_apiObjects=["Errors"];
@@ -40,9 +40,6 @@ abstract class UploadMessageResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setMessageId (?int $MessageId = null) : self {
 		$this->set("MessageId", $MessageId);
 		return $this;

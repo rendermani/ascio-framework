@@ -8,7 +8,7 @@ use ascio\db\v3\AckQueueMessageRequestDb;
 use ascio\api\v3\AckQueueMessageRequestApi;
 
 
-abstract class AckQueueMessageRequest extends DbBase  {
+class AckQueueMessageRequest extends DbBase  {
 
 	protected $_apiProperties=["MessageId"];
 	protected $_apiObjects=[];
@@ -35,9 +35,6 @@ abstract class AckQueueMessageRequest extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setMessageId (?int $MessageId = null) : self {
 		$this->set("MessageId", $MessageId);
 		return $this;

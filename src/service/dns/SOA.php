@@ -9,7 +9,7 @@ use ascio\api\dns\SOAApi;
 use ascio\api\dns\RecordApi;
 
 
-abstract class SOA extends Record  {
+class SOA extends Record  {
 
 	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "UpdatedDate", "Expire", "HostmasterEmail", "PrimaryNameServer", "Refresh", "Retry", "SerialUsage"];
 	protected $_apiObjects=[];
@@ -38,6 +38,7 @@ abstract class SOA extends Record  {
 		//set the api model
 		$api = new SOAApi($this);
 		$api->parent($this);
+		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**
@@ -65,9 +66,6 @@ abstract class SOA extends Record  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setExpire (?int $Expire = null) : self {
 		$this->set("Expire", $Expire);
 		return $this;

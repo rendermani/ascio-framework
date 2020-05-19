@@ -8,16 +8,13 @@ use ascio\db\v2\AvailabilityCheckResponseDb;
 use ascio\api\v2\AvailabilityCheckResponseApi;
 
 
-abstract class AvailabilityCheckResponse extends ResponseRootElement  {
+class AvailabilityCheckResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["AvailabilityCheckResult", "results"];
 	protected $_apiObjects=["AvailabilityCheckResult", "results"];
 	protected $AvailabilityCheckResult;
 	protected $results;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setAvailabilityCheckResult (?\ascio\v2\Response $AvailabilityCheckResult = null) : self {
 		$this->set("AvailabilityCheckResult", $AvailabilityCheckResult);
 		return $this;

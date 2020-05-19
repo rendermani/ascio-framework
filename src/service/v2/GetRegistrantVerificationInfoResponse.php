@@ -8,16 +8,13 @@ use ascio\db\v2\GetRegistrantVerificationInfoResponseDb;
 use ascio\api\v2\GetRegistrantVerificationInfoResponseApi;
 
 
-abstract class GetRegistrantVerificationInfoResponse extends ResponseRootElement  {
+class GetRegistrantVerificationInfoResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["GetRegistrantVerificationInfoResult", "verificationInfo"];
 	protected $_apiObjects=["GetRegistrantVerificationInfoResult", "verificationInfo"];
 	protected $GetRegistrantVerificationInfoResult;
 	protected $verificationInfo;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setGetRegistrantVerificationInfoResult (?\ascio\v2\Response $GetRegistrantVerificationInfoResult = null) : self {
 		$this->set("GetRegistrantVerificationInfoResult", $GetRegistrantVerificationInfoResult);
 		return $this;

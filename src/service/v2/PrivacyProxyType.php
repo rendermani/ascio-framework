@@ -5,12 +5,9 @@
 namespace ascio\service\v2;
 
 
-abstract class PrivacyProxyType {
+class PrivacyProxyType {
 
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	const None = "None";
 	const Privacy = "Privacy";
 	const Proxy = "Proxy";

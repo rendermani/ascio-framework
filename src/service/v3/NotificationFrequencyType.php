@@ -5,12 +5,9 @@
 namespace ascio\service\v3;
 
 
-abstract class NotificationFrequencyType {
+class NotificationFrequencyType {
 
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	const Daily = "Daily";
 	const Weekly = "Weekly";
 	const Biweekly = "Biweekly";

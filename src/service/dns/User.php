@@ -8,7 +8,7 @@ use ascio\db\dns\UserDb;
 use ascio\api\dns\UserApi;
 
 
-abstract class User extends DbBase  {
+class User extends DbBase  {
 
 	protected $_apiProperties=["CreatedDate", "Email", "Name", "Password", "Role", "UpdatedDate", "UserName"];
 	protected $_apiObjects=[];
@@ -31,6 +31,7 @@ abstract class User extends DbBase  {
 		//set the api model
 		$api = new UserApi($this);
 		$api->parent($this);
+		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**
@@ -58,9 +59,6 @@ abstract class User extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setCreatedDate (?\DateTime $CreatedDate = null) : self {
 		$this->set("CreatedDate", $CreatedDate);
 		return $this;

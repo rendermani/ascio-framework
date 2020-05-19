@@ -8,7 +8,7 @@ use ascio\db\v2\ClauseDb;
 use ascio\api\v2\ClauseApi;
 
 
-abstract class Clause extends Base  {
+class Clause extends Base  {
 
 	protected $_apiProperties=["Attribute", "Operator", "Value"];
 	protected $_apiObjects=[];
@@ -16,9 +16,6 @@ abstract class Clause extends Base  {
 	protected $Operator;
 	protected $Value;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setAttribute (?string $Attribute = null) : self {
 		$this->set("Attribute", $Attribute);
 		return $this;

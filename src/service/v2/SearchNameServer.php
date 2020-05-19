@@ -8,16 +8,13 @@ use ascio\db\v2\SearchNameServerDb;
 use ascio\api\v2\SearchNameServerApi;
 
 
-abstract class SearchNameServer extends RequestRootElement  {
+class SearchNameServer extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "criteria"];
 	protected $_apiObjects=["criteria"];
 	protected $sessionId;
 	protected $criteria;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

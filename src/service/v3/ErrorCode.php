@@ -8,7 +8,7 @@ use ascio\db\v3\ErrorCodeDb;
 use ascio\api\v3\ErrorCodeApi;
 
 
-abstract class ErrorCode extends DbBase  {
+class ErrorCode extends DbBase  {
 
 	protected $_apiProperties=["Code", "Message"];
 	protected $_apiObjects=[];
@@ -36,9 +36,6 @@ abstract class ErrorCode extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setCode (?string $Code = null) : self {
 		$this->set("Code", $Code);
 		return $this;

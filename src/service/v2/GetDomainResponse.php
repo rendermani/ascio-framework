@@ -8,16 +8,13 @@ use ascio\db\v2\GetDomainResponseDb;
 use ascio\api\v2\GetDomainResponseApi;
 
 
-abstract class GetDomainResponse extends ResponseRootElement  {
+class GetDomainResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["GetDomainResult", "domain"];
 	protected $_apiObjects=["GetDomainResult", "domain"];
 	protected $GetDomainResult;
 	protected $domain;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setGetDomainResult (?\ascio\v2\Response $GetDomainResult = null) : self {
 		$this->set("GetDomainResult", $GetDomainResult);
 		return $this;

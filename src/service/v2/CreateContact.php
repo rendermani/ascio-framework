@@ -8,16 +8,13 @@ use ascio\db\v2\CreateContactDb;
 use ascio\api\v2\CreateContactApi;
 
 
-abstract class CreateContact extends RequestRootElement  {
+class CreateContact extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "contact"];
 	protected $_apiObjects=["contact"];
 	protected $sessionId;
 	protected $contact;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

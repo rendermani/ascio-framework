@@ -8,7 +8,7 @@ use ascio\db\v3\PollQueueRequestDb;
 use ascio\api\v3\PollQueueRequestApi;
 
 
-abstract class PollQueueRequest extends DbBase  {
+class PollQueueRequest extends DbBase  {
 
 	protected $_apiProperties=["MessageType", "ObjectType"];
 	protected $_apiObjects=[];
@@ -36,9 +36,6 @@ abstract class PollQueueRequest extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setMessageType (?string $MessageType = null) : self {
 		$this->set("MessageType", $MessageType);
 		return $this;

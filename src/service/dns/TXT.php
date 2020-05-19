@@ -9,7 +9,7 @@ use ascio\api\dns\TXTApi;
 use ascio\api\dns\RecordApi;
 
 
-abstract class TXT extends Record  {
+class TXT extends Record  {
 
 	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "UpdatedDate"];
 	protected $_apiObjects=[];
@@ -32,6 +32,7 @@ abstract class TXT extends Record  {
 		//set the api model
 		$api = new TXTApi($this);
 		$api->parent($this);
+		$api->config($this->config()->dns);
 		$this->api($api);
 	}
 	/**
@@ -59,7 +60,4 @@ abstract class TXT extends Record  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 }

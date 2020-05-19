@@ -9,7 +9,7 @@ use ascio\api\v3\GetAutoInstallSslResponseApi;
 use ascio\api\v3\AbstractResponseApi;
 
 
-abstract class GetAutoInstallSslResponse extends AbstractResponse  {
+class GetAutoInstallSslResponse extends AbstractResponse  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "AutoInstallSslInfo"];
 	protected $_apiObjects=["Errors", "AutoInstallSslInfo"];
@@ -40,9 +40,6 @@ abstract class GetAutoInstallSslResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setAutoInstallSslInfo (?\ascio\v3\AutoInstallSslInfo $AutoInstallSslInfo = null) : self {
 		$this->set("AutoInstallSslInfo", $AutoInstallSslInfo);
 		return $this;

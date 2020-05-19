@@ -8,7 +8,7 @@ use ascio\db\v3\GetAutoInstallSslDb;
 use ascio\api\v3\GetAutoInstallSslApi;
 
 
-abstract class GetAutoInstallSsl extends DbBase  {
+class GetAutoInstallSsl extends DbBase  {
 
 	protected $_apiProperties=["request"];
 	protected $_apiObjects=["request"];
@@ -35,9 +35,6 @@ abstract class GetAutoInstallSsl extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setRequest (?\ascio\v3\GetAutoInstallSslRequest $request = null) : self {
 		$this->set("request", $request);
 		return $this;

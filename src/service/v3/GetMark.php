@@ -8,7 +8,7 @@ use ascio\db\v3\GetMarkDb;
 use ascio\api\v3\GetMarkApi;
 
 
-abstract class GetMark extends DbBase  {
+class GetMark extends DbBase  {
 
 	protected $_apiProperties=["request"];
 	protected $_apiObjects=["request"];
@@ -35,9 +35,6 @@ abstract class GetMark extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setRequest (?\ascio\v3\GetMarkRequest $request = null) : self {
 		$this->set("request", $request);
 		return $this;

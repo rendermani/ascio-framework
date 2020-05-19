@@ -8,10 +8,7 @@ use ascio\db\v3\guidDb;
 use ascio\api\v3\guidApi;
 
 
-abstract class guid {
+class guid {
 
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 }

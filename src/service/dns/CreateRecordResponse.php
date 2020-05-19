@@ -8,16 +8,13 @@ use ascio\db\dns\CreateRecordResponseDb;
 use ascio\api\dns\CreateRecordResponseApi;
 
 
-abstract class CreateRecordResponse extends ResponseRootElement  {
+class CreateRecordResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["CreateRecordResult", "recordId"];
 	protected $_apiObjects=["CreateRecordResult"];
 	protected $CreateRecordResult;
 	protected $recordId;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setCreateRecordResult (?\ascio\dns\Response $CreateRecordResult = null) : self {
 		$this->set("CreateRecordResult", $CreateRecordResult);
 		return $this;

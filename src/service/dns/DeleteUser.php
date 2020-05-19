@@ -8,15 +8,12 @@ use ascio\db\dns\DeleteUserDb;
 use ascio\api\dns\DeleteUserApi;
 
 
-abstract class DeleteUser extends RequestRootElement  {
+class DeleteUser extends RequestRootElement  {
 
 	protected $_apiProperties=["userName"];
 	protected $_apiObjects=[];
 	protected $userName;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setUserName (?string $userName = null) : self {
 		$this->set("userName", $userName);
 		return $this;

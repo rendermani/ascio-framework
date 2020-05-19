@@ -8,15 +8,12 @@ use ascio\db\v2\DeleteNameServerResponseDb;
 use ascio\api\v2\DeleteNameServerResponseApi;
 
 
-abstract class DeleteNameServerResponse extends ResponseRootElement  {
+class DeleteNameServerResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["DeleteNameServerResult"];
 	protected $_apiObjects=["DeleteNameServerResult"];
 	protected $DeleteNameServerResult;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setDeleteNameServerResult (?\ascio\v2\Response $DeleteNameServerResult = null) : self {
 		$this->set("DeleteNameServerResult", $DeleteNameServerResult);
 		return $this;

@@ -8,7 +8,7 @@ use ascio\db\v2\AvailabilityCheckResultDb;
 use ascio\api\v2\AvailabilityCheckResultApi;
 
 
-abstract class AvailabilityCheckResult extends Base  {
+class AvailabilityCheckResult extends Base  {
 
 	protected $_apiProperties=["DomainName", "Quality", "StatusCode", "StatusMessage"];
 	protected $_apiObjects=[];
@@ -17,9 +17,6 @@ abstract class AvailabilityCheckResult extends Base  {
 	protected $StatusCode;
 	protected $StatusMessage;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setDomainName (?string $DomainName = null) : self {
 		$this->set("DomainName", $DomainName);
 		return $this;

@@ -8,16 +8,13 @@ use ascio\db\v2\SearchDomainResponseDb;
 use ascio\api\v2\SearchDomainResponseApi;
 
 
-abstract class SearchDomainResponse extends ResponseRootElement  {
+class SearchDomainResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["SearchDomainResult", "domains"];
 	protected $_apiObjects=["SearchDomainResult", "domains"];
 	protected $SearchDomainResult;
 	protected $domains;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSearchDomainResult (?\ascio\v2\Response $SearchDomainResult = null) : self {
 		$this->set("SearchDomainResult", $SearchDomainResult);
 		return $this;

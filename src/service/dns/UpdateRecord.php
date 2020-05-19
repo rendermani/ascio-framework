@@ -8,15 +8,12 @@ use ascio\db\dns\UpdateRecordDb;
 use ascio\api\dns\UpdateRecordApi;
 
 
-abstract class UpdateRecord extends RequestRootElement  {
+class UpdateRecord extends RequestRootElement  {
 
 	protected $_apiProperties=["record"];
 	protected $_apiObjects=["record"];
 	protected $record;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setRecord (?\ascio\dns\Record $record = null) : self {
 		$this->set("record", $record);
 		return $this;

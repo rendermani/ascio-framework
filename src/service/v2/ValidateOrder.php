@@ -8,16 +8,13 @@ use ascio\db\v2\ValidateOrderDb;
 use ascio\api\v2\ValidateOrderApi;
 
 
-abstract class ValidateOrder extends RequestRootElement  {
+class ValidateOrder extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "order"];
 	protected $_apiObjects=["order"];
 	protected $sessionId;
 	protected $order;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

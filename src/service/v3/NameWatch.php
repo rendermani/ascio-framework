@@ -8,7 +8,7 @@ use ascio\db\v3\NameWatchDb;
 use ascio\api\v3\NameWatchApi;
 
 
-abstract class NameWatch extends DbBase  {
+class NameWatch extends DbBase  {
 
 	protected $_apiProperties=["Handle", "Name", "NotificationFrequency", "Tier", "EmailNotification1", "EmailNotification2", "EmailNotification3", "EmailNotification4", "EmailNotification5", "Owner", "Reseller", "ObjectComment"];
 	protected $_apiObjects=["Owner", "Reseller"];
@@ -36,6 +36,7 @@ abstract class NameWatch extends DbBase  {
 		//set the api model
 		$api = new NameWatchApi($this);
 		$api->parent($this);
+		$api->config($this->config()->v3);
 		$this->api($api);
 	}
 	/**
@@ -63,9 +64,6 @@ abstract class NameWatch extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setHandle (?string $Handle = null) : self {
 		$this->set("Handle", $Handle);
 		return $this;

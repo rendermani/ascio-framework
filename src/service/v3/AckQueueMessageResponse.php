@@ -9,7 +9,7 @@ use ascio\api\v3\AckQueueMessageResponseApi;
 use ascio\api\v3\AbstractResponseApi;
 
 
-abstract class AckQueueMessageResponse extends AbstractResponse  {
+class AckQueueMessageResponse extends AbstractResponse  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors"];
 	protected $_apiObjects=["Errors"];
@@ -39,7 +39,4 @@ abstract class AckQueueMessageResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 }

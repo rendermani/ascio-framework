@@ -8,7 +8,7 @@ use ascio\db\v3\GetMessagesDb;
 use ascio\api\v3\GetMessagesApi;
 
 
-abstract class GetMessages extends DbBase  {
+class GetMessages extends DbBase  {
 
 	protected $_apiProperties=["request"];
 	protected $_apiObjects=["request"];
@@ -35,9 +35,6 @@ abstract class GetMessages extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setRequest (?\ascio\v3\GetMessagesRequest $request = null) : self {
 		$this->set("request", $request);
 		return $this;

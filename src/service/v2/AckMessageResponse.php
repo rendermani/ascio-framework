@@ -8,15 +8,12 @@ use ascio\db\v2\AckMessageResponseDb;
 use ascio\api\v2\AckMessageResponseApi;
 
 
-abstract class AckMessageResponse extends ResponseRootElement  {
+class AckMessageResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["AckMessageResult"];
 	protected $_apiObjects=["AckMessageResult"];
 	protected $AckMessageResult;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setAckMessageResult (?\ascio\v2\Response $AckMessageResult = null) : self {
 		$this->set("AckMessageResult", $AckMessageResult);
 		return $this;

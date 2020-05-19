@@ -9,7 +9,7 @@ use ascio\api\v3\NameWatchOrderRequestApi;
 use ascio\api\v3\AbstractOrderRequestApi;
 
 
-abstract class NameWatchOrderRequest extends AbstractOrderRequest  {
+class NameWatchOrderRequest extends AbstractOrderRequest  {
 
 	protected $_apiProperties=["Type", "Period", "TransactionComment", "Comments", "Documentation", "Options", "NameWatch"];
 	protected $_apiObjects=["NameWatch"];
@@ -43,9 +43,6 @@ abstract class NameWatchOrderRequest extends AbstractOrderRequest  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setNameWatch (?\ascio\v3\NameWatch $NameWatch = null) : self {
 		$this->set("NameWatch", $NameWatch);
 		return $this;

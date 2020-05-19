@@ -8,7 +8,7 @@ use ascio\db\v2\NameServerDb;
 use ascio\api\v2\NameServerApi;
 
 
-abstract class NameServer extends DbBase  {
+class NameServer extends DbBase  {
 
 	protected $_apiProperties=["CreDate", "Handle", "HostName", "IpAddress", "Status", "IpV6Address", "Details"];
 	protected $_apiObjects=[];
@@ -31,6 +31,7 @@ abstract class NameServer extends DbBase  {
 		//set the api model
 		$api = new NameServerApi($this);
 		$api->parent($this);
+		$api->config($this->config()->v2);
 		$this->api($api);
 	}
 	/**
@@ -58,9 +59,6 @@ abstract class NameServer extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setCreDate (?\DateTime $CreDate = null) : self {
 		$this->set("CreDate", $CreDate);
 		return $this;

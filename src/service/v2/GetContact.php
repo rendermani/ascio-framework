@@ -8,16 +8,13 @@ use ascio\db\v2\GetContactDb;
 use ascio\api\v2\GetContactApi;
 
 
-abstract class GetContact extends RequestRootElement  {
+class GetContact extends RequestRootElement  {
 
 	protected $_apiProperties=["sessionId", "contactHandle"];
 	protected $_apiObjects=[];
 	protected $sessionId;
 	protected $contactHandle;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSessionId (?string $sessionId = null) : self {
 		$this->set("sessionId", $sessionId);
 		return $this;

@@ -6,10 +6,9 @@ namespace ascio\service\v3;
 use ascio\base\v3\DbArrayBase;
 use ascio\db\v3\ArrayOfintDb;
 use ascio\api\v3\ArrayOfintApi;
-use ascio\base\ArrayInterface;
 
 
-abstract class ArrayOfint extends DbArrayBase  {
+class ArrayOfint extends DbArrayBase  {
 
 	protected $_apiProperties=["int"];
 	protected $_apiObjects=[];
@@ -36,9 +35,6 @@ abstract class ArrayOfint extends DbArrayBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setInt (?Iterable $int = null) : self {
 		$this->set("int", $int);
 		return $this;
@@ -47,9 +43,6 @@ abstract class ArrayOfint extends DbArrayBase  {
 		return $this->get("int", "int");
 	}
 	public function addInt () : int {
-		return $this->addItem(func_get_args(),"int");
-	}
-	public function addInts ($array) : self {
-		return $this->add(func_get_args());
+		return $this->add("int","int",func_get_args());
 	}
 }

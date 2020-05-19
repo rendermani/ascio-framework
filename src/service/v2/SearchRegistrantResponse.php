@@ -8,16 +8,13 @@ use ascio\db\v2\SearchRegistrantResponseDb;
 use ascio\api\v2\SearchRegistrantResponseApi;
 
 
-abstract class SearchRegistrantResponse extends ResponseRootElement  {
+class SearchRegistrantResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["SearchRegistrantResult", "registrants"];
 	protected $_apiObjects=["SearchRegistrantResult", "registrants"];
 	protected $SearchRegistrantResult;
 	protected $registrants;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setSearchRegistrantResult (?\ascio\v2\Response $SearchRegistrantResult = null) : self {
 		$this->set("SearchRegistrantResult", $SearchRegistrantResult);
 		return $this;

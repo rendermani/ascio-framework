@@ -9,10 +9,14 @@ use ascio\api\v3\RegistrantApi;
 use ascio\api\v3\ContactApi;
 
 
-abstract class Registrant extends Contact  {
+class Registrant extends Contact  {
 
-	protected $_apiProperties=["Handle", "FirstName", "LastName", "OrgName", "Address1", "Address2", "City", "State", "PostalCode", "CountryCode", "Phone", "Fax", "Email", "Type", "Details", "OrganisationNumber", "Extensions", "VatNumber", "NexusCategory"];
+	protected $_apiProperties=["Handle", "FirstName", "LastName", "OrgName", "Address1", "Address2", "City", "State", "PostalCode", "CountryCode", "Phone", "Fax", "Email", "Type", "Details", "OrganisationNumber", "Extensions", "VatNumber", "NexusCategory", "RegistrantDate"];
 	protected $_apiObjects=["Extensions"];
+	protected $_substitutions = [
+		["name" => "RegistrantInfo","type" => "\\ascio\\v3\\RegistrantInfo"] 
+	];
+
 	protected $Handle;
 	protected $FirstName;
 	protected $LastName;
@@ -32,6 +36,7 @@ abstract class Registrant extends Contact  {
 	protected $Extensions;
 	protected $VatNumber;
 	protected $NexusCategory;
+	protected $RegistrantDate;
 
 	public function __construct($parent = null) {
 		parent::__construct($parent);
@@ -44,6 +49,7 @@ abstract class Registrant extends Contact  {
 		//set the api model
 		$api = new RegistrantApi($this);
 		$api->parent($this);
+		$api->config($this->config()->v3);
 		$this->api($api);
 	}
 	/**
@@ -71,9 +77,6 @@ abstract class Registrant extends Contact  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setVatNumber (?string $VatNumber = null) : self {
 		$this->set("VatNumber", $VatNumber);
 		return $this;
@@ -87,5 +90,12 @@ abstract class Registrant extends Contact  {
 	}
 	public function getNexusCategory () : ?string {
 		return $this->get("NexusCategory", "string");
+	}
+	public function setRegistrantDate (?string $RegistrantDate = null) : self {
+		$this->set("RegistrantDate", $RegistrantDate);
+		return $this;
+	}
+	public function getRegistrantDate () : ?string {
+		return $this->get("RegistrantDate", "string");
 	}
 }

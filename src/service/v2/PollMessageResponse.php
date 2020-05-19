@@ -8,7 +8,7 @@ use ascio\db\v2\PollMessageResponseDb;
 use ascio\api\v2\PollMessageResponseApi;
 
 
-abstract class PollMessageResponse extends ResponseRootElement  {
+class PollMessageResponse extends ResponseRootElement  {
 
 	protected $_apiProperties=["PollMessageResult", "msgCount", "item"];
 	protected $_apiObjects=["PollMessageResult", "item"];
@@ -16,9 +16,6 @@ abstract class PollMessageResponse extends ResponseRootElement  {
 	protected $msgCount;
 	protected $item;
 
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setPollMessageResult (?\ascio\v2\Response $PollMessageResult = null) : self {
 		$this->set("PollMessageResult", $PollMessageResult);
 		return $this;

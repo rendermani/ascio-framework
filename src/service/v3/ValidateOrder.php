@@ -8,7 +8,7 @@ use ascio\db\v3\ValidateOrderDb;
 use ascio\api\v3\ValidateOrderApi;
 
 
-abstract class ValidateOrder extends DbBase  {
+class ValidateOrder extends DbBase  {
 
 	protected $_apiProperties=["request"];
 	protected $_apiObjects=["request"];
@@ -35,9 +35,6 @@ abstract class ValidateOrder extends DbBase  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setRequest (?\ascio\v3\AbstractOrderRequest $request = null) : self {
 		$this->set("request", $request);
 		return $this;

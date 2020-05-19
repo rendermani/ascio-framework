@@ -9,7 +9,7 @@ use ascio\api\v3\PollQueueResponseApi;
 use ascio\api\v3\AbstractResponseApi;
 
 
-abstract class PollQueueResponse extends AbstractResponse  {
+class PollQueueResponse extends AbstractResponse  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "TotalCount", "Message"];
 	protected $_apiObjects=["Errors", "Message"];
@@ -41,9 +41,6 @@ abstract class PollQueueResponse extends AbstractResponse  {
 		$this->_db->parent($this);
 		return $db;
 	}
-	/**
-	* Getters and setters for API-Properties
-	*/
 	public function setTotalCount (?int $TotalCount = null) : self {
 		$this->set("TotalCount", $TotalCount);
 		return $this;
