@@ -13,7 +13,10 @@ use Illuminate\Database\Eloquent\Model;
 use ReflectionMethod;
 use ascio\base\DbBase;
 use ascio\lib\StatusSerializer;
+use ascio\logic\SyncPayload;
 use DateTime;
+use DateTimeZone;
+use Exception;
 
 class BaseClass {
     protected $_properties;
@@ -53,13 +56,12 @@ class BaseClass {
                 foreach($childObject as $item)  {
                     $item->init($parent);
                 }
-            } elseif(($childObject instanceOf ArrayBase)) {
+            } elseif($childObject instanceOf ArrayInterface) {
                 $childObject->__construct($this);
                 foreach($childObject as $item)  {
                     if(is_object($item)) $item->init($childObject);
                 }
-            } 
-            if($childObject instanceOf BaseClass) {
+            } elseif ($childObject instanceOf BaseClass) {
                 $childObject->init($this);
             }
         }  
@@ -81,7 +83,8 @@ class BaseClass {
             if(!$returnType) {
                 return $this->_get($name);
             }
-            switch ($returnType->getName()) {
+            // todo: check this. works now and didn't work before. Prevent double encoding. 
+            switch ($returnType) {
                 case "DateTime" : 
                     if(! ($this->_get($name) instanceof DateTime)) {
                         if(strpos($this->_get($name),".")===false) {
@@ -135,12 +138,6 @@ class BaseClass {
             if(($nameOrArray instanceof BaseClass)) {            
                 $this->merge($nameOrArray);                
             } // convert from array
-            elseif ($nameOrArray instanceOf Model) {
-                foreach($nameOrArray->getAttributes() as $key => $value) {
-                    $this->set($key,$value);
-                }
-                $this->db($nameOrArray);
-            }
             elseif (is_array($nameOrArray) ||is_object($nameOrArray)) {
                 foreach($nameOrArray as $key => $value) {
                     $this->set($key,$value);
@@ -152,7 +149,7 @@ class BaseClass {
         }        
         return $this; 
     }
-    private function merge(BaseClass $source) : BaseClass {
+    protected function merge(BaseClass $source) : BaseClass {
         if(get_class($this) !== get_class($source)) {
             throw new \Exception('$this ('.get_class($this).') and $source ('.get_class($source).') must have the same class');
         }
@@ -207,10 +204,7 @@ class BaseClass {
     }
     public function create($property,$class) {
         $this->$property = new $class($this);
-        $this->$property->parent($this); 
-        if(method_exists($this->$property,"api")) {
-            $this->$property->changes()->setOriginal();
-        }        
+        $this->$property->parent($this);      
         return $this->$property;
     }
     public function createProperty($property) : BaseClass {
@@ -224,9 +218,6 @@ class BaseClass {
     public function properties() : ApiProperties {
         return $this->_properties;
     } 
-    public function changes() : Changes {
-        return $this->api()->changes();
-    }
     public function parent(?BaseClass $parent=null) {
         if(!$parent) {
             return $this->_parent; 
@@ -237,20 +228,7 @@ class BaseClass {
     public function config()  {
         return Ascio::getConfig()->get();
     }
-    public function handle($value=null) : ?object {
-        if(!method_exists($this,"api")) {
-            return null; 
-        }
-        if(!property_exists($this->api(),"idProperty")) {
-            return null;
-        }
-        $handleKey = $this->api()->idProperty;
-        if($value) $this->{$handleKey} = $value; 
-        return (object) [
-           "key" => $handleKey,
-           "value" => $this->{$handleKey}
-        ];
-    }
+
     public function substitutions() {
         return $this->_substitutionsObject;
     }
@@ -264,12 +242,52 @@ class BaseClass {
      * Serialize the object and send it to Kafka. 
      */
     public function produce ($parameters=[]) {
-        Producer::object($this,$parameters);
+        $payload = new SyncPayload($this);
+        $payload->send($parameters);
     }
     public function getStatusSerializer() : StatusSerializer
     {
-        $handle = $this->handle() ? [$this->handle()->key => $this->handle()->value] : [];
-        $this->_statusSerializer->setFields($handle);
         return $this->_statusSerializer;
+    }
+    public function serialize() : Object {
+        return $this->properties()->cleanObject();
+    }
+    public function deserialize($obj) : self {
+        foreach((array )$obj as $key => $value) {
+            if(is_object($value) && property_exists($value,"timezone_type")) {
+                $format = 'Y-m-d H:i:s.u';
+                $date = DateTime::createFromFormat($format, $value->date);
+                $date->setTimezone(new DateTimeZone($value->timezone));
+                $this->set($key,$date);
+            } elseif(is_object($value)) {
+               if($this->objects()->exists($key)) {
+                    /**
+                     * @var DbClass $newObj
+                     */
+                    $newObj = $this->get($key) ?: $this->createProperty($key);
+                    if(is_string($newObj)) {
+                        throw new Exception($key ." should be an object. String found: ".$newObj);
+                    }
+                    $newObj->deserialize($value);
+               } elseif($key =="DbAttributes") {                    
+                foreach($value as $k => $v) {
+                        $this->db()->setAttribute($k,$v);
+                    } 
+               }
+            } elseif(is_array($value)) {
+                /**
+                 * @var DbArrayBase $arr
+                 */
+                $arr = $this;
+                if($this->objects()->exists($key)) {
+                    foreach($value as $v) {                        
+                        $arr->createItem($v);
+                    }                    
+                } 
+            } else {
+                $this->set($key,$value);
+            }
+        }
+        return $this;         
     }
 }
