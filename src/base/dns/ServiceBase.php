@@ -1,7 +1,9 @@
 <?php
 namespace ascio\base\dns;
 
+use ascio\lib\Ascio;
 use ascio\lib\Config;
+use SoapHeader;
 
 class ServiceBase extends \SoapClient {
          /**
@@ -13,15 +15,23 @@ class ServiceBase extends \SoapClient {
      * @var iterable $apiProperties all properties that a sent from/to the API
      */
     protected $apiProperties;
-    protected $config;
+    protected $cfg;
     private $sessionId;
     public function __construct(array $options = array(), $wsdl = null) {    
-        foreach ($this->classmap as $key => $value) {
-            if (!isset($options['classmap'][$key])) {
+        $this->cfg = Ascio::getConfig()->get("dns");
+        $ns = 'http://groupnbt.com/2010/10/30/Dns/DnsService'; //Namespace of the WS. 
+        $headers = array(); 
+        $headers[] = new SoapHeader($ns,'UserName', $this->cfg->account);
+        $headers[] = new SoapHeader($ns, 'Password', $this->cfg->password);
+        if($this->cfg->partner) $headers[] = new SoapHeader($ns, 'ActAs', $this->cfg->partner);
+        if($this->cfg->partner) $headers[] = new SoapHeader($ns, 'Account', $this->cfg->partner);
+        $this->__setSoapHeaders($headers);
+        foreach($this->classmap as $key => $value) {
+          if(!isset($options['classmap'][$key])) {
             $options['classmap'][$key] = $value;
           }
         }
-        $options = array_merge(['features' => 1],$options);      
+        $options['trace'] = 1;
         parent::__construct($wsdl, $options);
     }
     public function call($function,$args,$options = NULL, $input_headers = NULL, &$output_headers = NULL) {
