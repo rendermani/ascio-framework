@@ -52,7 +52,7 @@ class Record extends DbBase  {
 	* @param @name|null $api
 	* @return RecordApi
 	*/
-	public function api($api = null) {
+	public function api($api = null) : ?\ascio\base\ApiModelBase {
 		if(!$api) {
 			return $this->_api;
 		}
@@ -79,12 +79,12 @@ class Record extends DbBase  {
 	public function getId () : ?int {
 		return $this->get("Id", "int");
 	}
-	public function setSerial (?\long $Serial = null) : self {
+	public function setSerial (?int $Serial = null) : self {
 		$this->set("Serial", $Serial);
 		return $this;
 	}
-	public function getSerial () : ?\long {
-		return $this->get("Serial", "\\long");
+	public function getSerial () : ?int {
+		return $this->get("Serial", "int");
 	}
 	public function setSource (?string $Source = null) : self {
 		$this->set("Source", $Source);
@@ -93,12 +93,12 @@ class Record extends DbBase  {
 	public function getSource () : ?string {
 		return $this->get("Source", "string");
 	}
-	public function setTTL (?\long $TTL = null) : self {
+	public function setTTL (?int $TTL = null) : self {
 		$this->set("TTL", $TTL);
 		return $this;
 	}
-	public function getTTL () : ?\long {
-		return $this->get("TTL", "\\long");
+	public function getTTL () : ?int {
+		return $this->get("TTL", "int");
 	}
 	public function setTarget (?string $Target = null) : self {
 		$this->set("Target", $Target);

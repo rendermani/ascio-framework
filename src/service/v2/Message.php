@@ -39,7 +39,7 @@ class Message extends DbBase  {
 	* @param @name|null $api
 	* @return MessageApi
 	*/
-	public function api($api = null) {
+	public function api($api = null) : ?\ascio\base\ApiModelBase {
 		if(!$api) {
 			return $this->_api;
 		}

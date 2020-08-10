@@ -11,7 +11,7 @@ use ascio\api\v3\SalesLineApi;
 class SalesLine extends Base  {
 
 	protected $_apiProperties=["OrderId", "Product", "ObjectHandle", "ObjectName", "Price", "PriceCategory", "CurrencyCode", "Created", "State", "InvoiceNo", "CreditNo", "DomainComment"];
-	protected $_apiObjects=["Product", "Price"];
+	protected $_apiObjects=["Product"];
 	protected $OrderId;
 	protected $Product;
 	protected $ObjectHandle;
@@ -56,15 +56,12 @@ class SalesLine extends Base  {
 	public function getObjectName () : ?string {
 		return $this->get("ObjectName", "string");
 	}
-	public function setPrice (?\ascio\v3\double $Price = null) : self {
+	public function setPrice (?float $Price = null) : self {
 		$this->set("Price", $Price);
 		return $this;
 	}
-	public function getPrice () : ?\ascio\v3\double {
-		return $this->get("Price", "\\ascio\\v3\\double");
-	}
-	public function createPrice () : \ascio\v3\double {
-		return $this->create ("Price", "\\ascio\\v3\\double");
+	public function getPrice () : ?float {
+		return $this->get("Price", "float");
 	}
 	public function setPriceCategory (?string $PriceCategory = null) : self {
 		$this->set("PriceCategory", $PriceCategory);

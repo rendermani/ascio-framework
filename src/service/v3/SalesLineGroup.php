@@ -11,7 +11,7 @@ use ascio\api\v3\SalesLineGroupApi;
 class SalesLineGroup extends DbBase  {
 
 	protected $_apiProperties=["ProductName", "Sum", "Units"];
-	protected $_apiObjects=["Sum"];
+	protected $_apiObjects=[];
 	protected $ProductName;
 	protected $Sum;
 	protected $Units;
@@ -35,7 +35,7 @@ class SalesLineGroup extends DbBase  {
 	* @param @name|null $api
 	* @return SalesLineGroupApi
 	*/
-	public function api($api = null) {
+	public function api($api = null) : ?\ascio\base\ApiModelBase {
 		if(!$api) {
 			return $this->_api;
 		}
@@ -62,15 +62,12 @@ class SalesLineGroup extends DbBase  {
 	public function getProductName () : ?string {
 		return $this->get("ProductName", "string");
 	}
-	public function setSum (?\ascio\v3\double $Sum = null) : self {
+	public function setSum (?float $Sum = null) : self {
 		$this->set("Sum", $Sum);
 		return $this;
 	}
-	public function getSum () : ?\ascio\v3\double {
-		return $this->get("Sum", "\\ascio\\v3\\double");
-	}
-	public function createSum () : \ascio\v3\double {
-		return $this->create ("Sum", "\\ascio\\v3\\double");
+	public function getSum () : ?float {
+		return $this->get("Sum", "float");
 	}
 	public function setUnits (?int $Units = null) : self {
 		$this->set("Units", $Units);

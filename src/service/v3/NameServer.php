@@ -3,12 +3,12 @@
 // XSLT-WSDL-Client. Generated PHP class of NameServer
 
 namespace ascio\service\v3;
-use ascio\base\v3\Base;
+use ascio\base\v3\DbBase;
 use ascio\db\v3\NameServerDb;
 use ascio\api\v3\NameServerApi;
 
 
-class NameServer extends Base  {
+class NameServer extends DbBase  {
 
 	protected $_apiProperties=["CreDate", "Handle", "HostName", "IpAddress", "Status", "IpV6Address", "Details"];
 	protected $_apiObjects=[];
@@ -20,6 +20,45 @@ class NameServer extends Base  {
 	protected $IpV6Address;
 	protected $Details;
 
+	public function __construct($parent = null) {
+		parent::__construct($parent);
+
+		//set the database model
+		$db = new NameServerDb();
+		$db->parent($this);
+		$this->db($db);
+
+		//set the api model
+		$api = new NameServerApi($this);
+		$api->parent($this);
+		$api->config($this->config()->v3);
+		$this->api($api);
+	}
+	/**
+	* Provides API-Specific methods like update,create,delete.
+	* @param @name|null $api
+	* @return NameServerApi
+	*/
+	public function api($api = null) : ?\ascio\base\ApiModelBase {
+		if(!$api) {
+			return $this->_api;
+		}
+		$this->_api = $api;
+		return $api;
+	}
+	/**
+	* Provides DB-Specific methods like update,create,delete.
+	* @param NameServerDb|null $db
+	* @return NameServerDb
+	*/
+	public function db($db = null) {
+		if(!$db) {
+			return $this->_db;
+		}
+		$this->_db = $db;
+		$this->_db->parent($this);
+		return $db;
+	}
 	public function setCreDate (?\DateTime $CreDate = null) : self {
 		$this->set("CreDate", $CreDate);
 		return $this;

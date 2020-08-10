@@ -11,7 +11,7 @@ use ascio\api\v3\AccountTransactionApi;
 class AccountTransaction extends DbBase  {
 
 	protected $_apiProperties=["AccountTransactionType", "Created", "Amount", "Balance", "InvoiceNo", "CreditNo", "Note", "CreatedBy", "VatPercentage"];
-	protected $_apiObjects=["Amount", "Balance", "VatPercentage"];
+	protected $_apiObjects=[];
 	protected $AccountTransactionType;
 	protected $Created;
 	protected $Amount;
@@ -41,7 +41,7 @@ class AccountTransaction extends DbBase  {
 	* @param @name|null $api
 	* @return AccountTransactionApi
 	*/
-	public function api($api = null) {
+	public function api($api = null) : ?\ascio\base\ApiModelBase {
 		if(!$api) {
 			return $this->_api;
 		}
@@ -75,25 +75,19 @@ class AccountTransaction extends DbBase  {
 	public function getCreated () : ?\DateTime {
 		return $this->get("Created", "\\DateTime");
 	}
-	public function setAmount (?\ascio\v3\double $Amount = null) : self {
+	public function setAmount (?float $Amount = null) : self {
 		$this->set("Amount", $Amount);
 		return $this;
 	}
-	public function getAmount () : ?\ascio\v3\double {
-		return $this->get("Amount", "\\ascio\\v3\\double");
+	public function getAmount () : ?float {
+		return $this->get("Amount", "float");
 	}
-	public function createAmount () : \ascio\v3\double {
-		return $this->create ("Amount", "\\ascio\\v3\\double");
-	}
-	public function setBalance (?\ascio\v3\double $Balance = null) : self {
+	public function setBalance (?float $Balance = null) : self {
 		$this->set("Balance", $Balance);
 		return $this;
 	}
-	public function getBalance () : ?\ascio\v3\double {
-		return $this->get("Balance", "\\ascio\\v3\\double");
-	}
-	public function createBalance () : \ascio\v3\double {
-		return $this->create ("Balance", "\\ascio\\v3\\double");
+	public function getBalance () : ?float {
+		return $this->get("Balance", "float");
 	}
 	public function setInvoiceNo (?int $InvoiceNo = null) : self {
 		$this->set("InvoiceNo", $InvoiceNo);
@@ -123,14 +117,11 @@ class AccountTransaction extends DbBase  {
 	public function getCreatedBy () : ?string {
 		return $this->get("CreatedBy", "string");
 	}
-	public function setVatPercentage (?\ascio\v3\double $VatPercentage = null) : self {
+	public function setVatPercentage (?float $VatPercentage = null) : self {
 		$this->set("VatPercentage", $VatPercentage);
 		return $this;
 	}
-	public function getVatPercentage () : ?\ascio\v3\double {
-		return $this->get("VatPercentage", "\\ascio\\v3\\double");
-	}
-	public function createVatPercentage () : \ascio\v3\double {
-		return $this->create ("VatPercentage", "\\ascio\\v3\\double");
+	public function getVatPercentage () : ?float {
+		return $this->get("VatPercentage", "float");
 	}
 }

@@ -39,7 +39,7 @@ class OrderInfo extends DbBase  {
 	* @param @name|null $api
 	* @return OrderInfoApi
 	*/
-	public function api($api = null) {
+	public function api($api = null) : ?\ascio\base\ApiModelBase {
 		if(!$api) {
 			return $this->_api;
 		}

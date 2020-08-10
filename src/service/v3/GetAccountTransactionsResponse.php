@@ -12,7 +12,7 @@ use ascio\api\v3\AbstractResponseApi;
 class GetAccountTransactionsResponse extends AbstractResponse  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "TotalCount", "AccountTransactions", "Currency", "VatPercentage"];
-	protected $_apiObjects=["Errors", "AccountTransactions", "VatPercentage"];
+	protected $_apiObjects=["Errors", "AccountTransactions"];
 	protected $_substituted = true;
 	protected $ResultCode;
 	protected $ResultMessage;
@@ -67,14 +67,11 @@ class GetAccountTransactionsResponse extends AbstractResponse  {
 	public function getCurrency () : ?string {
 		return $this->get("Currency", "string");
 	}
-	public function setVatPercentage (?\ascio\v3\double $VatPercentage = null) : self {
+	public function setVatPercentage (?float $VatPercentage = null) : self {
 		$this->set("VatPercentage", $VatPercentage);
 		return $this;
 	}
-	public function getVatPercentage () : ?\ascio\v3\double {
-		return $this->get("VatPercentage", "\\ascio\\v3\\double");
-	}
-	public function createVatPercentage () : \ascio\v3\double {
-		return $this->create ("VatPercentage", "\\ascio\\v3\\double");
+	public function getVatPercentage () : ?float {
+		return $this->get("VatPercentage", "float");
 	}
 }

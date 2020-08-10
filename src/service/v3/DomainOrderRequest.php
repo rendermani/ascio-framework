@@ -23,6 +23,27 @@ class DomainOrderRequest extends AbstractOrderRequest  {
 	protected $Domain;
 	protected $AgreedPrice;
 
+	public function __construct($parent = null) {
+		parent::__construct($parent);
+
+		//set the database model
+		$db = new DomainOrderRequestDb();
+		$db->parent($this);
+		$this->db($db);
+	}
+	/**
+	* Provides DB-Specific methods like update,create,delete.
+	* @param DomainOrderRequestDb|null $db
+	* @return DomainOrderRequestDb
+	*/
+	public function db($db = null) {
+		if(!$db) {
+			return $this->_db;
+		}
+		$this->_db = $db;
+		$this->_db->parent($this);
+		return $db;
+	}
 	public function setDomain (?\ascio\v3\Domain $Domain = null) : self {
 		$this->set("Domain", $Domain);
 		return $this;

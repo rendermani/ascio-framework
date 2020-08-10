@@ -41,7 +41,7 @@ class MX extends Record  {
 	* @param @name|null $api
 	* @return MXApi
 	*/
-	public function api($api = null) {
+	public function api($api = null) : ?\ascio\base\ApiModelBase {
 		if(!$api) {
 			return $this->_api;
 		}

@@ -40,7 +40,7 @@ class PTR extends Record  {
 	* @param @name|null $api
 	* @return PTRApi
 	*/
-	public function api($api = null) {
+	public function api($api = null) : ?\ascio\base\ApiModelBase {
 		if(!$api) {
 			return $this->_api;
 		}

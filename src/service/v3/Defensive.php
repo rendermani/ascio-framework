@@ -43,7 +43,7 @@ class Defensive extends DbBase  {
 	* @param @name|null $api
 	* @return DefensiveApi
 	*/
-	public function api($api = null) {
+	public function api($api = null) : ?\ascio\base\ApiModelBase {
 		if(!$api) {
 			return $this->_api;
 		}

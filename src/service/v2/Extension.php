@@ -34,7 +34,7 @@ class Extension extends DbBase  {
 	* @param @name|null $api
 	* @return ExtensionApi
 	*/
-	public function api($api = null) {
+	public function api($api = null) : ?\ascio\base\ApiModelBase {
 		if(!$api) {
 			return $this->_api;
 		}

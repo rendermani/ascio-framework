@@ -3,12 +3,12 @@
 // XSLT-WSDL-Client. Generated PHP class of NameServers
 
 namespace ascio\service\v3;
-use ascio\base\v3\Base;
+use ascio\base\v3\DbBase;
 use ascio\db\v3\NameServersDb;
 use ascio\api\v3\NameServersApi;
 
 
-class NameServers extends Base  {
+class NameServers extends DbBase  {
 
 	protected $_apiProperties=["NameServer1", "NameServer2", "NameServer3", "NameServer4", "NameServer5", "NameServer6", "NameServer7", "NameServer8", "NameServer9", "NameServer10", "NameServer11", "NameServer12", "NameServer13"];
 	protected $_apiObjects=["NameServer1", "NameServer2", "NameServer3", "NameServer4", "NameServer5", "NameServer6", "NameServer7", "NameServer8", "NameServer9", "NameServer10", "NameServer11", "NameServer12", "NameServer13"];
@@ -26,6 +26,45 @@ class NameServers extends Base  {
 	protected $NameServer12;
 	protected $NameServer13;
 
+	public function __construct($parent = null) {
+		parent::__construct($parent);
+
+		//set the database model
+		$db = new NameServersDb();
+		$db->parent($this);
+		$this->db($db);
+
+		//set the api model
+		$api = new NameServersApi($this);
+		$api->parent($this);
+		$api->config($this->config()->v3);
+		$this->api($api);
+	}
+	/**
+	* Provides API-Specific methods like update,create,delete.
+	* @param @name|null $api
+	* @return NameServersApi
+	*/
+	public function api($api = null) : ?\ascio\base\ApiModelBase {
+		if(!$api) {
+			return $this->_api;
+		}
+		$this->_api = $api;
+		return $api;
+	}
+	/**
+	* Provides DB-Specific methods like update,create,delete.
+	* @param NameServersDb|null $db
+	* @return NameServersDb
+	*/
+	public function db($db = null) {
+		if(!$db) {
+			return $this->_db;
+		}
+		$this->_db = $db;
+		$this->_db->parent($this);
+		return $db;
+	}
 	public function setNameServer1 (?\ascio\v3\NameServer $NameServer1 = null) : self {
 		$this->set("NameServer1", $NameServer1);
 		return $this;

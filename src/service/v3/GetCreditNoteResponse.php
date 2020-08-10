@@ -12,7 +12,7 @@ use ascio\api\v3\AbstractResponseApi;
 class GetCreditNoteResponse extends AbstractResponse  {
 
 	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "CreditNo", "Amount", "VatPercentage", "Created", "CreatedBy", "Note", "Currency", "SalesLineGroups"];
-	protected $_apiObjects=["Errors", "Amount", "VatPercentage", "SalesLineGroups"];
+	protected $_apiObjects=["Errors", "SalesLineGroups"];
 	protected $_substituted = true;
 	protected $ResultCode;
 	protected $ResultMessage;
@@ -54,25 +54,19 @@ class GetCreditNoteResponse extends AbstractResponse  {
 	public function getCreditNo () : ?int {
 		return $this->get("CreditNo", "int");
 	}
-	public function setAmount (?\ascio\v3\double $Amount = null) : self {
+	public function setAmount (?float $Amount = null) : self {
 		$this->set("Amount", $Amount);
 		return $this;
 	}
-	public function getAmount () : ?\ascio\v3\double {
-		return $this->get("Amount", "\\ascio\\v3\\double");
+	public function getAmount () : ?float {
+		return $this->get("Amount", "float");
 	}
-	public function createAmount () : \ascio\v3\double {
-		return $this->create ("Amount", "\\ascio\\v3\\double");
-	}
-	public function setVatPercentage (?\ascio\v3\double $VatPercentage = null) : self {
+	public function setVatPercentage (?float $VatPercentage = null) : self {
 		$this->set("VatPercentage", $VatPercentage);
 		return $this;
 	}
-	public function getVatPercentage () : ?\ascio\v3\double {
-		return $this->get("VatPercentage", "\\ascio\\v3\\double");
-	}
-	public function createVatPercentage () : \ascio\v3\double {
-		return $this->create ("VatPercentage", "\\ascio\\v3\\double");
+	public function getVatPercentage () : ?float {
+		return $this->get("VatPercentage", "float");
 	}
 	public function setCreated (?\DateTime $Created = null) : self {
 		$this->set("Created", $Created);

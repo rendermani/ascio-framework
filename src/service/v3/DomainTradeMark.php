@@ -3,12 +3,12 @@
 // XSLT-WSDL-Client. Generated PHP class of DomainTradeMark
 
 namespace ascio\service\v3;
-use ascio\base\v3\Base;
+use ascio\base\v3\DbBase;
 use ascio\db\v3\DomainTradeMarkDb;
 use ascio\api\v3\DomainTradeMarkApi;
 
 
-class DomainTradeMark extends Base  {
+class DomainTradeMark extends DbBase  {
 
 	protected $_apiProperties=["Name", "Country", "Date", "Number", "Type", "Contact", "ContactLanguage", "DocumentationLanguage", "SecondContact", "ThirdContact", "RegDate"];
 	protected $_apiObjects=[];
@@ -24,6 +24,27 @@ class DomainTradeMark extends Base  {
 	protected $ThirdContact;
 	protected $RegDate;
 
+	public function __construct($parent = null) {
+		parent::__construct($parent);
+
+		//set the database model
+		$db = new DomainTradeMarkDb();
+		$db->parent($this);
+		$this->db($db);
+	}
+	/**
+	* Provides DB-Specific methods like update,create,delete.
+	* @param DomainTradeMarkDb|null $db
+	* @return DomainTradeMarkDb
+	*/
+	public function db($db = null) {
+		if(!$db) {
+			return $this->_db;
+		}
+		$this->_db = $db;
+		$this->_db->parent($this);
+		return $db;
+	}
 	public function setName (?string $Name = null) : self {
 		$this->set("Name", $Name);
 		return $this;

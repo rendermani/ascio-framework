@@ -40,7 +40,7 @@ class AAAA extends Record  {
 	* @param @name|null $api
 	* @return AAAAApi
 	*/
-	public function api($api = null) {
+	public function api($api = null) : ?\ascio\base\ApiModelBase {
 		if(!$api) {
 			return $this->_api;
 		}

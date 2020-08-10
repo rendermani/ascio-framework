@@ -37,7 +37,7 @@ class PrivacyProxy extends DbBase  {
 	* @param @name|null $api
 	* @return PrivacyProxyApi
 	*/
-	public function api($api = null) {
+	public function api($api = null) : ?\ascio\base\ApiModelBase {
 		if(!$api) {
 			return $this->_api;
 		}
