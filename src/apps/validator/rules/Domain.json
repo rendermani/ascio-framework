@@ -1,0 +1,31 @@
+{
+    "class" : "Domain",
+    "commands" : ["Register","Register_Domain","Transfer","Transfer_Domain","Queue","Queue_Domain","Contact_Update","Owner_Change","Nameserver_Update"],
+    "tld" : ["it"],
+    "fields" : {
+        "DomainName" : {
+            "rule: " : "required|fqdn"
+        },
+        "Registrant" : {
+            "rule: " : "required",
+            "type"   : "Contact"
+        },
+        "AdminContact" :  {
+            "rule: " : "required",
+            "type"   : "Contact"
+        },
+        "TechContact" :  {
+            "rule: " : "required",
+            "type"   : "Contact"
+        },
+        "BillingContact" :  {
+            "rule: " : "required",
+            "type"   : "Contact"
+        },
+        "ResellerContact" : {
+            "rule: " : "required",
+            "type"   : "Contact"
+        }
+        
+    }
+}

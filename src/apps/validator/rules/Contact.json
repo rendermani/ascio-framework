@@ -1,0 +1,16 @@
+{
+    "class" : "Contact",
+    "api"   : ["v2","v3"],
+    "fields" : {
+        "FirstName" : { "rule: " : "required" },
+        "LastName" :  { "rule: " : "required" },
+        "Company " :  { "rule: " : "required", "alias" : ["OrgName"] },
+        "Email" : { "rule: " : "required|email" },
+        "Address1" : { "rule: " : "required" },
+        "PostalCode" : { "rule: " : "required" },
+        "City" : { "rule: " : "required" },
+        "CountryCode" : { "rule: " : "required|ISO-3166-1-alpha-2" },
+        "Phone" : { "rule: " : "required|phone" },
+        "Fax" : { "rule: " : "phone" }
+    }
+}

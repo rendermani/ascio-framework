@@ -1,0 +1,10 @@
+{
+    "class" : "Registrant",
+    "type" : "Contact",
+    "api"   : ["v2"],
+    "fields" : {
+        "FirstName" : { "removed: " : "true" },
+        "LastName" :  { "removed: " : "true" },
+        "Name" :  {     "rule: " : "required|fullname" }
+    }
+}

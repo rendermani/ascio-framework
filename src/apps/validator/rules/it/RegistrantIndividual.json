@@ -1,0 +1,70 @@
+{
+    "tlds" : ["it"],
+    "name" : "IT",
+    "api"   : ["v2","v3"],
+    "schema" : 
+    [
+        {
+            "class" : "RegistrantBusinessItaly",
+            "type" :  "Registrant",
+            "condition" : {
+                "Domain.Registrant.RegistrantType" : [2,3,4,5,6,7]
+            },
+            "fields" : {
+                "State" : { "rule: " : "required|min:2|max:2" },
+                "RegistrantNumber" :  {"rule" : "required"}
+            }
+        },
+        {
+            "class" : "RegistrantIndividualItaly",
+            "type" :  "Registrant",
+            "condition" : {
+                "Domain.Registrant.RegistrantType" : [1]
+            },
+            "fields" : {
+                "State" : { "rule: " : "required|min:2|max:2" },
+                "RegistrantNumber" :  {"rule" : "required"}
+            }
+        },
+        {
+            "class" : "RegistrantBusinessOutsideItaly",
+            "type" :  "Registrant",
+            "condition" : {
+                "Domain.Registrant.RegistrantType" : [2,3,4,5,6,7]
+            },
+            "fields" : {
+                "State" : { "rule: " : "required" },
+                "RegistrantNumber" :  {"rule" : "required"}
+            }
+        },
+        {
+            "class" : "RegistrantIndividualOutsideItaly",
+            "type" :  "Registrant",
+            "condition" : {
+                "Domain.Registrant.RegistrantType" : [1]
+            },
+            "fields" : {
+                "State" : { "rule: " : "required" },
+                "RegistrantNumber" :  {"rule" : "required"}
+            }
+        },
+        {
+            "class" : "ContactIndividual",
+            "type" : "Contact",
+            "property" : "AdminContact",
+            "condition" : {
+                "Domain.Registrant.RegistrantType" : [1]
+            },
+            "rule" : "sameAs:Registrant"
+        },  
+        {
+            "class" : "TrademarkIndividual",
+            "condition" : {
+                "Domain.Registrant.RegistrantType" : [1]
+            },
+            "fields" : {
+                "Country" : "required|ISO-3166-1-alpha-2"
+            }
+        }
+    ]
+}
