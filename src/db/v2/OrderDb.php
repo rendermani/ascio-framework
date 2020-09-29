@@ -3,10 +3,14 @@
 // XSLT-WSDL-Client. Generated DB-Model class of Order. Can be copied and overwriten with own functions.
 
 namespace ascio\db\v2;
+
+use ascio\base\BaseClass;
+use ascio\base\DbBase;
 use ascio\base\v2\DbModel;
 use ascio\lib\OrderStatus;
 use ascio\v2\Order;
 use ascio\lib\AscioException;
+use ascio\v2\ArrayOfOrder;
 use ascio\v2\OrderStatusType;
 use ascio\v3\OrderType;
 use Illuminate\Database\Schema\Blueprint;
@@ -27,6 +31,7 @@ class OrderDb extends DbModel {
 	}
 	public function syncToDb() {
 		parent::setAttribute("_part_of_order", true);
+		parent::setAttribute("_objectName", $this->parent()->getObjectName());
 		parent::setAttribute("_order", true);
 		parent::syncToDb();		
 	}
@@ -70,24 +75,31 @@ class OrderDb extends DbModel {
 			->where('v2_Order._status', OrderStatus::Queued)
 			->whereNull('v2_Order.OrderId')
 			->where("DomainName",$domainName)
-			->orderBy("v2_Order.CreDate","asc")
+			->orderBy("v2_Order._nr","asc")
 			->firstOrFail();
 		$newOrder = new Order();
 		$newOrder->db()->getById($result->_id);
 		return $newOrder;         
 	}
-	public function scopeNext($query) {        
-		// todo test scope next?
-		return $query
-				->where('_status', OrderStatus::Queued)
-				->whereExists(function($query) {
-						$query->select(DB::raw(1))
-						->from($this->table . ' as allOrders')
-						->whereRaw('NOT EXISTS (allOrders._status = "Blocked" and DomainName = '.$this->table.'.DomainName)');
-					}
-				)
-                ->orderBy("CreDate","asc")
-                ->firstOrFail();        
+	public function next($status) : ArrayOfOrder {        
+        $objectName = $this->parent()->getObjectName();		
+		if($this->isBlocked()) {
+			throw new AscioException("A blocking order is preventing getting the next order", 405);
+		}
+		$result = $this
+			->select("*")
+			->where('_previousId', $this->parent()->getId())
+			->where('_status', OrderStatus::NotSet)
+            ->where("_objectName",$objectName)
+            ->where("_statusTrigger",$status)
+			->orderBy("_nr","asc")
+			->get();
+
+		$orders = new ArrayOfOrder();
+		foreach($result as $value) {
+			$orders->addOrder()->set($value);			
+		}
+		return $orders;       
 	}
 	public function scopeFailed($query) {
 		return $query
@@ -125,7 +137,17 @@ class OrderDb extends DbModel {
 			$table->string('_blocking')->index()->nullable();
 			$table->string('_topic')->index()->nullable();
 			$table->boolean('_acked')->index()->nullable();
+			$table->integer('_nr',true)->index();
+			$table->string('_objectName')->index();
+			$table->string('_previousId')->nullable();
+			$table->string('_statusTrigger')->default("Completed")->index();
 			if($blueprintFunction) $blueprintFunction($table);
 		}); 
 	}
+	/**
+	 * @return OrderDb
+	 */
+	public function parent(?BaseClass $parent=null) : ?DbBase {
+        return parent::parent($parent);
+    }
 }
