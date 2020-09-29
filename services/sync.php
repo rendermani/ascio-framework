@@ -1,20 +1,32 @@
 <?php
 namespace ascio\lib;
+
+use ascio\logic\BlockPayload;
+use ascio\logic\CallbackPayload;
+use ascio\logic\Payload;
+use ascio\v3\Sync;
+
 require(__DIR__."/../vendor/autoload.php");
 
-$sync = new Sync();
-Consumer::callback(function($payload) use ($sync) {       
-    Ascio::setConfig($payload->Config); 
+// @TODO: only sync domain when completed and failed. 
+
+Consumer::callback(function(Payload $payload) {        
+    if($payload instanceof BlockPayload) {
+        DomainBlocker::block($payload->getObjectName());
+        return;
+    }
+    
+    Ascio::setConfig($payload->getConfig()); 
     if(
-        $payload->OrderStatus == OrderStatus::Queued ||
-        $payload->OrderStatus == OrderStatus::Submitting 
+        $payload->getWorkflowStatus() == OrderStatus::Queued ||
+        $payload->getWorkflowStatus() == OrderStatus::Submitting 
     ) {
         return; 
     }
-    //$messageId = $payload->object->MsgId; 
     sleep(1);
     try {
-        $sync->getOrder($payload->OrderId);
+        $sync = new Sync(); 
+        $sync->getOrder($payload);
     } catch (AscioException $e) {
         echo $e->debug();
         throw $e;
