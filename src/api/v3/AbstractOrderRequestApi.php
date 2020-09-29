@@ -4,7 +4,7 @@
 
 namespace ascio\api\v3;
 use ascio\base\v3\ApiModel;
-
+use ascio\lib\OrderStatus;
 
 class AbstractOrderRequestApi extends ApiModel {
 
@@ -13,15 +13,19 @@ class AbstractOrderRequestApi extends ApiModel {
 	protected $objects=[];
 
 	function create($data=null) {
-		throw new \ascio\lib\AscioException("Not implemented yet.");
+		$orderRequest = $this->parent();
+		$orderRequest->setWorkflowStatus(OrderStatus::Running);
+		$result =  $this->getClient()->createOrder($orderRequest);
+		$result->getOrderInfo()->setOrderRequest($orderRequest);
+		return $result;
 	}
 	function update($data=null) {
-		throw new \ascio\lib\AscioException("Not implemented yet.");
+		throw new \ascio\lib\AscioException("Not implemented.");
 	}
 	function delete($id=null) {
 		throw new \ascio\lib\AscioException("Not implemented yet.");
 	}
 	function get($id=null) {
-		throw new \ascio\lib\AscioException("Not implemented yet.");
+		throw new \ascio\lib\AscioException("Please use OrderInfo->get().");
 	}
 }
