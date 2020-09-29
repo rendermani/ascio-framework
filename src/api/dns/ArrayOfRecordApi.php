@@ -4,7 +4,7 @@
 
 namespace ascio\api\dns;
 use ascio\base\dns\ApiModel;
-
+use ascio\dns\base\Rest;
 
 class ArrayOfRecordApi extends ApiModel {
 
@@ -16,7 +16,9 @@ class ArrayOfRecordApi extends ApiModel {
 		throw new \ascio\lib\AscioException("Not implemented yet.");
 	}
 	function update($data=null) {
-		throw new \ascio\lib\AscioException("Not implemented yet.");
+		foreach($this->parent() as $record) {
+            $record->api()->update();
+        }
 	}
 	function delete($id=null) {
 		throw new \ascio\lib\AscioException("Not implemented yet.");
