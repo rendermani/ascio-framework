@@ -69,7 +69,7 @@ class TopicNames {
 class Ascio {
     public static function init($config = null) {
         if($config) {
-            $this->setConfig($config);
+            Ascio::setConfig($config);
         }
     }
     public static function setConfig($id=null) {
@@ -158,7 +158,7 @@ class Config {
         return $apiName ? $this->config->{$apiName} : $this->config;
     }
     public function getPartner($api) {
-        return $this->get($api)->partner ?: $this->get($api)->account;
+        return property_exists($this->get($api),"partner") ? $this->get($api)->partner  : $this->get($api)->account;
     }
     public function getWsdl($apiName)  {
         $wsdl = $this->get($apiName)->wsdl;
