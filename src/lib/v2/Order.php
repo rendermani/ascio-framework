@@ -14,16 +14,22 @@ use ascio\lib\OrderStatus;
 use ascio\lib\Producer;
 use ReflectionClass;
 use ascio\lib\AscioOrderException;
+use ascio\lib\AscioOrderExceptionV2;
 use ascio\lib\SubmitOptions;
 use ascio\lib\DomainBlocker;
+use ascio\lib\LogLevel;
 use ascio\lib\StatusSerializer;
 use ascio\lib\TaskTrait;
+use ascio\logic\BlockPayload;
+use ascio\logic\OrderPayload;
+use ascio\logic\v2\CallbackPayload;
 
-class Order extends \ascio\service\v2\Order implements OrderInterface, OrderInfoInterface, TaskInterface {       
+class Order extends \ascio\service\v2\Order implements OrderInterface, OrderInfoInterface {       
     use TaskTrait;
     public $Messages = [];
     public $QueueItems = [];
     public $lastResult;
+    public $objectName;
     /**
      * @var SubmitOptions $submitOptions
      */
@@ -36,19 +42,14 @@ class Order extends \ascio\service\v2\Order implements OrderInterface, OrderInfo
     public function queue(?SubmitOptions $submitOptions=null) : OrderInterface {
         $this->submitOptions = $submitOptions ?: $this->getSubmitOptions();
         $this->setWorkflowStatus(OrderStatus::Queued); 
+        $this->setPreviousId();
         $this->produce(["action"=>"create"]);
-        //immediately pickup order with the order-queue and submit it
-        //if an order is running, the order-queue won't submit. However it's unnecessary network traffic and better to 
-        //only submit the first order. The others will be processed after the first is completed 
         if($this->submitOptions->getSubmitAfterQueue()) {
-            Producer::callback($this,[
-                "OrderStatus"=> OrderStatus::Queued,
-                "ObjectName"=> $this->getDomain()->getDomainName(),
-                "OrderType"=> $this->getType(),
-                "OrderId"=> $this->getOrderId(),
-                "Module" => "order"
-            ]);
-        }        
+            $payload = new OrderPayload($this);
+            $payload->setWorkflowStatus(OrderStatus::Queued);
+            $payload->setOrder($this);
+            $payload->send();
+        }      
         return $this;
     }
     public function submit(?SubmitOptions $submitOptions=null) : OrderInfoInterface {        
@@ -56,50 +57,45 @@ class Order extends \ascio\service\v2\Order implements OrderInterface, OrderInfo
         $domainName = $this->getDomain()->getDomainName();   
         $this->db()->_blocking = $this->submitOptions->getBlocking();
         if($this->shouldQueue()) {
+            DomainBlocker::block($domainName);
             return $this->queue();
         } elseif(DomainBlocker::isBlocked($domainName)) {
-            //echo $this->getStatusSerializer()->console(LogLevel::Warn,"Can't submit, queueing");
+            echo $this->getStatusSerializer()->console(LogLevel::Info,"Can't submit, queueing");
             $this->getSubmitOptions()->setSubmitAfterQueue(false);
             return $this->queue();
         } else {
             $this->setWorkflowStatus(OrderStatus::Submitting); 
-            Producer::callback(null,[
-                "OrderStatus"=> OrderStatus::Submitting,
-                "ObjectName"=> $domainName,
-                "OrderType"=> $this->getType(),
-                "Module" => "order"
-            ]);    
-            $action = $this->db()->_id ? "update" : "create";        
-            $this->produce(["action"=> $action]);
-            try {
-                DomainBlocker::block($domainName);
+            $this->produce();
+            $payload = new BlockPayload($this); 
+            $payload->send();
+            DomainBlocker::block($domainName);              
+            try {               
+                if($this->submitOptions->getValidate()) {
+                    $this->api()->getClient()->validateOrder($this);
+                }                
                 $result = $this->api()->getClient()->createOrder($this);
                 $this->setWorkflowStatus(OrderStatus::Running);
-                $order = $result->getOrder();
+                $order = $result->getOrder();                
                 $this->lastResult = $result->getCreateOrderResult();
                 $this->set($order);
-                //echo $this->getStatusSerializer()->console(LogLevel::Info,"Submitted");
+                echo $this->getStatusSerializer()->console(LogLevel::Info,"Submitted");
                 $this->produce(["action"=>"update"]);   
-                // for the next submission
                 $this->getSubmitOptions()->setQueue(true);
-            } catch (AscioOrderException $e) {
+                return $order;
+            } catch (AscioOrderExceptionV2 $e) {
                 $this->setWorkflowStatus(OrderStatus::Completed); 
                 $order = $e->getOrder();
-                $this->lastResult = $e->result->getCreateOrderResult();
+                $this->lastResult = $e->status;
                 $this->set($order);
                 $this->db()->_message = $this->lastResult->getMessage();
                 $this->db()->_code = $this->lastResult->getResultCode();
                 $this->db()->_values = $this->lastResult->getValues();
                 $this->produce(["action"=>"update"]);                
-                $e =  new AscioOrderException($e->result->getCreateOrderResult()->getMessage(),406);
-                $e->setOrder($order);
-                $e->setResult($e->method,$e->request,$e->status,$e->result);
                 throw $e; 
             }                                 
-        }
-        return $order;
+        }        
     }
-    public static function mapWorflowStatus($status) {
+    public static function mapWorkflowStatus($status) {
         switch($status) {
             case OrderStatusType::Completed :
             case OrderStatusType::Failed    :
@@ -111,8 +107,8 @@ class Order extends \ascio\service\v2\Order implements OrderInterface, OrderInfo
         }
     }
     public function setWorkflowStatus($status=null) : Order {
-        if($status==null && Order::mapWorflowStatus($this->getStatus())) {
-            $this->db()->setAttribute("_status",Order::mapWorflowStatus($this->getStatus()));
+        if($status==null && Order::mapWorkflowStatus($this->getStatus())) {
+            $this->db()->setAttribute("_status",Order::mapWorkflowStatus($this->getStatus()));
         } else {
             $class = new ReflectionClass(OrderStatus::class);
             if(!array_key_exists($status,$class->getConstants())) {
@@ -235,5 +231,27 @@ class Order extends \ascio\service\v2\Order implements OrderInterface, OrderInfo
     }
     public function getObjectKey() : string {
         return "DomainName";
+    } 
+        /**
+     * Set the value of PreviousId
+     *
+     * @return  self
+     */ 
+    public function setPreviousId() 
+    {
+        global $PREVIOUS_TASK_ID_V2, $PREVIOUS_OBJECT_NAME_V2;
+
+        if(!$this->db()->getKey()) {
+            return $this;
+        }
+        if($PREVIOUS_TASK_ID_V2 && $PREVIOUS_TASK_ID_V2 == $this->db()->getKey()) {
+            return $this;
+        }
+        if($PREVIOUS_OBJECT_NAME_V2 && $PREVIOUS_OBJECT_NAME_V2 == $this->getObjectName()) {
+            $this->db()->_previousId = $PREVIOUS_TASK_ID_V2;
+        }
+        $PREVIOUS_TASK_ID_V2 = $this->db()->getKey();
+        $PREVIOUS_OBJECT_NAME_V2 = $this->getObjectName();
+        return $this;
     } 
 }
