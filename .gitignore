@@ -11,3 +11,8 @@ composer.lock
 data/import/*
 partners/*
 sandbox/avMonitor
+data/tests/*
+projects/*
+node_modules
+public/tests/*
+package-lock.json
