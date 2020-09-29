@@ -7,6 +7,7 @@ class SubmitOptions {
     public $submit=true; 
     public $autoUnlock=false; 
     public $workflow; 
+    public $validate=false;
 
     /**
      * Get the value of blocking
@@ -116,6 +117,26 @@ class SubmitOptions {
     public function setSubmitAfterQueue($submit)
     {
         $this->submit = $submit;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of validate
+     */ 
+    public function getValidate() : bool
+    {
+        return $this->validate;
+    }
+
+    /**
+     * Set the value of validate
+     *
+     * @return  self
+     */ 
+    public function setValidate(bool $validate)
+    {
+        $this->validate = $validate;
 
         return $this;
     }
