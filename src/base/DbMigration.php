@@ -27,7 +27,7 @@ class DbMigration extends DbModelBase {
 				   
 				$self = $this;
 				Capsule::Schema()->create($this->table,function(Blueprint $table) use ($self, $blueprintCallback)  {	
-					$table->string('_id')->primary();					
+					$table->string('_id')->index();					
 					$this->createObjectProperties($this->parent(),$table);	
 					$this->createAdditionalProperties($table);				
                     $this->createDefaultProperties($table);
@@ -56,7 +56,6 @@ class DbMigration extends DbModelBase {
 			return false; 
 		}
 		if(!Capsule::Schema()->hasTable($this->table)) {
-			echo $this->serializer->console(LogLevel::Info,"Creating table ".$this->table);
 			$properties = [];
 			foreach($this->parent()->substitutions() as $name => $class) {
 				$newObject = new $class; 					
@@ -65,7 +64,7 @@ class DbMigration extends DbModelBase {
 				}
 			}
 			Capsule::Schema()->create($this->table,function(Blueprint $table) use ($properties) {					
-				$table->string('_id')->primary();
+				$table->string('_id')->index();
 				foreach($properties as $key => $newObject) {					
 					$this->createObjectProperty($newObject,$table,$key);	
 				}	
@@ -82,7 +81,7 @@ class DbMigration extends DbModelBase {
 		}
 	}
 	private function createObjectProperty($object,Blueprint $table,$key) {
-		if ($this->_customColumnTypes[$key]) {
+		if (array_key_exists($key,$this->_customColumnTypes)) {
 			$col = $this->_customColumnTypes[$key];
 			$table->addColumn($col["type"],$key,$col["parameters"] ?: []);
 		} else if($object->objects()->exists($key)) {
