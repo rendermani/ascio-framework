@@ -10,10 +10,16 @@ use ascio\v2\Order;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use ascio\lib\Ascio;
 use ascio\lib\AscioException;
+use ascio\logic\CallbackPayload;
+use ascio\logic\PayloadFactory;
+use ascio\logic\SyncPayload;
 use ascio\v2\Domain;
 use Illuminate\Support\Str;
 use ascio\v2\OrderStatusType;
+use ascio\v3\OrderInfo;
 use ascio\v3\OrderStatusType as v3OrderStatusType;
+use ascio\v3\QueueMessage;
+use PHPUnit\Framework\Constraint\Callback;
 use SoapFault;
 
 class Sync {
@@ -31,49 +37,27 @@ class Sync {
     /**
      * @var \ascio\v2\Order|\ascio\v3\AbstractOrderRequest $order
      */
-    private function getApiObject($order) {
-        switch(get_class($order)) {
-            case "ascio\\v2\\Order" : $this->getDomain($order);break;
-            default: $this->getV3Object($order);break;
-        }
-    }
-    public function getOrder(string $orderId) : ?OrderInfoInterface {
+    public function getOrder(CallbackPayload $payload) : ?OrderInfoInterface {
+        $orderId = $payload->getOrderId();        
         try {
-            $order = $this->getDbData($this->autoPrefix($orderId));            
-            $order->api()->get($orderId);   
-            $order->setWorkflowStatus();
-            $action = ["action" => "update"];
-            $order->produce($action);
-            $this->log($order,$action["action"]);
-            $this->getApiObject($order);
-            $this->syncMessages($order->getOrderId());
-            return $order;
+            $orderInfo = $payload->getOrderInfo();
+            $update = true;
+
         } catch (ModelNotFoundException $e) {
-            try {     
-                $order = new \ascio\v3\OrderInfo();
-                $order->api()->get($orderId); 
-                $order->db()->createDbProperties();
-                $order->setWorkflowStatus();
-                $action = ["action" => "create"];
-                $order->produce($action);
-                $this->getV3Object($order);
-                $this->log($order,$action["action"]);
-                return $order;
-            } catch(AscioException $e) {
-                $order = new Order();
-                $order->api()->get($orderId);
-                $order->db()->createDbProperties();
-                $order->setWorkflowStatus();
-                $action = ["action" => "create"];
-                $order->produce($action);
-                $this->log($order,$action["action"]);
-                $this->getDomain($order);
-                $this->syncMessages($order->getOrderId());
-                return $order;
-            }
+            $orderInfo = new OrderInfo();
+            $orderInfo->setOrderId($payload->getOrderId());
+            $orderInfo->db()->createDbProperties();
+            $update = false; 
         }
+        $orderInfo->api()->get();
+        $syncPayload = new SyncPayload($orderInfo);
+        $syncPayload->setUpdate($update)->send();
+        $this->getObject($orderInfo);
+        $this->syncMessages($orderId);
+        // @todo: return OrderInfo ... v3: $orderInfo->api()->get()
+        return $orderInfo;
     }
-    private function getV3Object(\ascio\v3\OrderInfo  $order) {
+    private function getObject(\ascio\v3\OrderInfo  $order) {
         if($order->getStatus()!== v3OrderStatusType::Completed) return null;
         $name = $order->getOrderRequest()->objects()->index(0);
         $method = "get".$name;
@@ -88,22 +72,12 @@ class Sync {
         $info->produce(["action" => $action]);
         return $info;
     }    
-    private function getDomain(Order $order) : ?Domain  {
-        if($order->getStatus() !== OrderStatusType::Completed) return null;
-        $domain = new Domain();
-        if(!($order->getDomain() && $order->getDomain()->getDomainHandle())) {
-            return null; 
-        }
-        $action = $domain->sync($order->getDomain()->getDomainHandle());
-        $this->log($domain,$action);
-        return $domain;         
-    }
     public function getMessage($messageId) {
         $message = Ascio::getClientV2()->getMessageQueue($messageId);
         $item = $message->getItem(); 
         $item->init();
         $item->db()->createDbProperties();
-        Producer::object($item);
+        Producer::object(new SyncPayload($item));
     }
     public function syncOrders(SearchOrderRequest $searchOrderRequest = null,$index = 1) {
         $pagesize = 100;
@@ -187,9 +161,14 @@ class Sync {
                     "Module" => "update"
                 ];
                 if($order instanceof Order) {
-                    $params["ObjectName"] = $order->getDomain()->getDomainName();
+                    $params["ObjectName"] = $order->getObjectName();
                 }
-                Producer::callback($order,$params);
+                $queueMessage = new QueueMessage();
+                $queueMessage
+                    ->setOrderId($orderResult->OrderId)
+                    ->setOrderStatus($order->getStatus())
+                    ->setObjectName($order->getObjectName());
+                Producer::callback(new CallbackPayload(),$params);
             }
         } 
         return count($orders) > 0;
