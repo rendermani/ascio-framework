@@ -2,6 +2,8 @@
 
 namespace ascio\base;
 
+use ascio\base\dns\Base;
+
 trait ArrayTrait   {
     private $_position = 0;    
     private $_arrayProperty;
@@ -11,24 +13,22 @@ trait ArrayTrait   {
         $this->_position = 0;
         $this->key = $this->getArrayKey();
         $this->_arrayProperty = $this->properties()->index(0);
+        if(!is_array($this[$this->_arrayProperty])) {
+            $this[$this->_arrayProperty] = [$this[$this->_arrayProperty]];
+        } 
     }
-
     public function rewind() {
         $this->_position = 0;
     }
-
     public function current() {
         return $this[$this->_position];
     }
-
     public function key() {
         return $this->_position;
     }
-
     public function next() {
         ++$this->_position;
     }
-
     public function valid() {
         return isset($this[$this->_position]);
     }
@@ -37,6 +37,7 @@ trait ArrayTrait   {
             $this->getObject()->_set($this->getArrayKey(), []);
         }
         array_push($this->{$this->getArrayKey()},$value);
+        return $this->{$this->getArrayKey()};
     }
     public function pop() {
         return array_pop($this->{$this->getArrayKey()});
@@ -62,8 +63,20 @@ trait ArrayTrait   {
     public function fromArray($array) {    
         $this->getObject()->_set($this->getArrayKey(),$array);
     }
-    public function toJson() {
-        return json_encode($this->toArray());
+    public function toJson($options=0)
+    {
+        return json_encode($this->jsonSerialize(),$options); 
+    } 
+    public function jsonSerialize() {
+        $out = [];
+        foreach($this as $key => $value) {
+            if($value instanceof BaseClass) {
+                $out[$key] = $value->properties()->cleanObject();
+            } else {
+                $out[$key] = $value; 
+            }
+        }
+        return $out; 
     }
     public function fromJson($json) {
         return $this->fromArray(json_decode($json));
@@ -77,50 +90,64 @@ trait ArrayTrait   {
     public function getObject() {
         return $this; 
     }
-    public function createItem($data=null) : BaseClass {
-        if($data instanceof BaseClass) {
-            $arrayItem = $data; 
-        } elseif(is_object($data)) {
-            $arrayItem->deserialize($data);
-        } else { 
-            $arrayItem = $this->createProperty($this->getArrayKey());
-        }        
-        $this->push($arrayItem);
-        return $arrayItem; 
-    }
-    public function add($args) {
-        if(is_array($args) || ($args instanceof \ArrayAccess)) {
-            foreach($args as $arg) {
-                $this->push($arg);
+    /**
+     * For special usage. Easier to use add instead.
+     */
+    public  function create($property,$class) {
+        $this->$property = $this->$property ?: [];
+        $item = new $class($this);
+        $this->push($item);    
+        return $item;
+    } 
+    /**
+     * Function for adding everything to an array. 
+     * @var BaseClass|ArrayInterface|Array|stdObject|null $items 
+     * BaseClass, int, float, string: Pushed to array. 
+     * Object: deserialized to array. 
+     * Null: empty object is created and added.  
+     * Array, ArrayBase, DbArrayBase: an array of any valid objectts. 
+     * @return self use this for adding multiple elements in a chain. To return the created element, use addPropertyName()
+     */
+    public function add($items = null) : self{    
+        if(is_array($items) || ($items instanceof \ArrayAccess)) {
+            foreach($items as $item) {
+                $this->add($item);
             }
-        } else {
-            $this->push($args);
-            return  $args;
+        } 
+        // no conversion needed
+        elseif (
+            $items instanceof BaseClass  ||
+            is_string($items) ||
+            is_int($items) ||
+            is_float($items)            
+        ) { 
+            $this->push($items);
+        } elseif(is_object($items)) {
+            $newItem = $this->createProperty($this->getArrayKey());
+            $newItem->deserialize($items);
+        }
+        // create a new BaseClass object
+        else       
+        {
+            $this->createProperty($this->getArrayKey());
         }
         return $this;
     }
-    protected function addItem($args,$class) {
-        if(
-            ($args[0] instanceof BaseClass) &&
-            !($args[0] instanceof ArrayInterface)
-         ) {
-             $this->push($args[0]);
-             return $args[0];
-         }
-        if(in_array($class,["string","int","double","float"])) {
-            $this->push($args[0]);
-            $newObject = $args[0];
-        } else {
-            $newObject = new $class;
-            $newObject->parent($this);
-            foreach($args as $nr => $arg) {
-                $key = $newObject->properties()->index($nr);
-                $newObject->set($key,$arg);
-            }              
-            $this->push($newObject);            
-        }  
-        return $newObject;             
-    } 
+    /**
+     * addItem is used in the generated stub classes. Don't use it directly
+     * @return BaseClass the BaseClass. 
+     */
+    protected function addItem($args,$class=null, $additionalArgs=null) {
+        if(is_array($additionalArgs) && count($additionalArgs) > 0){
+            $this->add($additionalArgs[0]);
+        } elseif (is_array($additionalArgs)) {
+            $this->add();
+        }  else {
+            $this->add($args);
+        }     
+        return $this[count($this)-1];
+    }
+
     public function offsetSet($offset, $value) {
         if (is_null($offset)) {
             $this->{$this->getArrayKey()}[] = $value;
@@ -139,5 +166,8 @@ trait ArrayTrait   {
 
     public function offsetGet($offset) {
         return isset($this->{$this->getArrayKey()}[$offset]) ? $this->{$this->getArrayKey()}[$offset] : null;
+    }
+    public function reverse() {
+        return array_reverse($this->{$this->getArrayKey()});
     }
 }
