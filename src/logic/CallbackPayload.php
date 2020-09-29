@@ -1,17 +1,93 @@
 <?php
 namespace ascio\logic;
 
-use ascio\v2\QueueItem;
+use ascio\base\OrderInfoInterface;
+use ascio\base\OrderInterface;
+use ascio\lib\Ascio;
+use ascio\lib\TopicProducer;
+use ascio\logic\v3\CallbackPayload as V3CallbackPayload;
+use ascio\logic\v2\CallbackPayload as V2CallbackPayload;
+use ascio\v3\OrderInfo;
+use ascio\v3\QueueMessage;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class CallbackPayload extends Payload{
-    private $orderId;
-    private $orderStatus; 
-    private $orderType; 
-    private $msgId;
-    private $queueItem;
-    private $api;
-    private $callbackType;
+class CallbackPayload extends Payload {
 
+    public $order; 
+    public $orderId;
+    public $messageId;
+    public $orderStatus;
+    public $objectName;
+    public $objectHandle;
+    public $objectType;
+    public $environment;
+    public $account;
+    public $module;
+    public $queueMessage;
+    public $orderInfo; 
+
+    public function __construct(QueueMessage $payloadObj=null)
+    {
+        if($payloadObj) {
+            parent::__construct($payloadObj);
+            if($payloadObj) {
+                $this->queueMessage = $payloadObj;    
+                $this->orderId = $this->queueMessage->getOrderId();
+                $this->messageId = $this->queueMessage->getId();
+                $this->orderStatus = $this->queueMessage->getOrderStatus();
+                $this->objectName = $this->queueMessage->getObjectName();
+                $this->objectHandle = $this->queueMessage->getObjectHandle();
+            }
+            $this->objectType = str_replace("Type","",$this->queueMessage->getObjectType());
+            $this->environment =  Ascio::getConfig()->getEnvironment();            
+            $this->account = Ascio::getConfig()->get($this->getApi())->account;
+            $this->module = "poll";            
+        }
+        parent::__construct($payloadObj);
+    }
+    /**
+     * Get the order
+     */ 
+    public function getOrder() : OrderInterface
+    {
+        if($this->order) {
+            return $this->order;
+        } else {
+            $this->createOrder();
+            $this->order->db()->getByOrderId($this->getOrderId());
+            return $this->order;
+        }        
+    }
+        /**
+     * Get the order
+     */ 
+    public function getOrderInfo() : OrderInfoInterface
+    {
+        if($this->orderInfo) {
+            return $this->orderInfo;
+        } else {
+            $this->orderInfo = new OrderInfo();            
+            $this->orderInfo->setOrderId($this->getOrderId());
+            $this->orderInfo->db()->getByOrderId();
+            $this->orderInfo->setOrderRequest($this->getOrder());
+            return $this->orderInfo;
+        }        
+    }
+    /**
+     * Create an order
+     *
+     * @return  OrderInterface
+     */ 
+    public function createOrder() : OrderInterface
+    {
+        $name = $this->getObjectType();
+        $this->order = new $name(); 
+        $this->order->setOrderId($this->getOrderId());        
+        return $this->order;
+    }
+    public function removeOrder() {
+        $this->order = null; 
+    }
     /**
      * Get the value of orderId
      */ 
@@ -21,75 +97,11 @@ class CallbackPayload extends Payload{
     }
 
     /**
-     * Set the value of orderId
-     *
-     * @return  self
+     * Get the value of messageId
      */ 
-    public function setOrderId($orderId)
+    public function getMessageId()
     {
-        $this->orderId = $orderId;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of msgId
-     */ 
-    public function getMsgId()
-    {
-        return $this->msgId;
-    }
-
-    /**
-     * Set the value of msgId
-     *
-     * @return  self
-     */ 
-    public function setMsgId($msgId)
-    {
-        $this->msgId = $msgId;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of queueItem
-     */ 
-    public function getQueueItem() : QueueItem
-    {
-        return $this->queueItem;
-    }
-
-    /**
-     * Set the value of queueItem
-     *
-     * @return  self
-     */ 
-    public function setQueueItem($queueItem)
-    {
-        $this->queueItem = $queueItem;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of api
-     */ 
-    public function getApi()
-    {
-        return $this->api;
-    }
-
-    /**
-     * Set the value of api
-     *
-     * @return  self
-     */ 
-    public function setApi($api)
-    {
-        $this->api = $api;
-
-        return $this;
+        return $this->messageId;
     }
 
     /**
@@ -101,57 +113,82 @@ class CallbackPayload extends Payload{
     }
 
     /**
-     * Set the value of orderStatus
-     *
-     * @return  self
+     * Get the value of objectName
      */ 
-    public function setOrderStatus($orderStatus)
+    public function getObjectName()
     {
-        $this->orderStatus = $orderStatus;
-
-        return $this;
+        return $this->objectName;
     }
 
     /**
-     * Get the value of orderType
+     * Get the value of objectHandle
      */ 
-    public function getOrderType()
+    public function getObjectHandle()
     {
-        return $this->orderType;
+        return $this->objectHandle;
     }
 
     /**
-     * Set the value of orderType
-     *
-     * @return  self
+     * Get the value of objectType
      */ 
-    public function setOrderType($orderType)
+    public function getObjectType() : ?string
     {
-        $this->orderType = $orderType;
-
-        return $this;
+        return $this->objectType;
     }
 
     /**
-     * Get the value of callbackType
+     * Get the value of environment
      */ 
-    public function getCallbackType()
+    public function getEnvironment()
     {
-        return $this->callbackType;
+        return $this->environment;
     }
 
     /**
-     * Set the value of callbackType
-     *
-     * @return  self
+     * Get the value of account
      */ 
-    public function setCallbackType($callbackType)
+    public function getAccount()
     {
-        $this->callbackType = $callbackType;
-
-        return $this;
+        return $this->account;
     }
-    public function getObject() : ?BaseClass {
-        return $this->getQueueItem() ?: null;
+
+    /**
+     * Get the value of module
+     */ 
+    public function getModule()
+    {
+        return $this->module;
+    }
+
+    /**
+     * Get the value of queueMessage
+     */ 
+    public function getQueueMessage()
+    {
+        return $this->queueMessage;
+    }
+    public function send() {
+        TopicProducer::send("callback",$this); 
+    }
+    public static function getApiPayload(QueueMessage $message) : CallbackPayload {
+        try {
+            // API v3
+            $payloadObj = new  V3CallbackPayload($message);
+            $payloadObj->getOrder();
+            $payloadObj->setApi("v3");
+        } catch (ModelNotFoundException $e) {
+            // API v2   
+            $payloadObj = new V2CallbackPayload($message);
+            $payloadObj->getOrder();
+            $payloadObj->setApi("v2");       
+        }
+        $payloadObj->removeOrder();
+        return $payloadObj;
+    }
+    public function getWorkflowStatus()
+    {
+        $order = $this->getOrder();
+        $order->setWorkflowStatus($this->getOrderStatus());
+        return $order->getWorkflowStatus();
     }
 }
