@@ -1,51 +1,87 @@
 <?php
 namespace ascio\logic;
 use ascio\base\BaseClass;
+use ascio\base\DbBase;
 use ascio\base\DbModelBase;
+use ascio\base\OrderInfoInterface;
 use ascio\lib\AscioException;
 use ascio\v2\Domain;
 use ascio\v2\Order;
 use ascio\v2\QueueItem;
 use ascio\lib\Actions;
+use ascio\lib\Ascio;
+use ascio\lib\Producer;
+use ascio\lib\TopicProducer;
+use Illuminate\Support\Str;
+use JsonSerializable;
 
-class Payload {
+
+class Payload  {
     public $action; 
     public $blocking; 
-    public $orderId; 
     public $id; 
-    public $domainName; 
+    public $status; 
     public $workflowStatus; 
-    public $processStatus;
-    public $class;
-    public $dbClass;
-    public $domain;
-    public $queueItem;
+    public $objectType;
+    public $class; 
     public $object;
-    public $order;
     public $error; 
     public $incremental; 
     public $changes; 
+    public $objectName;
     public $module;
+    public $config;
+    public $api;
+    public $parameters = []; 
+
+
     //OPTIMIZE: Remove changes
-    public function __construct($payloadObj)
+    public function __construct($payloadObj=null)
     {
-        //todo: merge; 
-    }
-    public function serialize($payload) {
-        $serialized = [];
-        foreach($payload as $key => $value) {
-            if($value instanceof BaseClass) {
-                $serialized->$key = $value->properties()->serialize();
-            } else {
-                $serialized->$key = $value; 
-            }
+        /* if($payloadObj) foreach($payloadObj as $key => $value) {
+            $camelCaseKey = Str::camel($key);
+            $this->$camelCaseKey = $value; 
+        } */
+        $this->class = get_class($this);
+        if($payloadObj) {                        
+            $this->api = explode("\\",get_class($payloadObj))[1];            
+            $this->config = Ascio::getConfig()->getId();
+            $this->setObject($payloadObj);
         }
-        return $serialized; 
+        if($payloadObj instanceof BaseClass) {
+            $this->api = explode("\\",get_class($payloadObj))[1];
+        }
+        if($payloadObj instanceof DbBase) {
+            if(!$payloadObj->db()->getKey()) {
+                $payloadObj->db()->createDbProperties();
+            }
+            $this->id = $payloadObj->db()->getKey(); 
+        }
+        if($payloadObj instanceof OrderInfoInterface) {
+            $this->workflowStatus = $payloadObj->getWorkflowStatus();
+            $this->status = $payloadObj->getStatus();
+        }
+        $this->setApiVersion();
+        
+    }
+    public function setApiVersion() {
+        if($this->getObject() && strpos(get_class($this->getObject()),"v2") !== false ) {
+            $this->setApi("v2");
+        } else {
+            $this->setApi("v3");
+        }
+    }
+    public function serialize() {
+        $clonePayload = clone $this; 
+        if($this->getObject()) {
+            $clonePayload->object = $this->getObject()->serialize();
+        }
+        return $clonePayload; 
     }
     public function deserialize($payload) {
         foreach($payload as $key => $value) {
-            if(property_exists($value,"DbAttributes")) {
-                $className = new $value->DbAttributes->className;
+            if($value && is_object($value) && property_exists($value,"DbAttributes")) {
+                $className = new $value->DbAttributes->_type;
                 $obj = new $className();
                 $value= $obj->deserialize($value);
                 //OPTIMIZE: Remove changes
@@ -55,6 +91,7 @@ class Payload {
             } 
             $this->$key = $value; 
         }
+        $this->parameters = (array) $payload->parameters;
     }
     /**
      * Get the value of action
@@ -115,6 +152,24 @@ class Payload {
         return $this;
     }
     /**
+     * Get the detailed Status
+     */ 
+    public function getStatus()
+    {
+        return $this->status;
+    }
+    /**
+     * Set the value of status
+     *
+     * @return  self
+     */ 
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+    /**
      * Get the value of workflowStatus
      */ 
     public function getWorkflowStatus()
@@ -130,45 +185,6 @@ class Payload {
     public function setWorkflowStatus($workflowStatus)
     {
         $this->workflowStatus = $workflowStatus;
-
-        return $this;
-    }
-    /**
-     * Get the value of class
-     */ 
-    public function getClass()
-    {
-        return $this->class;
-    }
-
-    /**
-     * Set the value of class
-     *
-     * @return  self
-     */ 
-    public function setClass($class)
-    {
-        $this->class = $class;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of dbClass
-     */ 
-    public function getDbClass() : ?DbModelBase
-    {
-        return $this->dbClass;
-    }
-
-    /**
-     * Set the value of dbClass
-     *
-     * @return  self
-     */ 
-    public function setDbClass(DbModelBase $dbClass)
-    {
-        $this->dbClass = $dbClass;
 
         return $this;
     }
@@ -191,13 +207,6 @@ class Payload {
 
         return $this;
     }
-    /**
-     * Get the value of module
-     */ 
-    public function getModule()
-    {
-        return $this->module;
-    }
 
     /**
      * Set the value of module
@@ -210,7 +219,137 @@ class Payload {
 
         return $this;
     }
-    public function getObject() : ?BaseClass {
-        return null;
+    public function getObject() {
+        return $this->object;
+    }
+
+    /**
+     * Set the value of object
+     *
+     * @return  self
+     */ 
+    public function setObject($object)
+    {
+        $this->object = $object;
+        $this->objectType = get_class($object);
+        return $this;
+    }
+
+
+
+    /**
+     * Get the value of ObjectName
+     */ 
+    public function getObjectName()
+    {
+        return $this->object->getObjectName();
+    }
+    /**
+     * Set the value of ObjectName
+     */ 
+    public function setObjectName($name)
+    {
+        return $this->objectName = $name;
+    }
+    /**
+     * Get the value of Module
+     */ 
+    public function getModule()
+    {
+        return $this->module;
+    }
+
+    /**
+     * Get the value of Config
+     */ 
+    public function getConfig()
+    {
+        return $this->config;
+    }
+
+    /**
+     * Get the value of objectType
+     */ 
+    public function getObjectType()
+    {
+        return  get_class($this->object);
+    }
+
+    /**
+     * Get the value of changes
+     */ 
+    public function getChanges()
+    {
+        return $this->changes;
+    }
+
+    /**
+     * Set the value of changes
+     *
+     * @return  self
+     */ 
+    public function setChanges($changes)
+    {
+        $this->changes = $changes;
+
+        return $this;
+    }
+    public function jsonSerialize()
+    {
+        $serialized = clone $this;
+        $serialized->setObject($this->getObject()->serialize());
+        return $serialized;
+    }
+
+    /**
+     * Get the value of api
+     */ 
+    public function getApi()
+    {
+        return $this->api;
+    }
+
+    /**
+     * Set the value of api
+     *
+     * @return  self
+     */ 
+    public function setApi($api)
+    {
+        $this->api = $api;
+
+        return $this;
+    }
+    public function send() {
+        assert($this->class,"Has a class");
+        TopicProducer::send("callback",$this); 
+    }
+
+    /**
+     * Get the value of parameters
+     */ 
+    public function getParameters()
+    {
+        return $this->parameters;
+    }
+
+    /**
+     * Set the value of parameters
+     *
+     * @return  self
+     */ 
+    public function setParameters($parameters)
+    {
+        $this->parameters = (array) $parameters;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of class
+     */ 
+    public function getClass()
+    {
+        return $this->class;
     }
 }
