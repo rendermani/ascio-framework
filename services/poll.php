@@ -1,6 +1,7 @@
 <?php
 namespace ascio\lib;
-use ascio\v2\MessageType as AscioMessageType;
+
+use ascio\logic\v3\CallbackPayload;
 use ascio\v3\AckQueueMessageRequest;
 use ascio\v3\MessageType;
 use ascio\v3\PollQueueRequest;
@@ -14,31 +15,15 @@ function poll() {
     $queueRequest = new PollQueueRequest();
     $queueRequest->setMessageType(MessageType::MessageToPartner);
     $item = Ascio::getClientV3()->pollQueue($queueRequest)->getMessage();
-    if($item) {
-        echo "\n";
-    }
     while($item) {
-        $orderId = $item->getOrderId();
-        $item->setOrderId($orderId);
-        $params = [
-            "OrderId" => $orderId,
-            "MessageId" => $item->getId(),
-            "OrderStatus" => $item->getOrderStatus(),
-            "ObjectName" => $item->getObjectName(),
-            "ObjectHandle" => $item->getObjectHandle(),
-            "ObjectType" => $item->getObjectType(),
-            "Environment" =>  Ascio::getConfig()->getEnvironment(),
-            "Account" => Ascio::getConfig()->get("v3")->account,
-            "Module" => "poll"
-        ];
-        echo $item->getStatusSerializer()->addFields($params)->console(LogLevel::Info,"Got poll item");
-        Producer::callback($item, $params);
-        $item->produce();
+        $payload = new CallbackPayload($item);
+        $payload->send();
+        echo $item->getStatusSerializer()->addFields((array) $payload)->console(LogLevel::Info,"Got poll item");
+        $item->produce(["action" => "create"]);
         $request = new AckQueueMessageRequest();
         $request->setMessageId($item->getId());
         Ascio::getClientV3()->ackQueueMessage($request);
         $item = Ascio::getClientV3()->pollQueue($queueRequest)->getMessage();
-
     }
    
 }
