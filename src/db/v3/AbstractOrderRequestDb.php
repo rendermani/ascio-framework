@@ -71,12 +71,46 @@ class AbstractOrderRequestDb extends DbModel {
 			"parameters" => [
 				"nullable" => true,			
 			]
+		],
+		"_nr" => [
+			"type" => "integer",
+			"parameters" => [
+				"index" => true,
+				"autoIncrement" => true,			
+			]
+		],		
+		"_objectName" => [
+			"type" => "string",
+			"parameters" => [
+				"index" => true,
+				"length" => 255,
+				"nullable" => true			
+			]
+		],
+		"_previousId" => [
+			"type" => "string",
+			"parameters" => [
+				"index" => true,
+				"length" => 255,
+				"nullable" => true			
+			]
+		],
+		"_statusTrigger" => [
+			"type" => "string",
+			"parameters" => [
+				"index" => true,
+				"length" => 255,
+				"default" => "Completed"			
+			]
 		]
 	];
 	public function syncToDb() {
 		parent::setAttribute("_part_of_order", true);
 		parent::setAttribute("_order", true);
 		parent::syncToDb();		
+	}
+	public function getByOrderId($orderId) {
+		return parent::getByHandle($orderId);
 	}
 	protected function getChildDb() : ?DbModelBase {
 		$childObjects = $this->parent()->objects();
@@ -102,42 +136,48 @@ class AbstractOrderRequestDb extends DbModel {
 	/**
 	 *  when processing the queue the order should not be blocked
 	 */
-	public function isBlocked() {
-		$this->getChildDb()
-		->join('v3_AbstractOrderRequest', $this->table.'.Domain', '=', $this->getChildTable().'._id')
-		->where($this->getChildTable().'.'.$this->parent()->getObjectKey(),$this->parent()->getObjectName())
-		->where($this->table.'._status', $this->blockingTypes)
+	public function isBlocked($objectName) {
+		$this
+		->where('._objectName',$objectName)
+		->where('._status', $this->blockingTypes)
 		->exists();
 	}      
 	public function nextDomain($objectName=null) : AbstractOrderRequest {        
 		$objectName = $objectName ?: $this->parent()->getObjectName();
-		if($this->isBlocked()) {
+		if($this->isBlocked($objectName)) {
 			throw new AscioException("A blocking order is preventing getting the next order", 405);
 		}
 		$result = $this
 			->select($this->table."._id")
-			->join($this->getChildTable(), $this->table.'.'.$this->parent()->getObjectKey(), '=', $this->getChildTable().'._id')
+			->where("_objectName",$objectName)
 			->where($this->table.'._status', OrderStatus::Queued)
-			->where($this->parent()->getObjectKey(),$objectName)
-			->orderBy($this->table.".CreDate","asc")
+			->orderBy($this->table."._nr","asc")
 			->firstOrFail();
 		$class = $this->get_class();
 		$newOrder = new $class();
 		$newOrder->db()->getById($result->_id);
 		return $newOrder;         
 	}
-	public function scopeNext($query) {        
-		// todo test scope next?
-		return $query
-				->where('_status', OrderStatus::Queued)
-				->whereExists(function($query) {
-						$query->select(DB::raw(1))
-						->from($this->table . ' as allOrders')
-						->whereRaw('NOT EXISTS (allOrders._status = "Blocked" and '.$this->parent()->getObjectKey().' = '.$this->table.'.'.$this->parent()->getObjectName().')');
-					}
-				)
-                ->orderBy("CreDate","asc")
-                ->firstOrFail();        
+
+	public function next($status,$objectName) : Array {        
+		if($this->isBlocked($objectName)) {
+			throw new AscioException("A blocking order is preventing getting the next order", 405);
+		}
+		$result = $this
+			->select("*")
+			->where('_previousId', $this->getKey())
+			->where('_status', OrderStatus::NotSet)
+            ->where("_statusTrigger",$status)
+			->orderBy("_nr","asc")
+			->get();
+		$tasks = [];
+		foreach($result as $value) {
+			$type = $value->_type;
+			$task = new $type();
+			$task->set($value);
+			$tasks[] = $task; 
+		}
+		return $tasks;       
 	}
 	public function scopeFailed($query) {
 		return $query
