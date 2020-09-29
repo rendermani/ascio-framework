@@ -7,6 +7,9 @@ use ascio\lib\LockType;
 use ascio\lib\AscioException;
 use ascio\lib\StatusSerializer;
 use ascio\lib\SubmitOptions;
+use ascio\lib\ValidationException;
+use Illuminate\Support\Str;
+use Iodev\Whois\Factory;
 
 class Domain extends \ascio\service\v2\Domain {
     public $updates; 
@@ -19,6 +22,9 @@ class Domain extends \ascio\service\v2\Domain {
         $this->locks = new Locks($this);
         $this->autoRenew = new AutoRenew($this);
         $this->orderRequest = new DomainOrderRequest($this);
+    }
+    public function hasDatalessTransfer() : bool{
+        return in_array($this->getTld(),["no","de","com","net","org","biz","info","us","cc","cn","com.cn","net.cn","org.cn","tv"]);
     }
     public function getStatusSerializer() : StatusSerializer {
         parent::getStatusSerializer()->addFields([
@@ -142,4 +148,79 @@ class Domain extends \ascio\service\v2\Domain {
     {
         return $this->orderRequest;
     }
+    public function getTld() : string {
+        return strtolower(implode(".",array_slice(explode(".",$this->getDomainName()),1)));
+    }
+    public function verifyAuthInfo() {
+        if(Str::endsWith($this->getTld(),"uk")) {
+            $whois = $this->publicWhois();
+            preg_match("/\[Tag = (.*)\]/", $whois, $m);      
+            $tag = $m[1];       
+            if($tag !== "ASCIO") {
+                $e = new ValidationException("Invalid Registrar-Tag",801);
+                $e->setOrder($this->parent());
+                $e->setObjectName($this->getDomainName());   
+                $e->addError($tag);
+                throw $e;             
+            }
+        } elseif ($this->getTld()=="dk") {
+            return true;
+        } elseif(trim($this->getAuthInfo()) == "") {
+            $e = new ValidationException("No AuthCode provided",800);
+            $e->setOrder($this->parent());
+            $e->setObjectName($this->getDomainName());   
+            throw $e;     
+        } elseif(strlen($this->getAuthInfo()) < 5) {
+            $e = new ValidationException("AuthCode too short",802);
+            $e->setObjectName($this->getDomainName()); 
+            $e->setOrder($this->parent());
+            $e->addError($this->getAuthInfo());  
+            throw $e;     
+        }
+        return true; 
+    }
+    public function publicWhois() {
+        $whois = Factory::get()->createWhois();
+        $response = $whois->lookupDomain($this->getDomainName());
+        return $response->text;
+    }
+    public function hasAscioDnsZone() {
+
+    }
+    public function validateRegistant() {
+        if($this->hasDatalessTransfer()) {
+           return true;
+        } 
+        if(!$this->getRegistrant()) {
+            $error = new ValidationException("Missing Registrant: ".$this->getDomainName(),412);
+            $error->setOrder($this->parent());
+            $error->setObjectName($this->getDomainName());
+            throw($error);
+        }
+        $this->getRegistrant()->validate($this->getDomainName());
+    }
+    public function validateContact(string $type) {
+        if($this->hasDatalessTransfer()) {
+            return true;
+         } 
+        if(!$this->get($type)) {
+            $error = new ValidationException("Missing ".$type.": ".$this->getDomainName(),412);
+            $error->setOrder($this->parent());
+            $error->setObjectName($this->getDomainName());
+            throw($error);
+        }
+        $this->get($type)->validate($this->getDomainName());
+    }
+    public function validateAdminContact() {
+        $this->validateContact("AdminContact");
+    }
+    public function validateTechContact() {
+        $this->validateContact("TechContact");
+    }
+    public function validateBillingContact() {
+        $this->validateContact("BillingContact");
+    }
+
+
+
 }
