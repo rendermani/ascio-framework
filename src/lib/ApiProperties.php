@@ -75,19 +75,19 @@ class ApiProperties implements \Iterator {
         return $out;
     }
     public function toJson() {
-        return json_encode($this->cleanObject());
+        return json_encode($this->cleanObject(),JSON_PRETTY_PRINT);
     }
-    public function cleanObject($incremental = false) {
+    public function cleanObject(?bool $incremental = false, ?bool $removeEmpty = false) {
         $out = (object)[];
         foreach($this->keys as $key) {
-            if($incremental &&! $this->object->changes()->propertyChanged($key)) {
+            if($incremental &&! $this->getObject()->changes()->propertyChanged($key)) {
                 continue;
             }
             $object =$this->object->get($key);            
             if($object instanceof ArrayInterface) {
-                $out->$key = new stdClass();
+                $out->$key = [];
                 foreach($object as $item) {
-                    $out->$key->{$object->getArrayKey()}[] = 
+                    $out->$key[] = 
                         $item instanceof BaseClass ?
                         $item->properties()->cleanObject($incremental) :
                         $item;
@@ -95,7 +95,9 @@ class ApiProperties implements \Iterator {
             } elseif($object instanceOf BaseClass) {
                 $out->$key= $object->properties()->cleanObject($incremental);                                
             } else {
-                $out->$key= $object;
+                if(!($removeEmpty && $object==null)) {
+                    $out->$key= $object;
+                } 
             }
         }
         if($this->object instanceOf DbBase) {            
@@ -126,5 +128,14 @@ class ApiProperties implements \Iterator {
                 return true; 
             }
         }
+    }
+
+    /**
+     * Get the object that is linked to the properties()
+     * @return BaseClass
+     */ 
+    public function getObject() 
+    {
+        return $this->object;
     }
 }
