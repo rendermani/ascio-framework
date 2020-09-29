@@ -5,28 +5,42 @@ require(__DIR__."/../vendor/autoload.php");
 
 Ascio::init();
 
+use ascio\logic\SyncPayload;
 use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Str;
 
-Consumer::objectIncremental(function($payload) {
-    Ascio::setConfig($payload->Config);
-    $obj = $payload->object;    
+Consumer::objectIncremental(function(SyncPayload $payload) {
+    Ascio::setConfig($payload->getConfig());
+    $obj = $payload->getObject();    
     try {
-        if($payload->incremental) {       
-            if($payload->action=="update") {
-                $obj->getById($payload->object->db()->getKey());
-                $obj->deserialize($payload->changes);
-                $obj->db()->syncToDb();         
-            } else {
-                $obj->deserialize($payload->changes);
-                $obj->db()->syncToDb();
-            }
+        echo $obj->log(LogLevel::Info,Str::ucfirst($payload->action).", ID:".$payload->object->db()->getKey());   
+        if($payload->isUpdate()) {
+            try {
+                $type = get_class($obj);
+                $oldObject = new $type;
+                $oldObject->getById($payload->getObject()->db()->getKey());
+            } catch (ModelNotFoundException $e) {
+                echo $obj->log(LogLevel::Error,Str::ucfirst($payload->action).", Not found: ".$payload->object->db()->getKey());  
+                throw new Exception("Object with the _id ".$payload->object->db()->getKey(). " not found." );
+            }            
+            $oldObject->set($payload->getChanges());
+            $oldObject->db()->syncToDb();         
         } else {
             $obj->db()->syncToDb(); 
-        } 
-        echo $obj->getStatusSerializer()->console(LogLevel::Info,Str::ucfirst($payload->action));  
+        }
+       
+        
     } catch (Exception $e) {
-        $message = strpos($e->getMessage(),'Duplicate entry') === false ? $e->getMessage() : "Duplicate entry." ;
-        echo $obj->getStatusSerializer()->console(LogLevel::Error,Str::ucfirst($payload->action).": ".$message);   
+        if(strpos($e->getMessage(),'Duplicate entry') === false) {
+            echo $e->getMessage();
+            echo $e->getTraceAsString();
+           
+        } else {
+            echo "objectId: ".$payload->object->db()->getKey();
+            echo $obj->log(LogLevel::Warn,Str::ucfirst($payload->action).": Duplicate entry.");   
+        }
+
+        
     }
 });
