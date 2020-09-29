@@ -55,6 +55,8 @@ class ServiceBase extends \SoapClient {
                 var_dump($status);
                 echo ["retries"=> $retryCounter];
                 Producer::log($status,["retries"=> $retryCounter]);
+            } else {
+                $this->setError($function,$args,$result,$status);
             }
         } elseif($status->getResultCode()!==200) {            
             $this->setError($function,$args,$result,$status);
@@ -92,10 +94,15 @@ class ServiceBase extends \SoapClient {
     public function setError($function, $request, $result,$status) {
         if($function == "ValidateOrder" || $function == "CreateOrder") {
             $exception = new AscioOrderExceptionV2($status->getMessage(),$status->getResultCode());
-            $exception->setOrder($result->getOrder()->init());
+            if($function=="CreateOrder") {
+                $exception->setOrder($result->getOrder()->init());
+            } else {
+                $exception->setOrder($request["order"]);
+            }            
         } else {
             $exception = new AscioException($status->getMessage(),$status->getResultCode()); 
         }
+        
         $exception->setResult($function,$request,$status,$result);
         $exception->setSoap($this->__getLastRequest(),$this->__getLastResponse());
         throw $exception;

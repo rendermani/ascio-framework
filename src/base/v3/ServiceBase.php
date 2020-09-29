@@ -37,8 +37,8 @@ class ServiceBase extends \SoapClient {
         $result = $this->__soapCall($function, [$function => $args], $options, $input_headers, $output_headers);    
         $resultObject = $result->{$function."Result"};      
         $resultObject->init();
-        if($resultObject->getResultCode() !==200) {            
-            throw $this->setError($function,$args,$resultObject,$resultObject);
+        if( method_exists($resultObject,"getResultCode") &&  $resultObject->getResultCode() !==200) {            
+            $this->setError($function,$args,$resultObject,$resultObject);
         }
        
         return $resultObject;

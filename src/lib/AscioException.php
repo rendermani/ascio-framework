@@ -1,8 +1,12 @@
 <?php 
 namespace ascio\lib;
 
+use ascio\base\OrderInfoInterface;
+use ascio\base\OrderInterface;
+use ascio\v2\Order;
 use ascio\v2\Response;
 use ascio\v3\CreateOrderResponse;
+use ascio\v3\OrderInfo;
 
 class AscioException extends \Exception {
     public $values;
@@ -11,6 +15,7 @@ class AscioException extends \Exception {
     public $soapRequest;
     public $soapResponse;
     public $result;
+    public $status;
 
     function setResult($method, $request, $status,$result) {
         $this->status = $status;
@@ -42,9 +47,9 @@ class AscioException extends \Exception {
     public function debugSoap() {
         if(php_sapi_name() == "cli") {
             echo "SOAP Request\n";
-            var_dump($this->soapRequest);
+            echo $this->formatXml($this->soapRequest);
             echo "SOAP Response\n";
-            var_dump($this->soapResponse);            
+            echo $this->formatXml($this->soapResponse);            
         }
         else {
             echo "<h3>".$this->getCode() . "-" . $this->getMessage()."</h3>";
@@ -60,95 +65,69 @@ class AscioException extends \Exception {
     public function formatErrors() {
         return $this->getMessage();
     }
-}
-class AscioOrderException extends AscioException {
-    protected $order;
-    /**
-     * Get the value of order
+    public function formatXml($xml) {
+        $dom = new \DOMDocument();
+        $dom->preserveWhiteSpace = false;
+        $dom->formatOutput = true;
+        $dom->loadXML($xml);
+        return $dom->saveXML();
+    }
+        /**
+     * Get the value of request
      */ 
-    public function getOrder()
+    public function getRequest()
     {
-        return $this->order;
+        return $this->request;
     }
 
     /**
-     * Set the value of order
+     * Set the value of request
      *
      * @return  self
      */ 
-    public function setOrder($order)
+    public function setRequest($request)
     {
-        $this->order = $order;
+        $this->request = $request;
 
         return $this;
-    }    
-}
+    }
 
-class AscioOrderExceptionV3 extends AscioOrderException{
-    public function getErrors() {
-        /**
-         * @var CreateOrderResponse $status 
-         */
-        $status = $this->status;
-        $values = $status->getErrors()->getString();
-        $values = is_array($values) ? $values : [$values];
-        return $values;         
-    }
-    public function formatErrors() {
-        $br = php_sapi_name() == "cli" ? "\n" : "<br>";
-        return  "[".$this->getCode()."] ".$this->getMessage().$br . 
-        implode($br,$this->getErrors()).$br.$br;
-    }
-    public function debug() {
-        if(php_sapi_name() == "cli") {
-            echo "Request\n";
-            echo  $this->getCode() . "-" . $this->getMessage()."\n";
-            var_dump($this->request);
-            echo "Errors\n";
-        } else {
-            echo "<h3>".$this->getCode() . "-" . $this->getMessage()."</h3>";
-            echo "<h4>Request</h4>";
-            echo "<pre>".print_r($this->request,1)."</pre>";
-            echo "<h4>Errors</h4>";
-        }   
-        echo $this->formatErrors();       
-    }
-    function getResult() : CreateOrderResponse
+    /**
+     * Get the value of method
+     */ 
+    public function getMethod()
     {
-        return $this->result;
+        return $this->method;
     }
-}
-class AscioOrderExceptionV2 extends AscioOrderException{
-    public function getErrors() {
-        /**
-         * @var Response $status 
-         */
-        $status = $this->status;
-        $values = $status->getValues()->getString();
-        $values = is_array($values) ? $values : [$values];
-        return $values;         
-    }
-    public function formatErrors() {
-        $br = php_sapi_name() == "cli" ? "\n" : "<br>";
-        return  "[".$this->getCode()."] ".$this->getMessage().$br . 
-        implode($br,$this->getErrors()).$br.$br;
-    }
-    public function debug() {
-        if(php_sapi_name() == "cli") {
-            echo "Request\n";
-            echo  $this->getCode() . "-" . $this->getMessage()."\n";
-            var_dump($this->request);
-            echo "Errors\n";
-        } else {
-            echo "<h3>".$this->getCode() . "-" . $this->getMessage()."</h3>";
-            echo "<h4>Request</h4>";
-            echo "<pre>".print_r($this->request,1)."</pre>";
-            echo "<h4>Errors</h4>";
-        }   
-        echo $this->formatErrors();       
-    }
-}
-class AscioInfoException extends \Exception {
-}
 
+    /**
+     * Set the value of method
+     *
+     * @return  self
+     */ 
+    public function setMethod($method)
+    {
+        $this->method = $method;
 
+        return $this;
+    }
+    /**
+     * Get the value of status
+     */ 
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set the value of status
+     *
+     * @return  self
+     */ 
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+}
