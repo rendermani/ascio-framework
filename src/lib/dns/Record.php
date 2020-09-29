@@ -4,5 +4,10 @@
 
 namespace ascio\dns;
 
+use ascio\lib\Ascio;
+
 class Record extends \ascio\service\dns\Record {
+    public function update() : UpdateRecordResponse {
+        return $this->api()->update();
+    }
 }
