@@ -2,6 +2,7 @@
 namespace ascio\base;
 
 interface ArrayInterface {
+    public function __construct();
     public function rewind();
     public function current();
     public function key();
@@ -19,4 +20,6 @@ interface ArrayInterface {
     public function fromJson($json);
     public function getArrayKey();
     public function count() : int;
+    public function init($parent=null);
+    public function add ($args=null);
 }
