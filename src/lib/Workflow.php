@@ -67,6 +67,8 @@ class Workflow {
     }
     private function setLocks() {
         if(!$this->getSubmitOptions()->getAutoUnlock()) return false;
+        $lockOrders = new ArrayOfOrder();
+        $unlockOrders = new ArrayOfOrder();
         foreach($this->tasks as $order) {
             /**
              * @var Order $task
@@ -74,9 +76,7 @@ class Workflow {
             if($order instanceof Order) {
                 $locks = new Locks($this->domain);
                 $locks->setOrderType($order->getType());
-                $lockOrders = new ArrayOfOrder();
                 $lockOrders->add($locks->getLockOrders());
-                $unlockOrders = new ArrayOfOrder();
                 $unlockOrders->add($locks->getUnLockOrders());
             }
         }
@@ -96,5 +96,13 @@ class Workflow {
         $submitOptions->setAutoUnlock($this->getSubmitOptions()->getAutoUnlock());
         $this->submitOptions = $submitOptions;
         return $this; 
+    }
+    public function debug() {
+        foreach($this->tasks as $task) {
+            /**
+             * @var TaskInterface $task
+             */
+            echo $task->getStatusSerializer()->console(LogLevel::Debug,"Debug Workflow");
+        }
     }
 }
