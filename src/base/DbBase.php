@@ -3,14 +3,18 @@
 namespace ascio\base;
 
 use ascio\lib\AscioException;
+use ascio\lib\Changes;
+use ascio\lib\Handle;
+use ascio\lib\StatusSerializer;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use stdClass;
 use ascio\v2\Order;
 use DateTime;
 use DateTimeZone;
 use Exception;
+use Illuminate\Database\Eloquent\Model;
 
-class DbBase extends BaseClass {
+abstract class DbBase extends BaseClass {
     /**
      * @var DbModelBase $_db;
      */
@@ -40,13 +44,76 @@ class DbBase extends BaseClass {
             return $this->properties()->toArray();
         } elseif (is_object(parent::_get($name))) {
             return parent::_get($name);
-        } elseif ($this->objects()->exists($name) ) {
+        } elseif ($this->objects()->exists($name) && method_exists($this->db(),"get".$name)) {
              $result = $this->db()->{"get".$name}();
              return $result; 
-        } else {
+        } elseif ($this->objects()->exists($name) ) {
+            $result = json_decode(parent::get($name));
+            return $result; 
+       } else {
             return parent::get($name);
         }                        
     }
+    /**
+     * Set a property. If a no $value is provided objects/arrays are merged.  
+     * @param BaseClass|string|array $nameOrArray merge values from BaseClass or array. If string, a $value must be provided
+     * @param BaseClass|string|array|null $value Any value. $nameOrArray must be string
+     * @return BaseClass
+     */
+    function set($nameOrArray,$value=null) {
+        if($value) {
+            if(!$this->properties()->exists($nameOrArray)) {
+                return;
+            } 
+            // value is a JSON-Array
+            if($value instanceOf ArrayBase) {
+                $this->db()->$nameOrArray = $value->toJson();
+            } 
+            // Value is other BaseClass
+            if( ($value instanceOf BaseClass) ) {
+                $value->parent($this);
+            } 
+            // Value is other BaseClass
+            if(!is_object($value)) {
+                $this->db()->setAttribute($nameOrArray,$value);
+            } 
+            if($this->objects()->exists($nameOrArray)){
+                if(is_string($value)) {
+                    $decoded = json_decode($value);
+                    if($decoded) {
+                        $newObject = $this->createProperty($nameOrArray);
+                        $value = $newObject->deserialize(json_decode($value));                    
+                    }
+                    else {
+
+                    }            
+                }
+            }
+            $this->_set($nameOrArray,$value);
+        } 
+    // set $this properties
+        else {            
+            // from other object with the same class. Don't overwrite DB-Properties. For API-Results
+            if(($nameOrArray instanceof BaseClass)) {            
+                parent::merge($nameOrArray);                
+            } // convert from array
+            elseif ($nameOrArray instanceOf Model) {
+                foreach($nameOrArray->getAttributes() as $key => $value) {
+                    $this->set($key,$value);
+                }
+                $this->db($nameOrArray);
+            }
+            elseif (is_array($nameOrArray) ||is_object($nameOrArray)) {
+                foreach($nameOrArray as $key => $value) {
+                    $this->set($key,$value);
+                }
+            } else {
+                // for DB results
+                $this->_set($nameOrArray,$value);                
+            }
+        }        
+    return $this; 
+}
     public function getByHandle($handle) : DbBase {
         $this->handle($handle);
         try {
@@ -69,44 +136,6 @@ class DbBase extends BaseClass {
         $this->db()->createDbProperties();
         return $this->properties()->cleanObject(true);
     }
-    public function deserialize($obj) : DbBase {
-        foreach((array )$obj as $key => $value) {
-            if(is_object($value) && property_exists($value,"timezone_type")) {
-                $format = 'Y-m-d H:i:s.u';
-                $date = DateTime::createFromFormat($format, $value->date);
-                $date->setTimezone(new DateTimeZone($value->timezone));
-                $this->set($key,$date);
-            } elseif(is_object($value)) {
-               if($this->objects()->exists($key)) {
-                    /**
-                     * @var DbClass $newObj
-                     */
-                    $newObj = $this->get($key) ?: $this->createProperty($key);
-                    if(is_string($newObj)) {
-                        throw new Exception($key ." should be an object. String found: ".$newObj);
-                    }
-                    $newObj->deserialize($value);
-               } elseif($key =="DbAttributes") {
-                    foreach($value as $k => $v) {
-                        $this->db()->setAttribute($k,$v);
-                    } 
-               }
-            } elseif(is_array($value)) {
-                /**
-                 * @var DbArrayBase $arr
-                 */
-                $arr = $this;
-                if($this->objects()->exists($key)) {
-                    foreach($value as $v) {                        
-                        $arr->createItem($v);
-                    }                    
-                } 
-            } else {
-                $this->set($key,$value);
-            }
-        }
-        return $this;         
-    }
     /**
      * @return DbModelBase
      */
@@ -117,19 +146,22 @@ class DbBase extends BaseClass {
         }
         return $this->_db; 
     }
+    public function handle($value=null) : Handle {
+        return new Handle($this,$value);
+    }
     public function sync($handle=null) {
-        // TEST: Test this. update, create
         $name = (new \ReflectionClass($this))->getShortName();
         $action = "none";
+        // does the client support the get method? 
         if(method_exists($this->api()->getClient(),"get".$name)) {
-            $handle = $handle ?: $this->handle()->value; 
+            $handle = $handle ?: $this->handle()->getValue(); 
             if(!$handle) return;
             $this->handle($handle);            
             try {
                 $this->db()->getByHandle(); 
                 $action = "update";
             } catch (ModelNotFoundException $e) {
-                $this->db()->_part_of_order = $this->parent() instanceof Order; 
+                $this->db()->_part_of_order = $this->parent() instanceof OrderInterface; 
                 $action = "create";
             }
             try {
@@ -140,38 +172,32 @@ class DbBase extends BaseClass {
             }
         }
         return $action;        
+    } 
+    public function api($api=null) : ?ApiModelBase {
+        return null;
     }
-    
-    public function setExisting() {
-        $usedClasses = [
-            "ascio\\v2\\Contact",
-            "ascio\\v2\\NameServer",
-            "ascio\\v2\\DnsSecKey"
-        ];
-        if(!in_array(get_class($this),$usedClasses)) {
-            return;
-        }
-        $data = $this->properties()->toArray();
-        $remove = [
-            "_id",
-            "_parent_id",
-            "_parent_type",
-            "_parent_db_type",
-            "_status",
-            "created_at",
-            "updated_at",
-            "_part_of_order",
-            "CreDate",
-            "Status",
-            "Handle"
-        ];
-        foreach($remove as $key) {
-            unset($data[$key]);
-        }
-        $result = $this->db()->where($data)->first();
-        if($result) {
-            $this->set($result); 
-            $this->db($result);
-        }
-    }    
+    public function getStatusSerializer() : StatusSerializer
+    {
+        $handle = $this->handle()->exists() ? [$this->handle()->getKey() => $this->handle()->getValue()] : [];
+        $this->_statusSerializer->setFields($handle);
+        return $this->_statusSerializer;
+    }
+    /**
+     * Serialize the object and send it to Kafka. 
+     */
+    public function produce ($parameters=[]) {
+        if(! array_key_exists("action",$parameters)) {
+            $parameters["action"] = $this->db()->_id ? "update" : "create"; 
+        }       
+-        parent::produce($parameters);
+    }
+    public function create($property,$class) {
+        $this->$property = new $class($this);
+        $this->$property->parent($this); 
+        $this->$property->changes()->setOriginal();        
+        return $this->$property;
+    }
+    public function log($loglevel, $text, $fields=[]) {
+        return $this->getStatusSerializer()->addFields($fields)->console($loglevel,$text);
+    }
 }
