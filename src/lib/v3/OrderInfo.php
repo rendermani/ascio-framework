@@ -9,12 +9,13 @@ use ascio\base\OrderInterface;
 use ascio\db\v3\MessageDb;
 use ascio\lib\AscioException;
 use ascio\lib\OrderStatus;
+use ascio\lib\StatusSerializer;
 use ascio\service\v3\OrderStatusType;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use ReflectionClass;
 
 class OrderInfo extends \ascio\service\v3\OrderInfo implements OrderInfoInterface {
-    public static function mapWorflowStatus($status) {
+    public static function mapWorkflowStatus($status) {
         switch($status) {
             case OrderStatusType::Completed :
             case OrderStatusType::Failed    :
@@ -26,8 +27,8 @@ class OrderInfo extends \ascio\service\v3\OrderInfo implements OrderInfoInterfac
         }
     }
     public function setWorkflowStatus($status=null) : self {
-        if($status==null && AbstractOrderRequest::mapWorflowStatus($this->getStatus())) {
-            $this->db()->setAttribute("_status",AbstractOrderRequest::mapWorflowStatus($this->getStatus()));
+        if($status==null && AbstractOrderRequest::mapWorkflowStatus($this->getStatus())) {
+            $this->db()->setAttribute("_status",AbstractOrderRequest::mapWorkflowStatus($this->getStatus()));
         } else {
             $class = new ReflectionClass(OrderStatus::class);
             if(!array_key_exists($status,$class->getConstants())) {
@@ -68,7 +69,10 @@ class OrderInfo extends \ascio\service\v3\OrderInfo implements OrderInfoInterfac
         return $this;
     } 
     public function getWorkflowStatus() : string {
-        return $this->db()->_status;        
+        if(!$this->db()->_status) {
+            $this->setWorkflowStatus();
+        }
+        return $this->db()->_status; 
     }  
     /**
      * Get the array of Messages
@@ -83,5 +87,21 @@ class OrderInfo extends \ascio\service\v3\OrderInfo implements OrderInfoInterfac
             $this->Messages->add($message);
         }
         return $this->Messages;
+    }   
+    public function getObjectName() : ?string {
+        return $this->getOrderId();
+    }
+    public function getObjectKey() : string {
+        return "OrderId";
+    } 
+    public function getStatusSerializer() : StatusSerializer
+    {      
+        parent::getStatusSerializer()->addFields([
+            "OrderId" => $this->getOrderId(),
+            "OrderType" => $this->getOrderRequest()->getType(),
+            "Status" => $this->getStatus() . " (".$this->getWorkflowStatus().")", 
+            "ObjectName" => $this->getObjectName() ?: "Missing object name"
+        ]);
+        return $this->_statusSerializer;
     }     
 }
