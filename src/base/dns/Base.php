@@ -1,7 +1,7 @@
 <?php
 
 namespace ascio\base\dns;
-use ascio\lib\BaseClass;
+use ascio\base\BaseClass;
 
 class Base extends BaseClass {
 

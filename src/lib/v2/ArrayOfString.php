@@ -4,5 +4,5 @@
 
 namespace ascio\v2;
 
-class ArrayOfString extends \ascio\service\v2\ArrayOfString {
+class ArrayOfstring extends \ascio\service\v2\ArrayOfString {
 }
