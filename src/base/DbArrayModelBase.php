@@ -21,12 +21,11 @@ class DbArrayModelBase extends DbModelBase  {
 		$this->setDefaultAttributes();		
 		foreach($this->parent() as $obj) {
             $parentDb = $this->parent()->parent()->db();
+            $obj->db()->createDbProperties();		
             $obj->db()->setAttribute("_parent_id",$parentDb->_id);
             $obj->db()->setAttribute("_parent_type",get_class($this->parent()->parent()));
-            $obj->db()->setAttribute("_part_of_order",$this->_part_of_order);
-            $obj->db()->createDbProperties();		
+            $obj->db()->setAttribute("_part_of_order",$this->_part_of_order);            
 		}
-
 	}
     public function syncFromDb() {        
         if(!$this->parent()->parent()) {
