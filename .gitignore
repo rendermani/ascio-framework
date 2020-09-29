@@ -16,3 +16,4 @@ projects/*
 node_modules
 public/tests/*
 package-lock.json
+storage/*
