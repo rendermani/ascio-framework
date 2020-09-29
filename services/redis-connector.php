@@ -3,6 +3,8 @@ namespace ascio\lib;
 require(__DIR__."/../vendor/autoload.php");
 use Illuminate\Support\Str;
 
+Ascio::setConfig();
+
 \Predis\Autoloader::register();
 
 $client = new \Predis\Client([
