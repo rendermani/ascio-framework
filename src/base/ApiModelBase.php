@@ -3,16 +3,15 @@ namespace ascio\base;
 
 use ascio\lib\Changes;
 use ascio\lib\Ascio;
+use Exception;
 
 abstract class ApiModelBase  implements Rest {
 	protected $_parent;
 	protected $primaryKey = "_id";
 	protected $_properties=[];
     protected $_objects=[];
-    private $_changes;
     public function __construct($parent=null) {
         $this->_parent = $parent; 
-        $this->_changes = new Changes($this->parent());   
     }
 	function create($data=null) {
 		throw new Exception("Not implemented yet.");
@@ -46,9 +45,5 @@ abstract class ApiModelBase  implements Rest {
         return Ascio::getConfig();
     }
     public abstract function getClient();
-    public function changes() : Changes {
-        return $this->_changes;
-	}
-	
 }
 
