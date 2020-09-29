@@ -1,8 +1,0 @@
-
-<phpunit bootstrap="vendor/autoload.php">
-  <testsuites>
-    <testsuite name="AscioFramework">
-      <directory>tests</directory>
-    </testsuite>    
-  </testsuites>
-</phpunit>
