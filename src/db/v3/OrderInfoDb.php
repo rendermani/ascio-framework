@@ -3,7 +3,11 @@
 // XSLT-WSDL-Client. Generated DB-Model class of OrderInfo. Can be copied and overwriten with own functions.
 
 namespace ascio\db\v3;
+
+use ascio\base\DbBase;
 use ascio\base\v3\DbModel;
+use ascio\v3\OrderInfo;
+use ascio\base\BaseClass;
 use Illuminate\Database\Schema\Blueprint;
 
 class OrderInfoDb extends DbModel {
@@ -29,6 +33,13 @@ class OrderInfoDb extends DbModel {
 			$table->boolean('_acked')->index()->nullable();
 			if($blueprintFunction) $blueprintFunction($table);
 		}); 
+	}
+	public function parent(?BaseClass $parent=null) : ?OrderInfo {
+		if(!$parent) {
+            return $this->_parent; 
+        }
+		$this->_parent = $parent;
+		return $this->_parent; 
 	}
 
 }
