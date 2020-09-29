@@ -1,13 +1,10 @@
 <?php
-
 namespace ascio\logic;
 
 use ascio\lib\Producer;
-use ascio\v2\Order;
-use OrderInterface;
 
-Class FameworkLogic {
-    protected function process($payload) {
+class FrameworkLogic {
+    public function process($payload) {
         switch($payload->module) {
             case "sync" : $this->sync(new SyncPayload($payload)); break;
             case "order" : $this->order(new OrderPayload($payload)); break;
@@ -32,12 +29,12 @@ Class FameworkLogic {
         $this->updateDb($payload);
     }
     protected function syncCallback(SyncPayload $payload) {
-        if($payload->getOrder()) {
+        /* if($payload->getOrder()) {
             $queueLogic = new QueueLogic(new OrderPayload($payload));
             if($queueLogic->hasNext()) {
                 $queueLogic->processNext();
             }
-        }
+        } */
         $this->updateDb($payload); 
     }
     protected function order(OrderPayload $payload) {
@@ -51,6 +48,9 @@ Class FameworkLogic {
         }
     }
     protected function consume($function) {
+
+    }
+    protected function sync (SyncPayload $payload) {
 
     }
 
