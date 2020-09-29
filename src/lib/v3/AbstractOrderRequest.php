@@ -12,10 +12,13 @@ use ascio\lib\AscioOrderException;
 use ascio\lib\AscioOrderExceptionV3;
 use ascio\lib\DomainBlocker;
 use ascio\lib\OrderStatus;
+use ascio\lib\OrderTask;
 use ascio\lib\Producer;
 use ascio\lib\StatusSerializer;
 use ascio\lib\SubmitOptions;
 use ascio\lib\TaskTrait;
+use ascio\logic\BlockPayload;
+use ascio\logic\OrderPayload;
 use ascio\v2\QueueItem;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -24,33 +27,38 @@ use ReflectionClass;
 
 class AbstractOrderRequest extends \ascio\service\v3\AbstractOrderRequest implements OrderInterface{
     use TaskTrait;
-    
+    private $task;
+    protected $status;
+    public function __construct($parent=null)
+    {
+        parent::__construct($parent);
+        $this->setWorkflowStatus(OrderStatus::NotSet);
+    }
     public function queue(?SubmitOptions $submitOptions=null) : OrderInterface {
         $this->submitOptions = $submitOptions ?: $this->getSubmitOptions();
         $this->setWorkflowStatus(OrderStatus::Queued); 
+        $this->setPreviousId();
         $this->produce(["action"=>"create"]);
         //immediately pickup order with the order-queue and submit it
         //if an order is running, the order-queue won't submit. However it's unnecessary network traffic and better to 
         //only submit the first order. The others will be processed after the first is completed 
         if($this->submitOptions->getSubmitAfterQueue()) {
-            Producer::callback($this,[
-                "OrderStatus"=> OrderStatus::Queued,
-                "ObjectName"=> $this->getObjectName(),
-                "OrderType"=> $this->getType(),
-                "Module" => "order"
-            ]);
+            $payload = new OrderPayload($this);
+            $payload->setWorkflowStatus(OrderStatus::Queued);
+            $payload->setOrder($this);
+            $payload->send();
+
         }        
         return $this;
     }
     public  function getObjectKey() : string {
-        throw new Exception("Please implement this");
-        return null;
+        throw new Exception("Please do not use the AbstractOrderRequest directly. Use inherited classes instead. ");
     }
     public function getObjectName() : ?string {
-        throw new Exception("Please implement this");
-        return null;
+        throw new Exception("Please do not use the AbstractOrderRequest directly. Use inherited classes instead. ");
     }
-    public function submit(?SubmitOptions $submitOptions=null) : OrderInfoInterface {        
+    public function submit(?SubmitOptions $submitOptions=null) : OrderInfoInterface {     
+        $this->createExtProperties();   
         $this->submitOptions = $submitOptions ?: $this->getSubmitOptions(); 
         $this->db()->_blocking = $this->submitOptions->getBlocking();
         if($this->shouldQueue()) {
@@ -61,24 +69,18 @@ class AbstractOrderRequest extends \ascio\service\v3\AbstractOrderRequest implem
             return $this->queue();
         } else {
             $this->setWorkflowStatus(OrderStatus::Submitting); 
-            Producer::callback(null,[
-                "OrderStatus"=> OrderStatus::Submitting,
-                "ObjectName"=> $this->getObjectName(),
-                "OrderType"=> $this->getType(),
-                "Module" => "order"
-            ]);    
-            $action = $this->db()->_id ? "update" : "create";        
-            $this->produce(["action"=> $action]);
+            $this->produce();
+            $payload = new BlockPayload($this);            
+            $payload->send();
             try {
                 DomainBlocker::block($this->getObjectName());
-                $result = $this->api()->getClient()->createOrder($this);
-                $this->setWorkflowStatus(OrderStatus::Running);
+                $result = $this->api()->create();                
                 $orderInfo = $result->getOrderInfo();
                 $this->lastResult = $result;
                 $this->setOrderId($orderInfo->getOrderId());
-                //echo $this->getStatusSerializer()->console(LogLevel::Info,"Submitted");
+                // don't create new ID's, use old ones for db update. Set $this.
                 $orderInfo->setOrderRequest($this);
-                $this->produce(["action"=>"update"]);   
+                //$this->produce(["action"=>"update"]);   
                 $orderInfo->produce(["action"=>"create"]);
                 // for the next submission
                 $this->getSubmitOptions()->setQueue(true);
@@ -98,7 +100,9 @@ class AbstractOrderRequest extends \ascio\service\v3\AbstractOrderRequest implem
         }
         return $this;
     }
-    public static function mapWorflowStatus($status) {
+    private function createExtProperties() {        
+    }
+    public static function mapWorkflowStatus($status) {
         switch($status) {
             case OrderStatusType::Completed :
             case OrderStatusType::Failed    :
@@ -110,9 +114,12 @@ class AbstractOrderRequest extends \ascio\service\v3\AbstractOrderRequest implem
         }
     }
     public function setWorkflowStatus($status=null) : AbstractOrderRequest {
-        if($status==null && AbstractOrderRequest::mapWorflowStatus($this->getStatus())) {
-            $this->db()->setAttribute("_status",AbstractOrderRequest::mapWorflowStatus($this->getStatus()));
-        } else {
+        if($status==null && AbstractOrderRequest::mapWorkflowStatus($this->getStatus())) {
+            $this->db()->setAttribute("_status",AbstractOrderRequest::mapWorkflowStatus($this->getStatus()));
+        } elseif(AbstractOrderRequest::mapWorkflowStatus($this->getStatus())) {
+            $this->db()->setAttribute("_status",AbstractOrderRequest::mapWorkflowStatus($status));
+        }
+        else {
             $class = new ReflectionClass(OrderStatus::class);
             if(!array_key_exists($status,$class->getConstants())) {
                 throw new \Exception("Status must be one of ".implode(", ",$class->getConstants()). ". Got: ".$status);
@@ -130,7 +137,7 @@ class AbstractOrderRequest extends \ascio\service\v3\AbstractOrderRequest implem
      */
     public function validate()  {
         $result = $this->api()->getClient()->validateOrder($this);
-        return $result->getValidateOrderResult();
+        return $result;
     }
     /**
      * @return Array 
@@ -243,5 +250,26 @@ class AbstractOrderRequest extends \ascio\service\v3\AbstractOrderRequest implem
 
         return $this;
     }
+    /**
+     * Set the value of PreviousId
+     *
+     * @return  self
+     */ 
+    public function setPreviousId() 
+    {
+        global $PREVIOUS_TASK_ID, $PREVIOUS_OBJECT_NAME;
 
+        if(!$this->db()->getKey()) {
+            return $this;
+        }
+        if($PREVIOUS_TASK_ID && $PREVIOUS_TASK_ID == $this->db()->getKey()) {
+            return $this;
+        }
+        if($PREVIOUS_OBJECT_NAME && $PREVIOUS_OBJECT_NAME == $this->getObjectName()) {
+            $this->db()->_previousId = $PREVIOUS_TASK_ID;
+        }
+        $PREVIOUS_TASK_ID = $this->db()->getKey();
+        $PREVIOUS_OBJECT_NAME = $this->getObjectName();
+        return $this;
+    }       
 }
