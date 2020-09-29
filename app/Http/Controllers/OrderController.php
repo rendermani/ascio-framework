@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Http\Controllers\Controller;
+use App\Models\User;
 use ascio\db\v2\OrderDb;
 use ascio\service\v2\OrderStatusType;
 use ascio\v2\Order;
@@ -18,7 +19,7 @@ class OrderController extends Controller
             case "completed" : $orders = $orderDb->completed(); break;
             default: $orders = $orderDb; break;  
         }
-        $orders = $orders->orderBy("CreDate","desc")->paginate(20)->appends("status",request("status"));
+        $orders = $orders->orderBy("_nr","desc")->paginate(20)->appends("status",request("status"));
         foreach($orders as $orderData) {
             $order = new Order();
             $order->set($orderData);
