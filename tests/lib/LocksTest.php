@@ -13,7 +13,7 @@ use ascio\v2\TestLib;
 /**
  * @covers ascio\v2\DomainUpdates
  */
-final class TestLocks extends TestCase {
+final class LocksTest extends TestCase {
 
     public function testInitLocks() {
         Ascio::setConfig();

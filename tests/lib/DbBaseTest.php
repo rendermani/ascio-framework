@@ -14,10 +14,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use ascio\v2\TestLib;
 use ascio\base\BaseClass;
 
-/**
- *  @covers DbBase
-*/
-final class TestDbBaseClass extends TestCase {
+final class DbBaseTest extends TestCase {
    
     protected $order;
     private function checkDomainAttributes($domain) {

@@ -9,10 +9,8 @@ use ascio\v3\Registrant;
 use ascio\v3\ArrayOfString;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-/**
- * @covers OrderDb
- */
-final class TestSslDb extends TestCase {
+
+final class SslDbTest extends TestCase {
      /**
      * @preserveGlobalState enabled
      */
@@ -36,8 +34,8 @@ final class TestSslDb extends TestCase {
         $owner->setAddress1("adr.1");
         $owner->setEmail(Ascio::getConfig()->get()->email);
         $extensions = $owner->createExtensions();
-        $extensions->addKeyValue("Title","Mr");
-        $extensions->addKeyValue("Test","Me");
+        $extensions->addKeyValue()->setKey("Title")->setValue("Mr");
+        $extensions->addKeyValue()->setKey("Test")->setValue("Mr");
 
         $certificate->setOwner($owner);
         $certificate->setAdmin($contact);

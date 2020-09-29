@@ -13,11 +13,13 @@ use ascio\service\v3\OrderStatusType;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use ascio\v2\TestLib;
 use ascio\base\BaseClass;
+use ascio\base\DbBase;
+use ascio\base\DbModelBase;
+use ascio\db\v2\DomainDb;
+use ascio\db\v2\OrderDb;
 
-/**
- *  @covers DomainDb
-*/
-final class TestDbModel extends TestCase {
+
+final class DbModelBaseTest extends TestCase {
    
     protected $order;
     
@@ -32,12 +34,15 @@ final class TestDbModel extends TestCase {
         $this->assertStringStartsWith("ascio.object.", $parent->db()->_id);
         $this->assertEquals($parent->db()->_id, $obj->db()->_parent_id,get_class($parent). " and ". get_class($obj)." should be linked");
     }
-    private function checkPartOfOrder(BaseClass $obj) {
+    private function checkPartOfOrder(DbBase $obj) {
         $this->assertTrue($obj->db()->_part_of_order,"Object ".get_class($obj)." should be part of order");
     }
-    private function checkNotPartOfOrder(BaseClass $obj) {
+    private function checkNotPartOfOrder(DbBase $obj) {
         $this->assertNotTrue($obj->db()->_part_of_order,"Object ".get_class($obj)." should be part of order");
     }
+     /**
+     * @covers ascio\base\DbModelBase::createDbProperties()
+     */
     public function testCreateDbPropertiesDomain()
     {
         Ascio::setConfig();
@@ -57,6 +62,9 @@ final class TestDbModel extends TestCase {
         $this->checkNotPartOfOrder($domain->getPrivacyProxy()->getExtensions()->index(0));
     
     }
+    /**
+     * @covers ascio\base\DbModelBase::createDbProperties()
+     */
     public function testCreateDbPropertiesOrder()
     {
         Ascio::setConfig();
@@ -80,6 +88,9 @@ final class TestDbModel extends TestCase {
         $this->checkPartOfOrder($domain->getPrivacyProxy());
         $this->checkPartOfOrder($domain->getPrivacyProxy()->getExtensions()->index(0));
     }
+    /**
+     * @covers ascio\base\DbModelBase::createDbProperties()
+     */
     public function testSetIdsTwice()
     {
         Ascio::setConfig();

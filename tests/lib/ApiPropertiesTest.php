@@ -1,5 +1,5 @@
 <?php
-namespace Tests\Unit;
+namespace ascio\test;
 use ascio\lib\Ascio;
 use ascio\v2\TestLib;
 use Tests\TestCase;
@@ -13,8 +13,8 @@ final class ApiPropertiesTest extends TestCase {
         $domain->getRegistrant()->db()->setAttribute("_testme","abc");
         $clean = $domain->properties()->cleanObject();
         $this->assertEquals("abc", $clean->Registrant->DbAttributes->_testme,"A DB Attribute should be added");
-        $this->assertCount(3,$clean->PrivacyProxy->Extensions->Extension,"Extension should have 3 items");
-        $this->assertIsObject($clean->PrivacyProxy->Extensions,"Extensions should be an object");
+        $this->assertCount(3,$clean->PrivacyProxy->Extensions,"Extension should have 3 items");
+        $this->assertIsObject($clean->PrivacyProxy,"Extensions should be an object");
         
     }
 

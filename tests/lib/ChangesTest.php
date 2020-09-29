@@ -15,7 +15,7 @@ use ascio\v2\Extension;
 /**
  * @covers ascio\lib\Changes
  */
-final class TestChanges extends TestCase {
+final class ChangesTest extends TestCase {
     public function testCreateDomainData() {
         Ascio::setConfig();
         $email = "manuellautenschlager@gmail.com";
@@ -47,9 +47,9 @@ final class TestChanges extends TestCase {
         $nameServers->setNameServer2($nameServer2);
         $proxy = new PrivacyProxy();
         $extensions = new Extensions();
-        $extensions->addExtension("key1","value1");
-        $extensions->addExtension("key2","value2");
-        $extensions->addExtension("key3","value3");
+        $extensions->addExtension()->setKey("key1")->setValue("value1");
+        $extensions->addExtension()->setKey("key2")->setValue("value2");
+        $extensions->addExtension()->setKey("key3")->setValue("value3");
         $proxy->setExtensions($extensions);
         $domain =  new Domain();
         $time = str_replace(".","",microtime(true));
@@ -80,11 +80,11 @@ final class TestChanges extends TestCase {
      * @depends testCreateDomainData
      */
     public function testHasPropertyChanges(Domain $domain) {        
-        $changes = $domain->api()->changes();
+        $changes = $domain->changes();
         $changes->setOriginal();
         $domain->getTechContact()->setFirstName("Eva"); 
-        $this->assertTrue($domain->getTechContact()->api()->changes()->propertyChanged("FirstName"),"Tech FirstName: Changes should be true.");
-        $this->assertFalse($domain->getTechContact()->api()->changes()->propertyChanged("LastName"),"Tech LastName: Changes should be false.");          
+        $this->assertTrue($domain->getTechContact()->changes()->propertyChanged("FirstName"),"Tech FirstName: Changes should be true.");
+        $this->assertFalse($domain->getTechContact()->changes()->propertyChanged("LastName"),"Tech LastName: Changes should be false.");          
         return $domain;
     }
     /**
@@ -92,7 +92,7 @@ final class TestChanges extends TestCase {
      */
     public function testHasChanges(Domain $domain) : Domain {        
         // true: domain has changed
-        $changes = $domain->api()->changes();
+        $changes = $domain->changes();
         $changes->setOriginal();
         $domain->setDomainName("test-123.com");
         $this->assertTrue($changes->hasChanges(),"Domain: Changes should be true.");        
@@ -100,7 +100,7 @@ final class TestChanges extends TestCase {
         $domain->setDomainName("test.com");
         $this->assertFalse($changes->hasChanges(),"Domain: Changes should be false.");
         // false: registrant has not changed        
-        $changes2 = $domain->getRegistrant()->api()->changes();
+        $changes2 = $domain->getRegistrant()->changes();
         $changes2->setOriginal();      
         $this->assertFalse($changes2->hasChanges(),"Registrant: Changes should not be true.");
         // true: Registrant changes should be true
@@ -110,15 +110,15 @@ final class TestChanges extends TestCase {
         $extensions = $domain->getPrivacyProxy()->getExtensions();
         $extension = $extensions->index(2);
         $extension->setValue("test-value-3");
-        $this->assertTrue($extension->api()->changes()->hasDeepChanges(),"Extension: Changes should be true.");
-        $this->assertTrue($extensions->api()->changes()->hasDeepChanges(),"Extensions: Changes should be true.");        
+        $this->assertTrue($extension->changes()->hasDeepChanges(),"Extension: Changes should be true.");
+        $this->assertTrue($extensions->changes()->hasDeepChanges(),"Extensions: Changes should be true.");        
         return $domain;
     }
     /**
      * @depends testHasChanges
      */
     public function testHasDeepValueChanges(Domain $domain)  : Domain {        
-        $changes = $domain->api()->changes();
+        $changes = $domain->changes();
         $changes->setOriginal();
         $domain->getRegistrant()->setName("testname");
         $this->assertTrue($changes->hasDeepChanges(),"Registrant: Changes should be true.");
@@ -130,15 +130,15 @@ final class TestChanges extends TestCase {
         $extensions = $domain->getPrivacyProxy()->getExtensions();
         $extension = $extensions->index(0);
         $extension->setValue("test-value-1");
-        $this->assertTrue($extension->api()->changes()->hasDeepChanges(),"Extension: Changes should be true.");
-        $this->assertTrue($extensions->api()->changes()->hasDeepChanges(),"Extensions: Changes should be true."); 
+        $this->assertTrue($extension->changes()->hasDeepChanges(),"Extension: Changes should be true.");
+        $this->assertTrue($extensions->changes()->hasDeepChanges(),"Extensions: Changes should be true."); 
         return $domain;    
     }
     /**
      * @depends testHasChanges
      */
     public function testSetOriginal(Domain $domain)  : Domain {        
-        $changes = $domain->api()->changes();
+        $changes = $domain->changes();
         $domain->getTechContact()->setFirstName("Eva");
         
         $extensions = $domain->getPrivacyProxy()->getExtensions();
@@ -149,7 +149,7 @@ final class TestChanges extends TestCase {
         
         $changes->setOriginal();
          
-        $this->assertFalse($domain->api()->changes()->hasDeepChanges(),"Domain: There should be no deep changes");          
+        $this->assertFalse($domain->changes()->hasDeepChanges(),"Domain: There should be no deep changes");          
         return $domain;
     }
 

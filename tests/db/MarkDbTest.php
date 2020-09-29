@@ -8,7 +8,7 @@ use ascio\v3\MarkOrderRequest;
 use ascio\v3\Trademark;
 use ascio\v3\Registrant;
 
-final class TestMarkDb extends TestCase {
+final class MarkDbTest extends TestCase {
      /**
      * @preserveGlobalState enabled
      */
@@ -27,8 +27,8 @@ final class TestMarkDb extends TestCase {
         $owner->setAddress1("adr.1");
         $owner->setEmail(Ascio::getConfig()->get()->email);
         $extensions = $owner->createExtensions();
-        $extensions->addKeyValue("Title","Mr");
-        $extensions->addKeyValue("Test","Me");
+        $extensions->addKeyValue()->setKey("Title")->setValue("Mr");
+        $extensions->addKeyValue()->setKey("Test")->setValue("Mr");
         $mark->setOwner($owner);
         $order->setMark($mark);
 

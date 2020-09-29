@@ -8,7 +8,7 @@ use ascio\v2\TestLib;
 /**
  * @covers ascio\v2\DomainUpdates
  */
-final class TestDomainUpdates extends TestCase {
+final class DomainUpdatesTest extends TestCase {
 
     public function testOwnerChange() {
         Ascio::setConfig();

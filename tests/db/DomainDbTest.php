@@ -7,14 +7,13 @@ use ascio\v2\Contact;
 use ascio\v2\NameServer;
 use ascio\v2\NameServers;
 use ascio\v2\Order;
+use ascio\db\v2\OrderDb;
 use ascio\v2\OrderType;
 use ascio\v2\PrivacyProxy;
 use ascio\service\v3\OrderStatusType;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-/**
- *  @covers DomainDb
-*/
-final class TestDomainDb extends TestCase {
+
+final class DomainDbTest extends TestCase {
    
     protected $order;
     
@@ -65,9 +64,9 @@ final class TestDomainDb extends TestCase {
         $domain->setDiscloseSocialData("true");
         $proxy = new PrivacyProxy();
         $extensions = $proxy->createExtensions();
-        $extensions->addExtension("test","1234");
-        $extensions->addExtension("test","5678");
-        $extensions->addExtension("test","910");
+        $extensions->addExtension()->setKey("test")->setValue("1234");
+        $extensions->addExtension()->setKey("test")->setValue("5678");
+        $extensions->addExtension()->setKey("test")->setValue("910");
         $domain->setPrivacyProxy($proxy);
         $order = new Order();
         $order->setType(OrderType::Register_Domain);
@@ -79,15 +78,18 @@ final class TestDomainDb extends TestCase {
     }
     /**
      * @depends testStoreOrder
+     * @covers ascio\v2\Order::__construct()
+     * @covers ascio\db\v2\OrderDb::getById()
      */
     public function testReadOrder(string $id) : Order {
-       $order = new Order();
+       $order = new Order();       
        $order->db()->getById($id); 
        $this->checkDomainData($order);
        return $order;
     }
     /**
      * @depends testReadOrder
+     * @covers ascio\db\v2\OrderDb::getById()
      */
     public function testReadOrderAgain(Order  $order) : Order{
         $order->db()->getById($order->db()->getId()); 
@@ -96,6 +98,8 @@ final class TestDomainDb extends TestCase {
      }
      /**
      * @depends testReadOrderAgain
+     * @covers ascio\db\v2\OrderDb::syncToDb()
+     * @covers ascio\db\v2\OrderDb::getById()
      */
     public function testUpdateOrder(Order  $order) : Order {
         $order->setStatus(OrderStatusType::PendingInternalProcessing);
@@ -110,8 +114,10 @@ final class TestDomainDb extends TestCase {
         $this->assertCount(3,$extensions,"There should be 3 Extensions");   
         return $order;    
      }
-          /**
+    /**
      * @depends testUpdateOrder
+     * @covers ascio\db\v2\OrderDb::deleteRecursive()
+     * @covers ascio\db\v2\OrderDb::getById()
      */
     public function testDeleteOrder (Order $order) {
         $this->expectException(ModelNotFoundException::class);

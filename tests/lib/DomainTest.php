@@ -16,7 +16,7 @@ use Illuminate\Contracts\Cache\Lock;
 /**
  * @covers ascio\v2\Domain
  */
-final class TestDomain extends TestCase {
+final class DomainTest extends TestCase {
     public function testGetDomainFromApi() {
         Ascio::setConfig();
         $domain = new Domain();
