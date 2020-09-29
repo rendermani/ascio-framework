@@ -5,4 +5,12 @@
 namespace ascio\dns;
 
 class A extends \ascio\service\dns\A {
+    public function clean() : bool  {
+        if(strpos($this->getSource(), "*") !== false) {
+            $this->setSource($this->getSource().".".$this->parent()->getZoneName());                
+            return true; 
+        }
+        return false;
+
+    }
 }
