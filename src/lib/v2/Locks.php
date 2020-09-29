@@ -1,4 +1,4 @@
-<?
+<?php
 namespace ascio\v2;
 
 use ascio\lib\LockAction;
@@ -99,7 +99,7 @@ class Locks {
             $this->domain->set($lock,null);
             if($order->getDomain()->get($lock)) {
                 $order->getSubmitOptions()->setQueue(true)->setSubmitAfterQueue($action==LockAction::Unlock);
-                $orders->addOrders($order);
+                $orders->addOrder($order);
                 $lock = $this->get($lock);
                 $lock->autoUnlocked = true; 
                 $this->domain->setStatus(str_replace($lock->getStatusType(),"",$this->domain->getStatus()));
@@ -119,7 +119,7 @@ class Locks {
             $order = $this->domain->getOrderRequest()->changeLocks();
             if($order->getDomain()->get($lock) && $doLock) {
                 $order->getSubmitOptions()->setQueue(true)->setSubmitAfterQueue($action==LockAction::Unlock);
-                $orders->addOrders($order);
+                $orders->addOrder($order);
                 if($action == LockAction::Unlock) {
                     //remove the unlocked lockType from the status. Otherwise the re-lock will assume, it's already locked
                     $lock->autoUnlocked = true; 
