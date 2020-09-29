@@ -2,72 +2,24 @@
 namespace ascio\logic;
 
 use ascio\base\BaseClass;
+use ascio\base\DbBase;
+use ascio\lib\Producer;
+use phpDocumentor\Reflection\Types\Boolean;
 
-class SyncPayload  extends Payload {
-    private $domain;
-    private $queueItem;
-    private $order; 
-    private $incremental;   
-
-    /**
-     * Get the value of domain
-     */ 
-    public function getDomain()
-    {
-        return $this->domain;
+class SyncPayload  extends Payload {  
+    public $changes;
+    public $incremental;
+    public $id;
+    public function serialize() {
+        $clonePayload = clone $this; 
+        if ($this->isUpdate()) {
+            $clonePayload->object = $this->getObject()->serializeIncremental();
+        } else {
+            $clonePayload->object = $this->getObject()->serialize();
+        }
+        return $clonePayload; 
     }
 
-    /**
-     * Set the value of domain
-     *
-     * @return  self
-     */ 
-    public function setDomain($domain)
-    {
-        $this->domain = $domain;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of queueItem
-     */ 
-    public function getQueueItem()
-    {
-        return $this->queueItem;
-    }
-
-    /**
-     * Set the value of queueItem
-     *
-     * @return  self
-     */ 
-    public function setQueueItem($queueItem)
-    {
-        $this->queueItem = $queueItem;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of order
-     */ 
-    public function getOrder()
-    {
-        return $this->order;
-    }
-
-    /**
-     * Set the value of order
-     *
-     * @return  self
-     */ 
-    public function setOrder($order)
-    {
-        $this->order = $order;
-
-        return $this;
-    }
      /**
      * Get the value of incremental
      */ 
@@ -106,7 +58,33 @@ class SyncPayload  extends Payload {
 
         return $this;
     }
-    public function getObject() : ?BaseClass {
-        return  $this->getDomain() ?: $this->getOrder() ?: $this->getQueueItem() ?: null;
+    public function getObject() : ?DbBase {
+        return  $this->object;
+    }
+    public function setUpdate(bool $isUpdate  = null) : self {
+        $this->parameters["action"] =  $isUpdate ? "update" : "create";
+        $this->setAction($this->parameters["action"]);
+        $this->incremental = $isUpdate ? true  : false;
+        return $this; 
+    }
+    public function isUpdate() : bool {
+        return array_key_exists("action",$this->parameters) && $this->parameters["action"] == "update" ? true : false;
+    }
+    public function send($parameters  = []) {
+        assert($this->getId()!==null,"Object has an ID"); 
+        assert($this->getObject() instanceof DbBase,"Object should be an instance of DbBase"); 
+        assert($this->getClass() !== false,"Has a class");
+        assert($this->getObjectType() !== false,"Has an objectType");
+        $this->setParameters(array_merge($parameters,$this->parameters));        
+        Producer::object($this);
+    }
+
+    /**
+     * Get the value of id
+     */ 
+    public function getId()
+    {
+        if(!$this->getObject()->db()->getKey()) $this->getObject()->db()->createDbProperties();
+        return $this->getObject()->db()->getKey();
     }
 }
