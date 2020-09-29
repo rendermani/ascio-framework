@@ -4,7 +4,8 @@
 
 namespace ascio\api\dns;
 use ascio\base\dns\ApiModel;
-
+use ascio\dns\UpdateRecordResponse;
+use ascio\lib\Ascio;
 
 class TXTApi extends ApiModel {
 
@@ -15,8 +16,8 @@ class TXTApi extends ApiModel {
 	function create($data=null) {
 		throw new \ascio\lib\AscioException("Not implemented yet.");
 	}
-	function update($data=null) {
-		throw new \ascio\lib\AscioException("Not implemented yet.");
+	function update($data=null) : UpdateRecordResponse {
+		return Ascio::getClientDns()->updateRecord($this->parent());
 	}
 	function delete($id=null) {
 		throw new \ascio\lib\AscioException("Not implemented yet.");
