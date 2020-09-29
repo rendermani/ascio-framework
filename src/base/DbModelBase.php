@@ -12,6 +12,7 @@ use ascio\lib\OrderStatus;
 use ReflectionClass;
 use ascio\v2\Order;
 use DateTime;
+use stdClass;
 
 class DbModelBase extends Model {
 	protected $_parent;
@@ -51,7 +52,7 @@ class DbModelBase extends Model {
 		}
 		return $result; 
 	}
-	private function getForwardRelation($dbClass,$property) {
+	protected function getForwardRelation($dbClass,$property) {
 		$propertyValue = $this->$property ? $this->$property : $this->parent()->_get($property);
 		$result = $dbClass::where(["_id" => $propertyValue])->first();
 		if(!$result) return; 
@@ -61,7 +62,7 @@ class DbModelBase extends Model {
 		$this->parent()->set($property,$resultObj);
 		return $resultObj;
 	}
-	private function getBackwardRelation($dbClass,$property) {
+	protected function getBackwardRelation($dbClass,$property) {
 		if(!$this->getParentId()) return; 
 		$result = $dbClass::where(["_parent_id" => $this->getParentId()])->first();
 		if(!$result) return; 
@@ -70,7 +71,7 @@ class DbModelBase extends Model {
 		$this->parent()->set($property,$resultObj);
 		return $resultObj; 
 	}
-	private function getArrayRelation($dbClass,$property)  {
+	protected function getArrayRelation($dbClass,$property)  {
 		$result = $dbClass::where(["_parent_id" => $this->getParentId()])->get();
 		$resultArray = [];
 		foreach($result as $nr => $item) {			
@@ -93,6 +94,11 @@ class DbModelBase extends Model {
 				$this->setParentDefaultAttributes($this,$value);			
 				$value->db()->syncToDb();
 				$this->{$key} = $value->db()->getKey();
+			} elseif ($value instanceof ArrayBase) {
+				$this->$key = $value->toJson();
+			}
+			elseif($value instanceOf stdClass) {
+				$this->$key = json_encode($value,JSON_PRETTY_PRINT);
 			} 	else {
 				$this->$key = $value; 
 			}		
@@ -137,7 +143,13 @@ class DbModelBase extends Model {
 			parent::setAttribute("_id",uniqid("ascio.object.",true));
 			$this->exists = false; 
 		}
-		parent::setAttribute("_part_of_order",(new \ReflectionClass($this->parent()))->getShortName() == "Order");		
+		if((new \ReflectionClass($this->parent()))->getShortName() == "Order") {
+			parent::setAttribute("_part_of_order",true);	
+		} elseif (($this->parent()->parent() instanceof DbBase) && $this->parent()->parent()->db()->_part_of_order==true) {
+			parent::setAttribute("_part_of_order",true);	
+		} else {
+			parent::setAttribute("_part_of_order",false);	
+		}
 	}
 	protected function setParentKeys() {
 		foreach ($this->parent()->objects() as $object) {													
@@ -166,9 +178,9 @@ class DbModelBase extends Model {
 			$this->exists = true;
 			parent::refresh();
 			foreach($this->attributes as $key => $value) {
-				$this->parent()->_set($key,$value); 
+				$this->parent()->set($key,$value); 
 			}
-			$this->parent()->api()->changes()->setOriginal();
+			$this->parent()->changes()->setOriginal();
 		}			
 	}
 	public function deleteRecursive() {
@@ -187,13 +199,13 @@ class DbModelBase extends Model {
 	 */
 	public function getByHandle($handle=null) {
 		$partOfOrder = ($this->parent()->parent() instanceof Order) || ($this->parent() instanceof Order) ? 1 : 0 ;
-		$this->parent()->handle($handle ?: null);
+		$this->parent()->handle($handle);		
 		$handle = $this->parent()->handle();
 
-		if(!($handle && $handle->value)) return;
+		if(!$handle->exists()) return;
 		$result = $this
 			->where("_part_of_order",$partOfOrder)
-			->where($handle->key,$handle->value)
+			->where($handle->getKey(),$handle->getValue())
 			->firstOrFail();
 		//set the parent of the result DbModelBase object
 		$result->parent($this->parent());
@@ -222,7 +234,7 @@ class DbModelBase extends Model {
 	public function getId() {
 		return $this->_id;
 	}
-	public function parent(?BaseClass $parent=null) {
+	public function parent(?BaseClass $parent=null)  {
         if(!$parent) {
             return $this->_parent; 
         }
@@ -238,5 +250,15 @@ class DbModelBase extends Model {
 		$migration->setTable($this->getTable());
 		$migration->parent($this->parent());
 		$migration->createTables($blueprintFunction);
+	}
+	public function scopeHasPermission() {
+		
+	}
+	public function removeEmptyFields() {
+		foreach($this->getAttributes() as $key => $value) {
+			if($value == null) {
+				unset($this->attributes[$key]);
+			}
+		}
 	}
 }
