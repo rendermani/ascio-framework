@@ -9,7 +9,7 @@ use ascio\lib\SubmitOptions;
 interface OrderInfoInterface {
     public function getOrderId();
     public function getStatus() : ?string;
-    public static function mapWorflowStatus($status);
+    public static function mapWorkflowStatus($status);
     public function setWorkflowStatus($status=null);
     public function getWorkflowStatus();
     public function getResult();
@@ -18,4 +18,7 @@ interface OrderInfoInterface {
     public function getMessages();
     public function getStatusSerializer() : StatusSerializer;
     public function db($db=null);
+    public function api($api=null);
+    public function getObjectName() : ?string;
+    public function getObjectKey() : string;
 }
