@@ -35,7 +35,7 @@ if [[ -n $1 ]]; then
 fi
 docker exec ascio-framework-php composer install
 # create new tables
-docker exec ascio-framework-php php database/migration/create-tables.php
+docker exec ascio-framework-php php php artisan migrate
 # set lavarel APP_KEY
 docker exec ascio-framework-php php artisan key:generate
 # init npm
