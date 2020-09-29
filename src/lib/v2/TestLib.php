@@ -54,9 +54,9 @@ class TestLib {
         $domain = TestLib::getDomain($name);
         $proxy = new PrivacyProxy();
         $extensions = new Extensions();
-        $extensions->addExtension("key1","value1");
-        $extensions->addExtension("key2","value2");
-        $extensions->addExtension("key3","value3");
+        $extensions->addExtension()->setKey("key1")->setValue("value1");
+        $extensions->addExtension()->setKey("key2")->setValue("value2");
+        $extensions->addExtension()->setKey("key3")->setValue("value3");
         $proxy->setExtensions($extensions);
         $domain->setPrivacyProxy($proxy);
         $dnsSecKeys = new DnsSecKeys();
