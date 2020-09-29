@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of CourtValidatedMark
 
 namespace ascio\service\v3;
-use ascio\v3\AbstractMark;
 use ascio\db\v3\CourtValidatedMarkDb;
 use ascio\api\v3\CourtValidatedMarkApi;
+use ascio\v3\AbstractMark;
 use ascio\api\v3\AbstractMarkApi;
 
 

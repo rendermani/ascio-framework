@@ -3,15 +3,20 @@
 // XSLT-WSDL-Client. Generated PHP class of AvailabilityInfoResponse
 
 namespace ascio\service\v3;
-use ascio\base\v3\ResponseRootElement;
 use ascio\db\v3\AvailabilityInfoResponseDb;
 use ascio\api\v3\AvailabilityInfoResponseApi;
+use ascio\v3\AbstractResponse;
+use ascio\api\v3\AbstractResponseApi;
 
 
-class AvailabilityInfoResponse extends ResponseRootElement  {
+class AvailabilityInfoResponse extends AbstractResponse  {
 
-	protected $_apiProperties=["DomainName", "DomainType", "Currency", "RenewalType", "Prices"];
-	protected $_apiObjects=["Prices"];
+	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "DomainName", "DomainType", "Currency", "RenewalType", "Prices"];
+	protected $_apiObjects=["Errors", "Prices"];
+	protected $_substituted = true;
+	protected $ResultCode;
+	protected $ResultMessage;
+	protected $Errors;
 	protected $DomainName;
 	protected $DomainType;
 	protected $Currency;

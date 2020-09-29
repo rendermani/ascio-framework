@@ -2,11 +2,13 @@
 
 // XSLT-WSDL-Client. Generated PHP class of boolean
 
-namespace ascio\v3\service;
-use ascio\v3\Base;
+namespace ascio\service\v3;
+use ascio\base\v3\Base;
+use ascio\db\v3\booleanDb;
+use ascio\api\v3\booleanApi;
 
 
-abstract class boolean extends Base  {
+class boolean extends Base  {
 
 	protected $_apiProperties=[];
 	protected $_apiObjects=[];

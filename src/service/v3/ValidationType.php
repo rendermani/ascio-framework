@@ -2,11 +2,13 @@
 
 // XSLT-WSDL-Client. Generated PHP class of ValidationType
 
-namespace ascio\v3\service;
-use ascio\v3\Base;
+namespace ascio\service\v3;
+use ascio\base\v3\Base;
+use ascio\db\v3\ValidationTypeDb;
+use ascio\api\v3\ValidationTypeApi;
 
 
-abstract class ValidationType extends Base  {
+class ValidationType extends Base  {
 
 	protected $_apiProperties=[];
 	protected $_apiObjects=[];

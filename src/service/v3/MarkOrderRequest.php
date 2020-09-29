@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of MarkOrderRequest
 
 namespace ascio\service\v3;
-use ascio\v3\AbstractOrderRequest;
 use ascio\db\v3\MarkOrderRequestDb;
 use ascio\api\v3\MarkOrderRequestApi;
+use ascio\v3\AbstractOrderRequest;
 use ascio\api\v3\AbstractOrderRequestApi;
 
 

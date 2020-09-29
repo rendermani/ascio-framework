@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of GetZoneLogResponse
 
 namespace ascio\service\dns;
-use ascio\base\dns\ResponseRootElement;
 use ascio\db\dns\GetZoneLogResponseDb;
 use ascio\api\dns\GetZoneLogResponseApi;
+use ascio\base\dns\ResponseRootElement;
 
 
 class GetZoneLogResponse extends ResponseRootElement  {

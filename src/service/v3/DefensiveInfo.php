@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of DefensiveInfo
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbBase;
 use ascio\db\v3\DefensiveInfoDb;
 use ascio\api\v3\DefensiveInfoApi;
+use ascio\base\v3\DbBase;
 
 
 class DefensiveInfo extends DbBase  {

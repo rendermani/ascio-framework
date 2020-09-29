@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of Contact
 
 namespace ascio\service\v2;
-use ascio\base\v2\DbBase;
 use ascio\db\v2\ContactDb;
 use ascio\api\v2\ContactApi;
+use ascio\base\v2\DbBase;
 
 
 class Contact extends DbBase  {

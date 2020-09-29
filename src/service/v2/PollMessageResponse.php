@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of PollMessageResponse
 
 namespace ascio\service\v2;
-use ascio\base\v2\ResponseRootElement;
 use ascio\db\v2\PollMessageResponseDb;
 use ascio\api\v2\PollMessageResponseApi;
+use ascio\base\v2\ResponseRootElement;
 
 
 class PollMessageResponse extends ResponseRootElement  {

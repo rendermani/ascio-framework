@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of AbstractMark
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbBase;
 use ascio\db\v3\AbstractMarkDb;
 use ascio\api\v3\AbstractMarkApi;
+use ascio\base\v3\DbBase;
 
 
 class AbstractMark extends DbBase  {

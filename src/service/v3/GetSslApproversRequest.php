@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of GetSslApproversRequest
 
 namespace ascio\service\v3;
-use ascio\base\v3\Base;
 use ascio\db\v3\GetSslApproversRequestDb;
 use ascio\api\v3\GetSslApproversRequestApi;
+use ascio\base\v3\Base;
 
 
 class GetSslApproversRequest extends Base  {

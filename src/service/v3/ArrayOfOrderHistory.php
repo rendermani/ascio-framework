@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ArrayOfOrderHistory
 
 namespace ascio\service\v3;
-use ascio\base\v3\ArrayBase;
 use ascio\db\v3\ArrayOfOrderHistoryDb;
 use ascio\api\v3\ArrayOfOrderHistoryApi;
+use ascio\base\v3\ArrayBase;
 
 
 class ArrayOfOrderHistory extends ArrayBase implements \Iterator  {
@@ -24,7 +24,7 @@ class ArrayOfOrderHistory extends ArrayBase implements \Iterator  {
 	public function createOrderHistory () : \ascio\v3\OrderHistory {
 		return $this->create ("OrderHistory", "\\ascio\\v3\\OrderHistory");
 	}
-	public function addOrderHistory () : \ascio\v3\OrderHistory {
-		return $this->add("OrderHistory","\\ascio\\v3\\OrderHistory",func_get_args());
+	public function addOrderHistory ($item = null) : \ascio\v3\OrderHistory {
+		return $this->addItem("OrderHistory","\\ascio\\v3\\OrderHistory",func_get_args());
 	}
 }

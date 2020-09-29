@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of UpdateSubUserResponse
 
 namespace ascio\service\v3;
-use ascio\v3\AbstractResponse;
 use ascio\db\v3\UpdateSubUserResponseDb;
 use ascio\api\v3\UpdateSubUserResponseApi;
+use ascio\v3\AbstractResponse;
 use ascio\api\v3\AbstractResponseApi;
 
 

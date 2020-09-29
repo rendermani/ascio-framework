@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of UpdateRecord
 
 namespace ascio\service\dns;
-use ascio\base\dns\RequestRootElement;
 use ascio\db\dns\UpdateRecordDb;
 use ascio\api\dns\UpdateRecordApi;
+use ascio\base\dns\RequestRootElement;
 
 
 class UpdateRecord extends RequestRootElement  {

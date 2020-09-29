@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ArrayOfNameServer
 
 namespace ascio\service\v2;
-use ascio\base\v2\ArrayBase;
 use ascio\db\v2\ArrayOfNameServerDb;
 use ascio\api\v2\ArrayOfNameServerApi;
+use ascio\base\v2\ArrayBase;
 
 
 class ArrayOfNameServer extends ArrayBase implements \Iterator  {
@@ -24,7 +24,7 @@ class ArrayOfNameServer extends ArrayBase implements \Iterator  {
 	public function createNameServer () : \ascio\v2\NameServer {
 		return $this->create ("NameServer", "\\ascio\\v2\\NameServer");
 	}
-	public function addNameServer () : \ascio\v2\NameServer {
-		return $this->add("NameServer","\\ascio\\v2\\NameServer",func_get_args());
+	public function addNameServer ($item = null) : \ascio\v2\NameServer {
+		return $this->addItem("NameServer","\\ascio\\v2\\NameServer",func_get_args());
 	}
 }

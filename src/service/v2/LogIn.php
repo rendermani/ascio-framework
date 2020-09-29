@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of LogIn
 
 namespace ascio\service\v2;
-use ascio\base\v2\RequestRootElement;
 use ascio\db\v2\LogInDb;
 use ascio\api\v2\LogInApi;
+use ascio\base\v2\RequestRootElement;
 
 
 class LogIn extends RequestRootElement  {

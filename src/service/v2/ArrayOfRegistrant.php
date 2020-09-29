@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ArrayOfRegistrant
 
 namespace ascio\service\v2;
-use ascio\base\v2\ArrayBase;
 use ascio\db\v2\ArrayOfRegistrantDb;
 use ascio\api\v2\ArrayOfRegistrantApi;
+use ascio\base\v2\ArrayBase;
 
 
 class ArrayOfRegistrant extends ArrayBase implements \Iterator  {
@@ -24,7 +24,7 @@ class ArrayOfRegistrant extends ArrayBase implements \Iterator  {
 	public function createRegistrant () : \ascio\v2\Registrant {
 		return $this->create ("Registrant", "\\ascio\\v2\\Registrant");
 	}
-	public function addRegistrant () : \ascio\v2\Registrant {
-		return $this->add("Registrant","\\ascio\\v2\\Registrant",func_get_args());
+	public function addRegistrant ($item = null) : \ascio\v2\Registrant {
+		return $this->addItem("Registrant","\\ascio\\v2\\Registrant",func_get_args());
 	}
 }

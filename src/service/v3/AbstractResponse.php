@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of AbstractResponse
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbBase;
 use ascio\db\v3\AbstractResponseDb;
 use ascio\api\v3\AbstractResponseApi;
+use ascio\base\v3\DbBase;
 
 
 class AbstractResponse extends DbBase  {
@@ -19,6 +19,7 @@ class AbstractResponse extends DbBase  {
 		["name" => "GetOrdersResponse","type" => "\\ascio\\v3\\GetOrdersResponse"], 
 		["name" => "GetDomainsResponse","type" => "\\ascio\\v3\\GetDomainsResponse"], 
 		["name" => "GetDomainResponse","type" => "\\ascio\\v3\\GetDomainResponse"], 
+		["name" => "AvailabilityInfoResponse","type" => "\\ascio\\v3\\AvailabilityInfoResponse"], 
 		["name" => "GetAccountTransactionsResponse","type" => "\\ascio\\v3\\GetAccountTransactionsResponse"], 
 		["name" => "GetSalesLinesResponse","type" => "\\ascio\\v3\\GetSalesLinesResponse"], 
 		["name" => "GetSubUsersResponse","type" => "\\ascio\\v3\\GetSubUsersResponse"], 
@@ -36,6 +37,7 @@ class AbstractResponse extends DbBase  {
 		["name" => "GetContactsResponse","type" => "\\ascio\\v3\\GetContactsResponse"], 
 		["name" => "GetNameServersResponse","type" => "\\ascio\\v3\\GetNameServersResponse"], 
 		["name" => "GetDnsSecKeysResponse","type" => "\\ascio\\v3\\GetDnsSecKeysResponse"], 
+		["name" => "GetSslCertificatesResponse","type" => "\\ascio\\v3\\GetSslCertificatesResponse"], 
 		["name" => "GetMarksResponse","type" => "\\ascio\\v3\\GetMarksResponse"], 
 		["name" => "GetMarkResponse","type" => "\\ascio\\v3\\GetMarkResponse"], 
 		["name" => "GetDefensiveResponse","type" => "\\ascio\\v3\\GetDefensiveResponse"], 

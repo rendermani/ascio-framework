@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of AutoInstallSsl
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbBase;
 use ascio\db\v3\AutoInstallSslDb;
 use ascio\api\v3\AutoInstallSslApi;
+use ascio\base\v3\DbBase;
 
 
 class AutoInstallSsl extends DbBase  {

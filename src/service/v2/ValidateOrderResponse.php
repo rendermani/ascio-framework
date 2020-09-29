@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ValidateOrderResponse
 
 namespace ascio\service\v2;
-use ascio\base\v2\ResponseRootElement;
 use ascio\db\v2\ValidateOrderResponseDb;
 use ascio\api\v2\ValidateOrderResponseApi;
+use ascio\base\v2\ResponseRootElement;
 
 
 class ValidateOrderResponse extends ResponseRootElement  {

@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of DeleteRecord
 
 namespace ascio\service\dns;
-use ascio\base\dns\RequestRootElement;
 use ascio\db\dns\DeleteRecordDb;
 use ascio\api\dns\DeleteRecordApi;
+use ascio\base\dns\RequestRootElement;
 
 
 class DeleteRecord extends RequestRootElement  {

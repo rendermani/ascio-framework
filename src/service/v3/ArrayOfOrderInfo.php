@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ArrayOfOrderInfo
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbArrayBase;
 use ascio\db\v3\ArrayOfOrderInfoDb;
 use ascio\api\v3\ArrayOfOrderInfoApi;
+use ascio\base\v3\DbArrayBase;
 
 
 class ArrayOfOrderInfo extends DbArrayBase  {
@@ -45,7 +45,7 @@ class ArrayOfOrderInfo extends DbArrayBase  {
 	public function createOrderInfo () : \ascio\v3\OrderInfo {
 		return $this->create ("OrderInfo", "\\ascio\\v3\\OrderInfo");
 	}
-	public function addOrderInfo () : \ascio\v3\OrderInfo {
-		return $this->add("OrderInfo","\\ascio\\v3\\OrderInfo",func_get_args());
+	public function addOrderInfo ($item = null) : \ascio\v3\OrderInfo {
+		return $this->addItem("OrderInfo","\\ascio\\v3\\OrderInfo",func_get_args());
 	}
 }

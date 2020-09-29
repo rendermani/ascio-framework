@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of GetInvoiceResponse
 
 namespace ascio\service\v3;
-use ascio\v3\AbstractResponse;
 use ascio\db\v3\GetInvoiceResponseDb;
 use ascio\api\v3\GetInvoiceResponseApi;
+use ascio\v3\AbstractResponse;
 use ascio\api\v3\AbstractResponseApi;
 
 

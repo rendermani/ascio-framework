@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of DeleteUser
 
 namespace ascio\service\dns;
-use ascio\base\dns\RequestRootElement;
 use ascio\db\dns\DeleteUserDb;
 use ascio\api\dns\DeleteUserApi;
+use ascio\base\dns\RequestRootElement;
 
 
 class DeleteUser extends RequestRootElement  {

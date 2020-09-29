@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ArrayOfCallbackStatus
 
 namespace ascio\service\v2;
-use ascio\base\v2\DbArrayBase;
 use ascio\db\v2\ArrayOfCallbackStatusDb;
 use ascio\api\v2\ArrayOfCallbackStatusApi;
+use ascio\base\v2\DbArrayBase;
 
 
 class ArrayOfCallbackStatus extends DbArrayBase  {
@@ -45,7 +45,7 @@ class ArrayOfCallbackStatus extends DbArrayBase  {
 	public function createCallbackStatus () : \ascio\v2\CallbackStatus {
 		return $this->create ("CallbackStatus", "\\ascio\\v2\\CallbackStatus");
 	}
-	public function addCallbackStatus () : \ascio\v2\CallbackStatus {
-		return $this->add("CallbackStatus","\\ascio\\v2\\CallbackStatus",func_get_args());
+	public function addCallbackStatus ($item = null) : \ascio\v2\CallbackStatus {
+		return $this->addItem("CallbackStatus","\\ascio\\v2\\CallbackStatus",func_get_args());
 	}
 }

@@ -2,11 +2,13 @@
 
 // XSLT-WSDL-Client. Generated PHP class of base64Binary
 
-namespace ascio\v3\service;
-use ascio\v3\Base;
+namespace ascio\service\v3;
+use ascio\base\v3\Base;
+use ascio\db\v3\base64BinaryDb;
+use ascio\api\v3\base64BinaryApi;
 
 
-abstract class base64Binary extends Base  {
+class base64Binary extends Base  {
 
 	protected $_apiProperties=[];
 	protected $_apiObjects=[];

@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ValidateOrder
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbBase;
 use ascio\db\v3\ValidateOrderDb;
 use ascio\api\v3\ValidateOrderApi;
+use ascio\base\v3\DbBase;
 
 
 class ValidateOrder extends DbBase  {

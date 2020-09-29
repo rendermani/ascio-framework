@@ -2,11 +2,13 @@
 
 // XSLT-WSDL-Client. Generated PHP class of dateTime
 
-namespace ascio\v3\service;
-use ascio\v3\Base;
+namespace ascio\service\v3;
+use ascio\base\v3\Base;
+use ascio\db\v3\dateTimeDb;
+use ascio\api\v3\dateTimeApi;
 
 
-abstract class dateTime extends Base  {
+class dateTime extends Base  {
 
 	protected $_apiProperties=[];
 	protected $_apiObjects=[];

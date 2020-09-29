@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of Service
 
 namespace ascio\service\v3;
-use ascio\base\v3\ServiceBase;
 use ascio\db\v3\ServiceDb;
 use ascio\api\v3\ServiceApi;
+use ascio\base\v3\ServiceBase;
 
 
 class Service extends ServiceBase  {
@@ -129,6 +129,9 @@ class Service extends ServiceBase  {
 		"GetDnsSecKeysRequest" => "ascio\\v3\\GetDnsSecKeysRequest",
 		"ArrayOfDnsSecKeys" => "ascio\\v3\\ArrayOfDnsSecKeys",
 		"GetDnsSecKeysResponse" => "ascio\\v3\\GetDnsSecKeysResponse",
+		"GetSslCertificatesRequest" => "ascio\\v3\\GetSslCertificatesRequest",
+		"GetSslCertificatesResponse" => "ascio\\v3\\GetSslCertificatesResponse",
+		"ArrayOfSslCertificateInfo" => "ascio\\v3\\ArrayOfSslCertificateInfo",
 		"GetMarksRequest" => "ascio\\v3\\GetMarksRequest",
 		"GetMarksResponse" => "ascio\\v3\\GetMarksResponse",
 		"ArrayOfMarkInfo" => "ascio\\v3\\ArrayOfMarkInfo",
@@ -176,6 +179,7 @@ class Service extends ServiceBase  {
 		"GetOrder" => "ascio\\v3\\GetOrder",
 		"GetOrders" => "ascio\\v3\\GetOrders",
 		"GetDomains" => "ascio\\v3\\GetDomains",
+		"GetSslCertificates" => "ascio\\v3\\GetSslCertificates",
 		"GetDomain" => "ascio\\v3\\GetDomain",
 		"AvailabilityInfo" => "ascio\\v3\\AvailabilityInfo",
 		"GetPrices" => "ascio\\v3\\GetPrices",
@@ -240,6 +244,7 @@ class Service extends ServiceBase  {
 		"GetOrder" => "ascio\\v3\\GetOrder",
 		"GetOrders" => "ascio\\v3\\GetOrders",
 		"GetDomains" => "ascio\\v3\\GetDomains",
+		"GetSslCertificates" => "ascio\\v3\\GetSslCertificates",
 		"GetDomain" => "ascio\\v3\\GetDomain",
 		"AvailabilityInfo" => "ascio\\v3\\AvailabilityInfo",
 		"GetPrices" => "ascio\\v3\\GetPrices",
@@ -305,6 +310,7 @@ class Service extends ServiceBase  {
 		"ContactSortType" => "ascio\\v3\\ContactSortType",
 		"NameServerSortType" => "ascio\\v3\\NameServerSortType",
 		"DnsSecKeySortType" => "ascio\\v3\\DnsSecKeySortType",
+		"SslCertificateSortType" => "ascio\\v3\\SslCertificateSortType",
 		"MarkSortType" => "ascio\\v3\\MarkSortType",
 		"MessageType" => "ascio\\v3\\MessageType",
 	];
@@ -324,6 +330,9 @@ class Service extends ServiceBase  {
 	}
 	public function getDomains(GetDomainsRequest $request) : GetDomainsResponse {
 		return $this->call("GetDomains", ["request" => $request]);
+	}
+	public function getSslCertificates(GetSslCertificatesRequest $request) : GetSslCertificatesResponse {
+		return $this->call("GetSslCertificates", ["request" => $request]);
 	}
 	public function availabilityInfo(AvailabilityInfoRequest $request) : AvailabilityInfoResponse {
 		return $this->call("AvailabilityInfo", ["request" => $request]);

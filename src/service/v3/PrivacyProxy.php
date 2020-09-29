@@ -3,12 +3,12 @@
 // XSLT-WSDL-Client. Generated PHP class of PrivacyProxy
 
 namespace ascio\service\v3;
-use ascio\base\v3\Base;
 use ascio\db\v3\PrivacyProxyDb;
 use ascio\api\v3\PrivacyProxyApi;
+use ascio\base\v3\DbBase;
 
 
-class PrivacyProxy extends Base  {
+class PrivacyProxy extends DbBase  {
 
 	protected $_apiProperties=["Type", "PrivacyAdmin", "PrivacyTech", "PrivacyBilling", "Extensions"];
 	protected $_apiObjects=["Extensions"];
@@ -18,6 +18,27 @@ class PrivacyProxy extends Base  {
 	protected $PrivacyBilling;
 	protected $Extensions;
 
+	public function __construct($parent = null) {
+		parent::__construct($parent);
+
+		//set the database model
+		$db = new PrivacyProxyDb();
+		$db->parent($this);
+		$this->db($db);
+	}
+	/**
+	* Provides DB-Specific methods like update,create,delete.
+	* @param PrivacyProxyDb|null $db
+	* @return PrivacyProxyDb
+	*/
+	public function db($db = null) {
+		if(!$db) {
+			return $this->_db;
+		}
+		$this->_db = $db;
+		$this->_db->parent($this);
+		return $db;
+	}
 	public function setType (?string $Type = null) : self {
 		$this->set("Type", $Type);
 		return $this;

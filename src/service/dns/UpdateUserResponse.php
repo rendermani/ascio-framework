@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of UpdateUserResponse
 
 namespace ascio\service\dns;
-use ascio\base\dns\ResponseRootElement;
 use ascio\db\dns\UpdateUserResponseDb;
 use ascio\api\dns\UpdateUserResponseApi;
+use ascio\base\dns\ResponseRootElement;
 
 
 class UpdateUserResponse extends ResponseRootElement  {

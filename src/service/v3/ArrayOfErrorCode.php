@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ArrayOfErrorCode
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbArrayBase;
 use ascio\db\v3\ArrayOfErrorCodeDb;
 use ascio\api\v3\ArrayOfErrorCodeApi;
+use ascio\base\v3\DbArrayBase;
 
 
 class ArrayOfErrorCode extends DbArrayBase  {
@@ -45,7 +45,7 @@ class ArrayOfErrorCode extends DbArrayBase  {
 	public function createErrorCode () : \ascio\v3\ErrorCode {
 		return $this->create ("ErrorCode", "\\ascio\\v3\\ErrorCode");
 	}
-	public function addErrorCode () : \ascio\v3\ErrorCode {
-		return $this->add("ErrorCode","\\ascio\\v3\\ErrorCode",func_get_args());
+	public function addErrorCode ($item = null) : \ascio\v3\ErrorCode {
+		return $this->addItem("ErrorCode","\\ascio\\v3\\ErrorCode",func_get_args());
 	}
 }

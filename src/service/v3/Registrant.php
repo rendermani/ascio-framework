@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of Registrant
 
 namespace ascio\service\v3;
-use ascio\v3\Contact;
 use ascio\db\v3\RegistrantDb;
 use ascio\api\v3\RegistrantApi;
+use ascio\v3\Contact;
 use ascio\api\v3\ContactApi;
 
 

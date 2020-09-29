@@ -2,11 +2,13 @@
 
 // XSLT-WSDL-Client. Generated PHP class of unsignedLong
 
-namespace ascio\v3\service;
-use ascio\v3\Base;
+namespace ascio\service\v3;
+use ascio\base\v3\Base;
+use ascio\db\v3\unsignedLongDb;
+use ascio\api\v3\unsignedLongApi;
 
 
-abstract class unsignedLong extends Base  {
+class unsignedLong extends Base  {
 
 	protected $_apiProperties=[];
 	protected $_apiObjects=[];

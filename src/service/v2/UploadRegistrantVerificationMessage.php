@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of UploadRegistrantVerificationMessage
 
 namespace ascio\service\v2;
-use ascio\base\v2\RequestRootElement;
 use ascio\db\v2\UploadRegistrantVerificationMessageDb;
 use ascio\api\v2\UploadRegistrantVerificationMessageApi;
+use ascio\base\v2\RequestRootElement;
 
 
 class UploadRegistrantVerificationMessage extends RequestRootElement  {

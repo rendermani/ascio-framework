@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of NameWatch
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbBase;
 use ascio\db\v3\NameWatchDb;
 use ascio\api\v3\NameWatchApi;
+use ascio\base\v3\DbBase;
 
 
 class NameWatch extends DbBase  {

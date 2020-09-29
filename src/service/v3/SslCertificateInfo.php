@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of SslCertificateInfo
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbBase;
 use ascio\db\v3\SslCertificateInfoDb;
 use ascio\api\v3\SslCertificateInfoApi;
+use ascio\base\v3\DbBase;
 
 
 class SslCertificateInfo extends DbBase  {

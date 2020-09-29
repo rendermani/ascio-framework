@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of CallbackStatus
 
 namespace ascio\service\v2;
-use ascio\base\v2\DbBase;
 use ascio\db\v2\CallbackStatusDb;
 use ascio\api\v2\CallbackStatusApi;
+use ascio\base\v2\DbBase;
 
 
 class CallbackStatus extends DbBase  {

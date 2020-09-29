@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ArrayOfint
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbArrayBase;
 use ascio\db\v3\ArrayOfintDb;
 use ascio\api\v3\ArrayOfintApi;
+use ascio\base\v3\DbArrayBase;
 
 
 class ArrayOfint extends DbArrayBase  {
@@ -42,7 +42,7 @@ class ArrayOfint extends DbArrayBase  {
 	public function getInt () : ?Iterable {
 		return $this->get("int", "int");
 	}
-	public function addInt () : int {
-		return $this->add("int","int",func_get_args());
+	public function addInt ($item = null) : int {
+		return $this->addItem("int","int",func_get_args());
 	}
 }

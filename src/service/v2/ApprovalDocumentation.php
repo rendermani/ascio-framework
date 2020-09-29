@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ApprovalDocumentation
 
 namespace ascio\service\v2;
-use ascio\base\v2\Base;
 use ascio\db\v2\ApprovalDocumentationDb;
 use ascio\api\v2\ApprovalDocumentationApi;
+use ascio\base\v2\Base;
 
 
 class ApprovalDocumentation extends Base  {

@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of Trademark
 
 namespace ascio\service\v3;
-use ascio\v3\AbstractMark;
 use ascio\db\v3\TrademarkDb;
 use ascio\api\v3\TrademarkApi;
+use ascio\v3\AbstractMark;
 use ascio\api\v3\AbstractMarkApi;
 
 

@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of UploadMessage
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbBase;
 use ascio\db\v3\UploadMessageDb;
 use ascio\api\v3\UploadMessageApi;
+use ascio\base\v3\DbBase;
 
 
 class UploadMessage extends DbBase  {

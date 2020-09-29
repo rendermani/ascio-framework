@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of GetAccountBalanceResponse
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbBase;
 use ascio\db\v3\GetAccountBalanceResponseDb;
 use ascio\api\v3\GetAccountBalanceResponseApi;
+use ascio\base\v3\DbBase;
 
 
 class GetAccountBalanceResponse extends DbBase  {

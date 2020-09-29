@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of UploadDocumentationResponse
 
 namespace ascio\service\v2;
-use ascio\base\v2\ResponseRootElement;
 use ascio\db\v2\UploadDocumentationResponseDb;
 use ascio\api\v2\UploadDocumentationResponseApi;
+use ascio\base\v2\ResponseRootElement;
 
 
 class UploadDocumentationResponse extends ResponseRootElement  {

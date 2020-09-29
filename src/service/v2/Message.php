@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of Message
 
 namespace ascio\service\v2;
-use ascio\base\v2\DbBase;
 use ascio\db\v2\MessageDb;
 use ascio\api\v2\MessageApi;
+use ascio\base\v2\DbBase;
 
 
 class Message extends DbBase  {

@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of GetMessagesResponse
 
 namespace ascio\service\v3;
-use ascio\v3\AbstractResponse;
 use ascio\db\v3\GetMessagesResponseDb;
 use ascio\api\v3\GetMessagesResponseApi;
+use ascio\v3\AbstractResponse;
 use ascio\api\v3\AbstractResponseApi;
 
 

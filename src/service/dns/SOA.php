@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of SOA
 
 namespace ascio\service\dns;
-use ascio\dns\Record;
 use ascio\db\dns\SOADb;
 use ascio\api\dns\SOAApi;
+use ascio\dns\Record;
 use ascio\api\dns\RecordApi;
 
 
@@ -27,45 +27,6 @@ class SOA extends Record  {
 	protected $Retry;
 	protected $SerialUsage;
 
-	public function __construct($parent = null) {
-		parent::__construct($parent);
-
-		//set the database model
-		$db = new SOADb();
-		$db->parent($this);
-		$this->db($db);
-
-		//set the api model
-		$api = new SOAApi($this);
-		$api->parent($this);
-		$api->config($this->config()->dns);
-		$this->api($api);
-	}
-	/**
-	* Provides API-Specific methods like update,create,delete.
-	* @param @name|null $api
-	* @return SOAApi
-	*/
-	public function api($api = null) : ?\ascio\base\ApiModelBase {
-		if(!$api) {
-			return $this->_api;
-		}
-		$this->_api = $api;
-		return $api;
-	}
-	/**
-	* Provides DB-Specific methods like update,create,delete.
-	* @param SOADb|null $db
-	* @return SOADb
-	*/
-	public function db($db = null) {
-		if(!$db) {
-			return $this->_db;
-		}
-		$this->_db = $db;
-		$this->_db->parent($this);
-		return $db;
-	}
 	public function setExpire (?int $Expire = null) : self {
 		$this->set("Expire", $Expire);
 		return $this;

@@ -2,11 +2,13 @@
 
 // XSLT-WSDL-Client. Generated PHP class of unsignedInt
 
-namespace ascio\v3\service;
-use ascio\v3\Base;
+namespace ascio\service\v3;
+use ascio\base\v3\Base;
+use ascio\db\v3\unsignedIntDb;
+use ascio\api\v3\unsignedIntApi;
 
 
-abstract class unsignedInt extends Base  {
+class unsignedInt extends Base  {
 
 	protected $_apiProperties=[];
 	protected $_apiObjects=[];

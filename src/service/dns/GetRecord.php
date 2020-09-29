@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of GetRecord
 
 namespace ascio\service\dns;
-use ascio\base\dns\RequestRootElement;
 use ascio\db\dns\GetRecordDb;
 use ascio\api\dns\GetRecordApi;
+use ascio\base\dns\RequestRootElement;
 
 
 class GetRecord extends RequestRootElement  {

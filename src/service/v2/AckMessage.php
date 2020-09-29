@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of AckMessage
 
 namespace ascio\service\v2;
-use ascio\base\v2\RequestRootElement;
 use ascio\db\v2\AckMessageDb;
 use ascio\api\v2\AckMessageApi;
+use ascio\base\v2\RequestRootElement;
 
 
 class AckMessage extends RequestRootElement  {

@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ArrayOfClause
 
 namespace ascio\service\v2;
-use ascio\base\v2\ArrayBase;
 use ascio\db\v2\ArrayOfClauseDb;
 use ascio\api\v2\ArrayOfClauseApi;
+use ascio\base\v2\ArrayBase;
 
 
 class ArrayOfClause extends ArrayBase implements \Iterator  {
@@ -24,7 +24,7 @@ class ArrayOfClause extends ArrayBase implements \Iterator  {
 	public function createClause () : \ascio\v2\Clause {
 		return $this->create ("Clause", "\\ascio\\v2\\Clause");
 	}
-	public function addClause () : \ascio\v2\Clause {
-		return $this->add("Clause","\\ascio\\v2\\Clause",func_get_args());
+	public function addClause ($item = null) : \ascio\v2\Clause {
+		return $this->addItem("Clause","\\ascio\\v2\\Clause",func_get_args());
 	}
 }

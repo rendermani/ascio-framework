@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of GetDefensiveRequest
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbBase;
 use ascio\db\v3\GetDefensiveRequestDb;
 use ascio\api\v3\GetDefensiveRequestApi;
+use ascio\base\v3\DbBase;
 
 
 class GetDefensiveRequest extends DbBase  {

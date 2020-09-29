@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of DnsSecKeys
 
 namespace ascio\service\v2;
-use ascio\base\v2\DbBase;
 use ascio\db\v2\DnsSecKeysDb;
 use ascio\api\v2\DnsSecKeysApi;
+use ascio\base\v2\DbBase;
 
 
 class DnsSecKeys extends DbBase  {

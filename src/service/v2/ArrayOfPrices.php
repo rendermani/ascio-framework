@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ArrayOfPrices
 
 namespace ascio\service\v2;
-use ascio\base\v2\ArrayBase;
 use ascio\db\v2\ArrayOfPricesDb;
 use ascio\api\v2\ArrayOfPricesApi;
+use ascio\base\v2\ArrayBase;
 
 
 class ArrayOfPrices extends ArrayBase implements \Iterator  {
@@ -24,7 +24,7 @@ class ArrayOfPrices extends ArrayBase implements \Iterator  {
 	public function createPrice () : \ascio\v2\Price {
 		return $this->create ("Price", "\\ascio\\v2\\Price");
 	}
-	public function addPrice () : \ascio\v2\Price {
-		return $this->add("Price","\\ascio\\v2\\Price",func_get_args());
+	public function addPrice ($item = null) : \ascio\v2\Price {
+		return $this->addItem("Price","\\ascio\\v2\\Price",func_get_args());
 	}
 }

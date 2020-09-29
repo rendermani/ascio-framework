@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of AvailabilityInfoRequest
 
 namespace ascio\service\v3;
-use ascio\base\v3\Base;
 use ascio\db\v3\AvailabilityInfoRequestDb;
 use ascio\api\v3\AvailabilityInfoRequestApi;
+use ascio\base\v3\Base;
 
 
 class AvailabilityInfoRequest extends Base  {

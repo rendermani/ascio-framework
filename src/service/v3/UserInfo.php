@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of UserInfo
 
 namespace ascio\service\v3;
-use ascio\base\v3\Base;
 use ascio\db\v3\UserInfoDb;
 use ascio\api\v3\UserInfoApi;
+use ascio\base\v3\Base;
 
 
 class UserInfo extends Base  {

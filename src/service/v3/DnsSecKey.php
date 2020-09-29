@@ -3,12 +3,12 @@
 // XSLT-WSDL-Client. Generated PHP class of DnsSecKey
 
 namespace ascio\service\v3;
-use ascio\base\v3\Base;
 use ascio\db\v3\DnsSecKeyDb;
 use ascio\api\v3\DnsSecKeyApi;
+use ascio\base\v3\DbBase;
 
 
-class DnsSecKey extends Base  {
+class DnsSecKey extends DbBase  {
 
 	protected $_apiProperties=["Handle", "Status", "DigestAlgorithm", "DigestType", "Digest", "Protocol", "KeyType", "KeyAlgorithm", "KeyTag", "PublicKey", "CreDate"];
 	protected $_apiObjects=[];
@@ -24,6 +24,45 @@ class DnsSecKey extends Base  {
 	protected $PublicKey;
 	protected $CreDate;
 
+	public function __construct($parent = null) {
+		parent::__construct($parent);
+
+		//set the database model
+		$db = new DnsSecKeyDb();
+		$db->parent($this);
+		$this->db($db);
+
+		//set the api model
+		$api = new DnsSecKeyApi($this);
+		$api->parent($this);
+		$api->config($this->config()->v3);
+		$this->api($api);
+	}
+	/**
+	* Provides API-Specific methods like update,create,delete.
+	* @param @name|null $api
+	* @return DnsSecKeyApi
+	*/
+	public function api($api = null) : ?\ascio\base\ApiModelBase {
+		if(!$api) {
+			return $this->_api;
+		}
+		$this->_api = $api;
+		return $api;
+	}
+	/**
+	* Provides DB-Specific methods like update,create,delete.
+	* @param DnsSecKeyDb|null $db
+	* @return DnsSecKeyDb
+	*/
+	public function db($db = null) {
+		if(!$db) {
+			return $this->_db;
+		}
+		$this->_db = $db;
+		$this->_db->parent($this);
+		return $db;
+	}
 	public function setHandle (?string $Handle = null) : self {
 		$this->set("Handle", $Handle);
 		return $this;

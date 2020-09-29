@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of SearchCriteria
 
 namespace ascio\service\v2;
-use ascio\base\v2\Base;
 use ascio\db\v2\SearchCriteriaDb;
 use ascio\api\v2\SearchCriteriaApi;
+use ascio\base\v2\Base;
 
 
 class SearchCriteria extends Base  {

@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of GetSslCertificateRequest
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbBase;
 use ascio\db\v3\GetSslCertificateRequestDb;
 use ascio\api\v3\GetSslCertificateRequestApi;
+use ascio\base\v3\DbBase;
 
 
 class GetSslCertificateRequest extends DbBase  {

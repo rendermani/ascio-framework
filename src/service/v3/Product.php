@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of Product
 
 namespace ascio\service\v3;
-use ascio\base\v3\Base;
 use ascio\db\v3\ProductDb;
 use ascio\api\v3\ProductApi;
+use ascio\base\v3\Base;
 
 
 class Product extends Base  {

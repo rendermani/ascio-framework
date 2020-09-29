@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of SetZoneOwner
 
 namespace ascio\service\dns;
-use ascio\base\dns\RequestRootElement;
 use ascio\db\dns\SetZoneOwnerDb;
 use ascio\api\dns\SetZoneOwnerApi;
+use ascio\base\dns\RequestRootElement;
 
 
 class SetZoneOwner extends RequestRootElement  {

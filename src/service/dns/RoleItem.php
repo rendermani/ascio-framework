@@ -3,57 +3,18 @@
 // XSLT-WSDL-Client. Generated PHP class of RoleItem
 
 namespace ascio\service\dns;
-use ascio\base\dns\DbBase;
 use ascio\db\dns\RoleItemDb;
 use ascio\api\dns\RoleItemApi;
+use ascio\base\dns\Base;
 
 
-class RoleItem extends DbBase  {
+class RoleItem extends Base  {
 
 	protected $_apiProperties=["Rights", "Role"];
 	protected $_apiObjects=["Rights"];
 	protected $Rights;
 	protected $Role;
 
-	public function __construct($parent = null) {
-		parent::__construct($parent);
-
-		//set the database model
-		$db = new RoleItemDb();
-		$db->parent($this);
-		$this->db($db);
-
-		//set the api model
-		$api = new RoleItemApi($this);
-		$api->parent($this);
-		$api->config($this->config()->dns);
-		$this->api($api);
-	}
-	/**
-	* Provides API-Specific methods like update,create,delete.
-	* @param @name|null $api
-	* @return RoleItemApi
-	*/
-	public function api($api = null) : ?\ascio\base\ApiModelBase {
-		if(!$api) {
-			return $this->_api;
-		}
-		$this->_api = $api;
-		return $api;
-	}
-	/**
-	* Provides DB-Specific methods like update,create,delete.
-	* @param RoleItemDb|null $db
-	* @return RoleItemDb
-	*/
-	public function db($db = null) {
-		if(!$db) {
-			return $this->_db;
-		}
-		$this->_db = $db;
-		$this->_db->parent($this);
-		return $db;
-	}
 	public function setRights (?\ascio\dns\ArrayOfstring $Rights = null) : self {
 		$this->set("Rights", $Rights);
 		return $this;

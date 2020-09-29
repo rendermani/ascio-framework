@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of CreateApprovalDocumentationResponse
 
 namespace ascio\service\v2;
-use ascio\base\v2\ResponseRootElement;
 use ascio\db\v2\CreateApprovalDocumentationResponseDb;
 use ascio\api\v2\CreateApprovalDocumentationResponseApi;
+use ascio\base\v2\ResponseRootElement;
 
 
 class CreateApprovalDocumentationResponse extends ResponseRootElement  {

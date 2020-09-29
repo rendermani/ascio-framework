@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of AccountTransaction
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbBase;
 use ascio\db\v3\AccountTransactionDb;
 use ascio\api\v3\AccountTransactionApi;
+use ascio\base\v3\DbBase;
 
 
 class AccountTransaction extends DbBase  {

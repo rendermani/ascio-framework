@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of Service
 
 namespace ascio\service\v2;
-use ascio\base\v2\ServiceBase;
 use ascio\db\v2\ServiceDb;
 use ascio\api\v2\ServiceApi;
+use ascio\base\v2\ServiceBase;
 
 
 class Service extends ServiceBase  {

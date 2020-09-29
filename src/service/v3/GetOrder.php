@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of GetOrder
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbBase;
 use ascio\db\v3\GetOrderDb;
 use ascio\api\v3\GetOrderApi;
+use ascio\base\v3\DbBase;
 
 
 class GetOrder extends DbBase  {

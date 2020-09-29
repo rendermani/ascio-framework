@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of MarkOrderDocument
 
 namespace ascio\service\v3;
-use ascio\v3\Attachment;
 use ascio\db\v3\MarkOrderDocumentDb;
 use ascio\api\v3\MarkOrderDocumentApi;
+use ascio\v3\Attachment;
 use ascio\api\v3\AttachmentApi;
 
 

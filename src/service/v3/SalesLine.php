@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of SalesLine
 
 namespace ascio\service\v3;
-use ascio\base\v3\Base;
 use ascio\db\v3\SalesLineDb;
 use ascio\api\v3\SalesLineApi;
+use ascio\base\v3\Base;
 
 
 class SalesLine extends Base  {

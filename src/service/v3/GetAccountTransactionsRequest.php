@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of GetAccountTransactionsRequest
 
 namespace ascio\service\v3;
-use ascio\base\v3\Base;
 use ascio\db\v3\GetAccountTransactionsRequestDb;
 use ascio\api\v3\GetAccountTransactionsRequestApi;
+use ascio\base\v3\Base;
 
 
 class GetAccountTransactionsRequest extends Base  {

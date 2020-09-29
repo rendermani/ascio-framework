@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of GetDomainRequest
 
 namespace ascio\service\v3;
-use ascio\base\v3\Base;
 use ascio\db\v3\GetDomainRequestDb;
 use ascio\api\v3\GetDomainRequestApi;
+use ascio\base\v3\Base;
 
 
 class GetDomainRequest extends Base  {

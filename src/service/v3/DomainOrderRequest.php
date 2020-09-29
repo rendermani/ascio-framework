@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of DomainOrderRequest
 
 namespace ascio\service\v3;
-use ascio\v3\AbstractOrderRequest;
 use ascio\db\v3\DomainOrderRequestDb;
 use ascio\api\v3\DomainOrderRequestApi;
+use ascio\v3\AbstractOrderRequest;
 use ascio\api\v3\AbstractOrderRequestApi;
 
 

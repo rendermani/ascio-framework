@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ArrayOfUsers
 
 namespace ascio\service\v3;
-use ascio\base\v3\ArrayBase;
 use ascio\db\v3\ArrayOfUsersDb;
 use ascio\api\v3\ArrayOfUsersApi;
+use ascio\base\v3\ArrayBase;
 
 
 class ArrayOfUsers extends ArrayBase implements \Iterator  {
@@ -24,7 +24,7 @@ class ArrayOfUsers extends ArrayBase implements \Iterator  {
 	public function createUserInfo () : \ascio\v3\UserInfo {
 		return $this->create ("UserInfo", "\\ascio\\v3\\UserInfo");
 	}
-	public function addUserInfo () : \ascio\v3\UserInfo {
-		return $this->add("UserInfo","\\ascio\\v3\\UserInfo",func_get_args());
+	public function addUserInfo ($item = null) : \ascio\v3\UserInfo {
+		return $this->addItem("UserInfo","\\ascio\\v3\\UserInfo",func_get_args());
 	}
 }

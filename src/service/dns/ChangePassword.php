@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ChangePassword
 
 namespace ascio\service\dns;
-use ascio\base\dns\RequestRootElement;
 use ascio\db\dns\ChangePasswordDb;
 use ascio\api\dns\ChangePasswordApi;
+use ascio\base\dns\RequestRootElement;
 
 
 class ChangePassword extends RequestRootElement  {

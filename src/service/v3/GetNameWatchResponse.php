@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of GetNameWatchResponse
 
 namespace ascio\service\v3;
-use ascio\v3\AbstractResponse;
 use ascio\db\v3\GetNameWatchResponseDb;
 use ascio\api\v3\GetNameWatchResponseApi;
+use ascio\v3\AbstractResponse;
 use ascio\api\v3\AbstractResponseApi;
 
 

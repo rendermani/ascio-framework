@@ -2,11 +2,13 @@
 
 // XSLT-WSDL-Client. Generated PHP class of byte
 
-namespace ascio\v3\service;
-use ascio\v3\Base;
+namespace ascio\service\v3;
+use ascio\base\v3\Base;
+use ascio\db\v3\byteDb;
+use ascio\api\v3\byteApi;
 
 
-abstract class byte extends Base  {
+class byte extends Base  {
 
 	protected $_apiProperties=[];
 	protected $_apiObjects=[];

@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of AvailabilityCheckResponse
 
 namespace ascio\service\v2;
-use ascio\base\v2\ResponseRootElement;
 use ascio\db\v2\AvailabilityCheckResponseDb;
 use ascio\api\v2\AvailabilityCheckResponseApi;
+use ascio\base\v2\ResponseRootElement;
 
 
 class AvailabilityCheckResponse extends ResponseRootElement  {

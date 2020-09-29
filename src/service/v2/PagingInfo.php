@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of PagingInfo
 
 namespace ascio\service\v2;
-use ascio\base\v2\Base;
 use ascio\db\v2\PagingInfoDb;
 use ascio\api\v2\PagingInfoApi;
+use ascio\base\v2\Base;
 
 
 class PagingInfo extends Base  {

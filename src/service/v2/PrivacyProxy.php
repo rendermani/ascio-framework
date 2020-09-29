@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of PrivacyProxy
 
 namespace ascio\service\v2;
-use ascio\base\v2\DbBase;
 use ascio\db\v2\PrivacyProxyDb;
 use ascio\api\v2\PrivacyProxyApi;
+use ascio\base\v2\DbBase;
 
 
 class PrivacyProxy extends DbBase  {

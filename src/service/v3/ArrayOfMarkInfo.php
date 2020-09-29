@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ArrayOfMarkInfo
 
 namespace ascio\service\v3;
-use ascio\base\v3\ArrayBase;
 use ascio\db\v3\ArrayOfMarkInfoDb;
 use ascio\api\v3\ArrayOfMarkInfoApi;
+use ascio\base\v3\ArrayBase;
 
 
 class ArrayOfMarkInfo extends ArrayBase implements \Iterator  {
@@ -24,7 +24,7 @@ class ArrayOfMarkInfo extends ArrayBase implements \Iterator  {
 	public function createMarkInfo () : \ascio\v3\MarkInfo {
 		return $this->create ("MarkInfo", "\\ascio\\v3\\MarkInfo");
 	}
-	public function addMarkInfo () : \ascio\v3\MarkInfo {
-		return $this->add("MarkInfo","\\ascio\\v3\\MarkInfo",func_get_args());
+	public function addMarkInfo ($item = null) : \ascio\v3\MarkInfo {
+		return $this->addItem("MarkInfo","\\ascio\\v3\\MarkInfo",func_get_args());
 	}
 }

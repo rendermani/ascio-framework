@@ -2,11 +2,13 @@
 
 // XSLT-WSDL-Client. Generated PHP class of unsignedByte
 
-namespace ascio\v3\service;
-use ascio\v3\Base;
+namespace ascio\service\v3;
+use ascio\base\v3\Base;
+use ascio\db\v3\unsignedByteDb;
+use ascio\api\v3\unsignedByteApi;
 
 
-abstract class unsignedByte extends Base  {
+class unsignedByte extends Base  {
 
 	protected $_apiProperties=[];
 	protected $_apiObjects=[];

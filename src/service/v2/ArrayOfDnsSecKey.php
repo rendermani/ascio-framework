@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ArrayOfDnsSecKey
 
 namespace ascio\service\v2;
-use ascio\base\v2\ArrayBase;
 use ascio\db\v2\ArrayOfDnsSecKeyDb;
 use ascio\api\v2\ArrayOfDnsSecKeyApi;
+use ascio\base\v2\ArrayBase;
 
 
 class ArrayOfDnsSecKey extends ArrayBase implements \Iterator  {
@@ -24,7 +24,7 @@ class ArrayOfDnsSecKey extends ArrayBase implements \Iterator  {
 	public function createDnsSecKey () : \ascio\v2\DnsSecKey {
 		return $this->create ("DnsSecKey", "\\ascio\\v2\\DnsSecKey");
 	}
-	public function addDnsSecKey () : \ascio\v2\DnsSecKey {
-		return $this->add("DnsSecKey","\\ascio\\v2\\DnsSecKey",func_get_args());
+	public function addDnsSecKey ($item = null) : \ascio\v2\DnsSecKey {
+		return $this->addItem("DnsSecKey","\\ascio\\v2\\DnsSecKey",func_get_args());
 	}
 }

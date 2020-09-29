@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ArrayOfZoneLogEntry
 
 namespace ascio\service\dns;
-use ascio\base\dns\DbArrayBase;
 use ascio\db\dns\ArrayOfZoneLogEntryDb;
 use ascio\api\dns\ArrayOfZoneLogEntryApi;
+use ascio\base\dns\DbArrayBase;
 
 
 class ArrayOfZoneLogEntry extends DbArrayBase  {
@@ -21,24 +21,6 @@ class ArrayOfZoneLogEntry extends DbArrayBase  {
 		$db = new ArrayOfZoneLogEntryDb();
 		$db->parent($this);
 		$this->db($db);
-
-		//set the api model
-		$api = new ArrayOfZoneLogEntryApi($this);
-		$api->parent($this);
-		$api->config($this->config()->dns);
-		$this->api($api);
-	}
-	/**
-	* Provides API-Specific methods like update,create,delete.
-	* @param @name|null $api
-	* @return ArrayOfZoneLogEntryApi
-	*/
-	public function api($api = null) : ?\ascio\base\ApiModelBase {
-		if(!$api) {
-			return $this->_api;
-		}
-		$this->_api = $api;
-		return $api;
 	}
 	/**
 	* Provides DB-Specific methods like update,create,delete.
@@ -63,7 +45,7 @@ class ArrayOfZoneLogEntry extends DbArrayBase  {
 	public function createZoneLogEntry () : \ascio\dns\ZoneLogEntry {
 		return $this->create ("ZoneLogEntry", "\\ascio\\dns\\ZoneLogEntry");
 	}
-	public function addZoneLogEntry () : \ascio\dns\ZoneLogEntry {
-		return $this->add("ZoneLogEntry","\\ascio\\dns\\ZoneLogEntry",func_get_args());
+	public function addZoneLogEntry ($item = null) : \ascio\dns\ZoneLogEntry {
+		return $this->addItem("ZoneLogEntry","\\ascio\\dns\\ZoneLogEntry",func_get_args());
 	}
 }

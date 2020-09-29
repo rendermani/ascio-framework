@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of Extensions
 
 namespace ascio\service\v2;
-use ascio\base\v2\DbArrayBase;
 use ascio\db\v2\ExtensionsDb;
 use ascio\api\v2\ExtensionsApi;
+use ascio\base\v2\DbArrayBase;
 
 
 class Extensions extends DbArrayBase  {
@@ -63,7 +63,7 @@ class Extensions extends DbArrayBase  {
 	public function createExtension () : \ascio\v2\Extension {
 		return $this->create ("Extension", "\\ascio\\v2\\Extension");
 	}
-	public function addExtension (string $Key, string $Value) : \ascio\v2\Extension {
-		return $this->add("Extension","\\ascio\\v2\\Extension",func_get_args());
+	public function addExtension ($item = null) : \ascio\v2\Extension {
+		return $this->addItem("Extension","\\ascio\\v2\\Extension",func_get_args());
 	}
 }

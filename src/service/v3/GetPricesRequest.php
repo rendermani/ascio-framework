@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of GetPricesRequest
 
 namespace ascio\service\v3;
-use ascio\base\v3\Base;
 use ascio\db\v3\GetPricesRequestDb;
 use ascio\api\v3\GetPricesRequestApi;
+use ascio\base\v3\Base;
 
 
 class GetPricesRequest extends Base  {

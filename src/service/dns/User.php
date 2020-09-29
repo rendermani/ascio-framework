@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of User
 
 namespace ascio\service\dns;
-use ascio\base\dns\DbBase;
 use ascio\db\dns\UserDb;
 use ascio\api\dns\UserApi;
+use ascio\base\dns\DbBase;
 
 
 class User extends DbBase  {

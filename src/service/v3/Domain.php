@@ -3,22 +3,19 @@
 // XSLT-WSDL-Client. Generated PHP class of Domain
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbBase;
 use ascio\db\v3\DomainDb;
 use ascio\api\v3\DomainApi;
+use ascio\base\v3\DbBase;
 
 
 class Domain extends DbBase  {
 
-	protected $_apiProperties=["Name", "Handle", "RenewPeriod", "Status", "AuthInfo", "Created", "Expires", "EncodingType", "DomainPurpose", "Comment", "TransferLock", "DeleteLock", "UpdateLock", "QueueType", "Owner", "Admin", "Tech", "Billing", "Reseller", "NameServers", "Trademark", "DnsSecKeys", "PrivacyProxy", "DomainType", "DiscloseSocialData", "LocalPresence"];
+	protected $_apiProperties=["Name", "Handle", "RenewPeriod", "AuthInfo", "EncodingType", "DomainPurpose", "Comment", "TransferLock", "DeleteLock", "UpdateLock", "QueueType", "Owner", "Admin", "Tech", "Billing", "Reseller", "NameServers", "Trademark", "DnsSecKeys", "PrivacyProxy", "DomainType", "DiscloseSocialData", "LocalPresence"];
 	protected $_apiObjects=["Owner", "Admin", "Tech", "Billing", "Reseller", "NameServers", "Trademark", "DnsSecKeys", "PrivacyProxy"];
 	protected $Name;
 	protected $Handle;
 	protected $RenewPeriod;
-	protected $Status;
 	protected $AuthInfo;
-	protected $Created;
-	protected $Expires;
 	protected $EncodingType;
 	protected $DomainPurpose;
 	protected $Comment;
@@ -99,33 +96,12 @@ class Domain extends DbBase  {
 	public function getRenewPeriod () : ?int {
 		return $this->get("RenewPeriod", "int");
 	}
-	public function setStatus (?string $Status = null) : self {
-		$this->set("Status", $Status);
-		return $this;
-	}
-	public function getStatus () : ?string {
-		return $this->get("Status", "string");
-	}
 	public function setAuthInfo (?string $AuthInfo = null) : self {
 		$this->set("AuthInfo", $AuthInfo);
 		return $this;
 	}
 	public function getAuthInfo () : ?string {
 		return $this->get("AuthInfo", "string");
-	}
-	public function setCreated (?\DateTime $Created = null) : self {
-		$this->set("Created", $Created);
-		return $this;
-	}
-	public function getCreated () : ?\DateTime {
-		return $this->get("Created", "\\DateTime");
-	}
-	public function setExpires (?\DateTime $Expires = null) : self {
-		$this->set("Expires", $Expires);
-		return $this;
-	}
-	public function getExpires () : ?\DateTime {
-		return $this->get("Expires", "\\DateTime");
 	}
 	public function setEncodingType (?string $EncodingType = null) : self {
 		$this->set("EncodingType", $EncodingType);

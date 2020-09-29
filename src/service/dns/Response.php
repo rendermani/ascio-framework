@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of Response
 
 namespace ascio\service\dns;
-use ascio\base\dns\Base;
 use ascio\db\dns\ResponseDb;
 use ascio\api\dns\ResponseApi;
+use ascio\base\dns\Base;
 
 
 class Response extends Base  {

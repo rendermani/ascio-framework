@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of GetRegistrantVerificationStatusResponse
 
 namespace ascio\service\v2;
-use ascio\base\v2\ResponseRootElement;
 use ascio\db\v2\GetRegistrantVerificationStatusResponseDb;
 use ascio\api\v2\GetRegistrantVerificationStatusResponseApi;
+use ascio\base\v2\ResponseRootElement;
 
 
 class GetRegistrantVerificationStatusResponse extends ResponseRootElement  {

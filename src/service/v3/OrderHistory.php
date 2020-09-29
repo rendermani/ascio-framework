@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of OrderHistory
 
 namespace ascio\service\v3;
-use ascio\base\v3\Base;
 use ascio\db\v3\OrderHistoryDb;
 use ascio\api\v3\OrderHistoryApi;
+use ascio\base\v3\Base;
 
 
 class OrderHistory extends Base  {

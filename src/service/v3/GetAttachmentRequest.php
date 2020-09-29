@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of GetAttachmentRequest
 
 namespace ascio\service\v3;
-use ascio\base\v3\Base;
 use ascio\db\v3\GetAttachmentRequestDb;
 use ascio\api\v3\GetAttachmentRequestApi;
+use ascio\base\v3\Base;
 
 
 class GetAttachmentRequest extends Base  {

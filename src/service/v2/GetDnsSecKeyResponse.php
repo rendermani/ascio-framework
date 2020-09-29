@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of GetDnsSecKeyResponse
 
 namespace ascio\service\v2;
-use ascio\base\v2\ResponseRootElement;
 use ascio\db\v2\GetDnsSecKeyResponseDb;
 use ascio\api\v2\GetDnsSecKeyResponseApi;
+use ascio\base\v2\ResponseRootElement;
 
 
 class GetDnsSecKeyResponse extends ResponseRootElement  {

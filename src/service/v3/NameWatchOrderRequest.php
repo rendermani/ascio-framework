@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of NameWatchOrderRequest
 
 namespace ascio\service\v3;
-use ascio\v3\AbstractOrderRequest;
 use ascio\db\v3\NameWatchOrderRequestDb;
 use ascio\api\v3\NameWatchOrderRequestApi;
+use ascio\v3\AbstractOrderRequest;
 use ascio\api\v3\AbstractOrderRequestApi;
 
 

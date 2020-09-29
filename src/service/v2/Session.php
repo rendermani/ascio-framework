@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of Session
 
 namespace ascio\service\v2;
-use ascio\base\v2\Base;
 use ascio\db\v2\SessionDb;
 use ascio\api\v2\SessionApi;
+use ascio\base\v2\Base;
 
 
 class Session extends Base  {

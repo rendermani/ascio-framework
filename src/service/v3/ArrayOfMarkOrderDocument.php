@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ArrayOfMarkOrderDocument
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbArrayBase;
 use ascio\db\v3\ArrayOfMarkOrderDocumentDb;
 use ascio\api\v3\ArrayOfMarkOrderDocumentApi;
+use ascio\base\v3\DbArrayBase;
 
 
 class ArrayOfMarkOrderDocument extends DbArrayBase  {
@@ -45,7 +45,7 @@ class ArrayOfMarkOrderDocument extends DbArrayBase  {
 	public function createMarkOrderDocument () : \ascio\v3\MarkOrderDocument {
 		return $this->create ("MarkOrderDocument", "\\ascio\\v3\\MarkOrderDocument");
 	}
-	public function addMarkOrderDocument () : \ascio\v3\MarkOrderDocument {
-		return $this->add("MarkOrderDocument","\\ascio\\v3\\MarkOrderDocument",func_get_args());
+	public function addMarkOrderDocument ($item = null) : \ascio\v3\MarkOrderDocument {
+		return $this->addItem("MarkOrderDocument","\\ascio\\v3\\MarkOrderDocument",func_get_args());
 	}
 }

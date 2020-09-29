@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of GetMark
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbBase;
 use ascio\db\v3\GetMarkDb;
 use ascio\api\v3\GetMarkApi;
+use ascio\base\v3\DbBase;
 
 
 class GetMark extends DbBase  {

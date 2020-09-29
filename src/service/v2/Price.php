@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of Price
 
 namespace ascio\service\v2;
-use ascio\base\v2\Base;
 use ascio\db\v2\PriceDb;
 use ascio\api\v2\PriceApi;
+use ascio\base\v2\Base;
 
 
 class Price extends Base  {

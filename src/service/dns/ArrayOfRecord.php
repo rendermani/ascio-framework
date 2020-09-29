@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ArrayOfRecord
 
 namespace ascio\service\dns;
-use ascio\base\dns\DbArrayBase;
 use ascio\db\dns\ArrayOfRecordDb;
 use ascio\api\dns\ArrayOfRecordApi;
+use ascio\base\dns\DbArrayBase;
 
 
 class ArrayOfRecord extends DbArrayBase  {
@@ -21,24 +21,6 @@ class ArrayOfRecord extends DbArrayBase  {
 		$db = new ArrayOfRecordDb();
 		$db->parent($this);
 		$this->db($db);
-
-		//set the api model
-		$api = new ArrayOfRecordApi($this);
-		$api->parent($this);
-		$api->config($this->config()->dns);
-		$this->api($api);
-	}
-	/**
-	* Provides API-Specific methods like update,create,delete.
-	* @param @name|null $api
-	* @return ArrayOfRecordApi
-	*/
-	public function api($api = null) : ?\ascio\base\ApiModelBase {
-		if(!$api) {
-			return $this->_api;
-		}
-		$this->_api = $api;
-		return $api;
 	}
 	/**
 	* Provides DB-Specific methods like update,create,delete.
@@ -63,7 +45,7 @@ class ArrayOfRecord extends DbArrayBase  {
 	public function createRecord () : \ascio\dns\Record {
 		return $this->create ("Record", "\\ascio\\dns\\Record");
 	}
-	public function addRecord () : \ascio\dns\Record {
-		return $this->add("Record","\\ascio\\dns\\Record",func_get_args());
+	public function addRecord ($item = null) : \ascio\dns\Record {
+		return $this->addItem("Record","\\ascio\\dns\\Record",func_get_args());
 	}
 }

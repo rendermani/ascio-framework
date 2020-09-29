@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of CreateNameServerResponse
 
 namespace ascio\service\v3;
-use ascio\v3\AbstractResponse;
 use ascio\db\v3\CreateNameServerResponseDb;
 use ascio\api\v3\CreateNameServerResponseApi;
+use ascio\v3\AbstractResponse;
 use ascio\api\v3\AbstractResponseApi;
 
 

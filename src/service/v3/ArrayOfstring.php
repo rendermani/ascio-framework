@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ArrayOfstring
 
 namespace ascio\service\v3;
-use ascio\base\v3\ArrayBase;
 use ascio\db\v3\ArrayOfstringDb;
 use ascio\api\v3\ArrayOfstringApi;
+use ascio\base\v3\ArrayBase;
 
 
 class ArrayOfstring extends ArrayBase implements \Iterator  {
@@ -21,7 +21,7 @@ class ArrayOfstring extends ArrayBase implements \Iterator  {
 	public function getString () : ?Iterable {
 		return $this->get("string", "string");
 	}
-	public function addString () : string {
-		return $this->add("string","string",func_get_args());
+	public function addString ($item = null) : string {
+		return $this->addItem("string","string",func_get_args());
 	}
 }

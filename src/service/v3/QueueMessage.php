@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of QueueMessage
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbBase;
 use ascio\db\v3\QueueMessageDb;
 use ascio\api\v3\QueueMessageApi;
+use ascio\base\v3\DbBase;
 
 
 class QueueMessage extends DbBase  {

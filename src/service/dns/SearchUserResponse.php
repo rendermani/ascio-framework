@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of SearchUserResponse
 
 namespace ascio\service\dns;
-use ascio\base\dns\ResponseRootElement;
 use ascio\db\dns\SearchUserResponseDb;
 use ascio\api\dns\SearchUserResponseApi;
+use ascio\base\dns\ResponseRootElement;
 
 
 class SearchUserResponse extends ResponseRootElement  {

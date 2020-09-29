@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of Attachment
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbBase;
 use ascio\db\v3\AttachmentDb;
 use ascio\api\v3\AttachmentApi;
+use ascio\base\v3\DbBase;
 
 
 class Attachment extends DbBase  {

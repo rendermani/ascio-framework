@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of DeleteUserResponse
 
 namespace ascio\service\dns;
-use ascio\base\dns\ResponseRootElement;
 use ascio\db\dns\DeleteUserResponseDb;
 use ascio\api\dns\DeleteUserResponseApi;
+use ascio\base\dns\ResponseRootElement;
 
 
 class DeleteUserResponse extends ResponseRootElement  {

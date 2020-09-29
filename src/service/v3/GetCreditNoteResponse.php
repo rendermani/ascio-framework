@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of GetCreditNoteResponse
 
 namespace ascio\service\v3;
-use ascio\v3\AbstractResponse;
 use ascio\db\v3\GetCreditNoteResponseDb;
 use ascio\api\v3\GetCreditNoteResponseApi;
+use ascio\v3\AbstractResponse;
 use ascio\api\v3\AbstractResponseApi;
 
 

@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of CreateDnsSecKeyRequest
 
 namespace ascio\service\v3;
-use ascio\base\v3\Base;
 use ascio\db\v3\CreateDnsSecKeyRequestDb;
 use ascio\api\v3\CreateDnsSecKeyRequestApi;
+use ascio\base\v3\Base;
 
 
 class CreateDnsSecKeyRequest extends Base  {

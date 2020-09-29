@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of SearchOrderRequest
 
 namespace ascio\service\v2;
-use ascio\base\v2\Base;
 use ascio\db\v2\SearchOrderRequestDb;
 use ascio\api\v2\SearchOrderRequestApi;
+use ascio\base\v2\Base;
 
 
 class SearchOrderRequest extends Base  {

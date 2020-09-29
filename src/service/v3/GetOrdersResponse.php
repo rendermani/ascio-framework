@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of GetOrdersResponse
 
 namespace ascio\service\v3;
-use ascio\v3\AbstractResponse;
 use ascio\db\v3\GetOrdersResponseDb;
 use ascio\api\v3\GetOrdersResponseApi;
+use ascio\v3\AbstractResponse;
 use ascio\api\v3\AbstractResponseApi;
 
 

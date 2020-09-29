@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ArrayOfAttachment
 
 namespace ascio\service\v2;
-use ascio\base\v2\DbArrayBase;
 use ascio\db\v2\ArrayOfAttachmentDb;
 use ascio\api\v2\ArrayOfAttachmentApi;
+use ascio\base\v2\DbArrayBase;
 
 
 class ArrayOfAttachment extends DbArrayBase  {
@@ -45,7 +45,7 @@ class ArrayOfAttachment extends DbArrayBase  {
 	public function createAttachment () : \ascio\v2\Attachment {
 		return $this->create ("Attachment", "\\ascio\\v2\\Attachment");
 	}
-	public function addAttachment () : \ascio\v2\Attachment {
-		return $this->add("Attachment","\\ascio\\v2\\Attachment",func_get_args());
+	public function addAttachment ($item = null) : \ascio\v2\Attachment {
+		return $this->addItem("Attachment","\\ascio\\v2\\Attachment",func_get_args());
 	}
 }

@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of LogOutResponse
 
 namespace ascio\service\v2;
-use ascio\base\v2\ResponseRootElement;
 use ascio\db\v2\LogOutResponseDb;
 use ascio\api\v2\LogOutResponseApi;
+use ascio\base\v2\ResponseRootElement;
 
 
 class LogOutResponse extends ResponseRootElement  {

@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of GetContactResponse
 
 namespace ascio\service\v3;
-use ascio\base\v3\ResponseRootElement;
 use ascio\db\v3\GetContactResponseDb;
 use ascio\api\v3\GetContactResponseApi;
+use ascio\base\v3\ResponseRootElement;
 
 
 class GetContactResponse extends ResponseRootElement  {

@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of MarkInfo
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbBase;
 use ascio\db\v3\MarkInfoDb;
 use ascio\api\v3\MarkInfoApi;
+use ascio\base\v3\DbBase;
 
 
 class MarkInfo extends DbBase  {

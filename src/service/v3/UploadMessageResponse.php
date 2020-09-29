@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of UploadMessageResponse
 
 namespace ascio\service\v3;
-use ascio\v3\AbstractResponse;
 use ascio\db\v3\UploadMessageResponseDb;
 use ascio\api\v3\UploadMessageResponseApi;
+use ascio\v3\AbstractResponse;
 use ascio\api\v3\AbstractResponseApi;
 
 

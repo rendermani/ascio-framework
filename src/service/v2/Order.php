@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of Order
 
 namespace ascio\service\v2;
-use ascio\base\v2\DbBase;
 use ascio\db\v2\OrderDb;
 use ascio\api\v2\OrderApi;
+use ascio\base\v2\DbBase;
 
 
 class Order extends DbBase  {

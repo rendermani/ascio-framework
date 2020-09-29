@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of GetPricesResponse
 
 namespace ascio\service\v3;
-use ascio\base\v3\ResponseRootElement;
 use ascio\db\v3\GetPricesResponseDb;
 use ascio\api\v3\GetPricesResponseApi;
+use ascio\base\v3\ResponseRootElement;
 
 
 class GetPricesResponse extends ResponseRootElement  {

@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of GetInvoiceRequest
 
 namespace ascio\service\v3;
-use ascio\base\v3\Base;
 use ascio\db\v3\GetInvoiceRequestDb;
 use ascio\api\v3\GetInvoiceRequestApi;
+use ascio\base\v3\Base;
 
 
 class GetInvoiceRequest extends Base  {

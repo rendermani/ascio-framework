@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ErrorCode
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbBase;
 use ascio\db\v3\ErrorCodeDb;
 use ascio\api\v3\ErrorCodeApi;
+use ascio\base\v3\DbBase;
 
 
 class ErrorCode extends DbBase  {

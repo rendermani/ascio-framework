@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of TreatyOrStatuteMark
 
 namespace ascio\service\v3;
-use ascio\v3\AbstractMark;
 use ascio\db\v3\TreatyOrStatuteMarkDb;
 use ascio\api\v3\TreatyOrStatuteMarkApi;
+use ascio\v3\AbstractMark;
 use ascio\api\v3\AbstractMarkApi;
 
 

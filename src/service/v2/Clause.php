@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of Clause
 
 namespace ascio\service\v2;
-use ascio\base\v2\Base;
 use ascio\db\v2\ClauseDb;
 use ascio\api\v2\ClauseApi;
+use ascio\base\v2\Base;
 
 
 class Clause extends Base  {

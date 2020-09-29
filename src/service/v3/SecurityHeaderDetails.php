@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of SecurityHeaderDetails
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbBase;
 use ascio\db\v3\SecurityHeaderDetailsDb;
 use ascio\api\v3\SecurityHeaderDetailsApi;
+use ascio\base\v3\DbBase;
 
 
 class SecurityHeaderDetails extends DbBase  {

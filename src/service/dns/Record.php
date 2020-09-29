@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of Record
 
 namespace ascio\service\dns;
-use ascio\base\dns\DbBase;
 use ascio\db\dns\RecordDb;
 use ascio\api\dns\RecordApi;
+use ascio\base\dns\DbBase;
 
 
 class Record extends DbBase  {

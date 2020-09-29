@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of Domain
 
 namespace ascio\service\v2;
-use ascio\base\v2\DbBase;
 use ascio\db\v2\DomainDb;
 use ascio\api\v2\DomainApi;
+use ascio\base\v2\DbBase;
 
 
 class Domain extends DbBase  {

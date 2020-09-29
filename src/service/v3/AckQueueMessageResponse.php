@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of AckQueueMessageResponse
 
 namespace ascio\service\v3;
-use ascio\v3\AbstractResponse;
 use ascio\db\v3\AckQueueMessageResponseDb;
 use ascio\api\v3\AckQueueMessageResponseApi;
+use ascio\v3\AbstractResponse;
 use ascio\api\v3\AbstractResponseApi;
 
 

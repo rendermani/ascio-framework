@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ArrayOfSalesLines
 
 namespace ascio\service\v3;
-use ascio\base\v3\ArrayBase;
 use ascio\db\v3\ArrayOfSalesLinesDb;
 use ascio\api\v3\ArrayOfSalesLinesApi;
+use ascio\base\v3\ArrayBase;
 
 
 class ArrayOfSalesLines extends ArrayBase implements \Iterator  {
@@ -24,7 +24,7 @@ class ArrayOfSalesLines extends ArrayBase implements \Iterator  {
 	public function createSalesLine () : \ascio\v3\SalesLine {
 		return $this->create ("SalesLine", "\\ascio\\v3\\SalesLine");
 	}
-	public function addSalesLine () : \ascio\v3\SalesLine {
-		return $this->add("SalesLine","\\ascio\\v3\\SalesLine",func_get_args());
+	public function addSalesLine ($item = null) : \ascio\v3\SalesLine {
+		return $this->addItem("SalesLine","\\ascio\\v3\\SalesLine",func_get_args());
 	}
 }

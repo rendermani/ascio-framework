@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of Extension
 
 namespace ascio\service\v2;
-use ascio\base\v2\DbBase;
 use ascio\db\v2\ExtensionDb;
 use ascio\api\v2\ExtensionApi;
+use ascio\base\v2\DbBase;
 
 
 class Extension extends DbBase  {

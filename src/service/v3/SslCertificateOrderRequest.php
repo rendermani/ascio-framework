@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of SslCertificateOrderRequest
 
 namespace ascio\service\v3;
-use ascio\v3\AbstractOrderRequest;
 use ascio\db\v3\SslCertificateOrderRequestDb;
 use ascio\api\v3\SslCertificateOrderRequestApi;
+use ascio\v3\AbstractOrderRequest;
 use ascio\api\v3\AbstractOrderRequestApi;
 
 

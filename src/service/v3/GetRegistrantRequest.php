@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of GetRegistrantRequest
 
 namespace ascio\service\v3;
-use ascio\base\v3\Base;
 use ascio\db\v3\GetRegistrantRequestDb;
 use ascio\api\v3\GetRegistrantRequestApi;
+use ascio\base\v3\Base;
 
 
 class GetRegistrantRequest extends Base  {

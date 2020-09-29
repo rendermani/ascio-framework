@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ArrayOfSearchUserClause
 
 namespace ascio\service\dns;
-use ascio\base\dns\ArrayBase;
 use ascio\db\dns\ArrayOfSearchUserClauseDb;
 use ascio\api\dns\ArrayOfSearchUserClauseApi;
+use ascio\base\dns\ArrayBase;
 
 
 class ArrayOfSearchUserClause extends ArrayBase implements \Iterator  {
@@ -24,7 +24,7 @@ class ArrayOfSearchUserClause extends ArrayBase implements \Iterator  {
 	public function createSearchUserClause () : \ascio\dns\SearchUserClause {
 		return $this->create ("SearchUserClause", "\\ascio\\dns\\SearchUserClause");
 	}
-	public function addSearchUserClause () : \ascio\dns\SearchUserClause {
-		return $this->add("SearchUserClause","\\ascio\\dns\\SearchUserClause",func_get_args());
+	public function addSearchUserClause ($item = null) : \ascio\dns\SearchUserClause {
+		return $this->addItem("SearchUserClause","\\ascio\\dns\\SearchUserClause",func_get_args());
 	}
 }

@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ArrayOfObjectType
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbArrayBase;
 use ascio\db\v3\ArrayOfObjectTypeDb;
 use ascio\api\v3\ArrayOfObjectTypeApi;
+use ascio\base\v3\DbArrayBase;
 
 
 class ArrayOfObjectType extends DbArrayBase  {
@@ -42,7 +42,7 @@ class ArrayOfObjectType extends DbArrayBase  {
 	public function getObjectType () : ?Iterable {
 		return $this->get("ObjectType", "string");
 	}
-	public function addObjectType () : string {
-		return $this->add("ObjectType","string",func_get_args());
+	public function addObjectType ($item = null) : string {
+		return $this->addItem("ObjectType","string",func_get_args());
 	}
 }

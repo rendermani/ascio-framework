@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of GetMessageQueue
 
 namespace ascio\service\v2;
-use ascio\base\v2\RequestRootElement;
 use ascio\db\v2\GetMessageQueueDb;
 use ascio\api\v2\GetMessageQueueApi;
+use ascio\base\v2\RequestRootElement;
 
 
 class GetMessageQueue extends RequestRootElement  {

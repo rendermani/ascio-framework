@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ArrayOfOrderStatusType
 
 namespace ascio\service\v3;
-use ascio\base\v3\ArrayBase;
 use ascio\db\v3\ArrayOfOrderStatusTypeDb;
 use ascio\api\v3\ArrayOfOrderStatusTypeApi;
+use ascio\base\v3\ArrayBase;
 
 
 class ArrayOfOrderStatusType extends ArrayBase implements \Iterator  {
@@ -21,7 +21,7 @@ class ArrayOfOrderStatusType extends ArrayBase implements \Iterator  {
 	public function getOrderStatusType () : ?Iterable {
 		return $this->get("OrderStatusType", "string");
 	}
-	public function addOrderStatusType () : string {
-		return $this->add("OrderStatusType","string",func_get_args());
+	public function addOrderStatusType ($item = null) : string {
+		return $this->addItem("OrderStatusType","string",func_get_args());
 	}
 }

@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of DeleteSubUserRequest
 
 namespace ascio\service\v3;
-use ascio\base\v3\Base;
 use ascio\db\v3\DeleteSubUserRequestDb;
 use ascio\api\v3\DeleteSubUserRequestApi;
+use ascio\base\v3\Base;
 
 
 class DeleteSubUserRequest extends Base  {

@@ -2,11 +2,13 @@
 
 // XSLT-WSDL-Client. Generated PHP class of anyType
 
-namespace ascio\v3\service;
-use ascio\v3\Base;
+namespace ascio\service\v3;
+use ascio\base\v3\Base;
+use ascio\db\v3\anyTypeDb;
+use ascio\api\v3\anyTypeApi;
 
 
-abstract class anyType extends Base  {
+class anyType extends Base  {
 
 	protected $_apiProperties=[];
 	protected $_apiObjects=[];

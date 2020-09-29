@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of NameServer
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbBase;
 use ascio\db\v3\NameServerDb;
 use ascio\api\v3\NameServerApi;
+use ascio\base\v3\DbBase;
 
 
 class NameServer extends DbBase  {

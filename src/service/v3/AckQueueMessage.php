@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of AckQueueMessage
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbBase;
 use ascio\db\v3\AckQueueMessageDb;
 use ascio\api\v3\AckQueueMessageApi;
+use ascio\base\v3\DbBase;
 
 
 class AckQueueMessage extends DbBase  {

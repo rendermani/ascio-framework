@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of SearchZoneClause
 
 namespace ascio\service\dns;
-use ascio\base\dns\Base;
 use ascio\db\dns\SearchZoneClauseDb;
 use ascio\api\dns\SearchZoneClauseApi;
+use ascio\base\dns\Base;
 
 
 class SearchZoneClause extends Base  {

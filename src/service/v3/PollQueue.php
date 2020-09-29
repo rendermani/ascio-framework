@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of PollQueue
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbBase;
 use ascio\db\v3\PollQueueDb;
 use ascio\api\v3\PollQueueApi;
+use ascio\base\v3\DbBase;
 
 
 class PollQueue extends DbBase  {

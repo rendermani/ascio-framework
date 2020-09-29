@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of RegistrantVerificationDetails
 
 namespace ascio\service\v2;
-use ascio\base\v2\Base;
 use ascio\db\v2\RegistrantVerificationDetailsDb;
 use ascio\api\v2\RegistrantVerificationDetailsApi;
+use ascio\base\v2\Base;
 
 
 class RegistrantVerificationDetails extends Base  {

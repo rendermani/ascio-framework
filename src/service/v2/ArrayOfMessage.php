@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of ArrayOfMessage
 
 namespace ascio\service\v2;
-use ascio\base\v2\ArrayBase;
 use ascio\db\v2\ArrayOfMessageDb;
 use ascio\api\v2\ArrayOfMessageApi;
+use ascio\base\v2\ArrayBase;
 
 
 class ArrayOfMessage extends ArrayBase implements \Iterator  {
@@ -24,7 +24,7 @@ class ArrayOfMessage extends ArrayBase implements \Iterator  {
 	public function createMessage () : \ascio\v2\Message {
 		return $this->create ("Message", "\\ascio\\v2\\Message");
 	}
-	public function addMessage () : \ascio\v2\Message {
-		return $this->add("Message","\\ascio\\v2\\Message",func_get_args());
+	public function addMessage ($item = null) : \ascio\v2\Message {
+		return $this->addItem("Message","\\ascio\\v2\\Message",func_get_args());
 	}
 }

@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of UploadDocumentationRequest
 
 namespace ascio\service\v3;
-use ascio\base\v3\DbBase;
 use ascio\db\v3\UploadDocumentationRequestDb;
 use ascio\api\v3\UploadDocumentationRequestApi;
+use ascio\base\v3\DbBase;
 
 
 class UploadDocumentationRequest extends DbBase  {

@@ -3,9 +3,9 @@
 // XSLT-WSDL-Client. Generated PHP class of GetUser
 
 namespace ascio\service\dns;
-use ascio\base\dns\RequestRootElement;
 use ascio\db\dns\GetUserDb;
 use ascio\api\dns\GetUserApi;
+use ascio\base\dns\RequestRootElement;
 
 
 class GetUser extends RequestRootElement  {
