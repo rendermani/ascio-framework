@@ -5,15 +5,36 @@
 namespace ascio\service\dns;
 use ascio\db\dns\ArrayOfZoneDb;
 use ascio\api\dns\ArrayOfZoneApi;
-use ascio\base\dns\ArrayBase;
+use ascio\base\dns\DbArrayBase;
 
 
-class ArrayOfZone extends ArrayBase implements \Iterator  {
+class ArrayOfZone extends DbArrayBase  {
 
 	protected $_apiProperties=["Zone"];
 	protected $_apiObjects=["Zone"];
 	protected $Zone;
 
+	public function __construct($parent = null) {
+		parent::__construct($parent);
+
+		//set the database model
+		$db = new ArrayOfZoneDb();
+		$db->parent($this);
+		$this->db($db);
+	}
+	/**
+	* Provides DB-Specific methods like update,create,delete.
+	* @param ArrayOfZoneDb|null $db
+	* @return ArrayOfZoneDb
+	*/
+	public function db($db = null) {
+		if(!$db) {
+			return $this->_db;
+		}
+		$this->_db = $db;
+		$this->_db->parent($this);
+		return $db;
+	}
 	public function setZone (?Iterable $Zone = null) : self {
 		$this->set("Zone", $Zone);
 		return $this;
