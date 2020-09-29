@@ -7,7 +7,7 @@ use ascio\lib\Ascio;
 use ascio\lib\Substitutions;
 use ascio\base\ArrayBase;
 use ascio\lib\Changes;
-use ascio\lib\ApiArrayProperties;
+
 use ascio\lib\Producer;
 use Illuminate\Database\Eloquent\Model;
 use ReflectionMethod;
@@ -17,6 +17,8 @@ use ascio\logic\SyncPayload;
 use DateTime;
 use DateTimeZone;
 use Exception;
+use ReflectionClass;
+use stdClass;
 
 class BaseClass {
     protected $_properties;
@@ -31,6 +33,7 @@ class BaseClass {
     protected $_db;
     protected $_api;
     protected $_config;
+    protected $_changes;
     /**
      * @var StatusSerializer $_statusSerializer
      */
@@ -40,6 +43,7 @@ class BaseClass {
         $this->_position = 0;
         $this->_properties = new ApiProperties($this,$this->_apiProperties);
         $this->_objects = new ApiProperties($this,$this->_apiObjects);
+        $this->_changes = new Changes($this);
         if($this->_substitutions) {
             $this->_substitutionsObject = new Substitutions($this,$this->_substitutions,$this->_substituted);
         }
@@ -57,7 +61,11 @@ class BaseClass {
                     $item->init($parent);
                 }
             } elseif($childObject instanceOf ArrayInterface) {
+                /**
+                 * @var ArrayInterface $childObject 
+                 */
                 $childObject->__construct($this);
+                $childObject->init();
                 foreach($childObject as $item)  {
                     if(is_object($item)) $item->init($childObject);
                 }
@@ -71,11 +79,11 @@ class BaseClass {
      * Get a property. If no name is provided all properties are returned
      * @param string $name name of the property 
      */
-    function get($name=null) {
+    function get($name=null, ?string $className=null ) {
         if(!$name) {
             $out = [];
             foreach($this->properties() as $key) {
-                $out[$key] = $this->get($key);
+                $out[$key] = $this->_get($key);
             }
             return $out;
         } elseif($this->_get($name)) {
@@ -93,8 +101,39 @@ class BaseClass {
                         $this->_set($name,\DateTime::createFromFormat('Y-m-d?H:i:s.u', $this->_get($name)));break;
                     }
             }
+            if($className) {
+                $this->_set($name,$this->fixArray($this->_get($name),$className));
+            }
             return $this->_get($name);
         }        
+    }
+    // the SOAPClient is producing objects instead of arrays. Fix this. 
+    protected function fixArray($valueOld,string $className) {
+        if(in_array(strtolower($className),["string","int","double","boolean","float","integer"])) {
+            return $valueOld;
+        }
+        $obj = new $className();
+        if($obj instanceof ArrayInterface) {
+            /**
+             * ArrayInterface $obj The proper array-object
+             */
+            if($valueOld instanceof $className) {
+                return $valueOld;
+            }
+            if($valueOld instanceOf stdClass) {
+                foreach($valueOld as  $array) {                    
+                    foreach($array as $value) {
+                        $obj->add($value);                        
+                    }
+                }
+                return $obj;
+            } 
+            if(count($obj) == 1 && $obj[0] == null) {
+                return null;
+            } 
+            return $obj;
+        }        
+        return $valueOld; 
     }
     public function _get($name) {
         return $this->$name;
@@ -108,28 +147,13 @@ class BaseClass {
     function set($nameOrArray,$value=null) {
         // set sub-property
         if($value) {
-            // property not an API property                       
-            /**if($this instanceof DbBase) {
-                if(!(is_object($value) || is_array($value))) {
-                    $this->db()->setAttribute($nameOrArray,$value);
-                }                
-            }**/
             if(!$this->properties()->exists($nameOrArray)) {
                 return;
-            } 
-            // value is a JSON-Array
-            if(($value instanceOf ArrayBase) && ($this instanceof DbBase)) {
-                $this->db()->$nameOrArray = $value->toJson();
             } 
             // Value is other BaseClass
             if( ($value instanceOf BaseClass) ) {
                 $value->parent($this);
             } 
-            // Value is other BaseClass
-            if(($this instanceOf DbBase) &&! is_object($value)) {
-                $this->db()->setAttribute($nameOrArray,$value);
-            } 
-
             $this->_set($nameOrArray,$value);
         } 
         // set $this properties
@@ -140,7 +164,7 @@ class BaseClass {
             } // convert from array
             elseif (is_array($nameOrArray) ||is_object($nameOrArray)) {
                 foreach($nameOrArray as $key => $value) {
-                    $this->set($key,$value);
+                    $this->_set($key,$value);
                 }
             } else {
                 // for DB results
@@ -199,6 +223,9 @@ class BaseClass {
 
     }
     public function _set($name,$value) {
+        if($value === $this) {
+            throw new Exception("Invalid circular nesting: $name should not have ".get_class($value). "as value."); 
+        }
         $this->$name = $value;
         return $this;
     }
@@ -252,14 +279,33 @@ class BaseClass {
     public function serialize() : Object {
         return $this->properties()->cleanObject();
     }
-    public function deserialize($obj) : self {
-        foreach((array )$obj as $key => $value) {
+    /**
+     * @var obj|array $obj
+     */
+    public function deserialize($obj,bool $incremental = false) : self {
+        if(!(is_object($obj) ||is_array($obj))) {
+            throw new Exception('Please provide a array or object as $obj argument');
+        }
+        if(is_array($obj)) {
+            //foreach($obj as $item) {
+                /**
+                 * @var ArrayInterface $this
+                 */
+                $this->add($obj);
+            //}
+        } elseif($obj) foreach($obj as $key => $value) {
+            if($incremental && $value == null){
+                continue;
+            }
+            // detect DateTime
             if(is_object($value) && property_exists($value,"timezone_type")) {
                 $format = 'Y-m-d H:i:s.u';
                 $date = DateTime::createFromFormat($format, $value->date);
-                $date->setTimezone(new DateTimeZone($value->timezone));
+                $date->setTimezone(new DateTimeZone($value->timezone));                
                 $this->set($key,$date);
-            } elseif(is_object($value)) {
+            } 
+            //normal object
+            elseif(is_object($value)) {
                if($this->objects()->exists($key)) {
                     /**
                      * @var DbClass $newObj
@@ -269,25 +315,32 @@ class BaseClass {
                         throw new Exception($key ." should be an object. String found: ".$newObj);
                     }
                     $newObj->deserialize($value);
-               } elseif($key =="DbAttributes") {                    
-                foreach($value as $k => $v) {
-                        $this->db()->setAttribute($k,$v);
+
+               } 
+               // with db-attributes
+            elseif($key === "DbAttributes") {                    
+                    foreach($value as $k => $v) {
+                        /**
+                         * @var DbBase $dbBase
+                         */
+                        $dbBase = $this;
+                        $dbBase->db()->setAttribute($k,$v);
                     } 
                }
-            } elseif(is_array($value)) {
+            // array
+            } elseif(is_array($value) && $this->objects()->exists($key)) {
                 /**
                  * @var DbArrayBase $arr
-                 */
-                $arr = $this;
-                if($this->objects()->exists($key)) {
-                    foreach($value as $v) {                        
-                        $arr->createItem($v);
-                    }                    
-                } 
+                 */                
+                $arr = $this->createProperty($key);
+                $arr->add($value);                 
             } else {
                 $this->set($key,$value);
             }
         }
         return $this;         
     }
+    public function changes() : Changes {
+        return $this->_changes;
+    } 
 }
