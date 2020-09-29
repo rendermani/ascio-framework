@@ -2,6 +2,7 @@
 namespace ascio\base\dns;
 
 use ascio\lib\Ascio;
+use ascio\lib\AscioException;
 use ascio\lib\Config;
 use SoapHeader;
 
@@ -26,27 +27,26 @@ class ServiceBase extends \SoapClient {
         if($this->cfg->partner) $headers[] = new SoapHeader($ns, 'ActAs', $this->cfg->partner);
         if($this->cfg->partner) $headers[] = new SoapHeader($ns, 'Account', $this->cfg->partner);
         $this->__setSoapHeaders($headers);
-        foreach($this->classmap as $key => $value) {
-          if(!isset($options['classmap'][$key])) {
+        foreach ($this->classmap as $key => $value) {
+            if (!isset($options['classmap'][$key])) {
             $options['classmap'][$key] = $value;
           }
         }
-        $options['trace'] = 1;
+        $options = array_merge([
+            'features' => true,
+            'trace' => true
+        ],(array) $options); 
         parent::__construct($wsdl, $options);
     }
-    public function call($function,$args,$options = NULL, $input_headers = NULL, &$output_headers = NULL) {
-        $requestObject = new $function();
-        $requestObject->set($args);
-        if($function != "LogIn") {
-            $requestObject->setSessionId($this->sessionId);
-
-        }        
-        $result = $this->__soapCall($function, $args, $options, $input_headers, $output_headers);
-        if($function == "LogIn") {
-            $this->sessionId = $result->getSessionId();
-
-        }        
-        $result->init($this);
+    public function call($function,$args,$options = NULL, $input_headers = NULL, &$output_headers = NULL) { 
+        $result = $this->__soapCall($function, [$function => $args ], $options, $input_headers, $output_headers);     
+        $status = $result->get($function."Result");      
+        //$status->init();
+        $result->init();
+        if( method_exists($status,"getStatusCode") &&  $status->getStatusCode() !==200) {            
+            $this->setError($function,$args,$status,$status);
+        }
+        return $result;
     }
     public function setConfig(Config  $config) {
         $this->config = $config;
@@ -57,5 +57,11 @@ class ServiceBase extends \SoapClient {
 
     public function getSessionId() {
         return $this->sessionId;
+    }
+    public function setError($function, $request, $result,$status) {
+        $exception = new AscioException($status->getStatusMessage(),$status->getStatusCode());
+        $exception->setResult($function,$request,$status,$result);
+        $exception->setSoap($this->__getLastRequest(),$this->__getLastResponse());
+        throw $exception;
     }
 }
