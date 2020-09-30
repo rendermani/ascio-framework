@@ -12,8 +12,8 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | b
     && export NVM_DIR="$HOME/.nvm" \
     && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"   \
     && [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"   \
-    && nvm install-latest-npm \
     && nvm install v12.18.3 \
+    && nvm install-latest-npm \
 
 RUN yes | pecl install xdebug rdkafka apcu\
     && docker-php-ext-enable rdkafka \
