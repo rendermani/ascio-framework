@@ -100,7 +100,6 @@
     "prefer-stable": true,
     "scripts": {
         "test" : "vendor/bin/phpunit --no-coverage --colors=always",
-        "init" : "bin/init.sh",
         "update-classes" : "php bin/updates-classes.php",
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
