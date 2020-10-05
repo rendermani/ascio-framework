@@ -28,19 +28,17 @@ else
     cp bin/up.sh bin/up-custom.sh
 fi
 # start all docker containers
-bin/up.sh
 # install all php dependancies
 if [[ -n $1 ]]; then
-    docker exec ascio-framework-php composer config -g github-oauth.github.com $1
+    composer config -g github-oauth.github.com $1
 fi
-docker exec ascio-framework-php composer install
+composer install
 # create new tables
-docker exec ascio-framework-php php php artisan migrate
+php artisan migrate
 # set lavarel APP_KEY
-docker exec ascio-framework-php php artisan key:generate
+php artisan key:generate
 # init npm
-docker exec npm install && npm run dev
-
-bin/down.sh
-echo "Please edit $(pwd)/config/accounts/default.json and add your Ascio credentials. " 
-echo "When done run bin/up.sh."
+npm install
+npm install cross-env -g
+npm audit fix
+npm run dev
