@@ -25,6 +25,7 @@ class Sync {
             $update = false; 
         }
         $orderInfo->api()->get();
+        $orderInfo->setWorkflowStatus();
         $syncPayload = new SyncPayload($orderInfo);
         $syncPayload->setUpdate($update)->send();
         $this->getObject($orderInfo);
