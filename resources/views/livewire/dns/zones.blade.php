@@ -5,7 +5,7 @@
         </x-slot>
 
         <x-slot name="description">
-            {{ __('Create, edit, delete zones.') }}
+            {{ __('Create zones.') }}
         </x-slot>
 
         <x-slot name="form">
@@ -43,11 +43,11 @@
                                             {{$zone->CreatedDate}}
                                         </div>
 
-                                        <button class="cursor-pointer ml-6 text-sm text-gray-400 underline focus:outline-none" wire:click="edit({{ $zone->ZoneName }})">
+                                        <a href="dns/zone/'{{ $zone->ZoneName }}">
                                             {{ __('Edit Records') }}
-                                        </button>
+                                        </a>
 
-                                        <button class="cursor-pointer ml-6 text-sm text-red-500 focus:outline-none" wire:click="delete({{ $zone->ZoneName }})">
+                                        <button class="cursor-pointer ml-6 text-sm text-red-500 focus:outline-none" wire:click="delete('{{ $zone->ZoneName }}')">
                                              {{ __('Delete') }}
                                         </button>
                                 </div>

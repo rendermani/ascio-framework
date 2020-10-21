@@ -39970,17 +39970,6 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./resources/css/dns.css":
-/*!*******************************!*\
-  !*** ./resources/css/dns.css ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "./resources/js/Jetstream/ActionMessage.vue":
 /*!**************************************************!*\
   !*** ./resources/js/Jetstream/ActionMessage.vue ***!
@@ -42308,15 +42297,14 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 0:
-/*!***********************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/css/app.css ./resources/css/dns.css ***!
-  \***********************************************************************************/
+/*!***********************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/css/app.css ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /code/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /code/resources/css/app.css */"./resources/css/app.css");
-module.exports = __webpack_require__(/*! /code/resources/css/dns.css */"./resources/css/dns.css");
+module.exports = __webpack_require__(/*! /code/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })

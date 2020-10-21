@@ -173,7 +173,10 @@ class BaseClass {
         }        
         return $this; 
     }
-    protected function merge(BaseClass $source) : BaseClass {
+    function setIncr(BaseClass $data) {
+        $this->merge($data,true);
+    }
+    protected function merge(BaseClass $source, bool $incr=false) : BaseClass {
         if(get_class($this) !== get_class($source)) {
             throw new \Exception('$this ('.get_class($this).') and $source ('.get_class($source).') must have the same class');
         }
@@ -187,11 +190,13 @@ class BaseClass {
             } elseif ($value instanceof BaseClass) {                
                 $class = get_class($value);
                 $newValue = $this->get($key) ? $this->get($key) : new $class($this); 
-                $this->_set($key,$newValue->merge($value));
+                $this->_set($key,$newValue->merge($value,$incr));
             } else {
                 $newValue = $value; 
             }
-            $this->_set($key,$newValue);
+            if(!($incr && !$newValue)) {
+                $this->_set($key,$newValue);
+            }
         }
         return $this;
     }

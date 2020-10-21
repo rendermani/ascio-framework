@@ -37,6 +37,8 @@ composer install
 php artisan migrate
 # set lavarel APP_KEY
 php artisan key:generate
+php artisan config:cache
+composer install --optimize-autoloader --no-dev
 # init npm
 npm install
 npm install cross-env -g

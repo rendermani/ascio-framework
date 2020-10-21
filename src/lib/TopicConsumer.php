@@ -1,14 +1,5 @@
 <?php
 namespace ascio\lib;
-use Monolog\Handler\StreamHandler;
-use Monolog\Logger;
-use ascio\v2\Order;
-use phpDocumentor\Reflection\Types\Integer;
-use ascio\base\BaseClass;
-use ascio\base\DbBase;
-use ascio\logic\Payload;
-use ascio\logic\PayloadFactory;
-use Exception;
 
 class TopicConsumer {
     public static function consume ($topic,$group, \closure $function) {

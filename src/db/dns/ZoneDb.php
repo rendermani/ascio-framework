@@ -11,5 +11,11 @@ class ZoneDb extends DbModel {
 	public function getRecords(){
 		return $this->getRelationObject("dns","ArrayOfRecord","Records");
 	}
+	public function getByName($name) {
+		$result = $this->where("ZoneName",$name)->firstOrFail();
+		$this->parent()->set($result);
+		$this->parent()->changes()->setOriginal();
+		return $this->parent(); 
+	}
 
 }

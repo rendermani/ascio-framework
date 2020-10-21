@@ -8,7 +8,7 @@
                 {{$zone->Owner}}
             </div>
             <div class="text-sm text-gray-400 ml-6">
-                {{$zone->_client}}
+                {{$zone->DbAttributes->_client}}
             </div>
             <div class="text-sm text-gray-400 ml-6">
                 {{$zone->CreatedDate}}

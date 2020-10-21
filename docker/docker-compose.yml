@@ -42,6 +42,20 @@ services:
         - config=default
         entrypoint: /usr/local/bin/php 
         command: services/poll.php
+    poll-softgarden:
+        build:
+            context: .
+        image: ascio-framework
+        container_name: ascio-framework-poll-softgarden
+        env_file:
+        - ../.env
+        restart: always
+        volumes:
+            - ..:/code
+        environment: 
+        - config=softgarden
+        entrypoint: /usr/local/bin/php 
+        command: services/poll.php
     sync:
         build:
             context: .
@@ -66,20 +80,20 @@ services:
         restart: always
         entrypoint: /usr/local/bin/php 
         command: services/order-queue.php
-    couch-connector: 
-        build:
-            context: . 
-        image: ascio-framework
-        container_name: ascio-framework-couch-connector
-        env_file: 
-        - ../.env
-        volumes:
-        - ..:/code
-        restart: always
-        depends_on: 
-        - couchdb
-        entrypoint: /usr/local/bin/php 
-        command: services/couch-connector.php  
+    # couch-connector: 
+    #     build:
+    #         context: . 
+    #     image: ascio-framework
+    #     container_name: ascio-framework-couch-connector
+    #     env_file: 
+    #     - ../.env
+    #     volumes:
+    #     - ..:/code
+    #     restart: always
+    #     depends_on: 
+    #     - couchdb
+    #     entrypoint: /usr/local/bin/php 
+    #     command: services/couch-connector.php  
     redis-connector: 
         build:
             context: . 
@@ -94,16 +108,16 @@ services:
         - redis
         entrypoint: /usr/local/bin/php 
         command: services/redis-connector.php  
-    couchdb: 
-        image: couchdb:latest
-        container_name: ascio-framework-couchdb
-        env_file:
-        - ../.env
-        restart: always
-        ports:
-        - 5984:5984
-        volumes: 
-        - ascio-framework-couch:/opt/couchdb/data
+    # couchdb: 
+    #     image: couchdb:latest
+    #     container_name: ascio-framework-couchdb
+    #     env_file:
+    #     - ../.env
+    #     restart: always
+    #     ports:
+    #     - 5984:5984
+    #     volumes: 
+    #     - ascio-framework-couch:/opt/couchdb/data
     mysql-connector:
         build:
             context: .
@@ -163,7 +177,7 @@ services:
         depends_on:
         - zookeeper
     redis:
-        image: 'bitnami/redis:5.0'
+        image: 'redislabs/redismod'
         environment:
         # ALLOW_EMPTY_PASSWORD is recommended only for development.
         - ALLOW_EMPTY_PASSWORD=yes

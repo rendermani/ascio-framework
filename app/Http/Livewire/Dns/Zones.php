@@ -14,5 +14,11 @@ class Zones extends Component
         $zones = ZoneDb::orderBy('created_at', 'desc')->paginate(5);
         return view('livewire.dns.zones',['zones' => $zones]);
     }
+    public function edit($zoneName) {
+        return "1243";
+    }
+    public function delete($zoneName) {
+        return "1243";
+    }
 
 }

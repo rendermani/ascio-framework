@@ -12,6 +12,7 @@
 */
 
 use App\Http\Controllers\HomeController;
+use App\Http\Livewire\Dns\Zone;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,11 +21,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
 Route::get('/dns', function () {
+    //phpinfo();
     return view('dns.zones');
 });
-
-Auth::routes();
+Route::get('/dns/zone/{zoneName}', Zone::class);
 Route::get('/home', [HomeController::class, "index"])->name('home');
+Auth::routes();

@@ -13,6 +13,7 @@ class OrderParser {
     protected $data;
     protected $tld;
     protected $dataLessTransferTlds = ["no"];
+    protected $nameservers; 
     public function __construct($data) 
     {
         $this->data = $data;
@@ -105,25 +106,27 @@ class OrderParser {
         return $admin; 
     }
     protected function parseTech() : Contact {
-        $data = $this->data;
         $domain = $this->getOrder()->getDomain();
         $domain->setTechContact($this->cleaner->switchHandle());
         return $domain->getTechContact();
     }
     protected function parseBilling() : Contact {
-        $data = $this->data;
         $domain = $this->getOrder()->getDomain();
         $domain->setBillingContact($this->cleaner->switchHandle());
         return $domain->getBillingContact();
     }
     protected function parseNameServers() : NameServers {
-        $data = $this->data;
-        $nameservers =$this->getOrder()->getDomain()->createNameServers();
-        $nameservers->createNameServer1()->setHostName("ns1.ascio.com");
-        $nameservers->createNameServer2()->setHostName("ns2.ascio.com");
-        $nameservers->createNameServer3()->setHostName("ns3.ascio.com");
-        $nameservers->createNameServer4()->setHostName("ns4.ascio.com");
-        return $nameservers;
+        if($this->getNameservers()) {
+            $this->getOrder()->getDomain()->setNameServers($this->getNameservers());
+            return $this->getNameservers();
+        } else {
+            $nameservers =$this->getOrder()->getDomain()->createNameServers();
+            $nameservers->createNameServer1()->setHostName("ns1.ascio.com");
+            $nameservers->createNameServer2()->setHostName("ns2.ascio.com");
+            $nameservers->createNameServer3()->setHostName("ns3.ascio.com");
+            $nameservers->createNameServer4()->setHostName("ns4.ascio.com");
+            return $nameservers;
+        }
     }
     /**
      * Get the order
@@ -166,6 +169,25 @@ class OrderParser {
     {
         $this->dataLessTransferTlds = $dataLessTransferTlds;
 
+        return $this;
+    }
+
+    /**
+     * Get the value of nameservers
+     */ 
+    public function getNameservers() : ?NameServers
+    {
+        return $this->nameservers;
+    }
+
+    /**
+     * Set the value of nameservers
+     *
+     * @return  self
+     */ 
+    public function setNameservers(Nameservers $nameservers)
+    {
+        $this->nameservers = $nameservers;
         return $this;
     }
 }

@@ -12,7 +12,7 @@ Ascio::setConfig("cvkd148");
 
 $queueMessage = new QueueMessage(); 
 $queueMessage->setObjectType("DomainType");
-$queueMessage->setOrderId("TEST598556");
+$queueMessage->setOrderId("TEST610953");
 
 $sync = new Sync();
 $sync->getOrder(new CallbackPayload($queueMessage));
