@@ -5,14 +5,8 @@
 namespace ascio\v3;
 
 use ascio\base\OrderInfoInterface;
-use ascio\lib\LockType;
-use ascio\lib\AscioException;
-use ascio\lib\StatusSerializer;
 use ascio\lib\SubmitOptions;
 use ascio\lib\ValidationException;
-use ascio\v2\AutoRenew;
-use ascio\v2\DomainUpdates;
-use ascio\v2\Locks;
 use Illuminate\Support\Str;
 use Iodev\Whois\Factory;
 
@@ -61,5 +55,14 @@ class Domain extends \ascio\service\v3\Domain {
         $orderRequest->setType(OrderType::Register);
         $orderRequest->setDomain($this);
         return $orderRequest->submit($submitOptions);
+    }
+    public function removeHandles() {
+        $this->setHandle();
+        $this->getOwner()->setHandle();
+        $this->getAdmin()->setHandle();
+        $this->getTech()->setHandle();
+        if($this->getReseller()) {
+            $this->getReseller()->setHandle();
+        }        
     }
 }
