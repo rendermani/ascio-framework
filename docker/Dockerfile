@@ -1,7 +1,8 @@
 FROM php:7.4-fpm
 RUN apt-get update && apt-get -y install libpng-dev libzip-dev libxml2-dev git zip zlib1g-dev librdkafka-dev libicu-dev libxml2 libxml2-dev libxslt1.1 libxslt1-dev
 RUN  docker-php-ext-configure intl\
-	&& docker-php-ext-install gd pdo_mysql soap zip intl xsl
+	&& docker-php-ext-install gd pdo_mysql soap zip intl xsl opcache
+COPY ./opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 
 WORKDIR /code
 ENV COMPOSER_MEMORY_LIMIT=-1
