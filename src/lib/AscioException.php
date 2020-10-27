@@ -22,12 +22,13 @@ class AscioException extends \Exception {
         $this->request = $request; 
         $this->method = $method; 
         $this->result = $result;
+        $this->code = $status->getResultCode();
+        $this->message = $status->getResultMessage();
     }
     function setSoap($soapRequest,$soapResponse) {
         $this->soapRequest = $soapRequest;
         $this->soapResponse = $soapResponse;
     }
-    
     public function debug() {
         if(php_sapi_name() == "cli") {
             echo "Error in ".$this->method."\n";

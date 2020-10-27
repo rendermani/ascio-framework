@@ -21,5 +21,13 @@ class AscioOrderException extends AscioException {
         $this->order = $order;
 
         return $this;
-    }    
+    }     
+    function setResult($method, $request, $status,$result) {
+        $this->status = $status;
+        $this->request = $request; 
+        $this->method = $method; 
+        $this->result = $result;
+        $this->code = $status->getResultCode();
+        $this->message = $this->formatErrors();
+    }   
 }
