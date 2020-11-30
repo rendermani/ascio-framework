@@ -22,8 +22,15 @@ class AscioException extends \Exception {
         $this->request = $request; 
         $this->method = $method; 
         $this->result = $result;
-        $this->code = $status->getResultCode();
-        $this->message = $status->getResultMessage();
+        if(strpos(get_class($this->result),"v2")) {
+            $this->code = $status->getResultCode();
+            $this->message = $status->getMessage();            
+        } else {
+            $this->code = $status->getResultCode();
+            $this->message = $status->getResultMessage();
+        }
+
+
     }
     function setSoap($soapRequest,$soapResponse) {
         $this->soapRequest = $soapRequest;
