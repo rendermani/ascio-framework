@@ -34,10 +34,11 @@ class ServiceBase extends \SoapClient {
         /**
          * @var $result AbstractResponse
          */
-        $result = $this->__soapCall($function, [$function => $args], $options, $input_headers, $output_headers);    
+        $result = $this->__soapCall($function, [$function => $args], $options, $input_headers, $output_headers);  
+        echo($this->__getLastResponse());  
         $resultObject = $result->{$function."Result"};      
         $resultObject->init();
-        if( method_exists($resultObject,"getResultCode") &&  $resultObject->getResultCode() !==200) {            
+        if( method_exists($resultObject,"getResultCode") &&  ! in_array($resultObject->getResultCode() , [200,203])) {            
             $this->setError($function,$args,$resultObject,$resultObject);
         }
        
