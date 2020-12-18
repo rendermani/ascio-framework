@@ -14,10 +14,10 @@ class TestLib {
         $email = Ascio::getConfig()->get()->email;
         $domain =  new Domain();        
         $registrant =  $domain->createRegistrant();
-        $registrant->setName("Jane Doe");
+        $registrant->setName("John Doe");
         $registrant->setAddress1("Address1Test");
         $registrant->setCity("CityTest");
-        $registrant->setPostalCode("OX4 6LB");
+        $registrant->setPostalCode("888349");
         $registrant->setCountryCode("GB");
         $registrant->setEmail($email);
         $registrant->setPhone("+45.123456789");
@@ -27,7 +27,7 @@ class TestLib {
         $contact->setAddress1("Address1Test");
         $contact->setPostalCode("888349");
         $contact->setCity("CityTest");
-        $contact->setCountryCode("DK");
+        $contact->setCountryCode("GB");
         $contact->setEmail($email);
         $contact->setPhone("+45.123456789");
         $contact->setType("owner");

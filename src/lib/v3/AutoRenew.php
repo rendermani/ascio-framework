@@ -1,24 +1,34 @@
 <?php
-namespace ascio\v2;
+namespace ascio\v3;
 
 use DateTime;
 
 class AutoRenew {
     /**
-     * @var Domain $domain
+     * @var Domain|DomainInfo $domain
      */
     protected $domain;
     protected $status = false;
     protected $new;
-    public function __construct(Domain $domain) 
+
+    /** 
+     * @var Domain|DomainInfo $domain
+    */
+    public function __construct($domain) 
     {
         $this->domain = $domain; 
         
     }
     public function getStatus() {
-        $expiring = strpos($this->domain->getStatus(),"EXPIRING")===false;;
-        //echo "Get Status expiring ".$this->domain->getDomainName()." - ".$this->domain->getStatus().": ". $expiring. "\n";
-        return $expiring;
+        if($this->domain instanceof DomainInfo) {
+            $expiring = strpos($this->domain->getStatus(),"EXPIRING")===false;;
+            echo "Get Status expiring ".$this->domain->getDomainName()." - ".$this->domain->getStatus().": ". $expiring. "\n";
+            return $expiring;
+        } else {
+            $domainInfo = $this->domain->get();
+            return $domainInfo->getAutoRenew()->getStatus(); 
+        }
+
     }
 
     public function get() {

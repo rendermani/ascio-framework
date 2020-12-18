@@ -7,12 +7,16 @@ use ascio\lib\Ascio;
 use ascio\lib\LogLevel;
 use ascio\lib\StatusSerializer;
 use ascio\logic\CallbackPayload;
+use ascio\logic\Payload;
 use ascio\logic\SyncPayload;
 use Illuminate\Support\Str;
 use SoapFault;
 
 class Sync {
-    public function getOrder(CallbackPayload $payload) : ?OrderInfoInterface {
+    public function getOrder(Payload $payload) : ?OrderInfoInterface {
+        if(!($payload instanceof CallbackPayload)) {
+            return null;
+        }
         $orderId = $payload->getOrderId();        
         try {
             $orderInfo = $payload->getOrderInfo();

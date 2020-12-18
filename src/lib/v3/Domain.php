@@ -5,14 +5,9 @@
 namespace ascio\v3;
 
 use ascio\base\OrderInfoInterface;
-use ascio\lib\LockType;
-use ascio\lib\AscioException;
-use ascio\lib\StatusSerializer;
 use ascio\lib\SubmitOptions;
 use ascio\lib\ValidationException;
-use ascio\v2\AutoRenew;
-use ascio\v2\DomainUpdates;
-use ascio\v2\Locks;
+use ascio\v3\AutoRenew;
 use Illuminate\Support\Str;
 use Iodev\Whois\Factory;
 
@@ -21,7 +16,30 @@ class Domain extends \ascio\service\v3\Domain {
     private $locks; 
     private $autoRenew; 
     public $orderRequest;
+    protected $status;
 
+    public function __construct($parent = null) {
+        parent::__construct($parent);
+        $this->autoRenew = new AutoRenew($this);
+        $this->locks = new Locks($this);
+    }
+    public function getLocks() {
+        return $this->locks; 
+    }
+    /**
+     * Get the Domain-Status. If doesn't exist do getDomain
+     */
+    public function getStatus() {
+        if(!$this->status) {
+            return $this->api()->get()->getStatus();
+        } else {
+            return $this->status;
+        }
+    }
+    public function setStatus($status) {
+        $this->status = $status;
+        return $this;
+    }
     public function getTld() : string {
         return strtolower(implode(".",array_slice(explode(".",$this->getName()),1)));
     }
@@ -61,5 +79,12 @@ class Domain extends \ascio\service\v3\Domain {
         $orderRequest->setType(OrderType::Register);
         $orderRequest->setDomain($this);
         return $orderRequest->submit($submitOptions);
+    }
+    /**
+     * Get the value of autoRenew
+     */ 
+    public function getAutoRenew() : AutoRenew
+    {
+        return $this->autoRenew;
     }
 }

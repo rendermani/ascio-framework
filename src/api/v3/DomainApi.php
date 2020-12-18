@@ -22,7 +22,7 @@ class DomainApi extends ApiModel {
 	function delete($id=null) {
 		throw new \ascio\lib\AscioException("Not implemented yet.");
 	}
-	function get($id=null) {
+	function get($id=null) : DomainInfo {
 		throw new \ascio\lib\AscioException("Not implemented yet.");
 	}
 }

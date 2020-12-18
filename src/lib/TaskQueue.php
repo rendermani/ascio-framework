@@ -10,8 +10,6 @@ use ascio\logic\Payload;
 class TaskQueue {
     public static function consume()    {        
         Consumer::callback(function(Payload $payload) {
-            echo ".";
-            return;
             if($payload instanceof BlockPayload) {
                 DomainBlocker::block($payload->getObjectName());
                 return;
