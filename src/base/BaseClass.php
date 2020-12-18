@@ -153,7 +153,10 @@ class BaseClass {
             // Value is other BaseClass
             if( ($value instanceOf BaseClass) ) {
                 $value->parent($this);
-            } 
+            }            
+            elseif($value instanceof \DateTime) {
+                $value = $value->format(\DateTime::RFC3339);
+            }            
             $this->_set($nameOrArray,$value);
         } 
         // set $this properties
@@ -162,6 +165,9 @@ class BaseClass {
             if(($nameOrArray instanceof BaseClass)) {            
                 $this->merge($nameOrArray);                
             } // convert from array
+            elseif($nameOrArray instanceof \DateTime) {
+                $this->_set($key,$value);
+            }
             elseif (is_array($nameOrArray) ||is_object($nameOrArray)) {
                 foreach($nameOrArray as $key => $value) {
                     $this->_set($key,$value);
