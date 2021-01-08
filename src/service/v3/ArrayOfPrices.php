@@ -10,21 +10,21 @@ use ascio\base\v3\ArrayBase;
 
 class ArrayOfPrices extends ArrayBase implements \Iterator  {
 
-	protected $_apiProperties=["Price"];
-	protected $_apiObjects=["Price"];
-	protected $Price;
+	protected $_apiProperties=["PriceInfo"];
+	protected $_apiObjects=["PriceInfo"];
+	protected $PriceInfo;
 
-	public function setPrice (?Iterable $Price = null) : self {
-		$this->set("Price", $Price);
+	public function setPriceInfo (?Iterable $PriceInfo = null) : self {
+		$this->set("PriceInfo", $PriceInfo);
 		return $this;
 	}
-	public function getPrice () : ?Iterable {
-		return $this->get("Price", "\\ascio\\v3\\Price");
+	public function getPriceInfo () : ?Iterable {
+		return $this->get("PriceInfo", "\\ascio\\v3\\PriceInfo");
 	}
-	public function createPrice () : \ascio\v3\Price {
-		return $this->create ("Price", "\\ascio\\v3\\Price");
+	public function createPriceInfo () : \ascio\v3\PriceInfo {
+		return $this->create ("PriceInfo", "\\ascio\\v3\\PriceInfo");
 	}
-	public function addPrice ($item = null) : \ascio\v3\Price {
-		return $this->addItem("Price","\\ascio\\v3\\Price",func_get_args());
+	public function addPriceInfo ($item = null) : \ascio\v3\PriceInfo {
+		return $this->addItem("PriceInfo","\\ascio\\v3\\PriceInfo",func_get_args());
 	}
 }

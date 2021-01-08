@@ -52,6 +52,10 @@ class Service extends ServiceBase  {
 		"GetDomainsRequest" => "ascio\\v3\\GetDomainsRequest",
 		"GetDomainsResponse" => "ascio\\v3\\GetDomainsResponse",
 		"ArrayOfDomainInfo" => "ascio\\v3\\ArrayOfDomainInfo",
+		"GetPremiumDomainsRequest" => "ascio\\v3\\GetPremiumDomainsRequest",
+		"GetPremiumDomainsResponse" => "ascio\\v3\\GetPremiumDomainsResponse",
+		"ArrayOfPremiumDomainInfo" => "ascio\\v3\\ArrayOfPremiumDomainInfo",
+		"PremiumDomainInfo" => "ascio\\v3\\PremiumDomainInfo",
 		"GetDomainRequest" => "ascio\\v3\\GetDomainRequest",
 		"GetDomainResponse" => "ascio\\v3\\GetDomainResponse",
 		"DomainInfo" => "ascio\\v3\\DomainInfo",
@@ -65,7 +69,7 @@ class Service extends ServiceBase  {
 		"AvailabilityInfoRequest" => "ascio\\v3\\AvailabilityInfoRequest",
 		"AvailabilityInfoResponse" => "ascio\\v3\\AvailabilityInfoResponse",
 		"ArrayOfPrices" => "ascio\\v3\\ArrayOfPrices",
-		"Price" => "ascio\\v3\\Price",
+		"PriceInfo" => "ascio\\v3\\PriceInfo",
 		"Product" => "ascio\\v3\\Product",
 		"GetPricesRequest" => "ascio\\v3\\GetPricesRequest",
 		"GetPricesResponse" => "ascio\\v3\\GetPricesResponse",
@@ -179,6 +183,7 @@ class Service extends ServiceBase  {
 		"GetOrder" => "ascio\\v3\\GetOrder",
 		"GetOrders" => "ascio\\v3\\GetOrders",
 		"GetDomains" => "ascio\\v3\\GetDomains",
+		"GetPremiumDomains" => "ascio\\v3\\GetPremiumDomains",
 		"GetSslCertificates" => "ascio\\v3\\GetSslCertificates",
 		"GetDomain" => "ascio\\v3\\GetDomain",
 		"AvailabilityInfo" => "ascio\\v3\\AvailabilityInfo",
@@ -244,6 +249,7 @@ class Service extends ServiceBase  {
 		"GetOrder" => "ascio\\v3\\GetOrder",
 		"GetOrders" => "ascio\\v3\\GetOrders",
 		"GetDomains" => "ascio\\v3\\GetDomains",
+		"GetPremiumDomains" => "ascio\\v3\\GetPremiumDomains",
 		"GetSslCertificates" => "ascio\\v3\\GetSslCertificates",
 		"GetDomain" => "ascio\\v3\\GetDomain",
 		"AvailabilityInfo" => "ascio\\v3\\AvailabilityInfo",
@@ -330,6 +336,9 @@ class Service extends ServiceBase  {
 	}
 	public function getDomains(GetDomainsRequest $request) : GetDomainsResponse {
 		return $this->call("GetDomains", ["request" => $request]);
+	}
+	public function getPremiumDomains(GetPremiumDomainsRequest $request) : GetPremiumDomainsResponse {
+		return $this->call("GetPremiumDomains", ["request" => $request]);
 	}
 	public function getSslCertificates(GetSslCertificatesRequest $request) : GetSslCertificatesResponse {
 		return $this->call("GetSslCertificates", ["request" => $request]);

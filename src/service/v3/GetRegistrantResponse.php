@@ -5,13 +5,18 @@
 namespace ascio\service\v3;
 use ascio\db\v3\GetRegistrantResponseDb;
 use ascio\api\v3\GetRegistrantResponseApi;
-use ascio\base\v3\ResponseRootElement;
+use ascio\v3\AbstractResponse;
+use ascio\api\v3\AbstractResponseApi;
 
 
-class GetRegistrantResponse extends ResponseRootElement  {
+class GetRegistrantResponse extends AbstractResponse  {
 
-	protected $_apiProperties=["RegistrantInfo"];
-	protected $_apiObjects=["RegistrantInfo"];
+	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "RegistrantInfo"];
+	protected $_apiObjects=["Errors", "RegistrantInfo"];
+	protected $_substituted = true;
+	protected $ResultCode;
+	protected $ResultMessage;
+	protected $Errors;
 	protected $RegistrantInfo;
 
 	public function setRegistrantInfo (?\ascio\v3\RegistrantInfo $RegistrantInfo = null) : self {

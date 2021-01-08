@@ -5,13 +5,18 @@
 namespace ascio\service\v3;
 use ascio\db\v3\GetContactResponseDb;
 use ascio\api\v3\GetContactResponseApi;
-use ascio\base\v3\ResponseRootElement;
+use ascio\v3\AbstractResponse;
+use ascio\api\v3\AbstractResponseApi;
 
 
-class GetContactResponse extends ResponseRootElement  {
+class GetContactResponse extends AbstractResponse  {
 
-	protected $_apiProperties=["ContactInfo"];
-	protected $_apiObjects=["ContactInfo"];
+	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "ContactInfo"];
+	protected $_apiObjects=["Errors", "ContactInfo"];
+	protected $_substituted = true;
+	protected $ResultCode;
+	protected $ResultMessage;
+	protected $Errors;
 	protected $ContactInfo;
 
 	public function setContactInfo (?\ascio\v3\ContactInfo $ContactInfo = null) : self {

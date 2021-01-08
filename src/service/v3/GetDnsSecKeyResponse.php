@@ -5,13 +5,18 @@
 namespace ascio\service\v3;
 use ascio\db\v3\GetDnsSecKeyResponseDb;
 use ascio\api\v3\GetDnsSecKeyResponseApi;
-use ascio\base\v3\ResponseRootElement;
+use ascio\v3\AbstractResponse;
+use ascio\api\v3\AbstractResponseApi;
 
 
-class GetDnsSecKeyResponse extends ResponseRootElement  {
+class GetDnsSecKeyResponse extends AbstractResponse  {
 
-	protected $_apiProperties=["DnsSecKey"];
-	protected $_apiObjects=["DnsSecKey"];
+	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "DnsSecKey"];
+	protected $_apiObjects=["Errors", "DnsSecKey"];
+	protected $_substituted = true;
+	protected $ResultCode;
+	protected $ResultMessage;
+	protected $Errors;
 	protected $DnsSecKey;
 
 	public function setDnsSecKey (?\ascio\v3\DnsSecKey $DnsSecKey = null) : self {
