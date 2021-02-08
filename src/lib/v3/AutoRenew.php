@@ -5,30 +5,28 @@ use DateTime;
 
 class AutoRenew {
     /**
-     * @var Domain|DomainInfo $domain
+     * @var Domain $domain
      */
     protected $domain;
     protected $status = false;
     protected $new;
+    /**
+     * @var DomainInfo $domainInfo
+     */
+    protected $domainInfo; 
 
     /** 
-     * @var Domain|DomainInfo $domain
+     * @var Domain $domain
     */
-    public function __construct($domain) 
+    public function __construct(Domain $domain) 
     {
         $this->domain = $domain; 
         
     }
     public function getStatus() {
-        if($this->domain instanceof DomainInfo) {
-            $expiring = strpos($this->domain->getStatus(),"EXPIRING")===false;;
-            echo "Get Status expiring ".$this->domain->getDomainName()." - ".$this->domain->getStatus().": ". $expiring. "\n";
-            return $expiring;
-        } else {
-            $domainInfo = $this->domain->get();
-            return $domainInfo->getAutoRenew()->getStatus(); 
-        }
-
+        $expiring = strpos($this->domain->getStatus(),"EXPIRING")===false;
+        echo "Get Status expiring ".$this->domain->getName()." - ".$this->domain->getStatus().": ". $expiring. "\n";
+        return $expiring;
     }
 
     public function get() {
