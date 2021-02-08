@@ -22,6 +22,15 @@ class Domain extends \ascio\service\v3\Domain {
         parent::__construct($parent);
         $this->autoRenew = new AutoRenew($this);
         $this->locks = new Locks($this);
+        $this->orderRequest = new DomainOrderRequest();
+        $this->orderRequest->setDomain($this);
+    }
+    public function hasDatalessTransfer() : bool{
+        return in_array($this->getTld(),["no","de","com","net","org","biz","info","us","cc","cn","com.cn","net.cn","org.cn","tv"]);
+    }
+    public function getOrderRequest() : DomainOrderRequest
+    {
+        return $this->orderRequest;
     }
     public function getLocks() {
         return $this->locks; 
@@ -31,7 +40,20 @@ class Domain extends \ascio\service\v3\Domain {
      */
     public function getStatus() {
         if(!$this->status) {
-            return $this->api()->get()->getStatus();
+            $domainInfo = new DomainInfo();
+            if(!$this->getHandle()) {
+                $this->status = $domainInfo->db()
+                ->where("DomainHandle",$this->getHandle())
+                ->first()
+                ->status; 
+            } else {
+                $this->status = $domainInfo->db()
+                ->where("Name")
+                ->where("Status","!==","DELETED")
+                ->where("DomainName",$this->getName())
+                ->first()
+                ->status;                
+            }
         } else {
             return $this->status;
         }
@@ -74,7 +96,7 @@ class Domain extends \ascio\service\v3\Domain {
     public function hasAscioDnsZone() {
 
     }
-    public function register(?SubmitOptions $submitOptions=null) : OrderInfoInterface {
+    public function register(?SubmitOptions $submitOptions=null) : ?OrderInfoInterface {
         $orderRequest = new DomainOrderRequest();
         $orderRequest->setType(OrderType::Register);
         $orderRequest->setDomain($this);
@@ -86,5 +108,26 @@ class Domain extends \ascio\service\v3\Domain {
     public function getAutoRenew() : AutoRenew
     {
         return $this->autoRenew;
+    }
+    private function submitUpdateOrders(?SubmitOptions $submitOptions = null) : array {
+        $results = []; 
+        $submitOptions->setSubmitAfterQueue(true);
+        foreach ($this->getUpdateOrders() as $order) {
+            $results[] = $order->submit($submitOptions);
+            $submitOptions->setSubmitAfterQueue(false);
+        }
+        return $results; 
+    }
+    public function getUpdateOrders() {
+        $this->updates = new DomainUpdates($this); 
+        $results = [];
+        foreach($this->updates->getOrderTypes() as $orderType) {
+            $function = $orderType->function;
+            $result = $this->getOrderRequest()->$function();
+            if($result) {
+                $results[] =$result;       
+            }                        
+        }
+        return $results;
     }
 }
