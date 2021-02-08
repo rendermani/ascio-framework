@@ -30,12 +30,12 @@ class ServiceBase extends \SoapClient {
     public function call($function,$args=[],$options = NULL, $input_headers = NULL, &$output_headers = NULL) {
         $credentials = ["Account"=>$this->cfg->account, "Password" => $this->cfg->password];
         $header = new \SoapHeader("http://www.ascio.com/2013/02","SecurityHeaderDetails", $credentials, false);
-        $this->__setSoapHeaders($header);
+        Ascio::setHeaders("v3",$this,$header);
         /**
          * @var $result AbstractResponse
          */
+        //$this->__setSoapHeaders([$header]);
         $result = $this->__soapCall($function, [$function => $args], $options, $input_headers, $output_headers);  
-        echo($this->__getLastResponse());  
         $resultObject = $result->{$function."Result"};      
         $resultObject->init();
         if( method_exists($resultObject,"getResultCode") &&  ! in_array($resultObject->getResultCode() , [200,203])) {            
