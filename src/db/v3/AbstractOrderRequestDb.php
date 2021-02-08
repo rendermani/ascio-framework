@@ -118,7 +118,7 @@ class AbstractOrderRequestDb extends DbModel {
 		return $childObject ? $childObject->db() : null;
 	}
 	protected function getChildTable() : string {
-		return $this->getChildDb()->table;
+		return $this->getChildDb()->getTable();
 	}
 	/**
 	 *  when submitting an order, see if the order should queue
@@ -128,7 +128,7 @@ class AbstractOrderRequestDb extends DbModel {
 		if(!$childDb) return false; 
 		return 
 			$this->getChildDb()
-			->join($this->table, 'v3_AbstractOrderRequest.'.$this->objectPropertyName, '=', $this->getChildTable().'._id')
+			->join($this->table, 'v3_OrderInfo.', '=', $this->getChildTable().'._id')
 			->where($this->parent()->getObjectKey(),$this->parent()->getObjectName())
 			->where($this->table.'._status',array_merge($this->blockingTypes,[OrderStatus::Queued]))
 			->exists();

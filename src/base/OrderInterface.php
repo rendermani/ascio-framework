@@ -9,7 +9,7 @@ use ascio\lib\Task;
 // Todo: one interface for v2 and v3 orders. 
 // common function: create, poll, queue, getMessages, properties, db, api, config, handle ...
 interface OrderInterface {
-    public function submit(?SubmitOptions $submitOptions=null) : OrderInfoInterface;
+    public function submit(?SubmitOptions $submitOptions=null) : ?OrderInfoInterface;
     public function queue(?SubmitOptions $submitOptions=null) : self;
     public function getType();
     public function shouldQueue() : bool;
