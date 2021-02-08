@@ -178,21 +178,26 @@ services:
         - zookeeper
     redis:
         image: 'redislabs/redismod'
+        container_name: ascio-framework-redis
+        restart: always 
         environment:
         # ALLOW_EMPTY_PASSWORD is recommended only for development.
         - ALLOW_EMPTY_PASSWORD=yes
         - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
-        ports:
+        - REDIS_AOF_ENABLED=yes
+        working_dir: /dir
+        ports:        
         - '6379:6379'
         volumes:
-        - 'redis_data:/bitnami/redis/data'
+        - ascio-framework-volume-redis:/data
+        - ./redis.conf:/usr/local/etc/redis/redis.conf
+        command: /usr/local/etc/redis/redis.conf
     grafana:
         image: grafana/grafana:5.1.0
         ports:
-        - 3000:3000
+        - 3050:3000
         user: "104"
 volumes:
     ascio-framework-volume:
+    ascio-framework-volume-redis:
     ascio-framework-couch:
-    redis_data:
-        driver: local
