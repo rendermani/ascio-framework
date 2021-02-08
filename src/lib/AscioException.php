@@ -16,6 +16,7 @@ class AscioException extends \Exception {
     public $soapResponse;
     public $result;
     public $status;
+    public $api;
 
     function setResult($method, $request, $status,$result) {
         $this->status = $status;
@@ -24,10 +25,12 @@ class AscioException extends \Exception {
         $this->result = $result;
         if(strpos(get_class($this->result),"v2")) {
             $this->code = $status->getResultCode();
-            $this->message = $status->getMessage();            
+            $this->message = $status->getMessage();  
+            $this->api = "v2";          
         } else {
             $this->code = $status->getResultCode();
             $this->message = $status->getResultMessage();
+            $this->api = "v3";
         }
 
 
@@ -62,10 +65,23 @@ class AscioException extends \Exception {
         else {
             echo "<h3>".$this->getCode() . "-" . $this->getMessage()."</h3>";
             echo "<h4>SOAP Request</h4>";
-            echo "<pre>".print_r($this->request,1)."</pre>";
+            echo "<pre>".$this->formatXml($this->soapRequest)."</pre>";
             echo "<h4>SOAP Response</h4>";
-            echo "<pre>".print_r($this->values,1)."</pre>";
+            echo "<pre>".$this->formatXml($this->soapResponse)."</pre>";
         }          
+    }
+    public function markupSoap() {
+        echo "Account: ". Ascio::getConfig()->get($this->api)->account."\n";
+        if(Ascio::getConfig()->getPartner($this->api)) {
+            echo "Impersonate: ". Ascio::getConfig()->getPartner($this->api)."\n";
+        }
+        echo "Environment: ". Ascio::getConfig()->getEnvironment()."\n";
+        echo "Error-message: ".$this->getMessage()."\n" ;
+        echo "Error-code: ".$this->getCode()."\n" ;
+        echo "\n\n*SOAP Request*\n\n";
+        echo $this->formatXml($this->soapRequest);
+        echo "\n*SOAP Response*\n\n";
+        echo $this->formatXml($this->soapResponse);         
     }
     public function getResult() {
         return $this->result;

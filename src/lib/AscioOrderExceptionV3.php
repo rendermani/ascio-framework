@@ -8,7 +8,7 @@ class AscioOrderExceptionV3 extends AscioOrderException {
         /**
      * Get the value of order
      */ 
-    public function getOrder() : OrderInfo
+    public function getOrder() : ?OrderInfo
     {
         return $this->order;
     }
