@@ -5,13 +5,18 @@
 namespace ascio\service\v3;
 use ascio\db\v3\GetPricesResponseDb;
 use ascio\api\v3\GetPricesResponseApi;
-use ascio\base\v3\ResponseRootElement;
+use ascio\v3\AbstractResponse;
+use ascio\api\v3\AbstractResponseApi;
 
 
-class GetPricesResponse extends ResponseRootElement  {
+class GetPricesResponse extends AbstractResponse  {
 
-	protected $_apiProperties=["TotalCount", "Currency", "Prices"];
-	protected $_apiObjects=["Prices"];
+	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "TotalCount", "Currency", "Prices"];
+	protected $_apiObjects=["Errors", "Prices"];
+	protected $_substituted = true;
+	protected $ResultCode;
+	protected $ResultMessage;
+	protected $Errors;
 	protected $TotalCount;
 	protected $Currency;
 	protected $Prices;

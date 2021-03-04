@@ -5,13 +5,18 @@
 namespace ascio\service\v3;
 use ascio\db\v3\GetAccountBalanceResponseDb;
 use ascio\api\v3\GetAccountBalanceResponseApi;
-use ascio\base\v3\DbBase;
+use ascio\v3\AbstractResponse;
+use ascio\api\v3\AbstractResponseApi;
 
 
-class GetAccountBalanceResponse extends DbBase  {
+class GetAccountBalanceResponse extends AbstractResponse  {
 
-	protected $_apiProperties=["Currency", "Vat", "UnInvoicedOrders", "UnInvoicedOpenOrders", "UnInvoicedCompletedOrders", "UnInvoicedCompletedOrdersLast24h", "AccountBalance", "CurrentBalance", "ReminderThreshold", "BlockingThreshold", "ReminderEmailAddress", "InvoiceEmailAddress", "LastReminderSent", "NumberOfRemindersSent", "LastBlockedAccountMessageSent", "NumberOfBlockedAccountMessagesSent"];
-	protected $_apiObjects=["ReminderEmailAddress", "InvoiceEmailAddress"];
+	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "Currency", "Vat", "UnInvoicedOrders", "UnInvoicedOpenOrders", "UnInvoicedCompletedOrders", "UnInvoicedCompletedOrdersLast24h", "AccountBalance", "CurrentBalance", "ReminderThreshold", "BlockingThreshold", "ReminderEmailAddress", "InvoiceEmailAddress", "LastReminderSent", "NumberOfRemindersSent", "LastBlockedAccountMessageSent", "NumberOfBlockedAccountMessagesSent"];
+	protected $_apiObjects=["Errors", "ReminderEmailAddress", "InvoiceEmailAddress"];
+	protected $_substituted = true;
+	protected $ResultCode;
+	protected $ResultMessage;
+	protected $Errors;
 	protected $Currency;
 	protected $Vat;
 	protected $UnInvoicedOrders;

@@ -72,7 +72,7 @@ class Ascio {
             Ascio::setConfig($config);
         }
     }
-    public static function setConfig($id=null) {
+    public static function setConfig($id=null) : Object {
         global $_AscioLastConfigId, $_AscioConfigsSet;              
         if(isset($_AscioConfigsSet[$id])) {
             return $_AscioConfigsSet[$id];
@@ -119,21 +119,32 @@ class Ascio {
         switch($apiName) {
             case "v2" : 
                 $client = new \ascio\v2\Service(["trace"=>1],$config->getWsdl($apiName)); 
-                self::setHeader("v2",$client);
+                self::set("v2",$client);
                 break;
             case "v3" : $client = new \ascio\v3\Service([],$config->getWsdl($apiName)); break;
             case "dns" : $client = new \ascio\dns\Service([],$config->getWsdl($apiName)); break;
         }
         return $client;
     }
-    static private function setHeader($api, \SoapClient $client) {
+    static public function setHeaders($api, \SoapClient $client, $additionalHeaders) {
+        $headers = [];
+        if($additionalHeaders) {
+            $headers[]  = $additionalHeaders;
+        }
+        $header = Ascio::getHeader($api);  
+        if($header) {
+            $headers[] = $header;
+        }
+        $client->__setSoapHeaders($headers);
+    }
+    static function getHeader($api) {
         $header = 
             property_exists(self::getConfig()->get($api),"header") 
             ? self::getConfig()->get($api)->header
             : false;      
         if($header) {
             $soapHeader = new \SoapHeader($header->ns,$header->name, (array) $header->data);
-            $client->__setSoapHeaders($soapHeader);
+            return $soapHeader;
         }
     }
     static private function setDb($config) {       

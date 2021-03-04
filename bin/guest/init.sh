@@ -33,14 +33,5 @@ if [[ -n $1 ]]; then
     composer config -g github-oauth.github.com $1
 fi
 composer install
-# create new tables
-php artisan migrate
-# set lavarel APP_KEY
-php artisan key:generate
-php artisan config:cache
 composer install --optimize-autoloader --no-dev
-# init npm
-npm install
-npm install cross-env -g
-npm audit fix
-npm run dev
+

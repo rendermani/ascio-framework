@@ -1,0 +1,12 @@
+{
+    "environment" : "live",
+    "namespace" : "ascio:acl",
+    "namespaceObjects" : "ascio:objects",
+    "hoster" : "softgarden.no",
+    "ascio" : {
+        "account" : "mlautenschlager@ascio.com",
+        "password" : "ManiRules!",
+        "partner" : "webrender"
+    }
+
+}

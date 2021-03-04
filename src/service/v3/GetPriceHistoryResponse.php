@@ -5,13 +5,18 @@
 namespace ascio\service\v3;
 use ascio\db\v3\GetPriceHistoryResponseDb;
 use ascio\api\v3\GetPriceHistoryResponseApi;
-use ascio\base\v3\ResponseRootElement;
+use ascio\v3\AbstractResponse;
+use ascio\api\v3\AbstractResponseApi;
 
 
-class GetPriceHistoryResponse extends ResponseRootElement  {
+class GetPriceHistoryResponse extends AbstractResponse  {
 
-	protected $_apiProperties=["Currency", "Prices"];
-	protected $_apiObjects=["Prices"];
+	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "Currency", "Prices"];
+	protected $_apiObjects=["Errors", "Prices"];
+	protected $_substituted = true;
+	protected $ResultCode;
+	protected $ResultMessage;
+	protected $Errors;
 	protected $Currency;
 	protected $Prices;
 

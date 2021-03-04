@@ -7,6 +7,7 @@ namespace ascio\v3;
 use ascio\base\OrderInfoInterface;
 use ascio\lib\SubmitOptions;
 use ascio\lib\ValidationException;
+use ascio\v3\AutoRenew;
 use Illuminate\Support\Str;
 use Iodev\Whois\Factory;
 
@@ -15,7 +16,52 @@ class Domain extends \ascio\service\v3\Domain {
     private $locks; 
     private $autoRenew; 
     public $orderRequest;
+    protected $status;
 
+    public function __construct($parent = null) {
+        parent::__construct($parent);
+        $this->autoRenew = new AutoRenew($this);
+        $this->locks = new Locks($this);
+        $this->orderRequest = new DomainOrderRequest();
+        $this->orderRequest->setDomain($this);
+    }
+    public function hasDatalessTransfer() : bool{
+        return in_array($this->getTld(),["no","de","com","net","org","biz","info","us","cc","cn","com.cn","net.cn","org.cn","tv"]);
+    }
+    public function getOrderRequest() : DomainOrderRequest
+    {
+        return $this->orderRequest;
+    }
+    public function getLocks() {
+        return $this->locks; 
+    }
+    /**
+     * Get the Domain-Status. If doesn't exist do getDomain
+     */
+    public function getStatus() {
+        if(!$this->status) {
+            $domainInfo = new DomainInfo();
+            if(!$this->getHandle()) {
+                $this->status = $domainInfo->db()
+                ->where("DomainHandle",$this->getHandle())
+                ->first()
+                ->status; 
+            } else {
+                $this->status = $domainInfo->db()
+                ->where("Name")
+                ->where("Status","!==","DELETED")
+                ->where("DomainName",$this->getName())
+                ->first()
+                ->status;                
+            }
+        } else {
+            return $this->status;
+        }
+    }
+    public function setStatus($status) {
+        $this->status = $status;
+        return $this;
+    }
     public function getTld() : string {
         return strtolower(implode(".",array_slice(explode(".",$this->getName()),1)));
     }
@@ -50,19 +96,38 @@ class Domain extends \ascio\service\v3\Domain {
     public function hasAscioDnsZone() {
 
     }
-    public function register(?SubmitOptions $submitOptions=null) : OrderInfoInterface {
+    public function register(?SubmitOptions $submitOptions=null) : ?OrderInfoInterface {
         $orderRequest = new DomainOrderRequest();
         $orderRequest->setType(OrderType::Register);
         $orderRequest->setDomain($this);
         return $orderRequest->submit($submitOptions);
     }
-    public function removeHandles() {
-        $this->setHandle();
-        $this->getOwner()->setHandle();
-        $this->getAdmin()->setHandle();
-        $this->getTech()->setHandle();
-        if($this->getReseller()) {
-            $this->getReseller()->setHandle();
-        }        
+    /**
+     * Get the value of autoRenew
+     */ 
+    public function getAutoRenew() : AutoRenew
+    {
+        return $this->autoRenew;
+    }
+    private function submitUpdateOrders(?SubmitOptions $submitOptions = null) : array {
+        $results = []; 
+        $submitOptions->setSubmitAfterQueue(true);
+        foreach ($this->getUpdateOrders() as $order) {
+            $results[] = $order->submit($submitOptions);
+            $submitOptions->setSubmitAfterQueue(false);
+        }
+        return $results; 
+    }
+    public function getUpdateOrders() {
+        $this->updates = new DomainUpdates($this); 
+        $results = [];
+        foreach($this->updates->getOrderTypes() as $orderType) {
+            $function = $orderType->function;
+            $result = $this->getOrderRequest()->$function();
+            if($result) {
+                $results[] =$result;       
+            }                        
+        }
+        return $results;
     }
 }

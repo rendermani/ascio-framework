@@ -4,11 +4,11 @@ namespace ascio\lib;
 use ascio\v3\CreateOrderResponse;
 use ascio\v3\OrderInfo;
 
-class AscioOrderExceptionV3 extends AscioOrderException{
+class AscioOrderExceptionV3 extends AscioOrderException {
         /**
      * Get the value of order
      */ 
-    public function getOrder() : OrderInfo
+    public function getOrder() : ?OrderInfo
     {
         return $this->order;
     }
@@ -23,7 +23,7 @@ class AscioOrderExceptionV3 extends AscioOrderException{
     }
     public function formatErrors() {
         $br = php_sapi_name() == "cli" ? "\n" : "<br>";
-        return  "[".$this->getCode()."] ".$this->getMessage().$br . 
+        return  "[".$this->getCode()."] ".$this->getStatus()->getResultMessage().$br . 
         implode($br,$this->getErrors()).$br.$br;
     }
     public function debug() {

@@ -43,9 +43,7 @@ class ApiProperties implements \Iterator {
         ++$this->position;
     }
     public function get($name) {
-        if($this->keys[$name]) {
-            return $this->object->get($name);
-        }
+        return $this->object->get($name);
     }
     public function valid() {
         return count( $this->keys) >= $this->position + 1;

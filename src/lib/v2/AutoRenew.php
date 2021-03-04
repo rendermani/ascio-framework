@@ -44,6 +44,7 @@ class AutoRenew {
         $this->domain->db()->_paid_until = $date;
     }
     public function isPaid() {
-        $this->domain->db()->_paid_until < DateTime.now();
+        $date = new DateTime;
+        $this->domain->db()->_paid_until < $date;
     }
 }

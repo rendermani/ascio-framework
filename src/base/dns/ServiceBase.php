@@ -2,7 +2,7 @@
 namespace ascio\base\dns;
 
 use ascio\lib\Ascio;
-use ascio\lib\AscioException;
+use ascio\lib\AscioExceptionDns;
 use ascio\lib\Config;
 use SoapHeader;
 
@@ -59,7 +59,7 @@ class ServiceBase extends \SoapClient {
         return $this->sessionId;
     }
     public function setError($function, $request, $result,$status) {
-        $exception = new AscioException($status->getStatusMessage(),$status->getStatusCode());
+        $exception = new AscioExceptionDns($status->getStatusMessage(),$status->getStatusCode());
         $exception->setResult($function,$request,$status,$result);
         $exception->setSoap($this->__getLastRequest(),$this->__getLastResponse());
         throw $exception;

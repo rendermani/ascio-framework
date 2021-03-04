@@ -29,6 +29,7 @@ class AbstractOrderRequest extends \ascio\service\v3\AbstractOrderRequest implem
     use TaskTrait;
     private $task;
     protected $status;
+    protected $result;
     public function __construct($parent=null)
     {
         parent::__construct($parent);
@@ -57,12 +58,13 @@ class AbstractOrderRequest extends \ascio\service\v3\AbstractOrderRequest implem
     public function getObjectName() : ?string {
         throw new Exception("Please do not use the AbstractOrderRequest directly. Use inherited classes instead. ");
     }
-    public function submit(?SubmitOptions $submitOptions=null) : OrderInfoInterface {     
+    public function submit(?SubmitOptions $submitOptions=null) : ?OrderInfoInterface {     
         $this->createExtProperties();   
         $this->submitOptions = $submitOptions ?: $this->getSubmitOptions(); 
         $this->db()->_blocking = $this->submitOptions->getBlocking();
         if($this->shouldQueue()) {
-            return $this->queue();
+            $this->queue();
+            return null;
         } elseif(DomainBlocker::isBlocked($this->getObjectName())) {
             //echo $this->getStatusSerializer()->console(LogLevel::Warn,"Can't submit, queueing");
             $this->getSubmitOptions()->setSubmitAfterQueue(false);
@@ -89,8 +91,7 @@ class AbstractOrderRequest extends \ascio\service\v3\AbstractOrderRequest implem
                 $this->setWorkflowStatus(OrderStatus::Completed); 
                 $orderInfo = $e->getOrder();
                 $this->lastResult = $e->getResult();
-                $this->setStatus($orderInfo->getStatus());
-                $this->setOrderId($orderInfo->getOrderId());
+                $this->setStatus($e->getStatus());
                 $this->db()->_message = $this->lastResult->getResultMessage();
                 $this->db()->_code = $this->lastResult->getResultCode();
                 $this->db()->_values = json_encode($this->lastResult->getErrors());
@@ -271,5 +272,5 @@ class AbstractOrderRequest extends \ascio\service\v3\AbstractOrderRequest implem
         $PREVIOUS_TASK_ID = $this->db()->getKey();
         $PREVIOUS_OBJECT_NAME = $this->getObjectName();
         return $this;
-    }       
+    }   
 }
