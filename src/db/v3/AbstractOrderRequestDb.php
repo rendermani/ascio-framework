@@ -16,6 +16,14 @@ use Illuminate\Support\Facades\DB;
 class AbstractOrderRequestDb extends DbModel {
 	protected $table="v3_AbstractOrderRequest";
 	protected $objectPropertyName; 
+	private $blockingTypes = [
+		OrderStatus::Submitting,
+		OrderStatus::Running,
+		OrderStatus::Blocking,
+		OrderStatus::WaitingForUser,
+		OrderStatus::BlockedByOtherOrder,
+		OrderStatus::Processing
+    ];
 	// todo: Make abstract db possible with overwriting createTable()
 	protected $_customColumnTypes = [
 		"OrderId" => [
@@ -125,11 +133,10 @@ class AbstractOrderRequestDb extends DbModel {
 	 */
 	public function shouldQueue() {
 		$childDb = $this->getChildDb();
-		if(!$childDb) return false; 
 		return 
-			$this->getChildDb()
-			->join($this->table, 'v3_OrderInfo.', '=', $this->getChildTable().'._id')
-			->where($this->parent()->getObjectKey(),$this->parent()->getObjectName())
+			$this
+			->join('v3_OrderInfo', 'v3_OrderInfo.OrderRequest', '=', $this->getTable().'._id')
+			->where($this->getTable() ."." ."_objectName", $this->parent()->getObjectName())
 			->where($this->table.'._status',array_merge($this->blockingTypes,[OrderStatus::Queued]))
 			->exists();
 	} 

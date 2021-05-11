@@ -16,6 +16,7 @@ class TestLib {
         $registrant =  $domain->createOwner();
         $registrant->setFirstName("Jane");
         $registrant->setLastName("Doe");
+        $registrant->setOrgName("Webrender");
         $registrant->setAddress1("Address1Test");
         $registrant->setCity("CityTest");
         $registrant->setPostalCode("OX4 6LB");
