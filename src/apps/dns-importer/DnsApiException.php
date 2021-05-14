@@ -2,10 +2,10 @@
 namespace ascio\dns\importer;
 
 use ascio\dns\Response;
-use ascio\lib\AscioException;
+use ascio\lib\AscioExceptionDns;
 use Exception;
 
-class DnsApiException extends AscioException {
+class DnsApiException extends AscioExceptionDns {
     use ImporterExceptionTrait;
     /**
      * @var Response
@@ -29,7 +29,4 @@ class DnsApiException extends AscioException {
         $msg = $msg."\n";                         
         return $msg;
     }
-
-
-
 }
