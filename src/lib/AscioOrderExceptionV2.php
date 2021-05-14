@@ -24,8 +24,10 @@ class AscioOrderExceptionV2 extends AscioOrderException{
     }
     public function formatErrors() {
         $br = php_sapi_name() == "cli" ? "\n" : "<br>";
-        return  "[".$this->getCode()."] ".$this->getMessage().$br . 
-        implode($br,$this->status->getValues()->toArray()).$br;
+        return  "[".$this->getCode()."] ".$this->getMessage().$br ;
+        if($this->status->getValues()->toArray()) {
+            implode($br,$this->status->getValues()->toArray()).$br;
+        }
     }
     public function debug() {
         if(php_sapi_name() == "cli") {
