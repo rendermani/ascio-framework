@@ -11,7 +11,8 @@ class AbstractOrderRequestApi extends ApiModel {
 	public $parent;
 	protected $properties=["Type", "Period", "TransactionComment", "Comments", "Documentation", "Options"];
 	protected $objects=[];
-
+	public $idProperty="OrderId";
+	
 	function create($data=null) {
 		$orderRequest = $this->parent();
 		$orderRequest->setWorkflowStatus(OrderStatus::Running);

@@ -220,7 +220,14 @@ class Domain extends \ascio\service\v2\Domain {
     public function validateBillingContact() {
         $this->validateContact("BillingContact");
     }
-
-
+    public function removeHandles() {
+        $this->setDomainHandle();
+        $this->getRegistrant()->setHandle();
+        $this->getAdminContact()->setHandle();
+        $this->getTechContact()->setHandle();
+        if($this->getResellerContact()) {
+            $this->getResellerContact()->setHandle();
+        }        
+    }
 
 }

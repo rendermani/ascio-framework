@@ -22,6 +22,7 @@ interface TaskInterface {
     public function getSubmitOptions();
     public function setSubmitOptions(SubmitOptions $submitOptions);
     public function getStatusSerializer() : StatusSerializer;
+    public function linkToPrevious(TaskInterface $previousTask);
     public function db($db=null);
     public function log($loglevel, $text, $fields = []);
 }

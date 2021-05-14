@@ -1,6 +1,7 @@
 <?php
 namespace ascio\lib;
 
+use ascio\base\TaskInterface;
 use ascio\v2\Order;
 
 trait TaskTrait {
@@ -34,6 +35,23 @@ trait TaskTrait {
     public function getPreviousId()
     {
         return $this->db()->_previousId;
+    }
+    public function linkToPreviousTask(?TaskInterface $previousTask) {
+        $this->db()->_previous_task_id = $previousTask->db()->_id;
+        $this->db()->_previous_task_id_class = get_class($previousTask);
+        $this->previousTask;
+        return $this;
+    }
+    public function linkToLastTask() {
+        /** 
+         * @var TaskInterface $lastTask
+         */
+        global $lastTask; 
+        if($lastTask && ($this->getObjectName() == $lastTask->getObjectName())) {          
+            $this->linkToPrevious($lastTask);
+                    
+        }
+        $lastTask = $this;        
     }
 
  
