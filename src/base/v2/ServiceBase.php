@@ -43,7 +43,9 @@ class ServiceBase extends \SoapClient {
         $requestObject->set((array) $args);
         $argsNew = [$function => $requestObject->properties()->toArray()];
         $argsNew =  $this->serializeDate($argsNew);
-        $result = $this->__soapCall($function, $argsNew, $options, $input_headers, $output_headers);        
+        Ascio::setHeaders("v2",$this,null);
+        $result = $this->__soapCall($function, $argsNew, $options, $input_headers, $output_headers);
+        //echo "REQUEST HEADERS:\n" . $this->__getLastRequestHeaders() . "\n";       
         /**
          * @var Response $status
          */
