@@ -15,7 +15,9 @@ services:
         - ../.env
         restart: always
         depends_on:
-        - php         
+        - php    
+        networks:
+        - internal     
     php:
         build:
             context: .
@@ -28,6 +30,8 @@ services:
         environment: 
         - config=default
         restart: always
+        networks:
+        - internal
     poll-default:
         build:
             context: .
@@ -42,20 +46,25 @@ services:
         - config=default
         entrypoint: /usr/local/bin/php 
         command: services/poll.php
-    poll-softgarden:
-        build:
-            context: .
-        image: ascio-framework
-        container_name: ascio-framework-poll-softgarden
-        env_file:
-        - ../.env
-        restart: always
-        volumes:
-            - ..:/code
-        environment: 
-        - config=softgarden
-        entrypoint: /usr/local/bin/php 
-        command: services/poll.php
+        networks:
+        - internal
+        - ascionet
+    # poll-softgarden:
+    #     build:
+    #         context: .
+    #     image: ascio-framework
+    #     container_name: ascio-framework-poll-softgarden
+    #     env_file:
+    #     - ../.env
+    #     restart: always
+    #     volumes:
+    #         - ..:/code
+    #     environment: 
+    #     - config=softgarden
+    #     entrypoint: /usr/local/bin/php 
+    #     command: services/poll.php
+    #     networks:
+    #     - internal
     sync:
         build:
             context: .
@@ -68,6 +77,8 @@ services:
         restart: always
         entrypoint: /usr/local/bin/php 
         command: services/sync.php
+        networks:
+        - internal
     order-queue:
         build:
             context: .
@@ -80,6 +91,8 @@ services:
         restart: always
         entrypoint: /usr/local/bin/php 
         command: services/order-queue.php
+        networks:
+        - internal
     # couch-connector: 
     #     build:
     #         context: . 
@@ -108,6 +121,8 @@ services:
         - redis
         entrypoint: /usr/local/bin/php 
         command: services/redis-connector.php  
+        networks:
+        - internal
     # couchdb: 
     #     image: couchdb:latest
     #     container_name: ascio-framework-couchdb
@@ -131,7 +146,9 @@ services:
         depends_on: 
         - mysql
         entrypoint: /usr/local/bin/php 
-        command: services/mysql-connector.php                
+        command: services/mysql-connector.php
+        networks:
+        - internal                
     mysql:
         image: mariadb:latest
         container_name: ascio-framework-mysql
@@ -142,6 +159,9 @@ services:
         restart: always
         volumes:
         - ascio-framework-volume:/var/lib/mysql
+        networks:
+        - ascionet
+        - internal
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
         container_name: ascio-framework-pma
@@ -154,17 +174,21 @@ services:
         - /sessions      
         links:
             - mysql:db 
+        networks:
+        - internal
     zookeeper:
         image: wurstmeister/zookeeper
         container_name: ascio-framework-zookeeper
         restart: always 
         ports:
         - 2181:2181
-
+        networks:
+        - internal
     kafka:
         image: wurstmeister/kafka
         container_name: ascio-framework-kafka
         restart: always 
+        hostname: ${KAFKA_HOSTNAME:-kafka}
         ports:
         - 9092:9092
         env_file:
@@ -172,10 +196,17 @@ services:
         environment:
             KAFKA_CREATE_TOPICS: "ascio.api.framework.object.full:1:1,ascio.api.framework.object.incremental:1:1,ascio.api.framework.callback:1:1,ascio.api.framework.order:1:1,ascio.api.framework.log:1:1"
             KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+            KAFKA_ADVERTISED_HOST_NAME: host.docker.internal
+            KAFKA_ADVERTISED_PORT: 9092
+            KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+            #KAFKA_ADVERTISED_HOST_NAME: 172.18.0.3
         volumes:
         - /var/run/docker.sock:/var/run/docker.sock
         depends_on:
         - zookeeper
+        networks:
+        - ascionet
+        - internal
     redis:
         image: 'redislabs/redismod'
         container_name: ascio-framework-redis
@@ -186,18 +217,27 @@ services:
         - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
         - REDIS_AOF_ENABLED=yes
         working_dir: /dir
-        ports:        
-        - '6379:6379'
+        #ports:        
+        #- '6379:6379'
         volumes:
         - ascio-framework-volume-redis:/data
         - ./redis.conf:/usr/local/etc/redis/redis.conf
         command: /usr/local/etc/redis/redis.conf
+        networks:
+        - ascionet
+        - internal
     grafana:
         image: grafana/grafana:5.1.0
         ports:
         - 3050:3000
         user: "104"
+        networks:
+        - internal
 volumes:
     ascio-framework-volume:
     ascio-framework-volume-redis:
     ascio-framework-couch:
+networks:
+    ascionet:
+        external: true
+    internal: 
