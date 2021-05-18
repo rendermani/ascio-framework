@@ -1,7 +1,7 @@
 @echo off
 for %%I in (.) do set CurrDirName=%~p0
 set DockerComposeFile=%CurrDirName%..\docker\docker-compose.yml
-docker-compose -f %DockerComposeFile% up -d --remove-orphans zookeeper kafka mysql mysql-connector phpmyadmin sync web php order-queue poll-default
+docker-compose -f %DockerComposeFile% up -d --remove-orphans zookeeper kafka mysql mysql-connector phpmyadmin sync web php order-queue poll-default redis
 
 REM zookeeper: kafka queue manager. if this is removed, configure new kafka-connection in .env 
 REM kafka: kafka queue. if this is removed, configure new kafka-connection in .env 
