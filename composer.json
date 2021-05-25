@@ -10,9 +10,6 @@
     "license": "MIT",
     "minimum-stability": "dev",
     "scripts": {
-        "post-package-install" : [
-            "bin/guest/init.sh"
-        ],
         "post-install-cmd" : [
             "bin/guest/init.sh"
         ]
@@ -25,11 +22,12 @@
         "predis/predis": "^1.1",
         "io-developer/php-whois": "^4.0",
         "giggsey/libphonenumber-for-php": "^8.12",
-        "doctrine/couchdb": "@dev"
+        "doctrine/couchdb": "@dev",
+        "fzaninotto/faker": "^1.9@dev"
     },
     "require-dev": {
         "rendermani/wsdl-client-generator" : "*",
-        "phpunit/phpunit": "^8",
+        "phpunit/phpunit": "^9.5",
         "kwn/php-rdkafka-stubs": "^1.0"
     },
     "autoload": {
