@@ -11,23 +11,24 @@ use ascio\v2\Extensions;
 
 class TestLib {
     public static function getDomain($name = null) : Domain {
+        $faker = \Faker\Factory::create("de-DE");
         $email = Ascio::getConfig()->get()->email;
         $domain =  new Domain();        
         $registrant =  $domain->createRegistrant();
-        $registrant->setName("John Doe");
-        $registrant->setAddress1("Address1Test");
-        $registrant->setCity("CityTest");
-        $registrant->setPostalCode("888349");
-        $registrant->setCountryCode("GB");
+        $registrant->setName($faker->firstNameFemale . " " . $faker->lastName);
+        $registrant->setAddress1($faker->streetAddress);
+        $registrant->setCity($faker->city);
+        $registrant->setPostalCode($faker->postcode);
+        $registrant->setCountryCode("AL");
         $registrant->setEmail($email);
         $registrant->setPhone("+45.123456789");
         $contact =  new Contact();
-        $contact->setFirstName("John");
-        $contact->setLastName("Doe");
-        $contact->setAddress1("Address1Test");
-        $contact->setPostalCode("888349");
-        $contact->setCity("CityTest");
-        $contact->setCountryCode("GB");
+        $contact->setFirstName($faker->firstNameFemale );
+        $contact->setLastName($faker->lastName);
+        $contact->setAddress1($faker->streetAddress);
+        $contact->setPostalCode($faker->postCode);
+        $contact->setCity($faker->city);
+        $contact->setCountryCode("AL");
         $contact->setEmail($email);
         $contact->setPhone("+45.123456789");
         $contact->setType("owner");
@@ -40,7 +41,7 @@ class TestLib {
         $nameServers->setNameServer2($nameServer2);
         $domain =  new Domain();
         $time = str_replace(".","",microtime(true));
-        $domain->setDomainName($name ?: "test-ascio-framework-".uniqid().".com");
+        $domain->setDomainName($name ?: ("af" . "-".$faker->domainName));
         //$domain->setPrivacyProxy($proxy);
         $domain->setRegistrant($registrant);
         $domain->setAdminContact($contact->clone());
