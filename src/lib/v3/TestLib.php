@@ -10,28 +10,33 @@ use ascio\v3\PrivacyProxy;
 use ascio\v3\Extensions;
 
 class TestLib {
-    public static function getDomain($name = null) : Domain {
+    public static function getDomain($name=null,$tld=null) : Domain {
+        $faker = \Faker\Factory::create("de-DE");
+        $fakedomain = $faker->domainName;
+        if($tld) {
+            $fakedomain = \str_replace(".com",".".$tld,$fakedomain);
+        }
         $email = Ascio::getConfig()->get()->email;
         $domain =  new Domain();        
         $registrant =  $domain->createOwner();
-        $registrant->setFirstName("Jane");
-        $registrant->setLastName("Doe");
-        $registrant->setOrgName("Webrender");
-        $registrant->setAddress1("Address1Test");
-        $registrant->setCity("CityTest");
-        $registrant->setPostalCode("OX4 6LB");
-        $registrant->setCountryCode("GB");
+        $registrant->setFirstName($faker->firstNameFemale);
+        $registrant->setLastName($faker->lastName);
+        $registrant->setOrgName($faker->company);
+        $registrant->setAddress1($faker->streetAddress);
+        $registrant->setCity($faker->city);
+        $registrant->setPostalCode($faker->postcode);
+        $registrant->setCountryCode($faker->countryCode);
         $registrant->setEmail($email);
-        $registrant->setPhone("+45.123456789");
+        $registrant->setPhone("+45.123456789012");
         $contact =  new Contact();
         $contact->setFirstName("John");
-        $contact->setLastName("Doe");
-        $contact->setAddress1("Address1Test");
-        $contact->setPostalCode("888349");
-        $contact->setCity("CityTest");
-        $contact->setCountryCode("DK");
+        $contact->setLastName($faker->lastName);
+        $contact->setAddress1($faker->streetAddress);
+        $contact->setPostalCode($faker->postcode);
+        $contact->setCity($faker->city);
+        $contact->setCountryCode($faker->countryCode);
         $contact->setEmail($email);
-        $contact->setPhone("+45.123456789");
+        $contact->setPhone("+45.123456789012");
         $contact->setType("owner");
         $nameServer1 =  new NameServer();
         $nameServer1->setHostName("ns1.ascio.net");
@@ -42,7 +47,7 @@ class TestLib {
         $nameServers->setNameServer2($nameServer2);
         $domain =  new Domain();
         $time = str_replace(".","",microtime(true));
-        $domain->setName($name ?: "test-ascio-framework-".uniqid().".com");
+        $domain->setName($name ?: ("af" . "-".$fakedomain));
         //$domain->setPrivacyProxy($proxy);
         $domain->setOwner($registrant);
         $domain->setAdmin($contact->clone());
