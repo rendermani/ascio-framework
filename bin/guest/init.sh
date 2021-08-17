@@ -1,6 +1,6 @@
 #!/bin/bash
 
-root="`dirname "$0"`/../.. "
+root="`dirname "$0"`/../.."
 cd $root
 FILE=$root/.env
 AscioPW=$(openssl rand -base64 29 | tr -d "=+/" | cut -c1-25)
