@@ -4,7 +4,7 @@ namespace ascio\lib;
 
 use ascio\logic\BlockPayload;
 use ascio\logic\CallbackPayload;
-
+use ascio\logic\OrderPayload;
 use ascio\logic\Payload;
 
 class TaskQueue {
@@ -25,20 +25,25 @@ class TaskQueue {
             }
         });
     }
-    public static function submitNext(CallbackPayload $payload) {         
+    public static function submitNext(Payload $payload) {
+        return;         
         foreach ($payload->getOrder()->db()->next($payload->getWorkflowStatus(),$payload->getObjectName()) as $nextOrder) {
             $nextOrder->submit();
         } 
     }
-    public static function queue(CallbackPayload $payload) {
+    public static function queue(OrderPayload $payload) {
         $order = $payload->getOrder();
-        if(DomainBlocker::isBlocked($order->getObjectName()) || $order->db()->isBlocked() || $order->shouldQueue()) {
-            echo $order->log(LogLevel::Warn,"Queue blocked");
+        if(DomainBlocker::isBlocked($order->getObjectName())) {
+            echo $order->log(LogLevel::Warn,"Queue blocked by DomainBlocker");
+            return; 
+        }
+        if($order->db()->isBlocked()) {
+            echo $order->log(LogLevel::Warn,"Queue blocked by DB");
             return; 
         }
         echo $order->log(LogLevel::Info,"Submitting queued");
         try {
-            $order->submit();
+            $order->sendToApi();
         } catch (AscioOrderException $e) {
             $e->debug();
         }       
