@@ -174,7 +174,7 @@ class Payload  {
      */ 
     public function getWorkflowStatus()
     {
-        return $this->workflowStatus;
+        return $this->workflowStatus ? $this->workflowStatus : $this->object->workflowStatus;
     }
 
     /**
