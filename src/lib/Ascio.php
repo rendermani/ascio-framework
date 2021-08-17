@@ -29,18 +29,6 @@ class ApiName {
     const V3 = "v3";
     const Dns = "dns";
 }
-class OrderStatus {
-    const NotSet="NotSet";
-    const Stored="Stored";
-    const Queued="Queued";
-    const Submitting="Submitting";
-    const Running="Running";
-    const Blocking="Blocking";
-    const WaitingForUser="WaitingForUser";
-    const BlockedByOtherOrder="BlockedByOtherOrder";
-    const Processing="Processing";
-    const Completed="Completed";
-}
 class Actions {
     const Update="Update";
     const Create="Create";
