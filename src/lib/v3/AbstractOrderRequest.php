@@ -70,36 +70,40 @@ class AbstractOrderRequest extends \ascio\service\v3\AbstractOrderRequest implem
             $this->getSubmitOptions()->setSubmitAfterQueue(false);
             return $this->queue();
         } else {
-            $this->setWorkflowStatus(OrderStatus::Submitting); 
-            $this->produce();
-            $payload = new BlockPayload($this);            
-            $payload->send();
-            try {
-                DomainBlocker::block($this->getObjectName());
-                $result = $this->api()->create();                
-                $orderInfo = $result->getOrderInfo();
-                $this->lastResult = $result;
-                $this->setOrderId($orderInfo->getOrderId());
-                // don't create new ID's, use old ones for db update. Set $this.
-                $orderInfo->setOrderRequest($this);
-                //$this->produce(["action"=>"update"]);   
-                $orderInfo->produce(["action"=>"create"]);
-                // for the next submission
-                $this->getSubmitOptions()->setQueue(true);
-                return $orderInfo; 
-            } catch (AscioOrderExceptionV3 $e) {
-                $this->setWorkflowStatus(OrderStatus::Completed); 
-                $orderInfo = $e->getOrder();
-                $this->lastResult = $e->getResult();
-                $this->setStatus($e->getStatus());
-                $this->db()->_message = $this->lastResult->getResultMessage();
-                $this->db()->_code = $this->lastResult->getResultCode();
-                $this->db()->_values = json_encode($this->lastResult->getErrors());
-                $this->produce(["action"=>"update"]);                
-                throw $e; 
-            }                                 
+            return $this->sendToApi();                                
         }
         return $this;
+    }
+    public function sendToApi(): ?OrderInfoInterface {
+        $this->setWorkflowStatus(OrderStatus::Submitting); 
+        $this->produce();
+        $payload = new BlockPayload($this);            
+        $payload->send();
+        try {
+            DomainBlocker::block($this->getObjectName());            
+            $result = $this->api()->create();                
+            $orderInfo = $result->getOrderInfo();
+            $orderInfo->setObjectName($this->getObjectName());
+            $this->lastResult = $result;
+            $this->setOrderId($orderInfo->getOrderId());
+            // don't create new ID's, use old ones for db update. Set $this.
+            $orderInfo->setOrderRequest($this);
+            //$this->produce(["action"=>"update"]);   
+            $orderInfo->produce(["action"=>"create"]);
+            // for the next submission
+            $this->getSubmitOptions()->setQueue(true);
+            return $orderInfo; 
+        } catch (AscioOrderExceptionV3 $e) {
+            $this->setWorkflowStatus(OrderStatus::Completed); 
+            $orderInfo = $e->getOrder();
+            $this->lastResult = $e->getResult();
+            $this->setStatus($e->getStatus());
+            $this->db()->_message = $this->lastResult->getResultMessage();
+            $this->db()->_code = $this->lastResult->getResultCode();
+            $this->db()->_values = json_encode($this->lastResult->getErrors());
+            $this->produce(["action"=>"update"]);                
+            throw $e; 
+        } 
     }
     private function createExtProperties() {        
     }
