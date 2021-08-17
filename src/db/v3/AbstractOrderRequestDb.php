@@ -133,19 +133,19 @@ class AbstractOrderRequestDb extends DbModel {
 	 */
 	public function shouldQueue() {
 		$childDb = $this->getChildDb();
-		return 
+		$result =  
 			$this
-			->join('v3_OrderInfo', 'v3_OrderInfo.OrderRequest', '=', $this->getTable().'._id')
-			->where($this->getTable() ."." ."_objectName", $this->parent()->getObjectName())
-			->where($this->table.'._status',array_merge($this->blockingTypes,[OrderStatus::Queued]))
+			->where('._objectName',$this->parent()->getObjectName())
+			->whereIn('._status', array_merge($this->blockingTypes,[OrderStatus::Queued]))
 			->exists();
+		return $result;
 	} 
 	/**
 	 *  when processing the queue the order should not be blocked
 	 */
-	public function isBlocked($objectName) {
+	public function isBlocked() {
 		$this
-		->where('._objectName',$objectName)
+		->where('._objectName',$this->parent()->getObjectName())
 		->where('._status', $this->blockingTypes)
 		->exists();
 	}      
