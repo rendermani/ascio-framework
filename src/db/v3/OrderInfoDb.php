@@ -30,7 +30,8 @@ class OrderInfoDb extends DbModel {
 			$table->string('_status')->index()->nullable();	
 			$table->string('_blocking')->index()->nullable();
 			$table->string('_topic')->index()->nullable();
-			$table->boolean('_acked')->index()->nullable();
+			$table->string('_objectName')->index()->nullable();
+			$table->integerIncrements('_nr');
 			if($blueprintFunction) $blueprintFunction($table);
 		}); 
 	}
