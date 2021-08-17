@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use ReflectionClass;
 
 class OrderInfo extends \ascio\service\v3\OrderInfo implements OrderInfoInterface {
+    protected $objectName; 
     public static function mapWorkflowStatus($status) {
         switch($status) {
             case OrderStatusType::Completed :
@@ -88,7 +89,7 @@ class OrderInfo extends \ascio\service\v3\OrderInfo implements OrderInfoInterfac
         }
         return $this->Messages;
     }   
-    public function getObjectName() : ?string {
+    public function getObjectNameOld() : ?string {
         return $this->getOrderId();
     }
     public function getObjectKey() : string {
@@ -104,4 +105,24 @@ class OrderInfo extends \ascio\service\v3\OrderInfo implements OrderInfoInterfac
         ]);
         return $this->_statusSerializer;
     }     
+
+    /**
+     * Get the value of objectName
+     */ 
+    public function getObjectName() : ?string
+    {
+        return $this->db()->_objectName ?: $this->getOrderRequest()->getObjectName();
+    }
+
+    /**
+     * Set the value of objectName
+     *
+     * @return  self
+     */ 
+    public function setObjectName(?string $objectName)
+    {
+        $this->db()->_objectName = $objectName;
+
+        return $this;
+    }
 }
