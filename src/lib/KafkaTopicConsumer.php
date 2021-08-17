@@ -32,7 +32,8 @@ public function __construct(string $topic, ?int $partition = 0, $group)
     // Set the group id. This is required when storing offsets on the broker
     $conf->set('group.id', 'ascio.framework');
     $this->consumer = new \RdKafka\Consumer($conf);
-    $this->consumer->addBrokers('kafka');
+    $this->consumer->addBrokers('host.docker.internal');
+    #$this->consumer->addBrokers('kafka');
     $topicConf = new \RdKafka\TopicConf();
     //$topicConf->set('offset.store.sync.interval.ms', 1000);
     $topicConf->set('enable.auto.commit', 'false');

@@ -24,7 +24,8 @@ class KafkaTopicProducer {
         $this->logger->debug('Running producer...');
         
         $this->producer = new \RdKafka\Producer();
-        $this->producer->addBrokers('kafka');
+        #$this->producer->addBrokers('kafka');
+        $this->producer->addBrokers('host.docker.internal');
         $this->topic = $this->producer->newTopic($topic);
         
     }
