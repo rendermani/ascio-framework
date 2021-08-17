@@ -20,11 +20,11 @@
         "ext-pdo" : "*",
         "illuminate/database": ">=5.9@dev",
         "predis/predis": "^1.1",
-        "io-developer/php-whois": "^4.0",
+        "io-developer/php-whois": "dev-master",
         "giggsey/libphonenumber-for-php": "^8.12",
         "doctrine/couchdb": "@dev",
         "monolog/monolog": "^1.23",
-        "fzaninotto/faker": "^1.9@dev"
+        "fakerphp/faker": "1.15.x-dev"
     },
     "require-dev": {
         "rendermani/wsdl-client-generator" : "*",
