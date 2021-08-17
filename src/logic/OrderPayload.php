@@ -21,10 +21,12 @@ class OrderPayload extends Payload {
 
     public function __construct($order=null)
     {      
-       $this->setOrder($order);
-       $this->setWorkflowStatus(OrderStatus::Queued);
-       $this->setStatus(OrderStatus::Queued);
-       $this->module = "order";
+        if($order) {
+            $this->setOrder($order);
+        }
+        $this->class = get_class($this);
+        //parent::__construct($order); 
+        $this->module = "order";
     }
         /**
      * Get the value of order
@@ -39,6 +41,13 @@ class OrderPayload extends Payload {
      */ 
     public function getOrder() : OrderInterface
     {        
+        if(!$this->order instanceof OrderInterface) {
+            $type = $this->getObjectType();
+            $order = new $type();
+            $order->set($this->object);
+            $this->order = $order; 
+        }
+        $this->order->setWorkflowStatus($this->getWorkflowStatus());
         return $this->order;
     }
     /**
@@ -53,7 +62,9 @@ class OrderPayload extends Payload {
         $this->objectHandle = $order->handle()->getValue();
         $this->objectKey = $order->handle()->getKey();
         $this->objectType = get_class($order);
-        $this->api = $order instanceof Order ? "v2" : "v3";        
+        $this->api = $order instanceof Order ? "v2" : "v3";   
+        $this->workflowStatus = $order->getWorkflowStatus();
+        $this->status = $order->getStatus();     
         return $this;
     }
 
@@ -121,7 +132,7 @@ class OrderPayload extends Payload {
         return $this->module;
     }    
     public function send() {
-        assert($this->getObject(),"Has an order");
+        assert($this->getOrder(),"Has an order");
         assert($this->getObject(),"Has a payload object");
         TopicProducer::send("callback",$this); 
     }
