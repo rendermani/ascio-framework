@@ -2,7 +2,7 @@
 namespace ascio\test;
 use ascio\lib\Ascio;
 use ascio\v2\TestLib;
-use Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 /**
  * @covers ascio\lib\Changes
  */
