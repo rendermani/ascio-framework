@@ -245,8 +245,13 @@ class BaseClass {
         $this->$property->parent($this);      
         return $this->$property;
     }
-    public function createProperty($property) : BaseClass {
-        $prop = $this->{"create".$property}();
+    public function createProperty($property,$type=null) : BaseClass {
+        if($type) {
+            $prop = new $type();
+           $this->{"set".$property}($prop);
+        } else {
+            $prop = $this->{"create".$property}();
+        }
         $prop->parent($this);
         return $prop;
     }
@@ -321,7 +326,7 @@ class BaseClass {
                     /**
                      * @var DbClass $newObj
                      */
-                    $newObj = $this->get($key) ?: $this->createProperty($key);
+                    $newObj = $this->get($key) ?: $this->createProperty($key, $value->DbAttributes->_type);
                     if(is_string($newObj)) {
                         throw new Exception($key ." should be an object. String found: ".$newObj);
                     }
