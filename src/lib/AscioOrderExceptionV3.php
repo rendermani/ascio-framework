@@ -30,7 +30,7 @@ class AscioOrderExceptionV3 extends AscioOrderException {
         if(php_sapi_name() == "cli") {
             echo "Request\n";
             echo  $this->getCode() . "-" . $this->getMessage()."\n";
-            var_dump($this->request);
+            var_dump($this->request->serialize());
             echo "Errors\n";
         } else {
             echo "<h3>".$this->getCode() . "-" . $this->getMessage()."</h3>";
