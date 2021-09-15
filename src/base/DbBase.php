@@ -197,7 +197,7 @@ abstract class DbBase extends BaseClass {
         $this->$property->changes()->setOriginal();        
         return $this->$property;
     }
-    public function log($loglevel, $text, $fields=[]) {
+    public function log($loglevel, $text="", $fields=[]) {
         return $this->getStatusSerializer()->addFields($fields)->console($loglevel,$text);
     }
 }
