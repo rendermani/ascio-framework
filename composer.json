@@ -8,7 +8,6 @@
         }
     ],
     "license": "MIT",
-    "minimum-stability": "dev",
     "scripts": {
         "post-install-cmd" : [
             "bin/guest/init.sh"
@@ -23,13 +22,13 @@
         "io-developer/php-whois": "dev-master",
         "giggsey/libphonenumber-for-php": "^8.12",
         "doctrine/couchdb": "@dev",
-        "monolog/monolog": "^1.23",
-        "fakerphp/faker": "*"
+        "monolog/monolog": "^1.23"
     },
     "require-dev": {
         "rendermani/wsdl-client-generator" : "*",
         "phpunit/phpunit": "^9.5",
-        "kwn/php-rdkafka-stubs": "^1.0"
+        "kwn/php-rdkafka-stubs": "^1.0",
+        "fakerphp/faker": "*"
     },
     "autoload": {
         "psr-4": {            
