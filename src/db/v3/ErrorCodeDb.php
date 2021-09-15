@@ -8,5 +8,13 @@ use ascio\base\v3\DbModel;
 
 class ErrorCodeDb extends DbModel {
 	protected $table="v3_ErrorCode";
-
+	protected $_customColumnTypes = [
+		"Message" => [
+			"type" => "text",
+			"parameters" => [
+				"nullable" => true,
+				"length" => 2048
+			]
+		]
+	];
 }
