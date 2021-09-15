@@ -35,5 +35,11 @@ class DomainInfoDb extends DbModel {
 	public function getPrivacyProxy(){
 		return $this->getRelationObject("v3","PrivacyProxy","PrivacyProxy");
 	}
+	public function createTables(?\Closure $blueprintFunction=null) {
+		parent::createTables(function(Blueprint $table) use ($blueprintFunction){
+			$table->string('_objectName')->index()->nullable();
+			if($blueprintFunction) $blueprintFunction($table);
+		}); 
+	}
 
 }
