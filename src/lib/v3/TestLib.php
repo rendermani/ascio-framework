@@ -15,6 +15,10 @@ class TestLib {
         $fakedomain = $faker->domainName;
         if($tld) {
             $fakedomain = \str_replace(".com",".".$tld,$fakedomain);
+            $fakedomain = \str_replace(".net",".".$tld,$fakedomain);
+            $fakedomain = \str_replace(".org",".".$tld,$fakedomain);
+            $fakedomain = \str_replace(".info",".".$tld,$fakedomain);
+            $fakedomain = \str_replace(".biz",".".$tld,$fakedomain);
         }
         $email = Ascio::getConfig()->get()->email;
         $domain =  new Domain();        
@@ -39,9 +43,13 @@ class TestLib {
         $contact->setPhone("+45.123456789012");
         $contact->setType("owner");
         $nameServer1 =  new NameServer();
-        $nameServer1->setHostName("ns1.ascio.net");
+        $nameServer1->setHostName("ns1.ascio.com");
         $nameServer2 =  new NameServer();
-        $nameServer2->setHostName("ns2.ascio.net");
+        $nameServer2->setHostName("ns2.ascio.com");
+        $nameServer3 =  new NameServer();
+        $nameServer3->setHostName("ns3.ascio.com");
+        $nameServer4 =  new NameServer();
+        $nameServer4->setHostName("ns4.ascio.com");
         $nameServers =  new NameServers();
         $nameServers->setNameServer1($nameServer1);
         $nameServers->setNameServer2($nameServer2);
