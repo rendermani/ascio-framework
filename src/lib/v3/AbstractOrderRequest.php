@@ -161,8 +161,7 @@ class AbstractOrderRequest extends \ascio\service\v3\AbstractOrderRequest implem
         parent::getStatusSerializer()->addFields([
             "OrderId" => $this->getOrderId(),
             "OrderType" => $this->getType(),
-            "Status" => $this->getStatus() . " (".$this->getWorkflowStatus().")", 
-            "ObjectName" => $this->getObjectName() ?: "Missing object name",
+            "Status" => $this->getStatus() . " (".$this->getWorkflowStatus().")",
             "type" => "Domain"
         ]);
         return $this->_statusSerializer;

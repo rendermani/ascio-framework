@@ -28,7 +28,10 @@ class StatusSerializer {
     }
     public function console($logLevel, $text, $long = false) : string
     {
-        $keyValues = ["partner" => Ascio::getConfig()->getPartner("v2")];
+        $this->fields["partner"] = Ascio::getConfig()->getPartner("v2");
+        if((!$this->fields["objectName"]) && \method_exists($this->obj,"getObjectName") && $this->obj->getObjectName()) {
+            $this->fields["objectName"]  = $this->obj->getObjectName(); 
+        }
         $spacer = $long ? "\n" : ", ";
         foreach ($this->fields as $key => $value) {
             if(is_object($value)) {
@@ -40,7 +43,7 @@ class StatusSerializer {
             if($value) {
                 $keyValues[] = $long ? $key .": ".$value : $value;
             } else {
-                $keyValues[] = "No ".$key;
+                //$keyValues[] = "No ".$key;
             }
         }
         $data = implode($spacer,$keyValues);

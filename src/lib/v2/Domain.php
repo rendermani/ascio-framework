@@ -28,7 +28,6 @@ class Domain extends \ascio\service\v2\Domain {
     }
     public function getStatusSerializer() : StatusSerializer {
         parent::getStatusSerializer()->addFields([
-            "Domain" => $this->getDomainName(),
             "Status" => $this->getStatus()
         ]);
         return $this->_statusSerializer;

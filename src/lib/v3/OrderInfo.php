@@ -100,8 +100,7 @@ class OrderInfo extends \ascio\service\v3\OrderInfo implements OrderInfoInterfac
         parent::getStatusSerializer()->addFields([
             "OrderId" => $this->getOrderId(),
             "OrderType" => $this->getOrderRequest()->getType(),
-            "Status" => $this->getStatus() . " (".$this->getWorkflowStatus().")", 
-            "ObjectName" => $this->getObjectName() ?: "Missing object name"
+            "Status" => $this->getStatus() . " (".$this->getWorkflowStatus().")"
         ]);
         return $this->_statusSerializer;
     }     
@@ -119,10 +118,13 @@ class OrderInfo extends \ascio\service\v3\OrderInfo implements OrderInfoInterfac
      *
      * @return  self
      */ 
-    public function setObjectName(?string $objectName)
+    public function setObjectName(?string $objectName = null)
     {
+        if(!$objectName) {
+            $objectName = $this->getObjectName();
+        }
         $this->db()->_objectName = $objectName;
-
+        
         return $this;
     }
 }
