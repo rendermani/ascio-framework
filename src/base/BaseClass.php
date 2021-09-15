@@ -206,6 +206,14 @@ class BaseClass {
         }
         return $this;
     }
+    public function setObjectName(?string $objectName = null)
+    {
+        if(!$objectName && \method_exists($this,"getObjectName")) {
+            $objectName = $this->getObjectName();
+        }
+        $this->objectName = $objectName;
+        return $objectName; 
+    }
     public function clone()
     {
         $class = get_class($this);
@@ -354,6 +362,7 @@ class BaseClass {
                 $this->set($key,$value);
             }
         }
+        $this->setObjectName();
         return $this;         
     }
     public function changes() : Changes {

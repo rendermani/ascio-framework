@@ -91,6 +91,7 @@ class Payload  {
             } 
             $this->$key = $value; 
         }
+        $this->setObjectName();
         $this->parameters = (array) $payload->parameters;
     }
     /**
@@ -247,9 +248,13 @@ class Payload  {
     /**
      * Set the value of ObjectName
      */ 
-    public function setObjectName($name)
+    public function setObjectName(?string $objectName = null)
     {
-        return $this->objectName = $name;
+        if(!$objectName) {
+            $objectName = $this->getObjectName();
+        }
+        $this->objectName = $objectName;
+        return $objectName; 
     }
     /**
      * Get the value of Module

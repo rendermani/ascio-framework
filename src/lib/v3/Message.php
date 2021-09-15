@@ -5,4 +5,7 @@
 namespace ascio\v3;
 
 class Message extends \ascio\service\v3\Message {
+    function getObjectName() {
+        return $this->getSubject();
+    }
 }

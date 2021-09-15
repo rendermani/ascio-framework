@@ -5,4 +5,9 @@
 namespace ascio\v3;
 
 class GetDomainResponse extends \ascio\service\v3\GetDomainResponse {
+    public function getObjectName() : ?string
+    {
+        return $this->getDomainInfo()->getObjectName();
+    }
+
 }

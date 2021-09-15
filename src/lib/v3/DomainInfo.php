@@ -15,7 +15,7 @@ class DomainInfo extends \ascio\service\v3\DomainInfo {
      */ 
     public function getObjectName() : ?string
     {
-        return $this->db()->_objectName ?: $this->getOrderRequest()->getObjectName();
+        return $this->db()->_objectName ?: $this->getDomainName();
     }
 
     /**
@@ -23,10 +23,14 @@ class DomainInfo extends \ascio\service\v3\DomainInfo {
      *
      * @return  self
      */ 
-    public function setObjectName(?string $objectName)
+    public function setObjectName(?string $objectName = null)
     {
+        if(!$objectName) {
+            $objectName = $this->getObjectName();
+        }
         $this->db()->_objectName = $objectName;
-
+        
         return $this;
     }
+    
 }
