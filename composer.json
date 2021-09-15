@@ -8,6 +8,7 @@
         }
     ],
     "license": "MIT",
+    "minimum-stability": "dev",
     "scripts": {
         "post-install-cmd" : [
             "bin/guest/init.sh"
