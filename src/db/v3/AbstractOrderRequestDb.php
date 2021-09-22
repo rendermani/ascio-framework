@@ -17,7 +17,6 @@ class AbstractOrderRequestDb extends DbModel {
 	protected $table="v3_AbstractOrderRequest";
 	protected $objectPropertyName; 
 	private $blockingTypes = [
-		OrderStatus::Submitting,
 		OrderStatus::Running,
 		OrderStatus::Blocking,
 		OrderStatus::WaitingForUser,
