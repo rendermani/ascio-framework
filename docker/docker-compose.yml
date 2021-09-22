@@ -32,7 +32,7 @@ services:
         restart: always
         networks:
         - internal
-        - ascionet
+        - ascio-net
     poll-default:
         build:
             context: .
@@ -49,7 +49,7 @@ services:
         command: services/poll.php
         networks:
         - internal
-        - ascionet
+        - ascio-net
     sync:
         build:
             context: .
@@ -64,7 +64,7 @@ services:
         command: services/sync.php
         networks:
         - internal
-        - ascionet
+        - ascio-net
     order-queue:
         build:
             context: .
@@ -79,7 +79,7 @@ services:
         command: services/order-queue.php
         networks:
         - internal
-        - ascionet
+        - ascio-net
     mysql-connector:
         build:
             context: .
@@ -96,7 +96,7 @@ services:
         command: services/mysql-connector.php
         networks:
         - internal
-        - ascionet                
+        - ascio-net                
     mysql:
         image: mariadb:latest
         container_name: ascio-framework-mysql
@@ -108,7 +108,7 @@ services:
         volumes:
         - ascio-framework-volume:/var/lib/mysql
         networks:
-        - ascionet
+        - ascio-net
         - internal
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
@@ -129,6 +129,6 @@ volumes:
     ascio-framework-volume-redis:
     ascio-framework-couch:
 networks:
-    ascionet:
+    ascio-net:
         external: true
     internal: 
