@@ -23,6 +23,7 @@ public $topic;
 public $consumer; 
 public function __construct(string $topic, ?int $partition = 0, $group)
 {
+    global $_ENV;
     $topic = "ascio.api.framework.".$topic;
     echo "Running consumer...topic: ".$topic."\n";
     $this->partition = $partition; 
@@ -32,7 +33,7 @@ public function __construct(string $topic, ?int $partition = 0, $group)
     // Set the group id. This is required when storing offsets on the broker
     $conf->set('group.id', 'ascio.framework');
     $this->consumer = new \RdKafka\Consumer($conf);
-    $this->consumer->addBrokers('host.docker.internal');
+    $this->consumer->addBrokers($_ENV["KAFKA_HOST"].":".$_ENV["KAFKA_PORT"]);
     #$this->consumer->addBrokers('kafka');
     $topicConf = new \RdKafka\TopicConf();
     //$topicConf->set('offset.store.sync.interval.ms', 1000);

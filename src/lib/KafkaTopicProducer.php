@@ -17,6 +17,7 @@ class KafkaTopicProducer {
     public $producer; 
     public function __construct(string $topic, ?int $partition = 0)
     {
+        global $_ENV;        
         $topic = "ascio.api.framework.".$topic;  
         $this->partition = $partition; 
         $this->logger = new Logger('producer');
@@ -24,8 +25,7 @@ class KafkaTopicProducer {
         $this->logger->debug('Running producer...');
         
         $this->producer = new \RdKafka\Producer();
-        #$this->producer->addBrokers('kafka');
-        $this->producer->addBrokers('host.docker.internal');
+        $this->producer->addBrokers($_ENV["KAFKA_HOST"].":".$_ENV["KAFKA_PORT"]);
         $this->topic = $this->producer->newTopic($topic);
         
     }
@@ -36,7 +36,7 @@ class KafkaTopicProducer {
             //$this->producer->poll(0);
         }
     }  
-    public function produce(Payload $payload) {
+    public function produce(Payload $payload) { 
         $this->topic->produce(0, 0, json_encode($payload->serialize(),JSON_PRETTY_PRINT));
         //$this->producer->poll(0);
         while($this->producer->getOutQLen() > 0) {
