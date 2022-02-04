@@ -19,10 +19,12 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | b
 RUN yes | pecl install xdebug rdkafka apcu\
     && docker-php-ext-enable rdkafka \
     && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_autostart=on" >> /usr/local/etc/php/conf.d/xdebug.ini\
-    && echo "xdebug.remote_host=host.docker.internal" >> /usr/local/etc/php/conf.d/xdebug.ini\
-    && echo "xdebug.remote_log=/var/log/xdebug" >> /usr/local/etc/php/conf.d/xdebug.ini\
+    && echo "xdebug.mode=debug" >> /usr/local/etc/php/conf.d/xdebug.ini \
+    && echo "xdebug.start_with_request=yes" >> /usr/local/etc/php/conf.d/xdebug.ini\
+    && echo "xdebug.client_port=9003" >> /usr/local/etc/php/conf.d/xdebug.ini\
+    && echo "xdebug.client_host='host.docker.internal'" >> /usr/local/etc/php/conf.d/xdebug.ini\
+    && echo "xdebug.idekey='VSCODE'" >> /usr/local/etc/php/conf.d/xdebug.ini\
+    && echo "xdebug.log=/var/log/xdebug.log" >> /usr/local/etc/php/conf.d/xdebug.ini\
     && echo "opcache.enable=1" > /usr/local/etc/php/conf.d/opcache.ini\
     && echo "opcache.memory_consumption=1028" > /usr/local/etc/php/conf.d/opcache.ini
 #ENTRYPOINT ["/bin/sh", "-c" , "echo 192.168.254.10   database-server >> /etc/hosts"]
