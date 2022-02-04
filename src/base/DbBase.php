@@ -210,7 +210,7 @@ abstract class DbBase extends BaseClass {
      *
      * @return  self
      */ 
-    public function setHandle($handle)
+    public function setHandle(?string $handle = NULL)
     {
         $this->handle = $handle;
 
