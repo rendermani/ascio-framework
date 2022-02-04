@@ -20,7 +20,10 @@
             "program": "${file}",
             "cwd": "${fileDirname}",
             "port": 9003,
-            "runtimeExecutable": "/Users/mlautenschlager/Development/ascio-framework/docker/php.sh"
+            "runtimeExecutable": "/Users/mlautenschlager/Development/ascio-framework/docker/php.sh",
+            "pathMappings": {
+                "/code": "${workspaceRoot}"
+              }
         }
     ]
 }
