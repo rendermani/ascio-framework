@@ -7,14 +7,10 @@ use ascio\lib\Changes;
 use ascio\lib\Handle;
 use ascio\lib\StatusSerializer;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use stdClass;
-use ascio\v2\Order;
-use DateTime;
-use DateTimeZone;
-use Exception;
 use Illuminate\Database\Eloquent\Model;
 
 abstract class DbBase extends BaseClass {
+    protected $handle; 
     /**
      * @var DbModelBase $_db;
      */
@@ -199,5 +195,25 @@ abstract class DbBase extends BaseClass {
     }
     public function log($loglevel, $text="", $fields=[]) {
         return $this->getStatusSerializer()->addFields($fields)->console($loglevel,$text);
+    }
+
+    /**
+     * Get the value of handle
+     */ 
+    public function getHandle()
+    {
+        return $this->handle;
+    }
+
+    /**
+     * Set the value of handle
+     *
+     * @return  self
+     */ 
+    public function setHandle($handle)
+    {
+        $this->handle = $handle;
+
+        return $this;
     }
 }
