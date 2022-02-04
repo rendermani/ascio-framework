@@ -147,7 +147,7 @@ class DomainOrderRequest {
     }
     public function unexpire() : ?Order { 
         if($this->domain->getAutoRenew()->getStatus()==true) {
-            return null; 
+            // null; 
         }        
         $domain = new Domain();
         $this->copyNameAndHandle($domain);
