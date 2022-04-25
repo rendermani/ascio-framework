@@ -76,8 +76,9 @@ class Ascio {
         return $config;
     }
     public static function getClient($apiName, $configId = null) {       
-        global $_AscioApiClients, $_AscioLastConfigId;
-        $configId = $configId ? $configId : $_AscioLastConfigId ;
+        global $_AscioApiClients, $_LastApiName;
+        $_LastApiName = $apiName; 
+        $configId = $configId ? $configId : self::getConfigId();
         // init singleton
         $_AscioApiClients = $_AscioApiClients ? $_AscioApiClients : [];
         $_AscioApiClients[$configId] = array_key_exists($configId,$_AscioApiClients) ? $_AscioApiClients[$configId] : [];
@@ -89,6 +90,14 @@ class Ascio {
         }        
         return $_AscioApiClients[$configId][$apiName];     
     }
+    public static function getApi() {
+        global  $_LastApiName;
+        return $_LastApiName;
+    }
+    public static function setApi($name) {
+        global  $_LastApiName;
+        $_LastApiName = $name; 
+    }
     public static function getClientV2 ($configId = null) : \ascio\v2\Service {
         return self::getClient("v2",$configId);
     }
@@ -99,9 +108,13 @@ class Ascio {
         return self::getClient("dns",$configId);
     }
     public static function getConfig() : Config {
-        global $_AscioLastConfigId, $_AscioConfigsSet; 
-        if(!$_AscioLastConfigId) return Ascio::setConfig(); 
-        return $_AscioConfigsSet[$_AscioLastConfigId];
+        global $_AscioConfigsSet; 
+        if(! self::getConfigId()) return Ascio::setConfig(); 
+        return $_AscioConfigsSet[ self::getConfigId()];
+    }
+    public static function getConfigId() : ?string {
+        global $_AscioLastConfigId;
+        return $_AscioLastConfigId;
     }
     static private function getApiClient($apiName, Config $config) {
         switch($apiName) {
@@ -155,7 +168,10 @@ class Config {
     public function get($apiName = null)  {
         return $apiName ? $this->config->{$apiName} : $this->config;
     }
-    public function getPartner($api) {
+    public function getPartner($api = null) {
+        if(!$api) {
+            $api = Ascio::getApi();
+        }
         return property_exists($this->get($api),"partner") ? $this->get($api)->partner  : $this->get($api)->account;
     }
     public function getWsdl($apiName)  {
