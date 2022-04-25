@@ -31,9 +31,17 @@ echo "[poll] Start service\n";
 $logger = new Logger("poll");
 $statusSerializer = $logger->getSerializer();
 $statusSerializer->setClass("poll.php");
+$accounts = explode(",",$_ENV['AscioAccounts']);
+Ascio::setApi("v3");
 while(true) {
     try {
-        poll();
+        foreach($accounts as $account) {
+            Ascio::setConfig($account);            
+            $logger->console(100,"start poll ".$account, Ascio::getConfigId());
+            poll();
+            $logger->console(200,"end poll ".$account);
+            sleep(5);
+        }
     }
     catch (AscioException $e) {
         $logger->console(LogLevel::Error,$e->getCode() ." - " .$e->getMessage());;
@@ -45,7 +53,6 @@ while(true) {
         $logger->file(LogLevel::Error,$e->getCode() ." - " .$e->getMessage());;
         sleep(10);
     }     
-    sleep(10+rand(0,3));
 }
 
 
