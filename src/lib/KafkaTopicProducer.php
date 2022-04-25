@@ -12,7 +12,7 @@ class KafkaTopicProducer {
     public $partition = 0;   
     public $topic;
     /**
-     * @var RdKafka\Producer $producer 
+     * @var \RdKafka\Producer $producer 
      */ 
     public $producer; 
     public function __construct(string $topic, ?int $partition = 0)
@@ -23,8 +23,9 @@ class KafkaTopicProducer {
         $this->logger = new Logger('producer');
         $this->logger->pushHandler(new StreamHandler(__DIR__ . '/../../data/logs/producer-'.$topic.'.log'));
         $this->logger->debug('Running producer...');
-        
-        $this->producer = new \RdKafka\Producer();
+        $conf = new \RdKafka\Conf();
+        $conf->set('metadata.broker.list', $_ENV["KAFKA_HOST"].":".$_ENV["KAFKA_PORT"]);
+        $this->producer = new \RdKafka\Producer($conf);
         $this->producer->addBrokers($_ENV["KAFKA_HOST"].":".$_ENV["KAFKA_PORT"]);
         $this->topic = $this->producer->newTopic($topic);
         
