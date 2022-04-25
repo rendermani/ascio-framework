@@ -28,7 +28,7 @@ class StatusSerializer {
     }
     public function console($logLevel, $text, $long = false) : string
     {
-        $this->fields["partner"] = Ascio::getConfig()->getPartner("v2");
+        $this->fields["partner"] = Ascio::getConfig()->getPartner();
         if((!$this->fields["objectName"]) && \method_exists($this->obj,"getObjectName") && $this->obj->getObjectName()) {
             $this->fields["objectName"]  = $this->obj->getObjectName(); 
         }
