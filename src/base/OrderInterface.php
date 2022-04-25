@@ -26,4 +26,6 @@ interface OrderInterface {
     public function handle() : Handle;
     public function log($level,$text);
     public function api($api=null);
+    public function getStatus();
+
 }
