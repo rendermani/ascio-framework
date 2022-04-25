@@ -26,7 +26,7 @@ class TaskQueue {
         });
     }
     public static function submitNext(Payload $payload) {
-        return;         
+        DomainBlocker::unblock($payload->getObjectName());  
         foreach ($payload->getOrder()->db()->next($payload->getWorkflowStatus(),$payload->getObjectName()) as $nextOrder) {
             $nextOrder->submit();
         } 
@@ -35,17 +35,18 @@ class TaskQueue {
         $order = $payload->getOrder();
         if(DomainBlocker::isBlocked($order->getObjectName())) {
             echo $order->log(LogLevel::Warn,"Queue blocked by DomainBlocker");
-            return; 
+            //return; 
         }
         if($order->db()->isBlocked()) {
             echo $order->log(LogLevel::Warn,"Queue blocked by DB");
+         
             return; 
         }
         echo $order->log(LogLevel::Info,"Submitting queued");
         try {
             $order->sendToApi();
-        } catch (AscioOrderException $e) {
-            $e->debug();
+        } catch (AscioOrderException $e) {            
+            //$e->debug();
         }       
     }
     
