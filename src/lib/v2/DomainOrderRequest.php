@@ -169,6 +169,7 @@ class DomainOrderRequest {
         $this->copyNameAndHandle($domain);
         $order = new Order();
         $order->setType(OrderType::Update_AuthInfo);
+        $domain->setAuthInfo($this->domain->getAuthInfo());
         $order->setDomain($domain);        
         return $order;
     }       
