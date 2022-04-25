@@ -28,7 +28,7 @@ Consumer::callback(function(Payload $payload) {
         $sync = new Sync(); 
         $sync->getOrder($payload);
     } catch (AscioException $e) {
-        echo $e->debug();
+        echo $e->getMessage();
         throw $e;
     }
 });
