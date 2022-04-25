@@ -1,4 +1,3 @@
----
 version: '2'
 services:
   zookeeper:
@@ -185,7 +184,6 @@ services:
       STREAMS_SCHEMA_REGISTRY_PORT: 8081
     networks:
       - ascio-net       
-
   rest-proxy:
     image: confluentinc/cp-kafka-rest:6.2.0
     restart: always
