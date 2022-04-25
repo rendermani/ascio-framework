@@ -1,5 +1,5 @@
 #!/bin/bash
-DockerComposeFile="`dirname "$0"`/../docker/docker-compose.yml"
+DockerComposeFile="`dirname "$0"`/../docker-compose.yml"
 case $1 in 
     up)
     echo "up"
@@ -30,11 +30,11 @@ case $1 in
     echo "update"
     ;;
     generate)
-    docker-compose -f $root/docker/docker-compose.yml php php bin/update-classes.php  $2 $3 $4
+    docker-compose -f $root/docker-compose.yml php php bin/update-classes.php  $2 $3 $4
     echo "generate"
     ;;
     sync)
     echo "sync"
-    docker-compose -f $root/docker/docker-compose.yml php php services/sync-orders.php  $2 $3 $4
+    docker-compose -f $root/docker-compose.yml php php services/sync-orders.php  $2 $3 $4
     ;;
 esac

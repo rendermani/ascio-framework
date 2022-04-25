@@ -1,0 +1,132 @@
+version: '3'
+services:
+    web:
+        image: nginx:latest
+        container_name: ascio-framework-web
+        ports:
+            - "8000:80"
+        volumes:
+            - .:/code
+            - ./docker/site.conf:/etc/nginx/conf.d/default.conf
+        links:
+            - php            
+            - mysql:db   
+        env_file:
+        - ./.env
+        restart: always
+        depends_on:
+        - php    
+        networks:
+        - internal     
+    php:
+        build:
+            context: ./docker
+        image: ascio-framework
+        container_name: ascio-framework-php
+        volumes:
+            - .:/code
+        env_file:
+        - ./.env
+        environment: 
+        - config=default
+        restart: always
+        networks:
+        - internal
+        - ascio-net
+    poll:
+        build:
+            context: ./docker
+        image: ascio-framework
+        container_name: ascio-framework-poll
+        env_file:
+        - ./.env
+        restart: always
+        volumes:
+            - .:/code
+        entrypoint: /usr/local/bin/php 
+        command: services/poll.php
+        networks:
+        - internal
+        - ascio-net
+    sync:
+        build:
+            context: ./docker
+        image: ascio-framework
+        container_name: ascio-framework-sync
+        volumes:
+            - .:/code
+        env_file:
+        - ./.env
+        restart: always
+        entrypoint: /usr/local/bin/php 
+        command: services/sync.php
+        networks:
+        - internal
+        - ascio-net
+    order-queue:
+        build:
+            context: ./docker
+        image: ascio-framework
+        container_name: ascio-framework-order-queue
+        volumes:
+            - .:/code
+        env_file:
+        - ./.env
+        restart: always
+        entrypoint: /usr/local/bin/php 
+        command: services/order-queue.php
+        networks:
+        - internal
+        - ascio-net
+    mysql-connector:
+        build:
+            context: ./docker
+        image: ascio-framework
+        container_name: ascio-framework-mysql-connector
+        env_file:
+        - ./.env
+        volumes:
+            - .:/code
+        restart: always
+        depends_on: 
+        - mysql
+        entrypoint: /usr/local/bin/php 
+        command: services/mysql-connector.php
+        networks:
+        - internal
+        - ascio-net                
+    mysql:
+        image: mariadb:latest
+        container_name: ascio-framework-mysql
+        ports:
+        - 13307:3306
+        env_file:
+        - ./.env
+        restart: always
+        volumes:
+        - ascio-framework-volume:/var/lib/mysql
+        networks:
+        - ascio-net
+        - internal
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: ascio-framework-pma
+        env_file:
+            - ./.env
+        restart: always
+        ports:
+        - 8001:80
+        volumes:
+        - /sessions      
+        links:
+            - mysql:db 
+        networks:
+        - internal
+volumes:
+    ascio-framework-volume:
+    ascio-framework-volume-redis:
+    ascio-framework-couch:
+networks:
+    ascio-net:
+        external: true
+    internal: 

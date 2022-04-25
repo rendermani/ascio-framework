@@ -1,6 +1,6 @@
 <?php
 require_once(__DIR__."/../vendor/rendermani/wsdl-client-generator/src/Generator.php");
-use rendermani\wsdl\client\Generator;
+use \rendermani\wsdl\client\Generator;
 require(__DIR__."/../vendor/autoload.php");
 
 $path = realpath(__DIR__."/../src");
