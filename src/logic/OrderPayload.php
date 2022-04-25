@@ -6,6 +6,7 @@ use ascio\base\OrderInterface;
 use ascio\lib\OrderStatus;
 use ascio\lib\TopicProducer;
 use ascio\v2\Order;
+use ascio\lib\ascio;
 
 class OrderPayload extends Payload {
 
@@ -27,6 +28,7 @@ class OrderPayload extends Payload {
         $this->class = get_class($this);
         //parent::__construct($order); 
         $this->module = "order";
+        $this->config = Ascio::getConfigId();
     }
         /**
      * Get the value of order
