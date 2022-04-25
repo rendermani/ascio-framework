@@ -31,23 +31,23 @@ class KafkaTopicProducer {
     }
     public function send(Payload $payload,$partition=0) {
         $this->topic->produce($partition, 0, json_encode($payload->serialize(),JSON_PRETTY_PRINT));
-        //$this->producer->poll(0);
+        $this->producer->poll(0);
         while($this->producer->getOutQLen() > 0) {
-            //$this->producer->poll(0);
+            $this->producer->poll(0);
         }
     }  
     public function produce(Payload $payload) { 
         $this->topic->produce(0, 0, json_encode($payload->serialize(),JSON_PRETTY_PRINT));
-        //$this->producer->poll(0);
+        $this->producer->poll(0);
         while($this->producer->getOutQLen() > 0) {
-            //$this->producer->poll(0);
+            $this->producer->poll(0);
         }
     }
     public function produceIncremental(Payload $payload = null) {  
         $this->topic->produce(0, 0, json_encode($payload->serialize(),JSON_PRETTY_PRINT));
-        //$this->producer->poll(0);
+        $this->producer->poll(0);
         while($this->producer->getOutQLen() > 0) {
-            //$this->producer->poll(0);
+            $this->producer->poll(0);
         }
     }
 }
