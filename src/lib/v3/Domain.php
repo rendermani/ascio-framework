@@ -102,6 +102,12 @@ class Domain extends \ascio\service\v3\Domain {
         $orderRequest->setDomain($this);
         return $orderRequest->submit($submitOptions);
     }
+    public function transfer(?SubmitOptions $submitOptions=null) : ?OrderInfoInterface {
+        $orderRequest = new DomainOrderRequest();
+        $orderRequest->setType(OrderType::Transfer);
+        $orderRequest->setDomain($this);
+        return $orderRequest->submit($submitOptions);
+    }
     public function expire(?SubmitOptions $submitOptions=null) : ?OrderInfoInterface {
         $orderRequest = new DomainOrderRequest();
         $orderRequest->setType(OrderType::Expire);
