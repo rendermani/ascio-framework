@@ -37,9 +37,9 @@ while(true) {
     try {
         foreach($accounts as $account) {
             Ascio::setConfig($account);            
-            $logger->console(100,"start poll ".$account, Ascio::getConfigId());
+            //$logger->console(100,"start poll ".$account, Ascio::getConfigId());
             poll();
-            $logger->console(200,"end poll ".$account);
+            //$logger->console(200,"end poll ".$account);
             sleep(5);
         }
     }
