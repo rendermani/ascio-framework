@@ -28,7 +28,7 @@ class ServiceBase extends \SoapClient {
         parent::__construct($wsdl, $options);
     }
     public function call($function,$args=[],$options = NULL, $input_headers = NULL, &$output_headers = NULL) {
-        $credentials = ["Account"=>$this->cfg->account, "Password" => $this->cfg->password];
+        $credentials = ["Account"=> Ascio::getConfig()->get("v3")->account, "Password" =>Ascio::getConfig()->get("v3")->password];
         $header = new \SoapHeader("http://www.ascio.com/2013/02","SecurityHeaderDetails", $credentials, false);
         Ascio::setHeaders("v3",$this,$header);
         /**

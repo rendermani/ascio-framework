@@ -63,6 +63,9 @@ class Ascio {
     public static function setConfig($id=null) : Object {
         global $_AscioLastConfigId, $_AscioConfigsSet;              
         if(isset($_AscioConfigsSet[$id])) {
+            $_AscioLastConfigId = $id;
+            $config = new Config($id);
+            self::setDb($config);
             return $_AscioConfigsSet[$id];
         }
         if(!$id) {
