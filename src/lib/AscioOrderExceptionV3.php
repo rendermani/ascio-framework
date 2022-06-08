@@ -17,7 +17,7 @@ class AscioOrderExceptionV3 extends AscioOrderException {
          * @var CreateOrderResponse $status 
          */
         $status = $this->status;
-        $values = $status->getErrors()->getString();
+        $values = $status->getErrors() ? $status->getErrors()->getString() : null;
         $values = is_array($values) ? $values : [$values];
         return $values;         
     }
