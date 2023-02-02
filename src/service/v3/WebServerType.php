@@ -36,4 +36,11 @@ class WebServerType {
 	const WebSite = "WebSite";
 	const WebStar = "WebStar";
 	const Iis = "Iis";
+	const AdobeAir = "AdobeAir";
+	const AppleOsx = "AppleOsx";
+	const MicrosoftAuthenticode = "MicrosoftAuthenticode";
+	const MicrosoftOfficeVba = "MicrosoftOfficeVba";
+	const Mozilla = "Mozilla";
+	const SunJava = "SunJava";
+	const CodeSigningOther = "CodeSigningOther";
 }

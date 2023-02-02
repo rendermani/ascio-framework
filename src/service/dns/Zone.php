@@ -10,9 +10,11 @@ use ascio\base\dns\DbBase;
 
 class Zone extends DbBase  {
 
-	protected $_apiProperties=["CreatedDate", "Owner", "Records", "ZoneName"];
+	protected $_apiProperties=["CreatedDate", "IsSlave", "MasterIp", "Owner", "Records", "ZoneName"];
 	protected $_apiObjects=["Records"];
 	protected $CreatedDate;
+	protected $IsSlave;
+	protected $MasterIp;
 	protected $Owner;
 	protected $Records;
 	protected $ZoneName;
@@ -62,6 +64,20 @@ class Zone extends DbBase  {
 	}
 	public function getCreatedDate () : ?\DateTime {
 		return $this->get("CreatedDate", "\\DateTime");
+	}
+	public function setIsSlave (?bool $IsSlave = null) : self {
+		$this->set("IsSlave", $IsSlave);
+		return $this;
+	}
+	public function getIsSlave () : ?bool {
+		return $this->get("IsSlave", "bool");
+	}
+	public function setMasterIp (?string $MasterIp = null) : self {
+		$this->set("MasterIp", $MasterIp);
+		return $this;
+	}
+	public function getMasterIp () : ?string {
+		return $this->get("MasterIp", "string");
 	}
 	public function setOwner (?string $Owner = null) : self {
 		$this->set("Owner", $Owner);

@@ -81,7 +81,7 @@ class DomainOrderRequest {
         foreach($domain->getNameServers()->objects() as $key => $ns) {
             $this->dataOrHandle($ns);
         } 
-        if($this->domain->getTechContact()->changes()->hasChanges()) {
+        if($this->domain->getTechContact() && $this->domain->getTechContact()->changes()->hasChanges()) {
             $domain->setTechContact($this->domain->getTechContact());
             $this->dataOrHandle($domain->getTechContact()); 
         }
@@ -115,6 +115,14 @@ class DomainOrderRequest {
         $this->copyNameAndHandle($domain);
         $order = new Order();
         $order->setType(OrderType::Delete_Domain);
+        $order->setDomain($domain);        
+        return $order;
+    }
+    public function partnerChange() : Order {        
+        $domain = new Domain();
+        $this->copyNameAndHandle($domain);
+        $order = new Order();
+        $order->setType(OrderType::Partner_Change);
         $order->setDomain($domain);        
         return $order;
     }

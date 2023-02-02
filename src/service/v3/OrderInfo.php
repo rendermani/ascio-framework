@@ -10,7 +10,7 @@ use ascio\base\v3\DbBase;
 
 class OrderInfo extends DbBase  {
 
-	protected $_apiProperties=["OrderId", "Status", "Created", "OrderRequest", "LastUpdated", "CreatedBy", "OrderStatusHistory"];
+	protected $_apiProperties=["OrderId", "Status", "Created", "OrderRequest", "LastUpdated", "CreatedBy", "OrderStatusHistory", "IsCancellable"];
 	protected $_apiObjects=["OrderRequest", "OrderStatusHistory"];
 	protected $OrderId;
 	protected $Status;
@@ -19,6 +19,7 @@ class OrderInfo extends DbBase  {
 	protected $LastUpdated;
 	protected $CreatedBy;
 	protected $OrderStatusHistory;
+	protected $IsCancellable;
 
 	public function __construct($parent = null) {
 		parent::__construct($parent);
@@ -113,5 +114,12 @@ class OrderInfo extends DbBase  {
 	}
 	public function createOrderStatusHistory () : \ascio\v3\ArrayOfOrderHistory {
 		return $this->create ("OrderStatusHistory", "\\ascio\\v3\\ArrayOfOrderHistory");
+	}
+	public function setIsCancellable (?bool $IsCancellable = null) : self {
+		$this->set("IsCancellable", $IsCancellable);
+		return $this;
+	}
+	public function getIsCancellable () : ?bool {
+		return $this->get("IsCancellable", "bool");
 	}
 }

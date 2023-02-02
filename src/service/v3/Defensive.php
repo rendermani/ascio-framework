@@ -10,8 +10,8 @@ use ascio\base\v3\DbBase;
 
 class Defensive extends DbBase  {
 
-	protected $_apiProperties=["Handle", "Name", "MarkHandle", "AuthInfo", "Encoding", "Owner", "Admin", "Tech", "Billing", "Reseller", "ObjectComment"];
-	protected $_apiObjects=["Owner", "Admin", "Tech", "Billing", "Reseller"];
+	protected $_apiProperties=["Handle", "Name", "MarkHandle", "AuthInfo", "Encoding", "Owner", "Admin", "Tech", "Billing", "Reseller", "ObjectComment", "Trademark"];
+	protected $_apiObjects=["Owner", "Admin", "Tech", "Billing", "Reseller", "Trademark"];
 	protected $Handle;
 	protected $Name;
 	protected $MarkHandle;
@@ -23,6 +23,7 @@ class Defensive extends DbBase  {
 	protected $Billing;
 	protected $Reseller;
 	protected $ObjectComment;
+	protected $Trademark;
 
 	public function __construct($parent = null) {
 		parent::__construct($parent);
@@ -154,5 +155,15 @@ class Defensive extends DbBase  {
 	}
 	public function getObjectComment () : ?string {
 		return $this->get("ObjectComment", "string");
+	}
+	public function setTrademark (?\ascio\v3\DomainTradeMark $Trademark = null) : self {
+		$this->set("Trademark", $Trademark);
+		return $this;
+	}
+	public function getTrademark () : ?\ascio\v3\DomainTradeMark {
+		return $this->get("Trademark", "\\ascio\\v3\\DomainTradeMark");
+	}
+	public function createTrademark () : \ascio\v3\DomainTradeMark {
+		return $this->create ("Trademark", "\\ascio\\v3\\DomainTradeMark");
 	}
 }

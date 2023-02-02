@@ -14,6 +14,7 @@ class Service extends ServiceBase  {
 		"ArrayOfRoleItem" => "ascio\\dns\\ArrayOfRoleItem",
 		"RoleItem" => "ascio\\dns\\RoleItem",
 		"User" => "ascio\\dns\\User",
+		"TfaSetup" => "ascio\\dns\\TfaSetup",
 		"ArrayOfSearchUserClause" => "ascio\\dns\\ArrayOfSearchUserClause",
 		"SearchUserClause" => "ascio\\dns\\SearchUserClause",
 		"ArrayOfRecord" => "ascio\\dns\\ArrayOfRecord",
@@ -27,6 +28,7 @@ class Service extends ServiceBase  {
 		"MX" => "ascio\\dns\\MX",
 		"A" => "ascio\\dns\\A",
 		"AAAA" => "ascio\\dns\\AAAA",
+		"CAA" => "ascio\\dns\\CAA",
 		"NS" => "ascio\\dns\\NS",
 		"MailForward" => "ascio\\dns\\MailForward",
 		"ArrayOfZoneLogEntry" => "ascio\\dns\\ArrayOfZoneLogEntry",
@@ -46,12 +48,26 @@ class Service extends ServiceBase  {
 		"DeleteUserResponse" => "ascio\\dns\\DeleteUserResponse",
 		"GetUser" => "ascio\\dns\\GetUser",
 		"GetUserResponse" => "ascio\\dns\\GetUserResponse",
+		"CompleteTfaSetup" => "ascio\\dns\\CompleteTfaSetup",
+		"CompleteTfaSetupResponse" => "ascio\\dns\\CompleteTfaSetupResponse",
+		"VerifyTotp" => "ascio\\dns\\VerifyTotp",
+		"VerifyTotpResponse" => "ascio\\dns\\VerifyTotpResponse",
+		"InitiateTfaSetup" => "ascio\\dns\\InitiateTfaSetup",
+		"InitiateTfaSetupResponse" => "ascio\\dns\\InitiateTfaSetupResponse",
 		"SearchUser" => "ascio\\dns\\SearchUser",
 		"SearchUserResponse" => "ascio\\dns\\SearchUserResponse",
 		"ChangePassword" => "ascio\\dns\\ChangePassword",
 		"ChangePasswordResponse" => "ascio\\dns\\ChangePasswordResponse",
+		"InitiatePasswordReset" => "ascio\\dns\\InitiatePasswordReset",
+		"InitiatePasswordResetResponse" => "ascio\\dns\\InitiatePasswordResetResponse",
+		"CompletePasswordReset" => "ascio\\dns\\CompletePasswordReset",
+		"CompletePasswordResetResponse" => "ascio\\dns\\CompletePasswordResetResponse",
 		"CreateZone" => "ascio\\dns\\CreateZone",
 		"CreateZoneResponse" => "ascio\\dns\\CreateZoneResponse",
+		"CreateSlaveZone" => "ascio\\dns\\CreateSlaveZone",
+		"CreateSlaveZoneResponse" => "ascio\\dns\\CreateSlaveZoneResponse",
+		"UpdateZoneType" => "ascio\\dns\\UpdateZoneType",
+		"UpdateZoneTypeResponse" => "ascio\\dns\\UpdateZoneTypeResponse",
 		"DeleteZone" => "ascio\\dns\\DeleteZone",
 		"DeleteZoneResponse" => "ascio\\dns\\DeleteZoneResponse",
 		"GetZoneLog" => "ascio\\dns\\GetZoneLog",
@@ -85,12 +101,26 @@ class Service extends ServiceBase  {
 		"DeleteUserResponse" => "ascio\\dns\\DeleteUserResponse",
 		"GetUser" => "ascio\\dns\\GetUser",
 		"GetUserResponse" => "ascio\\dns\\GetUserResponse",
+		"CompleteTfaSetup" => "ascio\\dns\\CompleteTfaSetup",
+		"CompleteTfaSetupResponse" => "ascio\\dns\\CompleteTfaSetupResponse",
+		"VerifyTotp" => "ascio\\dns\\VerifyTotp",
+		"VerifyTotpResponse" => "ascio\\dns\\VerifyTotpResponse",
+		"InitiateTfaSetup" => "ascio\\dns\\InitiateTfaSetup",
+		"InitiateTfaSetupResponse" => "ascio\\dns\\InitiateTfaSetupResponse",
 		"SearchUser" => "ascio\\dns\\SearchUser",
 		"SearchUserResponse" => "ascio\\dns\\SearchUserResponse",
 		"ChangePassword" => "ascio\\dns\\ChangePassword",
 		"ChangePasswordResponse" => "ascio\\dns\\ChangePasswordResponse",
+		"InitiatePasswordReset" => "ascio\\dns\\InitiatePasswordReset",
+		"InitiatePasswordResetResponse" => "ascio\\dns\\InitiatePasswordResetResponse",
+		"CompletePasswordReset" => "ascio\\dns\\CompletePasswordReset",
+		"CompletePasswordResetResponse" => "ascio\\dns\\CompletePasswordResetResponse",
 		"CreateZone" => "ascio\\dns\\CreateZone",
 		"CreateZoneResponse" => "ascio\\dns\\CreateZoneResponse",
+		"CreateSlaveZone" => "ascio\\dns\\CreateSlaveZone",
+		"CreateSlaveZoneResponse" => "ascio\\dns\\CreateSlaveZoneResponse",
+		"UpdateZoneType" => "ascio\\dns\\UpdateZoneType",
+		"UpdateZoneTypeResponse" => "ascio\\dns\\UpdateZoneTypeResponse",
 		"DeleteZone" => "ascio\\dns\\DeleteZone",
 		"DeleteZoneResponse" => "ascio\\dns\\DeleteZoneResponse",
 		"GetZoneLog" => "ascio\\dns\\GetZoneLog",
@@ -115,7 +145,9 @@ class Service extends ServiceBase  {
 		"GetRecordResponse" => "ascio\\dns\\GetRecordResponse",
 		"SearchOperatorType" => "ascio\\dns\\SearchOperatorType",
 		"SearchUserField" => "ascio\\dns\\SearchUserField",
+		"ResetPasswordReason" => "ascio\\dns\\ResetPasswordReason",
 		"RedirectionType" => "ascio\\dns\\RedirectionType",
+		"ZoneType" => "ascio\\dns\\ZoneType",
 		"SearchZoneField" => "ascio\\dns\\SearchZoneField",
 		"ZoneInfoLevel" => "ascio\\dns\\ZoneInfoLevel",
 	];
@@ -136,14 +168,35 @@ class Service extends ServiceBase  {
 	public function getUser(string $userName) : GetUserResponse {
 		return $this->call("GetUser", ["userName" => $userName]);
 	}
+	public function completeTfaSetup(string $secretKey, string $tfaCode) : CompleteTfaSetupResponse {
+		return $this->call("CompleteTfaSetup", ["secretKey" => $secretKey, "tfaCode" => $tfaCode]);
+	}
+	public function verifyTotp(string $tfaCode) : VerifyTotpResponse {
+		return $this->call("VerifyTotp", ["tfaCode" => $tfaCode]);
+	}
+	public function initiateTfaSetup(string $userName) : InitiateTfaSetupResponse {
+		return $this->call("InitiateTfaSetup", ["userName" => $userName]);
+	}
 	public function searchUser(ArrayOfSearchUserClause $searchUserClauses) : SearchUserResponse {
 		return $this->call("SearchUser", ["searchUserClauses" => $searchUserClauses]);
 	}
 	public function changePassword(string $userName, string $newPassword) : ChangePasswordResponse {
 		return $this->call("ChangePassword", ["userName" => $userName, "newPassword" => $newPassword]);
 	}
+	public function initiatePasswordReset(string $partnerUserName, string $userName, string $reason) : InitiatePasswordResetResponse {
+		return $this->call("InitiatePasswordReset", ["partnerUserName" => $partnerUserName, "userName" => $userName, "reason" => $reason]);
+	}
+	public function completePasswordReset(string $resetToken, string $userName, string $password) : CompletePasswordResetResponse {
+		return $this->call("CompletePasswordReset", ["resetToken" => $resetToken, "userName" => $userName, "password" => $password]);
+	}
 	public function createZone(string $zoneName, string $owner, ArrayOfRecord $records) : CreateZoneResponse {
 		return $this->call("CreateZone", ["zoneName" => $zoneName, "owner" => $owner, "records" => $records]);
+	}
+	public function createSlaveZone(string $zoneName, string $owner, string $masterIp) : CreateSlaveZoneResponse {
+		return $this->call("CreateSlaveZone", ["zoneName" => $zoneName, "owner" => $owner, "masterIp" => $masterIp]);
+	}
+	public function updateZoneType(string $zoneName, string $zoneType, string $masterIp) : UpdateZoneTypeResponse {
+		return $this->call("UpdateZoneType", ["zoneName" => $zoneName, "zoneType" => $zoneType, "masterIp" => $masterIp]);
 	}
 	public function deleteZone(string $zoneName) : DeleteZoneResponse {
 		return $this->call("DeleteZone", ["zoneName" => $zoneName]);

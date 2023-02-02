@@ -5,6 +5,7 @@ use ascio\base\TaskInterface;
 use ascio\v2\Order;
 
 trait TaskTrait {
+    private $submitOptions;
     public function shouldQueue() : bool {
         return $this->getSubmitOptions()->getQueue() || $this->db()->shouldQueue();           
     }
@@ -23,7 +24,7 @@ trait TaskTrait {
      */
     public function produce ($parameters=[]) {
         $this->db()->_objectName = $this->getObjectName();
-        if(!$parameters["action"]) {
+        if(array_key_exists("action",$parameters)) {
             $parameters["action"] = $this->db()->_id ? "update" : "create"; 
         }       
         parent::produce($parameters);

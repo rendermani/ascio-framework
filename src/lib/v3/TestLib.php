@@ -55,7 +55,7 @@ class TestLib {
         $nameServers->setNameServer2($nameServer2);
         $domain =  new Domain();
         $time = str_replace(".","",microtime(true));
-        $domain->setName($name ?: ("af" . "-".$fakedomain));
+        $domain->setName($name ?: ("ascio-".$fakedomain));
         //$domain->setPrivacyProxy($proxy);
         $domain->setOwner($registrant);
         $domain->setAdmin($contact->clone());

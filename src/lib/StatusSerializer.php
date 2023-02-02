@@ -28,8 +28,9 @@ class StatusSerializer {
     }
     public function console($logLevel, $text, $long = false) : string
     {
+        $keyValues = [];
         $this->fields["partner"] = Ascio::getConfig()->getPartner();
-        if((!$this->fields["objectName"]) && \method_exists($this->obj,"getObjectName") && $this->obj->getObjectName()) {
+        if(!array_key_exists("objectName",$this->fields) && isset($this->obj) && \method_exists($this->obj,"getObjectName") && $this->obj->getObjectName()) {
             $this->fields["objectName"]  = $this->obj->getObjectName(); 
         }
         $spacer = $long ? "\n" : ", ";
@@ -46,7 +47,8 @@ class StatusSerializer {
                 //$keyValues[] = "No ".$key;
             }
         }
-        $data = implode($spacer,$keyValues);
+        
+        $data = implode($spacer,$keyValues);       
         $data = $data ?  " - ".$data : "";
         $text = $text ?  " - ".$text : "";
 

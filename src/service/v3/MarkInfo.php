@@ -10,13 +10,14 @@ use ascio\base\v3\DbBase;
 
 class MarkInfo extends DbBase  {
 
-	protected $_apiProperties=["Status", "Created", "Expires", "Mark", "Smd"];
-	protected $_apiObjects=["Mark"];
+	protected $_apiProperties=["Status", "Created", "Expires", "Mark", "Smd", "CustomerReference"];
+	protected $_apiObjects=["Mark", "CustomerReference"];
 	protected $Status;
 	protected $Created;
 	protected $Expires;
 	protected $Mark;
 	protected $Smd;
+	protected $CustomerReference;
 
 	public function __construct($parent = null) {
 		parent::__construct($parent);
@@ -94,5 +95,15 @@ class MarkInfo extends DbBase  {
 	}
 	public function getSmd () : ?string {
 		return $this->get("Smd", "string");
+	}
+	public function setCustomerReference (?\ascio\v3\CustomerReferenceInfo $CustomerReference = null) : self {
+		$this->set("CustomerReference", $CustomerReference);
+		return $this;
+	}
+	public function getCustomerReference () : ?\ascio\v3\CustomerReferenceInfo {
+		return $this->get("CustomerReference", "\\ascio\\v3\\CustomerReferenceInfo");
+	}
+	public function createCustomerReference () : \ascio\v3\CustomerReferenceInfo {
+		return $this->create ("CustomerReference", "\\ascio\\v3\\CustomerReferenceInfo");
 	}
 }

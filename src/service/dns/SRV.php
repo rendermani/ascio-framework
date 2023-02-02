@@ -11,7 +11,7 @@ use ascio\api\dns\RecordApi;
 
 class SRV extends Record  {
 
-	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "UpdatedDate", "Port", "Priority", "Weight"];
+	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "Port", "Priority", "Weight"];
 	protected $_apiObjects=[];
 	protected $_substituted = true;
 	protected $Id;
@@ -19,7 +19,6 @@ class SRV extends Record  {
 	protected $Source;
 	protected $TTL;
 	protected $Target;
-	protected $UpdatedDate;
 	protected $Port;
 	protected $Priority;
 	protected $Weight;

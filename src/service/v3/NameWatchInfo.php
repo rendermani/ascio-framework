@@ -10,8 +10,8 @@ use ascio\base\v3\DbBase;
 
 class NameWatchInfo extends DbBase  {
 
-	protected $_apiProperties=["Handle", "Status", "Created", "Expires", "Name", "NotificationFrequency", "Tier", "EmailNotification1", "EmailNotification2", "EmailNotification3", "EmailNotification4", "EmailNotification5", "Owner", "Reseller", "ObjectComment"];
-	protected $_apiObjects=["Owner", "Reseller"];
+	protected $_apiProperties=["Handle", "Status", "Created", "Expires", "Name", "NotificationFrequency", "Tier", "EmailNotification1", "EmailNotification2", "EmailNotification3", "EmailNotification4", "EmailNotification5", "Owner", "Reseller", "ObjectComment", "CustomerReference", "ReportUrl"];
+	protected $_apiObjects=["Owner", "Reseller", "CustomerReference"];
 	protected $Handle;
 	protected $Status;
 	protected $Created;
@@ -27,6 +27,8 @@ class NameWatchInfo extends DbBase  {
 	protected $Owner;
 	protected $Reseller;
 	protected $ObjectComment;
+	protected $CustomerReference;
+	protected $ReportUrl;
 
 	public function __construct($parent = null) {
 		parent::__construct($parent);
@@ -177,5 +179,22 @@ class NameWatchInfo extends DbBase  {
 	}
 	public function getObjectComment () : ?string {
 		return $this->get("ObjectComment", "string");
+	}
+	public function setCustomerReference (?\ascio\v3\CustomerReferenceInfo $CustomerReference = null) : self {
+		$this->set("CustomerReference", $CustomerReference);
+		return $this;
+	}
+	public function getCustomerReference () : ?\ascio\v3\CustomerReferenceInfo {
+		return $this->get("CustomerReference", "\\ascio\\v3\\CustomerReferenceInfo");
+	}
+	public function createCustomerReference () : \ascio\v3\CustomerReferenceInfo {
+		return $this->create ("CustomerReference", "\\ascio\\v3\\CustomerReferenceInfo");
+	}
+	public function setReportUrl (?string $ReportUrl = null) : self {
+		$this->set("ReportUrl", $ReportUrl);
+		return $this;
+	}
+	public function getReportUrl () : ?string {
+		return $this->get("ReportUrl", "string");
 	}
 }

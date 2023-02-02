@@ -11,7 +11,7 @@ use ascio\api\dns\RecordApi;
 
 class SOA extends Record  {
 
-	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "UpdatedDate", "Expire", "HostmasterEmail", "PrimaryNameServer", "Refresh", "Retry", "SerialUsage"];
+	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "Expire", "HostmasterEmail", "PrimaryNameServer", "Refresh", "Retry", "SerialUsage"];
 	protected $_apiObjects=[];
 	protected $_substituted = true;
 	protected $Id;
@@ -19,7 +19,6 @@ class SOA extends Record  {
 	protected $Source;
 	protected $TTL;
 	protected $Target;
-	protected $UpdatedDate;
 	protected $Expire;
 	protected $HostmasterEmail;
 	protected $PrimaryNameServer;

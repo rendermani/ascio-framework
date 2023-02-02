@@ -11,7 +11,7 @@ use ascio\api\dns\RecordApi;
 
 class AAAA extends Record  {
 
-	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "UpdatedDate"];
+	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target"];
 	protected $_apiObjects=[];
 	protected $_substituted = true;
 	protected $Id;
@@ -19,7 +19,6 @@ class AAAA extends Record  {
 	protected $Source;
 	protected $TTL;
 	protected $Target;
-	protected $UpdatedDate;
 
 	public function __construct($parent = null) {
 		parent::__construct($parent);

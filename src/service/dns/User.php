@@ -10,13 +10,16 @@ use ascio\base\dns\DbBase;
 
 class User extends DbBase  {
 
-	protected $_apiProperties=["CreatedDate", "Email", "Name", "Password", "Role", "UpdatedDate", "UserName"];
+	protected $_apiProperties=["CreatedDate", "Email", "Name", "Password", "RequireTfa", "RequiredToChangePassword", "Role", "TfaSetupComplete", "UpdatedDate", "UserName"];
 	protected $_apiObjects=[];
 	protected $CreatedDate;
 	protected $Email;
 	protected $Name;
 	protected $Password;
+	protected $RequireTfa;
+	protected $RequiredToChangePassword;
 	protected $Role;
+	protected $TfaSetupComplete;
 	protected $UpdatedDate;
 	protected $UserName;
 
@@ -87,12 +90,33 @@ class User extends DbBase  {
 	public function getPassword () : ?string {
 		return $this->get("Password", "string");
 	}
+	public function setRequireTfa (?bool $RequireTfa = null) : self {
+		$this->set("RequireTfa", $RequireTfa);
+		return $this;
+	}
+	public function getRequireTfa () : ?bool {
+		return $this->get("RequireTfa", "bool");
+	}
+	public function setRequiredToChangePassword (?bool $RequiredToChangePassword = null) : self {
+		$this->set("RequiredToChangePassword", $RequiredToChangePassword);
+		return $this;
+	}
+	public function getRequiredToChangePassword () : ?bool {
+		return $this->get("RequiredToChangePassword", "bool");
+	}
 	public function setRole (?string $Role = null) : self {
 		$this->set("Role", $Role);
 		return $this;
 	}
 	public function getRole () : ?string {
 		return $this->get("Role", "string");
+	}
+	public function setTfaSetupComplete (?bool $TfaSetupComplete = null) : self {
+		$this->set("TfaSetupComplete", $TfaSetupComplete);
+		return $this;
+	}
+	public function getTfaSetupComplete () : ?bool {
+		return $this->get("TfaSetupComplete", "bool");
 	}
 	public function setUpdatedDate (?\DateTime $UpdatedDate = null) : self {
 		$this->set("UpdatedDate", $UpdatedDate);

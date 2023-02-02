@@ -9,6 +9,7 @@ use ascio\base\DbBase;
 use ascio\logic\Payload;
 use ascio\logic\PayloadFactory;
 use Exception;
+use PhpParser\Builder\Property;
 
 class KafkaTopicConsumer {
     /**
@@ -21,7 +22,7 @@ public $topic;
  * @var RdKafka\KafkaConsumer $consumer 
  */ 
 public $consumer; 
-public function __construct(string $topic, ?int $partition = 0, $group)
+public function __construct(string $topic, ?int $partition = 0)
 {
     global $_ENV;
     $topic = "ascio.api.framework.".$topic;
@@ -57,9 +58,12 @@ public function consume( \closure $function) {
     //eg: PayloadFactory::create($message->payload);
     while (true) {
         $message = $this->topic->consume($this->partition, 1000);
+        if(!$message) {
+            continue;
+        }
         switch ($message->err) {
             case RD_KAFKA_RESP_ERR_NO_ERROR:
-                if($message->payload) {
+                if(property_exists($message,"payload") && $message->payload) {
                     $payloadObj = json_decode($message->payload,false,512);
                     $payload = PayloadFactory::deserialize($payloadObj);
                     $function($payload);                        

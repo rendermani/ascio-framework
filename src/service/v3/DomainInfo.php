@@ -10,8 +10,8 @@ use ascio\base\v3\DbBase;
 
 class DomainInfo extends DbBase  {
 
-	protected $_apiProperties=["DomainName", "DomainHandle", "RegPeriod", "RenewPeriod", "Status", "AuthInfo", "Created", "Expires", "EncodingType", "DomainPurpose", "Comment", "TransferLock", "DeleteLock", "UpdateLock", "QueueType", "Owner", "Admin", "Tech", "Billing", "Reseller", "NameServers", "Trademark", "DnsSecKeys", "PrivacyProxy", "DomainType", "DiscloseSocialData", "LocalPresence"];
-	protected $_apiObjects=["Owner", "Admin", "Tech", "Billing", "Reseller", "NameServers", "Trademark", "DnsSecKeys", "PrivacyProxy"];
+	protected $_apiProperties=["DomainName", "DomainHandle", "RegPeriod", "RenewPeriod", "Status", "AuthInfo", "Created", "Expires", "EncodingType", "DomainPurpose", "Comment", "TransferLock", "DeleteLock", "UpdateLock", "QueueType", "Owner", "Admin", "Tech", "Billing", "Reseller", "NameServers", "Trademark", "DnsSecKeys", "PrivacyProxy", "DomainType", "DiscloseSocialData", "LocalPresence", "CustomerReference", "MasterNameServerIp"];
+	protected $_apiObjects=["Owner", "Admin", "Tech", "Billing", "Reseller", "NameServers", "Trademark", "DnsSecKeys", "PrivacyProxy", "CustomerReference"];
 	protected $DomainName;
 	protected $DomainHandle;
 	protected $RegPeriod;
@@ -39,6 +39,8 @@ class DomainInfo extends DbBase  {
 	protected $DomainType;
 	protected $DiscloseSocialData;
 	protected $LocalPresence;
+	protected $CustomerReference;
+	protected $MasterNameServerIp;
 
 	public function __construct($parent = null) {
 		parent::__construct($parent);
@@ -294,5 +296,22 @@ class DomainInfo extends DbBase  {
 	}
 	public function getLocalPresence () : ?bool {
 		return $this->get("LocalPresence", "bool");
+	}
+	public function setCustomerReference (?\ascio\v3\CustomerReferenceInfo $CustomerReference = null) : self {
+		$this->set("CustomerReference", $CustomerReference);
+		return $this;
+	}
+	public function getCustomerReference () : ?\ascio\v3\CustomerReferenceInfo {
+		return $this->get("CustomerReference", "\\ascio\\v3\\CustomerReferenceInfo");
+	}
+	public function createCustomerReference () : \ascio\v3\CustomerReferenceInfo {
+		return $this->create ("CustomerReference", "\\ascio\\v3\\CustomerReferenceInfo");
+	}
+	public function setMasterNameServerIp (?string $MasterNameServerIp = null) : self {
+		$this->set("MasterNameServerIp", $MasterNameServerIp);
+		return $this;
+	}
+	public function getMasterNameServerIp () : ?string {
+		return $this->get("MasterNameServerIp", "string");
 	}
 }

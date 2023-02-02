@@ -8,8 +8,8 @@ namespace ascio\service\v3;
 class MessageType {
 
 
-	const OrderMail = "OrderMail";
 	const MessageToPartner = "MessageToPartner";
+	const OrderMail = "OrderMail";
 	const PartnerResponse = "PartnerResponse";
 	const Support = "Support";
 	const Document = "Document";

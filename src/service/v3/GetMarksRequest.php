@@ -10,7 +10,7 @@ use ascio\base\v3\Base;
 
 class GetMarksRequest extends Base  {
 
-	protected $_apiProperties=["ObjectNames", "Handles", "Status", "MarkType", "ObjectComment", "CreationFromDate", "CreationToDate", "ExpireFromDate", "ExpireToDate", "OwnerName", "OwnerOrganizationName", "OwnerEmail", "OrderSort", "PageInfo"];
+	protected $_apiProperties=["ObjectNames", "Handles", "Status", "MarkType", "ObjectComment", "CreationFromDate", "CreationToDate", "ExpireFromDate", "ExpireToDate", "OwnerName", "OwnerOrganizationName", "OwnerEmail", "CustomerReferenceExternalId", "CustomerReferenceDescription", "OrderSort", "PageInfo"];
 	protected $_apiObjects=["ObjectNames", "Handles", "PageInfo"];
 	protected $ObjectNames;
 	protected $Handles;
@@ -24,6 +24,8 @@ class GetMarksRequest extends Base  {
 	protected $OwnerName;
 	protected $OwnerOrganizationName;
 	protected $OwnerEmail;
+	protected $CustomerReferenceExternalId;
+	protected $CustomerReferenceDescription;
 	protected $OrderSort;
 	protected $PageInfo;
 
@@ -116,6 +118,20 @@ class GetMarksRequest extends Base  {
 	}
 	public function getOwnerEmail () : ?string {
 		return $this->get("OwnerEmail", "string");
+	}
+	public function setCustomerReferenceExternalId (?string $CustomerReferenceExternalId = null) : self {
+		$this->set("CustomerReferenceExternalId", $CustomerReferenceExternalId);
+		return $this;
+	}
+	public function getCustomerReferenceExternalId () : ?string {
+		return $this->get("CustomerReferenceExternalId", "string");
+	}
+	public function setCustomerReferenceDescription (?string $CustomerReferenceDescription = null) : self {
+		$this->set("CustomerReferenceDescription", $CustomerReferenceDescription);
+		return $this;
+	}
+	public function getCustomerReferenceDescription () : ?string {
+		return $this->get("CustomerReferenceDescription", "string");
 	}
 	public function setOrderSort (?string $OrderSort = null) : self {
 		$this->set("OrderSort", $OrderSort);

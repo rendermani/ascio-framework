@@ -27,25 +27,25 @@ class ApiProperties implements \Iterator {
     public function mapFrom($array,$mapFunction) {
         return $this->object->set($array);
     }
-    public function rewind() {
+    public function rewind() : void{
         $this->position = 0;
     }
-    public function current() {
+    public function current() : mixed {
         $property = $this->keys[$this->position];
         return $this->object->get($property);
     }
 
-    public function key() {
+    public function key() : mixed {
         return $this->keys[$this->position];
     }
 
-    public function next() {
+    public function next() : void {
         ++$this->position;
     }
     public function get($name) {
         return $this->object->get($name);
     }
-    public function valid() {
+    public function valid() : bool {
         return count( $this->keys) >= $this->position + 1;
     }
     public function toArray() {

@@ -11,7 +11,7 @@ use ascio\api\v3\AbstractOrderRequestApi;
 
 class DefensiveOrderRequest extends AbstractOrderRequest  {
 
-	protected $_apiProperties=["Type", "Period", "TransactionComment", "Comments", "Documentation", "Options", "Defensive"];
+	protected $_apiProperties=["Type", "Period", "TransactionComment", "Comments", "Documentation", "Options", "Defensive", "AgreedPrice"];
 	protected $_apiObjects=["Defensive"];
 	protected $_substituted = true;
 	protected $Type;
@@ -21,6 +21,7 @@ class DefensiveOrderRequest extends AbstractOrderRequest  {
 	protected $Documentation;
 	protected $Options;
 	protected $Defensive;
+	protected $AgreedPrice;
 
 	public function __construct($parent = null) {
 		parent::__construct($parent);
@@ -52,5 +53,12 @@ class DefensiveOrderRequest extends AbstractOrderRequest  {
 	}
 	public function createDefensive () : \ascio\v3\Defensive {
 		return $this->create ("Defensive", "\\ascio\\v3\\Defensive");
+	}
+	public function setAgreedPrice (?int $AgreedPrice = null) : self {
+		$this->set("AgreedPrice", $AgreedPrice);
+		return $this;
+	}
+	public function getAgreedPrice () : ?int {
+		return $this->get("AgreedPrice", "int");
 	}
 }

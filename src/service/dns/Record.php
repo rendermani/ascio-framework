@@ -10,7 +10,7 @@ use ascio\base\dns\DbBase;
 
 class Record extends DbBase  {
 
-	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "UpdatedDate"];
+	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target"];
 	protected $_apiObjects=[];
 	protected $_substitutions = [
 		["name" => "WebForward","type" => "\\ascio\\dns\\WebForward"], 
@@ -22,6 +22,7 @@ class Record extends DbBase  {
 		["name" => "MX","type" => "\\ascio\\dns\\MX"], 
 		["name" => "A","type" => "\\ascio\\dns\\A"], 
 		["name" => "AAAA","type" => "\\ascio\\dns\\AAAA"], 
+		["name" => "CAA","type" => "\\ascio\\dns\\CAA"], 
 		["name" => "NS","type" => "\\ascio\\dns\\NS"], 
 		["name" => "MailForward","type" => "\\ascio\\dns\\MailForward"] 
 	];
@@ -31,7 +32,6 @@ class Record extends DbBase  {
 	protected $Source;
 	protected $TTL;
 	protected $Target;
-	protected $UpdatedDate;
 
 	public function __construct($parent = null) {
 		parent::__construct($parent);
@@ -106,12 +106,5 @@ class Record extends DbBase  {
 	}
 	public function getTarget () : ?string {
 		return $this->get("Target", "string");
-	}
-	public function setUpdatedDate (?\DateTime $UpdatedDate = null) : self {
-		$this->set("UpdatedDate", $UpdatedDate);
-		return $this;
-	}
-	public function getUpdatedDate () : ?\DateTime {
-		return $this->get("UpdatedDate", "\\DateTime");
 	}
 }

@@ -10,7 +10,7 @@ use ascio\base\v3\Base;
 
 class GetDomainsRequest extends Base  {
 
-	protected $_apiProperties=["ObjectNames", "Handles", "Tlds", "Status", "DomainType", "ProxyType", "DomainComment", "CreationFromDate", "CreationToDate", "ExpireFromDate", "ExpireToDate", "OwnerName", "OwnerOrganizationName", "OwnerEmail", "ContactFirstName", "ContactLastName", "ContactOrganizationName", "ContactEmail", "NameServerHostName", "NameServerIPv4", "NameServerIPv6", "OrderSort", "PageInfo"];
+	protected $_apiProperties=["ObjectNames", "Handles", "Tlds", "Status", "DomainType", "ProxyType", "DomainComment", "CreationFromDate", "CreationToDate", "ExpireFromDate", "ExpireToDate", "OwnerName", "OwnerOrganizationName", "OwnerEmail", "ContactFirstName", "ContactLastName", "ContactOrganizationName", "ContactEmail", "NameServerHostName", "NameServerIPv4", "NameServerIPv6", "CustomerReferenceExternalId", "CustomerReferenceDescription", "OrderSort", "PageInfo", "LocalPresence"];
 	protected $_apiObjects=["ObjectNames", "Handles", "Tlds", "PageInfo"];
 	protected $ObjectNames;
 	protected $Handles;
@@ -33,8 +33,11 @@ class GetDomainsRequest extends Base  {
 	protected $NameServerHostName;
 	protected $NameServerIPv4;
 	protected $NameServerIPv6;
+	protected $CustomerReferenceExternalId;
+	protected $CustomerReferenceDescription;
 	protected $OrderSort;
 	protected $PageInfo;
+	protected $LocalPresence;
 
 	public function setObjectNames (?\ascio\v3\ArrayOfstring $ObjectNames = null) : self {
 		$this->set("ObjectNames", $ObjectNames);
@@ -192,6 +195,20 @@ class GetDomainsRequest extends Base  {
 	public function getNameServerIPv6 () : ?string {
 		return $this->get("NameServerIPv6", "string");
 	}
+	public function setCustomerReferenceExternalId (?string $CustomerReferenceExternalId = null) : self {
+		$this->set("CustomerReferenceExternalId", $CustomerReferenceExternalId);
+		return $this;
+	}
+	public function getCustomerReferenceExternalId () : ?string {
+		return $this->get("CustomerReferenceExternalId", "string");
+	}
+	public function setCustomerReferenceDescription (?string $CustomerReferenceDescription = null) : self {
+		$this->set("CustomerReferenceDescription", $CustomerReferenceDescription);
+		return $this;
+	}
+	public function getCustomerReferenceDescription () : ?string {
+		return $this->get("CustomerReferenceDescription", "string");
+	}
 	public function setOrderSort (?string $OrderSort = null) : self {
 		$this->set("OrderSort", $OrderSort);
 		return $this;
@@ -208,5 +225,12 @@ class GetDomainsRequest extends Base  {
 	}
 	public function createPageInfo () : \ascio\v3\PagingInfo {
 		return $this->create ("PageInfo", "\\ascio\\v3\\PagingInfo");
+	}
+	public function setLocalPresence (?bool $LocalPresence = null) : self {
+		$this->set("LocalPresence", $LocalPresence);
+		return $this;
+	}
+	public function getLocalPresence () : ?bool {
+		return $this->get("LocalPresence", "bool");
 	}
 }

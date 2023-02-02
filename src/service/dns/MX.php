@@ -11,7 +11,7 @@ use ascio\api\dns\RecordApi;
 
 class MX extends Record  {
 
-	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "UpdatedDate", "Priority"];
+	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "Priority"];
 	protected $_apiObjects=[];
 	protected $_substituted = true;
 	protected $Id;
@@ -19,7 +19,6 @@ class MX extends Record  {
 	protected $Source;
 	protected $TTL;
 	protected $Target;
-	protected $UpdatedDate;
 	protected $Priority;
 
 	public function __construct($parent = null) {

@@ -10,7 +10,7 @@ use ascio\base\v3\Base;
 
 class GetPricesRequest extends Base  {
 
-	protected $_apiProperties=["Date", "ObjectTypes", "OrderTypes", "Tlds", "TldCountryCode", "Periods", "ProductOptions", "DefaultPeriodsOnly", "PageInfo"];
+	protected $_apiProperties=["Date", "ObjectTypes", "OrderTypes", "Tlds", "TldCountryCode", "Periods", "ProductOptions", "DefaultPeriodsOnly", "PageInfo", "TldsInPortfolioOnly"];
 	protected $_apiObjects=["ObjectTypes", "OrderTypes", "Tlds", "Periods", "ProductOptions", "PageInfo"];
 	protected $Date;
 	protected $ObjectTypes;
@@ -21,6 +21,7 @@ class GetPricesRequest extends Base  {
 	protected $ProductOptions;
 	protected $DefaultPeriodsOnly;
 	protected $PageInfo;
+	protected $TldsInPortfolioOnly;
 
 	public function setDate (?\DateTime $Date = null) : self {
 		$this->set("Date", $Date);
@@ -102,5 +103,12 @@ class GetPricesRequest extends Base  {
 	}
 	public function createPageInfo () : \ascio\v3\PagingInfo {
 		return $this->create ("PageInfo", "\\ascio\\v3\\PagingInfo");
+	}
+	public function setTldsInPortfolioOnly (?bool $TldsInPortfolioOnly = null) : self {
+		$this->set("TldsInPortfolioOnly", $TldsInPortfolioOnly);
+		return $this;
+	}
+	public function getTldsInPortfolioOnly () : ?bool {
+		return $this->get("TldsInPortfolioOnly", "bool");
 	}
 }

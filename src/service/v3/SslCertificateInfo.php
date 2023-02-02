@@ -10,8 +10,8 @@ use ascio\base\v3\DbBase;
 
 class SslCertificateInfo extends DbBase  {
 
-	protected $_apiProperties=["Handle", "Status", "Created", "Expires", "CommonName", "ProductCode", "WebServerType", "ApproverEmail", "CSR", "Certificate", "Owner", "Admin", "Tech", "SanNames", "ObjectComment", "ValidationType", "SslProductName"];
-	protected $_apiObjects=["Owner", "Admin", "Tech", "SanNames"];
+	protected $_apiProperties=["Handle", "Status", "Created", "Expires", "CommonName", "ProductCode", "WebServerType", "ApproverEmail", "CSR", "Certificate", "Owner", "Admin", "Tech", "SanNames", "ObjectComment", "ValidationType", "SslProductName", "CustomerReference"];
+	protected $_apiObjects=["Owner", "Admin", "Tech", "SanNames", "CustomerReference"];
 	protected $Handle;
 	protected $Status;
 	protected $Created;
@@ -29,6 +29,7 @@ class SslCertificateInfo extends DbBase  {
 	protected $ObjectComment;
 	protected $ValidationType;
 	protected $SslProductName;
+	protected $CustomerReference;
 
 	public function __construct($parent = null) {
 		parent::__construct($parent);
@@ -199,5 +200,15 @@ class SslCertificateInfo extends DbBase  {
 	}
 	public function getSslProductName () : ?string {
 		return $this->get("SslProductName", "string");
+	}
+	public function setCustomerReference (?\ascio\v3\CustomerReferenceInfo $CustomerReference = null) : self {
+		$this->set("CustomerReference", $CustomerReference);
+		return $this;
+	}
+	public function getCustomerReference () : ?\ascio\v3\CustomerReferenceInfo {
+		return $this->get("CustomerReference", "\\ascio\\v3\\CustomerReferenceInfo");
+	}
+	public function createCustomerReference () : \ascio\v3\CustomerReferenceInfo {
+		return $this->create ("CustomerReference", "\\ascio\\v3\\CustomerReferenceInfo");
 	}
 }

@@ -11,7 +11,7 @@ use ascio\api\dns\RecordApi;
 
 class WebForward extends Record  {
 
-	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "UpdatedDate", "RedirectionType"];
+	protected $_apiProperties=["Id", "Serial", "Source", "TTL", "Target", "RedirectionType"];
 	protected $_apiObjects=[];
 	protected $_substituted = true;
 	protected $Id;
@@ -19,7 +19,6 @@ class WebForward extends Record  {
 	protected $Source;
 	protected $TTL;
 	protected $Target;
-	protected $UpdatedDate;
 	protected $RedirectionType;
 
 	public function __construct($parent = null) {

@@ -86,6 +86,9 @@ class Domain extends \ascio\service\v2\Domain {
     public function contactUpdate(?SubmitOptions $submitOptions = null) : Order {        
         return $this->getOrderRequest()->contactUpdate()->submit($submitOptions);
     }
+    public function partnerChange(?SubmitOptions $submitOptions = null) : Order {        
+        return $this->getOrderRequest()->partnerChange()->submit($submitOptions);
+    }
     public function nameserverUpdate(?SubmitOptions $submitOptions = null) : Order {        
         return $this->getOrderRequest()->nameserverUpdate()->submit($submitOptions);
     }

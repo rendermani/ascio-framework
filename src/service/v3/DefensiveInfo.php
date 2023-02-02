@@ -10,8 +10,8 @@ use ascio\base\v3\DbBase;
 
 class DefensiveInfo extends DbBase  {
 
-	protected $_apiProperties=["Handle", "Status", "Created", "Expires", "Name", "AuthInfo", "Encoding", "Owner", "Admin", "Tech", "Billing", "Reseller", "ObjectComment"];
-	protected $_apiObjects=["Owner", "Admin", "Tech", "Billing", "Reseller"];
+	protected $_apiProperties=["Handle", "Status", "Created", "Expires", "Name", "AuthInfo", "Encoding", "Owner", "Admin", "Tech", "Billing", "Reseller", "ObjectComment", "CustomerReference", "DefensiveType", "Trademark"];
+	protected $_apiObjects=["Owner", "Admin", "Tech", "Billing", "Reseller", "CustomerReference", "Trademark"];
 	protected $Handle;
 	protected $Status;
 	protected $Created;
@@ -25,6 +25,9 @@ class DefensiveInfo extends DbBase  {
 	protected $Billing;
 	protected $Reseller;
 	protected $ObjectComment;
+	protected $CustomerReference;
+	protected $DefensiveType;
+	protected $Trademark;
 
 	public function __construct($parent = null) {
 		parent::__construct($parent);
@@ -170,5 +173,32 @@ class DefensiveInfo extends DbBase  {
 	}
 	public function getObjectComment () : ?string {
 		return $this->get("ObjectComment", "string");
+	}
+	public function setCustomerReference (?\ascio\v3\CustomerReferenceInfo $CustomerReference = null) : self {
+		$this->set("CustomerReference", $CustomerReference);
+		return $this;
+	}
+	public function getCustomerReference () : ?\ascio\v3\CustomerReferenceInfo {
+		return $this->get("CustomerReference", "\\ascio\\v3\\CustomerReferenceInfo");
+	}
+	public function createCustomerReference () : \ascio\v3\CustomerReferenceInfo {
+		return $this->create ("CustomerReference", "\\ascio\\v3\\CustomerReferenceInfo");
+	}
+	public function setDefensiveType (?string $DefensiveType = null) : self {
+		$this->set("DefensiveType", $DefensiveType);
+		return $this;
+	}
+	public function getDefensiveType () : ?string {
+		return $this->get("DefensiveType", "string");
+	}
+	public function setTrademark (?\ascio\v3\DomainTradeMark $Trademark = null) : self {
+		$this->set("Trademark", $Trademark);
+		return $this;
+	}
+	public function getTrademark () : ?\ascio\v3\DomainTradeMark {
+		return $this->get("Trademark", "\\ascio\\v3\\DomainTradeMark");
+	}
+	public function createTrademark () : \ascio\v3\DomainTradeMark {
+		return $this->create ("Trademark", "\\ascio\\v3\\DomainTradeMark");
 	}
 }

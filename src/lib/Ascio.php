@@ -138,6 +138,9 @@ class Ascio {
         if($header) {
             $headers[] = $header;
         }
+        $auth = "<X-Forwarded-IFName>Portal</X-Forwarded-IFName>";
+        $auth_block = new \SoapVar( $auth, \XSD_ANYXML, NULL, NULL, NULL, NULL );
+        $headers[] =  new \SoapHeader('http://schemas.xmlsoap.org/soap/envelope/', 'Header', $auth_block);        
         $client->__setSoapHeaders($headers);
     }
     static function getHeader($api) {
@@ -180,7 +183,7 @@ class Config {
     public function getWsdl($apiName)  {
         $wsdl = $this->get($apiName)->wsdl;
         preg_match('/^http.?:\/\//', $wsdl, $matches);
-        if($matches[0]) {
+        if(count($matches) > 0) {
             return $wsdl;
         } else {
             $path = __DIR__."/../../config/".$wsdl;

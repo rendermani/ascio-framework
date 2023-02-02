@@ -17,6 +17,10 @@ class Service extends ServiceBase  {
 		"RegistrantInfo" => "ascio\\v3\\RegistrantInfo",
 		"Contact" => "ascio\\v3\\Contact",
 		"ContactInfo" => "ascio\\v3\\ContactInfo",
+		"CustomerReference" => "ascio\\v3\\CustomerReference",
+		"CustomerReferenceInfo" => "ascio\\v3\\CustomerReferenceInfo",
+		"CustomerReferenceResult" => "ascio\\v3\\CustomerReferenceResult",
+		"ArrayOfCustomerReferenceResult" => "ascio\\v3\\ArrayOfCustomerReferenceResult",
 		"Extensions" => "ascio\\v3\\Extensions",
 		"AutoInstallSslOrderRequest" => "ascio\\v3\\AutoInstallSslOrderRequest",
 		"AutoInstallSsl" => "ascio\\v3\\AutoInstallSsl",
@@ -42,6 +46,8 @@ class Service extends ServiceBase  {
 		"OrderHistory" => "ascio\\v3\\OrderHistory",
 		"GetOrderRequest" => "ascio\\v3\\GetOrderRequest",
 		"GetOrderResponse" => "ascio\\v3\\GetOrderResponse",
+		"CancelOrderRequest" => "ascio\\v3\\CancelOrderRequest",
+		"CancelOrderResponse" => "ascio\\v3\\CancelOrderResponse",
 		"GetOrdersRequest" => "ascio\\v3\\GetOrdersRequest",
 		"ArrayOfOrderStatusType" => "ascio\\v3\\ArrayOfOrderStatusType",
 		"ArrayOfOrderType" => "ascio\\v3\\ArrayOfOrderType",
@@ -52,6 +58,9 @@ class Service extends ServiceBase  {
 		"GetDomainsRequest" => "ascio\\v3\\GetDomainsRequest",
 		"GetDomainsResponse" => "ascio\\v3\\GetDomainsResponse",
 		"ArrayOfDomainInfo" => "ascio\\v3\\ArrayOfDomainInfo",
+		"GetDefensivesRequest" => "ascio\\v3\\GetDefensivesRequest",
+		"GetDefensivesResponse" => "ascio\\v3\\GetDefensivesResponse",
+		"ArrayOfDefensiveInfo" => "ascio\\v3\\ArrayOfDefensiveInfo",
 		"GetPremiumDomainsRequest" => "ascio\\v3\\GetPremiumDomainsRequest",
 		"GetPremiumDomainsResponse" => "ascio\\v3\\GetPremiumDomainsResponse",
 		"ArrayOfPremiumDomainInfo" => "ascio\\v3\\ArrayOfPremiumDomainInfo",
@@ -66,13 +75,22 @@ class Service extends ServiceBase  {
 		"DnsSecKeys" => "ascio\\v3\\DnsSecKeys",
 		"DnsSecKey" => "ascio\\v3\\DnsSecKey",
 		"PrivacyProxy" => "ascio\\v3\\PrivacyProxy",
+		"GetRegistrantVerificationRequest" => "ascio\\v3\\GetRegistrantVerificationRequest",
+		"GetRegistrantVerificationResponse" => "ascio\\v3\\GetRegistrantVerificationResponse",
+		"RegistrantVerificationInfo" => "ascio\\v3\\RegistrantVerificationInfo",
+		"RegistrantVerificationDetails" => "ascio\\v3\\RegistrantVerificationDetails",
+		"StartRegistrantVerificationRequest" => "ascio\\v3\\StartRegistrantVerificationRequest",
+		"StartRegistrantVerificationResponse" => "ascio\\v3\\StartRegistrantVerificationResponse",
 		"AvailabilityInfoRequest" => "ascio\\v3\\AvailabilityInfoRequest",
 		"AvailabilityInfoResponse" => "ascio\\v3\\AvailabilityInfoResponse",
 		"ArrayOfPrices" => "ascio\\v3\\ArrayOfPrices",
 		"PriceInfo" => "ascio\\v3\\PriceInfo",
+		"ArrayOfFuturePrices" => "ascio\\v3\\ArrayOfFuturePrices",
+		"FuturePriceInfo" => "ascio\\v3\\FuturePriceInfo",
 		"Product" => "ascio\\v3\\Product",
 		"GetPricesRequest" => "ascio\\v3\\GetPricesRequest",
 		"GetPricesResponse" => "ascio\\v3\\GetPricesResponse",
+		"GetFuturePricesResponse" => "ascio\\v3\\GetFuturePricesResponse",
 		"GetPriceHistoryRequest" => "ascio\\v3\\GetPriceHistoryRequest",
 		"GetPriceHistoryResponse" => "ascio\\v3\\GetPriceHistoryResponse",
 		"GetAccountBalanceRequest" => "ascio\\v3\\GetAccountBalanceRequest",
@@ -109,8 +127,22 @@ class Service extends ServiceBase  {
 		"GetRegistrantResponse" => "ascio\\v3\\GetRegistrantResponse",
 		"GetContactRequest" => "ascio\\v3\\GetContactRequest",
 		"GetContactResponse" => "ascio\\v3\\GetContactResponse",
+		"DeleteHandleRequest" => "ascio\\v3\\DeleteHandleRequest",
+		"ObjectInfo" => "ascio\\v3\\ObjectInfo",
+		"ArrayOfObjectInfo" => "ascio\\v3\\ArrayOfObjectInfo",
+		"DeleteHandleResponse" => "ascio\\v3\\DeleteHandleResponse",
+		"GetCustomerReferenceRequest" => "ascio\\v3\\GetCustomerReferenceRequest",
+		"GetCustomerReferenceResponse" => "ascio\\v3\\GetCustomerReferenceResponse",
 		"CreateContactRequest" => "ascio\\v3\\CreateContactRequest",
 		"CreateContactResponse" => "ascio\\v3\\CreateContactResponse",
+		"CreateCustomerReferenceRequest" => "ascio\\v3\\CreateCustomerReferenceRequest",
+		"CreateCustomerReferenceResponse" => "ascio\\v3\\CreateCustomerReferenceResponse",
+		"UpdateCustomerReferenceRequest" => "ascio\\v3\\UpdateCustomerReferenceRequest",
+		"UpdateCustomerReferenceResponse" => "ascio\\v3\\UpdateCustomerReferenceResponse",
+		"DeleteCustomerReferenceRequest" => "ascio\\v3\\DeleteCustomerReferenceRequest",
+		"DeleteCustomerReferenceResponse" => "ascio\\v3\\DeleteCustomerReferenceResponse",
+		"SetCustomerReferencesRequest" => "ascio\\v3\\SetCustomerReferencesRequest",
+		"SetCustomerReferencesResponse" => "ascio\\v3\\SetCustomerReferencesResponse",
 		"CreateRegistrantRequest" => "ascio\\v3\\CreateRegistrantRequest",
 		"CreateRegistrantResponse" => "ascio\\v3\\CreateRegistrantResponse",
 		"CreateNameServerRequest" => "ascio\\v3\\CreateNameServerRequest",
@@ -127,6 +159,9 @@ class Service extends ServiceBase  {
 		"GetContactsRequest" => "ascio\\v3\\GetContactsRequest",
 		"ArrayOfContactInfo" => "ascio\\v3\\ArrayOfContactInfo",
 		"GetContactsResponse" => "ascio\\v3\\GetContactsResponse",
+		"GetCustomerReferencesRequest" => "ascio\\v3\\GetCustomerReferencesRequest",
+		"ArrayOfCustomerReferenceInfo" => "ascio\\v3\\ArrayOfCustomerReferenceInfo",
+		"GetCustomerReferencesResponse" => "ascio\\v3\\GetCustomerReferencesResponse",
 		"GetNameServersRequest" => "ascio\\v3\\GetNameServersRequest",
 		"ArrayOfNameServers" => "ascio\\v3\\ArrayOfNameServers",
 		"GetNameServersResponse" => "ascio\\v3\\GetNameServersResponse",
@@ -139,6 +174,9 @@ class Service extends ServiceBase  {
 		"GetMarksRequest" => "ascio\\v3\\GetMarksRequest",
 		"GetMarksResponse" => "ascio\\v3\\GetMarksResponse",
 		"ArrayOfMarkInfo" => "ascio\\v3\\ArrayOfMarkInfo",
+		"GetNameWatchListRequest" => "ascio\\v3\\GetNameWatchListRequest",
+		"GetNameWatchListResponse" => "ascio\\v3\\GetNameWatchListResponse",
+		"ArrayOfNameWatchInfo" => "ascio\\v3\\ArrayOfNameWatchInfo",
 		"GetMarkRequest" => "ascio\\v3\\GetMarkRequest",
 		"GetMarkResponse" => "ascio\\v3\\GetMarkResponse",
 		"MarkInfo" => "ascio\\v3\\MarkInfo",
@@ -162,6 +200,8 @@ class Service extends ServiceBase  {
 		"Message" => "ascio\\v3\\Message",
 		"ArrayOfAttachment" => "ascio\\v3\\ArrayOfAttachment",
 		"PollQueueRequest" => "ascio\\v3\\PollQueueRequest",
+		"ResendMessageRequest" => "ascio\\v3\\ResendMessageRequest",
+		"ResendMessageResponse" => "ascio\\v3\\ResendMessageResponse",
 		"GetAttachmentRequest" => "ascio\\v3\\GetAttachmentRequest",
 		"GetAttachmentResponse" => "ascio\\v3\\GetAttachmentResponse",
 		"PollQueueResponse" => "ascio\\v3\\PollQueueResponse",
@@ -174,20 +214,32 @@ class Service extends ServiceBase  {
 		"GetQueueMessageResponse" => "ascio\\v3\\GetQueueMessageResponse",
 		"UploadDocumentationRequest" => "ascio\\v3\\UploadDocumentationRequest",
 		"UploadDocumentationResponse" => "ascio\\v3\\UploadDocumentationResponse",
+		"CreateApprovalDocumentationRequest" => "ascio\\v3\\CreateApprovalDocumentationRequest",
+		"AbstractApproval" => "ascio\\v3\\AbstractApproval",
+		"IrtpApproval" => "ascio\\v3\\IrtpApproval",
+		"FoaApproval" => "ascio\\v3\\FoaApproval",
+		"CreateApprovalDocumentationResponse" => "ascio\\v3\\CreateApprovalDocumentationResponse",
 		"UploadMessageRequest" => "ascio\\v3\\UploadMessageRequest",
 		"UploadMessageResponse" => "ascio\\v3\\UploadMessageResponse",
+		"GetSslCertificateChainRequest" => "ascio\\v3\\GetSslCertificateChainRequest",
+		"GetSslCertificateChainResponse" => "ascio\\v3\\GetSslCertificateChainResponse",
 		"ArrayOfstring" => "ascio\\v3\\ArrayOfstring",
 		"ArrayOfint" => "ascio\\v3\\ArrayOfint",
 		"CreateOrder" => "ascio\\v3\\CreateOrder",
 		"ValidateOrder" => "ascio\\v3\\ValidateOrder",
 		"GetOrder" => "ascio\\v3\\GetOrder",
+		"CancelOrder" => "ascio\\v3\\CancelOrder",
 		"GetOrders" => "ascio\\v3\\GetOrders",
 		"GetDomains" => "ascio\\v3\\GetDomains",
+		"GetDefensives" => "ascio\\v3\\GetDefensives",
 		"GetPremiumDomains" => "ascio\\v3\\GetPremiumDomains",
 		"GetSslCertificates" => "ascio\\v3\\GetSslCertificates",
 		"GetDomain" => "ascio\\v3\\GetDomain",
 		"AvailabilityInfo" => "ascio\\v3\\AvailabilityInfo",
+		"GetRegistrantVerificationInfo" => "ascio\\v3\\GetRegistrantVerificationInfo",
+		"StartRegistrantVerification" => "ascio\\v3\\StartRegistrantVerification",
 		"GetPrices" => "ascio\\v3\\GetPrices",
+		"GetFuturePrices" => "ascio\\v3\\GetFuturePrices",
 		"GetPriceHistory" => "ascio\\v3\\GetPriceHistory",
 		"GetAccountBalance" => "ascio\\v3\\GetAccountBalance",
 		"GetAccountTransactions" => "ascio\\v3\\GetAccountTransactions",
@@ -201,7 +253,16 @@ class Service extends ServiceBase  {
 		"GetCreditNote" => "ascio\\v3\\GetCreditNote",
 		"GetRegistrant" => "ascio\\v3\\GetRegistrant",
 		"GetContact" => "ascio\\v3\\GetContact",
+		"DeleteContact" => "ascio\\v3\\DeleteContact",
+		"DeleteRegistrant" => "ascio\\v3\\DeleteRegistrant",
+		"DeleteNameServer" => "ascio\\v3\\DeleteNameServer",
+		"DeleteDnsSecKey" => "ascio\\v3\\DeleteDnsSecKey",
+		"GetCustomerReference" => "ascio\\v3\\GetCustomerReference",
 		"CreateContact" => "ascio\\v3\\CreateContact",
+		"CreateCustomerReference" => "ascio\\v3\\CreateCustomerReference",
+		"UpdateCustomerReference" => "ascio\\v3\\UpdateCustomerReference",
+		"DeleteCustomerReference" => "ascio\\v3\\DeleteCustomerReference",
+		"SetCustomerReferences" => "ascio\\v3\\SetCustomerReferences",
 		"CreateRegistrant" => "ascio\\v3\\CreateRegistrant",
 		"CreateNameServer" => "ascio\\v3\\CreateNameServer",
 		"CreateDnsSecKey" => "ascio\\v3\\CreateDnsSecKey",
@@ -209,9 +270,11 @@ class Service extends ServiceBase  {
 		"GetDnsSecKey" => "ascio\\v3\\GetDnsSecKey",
 		"GetRegistrants" => "ascio\\v3\\GetRegistrants",
 		"GetContacts" => "ascio\\v3\\GetContacts",
+		"GetCustomerReferences" => "ascio\\v3\\GetCustomerReferences",
 		"GetNameServers" => "ascio\\v3\\GetNameServers",
 		"GetDnsSecKeys" => "ascio\\v3\\GetDnsSecKeys",
 		"GetMarks" => "ascio\\v3\\GetMarks",
+		"GetNameWatchList" => "ascio\\v3\\GetNameWatchList",
 		"GetMark" => "ascio\\v3\\GetMark",
 		"GetDefensive" => "ascio\\v3\\GetDefensive",
 		"GetNameWatch" => "ascio\\v3\\GetNameWatch",
@@ -219,12 +282,15 @@ class Service extends ServiceBase  {
 		"GetSslApprovers" => "ascio\\v3\\GetSslApprovers",
 		"GetAutoInstallSsl" => "ascio\\v3\\GetAutoInstallSsl",
 		"GetMessages" => "ascio\\v3\\GetMessages",
+		"ResendMessage" => "ascio\\v3\\ResendMessage",
 		"GetAttachment" => "ascio\\v3\\GetAttachment",
 		"PollQueue" => "ascio\\v3\\PollQueue",
 		"AckQueueMessage" => "ascio\\v3\\AckQueueMessage",
 		"GetQueueMessage" => "ascio\\v3\\GetQueueMessage",
 		"UploadDocumentation" => "ascio\\v3\\UploadDocumentation",
+		"CreateApprovalDocumentation" => "ascio\\v3\\CreateApprovalDocumentation",
 		"UploadMessage" => "ascio\\v3\\UploadMessage",
+		"GetSslCertificateChain" => "ascio\\v3\\GetSslCertificateChain",
 		"anyType" => "ascio\\v3\\anyType",
 		"anyURI" => "ascio\\v3\\anyURI",
 		"base64Binary" => "ascio\\v3\\base64Binary",
@@ -247,13 +313,18 @@ class Service extends ServiceBase  {
 		"CreateOrder" => "ascio\\v3\\CreateOrder",
 		"ValidateOrder" => "ascio\\v3\\ValidateOrder",
 		"GetOrder" => "ascio\\v3\\GetOrder",
+		"CancelOrder" => "ascio\\v3\\CancelOrder",
 		"GetOrders" => "ascio\\v3\\GetOrders",
 		"GetDomains" => "ascio\\v3\\GetDomains",
+		"GetDefensives" => "ascio\\v3\\GetDefensives",
 		"GetPremiumDomains" => "ascio\\v3\\GetPremiumDomains",
 		"GetSslCertificates" => "ascio\\v3\\GetSslCertificates",
 		"GetDomain" => "ascio\\v3\\GetDomain",
 		"AvailabilityInfo" => "ascio\\v3\\AvailabilityInfo",
+		"GetRegistrantVerificationInfo" => "ascio\\v3\\GetRegistrantVerificationInfo",
+		"StartRegistrantVerification" => "ascio\\v3\\StartRegistrantVerification",
 		"GetPrices" => "ascio\\v3\\GetPrices",
+		"GetFuturePrices" => "ascio\\v3\\GetFuturePrices",
 		"GetPriceHistory" => "ascio\\v3\\GetPriceHistory",
 		"GetAccountBalance" => "ascio\\v3\\GetAccountBalance",
 		"GetAccountTransactions" => "ascio\\v3\\GetAccountTransactions",
@@ -267,7 +338,16 @@ class Service extends ServiceBase  {
 		"GetCreditNote" => "ascio\\v3\\GetCreditNote",
 		"GetRegistrant" => "ascio\\v3\\GetRegistrant",
 		"GetContact" => "ascio\\v3\\GetContact",
+		"DeleteContact" => "ascio\\v3\\DeleteContact",
+		"DeleteRegistrant" => "ascio\\v3\\DeleteRegistrant",
+		"DeleteNameServer" => "ascio\\v3\\DeleteNameServer",
+		"DeleteDnsSecKey" => "ascio\\v3\\DeleteDnsSecKey",
+		"GetCustomerReference" => "ascio\\v3\\GetCustomerReference",
 		"CreateContact" => "ascio\\v3\\CreateContact",
+		"CreateCustomerReference" => "ascio\\v3\\CreateCustomerReference",
+		"UpdateCustomerReference" => "ascio\\v3\\UpdateCustomerReference",
+		"DeleteCustomerReference" => "ascio\\v3\\DeleteCustomerReference",
+		"SetCustomerReferences" => "ascio\\v3\\SetCustomerReferences",
 		"CreateRegistrant" => "ascio\\v3\\CreateRegistrant",
 		"CreateNameServer" => "ascio\\v3\\CreateNameServer",
 		"CreateDnsSecKey" => "ascio\\v3\\CreateDnsSecKey",
@@ -275,9 +355,11 @@ class Service extends ServiceBase  {
 		"GetDnsSecKey" => "ascio\\v3\\GetDnsSecKey",
 		"GetRegistrants" => "ascio\\v3\\GetRegistrants",
 		"GetContacts" => "ascio\\v3\\GetContacts",
+		"GetCustomerReferences" => "ascio\\v3\\GetCustomerReferences",
 		"GetNameServers" => "ascio\\v3\\GetNameServers",
 		"GetDnsSecKeys" => "ascio\\v3\\GetDnsSecKeys",
 		"GetMarks" => "ascio\\v3\\GetMarks",
+		"GetNameWatchList" => "ascio\\v3\\GetNameWatchList",
 		"GetMark" => "ascio\\v3\\GetMark",
 		"GetDefensive" => "ascio\\v3\\GetDefensive",
 		"GetNameWatch" => "ascio\\v3\\GetNameWatch",
@@ -285,12 +367,15 @@ class Service extends ServiceBase  {
 		"GetSslApprovers" => "ascio\\v3\\GetSslApprovers",
 		"GetAutoInstallSsl" => "ascio\\v3\\GetAutoInstallSsl",
 		"GetMessages" => "ascio\\v3\\GetMessages",
+		"ResendMessage" => "ascio\\v3\\ResendMessage",
 		"GetAttachment" => "ascio\\v3\\GetAttachment",
 		"PollQueue" => "ascio\\v3\\PollQueue",
 		"AckQueueMessage" => "ascio\\v3\\AckQueueMessage",
 		"GetQueueMessage" => "ascio\\v3\\GetQueueMessage",
 		"UploadDocumentation" => "ascio\\v3\\UploadDocumentation",
+		"CreateApprovalDocumentation" => "ascio\\v3\\CreateApprovalDocumentation",
 		"UploadMessage" => "ascio\\v3\\UploadMessage",
+		"GetSslCertificateChain" => "ascio\\v3\\GetSslCertificateChain",
 		"KeyValue" => "ascio\\v3\\KeyValue",
 		"char" => "ascio\\v3\\char",
 		"duration" => "ascio\\v3\\duration",
@@ -307,17 +392,21 @@ class Service extends ServiceBase  {
 		"DomainSortType" => "ascio\\v3\\DomainSortType",
 		"DomainType" => "ascio\\v3\\DomainType",
 		"ProxyType" => "ascio\\v3\\ProxyType",
+		"DefensiveSortType" => "ascio\\v3\\DefensiveSortType",
 		"PrivacyProxyType" => "ascio\\v3\\PrivacyProxyType",
+		"RegistrantVerificationStatus" => "ascio\\v3\\RegistrantVerificationStatus",
 		"AccountTransactionType" => "ascio\\v3\\AccountTransactionType",
 		"SalesLineState" => "ascio\\v3\\SalesLineState",
 		"InvoiceState" => "ascio\\v3\\InvoiceState",
 		"SalesLineSortType" => "ascio\\v3\\SalesLineSortType",
 		"RegistrantSortType" => "ascio\\v3\\RegistrantSortType",
 		"ContactSortType" => "ascio\\v3\\ContactSortType",
+		"CustomerReferenceSortType" => "ascio\\v3\\CustomerReferenceSortType",
 		"NameServerSortType" => "ascio\\v3\\NameServerSortType",
 		"DnsSecKeySortType" => "ascio\\v3\\DnsSecKeySortType",
 		"SslCertificateSortType" => "ascio\\v3\\SslCertificateSortType",
 		"MarkSortType" => "ascio\\v3\\MarkSortType",
+		"NameWatchSortType" => "ascio\\v3\\NameWatchSortType",
 		"MessageType" => "ascio\\v3\\MessageType",
 	];
 
@@ -331,11 +420,17 @@ class Service extends ServiceBase  {
 	public function getOrder(GetOrderRequest $request) : GetOrderResponse {
 		return $this->call("GetOrder", ["request" => $request]);
 	}
+	public function cancelOrder(CancelOrderRequest $request) : CancelOrderResponse {
+		return $this->call("CancelOrder", ["request" => $request]);
+	}
 	public function getOrders(GetOrdersRequest $request) : GetOrdersResponse {
 		return $this->call("GetOrders", ["request" => $request]);
 	}
 	public function getDomains(GetDomainsRequest $request) : GetDomainsResponse {
 		return $this->call("GetDomains", ["request" => $request]);
+	}
+	public function getDefensives(GetDefensivesRequest $request) : GetDefensivesResponse {
+		return $this->call("GetDefensives", ["request" => $request]);
 	}
 	public function getPremiumDomains(GetPremiumDomainsRequest $request) : GetPremiumDomainsResponse {
 		return $this->call("GetPremiumDomains", ["request" => $request]);
@@ -346,8 +441,17 @@ class Service extends ServiceBase  {
 	public function availabilityInfo(AvailabilityInfoRequest $request) : AvailabilityInfoResponse {
 		return $this->call("AvailabilityInfo", ["request" => $request]);
 	}
+	public function getRegistrantVerificationInfo(GetRegistrantVerificationRequest $request) : GetRegistrantVerificationResponse {
+		return $this->call("GetRegistrantVerificationInfo", ["request" => $request]);
+	}
+	public function startRegistrantVerification(StartRegistrantVerificationRequest $request) : StartRegistrantVerificationResponse {
+		return $this->call("StartRegistrantVerification", ["request" => $request]);
+	}
 	public function getPrices(GetPricesRequest $request) : GetPricesResponse {
 		return $this->call("GetPrices", ["request" => $request]);
+	}
+	public function getFuturePrices(GetPricesRequest $request) : GetFuturePricesResponse {
+		return $this->call("GetFuturePrices", ["request" => $request]);
 	}
 	public function getPriceHistory(GetPriceHistoryRequest $request) : GetPriceHistoryResponse {
 		return $this->call("GetPriceHistory", ["request" => $request]);
@@ -388,8 +492,35 @@ class Service extends ServiceBase  {
 	public function getContact(GetContactRequest $request) : GetContactResponse {
 		return $this->call("GetContact", ["request" => $request]);
 	}
+	public function deleteContact(DeleteHandleRequest $request) : DeleteHandleResponse {
+		return $this->call("DeleteContact", ["request" => $request]);
+	}
+	public function deleteRegistrant(DeleteHandleRequest $request) : DeleteHandleResponse {
+		return $this->call("DeleteRegistrant", ["request" => $request]);
+	}
+	public function deleteNameServer(DeleteHandleRequest $request) : DeleteHandleResponse {
+		return $this->call("DeleteNameServer", ["request" => $request]);
+	}
+	public function deleteDnsSecKey(DeleteHandleRequest $request) : DeleteHandleResponse {
+		return $this->call("DeleteDnsSecKey", ["request" => $request]);
+	}
+	public function getCustomerReference(GetCustomerReferenceRequest $request) : GetCustomerReferenceResponse {
+		return $this->call("GetCustomerReference", ["request" => $request]);
+	}
 	public function createContact(CreateContactRequest $request) : CreateContactResponse {
 		return $this->call("CreateContact", ["request" => $request]);
+	}
+	public function createCustomerReference(CreateCustomerReferenceRequest $request) : CreateCustomerReferenceResponse {
+		return $this->call("CreateCustomerReference", ["request" => $request]);
+	}
+	public function updateCustomerReference(UpdateCustomerReferenceRequest $request) : UpdateCustomerReferenceResponse {
+		return $this->call("UpdateCustomerReference", ["request" => $request]);
+	}
+	public function deleteCustomerReference(DeleteCustomerReferenceRequest $request) : DeleteCustomerReferenceResponse {
+		return $this->call("DeleteCustomerReference", ["request" => $request]);
+	}
+	public function setCustomerReferences(SetCustomerReferencesRequest $request) : SetCustomerReferencesResponse {
+		return $this->call("SetCustomerReferences", ["request" => $request]);
 	}
 	public function createRegistrant(CreateRegistrantRequest $request) : CreateRegistrantResponse {
 		return $this->call("CreateRegistrant", ["request" => $request]);
@@ -412,6 +543,9 @@ class Service extends ServiceBase  {
 	public function getContacts(GetContactsRequest $request) : GetContactsResponse {
 		return $this->call("GetContacts", ["request" => $request]);
 	}
+	public function getCustomerReferences(GetCustomerReferencesRequest $request) : GetCustomerReferencesResponse {
+		return $this->call("GetCustomerReferences", ["request" => $request]);
+	}
 	public function getNameServers(GetNameServersRequest $request) : GetNameServersResponse {
 		return $this->call("GetNameServers", ["request" => $request]);
 	}
@@ -420,6 +554,9 @@ class Service extends ServiceBase  {
 	}
 	public function getMarks(GetMarksRequest $request) : GetMarksResponse {
 		return $this->call("GetMarks", ["request" => $request]);
+	}
+	public function getNameWatchList(GetNameWatchListRequest $request) : GetNameWatchListResponse {
+		return $this->call("GetNameWatchList", ["request" => $request]);
 	}
 	public function getMark(GetMarkRequest $request) : GetMarkResponse {
 		return $this->call("GetMark", ["request" => $request]);
@@ -445,6 +582,9 @@ class Service extends ServiceBase  {
 	public function getMessages(GetMessagesRequest $request) : GetMessagesResponse {
 		return $this->call("GetMessages", ["request" => $request]);
 	}
+	public function resendMessage(ResendMessageRequest $request) : ResendMessageResponse {
+		return $this->call("ResendMessage", ["request" => $request]);
+	}
 	public function getAttachment(GetAttachmentRequest $request) : GetAttachmentResponse {
 		return $this->call("GetAttachment", ["request" => $request]);
 	}
@@ -460,7 +600,13 @@ class Service extends ServiceBase  {
 	public function uploadDocumentation(UploadDocumentationRequest $request) : UploadDocumentationResponse {
 		return $this->call("UploadDocumentation", ["request" => $request]);
 	}
+	public function createApprovalDocumentation(CreateApprovalDocumentationRequest $request) : CreateApprovalDocumentationResponse {
+		return $this->call("CreateApprovalDocumentation", ["request" => $request]);
+	}
 	public function uploadMessage(UploadMessageRequest $request) : UploadMessageResponse {
 		return $this->call("UploadMessage", ["request" => $request]);
+	}
+	public function getSslCertificateChain(GetSslCertificateChainRequest $request) : GetSslCertificateChainResponse {
+		return $this->call("GetSslCertificateChain", ["request" => $request]);
 	}
 }

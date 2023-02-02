@@ -11,7 +11,7 @@ use ascio\api\v3\AbstractResponseApi;
 
 class GetAccountBalanceResponse extends AbstractResponse  {
 
-	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "Currency", "Vat", "UnInvoicedOrders", "UnInvoicedOpenOrders", "UnInvoicedCompletedOrders", "UnInvoicedCompletedOrdersLast24h", "AccountBalance", "CurrentBalance", "ReminderThreshold", "BlockingThreshold", "ReminderEmailAddress", "InvoiceEmailAddress", "LastReminderSent", "NumberOfRemindersSent", "LastBlockedAccountMessageSent", "NumberOfBlockedAccountMessagesSent"];
+	protected $_apiProperties=["ResultCode", "ResultMessage", "Errors", "Currency", "Vat", "UnInvoicedOrders", "UnInvoicedOpenOrders", "UnInvoicedCompletedOrders", "UnInvoicedCompletedOrdersLast24h", "AccountBalance", "CurrentBalance", "ReminderThreshold", "BlockingThreshold", "ReminderEmailAddress", "InvoiceEmailAddress", "LastReminderSent", "NumberOfRemindersSent", "LastBlockedAccountMessageSent", "NumberOfBlockedAccountMessagesSent", "StandingAccountBalance"];
 	protected $_apiObjects=["Errors", "ReminderEmailAddress", "InvoiceEmailAddress"];
 	protected $_substituted = true;
 	protected $ResultCode;
@@ -33,6 +33,7 @@ class GetAccountBalanceResponse extends AbstractResponse  {
 	protected $NumberOfRemindersSent;
 	protected $LastBlockedAccountMessageSent;
 	protected $NumberOfBlockedAccountMessagesSent;
+	protected $StandingAccountBalance;
 
 	public function __construct($parent = null) {
 		parent::__construct($parent);
@@ -172,5 +173,12 @@ class GetAccountBalanceResponse extends AbstractResponse  {
 	}
 	public function getNumberOfBlockedAccountMessagesSent () : ?int {
 		return $this->get("NumberOfBlockedAccountMessagesSent", "int");
+	}
+	public function setStandingAccountBalance (?float $StandingAccountBalance = null) : self {
+		$this->set("StandingAccountBalance", $StandingAccountBalance);
+		return $this;
+	}
+	public function getStandingAccountBalance () : ?float {
+		return $this->get("StandingAccountBalance", "float");
 	}
 }

@@ -117,6 +117,21 @@ class Domain extends \ascio\service\v3\Domain {
         $orderRequest->setDomain($this);
         return $orderRequest->submit($submitOptions);
     }
+    public function updateAuthInfo(?SubmitOptions $submitOptions=null) : ?OrderInfoInterface {
+        $orderRequest = new DomainOrderRequest();
+        $orderRequest->setType(OrderType::UpdateAuthInfo);
+        $domain = new Domain();
+        $domain->setName($this->getName());
+        $domain->setHandle($this->getHandle());
+        $orderRequest->setDomain($this);
+        return $orderRequest->submit($submitOptions);
+    }
+    public function nameserverUpdate(?SubmitOptions $submitOptions=null) : ?OrderInfoInterface {
+        $orderRequest = new DomainOrderRequest();
+        $orderRequest->setType(OrderType::NameserverUpdate);
+        $orderRequest->setDomain($this);
+        return $orderRequest->submit($submitOptions);
+    }
     /**
      * Get the value of autoRenew
      */ 

@@ -10,7 +10,7 @@ use ascio\base\v3\DbBase;
 
 class Domain extends DbBase  {
 
-	protected $_apiProperties=["Name", "Handle", "RenewPeriod", "AuthInfo", "EncodingType", "DomainPurpose", "Comment", "TransferLock", "DeleteLock", "UpdateLock", "QueueType", "Owner", "Admin", "Tech", "Billing", "Reseller", "NameServers", "Trademark", "DnsSecKeys", "PrivacyProxy", "DomainType", "DiscloseSocialData", "LocalPresence"];
+	protected $_apiProperties=["Name", "Handle", "RenewPeriod", "AuthInfo", "EncodingType", "DomainPurpose", "Comment", "TransferLock", "DeleteLock", "UpdateLock", "QueueType", "Owner", "Admin", "Tech", "Billing", "Reseller", "NameServers", "Trademark", "DnsSecKeys", "PrivacyProxy", "DomainType", "DiscloseSocialData", "LocalPresence", "MasterNameServerIp"];
 	protected $_apiObjects=["Owner", "Admin", "Tech", "Billing", "Reseller", "NameServers", "Trademark", "DnsSecKeys", "PrivacyProxy"];
 	protected $Name;
 	protected $Handle;
@@ -35,6 +35,7 @@ class Domain extends DbBase  {
 	protected $DomainType;
 	protected $DiscloseSocialData;
 	protected $LocalPresence;
+	protected $MasterNameServerIp;
 
 	public function __construct($parent = null) {
 		parent::__construct($parent);
@@ -262,5 +263,12 @@ class Domain extends DbBase  {
 	}
 	public function getLocalPresence () : ?bool {
 		return $this->get("LocalPresence", "bool");
+	}
+	public function setMasterNameServerIp (?string $MasterNameServerIp = null) : self {
+		$this->set("MasterNameServerIp", $MasterNameServerIp);
+		return $this;
+	}
+	public function getMasterNameServerIp () : ?string {
+		return $this->get("MasterNameServerIp", "string");
 	}
 }

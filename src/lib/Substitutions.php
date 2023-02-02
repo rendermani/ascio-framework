@@ -42,22 +42,22 @@ class Substitutions implements \Iterator {
     {
         return $this->object;
     }
-    public function rewind() {
+    public function rewind() : void {
         $this->_position = 0;
     }
 
-    public function current() {
+    public function current() : mixed {
         return $this->substitutions[$this->_position]["type"];
     }
 
-    public function key() {
+    public function key(): mixed {
         return $this->substitutions[$this->_position]["name"];
     }
-    public function next() {
+    public function next(): void {
         ++$this->_position;
     }
 
-    public function valid() {
+    public function valid() : bool {
         return isset($this->substitutions[$this->_position]);
     }
     public function pop() {

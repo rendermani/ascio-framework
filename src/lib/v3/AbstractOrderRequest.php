@@ -72,7 +72,6 @@ class AbstractOrderRequest extends \ascio\service\v3\AbstractOrderRequest implem
         } else {
             return $this->sendToApi();                                
         }
-        return $this;
     }
     public function sendToApi(): ?OrderInfoInterface {
         $this->setWorkflowStatus(OrderStatus::Submitting); 
