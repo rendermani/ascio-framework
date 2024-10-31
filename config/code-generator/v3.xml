@@ -113,6 +113,7 @@
             <class>DnsSecKeys</class>
             <class>DnsSecKey</class> 
             <class>PrivacyProxy</class>  
+            <class>CustomerReference</class>
         </used-classes>
     </db>
     <api>

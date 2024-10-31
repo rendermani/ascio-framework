@@ -45,6 +45,20 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+      <xs:element name="CancelOrder">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:CancelOrderRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CancelOrderResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="CancelOrderResult" nillable="true" type="q1:CancelOrderResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
       <xs:element name="GetOrders">
         <xs:complexType>
           <xs:sequence>
@@ -70,6 +84,48 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetDomainsResult" nillable="true" type="q1:GetDomainsResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDefensives">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:GetDefensivesRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDefensivesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetDefensivesResult" nillable="true" type="q1:GetDefensivesResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPremiumDomains">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:GetPremiumDomainsRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPremiumDomainsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetPremiumDomainsResult" nillable="true" type="q1:GetPremiumDomainsResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSslCertificates">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:GetSslCertificatesRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSslCertificatesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetSslCertificatesResult" nillable="true" type="q1:GetSslCertificatesResponse" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -101,6 +157,34 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+      <xs:element name="GetRegistrantVerificationInfo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:GetRegistrantVerificationRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetRegistrantVerificationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetRegistrantVerificationResult" nillable="true" type="q1:GetRegistrantVerificationResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="StartRegistrantVerification">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:StartRegistrantVerificationRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="StartRegistrantVerificationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="StartRegistrantVerificationResult" nillable="true" type="q1:StartRegistrantVerificationResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
       <xs:element name="GetPrices">
         <xs:complexType>
           <xs:sequence>
@@ -112,6 +196,174 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetPricesResult" nillable="true" type="q1:GetPricesResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetFuturePrices">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:GetPricesRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetFuturePricesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetFuturePricesResult" nillable="true" type="q1:GetFuturePricesResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPriceHistory">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:GetPriceHistoryRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPriceHistoryResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetPriceHistoryResult" nillable="true" type="q1:GetPriceHistoryResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAccountBalance">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:GetAccountBalanceRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAccountBalanceResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetAccountBalanceResult" nillable="true" type="q1:GetAccountBalanceResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAccountTransactions">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:GetAccountTransactionsRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAccountTransactionsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetAccountTransactionsResult" nillable="true" type="q1:GetAccountTransactionsResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSalesLines">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:GetSalesLinesRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSalesLinesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetSalesLinesResult" nillable="true" type="q1:GetSalesLinesResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSubUsers">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:GetSubUsersRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSubUsersResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetSubUsersResult" nillable="true" type="q1:GetSubUsersResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSubUser">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:GetSubUserRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSubUserResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetSubUserResult" nillable="true" type="q1:GetSubUserResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateSubUser">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:CreateSubUserRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateSubUserResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="CreateSubUserResult" nillable="true" type="q1:CreateSubUserResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateSubUser">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:UpdateSubUserRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateSubUserResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="UpdateSubUserResult" nillable="true" type="q1:UpdateSubUserResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteSubUser">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:DeleteSubUserRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteSubUserResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="DeleteSubUserResult" nillable="true" type="q1:DeleteSubUserResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetInvoice">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:GetInvoiceRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetInvoiceResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetInvoiceResult" nillable="true" type="q1:GetInvoiceResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCreditNote">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:GetCreditNoteRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCreditNoteResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetCreditNoteResult" nillable="true" type="q1:GetCreditNoteResponse" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -143,6 +395,76 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+      <xs:element name="DeleteContact">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:DeleteHandleRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteContactResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="DeleteContactResult" nillable="true" type="q1:DeleteHandleResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteRegistrant">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:DeleteHandleRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteRegistrantResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="DeleteRegistrantResult" nillable="true" type="q1:DeleteHandleResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteNameServer">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:DeleteHandleRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteNameServerResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="DeleteNameServerResult" nillable="true" type="q1:DeleteHandleResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteDnsSecKey">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:DeleteHandleRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteDnsSecKeyResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="DeleteDnsSecKeyResult" nillable="true" type="q1:DeleteHandleResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCustomerReference">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:GetCustomerReferenceRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCustomerReferenceResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetCustomerReferenceResult" nillable="true" type="q1:GetCustomerReferenceResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
       <xs:element name="CreateContact">
         <xs:complexType>
           <xs:sequence>
@@ -154,6 +476,62 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="CreateContactResult" nillable="true" type="q1:CreateContactResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateCustomerReference">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:CreateCustomerReferenceRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateCustomerReferenceResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="CreateCustomerReferenceResult" nillable="true" type="q1:CreateCustomerReferenceResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateCustomerReference">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:UpdateCustomerReferenceRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateCustomerReferenceResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="UpdateCustomerReferenceResult" nillable="true" type="q1:UpdateCustomerReferenceResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteCustomerReference">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:DeleteCustomerReferenceRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteCustomerReferenceResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="DeleteCustomerReferenceResult" nillable="true" type="q1:DeleteCustomerReferenceResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SetCustomerReferences">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:SetCustomerReferencesRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SetCustomerReferencesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="SetCustomerReferencesResult" nillable="true" type="q1:SetCustomerReferencesResponse" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -220,7 +598,7 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
-      <xs:element name="GetDnsSecResponse">
+      <xs:element name="GetDnsSecKeyResponse">
         <xs:complexType>
           <xs:sequence>
             <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetDnsSecKeyResult" nillable="true" type="q1:GetDnsSecKeyResponse" />
@@ -253,6 +631,20 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetContactsResult" nillable="true" type="q1:GetContactsResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCustomerReferences">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:GetCustomerReferencesRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCustomerReferencesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetCustomerReferencesResult" nillable="true" type="q1:GetCustomerReferencesResponse" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -299,6 +691,20 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+      <xs:element name="GetNameWatchList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:GetNameWatchListRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetNameWatchListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetNameWatchListResult" nillable="true" type="q1:GetNameWatchListResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
       <xs:element name="GetMark">
         <xs:complexType>
           <xs:sequence>
@@ -316,14 +722,14 @@
       <xs:element name="GetDefensive">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:GetDefensiveRequest"/>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:GetDefensiveRequest" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
       <xs:element name="GetDefensiveResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetDefensiveResult" nillable="true" type="q1:GetDefensiveResponse"/>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetDefensiveResult" nillable="true" type="q1:GetDefensiveResponse" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -383,20 +789,6 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
-      <xs:element name="GetLock">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:GetLockRequest" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="GetLockResponse">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetLockResult" nillable="true" type="q1:GetLockResponse" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
       <xs:element name="GetMessages">
         <xs:complexType>
           <xs:sequence>
@@ -408,6 +800,34 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetMessagesResult" nillable="true" type="q1:GetMessagesResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ResendMessage">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:ResendMessageRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ResendMessageResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="ResendMessageResult" nillable="true" type="q1:ResendMessageResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAttachment">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:GetAttachmentRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAttachmentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetAttachmentResult" nillable="true" type="q1:GetAttachmentResponse" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -456,28 +876,56 @@
       <xs:element name="UploadDocumentation">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:UploadDocumentationRequest"/>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:UploadDocumentationRequest" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
       <xs:element name="UploadDocumentationResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="UploadDocumentationResult" nillable="true" type="q1:UploadDocumentationResponse"/>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="UploadDocumentationResult" nillable="true" type="q1:UploadDocumentationResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateApprovalDocumentation">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:CreateApprovalDocumentationRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateApprovalDocumentationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="CreateApprovalDocumentationResult" nillable="true" type="q1:CreateApprovalDocumentationResponse" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
       <xs:element name="UploadMessage">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:UploadMessageRequest"/>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:UploadMessageRequest" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
       <xs:element name="UploadMessageResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="UploadMessageResult" nillable="true" type="q1:UploadMessageResponse"/>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="UploadMessageResult" nillable="true" type="q1:UploadMessageResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSslCertificateChain">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="request" nillable="true" type="q1:GetSslCertificateChainRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSslCertificateChainResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://www.ascio.com/2013/02" minOccurs="0" name="GetSslCertificateChainResult" nillable="true" type="q1:GetSslCertificateChainResponse" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -561,6 +1009,8 @@
           <xs:enumeration value="PartnerChange" />
           <xs:enumeration value="DeQueue" />
           <xs:enumeration value="UpdateAuthInfo" />
+          <xs:enumeration value="Support" />
+          <xs:enumeration value="WhoisDataReminder" />
         </xs:restriction>
       </xs:simpleType>
       <xs:element name="OrderType" nillable="true" type="tns:OrderType" />
@@ -704,13 +1154,6 @@
             <xs:sequence>
               <xs:element minOccurs="0" name="CreationDate" type="xsd:dateTime"/>
               <xs:element minOccurs="0" name="Status" nillable="true" type="xsd:string"/>
-              <xs:element minOccurs="0" name="RegistrantDate" nillable="true" type="xs:string">
-                <xsd:annotation>
-                  <xsd:appinfo>
-                    <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
-                  </xsd:appinfo>
-                </xsd:annotation>
-              </xs:element>
             </xs:sequence>
           </xs:extension>
         </xs:complexContent>
@@ -750,18 +1193,42 @@
       </xs:complexType>
       <xs:element name="ContactInfo" nillable="true" type="tns:ContactInfo" />
 
-      <xs:complexType name="AuthContact">
+      <xs:complexType name="CustomerReference">
         <xs:sequence>
           <xs:element minOccurs="0" name="Handle" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="OrgName" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ExternalId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Extensions" nillable="true" type="tns:Extensions" />
         </xs:sequence>
       </xs:complexType>
-      <xs:element name="AuthContact" nillable="true" type="tns:AuthContact" />
+      <xs:element name="CustomerReference" nillable="true" type="tns:CustomerReference" />
+      <xs:complexType name="CustomerReferenceInfo">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:CustomerReference">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CreationDate" type="xsd:dateTime"/>
+              <xs:element minOccurs="0" name="Status" nillable="true" type="xsd:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="CustomerReferenceInfo" nillable="true" type="tns:CustomerReferenceInfo" />
+
+      <xs:complexType name="CustomerReferenceResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IsSuccessful" nillable="true" type="xsd:boolean" />
+          <xs:element minOccurs="0" name="ObjectHandle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CustomerReferenceResult" nillable="true" type="tns:CustomerReferenceResult" />
+      <xs:complexType name="ArrayOfCustomerReferenceResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="CustomerReferenceResult" nillable="true" type="tns:CustomerReferenceResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfCustomerReferenceResult" nillable="true" type="tns:ArrayOfCustomerReferenceResult" />
+
       <xs:complexType name="Extensions">
         <xs:annotation>
           <xs:appinfo>
@@ -824,10 +1291,7 @@
           <xs:element minOccurs="0" name="Tech" nillable="true" type="tns:Contact" />
           <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SanNames" nillable="true" type="q1:ArrayOfstring" />
           <xs:element minOccurs="0" name="ObjectComment" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0"
-                      name="ValidationType"
-                      nillable="true"
-                      type="tns:SslDomainValidationType" />
+          <xs:element minOccurs="0" name="ValidationType" nillable="true" type="tns:SslDomainValidationType" />
         </xs:sequence>
       </xs:complexType>
       <xs:element name="SslCertificate" nillable="true" type="tns:SslCertificate" />
@@ -861,6 +1325,13 @@
           <xs:enumeration value="WebSite" />
           <xs:enumeration value="WebStar" />
           <xs:enumeration value="Iis" />
+          <xs:enumeration value="AdobeAir" />
+          <xs:enumeration value="AppleOsx" />
+          <xs:enumeration value="MicrosoftAuthenticode" />
+          <xs:enumeration value="MicrosoftOfficeVba" />
+          <xs:enumeration value="Mozilla" />
+          <xs:enumeration value="SunJava" />
+          <xs:enumeration value="CodeSigningOther" />
         </xs:restriction>
       </xs:simpleType>
       <xs:element name="WebServerType" nillable="true" type="tns:WebServerType" />
@@ -1051,7 +1522,7 @@
           <xs:element minOccurs="0" name="Handle" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="NotificationFrequency" type="tns:NotificationFrequencyType" />
-          <xs:element minOccurs="0" name="Tier" type="xs:int" />
+          <xs:element minOccurs="0" name="Tier" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="EmailNotification1" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="EmailNotification2" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="EmailNotification3" nillable="true" type="xs:string" />
@@ -1068,27 +1539,60 @@
           <xs:extension base="tns:AbstractOrderRequest">
             <xs:sequence>
               <xs:element minOccurs="0" name="Defensive" nillable="true" type="tns:Defensive" />
+              <xsd:element name="AgreedPrice" minOccurs="0" nillable="true" type="xsd:int">
+                <xsd:annotation>
+                  <xsd:appinfo>
+                    <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
             </xs:sequence>
           </xs:extension>
         </xs:complexContent>
       </xs:complexType>
-      <xs:element name="DefensiveOrderRequest" nillable="true" type="tns:DefensiveOrderRequest"/>
+      <xs:element name="DefensiveOrderRequest" nillable="true" type="tns:DefensiveOrderRequest" />
       <xs:complexType name="Defensive">
         <xs:sequence>
-          <xs:element minOccurs="0" name="Handle" nillable="true" type="xs:string"/>
-          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
-          <xs:element minOccurs="0" name="MarkHandle" nillable="true" type="xs:string"/>
-          <xs:element minOccurs="0" name="AuthInfo" nillable="true" type="xs:string"/>
-          <xs:element minOccurs="0" name="Encoding" nillable="true" type="xs:string"/>
-          <xs:element minOccurs="0" name="Owner" nillable="true" type="tns:Registrant"/>
-          <xs:element minOccurs="0" name="Admin" nillable="true" type="tns:Contact"/>
-          <xs:element minOccurs="0" name="Tech" nillable="true" type="tns:Contact"/>
-          <xs:element minOccurs="0" name="Billing" nillable="true" type="tns:Contact"/>
-          <xs:element minOccurs="0" name="Reseller" nillable="true" type="tns:Contact"/>
+          <xs:element minOccurs="0" name="Handle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MarkHandle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AuthInfo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Encoding" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Owner" nillable="true" type="tns:Registrant" />
+          <xs:element minOccurs="0" name="Admin" nillable="true" type="tns:Contact" />
+          <xs:element minOccurs="0" name="Tech" nillable="true" type="tns:Contact" />
+          <xs:element minOccurs="0" name="Billing" nillable="true" type="tns:Contact" />
+          <xs:element minOccurs="0" name="Reseller" nillable="true" type="tns:Contact" />
           <xs:element minOccurs="0" name="ObjectComment" nillable="true" type="xs:string" />
+          <xsd:element name="Trademark" minOccurs="0" nillable="true" type="tns:DomainTradeMark">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
         </xs:sequence>
       </xs:complexType>
-      <xs:element name="Defensive" nillable="true" type="tns:Defensive"/>
+      <xs:element name="Defensive" nillable="true" type="tns:Defensive" />
+
+      <xs:complexType name="DomainOrderRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractOrderRequest">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Domain" nillable="true" type="tns:Domain" />
+              <xsd:element name="AgreedPrice" minOccurs="0" nillable="true" type="xsd:int">
+                <xsd:annotation>
+                  <xsd:appinfo>
+                    <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="DomainOrderRequest" nillable="true" type="tns:DomainOrderRequest" />
+
       <xs:element name="SecurityHeaderDetails" nillable="true" type="tns:SecurityHeaderDetails" />
       <xs:element name="ImpersonationHeaderDetails" nillable="true" type="tns:ImpersonationHeaderDetails" />
       <xs:complexType name="CreateOrderResponse">
@@ -1100,35 +1604,6 @@
           </xs:extension>
         </xs:complexContent>
       </xs:complexType>
-
-
-      <xs:complexType name="LockOrderRequest">
-        <xs:complexContent mixed="false">
-          <xs:extension base="tns:AbstractOrderRequest">
-            <xs:sequence>
-              <xs:element minOccurs="0" name="Lock" nillable="true" type="tns:Lock" />
-            </xs:sequence>
-          </xs:extension>
-        </xs:complexContent>
-      </xs:complexType>
-      <xs:element name="LockOrderRequest" nillable="true" type="tns:LockOrderRequest" />
-      <xs:complexType name="Lock">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Handle" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="LockedObjectHandle" type="xs:string" />
-          <xs:element minOccurs="0" name="ApprovalType" type="xs:string" />
-          <xs:element minOccurs="0" name="IncludeServerLocks" type="xs:boolean" />
-          <xs:element minOccurs="0" name="AuthContact1Email" type="xs:string" />
-          <xs:element minOccurs="0" name="AuthContact2Email" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="AuthContact3Email" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="AuthContact4Email" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="AuthContact5Email" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="ObjectComment" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:element name="Lock" nillable="true" type="tns:Lock" />
-
-
       <xs:element name="CreateOrderResponse" nillable="true" type="tns:CreateOrderResponse" />
       <xs:complexType name="AbstractResponse" abstract="true">
         <xs:sequence>
@@ -1144,6 +1619,28 @@
           <xs:element minOccurs="0" name="Status" type="tns:OrderStatusType" />
           <xs:element minOccurs="0" name="Created" type="xs:dateTime" />
           <xs:element minOccurs="0" name="OrderRequest" nillable="true" type="tns:AbstractOrderRequest" />
+          <xs:element minOccurs="0" name="LastUpdated" type="xs:dateTime" nillable="true">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="CreatedBy" type="xs:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="OrderStatusHistory" nillable="true" type="tns:ArrayOfOrderHistory" >
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="IsCancellable" nillable="false" type="xsd:boolean" />
         </xs:sequence>
       </xs:complexType>
       <xs:element name="OrderInfo" nillable="true" type="tns:OrderInfo" />
@@ -1176,6 +1673,21 @@
         </xs:complexContent>
       </xs:complexType>
       <xs:element name="ValidateOrderResponse" nillable="true" type="tns:ValidateOrderResponse" />
+
+      <xs:complexType name="ArrayOfOrderHistory">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderHistory" nillable="true" type="tns:OrderHistory" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfOrderHistory" nillable="true" type="tns:ArrayOfOrderHistory" />
+      <xs:complexType name="OrderHistory">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="State" nillable="true" type="tns:OrderStatusType" />
+          <xs:element minOccurs="0" name="Date" nillable="true" type="xsd:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="OrderHistory" nillable="true" type="tns:OrderHistory" />
+
       <xs:complexType name="GetOrderRequest">
         <xs:sequence>
           <xs:element minOccurs="0" name="OrderId" nillable="true" type="xs:string" />
@@ -1192,11 +1704,23 @@
         </xs:complexContent>
       </xs:complexType>
       <xs:element name="GetOrderResponse" nillable="true" type="tns:GetOrderResponse" />
+      <xs:complexType name="CancelOrderRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OrderId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CancelOrderRequest" nillable="true" type="tns:CancelOrderRequest" />
+      <xs:complexType name="CancelOrderResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="CancelOrderResponse" nillable="true" type="tns:CancelOrderResponse" />
       <xs:complexType name="GetOrdersRequest">
         <xs:sequence>
           <xs:element minOccurs="0" name="TransactionComment" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Comments" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="ObjectName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="OrderStatusTypes" nillable="true" type="tns:ArrayOfOrderStatusType" />
@@ -1204,7 +1728,9 @@
           <xs:element minOccurs="0" name="ObjectTypes" nillable="true" type="tns:ArrayOfObjectType" />
           <xs:element minOccurs="0" name="OrderSort" type="tns:SearchOrderSortType" />
           <xs:element minOccurs="0" name="PageInfo" nillable="true" type="tns:PagingInfo" />
-          <xs:element minOccurs="0" name="ObjectHandle" nillable="true" type="xs:string" />
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ObjectNames" nillable="true" type="q1:ArrayOfstring" />
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ObjectHandles" nillable="true" type="q1:ArrayOfstring" />
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="OrderIds" nillable="true" type="q1:ArrayOfstring" />
         </xs:sequence>
       </xs:complexType>
       <xs:element name="GetOrdersRequest" nillable="true" type="tns:GetOrdersRequest" />
@@ -1233,7 +1759,10 @@
           <xs:enumeration value="MarkType" />
           <xs:enumeration value="NameWatchType" />
           <xs:enumeration value="SslCertificateType" />
-          <xs:enumeration value="LockType" />
+          <xs:enumeration value="LocalPresence" />
+          <xs:enumeration value="PrivacyProxy" />
+          <xs:enumeration value="MarkExtendedService" />
+          <xs:enumeration value="SanSsl" />
         </xs:restriction>
       </xs:simpleType>
       <xs:element name="ObjectType" nillable="true" type="tns:ObjectType" />
@@ -1245,6 +1774,18 @@
           <xs:enumeration value="OrderIdDesc" />
           <xs:enumeration value="ObjectNameAsc" />
           <xs:enumeration value="ObjectNameDesc" />
+          <xs:enumeration value="ObjectHandleAsc" />
+          <xs:enumeration value="ObjectHandleDesc" />
+          <xs:enumeration value="OrderTypeAsc" />
+          <xs:enumeration value="OrderTypeDesc" />
+          <xs:enumeration value="ObjectTypeAsc" />
+          <xs:enumeration value="ObjectTypeDesc" />
+          <xs:enumeration value="StatusAsc" />
+          <xs:enumeration value="StatusDesc" />
+          <xs:enumeration value="CreatedByAsc" />
+          <xs:enumeration value="CreatedByDesc" />
+          <xs:enumeration value="LastUpdatedAsc" />
+          <xs:enumeration value="LastUpdatedDes" />
         </xs:restriction>
       </xs:simpleType>
       <xs:element name="SearchOrderSortType" nillable="true" type="tns:SearchOrderSortType" />
@@ -1272,7 +1813,6 @@
         </xs:sequence>
       </xs:complexType>
       <xs:element name="ArrayOfOrderInfo" nillable="true" type="tns:ArrayOfOrderInfo" />
-
       <xs:complexType name="GetDomainsRequest">
         <xs:sequence>
           <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ObjectNames" nillable="true" type="q1:ArrayOfstring" />
@@ -1296,8 +1836,11 @@
           <xs:element minOccurs="0" name="NameServerHostName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="NameServerIPv4" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="NameServerIPv6" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomerReferenceExternalId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomerReferenceDescription" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="OrderSort" type="tns:DomainSortType" />
           <xs:element minOccurs="0" name="PageInfo" nillable="true" type="tns:PagingInfo" />
+          <xs:element minOccurs="0" name="LocalPresence" nillable="true" type="xsd:boolean" />
         </xs:sequence>
       </xs:complexType>
       <xs:element name="GetDomainsRequest" nillable="true" type="tns:GetDomainsRequest" />
@@ -1348,6 +1891,122 @@
         </xs:sequence>
       </xs:complexType>
       <xs:element name="ArrayOfDomainInfo" nillable="true" type="tns:ArrayOfDomainInfo" />
+
+
+      <xs:complexType name="GetDefensivesRequest">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ObjectNames" nillable="true" type="q1:ArrayOfstring" />
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Handles" nillable="true" type="q1:ArrayOfstring" />
+          <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DefensiveType" nillable="true" type="tns:DomainType" />
+          <xs:element minOccurs="0" name="ObjectComment" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreationFromDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CreationToDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ExpireFromDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ExpireToDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="OwnerName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OwnerOrganizationName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OwnerEmail" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ContactFirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ContactLastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ContactOrganizationName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ContactEmail" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomerReferenceExternalId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomerReferenceDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OrderSort" type="tns:DefensiveSortType" />
+          <xs:element minOccurs="0" name="PageInfo" nillable="true" type="tns:PagingInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetDefensivesRequest" nillable="true" type="tns:GetDefensivesRequest" />
+      <xs:simpleType name="DefensiveSortType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="CreatedAsc" />
+          <xs:enumeration value="CreatedDesc" />
+          <xs:enumeration value="ExpiresAsc" />
+          <xs:enumeration value="ExpiresDesc" />
+          <xs:enumeration value="HandleAsc" />
+          <xs:enumeration value="HandleDesc" />
+          <xs:enumeration value="ObjectNameAsc" />
+          <xs:enumeration value="ObjectNameDesc" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="DefensiveSortType" nillable="true" type="tns:DefensiveSortType" />
+
+      <xs:complexType name="GetDefensivesResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="TotalCount" type="xs:int" />
+              <xs:element minOccurs="0" name="DefensiveInfos" nillable="true" type="tns:ArrayOfDefensiveInfo" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetDefensivesResponse" nillable="true" type="tns:GetDefensivesResponse" />
+      <xs:complexType name="ArrayOfDefensiveInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="DefensiveInfo" nillable="true" type="tns:DefensiveInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfDefensiveInfo" nillable="true" type="tns:ArrayOfDefensiveInfo" />
+
+
+      <xs:complexType name="GetPremiumDomainsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ObjectName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Handle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Tld" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreationFromDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CreationToDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ExpireFromDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ExpireToDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="PageInfo" nillable="true" type="tns:PagingInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetPremiumDomainsRequest" nillable="true" type="tns:GetPremiumDomainsRequest" />
+
+      <xs:complexType name="GetPremiumDomainsResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="TotalCount" type="xs:int" />
+              <xs:element minOccurs="0" name="PremiumDomainInfos" nillable="true" type="tns:ArrayOfPremiumDomainInfo" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetPremiumDomainsResponse" nillable="true" type="tns:GetPremiumDomainsResponse" />
+      <xs:complexType name="ArrayOfPremiumDomainInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="PremiumDomainInfo" nillable="true" type="tns:DomainInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfPremiumDomainInfo" nillable="true" type="tns:ArrayOfPremiumDomainInfo" />
+
+      <xsd:complexType name="PremiumDomainInfo">
+        <xsd:sequence>
+          <xsd:element name="DomainName" minOccurs="0" nillable="true" type="xsd:string"/>
+          <xsd:element name="DomainHandle" minOccurs="0" nillable="true" type="xsd:string"/>
+          <xsd:element name="Status" minOccurs="0" nillable="true" type="xsd:string"/>
+          <xsd:element name="Created" minOccurs="0" type="xsd:dateTime"/>
+          <xsd:element name="Expires" minOccurs="0" nillable="true" type="xsd:dateTime"/>
+          <xsd:element name="Currency" minOccurs="0" nillable="true" type="xsd:string"/>
+          <xsd:element name="RegistrationPrice" minOccurs="0" nillable="true" type="xsd:decimal"/>
+          <xsd:element name="RegistrationPeriod" minOccurs="0" nillable="true" type="xsd:int"/>
+          <xsd:element name="RenewalPrice" minOccurs="0" nillable="true" type="xsd:decimal"/>
+          <xsd:element name="RenewPeriod" minOccurs="0" nillable="true" type="xsd:int"/>
+          <xsd:element name="ExplicitRenewalPrice" minOccurs="0" nillable="true" type="xsd:decimal"/>
+          <xsd:element name="ExplicitRenewPeriod" minOccurs="0" nillable="true" type="xsd:int"/>
+          <xsd:element name="TransferPrice" minOccurs="0" nillable="true" type="xsd:decimal"/>
+          <xsd:element name="TransferPeriod" minOccurs="0" nillable="true" type="xsd:int"/>
+          <xsd:element name="RestorePrice" minOccurs="0" nillable="true" type="xsd:decimal"/>
+          <xsd:element name="RestorePeriod" minOccurs="0" nillable="true" type="xsd:int"/>
+          <xsd:element name="RenewsAtStandardPrice" minOccurs="0" nillable="true" type="xsd:boolean"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="PremiumDomainInfo" nillable="true" type="tns:PremiumDomainInfo"/>
+
       <xs:complexType name="GetDomainRequest">
         <xs:sequence>
           <xs:element minOccurs="0" name="Handle" nillable="true" type="xs:string" />
@@ -1384,8 +2043,8 @@
           </xsd:element>
           <xsd:element name="Status" minOccurs="0" nillable="true" type="xsd:string"/>
           <xsd:element name="AuthInfo" minOccurs="0" nillable="true" type="xsd:string"/>
-          <xsd:element name="CreDate" minOccurs="0" type="xsd:dateTime"/>
-          <xsd:element name="ExpDate" minOccurs="0" type="xsd:dateTime"/>
+          <xsd:element name="Created" minOccurs="0" type="xsd:dateTime"/>
+          <xsd:element name="Expires" minOccurs="0" nillable="true" type="xsd:dateTime"/>
           <xsd:element name="EncodingType" minOccurs="0" nillable="true" type="xsd:string"/>
           <xsd:element name="DomainPurpose" minOccurs="0" nillable="true" type="xsd:string"/>
           <xsd:element name="Comment" minOccurs="0" nillable="true" type="xsd:string"/>
@@ -1405,7 +2064,7 @@
             </xsd:annotation>
           </xsd:element>
           <xsd:element name="NameServers" minOccurs="0" nillable="true" type="tns:NameServers"/>
-          <xsd:element name="Trademark" minOccurs="0" nillable="true" type="tns:TradeMark"/>
+          <xsd:element name="Trademark" minOccurs="0" nillable="true" type="tns:DomainTradeMark"/>
           <xsd:element name="DnsSecKeys" minOccurs="0" nillable="true" type="tns:DnsSecKeys">
             <xsd:annotation>
               <xsd:appinfo>
@@ -1435,9 +2094,96 @@
               </xsd:appinfo>
             </xsd:annotation>
           </xsd:element>
+          <xsd:element name="CustomerReference" minOccurs="0" nillable="true" type="tns:CustomerReferenceInfo">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="MasterNameServerIp" minOccurs="0" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
         </xsd:sequence>
       </xsd:complexType>
       <xsd:element name="DomainInfo" nillable="true" type="tns:DomainInfo"/>
+
+      <xsd:complexType name="Domain">
+        <xsd:sequence>
+          <xsd:element name="Name" minOccurs="0" nillable="true" type="xsd:string"/>
+          <xsd:element name="Handle" minOccurs="0" nillable="true" type="xsd:string"/>
+          <xsd:element name="RenewPeriod" minOccurs="0" nillable="true" type="xsd:int">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="AuthInfo" minOccurs="0" nillable="true" type="xsd:string"/>
+          <xsd:element name="EncodingType" minOccurs="0" nillable="true" type="xsd:string"/>
+          <xsd:element name="DomainPurpose" minOccurs="0" nillable="true" type="xsd:string"/>
+          <xsd:element name="Comment" minOccurs="0" nillable="true" type="xsd:string"/>
+          <xsd:element name="TransferLock" minOccurs="0" nillable="true" type="xsd:string"/>
+          <xsd:element name="DeleteLock" minOccurs="0" nillable="true" type="xsd:string"/>
+          <xsd:element name="UpdateLock" minOccurs="0" nillable="true" type="xsd:string"/>
+          <xsd:element name="QueueType" minOccurs="0" nillable="true" type="xsd:string"/>
+          <xsd:element name="Owner" minOccurs="0" nillable="true" type="tns:Registrant"/>
+          <xsd:element name="Admin" minOccurs="0" nillable="true" type="tns:Contact"/>
+          <xsd:element name="Tech" minOccurs="0" nillable="true" type="tns:Contact"/>
+          <xsd:element name="Billing" minOccurs="0" nillable="true" type="tns:Contact"/>
+          <xsd:element name="Reseller" minOccurs="0" nillable="true" type="tns:Contact">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="NameServers" minOccurs="0" nillable="true" type="tns:NameServers"/>
+          <xsd:element name="Trademark" minOccurs="0" nillable="true" type="tns:DomainTradeMark"/>
+          <xsd:element name="DnsSecKeys" minOccurs="0" nillable="true" type="tns:DnsSecKeys">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="PrivacyProxy" minOccurs="0" nillable="true" type="tns:PrivacyProxy" />
+          <xsd:element name="DomainType" minOccurs="0" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DiscloseSocialData" minOccurs="0" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="LocalPresence" minOccurs="0" nillable="true" type="xsd:boolean">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="MasterNameServerIp" minOccurs="0" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Domain" nillable="true" type="tns:Domain"/>
+
       <xsd:complexType name="NameServers">
         <xsd:sequence>
           <xsd:element name="NameServer1" minOccurs="0" nillable="true" type="tns:NameServer"/>
@@ -1474,7 +2220,7 @@
         </xsd:sequence>
       </xsd:complexType>
       <xsd:element name="NameServer" nillable="true" type="tns:NameServer"/>
-      <xsd:complexType name="TradeMark">
+      <xsd:complexType name="DomainTradeMark">
         <xsd:sequence>
           <xsd:element name="Name" minOccurs="0" nillable="true" type="xsd:string"/>
           <xsd:element name="Country" minOccurs="0" nillable="true" type="xsd:string"/>
@@ -1489,7 +2235,7 @@
           <xsd:element name="RegDate" minOccurs="0" type="xsd:dateTime"/>
         </xsd:sequence>
       </xsd:complexType>
-      <xsd:element name="TradeMark" nillable="true" type="tns:TradeMark"/>
+      <xsd:element name="DomainTradeMark" nillable="true" type="tns:DomainTradeMark"/>
       <xsd:complexType name="DnsSecKeys">
         <xsd:sequence>
           <xsd:element name="DnsSecKey1" minOccurs="0" nillable="true" type="tns:DnsSecKey"/>
@@ -1535,64 +2281,555 @@
       </xsd:simpleType>
       <xsd:element name="PrivacyProxyType" nillable="true" type="tns:PrivacyProxyType" />
 
-      <xs:complexType name="AvailabilityInfoRequest">
+      <xs:complexType name="GetRegistrantVerificationRequest">
         <xs:sequence>
-          <xs:element minOccurs="0" name="DomainName" nillable="false" type="xs:string" />
-          <xs:element minOccurs="0" name="Quality" nillable="false" type="xs:string" />
+          <xs:element minOccurs="0" name="Email" nillable="false" type="xs:string" />
         </xs:sequence>
       </xs:complexType>
-      <xs:element name="AvailabilityInfoRequest" nillable="true" type="tns:AvailabilityInfoRequest" />
-      <xs:complexType name="AvailabilityInfoResponse">
-        <xsd:sequence>
-          <xsd:element name="DomainName" minOccurs="0" nillable="true" type="xsd:string"/>
-          <xsd:element name="DomainType" minOccurs="0" nillable="true" type="xsd:string"/>
-          <xsd:element name="Currency" minOccurs="0" nillable="true" type="xsd:string"/>
-          <xsd:element name="RenewalType" minOccurs="0" nillable="true" type="xsd:string"/>
-          <xsd:element name="Prices" minOccurs="0" nillable="true" type="tns:ArrayOfPrices"/>
-        </xsd:sequence>
+      <xs:element name="GetRegistrantVerificationRequest" nillable="true" type="tns:GetRegistrantVerificationRequest" />
+
+      <xs:complexType name="GetRegistrantVerificationResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xsd:sequence>
+              <xsd:element name="RegistrantVerificationInfo" minOccurs="0" nillable="true" type="tns:RegistrantVerificationInfo"/>
+            </xsd:sequence>
+          </xs:extension>
+        </xs:complexContent>
       </xs:complexType>
+      <xs:element name="GetRegistrantVerificationResponse" nillable="true" type="tns:GetRegistrantVerificationResponse" />
+      <xsd:complexType name="RegistrantVerificationInfo">
+        <xsd:sequence>
+          <xs:element minOccurs="0" name="Email" nillable="false" type="xs:string" />
+          <xsd:element name="VerificationStatus" minOccurs="0" nillable="false" type="tns:RegistrantVerificationStatus"/>
+          <xsd:element name="VerificationDetails" minOccurs="0" nillable="true" type="tns:RegistrantVerificationDetails"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="RegistrantVerificationInfo" nillable="true" type="tns:RegistrantVerificationInfo"/>
+      <xsd:complexType name="RegistrantVerificationDetails">
+        <xsd:sequence>
+          <xs:element minOccurs="0" name="VerifiedBy" nillable="true" type="xs:string" />
+          <xsd:element name="VerificationDate" minOccurs="0" nillable="true" type="xs:dateTime"/>
+          <xsd:element name="Messages" minOccurs="0" nillable="true" type="tns:ArrayOfMessage"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="RegistrantVerificationDetails" nillable="true" type="tns:RegistrantVerificationDetails"/>
+      <xsd:simpleType name="RegistrantVerificationStatus">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unverified" />
+          <xsd:enumeration value="Pending" />
+          <xsd:enumeration value="Verified" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="RegistrantVerificationStatus" nillable="false" type="tns:RegistrantVerificationStatus" />
+
+      <xs:complexType name="StartRegistrantVerificationRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Email" nillable="false" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xsd:element name="StartRegistrantVerificationRequest" nillable="false" type="tns:StartRegistrantVerificationRequest" />
+
+      <xs:complexType name="StartRegistrantVerificationResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xsd:sequence>
+              <xsd:element name="VerificationProcessStarted" minOccurs="0" nillable="true" type="xsd:boolean"/>
+              <xsd:element name="RegistrantVerificationInfo" minOccurs="0" nillable="true" type="tns:RegistrantVerificationInfo"/>
+            </xsd:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="StartRegistrantVerificationResponse" nillable="true" type="tns:StartRegistrantVerificationResponse" />
+
+      <xsd:complexType name="AvailabilityInfoRequest">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="DomainName" nillable="false" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Quality" nillable="false" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="AvailabilityInfoRequest" nillable="true" type="tns:AvailabilityInfoRequest" />
+      <xsd:complexType name="AvailabilityInfoResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xsd:sequence>
+              <xsd:element name="DomainName" minOccurs="0" nillable="true" type="xsd:string"/>
+              <xsd:element name="DomainType" minOccurs="0" nillable="true" type="xsd:string"/>
+              <xsd:element name="Currency" minOccurs="0" nillable="true" type="xsd:string"/>
+              <xsd:element name="RenewalType" minOccurs="0" nillable="true" type="xsd:string"/>
+              <xsd:element name="Prices" minOccurs="0" nillable="true" type="tns:ArrayOfPrices"/>
+            </xsd:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xsd:complexType>
       <xs:element name="AvailabilityInfoResponse" nillable="true" type="tns:AvailabilityInfoResponse" />
       <xsd:complexType name="ArrayOfPrices">
         <xsd:sequence>
-          <xsd:element name="Price" minOccurs="0" nillable="true" type="tns:Price" maxOccurs="unbounded"/>
+          <xsd:element name="PriceInfo" minOccurs="0" nillable="true" type="tns:PriceInfo" maxOccurs="unbounded"/>
         </xsd:sequence>
       </xsd:complexType>
       <xsd:element name="ArrayOfPrices" nillable="true" type="tns:ArrayOfPrices"/>
-      <xsd:complexType name="Price">
+      <xsd:complexType name="PriceInfo">
         <xsd:sequence>
           <xsd:element name="Product" minOccurs="0" nillable="true" type="tns:Product"/>
           <xsd:element name="Price" minOccurs="0" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="ValidFrom" type="xs:dateTime" />
+          <xsd:element minOccurs="0" name="ValidTo" type="xs:dateTime" />
         </xsd:sequence>
       </xsd:complexType>
-      <xsd:element name="Price" nillable="true" type="tns:Price"/>
+      <xsd:element name="PriceInfo" nillable="true" type="tns:PriceInfo"/>
+      <xsd:complexType name="ArrayOfFuturePrices">
+        <xsd:sequence>
+          <xsd:element name="FuturePriceInfo" minOccurs="0" nillable="true" type="tns:FuturePriceInfo" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfFuturePrices" nillable="true" type="tns:ArrayOfFuturePrices"/>
+      <xsd:complexType name="FuturePriceInfo">
+        <xsd:sequence>
+          <xsd:element name="Product" minOccurs="0" nillable="true" type="tns:Product"/>
+          <xsd:element name="Price" minOccurs="0" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="ValidFrom" type="xs:dateTime" />
+          <xsd:element minOccurs="0" name="ValidTo" type="xs:dateTime" />
+          <xsd:element name="CurrentPrice" minOccurs="0" type="xsd:decimal"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="FuturePriceInfo" nillable="true" type="tns:FuturePriceInfo"/>
       <xsd:complexType name="Product">
         <xsd:sequence>
+          <xsd:element name="ProductName" minOccurs="0" type="xsd:string"/>
           <xsd:element name="ObjectType" minOccurs="0" nillable="true" type="tns:ObjectType"/>
           <xsd:element name="OrderType" minOccurs="0" nillable="true" type="tns:OrderType"/>
           <xsd:element name="Tld" minOccurs="0" type="xsd:string"/>
+          <xsd:element name="TldCountry" minOccurs="0" type="xsd:string"/>
           <xsd:element name="Period" minOccurs="0" type="xsd:int"/>
+          <xsd:element name="Note" minOccurs="0" nillable="true" type="xsd:string"/>
         </xsd:sequence>
       </xsd:complexType>
       <xsd:element name="Product" nillable="true" type="tns:Product"/>
       <xs:complexType name="GetPricesRequest">
         <xs:sequence>
+          <xsd:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="ObjectTypes" nillable="true" type="tns:ArrayOfObjectType" />
           <xs:element minOccurs="0" name="OrderTypes" nillable="true" type="tns:ArrayOfOrderType" />
           <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Tlds" nillable="true" type="q1:ArrayOfstring" />
+          <xsd:element name="TldCountryCode" minOccurs="0" nillable="true" type="xsd:string"/>
           <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Periods" nillable="true" type="q1:ArrayOfint" />
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ProductOptions" nillable="true" type="q1:ArrayOfstring" />
           <xsd:element name="DefaultPeriodsOnly" minOccurs="0" type="xsd:boolean"/>
           <xs:element minOccurs="0" name="PageInfo" nillable="true" type="tns:PagingInfo" />
+          <xsd:element name="TldsInPortfolioOnly" minOccurs="0" type="xsd:boolean"/>
         </xs:sequence>
       </xs:complexType>
       <xs:element name="GetPricesRequest" nillable="true" type="tns:GetPricesRequest" />
       <xs:complexType name="GetPricesResponse">
-        <xsd:sequence>
-          <xs:element minOccurs="0" name="TotalCount" type="xs:int" />
-          <xs:element minOccurs="0" name="Currency" type="xs:string" />
-          <xs:element minOccurs="0" name="Prices" nillable="true" type="tns:ArrayOfPrices" />
-        </xsd:sequence>
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xsd:sequence>
+              <xs:element minOccurs="0" name="TotalCount" type="xs:int" />
+              <xs:element minOccurs="0" name="Currency" type="xs:string" />
+              <xs:element minOccurs="0" name="Prices" nillable="true" type="tns:ArrayOfPrices" />
+            </xsd:sequence>
+          </xs:extension>
+        </xs:complexContent>
       </xs:complexType>
-      <xs:element name="GetPricesResponse" nillable="true" type="tns:GetPricesResponse" />
+      <xs:element name="GetPricesResponse" nillable="true" type="tns:GetFuturePricesResponse" />
+      <xs:complexType name="GetFuturePricesResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xsd:sequence>
+              <xs:element minOccurs="0" name="TotalCount" type="xs:int" />
+              <xs:element minOccurs="0" name="Currency" type="xs:string" />
+              <xs:element minOccurs="0" name="Prices" nillable="true" type="tns:ArrayOfFuturePrices" />
+            </xsd:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetFuturePricesResponse" nillable="true" type="tns:GetFuturePricesResponse" />
+      <xs:complexType name="GetPriceHistoryRequest">
+        <xs:sequence>
+          <xsd:element minOccurs="0" name="ProductName" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetPriceHistoryRequest" nillable="true" type="tns:GetPriceHistoryRequest" />
+      <xs:complexType name="GetPriceHistoryResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xsd:sequence>
+              <xs:element minOccurs="0" name="Currency" type="xs:string" />
+              <xs:element minOccurs="0" name="Prices" nillable="true" type="tns:ArrayOfPrices" />
+            </xsd:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetPriceHistoryResponse" nillable="true" type="tns:GetPriceHistoryResponse" />
+      <xs:complexType name="GetAccountBalanceRequest">
+        <xs:sequence>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetAccountBalanceRequest" nillable="true" type="tns:GetAccountBalanceRequest" />
+      <xs:complexType name="GetAccountBalanceResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xsd:sequence>
+              <xs:element minOccurs="0" name="Currency" type="xs:string" />
+              <xs:element minOccurs="0" name="Vat" type="xs:double" />
+              <xs:element minOccurs="0" name="UnInvoicedOrders" type="xs:double" />
+              <xs:element minOccurs="0" name="UnInvoicedOpenOrders" type="xs:double" />
+              <xs:element minOccurs="0" name="UnInvoicedCompletedOrders" type="xs:double" />
+              <xs:element minOccurs="0" name="UnInvoicedCompletedOrdersLast24h" type="xs:double" />
+              <xs:element minOccurs="0" name="AccountBalance" type="xs:double" />
+              <xs:element minOccurs="0" name="CurrentBalance" type="xs:double" />
+              <xs:element minOccurs="0" name="ReminderThreshold" nillable="true" type="xs:double" />
+              <xs:element minOccurs="0" name="BlockingThreshold" nillable="true" type="xs:double" />
+              <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ReminderEmailAddress" nillable="true" type="q3:ArrayOfstring" />
+              <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="InvoiceEmailAddress" nillable="true" type="q3:ArrayOfstring" />
+              <xs:element minOccurs="0" name="LastReminderSent" nillable="true" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="NumberOfRemindersSent" nillable="true" type="xs:int" />
+              <xs:element minOccurs="0" name="LastBlockedAccountMessageSent" nillable="true" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="NumberOfBlockedAccountMessagesSent" nillable="true" type="xs:int" />
+              <xsd:element name="StandingAccountBalance" minOccurs="0" nillable="true" type="xs:double">
+                <xsd:annotation>
+                  <xsd:appinfo>
+                    <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetAccountBalanceResponse" nillable="true" type="tns:GetAccountBalanceResponse" />
+
+      <xsd:simpleType name="AccountTransactionType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Invoice" />
+          <xsd:enumeration value="Payment" />
+          <xsd:enumeration value="Credit" />
+          <xsd:enumeration value="AdhocCredit" />
+          <xsd:enumeration value="AdhocInvoice" />
+          <xsd:enumeration value="Adjustment" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="AccountTransactionType" nillable="true" type="tns:AccountTransactionType" />
+      <xs:complexType name="GetAccountTransactionsRequest">
+        <xs:sequence>
+          <xsd:element minOccurs="0" name="AccountTransactionType" nillable="true" type="tns:AccountTransactionType" />
+          <xsd:element minOccurs="0" name="InvoiceNo" type="xs:int" />
+          <xsd:element minOccurs="0" name="CreditNo" type="xs:int" />
+          <xsd:element minOccurs="0" name="FromDate" type="xs:dateTime" />
+          <xsd:element minOccurs="0" name="ToDate" type="xs:dateTime" />
+          <xsd:element minOccurs="0" name="Note" type="xsd:string" />
+          <xsd:element minOccurs="0" name="PageInfo" type="tns:PagingInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetAccountTransactionsRequest" nillable="true" type="tns:GetAccountTransactionsRequest" />
+
+      <xsd:complexType name="ArrayOfAccountTransactions">
+        <xsd:sequence>
+          <xsd:element name="AccountTransaction" minOccurs="0" nillable="true" type="tns:AccountTransaction" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfAccountTransactions" nillable="true" type="tns:ArrayOfAccountTransactions"/>
+      <xsd:complexType name="AccountTransaction">
+        <xsd:sequence>
+          <xsd:element name="AccountTransactionType" minOccurs="0" nillable="true" type="tns:AccountTransactionType"/>
+          <xsd:element name="Created" minOccurs="0" type="xs:dateTime"/>
+          <xsd:element name="Amount" minOccurs="0" type="xs:double" />
+          <xsd:element name="Balance" minOccurs="0" type="xs:double" />
+          <xsd:element name="InvoiceNo" minOccurs="0" nillable="true" type="xs:int" />
+          <xsd:element name="CreditNo" minOccurs="0" nillable="true" type="xs:int" />
+          <xsd:element name="Note" minOccurs="0" type="xsd:string" />
+          <xsd:element name="CreatedBy" minOccurs="0" type="xsd:string" />
+          <xsd:element name="VatPercentage" nillable="true" minOccurs="0" type="xs:double" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="AccountTransaction" nillable="true" type="tns:AccountTransaction"/>
+
+      <xsd:simpleType name="SalesLineState">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Open" />
+          <xsd:enumeration value="Completed" />
+          <xsd:enumeration value="Failed" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="SalesLineState" nillable="true" type="tns:SalesLineState" />
+
+      <xsd:simpleType name="InvoiceState">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="NotInvoiced" />
+          <xsd:enumeration value="Invoiced" />
+          <xsd:enumeration value="Credited" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="InvoiceState" nillable="true" type="tns:InvoiceState" />
+
+      <xs:complexType name="GetAccountTransactionsResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="TotalCount" type="xs:int" />
+              <xs:element minOccurs="0" name="AccountTransactions" nillable="true" type="tns:ArrayOfAccountTransactions" />
+              <xs:element minOccurs="0" name="Currency" type="xsd:string" />
+              <xsd:element name="VatPercentage" nillable="true" minOccurs="0" type="xs:double" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetAccountTransactionsResponse" nillable="true" type="tns:GetAccountTransactionsResponse" />
+
+      <xsd:simpleType name="SalesLineSortType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value = "CreatedAsc" />
+          <xsd:enumeration value = "CreatedDesc" />
+          <xsd:enumeration value = "ObjectNameAsc" />
+          <xsd:enumeration value = "ObjectNameDesc" />
+          <xsd:enumeration value = "ObjectHandleAsc" />
+          <xsd:enumeration value = "ObjectHandleDesc" />
+          <xsd:enumeration value = "ObjectTypeAsc" />
+          <xsd:enumeration value = "ObjectTypeDesc" />
+          <xsd:enumeration value = "ProductNameAsc" />
+          <xsd:enumeration value = "ProductNameDesc" />
+          <xsd:enumeration value = "StateAsc" />
+          <xsd:enumeration value = "StateDesc" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="SalesLineSortType" nillable="true" type="tns:SalesLineSortType" />
+
+      <xsd:complexType name="ArrayOfSalesLineState">
+        <xsd:sequence>
+          <xsd:element name="SalesLineState" minOccurs="0" type="tns:SalesLineState" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfSalesLineState" nillable="true" type="tns:ArrayOfSalesLineState"/>
+      <xs:complexType name="GetSalesLinesRequest">
+        <xs:sequence>
+          <xsd:element minOccurs="0" name="ObjectName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ObjectHandle" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ObjectType" nillable="true" type="tns:ObjectType" />
+          <xsd:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
+          <xsd:element minOccurs="0" name="FromDate" type="xs:dateTime" nillable="true" />
+          <xsd:element minOccurs="0" name="ToDate" type="xs:dateTime" nillable="true" />
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SalesLineStates" nillable="true" type="tns:ArrayOfSalesLineState" />
+          <xsd:element minOccurs="0" name="InvoiceState" nillable="true" type="tns:InvoiceState" />
+          <xsd:element minOccurs="0" name="InvoiceNo" nillable="true" type="xs:int" />
+          <xsd:element minOccurs="0" name="CreditNo" nillable="true" type="xs:int" />
+          <xsd:element minOccurs="0" name="OrderBy" type="tns:SalesLineSortType" />
+          <xsd:element minOccurs="0" name="PageInfo" type="tns:PagingInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetSalesLinesRequest" nillable="true" type="tns:GetSalesLinesRequest" />
+
+      <xsd:complexType name="ArrayOfSalesLines">
+        <xsd:sequence>
+          <xsd:element name="SalesLine" minOccurs="0" nillable="true" type="tns:SalesLine" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfSalesLines" nillable="true" type="tns:ArrayOfSalesLines"/>
+      <xsd:complexType name="SalesLine">
+        <xsd:sequence>
+          <xsd:element name="OrderId" minOccurs="0" type="xs:int"/>
+          <xsd:element name="Product" minOccurs="0" type="tns:Product"/>
+          <xsd:element name="ObjectHandle" minOccurs="0" type="xs:string"/>
+          <xsd:element name="ObjectName" minOccurs="0" type="xs:string"/>
+          <xsd:element name="Price" nillable="true" minOccurs="0" type="xs:double" />
+          <xsd:element name="PriceCategory" nillable="true" minOccurs="0" type="xs:string"/>
+          <xsd:element name="CurrencyCode" minOccurs="0" type="xs:string"/>
+          <xsd:element name="Created" minOccurs="0" type="xs:dateTime"/>
+          <xsd:element name="State" minOccurs="0" type="tns:SalesLineState" />
+          <xsd:element name="InvoiceNo" minOccurs="0" nillable="true" type="xs:int" />
+          <xsd:element name="CreditNo" minOccurs="0" nillable="true" type="xs:int" />
+          <xsd:element name="DomainComment" minOccurs="0" type="xs:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SalesLine" nillable="true" type="tns:SalesLine"/>
+
+      <xs:complexType name="GetSalesLinesResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="TotalCount" type="xs:int" />
+              <xs:element minOccurs="0" name="SalesLines" nillable="true" type="tns:ArrayOfSalesLines" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetSalesLinesResponse" nillable="true" type="tns:GetSalesLinesResponse" />
+
+      <xs:complexType name="GetSubUsersRequest">
+        <xs:sequence>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetSubUsersRequest" nillable="true" type="tns:GetSubUsersRequest" />
+
+      <xsd:complexType name="ArrayOfUsers">
+        <xsd:sequence>
+          <xsd:element name="UserInfo" minOccurs="0" nillable="true" type="tns:UserInfo" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfUsers" nillable="true" type="tns:ArrayOfUsers"/>
+      <xsd:complexType name="UserInfo">
+        <xsd:sequence>
+          <xsd:element name="UserName" minOccurs="0" type="xs:string"/>
+          <xsd:element name="Name" minOccurs="0" type="xs:string"/>
+          <xsd:element name="Email" minOccurs="0" type="xs:string"/>
+          <xsd:element name="Created" minOccurs="0" type="xs:dateTime"/>
+          <xsd:element name="IsLocked" minOccurs="0" type="xs:boolean" />
+          <xsd:element name="LastSuccessfulLoginDate" minOccurs="0" nillable="true" type="xs:dateTime"/>
+          <xsd:element name="LastLoginAttemptDate" minOccurs="0" nillable="true" type="xs:dateTime"/>
+          <xsd:element name="InvalidPasswordAttempts" minOccurs="0" type="xs:int"/>
+          <xsd:element name="LastUpdated" minOccurs="0" nillable="true" type="xs:dateTime"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="UserInfo" nillable="true" type="tns:UserInfo"/>
+      <xsd:complexType name="User">
+        <xsd:sequence>
+          <xsd:element name="UserName" minOccurs="0" type="xs:string"/>
+          <xsd:element name="Name" minOccurs="0" type="xs:string"/>
+          <xsd:element name="Email" minOccurs="0" type="xs:string"/>
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UserRights" nillable="true" type="q1:ArrayOfstring" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="User" nillable="true" type="tns:User"/>
+      <xs:complexType name="GetSubUsersResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="SubUsers" nillable="true" type="tns:ArrayOfUsers" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetSubUsersResponse" nillable="true" type="tns:GetSubUsersResponse" />
+
+      <xs:complexType name="GetSubUserRequest">
+        <xs:sequence>
+          <xsd:element name="UserName" minOccurs="0" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetSubUserRequest" nillable="true" type="tns:GetSubUserRequest" />
+      <xs:complexType name="GetSubUserResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="SubUser" nillable="true" type="tns:UserInfo" />
+              <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UserRights" nillable="true" type="q1:ArrayOfstring" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetSubUserResponse" nillable="true" type="tns:GetSubUserResponse" />
+
+      <xs:complexType name="DeleteSubUserRequest">
+        <xs:sequence>
+          <xsd:element name="UserName" minOccurs="0" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DeleteSubUserRequest" nillable="true" type="tns:DeleteSubUserRequest" />
+      <xs:complexType name="DeleteSubUserResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse"></xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="DeleteSubUserResponse" nillable="true" type="tns:DeleteSubUserResponse" />
+
+      <xs:complexType name="CreateSubUserRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SubUser" type="tns:User" />
+          <xsd:element name="Password" minOccurs="0" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CreateSubUserRequest" nillable="true" type="tns:CreateSubUserRequest" />
+      <xs:complexType name="CreateSubUserResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="SubUser" nillable="true" type="tns:User" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="CreateSubUserResponse" nillable="true" type="tns:CreateSubUserResponse" />
+
+      <xs:complexType name="UpdateSubUserRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SubUser" type="tns:User" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="UpdateSubUserRequest" nillable="true" type="tns:UpdateSubUserRequest" />
+      <xs:complexType name="UpdateSubUserResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="SubUser" nillable="true" type="tns:User" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="UpdateSubUserResponse" nillable="true" type="tns:UpdateSubUserResponse" />
+
+      <xs:complexType name="GetInvoiceRequest">
+        <xs:sequence>
+          <xsd:element minOccurs="0" name="InvoiceNo" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetInvoiceRequest" nillable="true" type="tns:GetInvoiceRequest" />
+      <xsd:complexType name="ArrayOfSalesLineGroups">
+        <xsd:sequence>
+          <xsd:element name="SalesLineGroup" minOccurs="0" nillable="true" type="tns:SalesLineGroup" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfSalesLineGroups" nillable="true" type="tns:ArrayOfSalesLineGroups"/>
+      <xsd:complexType name="SalesLineGroup">
+        <xsd:sequence>
+          <xsd:element name="ProductName" minOccurs="0" type="xs:string"/>
+          <xsd:element name="Sum" minOccurs="0" type="xs:double" />
+          <xsd:element name="Units" minOccurs="0" type="xs:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SalesLineGroup" nillable="true" type="tns:SalesLineGroup"/>
+
+      <xs:complexType name="GetInvoiceResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="InvoiceNo" type="xs:int" />
+              <xs:element minOccurs="0" name="Amount" type="xs:double" />
+              <xs:element minOccurs="0" name="VatPercentage" nillable="true" type="xs:double" />
+              <xs:element minOccurs="0" name="Created" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="CreatedBy" type="xs:string" />
+              <xs:element minOccurs="0" name="Note" type="xs:string" />
+              <xs:element minOccurs="0" name="Currency" type="xs:string" />
+              <xs:element minOccurs="0" name="SalesLineGroups" nillable="true" type="tns:ArrayOfSalesLineGroups" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetInvoiceResponse" nillable="true" type="tns:GetInvoiceResponse" />
+
+      <xs:complexType name="GetCreditNoteRequest">
+        <xs:sequence>
+          <xsd:element minOccurs="0" name="CreditNo" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetCreditNoteRequest" nillable="true" type="tns:GetCreditNoteRequest" />
+
+      <xs:complexType name="GetCreditNoteResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CreditNo" type="xs:int" />
+              <xs:element minOccurs="0" name="Amount" type="xs:double" />
+              <xs:element minOccurs="0" name="VatPercentage" nillable="true" type="xs:double" />
+              <xs:element minOccurs="0" name="Created" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="CreatedBy" type="xs:string" />
+              <xs:element minOccurs="0" name="Note" type="xs:string" />
+              <xs:element minOccurs="0" name="Currency" type="xs:string" />
+              <xs:element minOccurs="0" name="SalesLineGroups" nillable="true" type="tns:ArrayOfSalesLineGroups" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetCreditNoteResponse" nillable="true" type="tns:GetCreditNoteResponse" />
       <xs:complexType name="GetRegistrantRequest">
         <xs:sequence>
           <xs:element minOccurs="0" name="Handle" nillable="true" type="xsd:string" />
@@ -1600,9 +2837,13 @@
       </xs:complexType>
       <xs:element name="GetRegistrantRequest" nillable="true" type="tns:GetRegistrantRequest" />
       <xs:complexType name="GetRegistrantResponse">
-        <xsd:sequence>
-          <xs:element minOccurs="0" name="RegistrantInfo" type="tns:RegistrantInfo" />
-        </xsd:sequence>
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xsd:sequence>
+              <xs:element minOccurs="0" name="RegistrantInfo" type="tns:RegistrantInfo" />
+            </xsd:sequence>
+          </xs:extension>
+        </xs:complexContent>
       </xs:complexType>
       <xs:element name="GetRegistrantResponse" nillable="true" type="tns:GetRegistrantResponse" />
       <xs:complexType name="GetContactRequest">
@@ -1612,11 +2853,65 @@
       </xs:complexType>
       <xs:element name="GetContactRequest" nillable="true" type="tns:GetContactRequest" />
       <xs:complexType name="GetContactResponse">
-        <xsd:sequence>
-          <xs:element minOccurs="0" name="ContactInfo" type="tns:ContactInfo" />
-        </xsd:sequence>
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xsd:sequence>
+              <xs:element minOccurs="0" name="ContactInfo" type="tns:ContactInfo" />
+            </xsd:sequence>
+          </xs:extension>
+        </xs:complexContent>
       </xs:complexType>
       <xs:element name="GetContactResponse" nillable="true" type="tns:GetContactResponse" />
+      <xs:complexType name="DeleteHandleRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Handle" nillable="true" type="xsd:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DeleteHandleRequest" nillable="true" type="tns:DeleteHandleRequest" />
+
+      <xs:complexType name="ObjectInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Handle" nillable="false" type="xs:string" />
+          <xs:element minOccurs="0" name="ObjectName" nillable="false" type="xs:string" />
+          <xs:element minOccurs="0" name="ObjectType" nillable="false" type="xs:string" />
+          <xs:element minOccurs="0" name="Status" nillable="false" type="xs:string" />
+          <xsd:element name="Created" minOccurs="0" type="xsd:dateTime"/>
+          <xsd:element name="Expires" minOccurs="0" type="xsd:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfObjectInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ObjectsUsingHandle" nillable="true" type="tns:ObjectInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfObjectInfo" nillable="true" type="tns:ArrayOfObjectInfo" />
+
+      <xs:complexType name="DeleteHandleResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="ObjectsUsingHandle" type="tns:ArrayOfObjectInfo" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="DeleteHandleResponse" nillable="true" type="tns:DeleteHandleResponse" />
+      <xs:complexType name="GetCustomerReferenceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Handle" nillable="true" type="xsd:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetCustomerReferenceRequest" nillable="true" type="tns:GetCustomerReferenceRequest" />
+      <xs:complexType name="GetCustomerReferenceResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xsd:sequence>
+              <xs:element minOccurs="0" name="CustomerReferenceInfo" type="tns:CustomerReferenceInfo" />
+            </xsd:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetCustomerReferenceResponse" nillable="true" type="tns:GetCustomerReferenceResponse" />
       <xs:complexType name="CreateContactRequest">
         <xs:sequence>
           <xs:element minOccurs="0" name="Contact" type="tns:Contact" />
@@ -1633,7 +2928,69 @@
         </xs:complexContent>
       </xs:complexType>
       <xs:element name="CreateContactResponse" nillable="true" type="tns:CreateContactResponse" />
-
+      <xs:complexType name="CreateCustomerReferenceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CustomerReference" type="tns:CustomerReference" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CreateCustomerReferenceRequest" nillable="true" type="tns:CreateCustomerReferenceRequest" />
+      <xs:complexType name="CreateCustomerReferenceResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CustomerReference" type="tns:CustomerReference" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="CreateCustomerReferenceResponse" nillable="true" type="tns:CreateCustomerReferenceResponse" />
+      <xs:complexType name="UpdateCustomerReferenceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CustomerReference" type="tns:CustomerReference" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="UpdateCustomerReferenceRequest" nillable="true" type="tns:UpdateCustomerReferenceRequest" />
+      <xs:complexType name="UpdateCustomerReferenceResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CustomerReference" type="tns:CustomerReference" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="UpdateCustomerReferenceResponse" nillable="true" type="tns:UpdateCustomerReferenceResponse" />
+      <xs:complexType name="DeleteCustomerReferenceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Handle" type="xsd:string" />
+          <xs:element minOccurs="0" name="UnAssignDeletedCustomerReference" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DeleteCustomerReferenceRequest" nillable="true" type="tns:DeleteCustomerReferenceRequest" />
+      <xs:complexType name="DeleteCustomerReferenceResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="DeleteCustomerReferenceResponse" nillable="true" type="tns:DeleteCustomerReferenceResponse" />
+      <xs:complexType name="SetCustomerReferencesRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Handle" type="xsd:string" />
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ObjectHandles" nillable="true" type="q1:ArrayOfstring" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SetCustomerReferencesRequest" nillable="true" type="tns:SetCustomerReferencesRequest" />
+      <xs:complexType name="SetCustomerReferencesResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Results" type="tns:ArrayOfCustomerReferenceResult" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="SetCustomerReferencesResponse" nillable="true" type="tns:SetCustomerReferencesResponse" />
       <xs:complexType name="CreateRegistrantRequest">
         <xs:sequence>
           <xs:element minOccurs="0" name="Registrant" type="tns:Registrant" />
@@ -1682,6 +3039,7 @@
         </xs:complexContent>
       </xs:complexType>
       <xs:element name="CreateDnsSecKeyResponse" nillable="true" type="tns:CreateDnsSecKeyResponse" />
+
       <xs:complexType name="GetNameServerRequest">
         <xs:sequence>
           <xs:element minOccurs="0" name="Handle" nillable="true" type="xsd:string" />
@@ -1689,9 +3047,13 @@
       </xs:complexType>
       <xs:element name="GetNameServerRequest" nillable="true" type="tns:GetNameServerRequest" />
       <xs:complexType name="GetNameServerResponse">
-        <xsd:sequence>
-          <xs:element minOccurs="0" name="NameServer" type="tns:NameServer" />
-        </xsd:sequence>
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xsd:sequence>
+              <xs:element minOccurs="0" name="NameServer" type="tns:NameServer" />
+            </xsd:sequence>
+          </xs:extension>
+        </xs:complexContent>
       </xs:complexType>
       <xs:element name="GetNameServerResponse" nillable="true" type="tns:GetNameServerResponse" />
       <xs:complexType name="GetDnsSecKeyRequest">
@@ -1701,9 +3063,13 @@
       </xs:complexType>
       <xs:element name="GetDnsSecKeyRequest" nillable="true" type="tns:GetDnsSecKeyRequest" />
       <xs:complexType name="GetDnsSecKeyResponse">
-        <xsd:sequence>
-          <xs:element minOccurs="0" name="DnsSecKey" type="tns:DnsSecKey" />
-        </xsd:sequence>
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xsd:sequence>
+              <xs:element minOccurs="0" name="DnsSecKey" type="tns:DnsSecKey" />
+            </xsd:sequence>
+          </xs:extension>
+        </xs:complexContent>
       </xs:complexType>
       <xs:element name="GetDnsSecKeyResponse" nillable="true" type="tns:GetDnsSecKeyResponse" />
 
@@ -1820,6 +3186,51 @@
         </xs:complexContent>
       </xs:complexType>
       <xs:element name="GetContactsResponse" nillable="true" type="tns:GetContactsResponse" />
+
+      <xs:complexType name="GetCustomerReferencesRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Handle" nillable="true" type="xsd:string" />
+          <xs:element minOccurs="0" name="ExternalId" nillable="true" type="xsd:string" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xsd:string" />
+          <xs:element minOccurs="0" name="Status" nillable="true" type="xsd:string" />
+          <xs:element minOccurs="0" name="CreationFromDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CreationToDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="OrderSort" type="tns:CustomerReferenceSortType" />
+          <xs:element minOccurs="0" name="PageInfo" nillable="true" type="tns:PagingInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetCustomerReferencesRequest" nillable="true" type="tns:GetCustomerReferencesRequest" />
+      <xs:complexType name="ArrayOfCustomerReferenceInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="CustomerReferenceInfo" nillable="true" type="tns:CustomerReferenceInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfCustomerReferenceInfo" nillable="true" type="tns:ArrayOfCustomerReferenceInfo" />
+      <xs:simpleType name="CustomerReferenceSortType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="CreatedAsc" />
+          <xs:enumeration value="CreatedDesc" />
+          <xs:enumeration value="ExternalIdAsc" />
+          <xs:enumeration value="ExternalIdDesc" />
+          <xs:enumeration value="DescriptionAsc" />
+          <xs:enumeration value="DescriptionDesc" />
+          <xs:enumeration value="HandleAsc" />
+          <xs:enumeration value="HandleDesc" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="CustomerReferenceSortType" nillable="true" type="tns:CustomerReferenceSortType" />
+      <xs:complexType name="GetCustomerReferencesResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="TotalCount" type="xs:int" />
+              <xs:element minOccurs="0" name="CustomerReferenceInfos" nillable="true" type="tns:ArrayOfCustomerReferenceInfo" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetCustomerReferencesResponse" nillable="true" type="tns:GetCustomerReferencesResponse" />
+
       <xs:complexType name="GetNameServersRequest">
         <xs:sequence>
           <xs:element minOccurs="0" name="Handle" nillable="true" type="xsd:string" />
@@ -1928,6 +3339,68 @@
       </xs:complexType>
       <xs:element name="GetDnsSecKeysResponse" nillable="true" type="tns:GetDnsSecKeysResponse" />
 
+      <xs:complexType name="GetSslCertificatesRequest">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ObjectNames" nillable="true" type="q1:ArrayOfstring" />
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Handles" nillable="true" type="q1:ArrayOfstring" />
+          <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SslComment" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreationFromDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CreationToDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ExpireFromDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ExpireToDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="OwnerName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OwnerOrganizationName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OwnerEmail" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomerReferenceExternalId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomerReferenceDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OrderSort" type="tns:SslCertificateSortType" />
+          <xs:element minOccurs="0" name="PageInfo" nillable="true" type="tns:PagingInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetSslCertificatesRequest" nillable="true" type="tns:GetSslCertificatesRequest" />
+      <xs:simpleType name="SslCertificateSortType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="CreatedAsc" />
+          <xs:enumeration value="CreatedDesc" />
+          <xs:enumeration value="ExpiresAsc" />
+          <xs:enumeration value="ExpiresDesc" />
+          <xs:enumeration value="HandleAsc" />
+          <xs:enumeration value="HandleDesc" />
+          <xs:enumeration value="ObjectNameAsc" />
+          <xs:enumeration value="ObjectNameDesc" />
+          <xs:enumeration value="ProductNameAsc" />
+          <xs:enumeration value="ProductNameDesc" />
+          <xs:enumeration value="CommentAsc" />
+          <xs:enumeration value="CommentDesc" />
+          <xs:enumeration value="OwnerLastNameAsc" />
+          <xs:enumeration value="OwnerLastNameDesc" />
+          <xs:enumeration value="OwnerOrgNameAsc" />
+          <xs:enumeration value="OwnerOrgNameDesc" />
+          <xs:enumeration value="OwnerEmailAsc" />
+          <xs:enumeration value="OwnerEmailDesc" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="SslCertificateSortType" nillable="true" type="tns:SslCertificateSortType" />
+
+      <xs:complexType name="GetSslCertificatesResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="TotalCount" type="xs:int" />
+              <xs:element minOccurs="0" name="SslCertificateInfos" nillable="true" type="tns:ArrayOfSslCertificateInfo" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetSslCertificatesResponse" nillable="true" type="tns:GetSslCertificatesResponse" />
+      <xs:complexType name="ArrayOfSslCertificateInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="SslCertificateInfo" nillable="true" type="tns:SslCertificateInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfSslCertificateInfo" nillable="true" type="tns:ArrayOfSslCertificateInfo" />
+
       <xs:complexType name="GetMarksRequest">
         <xs:sequence>
           <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ObjectNames" nillable="true" type="q1:ArrayOfstring" />
@@ -1942,6 +3415,8 @@
           <xs:element minOccurs="0" name="OwnerName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="OwnerOrganizationName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="OwnerEmail" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomerReferenceExternalId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomerReferenceDescription" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="OrderSort" type="tns:MarkSortType" />
           <xs:element minOccurs="0" name="PageInfo" nillable="true" type="tns:PagingInfo" />
         </xs:sequence>
@@ -1977,6 +3452,56 @@
         </xs:sequence>
       </xs:complexType>
       <xs:element name="ArrayOfMarkInfo" nillable="true" type="tns:ArrayOfMarkInfo" />
+      <xs:complexType name="GetNameWatchListRequest">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ObjectNames" nillable="true" type="q1:ArrayOfstring" />
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Handles" nillable="true" type="q1:ArrayOfstring" />
+          <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ObjectComment" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreationFromDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CreationToDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ExpireFromDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ExpireToDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="OwnerName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OwnerOrganizationName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OwnerEmail" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomerReferenceExternalId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomerReferenceDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OrderSort" type="tns:MarkSortType" />
+          <xs:element minOccurs="0" name="PageInfo" nillable="true" type="tns:PagingInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetNameWatchListRequest" nillable="true" type="tns:GetNameWatchListRequest" />
+      <xs:simpleType name="NameWatchSortType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="CreatedAsc" />
+          <xs:enumeration value="CreatedDesc" />
+          <xs:enumeration value="ExpiresAsc" />
+          <xs:enumeration value="ExpiresDesc" />
+          <xs:enumeration value="HandleAsc" />
+          <xs:enumeration value="HandleDesc" />
+          <xs:enumeration value="ObjectNameAsc" />
+          <xs:enumeration value="ObjectNameDesc" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="NameWatchSortType" nillable="true" type="tns:NameWatchSortType" />
+      <xs:complexType name="GetNameWatchListResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="TotalCount" type="xs:int" />
+              <xs:element minOccurs="0" name="NameWatchInfos" nillable="true" type="tns:ArrayOfNameWatchInfo" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetNameWatchListResponse" nillable="true" type="tns:GetNameWatchListResponse" />
+      <xs:complexType name="ArrayOfNameWatchInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="NameWatchInfo" nillable="true" type="tns:NameWatchInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfNameWatchInfo" nillable="true" type="tns:ArrayOfNameWatchInfo" />
       <xs:complexType name="GetMarkRequest">
         <xs:sequence>
           <xs:element minOccurs="0" name="Handle" nillable="true" type="xs:string" />
@@ -2000,43 +3525,71 @@
           <xs:element minOccurs="0" name="Expires" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="Mark" nillable="true" type="tns:AbstractMark" />
           <xs:element minOccurs="0" name="Smd" nillable="true" type="xs:string" />
+          <xsd:element name="CustomerReference" minOccurs="0" nillable="true" type="tns:CustomerReferenceInfo">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
         </xs:sequence>
       </xs:complexType>
       <xs:element name="MarkInfo" nillable="true" type="tns:MarkInfo" />
       <xs:complexType name="GetDefensiveRequest">
         <xs:sequence>
-          <xs:element minOccurs="0" name="Handle" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="Handle" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:complexType>
-      <xs:element name="GetDefensiveRequest" nillable="true" type="tns:GetDefensiveRequest"/>
+      <xs:element name="GetDefensiveRequest" nillable="true" type="tns:GetDefensiveRequest" />
       <xs:complexType name="GetDefensiveResponse">
         <xs:complexContent mixed="false">
           <xs:extension base="tns:AbstractResponse">
             <xs:sequence>
-              <xs:element minOccurs="0" name="DefensiveInfo" nillable="true" type="tns:DefensiveInfo"/>
+              <xs:element minOccurs="0" name="DefensiveInfo" nillable="true" type="tns:DefensiveInfo" />
             </xs:sequence>
           </xs:extension>
         </xs:complexContent>
       </xs:complexType>
-      <xs:element name="GetDefensiveResponse" nillable="true" type="tns:GetDefensiveResponse"/>
+      <xs:element name="GetDefensiveResponse" nillable="true" type="tns:GetDefensiveResponse" />
       <xs:complexType name="DefensiveInfo">
         <xs:sequence>
-          <xs:element minOccurs="0" name="Handle" nillable="true" type="xs:string"/>
-          <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string"/>
-          <xs:element minOccurs="0" name="Created" type="xs:dateTime"/>
-          <xs:element minOccurs="0" name="Expires" nillable="true" type="xs:dateTime"/>
-          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
-          <xs:element minOccurs="0" name="AuthInfo" nillable="true" type="xs:string"/>
-          <xs:element minOccurs="0" name="Encoding" nillable="true" type="xs:string"/>
-          <xs:element minOccurs="0" name="Owner" nillable="true" type="tns:Registrant"/>
-          <xs:element minOccurs="0" name="Admin" nillable="true" type="tns:Contact"/>
-          <xs:element minOccurs="0" name="Tech" nillable="true" type="tns:Contact"/>
-          <xs:element minOccurs="0" name="Billing" nillable="true" type="tns:Contact"/>
-          <xs:element minOccurs="0" name="Reseller" nillable="true" type="tns:Contact"/>
+          <xs:element minOccurs="0" name="Handle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Created" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Expires" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AuthInfo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Encoding" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Owner" nillable="true" type="tns:Registrant" />
+          <xs:element minOccurs="0" name="Admin" nillable="true" type="tns:Contact" />
+          <xs:element minOccurs="0" name="Tech" nillable="true" type="tns:Contact" />
+          <xs:element minOccurs="0" name="Billing" nillable="true" type="tns:Contact" />
+          <xs:element minOccurs="0" name="Reseller" nillable="true" type="tns:Contact" />
           <xs:element minOccurs="0" name="ObjectComment" nillable="true" type="xs:string" />
+          <xsd:element name="CustomerReference" minOccurs="0" nillable="true" type="tns:CustomerReferenceInfo">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DefensiveType" minOccurs="0" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Trademark" minOccurs="0" nillable="true" type="tns:DomainTradeMark">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
         </xs:sequence>
       </xs:complexType>
-      <xs:element name="DefensiveInfo" nillable="true" type="tns:DefensiveInfo"/>
+      <xs:element name="DefensiveInfo" nillable="true" type="tns:DefensiveInfo" />
       <xs:complexType name="GetNameWatchRequest">
         <xs:sequence>
           <xs:element minOccurs="0" name="Handle" nillable="true" type="xs:string" />
@@ -2077,6 +3630,14 @@
             </xs:element>
           </xs:sequence>
           <xs:element minOccurs="0" name="ObjectComment" nillable="true" type="xs:string" />
+          <xsd:element name="CustomerReference" minOccurs="0" nillable="true" type="tns:CustomerReferenceInfo">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xs:element minOccurs="0" name="ReportUrl" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:complexType>
       <xs:element name="NameWatchInfo" nillable="true" type="tns:NameWatchInfo" />
@@ -2108,6 +3669,7 @@
         <xs:complexContent mixed="false">
           <xs:extension base="tns:AbstractResponse">
             <xs:sequence>
+              <!--<xs:element minOccurs="0" name="SslCertificateInfo" nillable="true" type="tns:SslCertificateInfo" />-->
               <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ApproverEmails" nillable="true" type="q3:ArrayOfstring" />
             </xs:sequence>
           </xs:extension>
@@ -2134,6 +3696,13 @@
           <xs:element minOccurs="0" name="ObjectComment" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="ValidationType" type="tns:SslDomainValidationType" />
           <xs:element minOccurs="0" name="SslProductName" nillable="true" type="xs:string" />
+          <xsd:element name="CustomerReference" minOccurs="0" nillable="true" type="tns:CustomerReferenceInfo">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/" EmitDefaultValue="false"/>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
         </xs:sequence>
       </xs:complexType>
       <xs:element name="SslCertificateInfo" nillable="true" type="tns:SslCertificateInfo" />
@@ -2167,44 +3736,10 @@
         </xs:sequence>
       </xs:complexType>
       <xs:element name="AutoInstallSslInfo" nillable="true" type="tns:AutoInstallSslInfo"/>
-      <xs:complexType name="GetLockRequest">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Handle" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:element name="GetLockRequest" nillable="true" type="tns:GetLockRequest" />
-      <xs:complexType name="GetLockResponse">
-        <xs:complexContent mixed="false">
-          <xs:extension base="tns:AbstractResponse">
-            <xs:sequence>
-              <xs:element minOccurs="0" name="LockInfo" nillable="true" type="tns:LockInfo" />
-            </xs:sequence>
-          </xs:extension>
-        </xs:complexContent>
-      </xs:complexType>
-      <xs:element name="GetLockResponse" nillable="true" type="tns:GetLockResponse" />
-      <xs:complexType name="LockInfo">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Handle" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Created" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="Expires" nillable="true" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="LockedObjectHandle" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="ApprovalType" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="IncludeServerLocks" type="xs:boolean" />
-          <xs:element minOccurs="0" name="AuthContact1" nillable="true" type="tns:AuthContact" />
-          <xs:element minOccurs="0" name="AuthContact2" nillable="true" type="tns:AuthContact" />
-          <xs:element minOccurs="0" name="AuthContact3" nillable="true" type="tns:AuthContact" />
-          <xs:element minOccurs="0" name="AuthContact4" nillable="true" type="tns:AuthContact" />
-          <xs:element minOccurs="0" name="AuthContact5" nillable="true" type="tns:AuthContact" />
-          <xs:element minOccurs="0" name="Extensions" nillable="true" type="tns:Extensions" />
-          <xs:element minOccurs="0" name="ObjectComment" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:element name="LockInfo" nillable="true" type="tns:LockInfo" />
       <xs:complexType name="GetMessagesRequest">
         <xs:sequence>
           <xs:element minOccurs="0" name="OrderId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IncludeAttachmentContent" nillable="true" type="xs:boolean" />
         </xs:sequence>
       </xs:complexType>
       <xs:element name="GetMessagesRequest" nillable="true" type="tns:GetMessagesRequest" />
@@ -2229,9 +3764,9 @@
           <xs:element minOccurs="0" name="Attachments" nillable="true" type="tns:ArrayOfAttachment" />
           <xs:element minOccurs="0" name="Body" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Created" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="FromAddress" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="FromAddress" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Subject" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="ToAddress" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="ToAddress" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Type" type="tns:MessageType" />
         </xs:sequence>
       </xs:complexType>
@@ -2244,17 +3779,17 @@
       <xs:element name="ArrayOfAttachment" nillable="true" type="tns:ArrayOfAttachment" />
       <xs:simpleType name="MessageType">
         <xs:restriction base="xs:string">
-          <xs:enumeration value="OrderMail">
-            <xs:annotation>
-              <xs:appinfo>
-                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:enumeration>
           <xs:enumeration value="MessageToPartner">
             <xs:annotation>
               <xs:appinfo>
                 <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="OrderMail">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
               </xs:appinfo>
             </xs:annotation>
           </xs:enumeration>
@@ -2316,6 +3851,39 @@
           <xs:element minOccurs="0" name="ObjectType" nillable="true" type="tns:ObjectType" />
         </xs:sequence>
       </xs:complexType>
+
+      <xs:complexType name="ResendMessageRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OrderId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ResendMessageRequest" nillable="true" type="tns:ResendMessageRequest" />
+      <xs:complexType name="ResendMessageResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ResendMessageResponse" nillable="true" type="tns:ResendMessageResponse" />
+
+      <xs:complexType name="GetAttachmentRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AttachmentId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="OrderId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetAttachmentRequest" nillable="true" type="tns:GetAttachmentRequest" />
+      <xs:complexType name="GetAttachmentResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Attachment" nillable="true" type="tns:Attachment" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetAttachmentResponse" nillable="true" type="tns:GetAttachmentResponse" />
+
       <xs:element name="PollQueueRequest" nillable="true" type="tns:PollQueueRequest" />
       <xs:complexType name="PollQueueResponse">
         <xs:complexContent mixed="false">
@@ -2389,11 +3957,11 @@
       <xs:element name="GetQueueMessageResponse" nillable="true" type="tns:GetQueueMessageResponse" />
       <xs:complexType name="UploadDocumentationRequest">
         <xs:sequence>
-          <xs:element minOccurs="0" name="OrderId" nillable="true" type="xs:string"/>
-          <xs:element minOccurs="0" name="Documents" nillable="true" type="tns:ArrayOfAttachment"/>
+          <xs:element minOccurs="0" name="OrderId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Documents" nillable="true" type="tns:ArrayOfAttachment" />
         </xs:sequence>
       </xs:complexType>
-      <xs:element name="UploadDocumentationRequest" nillable="true" type="tns:UploadDocumentationRequest"/>
+      <xs:element name="UploadDocumentationRequest" nillable="true" type="tns:UploadDocumentationRequest" />
       <xs:complexType name="UploadDocumentationResponse">
         <xs:complexContent mixed="false">
           <xs:extension base="tns:AbstractResponse">
@@ -2401,24 +3969,88 @@
           </xs:extension>
         </xs:complexContent>
       </xs:complexType>
-      <xs:element name="UploadDocumentationResponse" nillable="true" type="tns:UploadDocumentationResponse"/>
-      <xs:complexType name="UploadMessageRequest">
+      <xs:element name="UploadDocumentationResponse" nillable="true" type="tns:UploadDocumentationResponse" />
+      <xs:complexType name="CreateApprovalDocumentationRequest">
         <xs:sequence>
-          <xs:element minOccurs="0" name="OrderId" nillable="true" type="xs:string"/>
-          <xs:element minOccurs="0" name="Message" nillable="true" type="tns:Message"/>
+          <xs:element minOccurs="0" name="OrderId" nillable="true" type="xs:string" />
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ObjectNames" nillable="true" type="q1:ArrayOfstring" />
+          <xs:element minOccurs="0" name="Approval" nillable="true" type="tns:AbstractApproval" />
+          <xs:element minOccurs="0" name="Attachments" nillable="true" type="tns:ArrayOfAttachment" />
         </xs:sequence>
       </xs:complexType>
-      <xs:element name="UploadMessageRequest" nillable="true" type="tns:UploadMessageRequest"/>
-      <xs:complexType name="UploadMessageResponse">
+      <xs:element name="CreateApprovalDocumentationRequest" nillable="true" type="tns:CreateApprovalDocumentationRequest" />
+      <xs:complexType name="AbstractApproval" abstract="true">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="LoosingOwnerApprovalTimestamp" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="LoosingOwnerApprovalIP" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AbstractApproval" nillable="true" type="tns:AbstractApproval" />
+      <xs:complexType name="IrtpApproval">
         <xs:complexContent mixed="false">
-          <xs:extension base="tns:AbstractResponse">
+          <xs:extension base="tns:AbstractApproval">
             <xs:sequence>
-              <xs:element minOccurs="0" name="MessageId" type="xs:int"/>
+              <xs:element minOccurs="0" name="IRTPOptOut" nillable="true" type="xs:boolean" />
+              <xs:element minOccurs="0" name="GainingOwnerApprovalTimestamp" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="GainingOwnerApprovalIP" nillable="true" type="xs:string" />
             </xs:sequence>
           </xs:extension>
         </xs:complexContent>
       </xs:complexType>
-      <xs:element name="UploadMessageResponse" nillable="true" type="tns:UploadMessageResponse"/>
+      <xs:element name="IrtpApproval" nillable="true" type="tns:IrtpApproval" />
+      <xs:complexType name="FoaApproval">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractApproval">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="FoaApproval" nillable="true" type="tns:FoaApproval" />
+
+      <xs:complexType name="CreateApprovalDocumentationResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="DocumentationId" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="CreateApprovalDocumentationResponse" nillable="true" type="tns:CreateApprovalDocumentationResponse" />
+      <xs:complexType name="UploadMessageRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OrderId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Message" nillable="true" type="tns:Message" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="UploadMessageRequest" nillable="true" type="tns:UploadMessageRequest" />
+      <xs:complexType name="UploadMessageResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="MessageId" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="UploadMessageResponse" nillable="true" type="tns:UploadMessageResponse" />
+      <xs:complexType name="GetSslCertificateChainRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Handle" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetSslCertificateChainRequest" nillable="true" type="tns:GetSslCertificateChainRequest" />
+      <xs:complexType name="GetSslCertificateChainResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:AbstractResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Attachment" nillable="true" type="tns:Attachment" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetSslCertificateChainResponse" nillable="true" type="tns:GetSslCertificateChainResponse" />
+
     </xs:schema>
     <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
       <xs:complexType name="ArrayOfstring">
@@ -2457,6 +4089,12 @@
   <wsdl:message name="GetOrderOutputMessage">
     <wsdl:part name="parameters" element="tns:GetOrderResponse" />
   </wsdl:message>
+  <wsdl:message name="CancelOrderInputMessage">
+    <wsdl:part name="parameters" element="tns:CancelOrder" />
+  </wsdl:message>
+  <wsdl:message name="CancelOrderOutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelOrderResponse" />
+  </wsdl:message>
   <wsdl:message name="GetOrdersInputMessage">
     <wsdl:part name="parameters" element="tns:GetOrders" />
   </wsdl:message>
@@ -2469,11 +4107,41 @@
   <wsdl:message name="GetDomainsOutputMessage">
     <wsdl:part name="parameters" element="tns:GetDomainsResponse" />
   </wsdl:message>
+  <wsdl:message name="GetDefensivesInputMessage">
+    <wsdl:part name="parameters" element="tns:GetDefensives" />
+  </wsdl:message>
+  <wsdl:message name="GetDefensivesOutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDefensivesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPremiumDomainsInputMessage">
+    <wsdl:part name="parameters" element="tns:GetPremiumDomains" />
+  </wsdl:message>
+  <wsdl:message name="GetPremiumDomainsOutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPremiumDomainsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSslCertificatesInputMessage">
+    <wsdl:part name="parameters" element="tns:GetSslCertificates" />
+  </wsdl:message>
+  <wsdl:message name="GetSslCertificatesOutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSslCertificatesResponse" />
+  </wsdl:message>
   <wsdl:message name="AvailabilityInfoInputMessage">
     <wsdl:part name="parameters" element="tns:AvailabilityInfo" />
   </wsdl:message>
   <wsdl:message name="AvailabilityInfoOutputMessage">
     <wsdl:part name="parameters" element="tns:AvailabilityInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRegistrantVerificationInfoInputMessage">
+    <wsdl:part name="parameters" element="tns:GetRegistrantVerificationInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetRegistrantVerificationInfoOutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRegistrantVerificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="StartRegistrantVerificationInputMessage">
+    <wsdl:part name="parameters" element="tns:StartRegistrantVerification" />
+  </wsdl:message>
+  <wsdl:message name="StartRegistrantVerificationOutputMessage">
+    <wsdl:part name="parameters" element="tns:StartRegistrantVerificationResponse" />
   </wsdl:message>
   <wsdl:message name="GetPricesInputMessage">
     <wsdl:part name="parameters" element="tns:GetPrices" />
@@ -2481,7 +4149,78 @@
   <wsdl:message name="GetPricesOutputMessage">
     <wsdl:part name="parameters" element="tns:GetPricesResponse" />
   </wsdl:message>
-
+  <wsdl:message name="GetFuturePricesInputMessage">
+    <wsdl:part name="parameters" element="tns:GetFuturePrices" />
+  </wsdl:message>
+  <wsdl:message name="GetFuturePricesOutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFuturePricesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPriceHistoryInputMessage">
+    <wsdl:part name="parameters" element="tns:GetPriceHistory" />
+  </wsdl:message>
+  <wsdl:message name="GetPriceHistoryOutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPriceHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAccountBalanceInputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountBalance" />
+  </wsdl:message>
+  <wsdl:message name="GetAccountBalanceOutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAccountTransactionsInputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountTransactions" />
+  </wsdl:message>
+  <wsdl:message name="GetAccountTransactionsOutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountTransactionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSalesLinesInputMessage">
+    <wsdl:part name="parameters" element="tns:GetSalesLines" />
+  </wsdl:message>
+  <wsdl:message name="GetSalesLinesOutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSalesLinesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSubUsersInputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubUsers" />
+  </wsdl:message>
+  <wsdl:message name="GetSubUsersOutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSubUserInputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubUser" />
+  </wsdl:message>
+  <wsdl:message name="GetSubUserOutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateSubUserInputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSubUser" />
+  </wsdl:message>
+  <wsdl:message name="CreateSubUserOutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSubUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSubUserInputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSubUser" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSubUserOutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSubUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSubUserInputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSubUser" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSubUserOutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSubUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInvoiceInputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvoice" />
+  </wsdl:message>
+  <wsdl:message name="GetInvoiceOutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCreditNoteInputMessage">
+    <wsdl:part name="parameters" element="tns:GetCreditNote" />
+  </wsdl:message>
+  <wsdl:message name="GetCreditNoteOutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCreditNoteResponse" />
+  </wsdl:message>
   <wsdl:message name="GetRegistrantInputMessage">
     <wsdl:part name="parameters" element="tns:GetRegistrant" />
   </wsdl:message>
@@ -2494,11 +4233,65 @@
   <wsdl:message name="GetContactOutputMessage">
     <wsdl:part name="parameters" element="tns:GetContactResponse" />
   </wsdl:message>
+  <wsdl:message name="DeleteContactInputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteContact" />
+  </wsdl:message>
+  <wsdl:message name="DeleteContactOutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRegistrantInputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRegistrant" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRegistrantOutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRegistrantResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteNameServerInputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteNameServer" />
+  </wsdl:message>
+  <wsdl:message name="DeleteNameServerOutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteNameServerResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDnsSecKeyInputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDnsSecKey" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDnsSecKeyOutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDnsSecKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerReferenceInputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerReference" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerReferenceOutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerReferenceResponse" />
+  </wsdl:message>
   <wsdl:message name="CreateContactInputMessage">
     <wsdl:part name="parameters" element="tns:CreateContact" />
   </wsdl:message>
   <wsdl:message name="CreateContactOutputMessage">
     <wsdl:part name="parameters" element="tns:CreateContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateCustomerReferenceInputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCustomerReference" />
+  </wsdl:message>
+  <wsdl:message name="CreateCustomerReferenceOutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCustomerReferenceResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCustomerReferenceInputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCustomerReference" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCustomerReferenceOutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCustomerReferenceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCustomerReferenceInputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCustomerReference" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCustomerReferenceOutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCustomerReferenceResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetCustomerReferencesInputMessage">
+    <wsdl:part name="parameters" element="tns:SetCustomerReferences" />
+  </wsdl:message>
+  <wsdl:message name="SetCustomerReferencesOutputMessage">
+    <wsdl:part name="parameters" element="tns:SetCustomerReferencesResponse" />
   </wsdl:message>
   <wsdl:message name="CreateRegistrantInputMessage">
     <wsdl:part name="parameters" element="tns:CreateRegistrant" />
@@ -2543,6 +4336,12 @@
   <wsdl:message name="GetContactsOutputMessage">
     <wsdl:part name="parameters" element="tns:GetContactsResponse" />
   </wsdl:message>
+  <wsdl:message name="GetCustomerReferencesInputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerReferences" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerReferencesOutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerReferencesResponse" />
+  </wsdl:message>
   <wsdl:message name="GetNameServersInputMessage">
     <wsdl:part name="parameters" element="tns:GetNameServers" />
   </wsdl:message>
@@ -2562,6 +4361,12 @@
   <wsdl:message name="GetMarksOutputMessage">
     <wsdl:part name="parameters" element="tns:GetMarksResponse" />
   </wsdl:message>
+  <wsdl:message name="GetNameWatchListInputMessage">
+    <wsdl:part name="parameters" element="tns:GetNameWatchList" />
+  </wsdl:message>
+  <wsdl:message name="GetNameWatchListOutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNameWatchListResponse" />
+  </wsdl:message>
   <wsdl:message name="GetDomainInputMessage">
     <wsdl:part name="parameters" element="tns:GetDomain" />
   </wsdl:message>
@@ -2569,7 +4374,7 @@
     <wsdl:part name="parameters" element="tns:GetDomainResponse" />
   </wsdl:message>
   <wsdl:message name="IAscioService_GetDefensive_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetDefensive"/>
+    <wsdl:part name="parameters" element="tns:GetDefensive" />
   </wsdl:message>
   <wsdl:message name="GetDefensiveInputMessage">
     <wsdl:part name="parameters" element="tns:GetDefensive" />
@@ -2595,29 +4400,35 @@
   <wsdl:message name="GetSslCertificateOutputMessage">
     <wsdl:part name="parameters" element="tns:GetSslCertificateResponse"/>
   </wsdl:message>
-  <wsdl:message name="GetSslApproversInputMessage">
-    <wsdl:part name="parameters" element="tns:GetSslApprovers"/>
-  </wsdl:message>
-  <wsdl:message name="GetSslApproversOutputMessage">
-    <wsdl:part name="parameters" element="tns:GetSslApproversResponse"/>
-  </wsdl:message>
   <wsdl:message name="GetAutoInstallSslInputMessage">
     <wsdl:part name="parameters" element="tns:GetAutoInstallSsl"/>
   </wsdl:message>
   <wsdl:message name="GetAutoInstallSslOutputMessage">
     <wsdl:part name="parameters" element="tns:GetAutoInstallSslResponse"/>
   </wsdl:message>
-  <wsdl:message name="GetLockInputMessage">
-    <wsdl:part name="parameters" element="tns:GetLock" />
+  <wsdl:message name="GetSslApproversInputMessage">
+    <wsdl:part name="parameters" element="tns:GetSslApprovers"/>
   </wsdl:message>
-  <wsdl:message name="GetLockOutputMessage">
-    <wsdl:part name="parameters" element="tns:GetLockResponse" />
+  <wsdl:message name="GetSslApproversOutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSslApproversResponse"/>
   </wsdl:message>
   <wsdl:message name="GetMessagesInputMessage">
     <wsdl:part name="parameters" element="tns:GetMessages" />
   </wsdl:message>
   <wsdl:message name="GetMessagesOutputMessage">
     <wsdl:part name="parameters" element="tns:GetMessagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ResendMessageInputMessage">
+    <wsdl:part name="parameters" element="tns:ResendMessage" />
+  </wsdl:message>
+  <wsdl:message name="ResendMessageOutputMessage">
+    <wsdl:part name="parameters" element="tns:ResendMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAttachmentInputMessage">
+    <wsdl:part name="parameters" element="tns:GetAttachment" />
+  </wsdl:message>
+  <wsdl:message name="GetAttachmentOutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAttachmentResponse" />
   </wsdl:message>
   <wsdl:message name="PollQueueInputMessage">
     <wsdl:part name="parameters" element="tns:PollQueue" />
@@ -2638,16 +4449,29 @@
     <wsdl:part name="parameters" element="tns:GetQueueMessageResponse" />
   </wsdl:message>
   <wsdl:message name="UploadDocumentationInputMessage">
-    <wsdl:part name="parameters" element="tns:UploadDocumentation"/>
+    <wsdl:part name="parameters" element="tns:UploadDocumentation" />
   </wsdl:message>
   <wsdl:message name="UploadDocumentationOutputMessage">
-    <wsdl:part name="parameters" element="tns:UploadDocumentationResponse"/>
+    <wsdl:part name="parameters" element="tns:UploadDocumentationResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateApprovalDocumentationInputMessage">
+    <wsdl:part name="parameters" element="tns:CreateApprovalDocumentation" />
+  </wsdl:message>
+  <wsdl:message name="CreateApprovalDocumentationOutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateApprovalDocumentationResponse" />
   </wsdl:message>
   <wsdl:message name="UploadMessageInputMessage">
-    <wsdl:part name="parameters" element="tns:UploadMessage"/>
+    <wsdl:part name="parameters" element="tns:UploadMessage" />
   </wsdl:message>
   <wsdl:message name="UploadMessageOutputMessage">
-    <wsdl:part name="parameters" element="tns:UploadMessageResponse"/>
+    <wsdl:part name="parameters" element="tns:UploadMessageResponse" />
+  </wsdl:message>
+
+  <wsdl:message name="GetSslCertificateChainInputMessage">
+    <wsdl:part name="parameters" element="tns:GetSslCertificateChain" />
+  </wsdl:message>
+  <wsdl:message name="GetSslCertificateChainOutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSslCertificateChainResponse" />
   </wsdl:message>
 
   <wsdl:portType name="IAscioService">
@@ -2663,6 +4487,10 @@
       <wsdl:input wsaw:Action="GetOrder" message="tns:GetOrderInputMessage" />
       <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetOrderResponse" message="tns:GetOrderOutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="CancelOrder">
+      <wsdl:input wsaw:Action="CancelOrder" message="tns:CancelOrderInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/CancelOrderResponse" message="tns:CancelOrderOutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetOrders">
       <wsdl:input wsaw:Action="GetOrders" message="tns:GetOrdersInputMessage" />
       <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetOrdersResponse" message="tns:GetOrdersOutputMessage" />
@@ -2671,13 +4499,81 @@
       <wsdl:input wsaw:Action="GetDomains" message="tns:GetDomainsInputMessage" />
       <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetDomainsResponse" message="tns:GetDomainsOutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetDefensives">
+      <wsdl:input wsaw:Action="GetDefensives" message="tns:GetDefensivesInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetDefensivesResponse" message="tns:GetDefensivesOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPremiumDomains">
+      <wsdl:input wsaw:Action="GetPremiumDomains" message="tns:GetPremiumDomainsInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetPremiumDomainsResponse" message="tns:GetPremiumDomainsOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSslCertificates">
+      <wsdl:input wsaw:Action="GetSslCertificates" message="tns:GetSslCertificatesInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetSslCertificatesResponse" message="tns:GetSslCertificatesOutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="AvailabilityInfo">
       <wsdl:input wsaw:Action="AvailabilityInfo" message="tns:AvailabilityInfoInputMessage" />
       <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/AvailabilityInfoResponse" message="tns:AvailabilityInfoOutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetRegistrantVerificationInfo">
+      <wsdl:input wsaw:Action="GetRegistrantVerificationInfo" message="tns:GetRegistrantVerificationInfoInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetRegistrantVerificationResponse" message="tns:GetRegistrantVerificationInfoOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StartRegistrantVerification">
+      <wsdl:input wsaw:Action="StartRegistrantVerification" message="tns:StartRegistrantVerificationInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/StartRegistrantVerificationResponse" message="tns:StartRegistrantVerificationOutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetPrices">
       <wsdl:input wsaw:Action="GetPrices" message="tns:GetPricesInputMessage" />
       <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetPricesResponse" message="tns:GetPricesOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFuturePrices">
+      <wsdl:input wsaw:Action="GetFuturePrices" message="tns:GetFuturePricesInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetFuturePricesResponse" message="tns:GetFuturePricesOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPriceHistory">
+      <wsdl:input wsaw:Action="GetPriceHistory" message="tns:GetPriceHistoryInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetPriceHistoryResponse" message="tns:GetPriceHistoryOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountBalance">
+      <wsdl:input wsaw:Action="GetAccountBalance" message="tns:GetAccountBalanceInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetAccountBalanceResponse" message="tns:GetAccountBalanceOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountTransactions">
+      <wsdl:input wsaw:Action="GetAccountTransactions" message="tns:GetAccountTransactionsInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetAccountTransactionsResponse" message="tns:GetAccountTransactionsOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSalesLines">
+      <wsdl:input wsaw:Action="GetSalesLines" message="tns:GetSalesLinesInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetSalesLinesResponse" message="tns:GetSalesLinesOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSubUsers">
+      <wsdl:input wsaw:Action="GetSubUsers" message="tns:GetSubUsersInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetSubUsersResponse" message="tns:GetSubUsersOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSubUser">
+      <wsdl:input wsaw:Action="GetSubUser" message="tns:GetSubUserInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetSubUserResponse" message="tns:GetSubUserOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateSubUser">
+      <wsdl:input wsaw:Action="CreateSubUser" message="tns:CreateSubUserInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/CreateSubUserResponse" message="tns:CreateSubUserOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSubUser">
+      <wsdl:input wsaw:Action="UpdateSubUser" message="tns:UpdateSubUserInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/UpdateSubUserResponse" message="tns:UpdateSubUserOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSubUser">
+      <wsdl:input wsaw:Action="DeleteSubUser" message="tns:DeleteSubUserInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/DeleteSubUserResponse" message="tns:DeleteSubUserOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoice">
+      <wsdl:input wsaw:Action="GetInvoice" message="tns:GetInvoiceInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetInvoiceResponse" message="tns:GetInvoiceOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCreditNote">
+      <wsdl:input wsaw:Action="GetCreditNote" message="tns:GetCreditNoteInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetCreditNoteResponse" message="tns:GetCreditNoteOutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetRegistrant">
       <wsdl:input wsaw:Action="GetRegistrant" message="tns:GetRegistrantInputMessage" />
@@ -2687,9 +4583,45 @@
       <wsdl:input wsaw:Action="GetContact" message="tns:GetContactInputMessage" />
       <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetContactResponse" message="tns:GetContactOutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="DeleteContact">
+      <wsdl:input wsaw:Action="DeleteContact" message="tns:DeleteContactInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/DeleteContactResponse" message="tns:DeleteContactOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRegistrant">
+      <wsdl:input wsaw:Action="DeleteRegistrant" message="tns:DeleteRegistrantInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/DeleteRegistrantResponse" message="tns:DeleteRegistrantOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNameServer">
+      <wsdl:input wsaw:Action="DeleteNameServer" message="tns:DeleteNameServerInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/DeleteNameServerResponse" message="tns:DeleteNameServerOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDnsSecKey">
+      <wsdl:input wsaw:Action="DeleteDnsSecKey" message="tns:DeleteDnsSecKeyInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/DeleteDnsSecKeyResponse" message="tns:DeleteDnsSecKeyOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerReference">
+      <wsdl:input wsaw:Action="GetCustomerReference" message="tns:GetCustomerReferenceInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetCustomerReferenceResponse" message="tns:GetCustomerReferenceOutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="CreateContact">
       <wsdl:input wsaw:Action="CreateContact" message="tns:CreateContactInputMessage" />
       <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/CreateContactResponse" message="tns:CreateContactOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomerReference">
+      <wsdl:input wsaw:Action="CreateCustomerReference" message="tns:CreateCustomerReferenceInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/CreateCustomerReferenceResponse" message="tns:CreateCustomerReferenceOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomerReference">
+      <wsdl:input wsaw:Action="UpdateCustomerReference" message="tns:UpdateCustomerReferenceInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/UpdateCustomerReferenceResponse" message="tns:UpdateCustomerReferenceOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCustomerReference">
+      <wsdl:input wsaw:Action="DeleteCustomerReference" message="tns:DeleteCustomerReferenceInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/DeleteCustomerReferenceResponse" message="tns:DeleteCustomerReferenceOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetCustomerReferences">
+      <wsdl:input wsaw:Action="SetCustomerReferences" message="tns:SetCustomerReferencesInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/SetCustomerReferencesResponse" message="tns:SetCustomerReferencesOutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateRegistrant">
       <wsdl:input wsaw:Action="CreateRegistrant" message="tns:CreateRegistrantInputMessage" />
@@ -2719,6 +4651,10 @@
       <wsdl:input wsaw:Action="GetContacts" message="tns:GetContactsInputMessage" />
       <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetContactsResponse" message="tns:GetContactsOutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetCustomerReferences">
+      <wsdl:input wsaw:Action="GetCustomerReferences" message="tns:GetCustomerReferencesInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetCustomerReferencesResponse" message="tns:GetCustomerReferencesOutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetNameServers">
       <wsdl:input wsaw:Action="GetNameServers" message="tns:GetNameServersInputMessage" />
       <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetNameServersResponse" message="tns:GetNameServersOutputMessage" />
@@ -2730,6 +4666,10 @@
     <wsdl:operation name="GetMarks">
       <wsdl:input wsaw:Action="GetMarks" message="tns:GetMarksInputMessage" />
       <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetMarksResponse" message="tns:GetMarksOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNameWatchList">
+      <wsdl:input wsaw:Action="GetNameWatchList" message="tns:GetNameWatchListInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetNameWatchListResponse" message="tns:GetNameWatchListOutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetMark">
       <wsdl:input wsaw:Action="GetMark" message="tns:GetMarkInputMessage" />
@@ -2751,21 +4691,25 @@
       <wsdl:input wsaw:Action="GetSslCertificate" message="tns:GetSslCertificateInputMessage"/>
       <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetSslCertificateResponse" message="tns:GetSslCertificateOutputMessage"/>
     </wsdl:operation>
-    <wsdl:operation name="GetSslApprovers">
-      <wsdl:input wsaw:Action="GetSslApprovers" message="tns:GetSslApproversInputMessage"/>
-      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetSslApproversResponse" message="tns:GetSslApproversOutputMessage"/>
-    </wsdl:operation>
     <wsdl:operation name="GetAutoInstallSsl">
       <wsdl:input wsaw:Action="GetAutoInstallSsl" message="tns:GetAutoInstallSslInputMessage"/>
       <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetAutoInstallSslResponse" message="tns:GetAutoInstallSslOutputMessage"/>
     </wsdl:operation>
-    <wsdl:operation name="GetLock">
-      <wsdl:input wsaw:Action="GetLock" message="tns:GetLockInputMessage" />
-      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetLockResponse" message="tns:GetLockOutputMessage" />
+    <wsdl:operation name="GetSslApprovers">
+      <wsdl:input wsaw:Action="GetSslApprovers" message="tns:GetSslApproversInputMessage"/>
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetSslApproversResponse" message="tns:GetSslApproversOutputMessage"/>
     </wsdl:operation>
     <wsdl:operation name="GetMessages">
       <wsdl:input wsaw:Action="GetMessages" message="tns:GetMessagesInputMessage" />
       <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetMessagesResponse" message="tns:GetMessagesOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResendMessage">
+      <wsdl:input wsaw:Action="ResendMessage" message="tns:ResendMessageInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/ResendMessageResponse" message="tns:ResendMessageOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachment">
+      <wsdl:input wsaw:Action="GetAttachment" message="tns:GetAttachmentInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetAttachmentResponse" message="tns:GetAttachmentOutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="PollQueue">
       <wsdl:input wsaw:Action="PollQueue" message="tns:PollQueueInputMessage" />
@@ -2780,12 +4724,20 @@
       <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetQueueMessageResponse" message="tns:GetQueueMessageOutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="UploadDocumentation">
-      <wsdl:input wsaw:Action="UploadDocumentation" message="tns:UploadDocumentationInputMessage"/>
-      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/UploadDocumentationResponse" message="tns:UploadDocumentationOutputMessage"/>
+      <wsdl:input wsaw:Action="UploadDocumentation" message="tns:UploadDocumentationInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/UploadDocumentationResponse" message="tns:UploadDocumentationOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateApprovalDocumentation">
+      <wsdl:input wsaw:Action="CreateApprovalDocumentation" message="tns:CreateApprovalDocumentationInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/CreateApprovalDocumentationResponse" message="tns:CreateApprovalDocumentationOutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="UploadMessage">
-      <wsdl:input wsaw:Action="UploadMessage" message="tns:UploadMessageInputMessage"/>
-      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/UploadMessageResponse" message="tns:UploadMessageOutputMessage"/>
+      <wsdl:input wsaw:Action="UploadMessage" message="tns:UploadMessageInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/UploadMessageResponse" message="tns:UploadMessageOutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSslCertificateChain">
+      <wsdl:input wsaw:Action="GetSslCertificateChain" message="tns:GetSslCertificateChainInputMessage" />
+      <wsdl:output wsaw:Action="http://www.ascio.com/2013/02/AscioService/IAscioService/GetSslCertificateChainResponse" message="tns:GetSslCertificateChainOutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="AscioServiceBinding" type="tns:IAscioService">
@@ -2823,6 +4775,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="CancelOrder">
+      <soap:operation soapAction="CancelOrder" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetOrders">
       <soap:operation soapAction="GetOrders" style="document" />
       <wsdl:input>
@@ -2845,8 +4808,63 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetDefensives">
+      <soap:operation soapAction="GetDefensives" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPremiumDomains">
+      <soap:operation soapAction="GetPremiumDomains" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSslCertificates">
+      <soap:operation soapAction="GetSslCertificates" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AvailabilityInfo">
       <soap:operation soapAction="AvailabilityInfo" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRegistrantVerificationInfo">
+      <soap:operation soapAction="GetRegistrantVerificationInfo" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartRegistrantVerification">
+      <soap:operation soapAction="StartRegistrantVerification" style="document" />
       <wsdl:input>
         <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
         <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
@@ -2867,10 +4885,143 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetFuturePrices">
+      <soap:operation soapAction="GetFuturePrices" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPriceHistory">
+      <soap:operation soapAction="GetPriceHistory" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountBalance">
+      <soap:operation soapAction="GetAccountBalance" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountTransactions">
+      <soap:operation soapAction="GetAccountTransactions" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSalesLines">
+      <soap:operation soapAction="GetSalesLines" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubUsers">
+      <soap:operation soapAction="GetSubUsers" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubUser">
+      <soap:operation soapAction="GetSubUser" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateSubUser">
+      <soap:operation soapAction="CreateSubUser" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSubUser">
+      <soap:operation soapAction="UpdateSubUser" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSubUser">
+      <soap:operation soapAction="DeleteSubUser" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoice">
+      <soap:operation soapAction="GetInvoice" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCreditNote">
+      <soap:operation soapAction="GetCreditNote" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetRegistrant">
       <soap:operation soapAction="GetRegistrant" style="document" />
       <wsdl:input>
         <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
         <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
@@ -2881,6 +5032,62 @@
       <soap:operation soapAction="GetContact" style="document" />
       <wsdl:input>
         <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteContact">
+      <soap:operation soapAction="DeleteContact" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRegistrant">
+      <soap:operation soapAction="DeleteRegistrant" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNameServer">
+      <soap:operation soapAction="DeleteNameServer" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDnsSecKey">
+      <soap:operation soapAction="DeleteDnsSecKey" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerReference">
+      <soap:operation soapAction="GetCustomerReference" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
         <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
@@ -2889,6 +5096,50 @@
     </wsdl:operation>
     <wsdl:operation name="CreateContact">
       <soap:operation soapAction="CreateContact" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomerReference">
+      <soap:operation soapAction="CreateCustomerReference" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomerReference">
+      <soap:operation soapAction="UpdateCustomerReference" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCustomerReference">
+      <soap:operation soapAction="DeleteCustomerReference" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCustomerReferences">
+      <soap:operation soapAction="SetCustomerReferences" style="document" />
       <wsdl:input>
         <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
         <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
@@ -2935,6 +5186,7 @@
       <soap:operation soapAction="GetNameServer" style="document" />
       <wsdl:input>
         <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
         <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
@@ -2945,6 +5197,7 @@
       <soap:operation soapAction="GetDnsSecKey" style="document" />
       <wsdl:input>
         <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
         <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
@@ -2965,6 +5218,17 @@
     </wsdl:operation>
     <wsdl:operation name="GetContacts">
       <soap:operation soapAction="GetContacts" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerReferences">
+      <soap:operation soapAction="GetCustomerReferences" style="document" />
       <wsdl:input>
         <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
         <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
@@ -3008,6 +5272,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetNameWatchList">
+      <soap:operation soapAction="GetNameWatchList" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetMark">
       <soap:operation soapAction="GetMark" style="document" />
       <wsdl:input>
@@ -3041,6 +5316,7 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+
     <wsdl:operation name="GetNameWatch">
       <soap:operation soapAction="GetNameWatch" style="document" />
       <wsdl:input>
@@ -3063,17 +5339,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetSslApprovers">
-      <soap:operation soapAction="GetSslApprovers" style="document" />
-      <wsdl:input>
-        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
-        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetAutoInstallSsl">
       <soap:operation soapAction="GetAutoInstallSsl" style="document"/>
       <wsdl:input>
@@ -3085,8 +5350,8 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetLock">
-      <soap:operation soapAction="GetLock" style="document" />
+    <wsdl:operation name="GetSslApprovers">
+      <soap:operation soapAction="GetSslApprovers" style="document" />
       <wsdl:input>
         <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
         <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
@@ -3098,6 +5363,28 @@
     </wsdl:operation>
     <wsdl:operation name="GetMessages">
       <soap:operation soapAction="GetMessages" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResendMessage">
+      <soap:operation soapAction="ResendMessage" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachment">
+      <soap:operation soapAction="GetAttachment" style="document" />
       <wsdl:input>
         <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
         <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
@@ -3141,25 +5428,47 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="UploadDocumentation">
-      <soap:operation soapAction="UploadDocumentation" style="document"/>
+      <soap:operation soapAction="UploadDocumentation" style="document" />
       <wsdl:input>
-        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal"/>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
         <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
-        <soap:body use="literal"/>
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal"/>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateApprovalDocumentation">
+      <soap:operation soapAction="CreateApprovalDocumentation" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="UploadMessage">
-      <soap:operation soapAction="UploadMessage" style="document"/>
+      <soap:operation soapAction="UploadMessage" style="document" />
       <wsdl:input>
-        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal"/>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
         <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
-        <soap:body use="literal"/>
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal"/>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSslCertificateChain">
+      <soap:operation soapAction="GetSslCertificateChain" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:DefaultInputMessageHeaders" part="SecurityHeaderDetails" use="literal" />
+        <soap:header message="tns:DefaultInputMessageHeaders" part="ImpersonationHeaderDetails" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
