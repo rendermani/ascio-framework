@@ -24,9 +24,13 @@ Consumer::objectIncremental(function(SyncPayload $payload) {
             } catch (ModelNotFoundException $e) {
                 echo $obj->log(LogLevel::Error,Str::ucfirst($payload->action).", Not found: ".$payload->object->db()->getKey());  
                 throw new Exception("Object with the _id ".$payload->object->db()->getKey(). " not found." );
+            }
+            $changes = $payload->getChanges();
+            if($changes)  {
+                $oldObject->setIncr($payload->getChanges());            
+                $oldObject->db()->syncToDb();         
             }            
-            $oldObject->setIncr($payload->getChanges());            
-            $oldObject->db()->syncToDb();         
+
             $obj = $oldObject;
         } else {
             $obj->db()->syncToDb(); 
