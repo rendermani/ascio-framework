@@ -23,7 +23,8 @@
         "io-developer/php-whois": "dev-master",
         "giggsey/libphonenumber-for-php": "^8.12",
         "doctrine/couchdb": "@dev",
-        "monolog/monolog": "^1.23"
+        "monolog/monolog": "^1.23",
+        "aspera/xlsx-reader": "dev-master"
     },
     "require-dev": {
         "rendermani/wsdl-client-generator" : "*",
