@@ -6,14 +6,14 @@ data/import/*
 *.env
 config/accounts/*
 config/AscioService*
-composer.lock
 */partners/*
 data/import/*
 partners/*
-sandbox/avMonitor
+sandbox/*
 data/tests/*
 projects/*
 node_modules
 public/tests/*
 package-lock.json
 storage/*
+composer.lock
