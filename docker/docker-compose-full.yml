@@ -129,7 +129,7 @@ services:
         - ../.env
         volumes:
             - ..:/code
-        restart: always
+        
         depends_on: 
         - mysql
         entrypoint: /usr/local/bin/php 
