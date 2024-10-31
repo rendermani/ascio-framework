@@ -1,4 +1,4 @@
-FROM php:7.4-fpm
+FROM php:8.1-fpm
 RUN apt-get update && apt-get -y install libpng-dev libzip-dev libxml2-dev git zip zlib1g-dev librdkafka-dev libicu-dev libxml2 libxml2-dev libxslt1.1 libxslt1-dev
 RUN  docker-php-ext-configure intl\
 	&& docker-php-ext-install gd pdo_mysql soap zip intl xsl opcache
