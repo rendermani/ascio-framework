@@ -18,12 +18,13 @@
             "type": "php",
             "request": "launch",
             "program": "${file}",
-            "cwd": "${fileDirname}",
+            "cwd": "${workspaceRoot}",
             "port": 9003,
-            "runtimeExecutable": "/Users/mlautenschlager/Development/ascio-framework/docker/php.sh",
+            "runtimeExecutable": "${workspaceRoot}/bin/php.bat",
             "pathMappings": {
                 "/code": "${workspaceRoot}"
-              }
+              },
+              "debug" : true 
         }
     ]
 }
