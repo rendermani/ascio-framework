@@ -5,10 +5,10 @@
 namespace ascio\service\v3;
 use ascio\db\v3\CustomerReferenceDb;
 use ascio\api\v3\CustomerReferenceApi;
-use ascio\base\v3\Base;
+use ascio\base\v3\DbBase;
 
 
-class CustomerReference extends Base  {
+class CustomerReference extends DbBase  {
 
 	protected $_apiProperties=["Handle", "ExternalId", "Description", "Extensions"];
 	protected $_apiObjects=["Extensions"];
@@ -21,6 +21,27 @@ class CustomerReference extends Base  {
 	protected $Description;
 	protected $Extensions;
 
+	public function __construct($parent = null) {
+		parent::__construct($parent);
+
+		//set the database model
+		$db = new CustomerReferenceDb();
+		$db->parent($this);
+		$this->db($db);
+	}
+	/**
+	* Provides DB-Specific methods like update,create,delete.
+	* @param CustomerReferenceDb|null $db
+	* @return CustomerReferenceDb
+	*/
+	public function db($db = null) {
+		if(!$db) {
+			return $this->_db;
+		}
+		$this->_db = $db;
+		$this->_db->parent($this);
+		return $db;
+	}
 	public function setHandle (?string $Handle = null) : self {
 		$this->set("Handle", $Handle);
 		return $this;

@@ -30,6 +30,7 @@ class Service extends ServiceBase  {
 		"Trademark" => "ascio\\v3\\Trademark",
 		"CourtValidatedMark" => "ascio\\v3\\CourtValidatedMark",
 		"SecurityHeaderDetails" => "ascio\\v3\\SecurityHeaderDetails",
+		"ImpersonationHeaderDetails" => "ascio\\v3\\ImpersonationHeaderDetails",
 		"ArrayOfMarkOrderDocument" => "ascio\\v3\\ArrayOfMarkOrderDocument",
 		"MarkOrderDocument" => "ascio\\v3\\MarkOrderDocument",
 		"Attachment" => "ascio\\v3\\Attachment",
@@ -254,9 +255,13 @@ class Service extends ServiceBase  {
 		"GetRegistrant" => "ascio\\v3\\GetRegistrant",
 		"GetContact" => "ascio\\v3\\GetContact",
 		"DeleteContact" => "ascio\\v3\\DeleteContact",
+		"DeleteContactResponse" => "ascio\\v3\\DeleteContactResponse",
 		"DeleteRegistrant" => "ascio\\v3\\DeleteRegistrant",
+		"DeleteRegistrantResponse" => "ascio\\v3\\DeleteRegistrantResponse",
 		"DeleteNameServer" => "ascio\\v3\\DeleteNameServer",
+		"DeleteNameServerResponse" => "ascio\\v3\\DeleteNameServerResponse",
 		"DeleteDnsSecKey" => "ascio\\v3\\DeleteDnsSecKey",
+		"DeleteDnsSecKeyResponse" => "ascio\\v3\\DeleteDnsSecKeyResponse",
 		"GetCustomerReference" => "ascio\\v3\\GetCustomerReference",
 		"CreateContact" => "ascio\\v3\\CreateContact",
 		"CreateCustomerReference" => "ascio\\v3\\CreateCustomerReference",
@@ -339,9 +344,13 @@ class Service extends ServiceBase  {
 		"GetRegistrant" => "ascio\\v3\\GetRegistrant",
 		"GetContact" => "ascio\\v3\\GetContact",
 		"DeleteContact" => "ascio\\v3\\DeleteContact",
+		"DeleteContactResponse" => "ascio\\v3\\DeleteContactResponse",
 		"DeleteRegistrant" => "ascio\\v3\\DeleteRegistrant",
+		"DeleteRegistrantResponse" => "ascio\\v3\\DeleteRegistrantResponse",
 		"DeleteNameServer" => "ascio\\v3\\DeleteNameServer",
+		"DeleteNameServerResponse" => "ascio\\v3\\DeleteNameServerResponse",
 		"DeleteDnsSecKey" => "ascio\\v3\\DeleteDnsSecKey",
+		"DeleteDnsSecKeyResponse" => "ascio\\v3\\DeleteDnsSecKeyResponse",
 		"GetCustomerReference" => "ascio\\v3\\GetCustomerReference",
 		"CreateContact" => "ascio\\v3\\CreateContact",
 		"CreateCustomerReference" => "ascio\\v3\\CreateCustomerReference",
@@ -492,16 +501,16 @@ class Service extends ServiceBase  {
 	public function getContact(GetContactRequest $request) : GetContactResponse {
 		return $this->call("GetContact", ["request" => $request]);
 	}
-	public function deleteContact(DeleteHandleRequest $request) : DeleteHandleResponse {
+	public function deleteContact(DeleteHandleRequest $request) : DeleteContactResponse {
 		return $this->call("DeleteContact", ["request" => $request]);
 	}
-	public function deleteRegistrant(DeleteHandleRequest $request) : DeleteHandleResponse {
+	public function deleteRegistrant(DeleteHandleRequest $request) : DeleteRegistrantResponse {
 		return $this->call("DeleteRegistrant", ["request" => $request]);
 	}
-	public function deleteNameServer(DeleteHandleRequest $request) : DeleteHandleResponse {
+	public function deleteNameServer(DeleteHandleRequest $request) : DeleteNameServerResponse {
 		return $this->call("DeleteNameServer", ["request" => $request]);
 	}
-	public function deleteDnsSecKey(DeleteHandleRequest $request) : DeleteHandleResponse {
+	public function deleteDnsSecKey(DeleteHandleRequest $request) : DeleteDnsSecKeyResponse {
 		return $this->call("DeleteDnsSecKey", ["request" => $request]);
 	}
 	public function getCustomerReference(GetCustomerReferenceRequest $request) : GetCustomerReferenceResponse {

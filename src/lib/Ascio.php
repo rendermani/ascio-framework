@@ -122,10 +122,10 @@ class Ascio {
     static private function getApiClient($apiName, Config $config) {
         switch($apiName) {
             case "v2" : 
-                $client = new \ascio\v2\Service(["trace"=>1],$config->getWsdl($apiName)); 
+                $client = new \ascio\v2\Service(["trace"=>1, 'cache_wsdl' => WSDL_CACHE_NONE],$config->getWsdl($apiName)); 
                 break;
-            case "v3" : $client = new \ascio\v3\Service([],$config->getWsdl($apiName)); break;
-            case "dns" : $client = new \ascio\dns\Service([],$config->getWsdl($apiName)); break;
+            case "v3" : $client = new \ascio\v3\Service(["trace"=>1, 'cache_wsdl' => WSDL_CACHE_NONE],$config->getWsdl($apiName)); break;
+            case "dns" : $client = new \ascio\dns\Service(["trace"=>1, 'cache_wsdl' => WSDL_CACHE_NONE],$config->getWsdl($apiName)); break;
         }
         return $client;
     }

@@ -17,19 +17,19 @@ trait ArrayTrait   {
             $this[$this->_arrayProperty] = [$this[$this->_arrayProperty]];
         } 
     }
-    public function rewind() {
+    public function rewind() : void {
         $this->_position = 0;
     }
-    public function current() {
+    public function current() : mixed {
         return $this[$this->_position];
     }
-    public function key() {
+    public function key() :mixed {
         return $this->_position;
     }
-    public function next() {
+    public function next() : void {
         ++$this->_position;
     }
-    public function valid() {
+    public function valid() : bool {
         return isset($this[$this->_position]);
     }
     public function push($value) {
@@ -45,10 +45,10 @@ trait ArrayTrait   {
     public function shift() {
         return array_shift($this->{$this->getArrayKey()});
     }
-    public function first() {
+    public function first() : mixed {
         return $this[0];
     }
-    public function last() {
+    public function last() : mixed {
         return end($this->toArray());
     }    
     public function index($nr) {
@@ -67,7 +67,7 @@ trait ArrayTrait   {
     {
         return json_encode($this->jsonSerialize(),$options); 
     } 
-    public function jsonSerialize() {
+    public function jsonSerialize() : mixed {
         $out = [];
         foreach($this as $key => $value) {
             if($value instanceof BaseClass) {
@@ -148,7 +148,7 @@ trait ArrayTrait   {
         return $this[count($this)-1];
     }
 
-    public function offsetSet($offset, $value) {
+    public function offsetSet($offset, $value) : void {
         if (is_null($offset)) {
             $this->{$this->getArrayKey()}[] = $value;
         } else {
@@ -156,15 +156,15 @@ trait ArrayTrait   {
         }
     }
 
-    public function offsetExists($offset) {
+    public function offsetExists($offset) : bool {
         return isset($this->{$this->getArrayKey()}[$offset]);
     }
 
-    public function offsetUnset($offset) {
+    public function offsetUnset($offset) : void {
         unset($this->{$this->getArrayKey()}[$offset]);
     }
 
-    public function offsetGet($offset) {
+    public function offsetGet($offset) : mixed {
         return isset($this->{$this->getArrayKey()}[$offset]) ? $this->{$this->getArrayKey()}[$offset] : null;
     }
     public function reverse() {

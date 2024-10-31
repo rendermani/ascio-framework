@@ -1,4 +1,4 @@
-<?php
+^<?php
 
 // XSLT-WSDL-Client. Generated PHP class of GetFuturePrices
 

@@ -51,6 +51,7 @@ class ServiceBase extends \SoapClient {
         return $this->config;
     }
     public function setError($function, $request, $result,$status) {
+        echo "last: " . Ascio::getClientV3()->__getLastRequest();
         if($function == "ValidateOrder" || $function == "CreateOrder") { 
             $exception = new AscioOrderExceptionV3($status->getResultMessage,$status->getResultCode);
             if($function == "CreateOrder") {

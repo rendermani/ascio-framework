@@ -136,7 +136,7 @@ class BaseClass {
         return $valueOld; 
     }
     public function _get($name) {
-        return $this->$name;
+        if(property_exists($this,$name)) return $this->$name;
     }
     /**
      * Set a property. If a no $value is provided objects/arrays are merged.  
@@ -166,7 +166,7 @@ class BaseClass {
                 $this->merge($nameOrArray);                
             } // convert from array
             elseif($nameOrArray instanceof \DateTime) {
-                $this->_set($key,$value);
+                $this->_set($nameOrArray,$value);
             }
             elseif (is_array($nameOrArray) ||is_object($nameOrArray)) {
                 foreach($nameOrArray as $key => $value) {
